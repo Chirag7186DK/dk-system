@@ -33,7 +33,8 @@ class customparam{
             }
             // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
-                if(($paramJsonData['city_ids'])>0){
+                if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
+                    && $paramJsonData['city_ids']!=null){
                     $givenParamDataCorrectCount++;
                 }
             }
@@ -59,13 +60,15 @@ class customparam{
             }
             // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
-                if(strlen($paramJsonData['city_ids'])==32){
+                if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
+                    && $paramJsonData['city_ids']!=null){
                     $givenParamDataCorrectCount++;
                 }
             }
             // check area_ids key present or not
             if(array_key_exists('area_ids', $paramJsonData)){
-                if(strlen($paramJsonData['area_ids'])==32){
+                if($paramJsonData['area_ids']!='' && $paramJsonData['area_ids']!=false 
+                    && $paramJsonData['area_ids']!=null){
                     $givenParamDataCorrectCount++;
                 }
             }
