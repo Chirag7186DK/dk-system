@@ -214,14 +214,14 @@ class RatingReviewDao{
                 JOIN DK_USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND MD5(urd.shopstore_id)  = '$shopStoreId'
-                AND MD5(urd.product_listid) = '$productListId'
+                AND urd.shopstore_id='$shopStoreId'
+                AND urd.product_listid='$productListId'
                 AND qrd.question_answerpattern='SELECT'
                 GROUP BY qrd.id, COALESCE(urd.given_answerpoints, 0)
                 ORDER BY qrd.sort_order ASC, COALESCE(urd.given_answerpoints, 0) DESC";
             $command = $connection->createCommand($sqlFetchQuery);
             $retMaxRatingProductDetailsArr = $command->queryAll();
-            if($retMaxRatingProductDetailsArr!=false && count($retMaxRatingProductDetailsArr)>0 && $retMaxRatingProductDetailsArr!=false){
+            if(count($retMaxRatingProductDetailsArr)>0 && $retMaxRatingProductDetailsArr!=false){
                 $retResult =  $retMaxRatingProductDetailsArr;
             }
         }catch(Exception $ex){}   
