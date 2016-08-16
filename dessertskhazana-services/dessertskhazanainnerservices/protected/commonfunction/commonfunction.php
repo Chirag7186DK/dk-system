@@ -811,9 +811,24 @@ class commonfunction{
     public static function getCancelledOrdercartItemDetails($userId){
         $retDataArr = false;
         if($userId!='' && $userId!=false){
-            // fetching cancelled order cart all items by end user or adim members
+            // fetching cancelled order cart all items by end user or admin members
             $ordercartAllItemDetailsArr = OrderCartDao :: getCancelledOrdercartItemDetails($userId);
             if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
+                // iterate each order cart cancelled item 
+                for($eachIndex = 0; $eachIndex<count($ordercartAllItemDetailsArr); $eachIndex++){
+                    $paramJson = array();
+                    $paramJson['shop_storesids'] = $ordercartAllItemDetailsArr[$eachIndex]['shopStoreId'];
+                    $paramJson['product_typeids'] = $ordercartAllItemDetailsArr[$eachIndex]['productTypeId'];
+                    $paramJson['product_categoryids'] = $ordercartAllItemDetailsArr[$eachIndex]['productTypeProductCategoryId'];
+                    $paramJson['product_listids'] = $ordercartAllItemDetailsArr[$eachIndex]['productListId'];
+                    $paramJson['product_featureids'] = $ordercartAllItemDetailsArr[$eachIndex]['productFeatureId'];
+                    $paramJson['product_showcasefile'] = 'Y';
+                    // checking cancelled item is avilable or not currently
+                    $cancelledItemCurrentlyAvailableDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($paramJson);
+                    if(count($cancelledItemCurrentlyAvailableDetailsArr)>0 && $cancelledItemCurrentlyAvailableDetailsArr!=false){
+                        $ordercartAllItemDetailsArr[$eachIndex]['isCancelledItemAvailable'] = 'Y';
+                    }
+                }
                 $retDataArr = $ordercartAllItemDetailsArr;
             }
         }
