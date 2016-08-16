@@ -33,13 +33,13 @@ class ProductServicesV1 implements IProductServicesV1 {
                     $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr));
                     // fetch all area based ka product type ka shopstore details
                     $retAreaBasedConductProductTypeShopStoreDetailsArr = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr);
-                    if(count($retAreaBasedConductProductTypeShopStoreDetailsArr) > 0 && $retAreaBasedConductProductTypeShopStoreDetailsArr != false) {
+                    if(count($retAreaBasedConductProductTypeShopStoreDetailsArr)>0 && $retAreaBasedConductProductTypeShopStoreDetailsArr!=false){
                         // sorted on product type details
                         $sortedOnProductTypeDetailsArr = utils::arraySort($retAreaBasedConductProductTypeShopStoreDetailsArr, array("productTypeId"), array("productTypeId" => "productTypeTitle"));
-                        if (count($sortedOnProductTypeDetailsArr) > 0 && $sortedOnProductTypeDetailsArr != false) {
+                        if (count($sortedOnProductTypeDetailsArr)>0 && $sortedOnProductTypeDetailsArr!=false){
                             $finalAllProductTypeListArr = array();
                             // iterate each product type info details
-                            foreach ($sortedOnProductTypeDetailsArr as $eachProductTypeIdTitle => $eachProductTypeAllProductDetailsArr) {
+                            foreach($sortedOnProductTypeDetailsArr as $eachProductTypeIdTitle=>$eachProductTypeAllProductDetailsArr){
                                 $productTokens = '';
                                 $productIcon = '';
                                 $isRequestedProductTypeIdMatched = 'N';
