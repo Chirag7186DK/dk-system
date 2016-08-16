@@ -1032,13 +1032,15 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
         if(array_key_exists('store_ids', $paramJsonData)){
-            if(strlen($paramJsonData['store_ids'])==32){
+            if($paramJsonData['store_ids']!='' && $paramJsonData['store_ids']!=false 
+                && $paramJsonData['store_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product_ids is blank or not
         if(array_key_exists('product_ids', $paramJsonData)){
-            if(strlen($paramJsonData['product_ids'])==32){
+            if($paramJsonData['product_ids']!='' && $paramJsonData['product_ids']!=false 
+                && $paramJsonData['product_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
