@@ -417,7 +417,7 @@ class ProductServicesV1 implements IProductServicesV1 {
             $gproductTypeProductCategoryProductId = $dkParamDataArr['product_ids'];
             $gproductTypeProductCategoryProductFeatureId = $dkParamDataArr['product_featureids'];
             // checking given shopstore id exists or not 
-            $retShopStoreDetailsArr = ShopStoreDao::getShopStoresList("'".$gShopStoreId."'", '');
+            $retShopStoreDetailsArr = ShopStoreDao::getShopStoresList($gShopStoreId, '');
             if(count($retShopStoreDetailsArr)>0 && $retShopStoreDetailsArr!=false){
                 $isShopStoreServedOtherProducts = true;
                 $storeServedOtherProductsNames = '';
@@ -430,10 +430,10 @@ class ProductServicesV1 implements IProductServicesV1 {
                 // fetching requested product details
                 $allProductDetailsArr = array();
                 $applyWhereConditionArr = array();
-                $applyWhereConditionArr['shop_storesids'] = "'" . $gShopStoreId . "'";
-                $applyWhereConditionArr['product_typeids'] = "'" . $gproductTypeId . "'";
-                $applyWhereConditionArr['product_categoryids'] = "'" . $gproductTypeProductCategoryId . "'";
-                $applyWhereConditionArr['product_listids'] = "'" . $gproductTypeProductCategoryProductId . "'";
+                $applyWhereConditionArr['shop_storesids'] = $gShopStoreId;
+                $applyWhereConditionArr['product_typeids'] = $gproductTypeId;
+                $applyWhereConditionArr['product_categoryids'] = $gproductTypeProductCategoryId;
+                $applyWhereConditionArr['product_listids'] = $gproductTypeProductCategoryProductId;
                 $retProductDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($applyWhereConditionArr);
                 if(count($retProductDetailsArr) > 0 && $retProductDetailsArr != false) {
                     // detect product type is cake, icecream, chips, drinks etc, bcoz to show product icon at ui screen
@@ -466,7 +466,7 @@ class ProductServicesV1 implements IProductServicesV1 {
 
                     // fetch given shopStores delivery location facility details using, store_id
                     $shopStoresProductDeliveryFacilityParam = array();
-                    $shopStoresProductDeliveryFacilityParam['shop_storesids'] = "'" . $gShopStoreId . "'";
+                    $shopStoresProductDeliveryFacilityParam['shop_storesids'] = $gShopStoreId;
                     $shopStoresProductDeliveryFacilityParam['groupby_area_ids'] = 'Y';
                     $retShopStoresDeliveryLocationFacilityDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoresProductDeliveryFacilityParam);
                     if(count($retShopStoresDeliveryLocationFacilityDetailsArr) > 0 && $retShopStoresDeliveryLocationFacilityDetailsArr != false) {
@@ -482,8 +482,8 @@ class ProductServicesV1 implements IProductServicesV1 {
                         }
                         // fetch other product type details of given shoptStores affilatted
                         // sorted on country city area affiliaton ids
-                        $allCountryCityAreaAffiliatonIdsStr = "'" . implode("','", array_keys(utils::arraySort($retShopStoresDeliveryLocationFacilityDetailsArr, array("countryCityAreaAffiliationId")))) . "'";
-                        $retShopStoresAffiliatedToOthersProductTypeDetailsArrr = LocationDao :: getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr, '', "'" . $gproductTypeId . "'", "'" . $gShopStoreId . "'");
+                        $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys(utils::arraySort($retShopStoresDeliveryLocationFacilityDetailsArr, array("countryCityAreaAffiliationId"))));
+                        $retShopStoresAffiliatedToOthersProductTypeDetailsArrr = LocationDao :: getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr, '', $gproductTypeId, $gShopStoreId);
                         if($retShopStoresAffiliatedToOthersProductTypeDetailsArrr != false && count($retShopStoresAffiliatedToOthersProductTypeDetailsArrr) > 0) {
                             $sortedOnProductTypeDetailsShopStoresAffiliatedArr = utils::arraySort($retShopStoresAffiliatedToOthersProductTypeDetailsArrr, array("productTypeTitle"));
                             if(count($sortedOnProductTypeDetailsShopStoresAffiliatedArr) > 0 && $sortedOnProductTypeDetailsShopStoresAffiliatedArr != false) {
