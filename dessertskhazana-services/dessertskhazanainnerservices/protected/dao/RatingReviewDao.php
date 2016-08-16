@@ -281,15 +281,15 @@ class RatingReviewDao{
                 JOIN DK_USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND MD5(urd.shopstore_id) = '$shopStoreId'
-                AND MD5(urd.product_listid) = '$productListId'
-                AND MD5(urd.user_id) = '$userId'
+                AND urd.shopstore_id='$shopStoreId'
+                AND urd.product_listid='$productListId'
+                AND urd.user_id='$userId'
                 AND qrd.question_answerpattern='SELECT'    
                 AND urd.group_no = '$groupNo' 
                 ORDER BY urd.updated_datedtime DESC ";
             $command = $connection->createCommand($sqlFetchQuery);
             $retReviewedAboutProductDetailsArr = $command->queryAll();
-            if($retReviewedAboutProductDetailsArr!=false && count($retReviewedAboutProductDetailsArr)>0 && $retReviewedAboutProductDetailsArr!=false){
+            if(count($retReviewedAboutProductDetailsArr)>0 && $retReviewedAboutProductDetailsArr!=false){
                 $retResult =  $retReviewedAboutProductDetailsArr;
             }
         }catch(Exception $ex){}   
