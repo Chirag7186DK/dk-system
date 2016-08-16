@@ -15,7 +15,7 @@ class LocationServicesV1 implements ILocationServicesV1{
             $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = false;
             $rsltJsonArr['allCityList'] = false;
             // initial variable declare here
-            $gcountry_ids = "'".MD5($dkParamDataArr['country_ids'])."'";
+            $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
             // prepare param obj
             $shopStoreProductDeliveryParamObj = array();
