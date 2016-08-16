@@ -177,8 +177,8 @@ class ShopStoreDao{
                 (CASE WHEN DAYNAME(CURDATE())=COALESCE(sw.dayname, '') THEN 'Y' ELSE 'N' END) isTodayDayMatched
                 FROM DK_SHOPSTORE_WORKINGHOURS sw 
                 WHERE sw.status='A' ";
-                if(strlen($shop_storeids)==32){
-                    $sqlFetchQuery.=" AND MD5(sw.shoptstore_id) IN ('$shop_storeids') ";
+                if($shop_storeids!=false && $shop_storeids!='' && $shop_storeids!=null){
+                    $sqlFetchQuery.=" AND sw.shoptstore_id IN ($shop_storeids) ";
                 }
             $command = $connection->createCommand($sqlFetchQuery);
             $retStoreworkingDetailsArr = $command->queryAll();
