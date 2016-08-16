@@ -327,23 +327,24 @@ class ProductDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = "SELECT 
-                COALESCE(MD5(ppd.id), '') productDescriptionId,
-                COALESCE(MD5(ppd.product_listid), '') productListId,
-                COALESCE(MD5(ppd.product_feature_id), '') productFeatureId,
+                COALESCE(ppd.id, '') productDescriptionId,
+                COALESCE(ppd.product_listid, '') productListId,
+                COALESCE(ppd.product_feature_id, '') productFeatureId,
                 COALESCE(ppd.description_title, '') productDescriptionTitle,
                 COALESCE(ppd.description_content, '') productDescription,
                 COALESCE(ppd.content_file, '') productContentFile,
                 COALESCE(ppd.content_filepath, '') productContentFilePath
                 FROM DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_DESCRIPTIONDETAILS ppd
                 WHERE 
-                MD5(ppd.product_listid)='$productListId'
+                ppd.product_listid='$productListId'
                 AND ppd.status='A' ";
                 if($productFeatureId!=''){
-                    $sqlFetchQuery.=" AND MD5(ppd.product_feature_id)='$productFeatureId' ";
+                    $sqlFetchQuery.=" AND ppd.product_feature_id='$productFeatureId' ";
                 }
             $command = $connection->createCommand($sqlFetchQuery);
             $retProductDescriptionDetailsArr = $command->queryAll();
-            if($retProductDescriptionDetailsArr!=false && count($retProductDescriptionDetailsArr)>0 && $retProductDescriptionDetailsArr!=false){
+            if(count($retProductDescriptionDetailsArr)>0 
+                && $retProductDescriptionDetailsArr!=false){
                 $retResult =  $retProductDescriptionDetailsArr;
             }
         }catch(Exception $ex){}   
