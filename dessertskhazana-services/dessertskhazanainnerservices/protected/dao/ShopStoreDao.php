@@ -13,7 +13,7 @@ class ShopStoreDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COALESCE(MD5(ss.id), '') shopStoreId, 
+                COALESCE(ss.id, '') shopStoreId, 
                 COALESCE(ss.shopstore_name, '') shopStoreName,
                 UPPER(COALESCE(ss.shopstore_name, '')) shopStoreNameInCaps,
                 COALESCE(ss.shopstore_logofile, '') shopStoreLogoFile,
@@ -22,14 +22,14 @@ class ShopStoreDao{
                 FROM DK_SHOPSTORES ss 
                 WHERE ss.status='A'";
                 if($shop_storeids!='' && strlen($shop_storeids)>=32){
-                    $sqlFetchQuery.=" AND MD5(ss.id) IN ($shop_storeids) ";
+                    $sqlFetchQuery.=" AND ss.id IN ($shop_storeids) ";
                 }
                 if($country_city_area_affiliationIds!='' && strlen($country_city_area_affiliationIds)>=32){
-                    $sqlFetchQuery.=" AND MD5(ss.country_city_area_affiliationId) IN ($country_city_area_affiliationIds) ";
+                    $sqlFetchQuery.=" AND ss.country_city_area_affiliationId IN ($country_city_area_affiliationIds) ";
                 }
             $command = $connection->createCommand($sqlFetchQuery);
             $retShopStoresListArr = $command->queryAll();
-            if($retShopStoresListArr!=false && count($retShopStoresListArr)>0 && $retShopStoresListArr!=false){
+            if(count($retShopStoresListArr)>0 && $retShopStoresListArr!=false){
                 $retResult =  $retShopStoresListArr;
             }
         }catch(Exception $ex){}   
