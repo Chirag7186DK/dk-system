@@ -8,6 +8,62 @@
 -- TRUNCATE TABLE  `DK_USERORDERCART_ITEMDETAILS`;
 
 
+SELECT 
+uoc.id ordercartId, uocim.id ordercartItemId, 
+COALESCE(MD5(pt.id), '') productTypeId, COALESCE(pt.id, '') unMD5ProductTypeId, 
+COALESCE(pt.name, '') productTypeTitle, 
+COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
+COALESCE(MD5(ppc.id), '') productTypeProductCategoryId, 
+COALESCE(ppc.id, '') unMD5ProductTypeProductCategoryId, 
+COALESCE(ppc.name, '')  productTypeProductCategoryTitle,
+COALESCE(MD5(spa.shoptstore_id), '') shopStoreId, 
+COALESCE(spa.shoptstore_id, '') unMd5ShopStoreId, 
+COALESCE(ss.shopstore_name, '') shopStoreTitle,
+COALESCE(ss.shop_storelabel, '') shopStoreLabel, 
+COALESCE(ss.shopstore_logofile, '') shopstore_logofile,
+COALESCE(ss.shopstore_mobile, '') shopstore_mobile,
+COALESCE(MD5(sppl.id), '') productListId, 
+COALESCE(sppl.id, '') unMd5ProductListId,
+COALESCE(sppl.name, '') productListTitle,
+COALESCE(MD5(sppfd.id), '') productFeatureId, 
+COALESCE(sppfd.id, '') unMd5ProductFeatureId, 
+COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
+COALESCE(sppfd.food_type, '') productFeatureFoodType, 
+COALESCE(sppfd.taste_type, '') productFeatureTasteType, 
+COALESCE(sppfd.pattern_type, '') productFeaturePatternType, 
+COALESCE(sppfd.order_opentime, '') productFeatureOrderOpenTime, 
+COALESCE(sppfd.order_closetime, '') productFeatureOrderOpenTime, 
+COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
+COALESCE(sppfd.product_discount, '') productFeatureDiscount,
+COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice,
+COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
+COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
+COALESCE(ppimg.file_path, 'images/') productImageFilePath,
+COALESCE(uocim.product_featuresize, '') itemMeasurementType,
+COALESCE(uocim.product_featuresprice, 0) itemPerpriceIncart,
+COALESCE(uocim.product_featuresqty, 0) itemQty,
+COALESCE(uocim.product_features_totalamount, 0) itemTotalAmt,
+COALESCE(uocim.product_description,'') itemDescriptionIncart
+FROM DK_USERORDERCART uoc 
+JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
+JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid
+JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+    AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
+JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+    AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
+JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
+    ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
+LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
+    ON ppimg.product_listid=sppl.id  AND ppimg.status = 'A' 
+    AND ppimg.is_showcasefile = 'Y'    
+WHERE 1
+AND (uoc.status='ZC' OR uoc.status='ZA' OR uoc.status='R')
+AND (uocim.status='ZC' OR uocim.status='ZA')
+AND uoc.user_id='1'
+ORDER BY uoc.id ASC, uoc.updated_datedtime DESC
 
 
 -- requested item in order cart
