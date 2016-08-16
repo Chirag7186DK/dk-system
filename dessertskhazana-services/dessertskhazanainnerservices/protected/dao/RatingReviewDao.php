@@ -88,21 +88,20 @@ class RatingReviewDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COALESCE(MD5(rqd.id), '') reviewQuestionId,
-                COALESCE(MD5(rqd.shopstore_id), '') shopStoreId,
-                COALESCE(rqd.id, '') unmMd5ReviewQuestionId,
-                COALESCE(rqd.shopstore_id, '') unMd5ShopStoreId,
+                COALESCE(rqd.id, '') reviewQuestionId,
+                COALESCE(rqd.shopstore_id, '') shopStoreId,
                 rqd.question_title questionTitle, 
                 rqd.question_answerpattern questionPattern,
                 COALESCE(rqd.max_points, '0') maxPoints
                 FROM DK_REVIEWQESTIONSDETAILS rqd 
                 WHERE 
-                MD5(rqd.shopstore_id)='$shop_storeid'
+                rqd.shopstore_id='$shop_storeid'
                 AND rqd.status='A'
                 ORDER BY rqd.sort_order ASC";
             $command = $connection->createCommand($sqlFetchQuery);
             $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr = $command->queryAll();
-            if($retRatingReviewQuestionsAboutProductByShopStoresDetailsArr!=false && count($retRatingReviewQuestionsAboutProductByShopStoresDetailsArr)>0 && $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr!=false){
+            if(count($retRatingReviewQuestionsAboutProductByShopStoresDetailsArr)>0 
+                && $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr!=false){
                 $retResult =  $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr;
             }
         }catch(Exception $ex){}   
