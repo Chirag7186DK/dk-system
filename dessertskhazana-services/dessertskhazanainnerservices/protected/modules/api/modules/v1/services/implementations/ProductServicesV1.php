@@ -189,7 +189,7 @@ class ProductServicesV1 implements IProductServicesV1 {
     public function getProductTypeProductCategoryAllProductDetails($dkParamDataArr){
         $rspDetails = array();
         // checking requested param data
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultSelectProductCategoryTitle'] = '';
             $rsltJsonArr['defaultSelectProductCategoryValue'] = '';
@@ -270,9 +270,9 @@ class ProductServicesV1 implements IProductServicesV1 {
                             if (count($sortedOnProductCategoryArr) > 0 && $sortedOnProductCategoryArr != false) {
                                 $productTypeAllProductCategoryWiseFilterDetailsArr = array();
                                 // iterate each product category 
-                                foreach ($sortedOnProductCategoryArr as $eachProductCategoryId => $productCategoryDetailsArr) {
+                                foreach ($sortedOnProductCategoryArr as $eachProductCategoryId => $productCategoryDetailsArr){
                                     $isRequestedProductCategoryMatched = 'N';
-                                    if (strlen($gproductTypeProductCategoryId) != 32) {
+                                    if($gproductTypeProductCategoryId!=false && $gproductTypeProductCategoryId!=''){
                                         $gproductTypeProductCategoryId = $eachProductCategoryId;
                                     }
                                     if ($eachProductCategoryId == $gproductTypeProductCategoryId) {
@@ -370,16 +370,16 @@ class ProductServicesV1 implements IProductServicesV1 {
                         $sortedOnProductTypeProductCategoryDetailsArr = utils::arraySort($retAllShopStoresProductTypeProductCategoryProductListArr, array("productTypeId", "productTypeProductCategoryId"));
                         if(count($sortedOnProductTypeProductCategoryDetailsArr) > 0 && $sortedOnProductTypeProductCategoryDetailsArr != false) {
                             // iterate each product type ids
-                            foreach ($sortedOnProductTypeProductCategoryDetailsArr as $eachProductTypeId => $productCategoryDetailsArr) {
+                            foreach($sortedOnProductTypeProductCategoryDetailsArr as $eachProductTypeId => $productCategoryDetailsArr) {
                                 // iterate each product type ka product category 
-                                foreach ($productCategoryDetailsArr as $eachProductCategoryId => $productDetailsArr) {
+                                foreach($productCategoryDetailsArr as $eachProductCategoryId=>$productDetailsArr){
                                     // preparing product list
                                     // if requested product category str length!=32 
                                     // then dump default category ka all product list
-                                    if (strlen($gproductTypeProductCategoryId) != 32) {
+                                    if($gproductTypeProductCategoryId!='' && $gproductTypeProductCategoryId!=false){
                                         $gproductTypeProductCategoryId = $eachProductCategoryId;
                                     }
-                                    if ($eachProductCategoryId == $gproductTypeProductCategoryId) {
+                                    if($eachProductCategoryId==$gproductTypeProductCategoryId){
                                         // prepare array to remove unused key details from all product list
                                         $removeJsonKeyFromEachInputJsonArr = array(
                                             "productTypeTitleInCaps" => "0", "shopStoreLabel" => "0", "shopstore_mobile" => "0", "shopstore_logofile" => "0",
@@ -390,7 +390,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                                         break;
                                     }
                                 }
-                                if (count($productTypeProductCategoryAllProductList) > 0 && $productTypeProductCategoryAllProductList != false) {
+                                if(count($productTypeProductCategoryAllProductList)>0 && $productTypeProductCategoryAllProductList!=false){
                                     $rsltJsonArr['allProductDetailsList'] = $productTypeProductCategoryAllProductList;
                                     break;
                                 }
