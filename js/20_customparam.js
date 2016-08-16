@@ -409,8 +409,7 @@ function checkAllParamToViewAllProducts(paramObj){
     if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
         if(paramObj.hasOwnProperty('productTypeId')===true
             && paramObj.hasOwnProperty('productTypeTitle')===true){
-            if((paramObj['productTypeId']).length===32
-                && paramObj['productTypeTitle']!==''){
+            if(parseInt(paramObj['productTypeId'])>0 && paramObj['productTypeTitle']!==''){
                 // extract dk param obj && reset user product & dkDeliveryCityAreaDessertsProduct data
                 var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 existingDkParamObj['dkDeliveryCityAreaDessertsProduct']['dessertsproduct'] = paramObj['productTypeId'];
