@@ -124,13 +124,13 @@ include "Site_config.inc.php";
                 <!-- order cart all section header title -->
                 <div scroll-horizontally-ordercart-allsectionheader-directive id='uca_ordercartAllSectionHeaderContainerDivId' class='uca_ordercartAllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_toggleOrdercartSectionList('requestitem');" title='Click to view all shopping item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId' class='uca_ordercartEachTabLabelSectionContainerLIClass uca_ordercartSelectedTabLabelSectionContainerLIClass'>
-                        Shopping Items({{ordercartRequestedAllItemDetailsArrObj.length}})
+                        Shopping Items
                     </li>
                     <li ng-click="uca_toggleOrdercartSectionList('allordered');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
-                        All Order(s)
+                        All Orders
                     </li>
                     <li ng-click="uca_toggleOrdercartSectionList('cancelledordered');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
-                        Cancelled Order(s)
+                        Cancelled Orders
                     </li>
                 </div>
 
