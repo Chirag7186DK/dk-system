@@ -291,7 +291,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
             // prepare param obj to get shopstore delivery location details
             $shopStoreProductDeliveryAreaParamObj = array();
-            $shopStoreProductDeliveryAreaParamObj['shop_storesids'] = "'".$dkParamDataArr['shopstoreids']."'";
+            $shopStoreProductDeliveryAreaParamObj['shop_storesids'] = $dkParamDataArr['shopstoreids'];
             // fetch product delivery area details
             $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryAreaParamObj);
             if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
