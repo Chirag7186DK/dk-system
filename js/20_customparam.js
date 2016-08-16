@@ -1477,21 +1477,21 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
             // through dashboard/store/all products page
             if(productDetailsObj!==false && productDetailsObj!==undefined 
                 && jQuery.isEmptyObject(productDetailsObj)===false){
-                if(productDetailsObj.hasOwnProperty('unMd5ShopStoreId')===true
-                    && productDetailsObj.hasOwnProperty('unMD5ProductTypeId')===true
-                    && productDetailsObj.hasOwnProperty('unMD5ProductTypeProductCategoryId')===true
-                    && productDetailsObj.hasOwnProperty('unMd5ProductListId')===true
-                    && productDetailsObj.hasOwnProperty('unMd5ProductFeatureId')===true){
-                    if(parseInt(productDetailsObj['unMd5ShopStoreId'])>0
-                        && parseInt(productDetailsObj['unMD5ProductTypeId'])>0
-                        && parseInt(productDetailsObj['unMD5ProductTypeProductCategoryId'])>0
-                        && parseInt(productDetailsObj['unMd5ProductListId'])>0
-                        && parseInt(productDetailsObj['unMd5ProductFeatureId'])>0){
-                        retParamObj['shopstore_id'] = productDetailsObj['unMd5ShopStoreId'];
-                        retParamObj['product_typeid'] = productDetailsObj['unMD5ProductTypeId'];
-                        retParamObj['product_categoryid'] = productDetailsObj['unMD5ProductTypeProductCategoryId'];
-                        retParamObj['product_listid'] = productDetailsObj['unMd5ProductListId'];
-                        retParamObj['product_featureid'] = productDetailsObj['unMd5ProductFeatureId'];
+                if(productDetailsObj.hasOwnProperty('shopStoreId')===true
+                    && productDetailsObj.hasOwnProperty('productTypeId')===true
+                    && productDetailsObj.hasOwnProperty('productTypeProductCategoryId')===true
+                    && productDetailsObj.hasOwnProperty('productListId')===true
+                    && productDetailsObj.hasOwnProperty('productFeatureId')===true){
+                    if(parseInt(productDetailsObj['shopStoreId'])>0
+                        && parseInt(productDetailsObj['productTypeId'])>0
+                        && parseInt(productDetailsObj['productTypeProductCategoryId'])>0
+                        && parseInt(productDetailsObj['productListId'])>0
+                        && parseInt(productDetailsObj['productFeatureId'])>0){
+                        retParamObj['shopstore_id'] = productDetailsObj['shopStoreId'];
+                        retParamObj['product_typeid'] = productDetailsObj['productTypeId'];
+                        retParamObj['product_categoryid'] = productDetailsObj['productTypeProductCategoryId'];
+                        retParamObj['product_listid'] = productDetailsObj['productListId'];
+                        retParamObj['product_featureid'] = productDetailsObj['productFeatureId'];
                         retParamObj['product_featuresize'] = productDetailsObj['productFeatureDisplayMeasurementType'];
                         retParamObj['product_featuresprice'] = productDetailsObj['productFeatureOnlineSellingPrice'];
                         retParamObj['product_featuresqty'] = '1';
