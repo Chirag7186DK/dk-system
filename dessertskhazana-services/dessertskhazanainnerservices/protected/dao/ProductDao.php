@@ -303,18 +303,18 @@ class ProductDao{
         $retResult = false;
         try{
             $connection = Yii::app()->db;
-            $sqlFetchQuery = "SELECT COALESCE(MD5(ppimg.id), '') ppImgId,
+            $sqlFetchQuery = "SELECT COALESCE(ppimg.id, '') ppImgId,
                 COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
                 COALESCE(ppimg.image_filename, 'no-image.png') productImageFileName,
                 COALESCE(ppimg.file_path, 'images/producttype/default/') productImageFilePath
                 FROM DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg
                 WHERE 
-                MD5(ppimg.product_listid)='$productListId'
+                ppimg.product_listid='$productListId'
                 AND ppimg.status='A'
                 ORDER BY ppimg.sort_order ASC";
             $command = $connection->createCommand($sqlFetchQuery);
             $retProductImagesListArr = $command->queryAll();
-            if($retProductImagesListArr!=false && count($retProductImagesListArr)>0 && $retProductImagesListArr!=false){
+            if(count($retProductImagesListArr)>0 && $retProductImagesListArr!=false){
                 $retResult =  $retProductImagesListArr;
             }
         }catch(Exception $ex){}   
