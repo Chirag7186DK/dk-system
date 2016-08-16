@@ -48,17 +48,17 @@ class ProductServicesV1 implements IProductServicesV1 {
                                 $eachProductTypeDetailsArr = array();
                                 $eachProductTypeDetailsArr['productTypeId'] = $eachProductTypeIdTitleExplodedOnHash[0];
                                 $eachProductTypeDetailsArr['productTypeTitle'] = $eachProductTypeIdTitleExplodedOnHash[1];
-                                if (strtolower($eachProductTypeIdTitleExplodedOnHash[1]) == 'cakes') {
-                                    $productTokens = 'CAKES, cakes,' . strtolower($eachProductTypeIdTitleExplodedOnHash[0]) . "," . $eachProductTypeIdTitleExplodedOnHash[0];
-                                    $productTokens.=", " . strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
+                                if (strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='cakes'){
+                                    $productTokens = 'CAKES,cakes,'.strtolower($eachProductTypeIdTitleExplodedOnHash[0]).",".$eachProductTypeIdTitleExplodedOnHash[0];
+                                    $productTokens.=", ".strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
                                     $productIcon = 'fa fa-birthday-cake';
                                 }
-                                if (strtolower($eachProductTypeIdTitleExplodedOnHash[1]) == 'ice cream') {
+                                if (strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='ice cream'){
                                     $productTokens = 'ICE CREAM, ice cream,' . strtolower($eachProductTypeIdTitleExplodedOnHash[0]) . "," . $eachProductTypeIdTitleExplodedOnHash[0];
                                     $productTokens.=", " . strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
                                     $productIcon = 'fa fa-birthday-cake';
                                 }
-                                if($eachProductTypeIdTitleExplodedOnHash[0] == $gproducttype_ids) {
+                                if($eachProductTypeIdTitleExplodedOnHash[0]==$gproducttype_ids){
                                     $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails'] = array();
                                     $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails']['matchedProductTypeId'] = $eachProductTypeIdTitleExplodedOnHash[0];
                                     $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails']['matchedProductTypeTitle'] = $eachProductTypeIdTitleExplodedOnHash[1];
