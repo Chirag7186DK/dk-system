@@ -21,10 +21,12 @@ class ShopStoreDao{
                 COALESCE(ss.address, '') shopStoreAddress
                 FROM DK_SHOPSTORES ss 
                 WHERE ss.status='A'";
-                if($shop_storeids!='' && strlen($shop_storeids)>=32){
-                    $sqlFetchQuery.=" AND ss.id IN ($shop_storeids) ";
+                if($shop_storeids!='' && $shop_storeids!=false 
+                    && $shop_storeids!=null){
+                    $sqlFetchQuery.=" AND ss.id IN ($shop_storeids)";
                 }
-                if($country_city_area_affiliationIds!='' && strlen($country_city_area_affiliationIds)>=32){
+                if($country_city_area_affiliationIds!='' 
+                    && $country_city_area_affiliationIds!=false && $country_city_area_affiliationIds!=null){
                     $sqlFetchQuery.=" AND ss.country_city_area_affiliationId IN ($country_city_area_affiliationIds) ";
                 }
             $command = $connection->createCommand($sqlFetchQuery);
