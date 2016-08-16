@@ -436,9 +436,10 @@ class customparam{
     public static function checkParamDataFetchingProductDescriptionDetails($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
-        // check product_ids id is blank or not
+        // check product type id is blank or not
         if(array_key_exists('product_ids', $paramJsonData)){
-            if(strlen($paramJsonData['product_ids'])==32){
+            if($paramJsonData['product_ids']!='' && $paramJsonData['product_ids']!=false 
+                && $paramJsonData['product_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
