@@ -182,8 +182,7 @@ class ShopStoreDao{
                 }
             $command = $connection->createCommand($sqlFetchQuery);
             $retStoreworkingDetailsArr = $command->queryAll();
-            if($retStoreworkingDetailsArr!=false && count($retStoreworkingDetailsArr)>0 
-                && $retStoreworkingDetailsArr!=false){
+            if(count($retStoreworkingDetailsArr)>0 && $retStoreworkingDetailsArr!=false){
                 $retResult =  $retStoreworkingDetailsArr;
             }
         }catch(Exception $ex){}   
