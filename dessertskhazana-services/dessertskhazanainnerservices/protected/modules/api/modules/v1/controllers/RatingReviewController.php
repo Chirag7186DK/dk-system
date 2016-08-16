@@ -22,7 +22,7 @@ class RatingReviewController extends V1Controller{
                     $rspDetails = $RatingReviewServicesV1->addUserRatingReviewProduct($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
-                    uitls :: getRatingReviewQuestionsAboutProductByShopStores();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -45,7 +45,7 @@ class RatingReviewController extends V1Controller{
                     $rspDetails = $RatingReviewServicesV1->getRatingReviewQuestionsAboutProductByShopStores($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
-                    uitls :: getRatingReviewQuestionsAboutProductByShopStores();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -68,7 +68,7 @@ class RatingReviewController extends V1Controller{
                     $rspDetails = $RatingReviewServicesV1->getShopStoreAllUserRating($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -91,7 +91,7 @@ class RatingReviewController extends V1Controller{
                     $rspDetails = $RatingReviewServicesV1->getAllUserRatingReviewAboutProduct($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -114,7 +114,7 @@ class RatingReviewController extends V1Controller{
                     $rspDetails = $RatingReviewServicesV1->getAverageRatingReviewAboutProduct($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -137,7 +137,7 @@ class RatingReviewController extends V1Controller{
                     $rspDetails = $RatingReviewServicesV1->getMaxRatingReviewAboutProduct($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
