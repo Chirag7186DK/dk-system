@@ -83,13 +83,13 @@ class LocationServicesV1 implements ILocationServicesV1{
             $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = false;
             $rsltJsonArr['allAreaList'] = false;
             // initial variable declare
-            $gcountry_ids = "'".implode("','", explode(",", MD5($dkParamDataArr['country_ids'])))."'";
+            $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
             // prepare param obj
             $shopStoreProductDeliveryParamObj = array();
             $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_ids;
-            $shopStoreProductDeliveryParamObj['city_ids'] = "'".$gcity_ids."'";
+            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_ids;
             $shopStoreProductDeliveryParamObj['groupby_area_ids'] = 'Y';
             $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
             if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
