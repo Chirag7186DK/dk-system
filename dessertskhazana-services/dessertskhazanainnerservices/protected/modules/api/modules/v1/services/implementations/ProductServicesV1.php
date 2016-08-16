@@ -152,7 +152,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                                             $eachProductTypeProductCategoryDetailsArr['productIcon'] = 'fa fa-birthday-cake';
                                             $eachProductTypeAllProductDetailsArr = array();
                                             $totalProductDetailsToIncludeCount = 8;
-                                            for ($eachProductDetailsArrIndex = 0; $eachProductDetailsArrIndex < $totalProductDetailsToIncludeCount && $eachProductDetailsArrIndex < count($productDetailsArr); $eachProductDetailsArrIndex++) {
+                                            for($eachProductDetailsArrIndex = 0; $eachProductDetailsArrIndex < $totalProductDetailsToIncludeCount && $eachProductDetailsArrIndex < count($productDetailsArr); $eachProductDetailsArrIndex++) {
                                                 $productDetailsArr[$eachProductDetailsArrIndex]['productDeliveryLocationStr'] = '';
                                                 array_push($eachProductTypeAllProductDetailsArr, $productDetailsArr[$eachProductDetailsArrIndex]);
                                             }
