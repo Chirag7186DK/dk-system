@@ -46,12 +46,12 @@ class ShopStoreDao{
             $connection = Yii::App()->db;
             
             $sql= " SELECT 
-                    COALESCE(MD5(ss.id), '') shopStoreId, 
+                    COALESCE(ss.id, '') shopStoreId, 
                     COALESCE(ss.shopstore_name, '') shopStoreName,
-                    COALESCE(MD5(ss.country_city_area_affiliationId), '') countryCityAreaAffiliationId,
-                    COALESCE(MD5(country.id), '') countryId, COALESCE(country.name, '') countryName, 
-                    COALESCE(MD5(city.id), '') cityId, COALESCE(city.name, '') cityName,
-                    COALESCE(MD5(area.id), '') areaId, COALESCE(area.name, '') areaName,
+                    COALESCE(ss.country_city_area_affiliationId, '') countryCityAreaAffiliationId,
+                    COALESCE(country.id, '') countryId, COALESCE(country.name, '') countryName, 
+                    COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
+                    COALESCE(area.id, '') areaId, COALESCE(area.name, '') areaName,
                     COALESCE(sdl.is_preorderaccept, 'Y') isPreorderAccept, 
                     COALESCE(sdl.is_takeawayorderaccept, 'Y') takeAwayOrderAccept,
                     COALESCE(sdl.is_cashondeliveryaccept, 'Y') cashOnDeliveryAccept, 
@@ -66,31 +66,35 @@ class ShopStoreDao{
                     JOIN DK_AREAREACHED area ON area.status='A' AND sdl.area_id=area.id";
             $sql.="  WHERE 1 ";
             
-                //add shop store in where condition
+                // add shop store in where condition
                 if(array_key_exists('shop_storesids', $paramJson)){
-                    if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' && $paramJson['shop_storesids']!=null && strlen($paramJson['shop_storesids'])>=32){
-                        $sql.=" AND MD5(ss.id) IN (".$paramJson['shop_storesids'].") AND MD5(sdl.shoptstore_id) IN (".$paramJson['shop_storesids'].") ";
+                    if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
+                        && $paramJson['shop_storesids']!=null){
+                        $sql.=" AND ss.id IN ('".$paramJson['shop_storesids']."') AND sdl.shoptstore_id IN ('".$paramJson['shop_storesids']."') ";
                     }
                 }
                 
-                //add country in where condition
+                // add country in where condition
                 if(array_key_exists('country_ids', $paramJson)){
-                    if($paramJson['country_ids']!=false && $paramJson['country_ids']!='' && $paramJson['country_ids']!=null && strlen($paramJson['country_ids'])>=32){
-                        $sql.=" AND MD5(sdl.country_id) IN (".$paramJson['country_ids'].") AND MD5(country.id) IN (".$paramJson['country_ids'].") ";
+                    if($paramJson['country_ids']!=false && $paramJson['country_ids']!='' 
+                        && $paramJson['country_ids']!=null){
+                        $sql.=" AND sdl.country_id IN ('".$paramJson['country_ids']."') AND country.id IN ('".$paramJson['country_ids']."') ";
                     }
                 }
                 
                 //add city in where condition
                 if(array_key_exists('city_ids', $paramJson)){
-                    if($paramJson['city_ids']!=false && $paramJson['city_ids']!='' && $paramJson['city_ids']!=null && strlen($paramJson['city_ids'])>=32){
-                        $sql.=" AND MD5(sdl.city_id) IN (".$paramJson['city_ids'].") AND MD5(city.id) IN (".$paramJson['city_ids'].") ";
+                    if($paramJson['city_ids']!=false && $paramJson['city_ids']!='' 
+                        && $paramJson['city_ids']!=null){
+                        $sql.=" AND sdl.city_id IN ('".$paramJson['city_ids']."') AND city.id IN ('".$paramJson['city_ids']."') ";
                     }
                 }
                 
                 //add area in where condition
                 if(array_key_exists('area_ids', $paramJson)){
-                    if($paramJson['area_ids']!=false && $paramJson['area_ids']!='' && $paramJson['area_ids']!=null && strlen($paramJson['area_ids'])>=32){
-                        $sql.=" AND MD5(sdl.area_id) IN (".$paramJson['area_ids'].") AND MD5(area.id) IN (".$paramJson['area_ids'].") ";
+                    if($paramJson['area_ids']!=false && $paramJson['area_ids']!='' 
+                        && $paramJson['area_ids']!=null){
+                        $sql.=" AND sdl.area_id IN ('".$paramJson['area_ids']."') AND area.id IN ('".$paramJson['area_ids']."') ";
                     }
                 }
                 
