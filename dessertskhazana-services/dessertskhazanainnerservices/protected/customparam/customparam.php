@@ -265,33 +265,38 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check product delivery city
+        // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(strlen($paramJsonData['city_ids'])==32){
+            if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
+                && $paramJsonData['city_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check product delivery area
+        // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(strlen($paramJsonData['area_ids'])==32){
+            if($paramJsonData['area_ids']!='' && $paramJsonData['area_ids']!=false 
+                && $paramJsonData['area_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type id is blank or not
         if(array_key_exists('product_typesids', $paramJsonData)){
-            if(strlen($paramJsonData['product_typesids'])==32){
+            if($paramJsonData['product_typesids']!='' && $paramJsonData['product_typesids']!=false 
+                && $paramJsonData['product_typesids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type ka product category id is blank or not
         if(array_key_exists('product_categoryids', $paramJsonData)){
-            if(strlen($paramJsonData['product_categoryids'])==32){
+            if($paramJsonData['product_categoryids']!='' && $paramJsonData['product_categoryids']!=false 
+                && $paramJsonData['product_categoryids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check shopStore id is blank or not
         if(array_key_exists('store_ids', $paramJsonData)){
-            if(strlen($paramJsonData['store_ids'])==32){
+            if($paramJsonData['store_ids']!='' && $paramJsonData['store_ids']!=false 
+                && $paramJsonData['store_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
