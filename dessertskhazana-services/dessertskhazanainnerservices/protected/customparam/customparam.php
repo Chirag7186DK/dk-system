@@ -130,19 +130,22 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(strlen($paramJsonData['city_ids'])==32){
+            if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
+                && $paramJsonData['city_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(strlen($paramJsonData['area_ids'])==32){
+            if($paramJsonData['area_ids']!='' && $paramJsonData['area_ids']!=false 
+                && $paramJsonData['area_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check product type id is blank or not
-        if(array_key_exists('product_typesids', $paramJsonData)){
-            if(strlen($paramJsonData['product_typesids'])==32){
+        // check producttype_ids key present or not
+        if(array_key_exists('producttype_ids', $paramJsonData)){
+            if($paramJsonData['producttype_ids']!='' && $paramJsonData['producttype_ids']!=false 
+                && $paramJsonData['producttype_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
