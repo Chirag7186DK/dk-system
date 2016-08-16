@@ -3690,7 +3690,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     
                     $rootScope.ordercartCancelledAllItemDetailsArrObj =  false;
-
+                    
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
