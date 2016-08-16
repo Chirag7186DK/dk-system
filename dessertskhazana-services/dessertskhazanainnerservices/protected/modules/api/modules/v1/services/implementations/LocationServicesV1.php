@@ -20,7 +20,7 @@ class LocationServicesV1 implements ILocationServicesV1{
             // prepare param obj
             $shopStoreProductDeliveryParamObj = array();
             $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_ids;
-            $shopStoreProductDeliveryParamObj['city_ids'] = "'".$gcity_ids."'";
+            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_ids;
             $shopStoreProductDeliveryParamObj['groupby_city_ids'] = 'Y';
             $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
             if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
