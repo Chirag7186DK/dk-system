@@ -154,8 +154,8 @@ class RatingReviewDao{
                 JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
-                AND MD5(urd.shopstore_id)='$shopStoreId'
-                AND MD5(urd.product_listid)='$productListId' 
+                AND urd.shopstore_id='$shopStoreId'
+                AND urd.product_listid='$productListId' 
                 AND urd.answer_pattern='SELECT'    
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
