@@ -579,7 +579,10 @@ function getParamObjFromSessionForLoadingDKDeliveryAreaBasedProductTypeDetails()
         }
     }
     
-    if(returnParamObj['country_ids']==='1' && (returnParamObj['city_ids']).length===32 && (returnParamObj['area_ids']).length===32){
+    if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
+        && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
+        && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
+        && returnParamObj['area_ids']!==null){
         return returnParamObj;
     }else{
         return false;
