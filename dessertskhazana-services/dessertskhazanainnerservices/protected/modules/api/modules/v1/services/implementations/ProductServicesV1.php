@@ -207,7 +207,7 @@ class ProductServicesV1 implements IProductServicesV1 {
             $gProductPriceSortOn = '';
             $gProductDiscountFilterArr = array();
             $gProductDiscountSortOn = '';
-            $gcountry_id = "'".implode("','", explode(",", MD5($dkParamDataArr['country_ids'])))."'";
+            $gcountry_id = $dkParamDataArr['country_ids'];
             $gcity_id = $dkParamDataArr['city_ids'];
             $garea_id = $dkParamDataArr['area_ids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
@@ -216,8 +216,7 @@ class ProductServicesV1 implements IProductServicesV1 {
             $gProductSizeFilterArr = explode(",", $dkParamDataArr['product_size_filter']);
 
             // price filter
-            if($dkParamDataArr['product_price_filter']!= '' 
-                && $dkParamDataArr['product_price_filter']!= false){
+            if($dkParamDataArr['product_price_filter']!= '' && $dkParamDataArr['product_price_filter']!= false){
                 $tempPriceFilterArr = explode(",", $dkParamDataArr['product_price_filter']);
                 if (($removedValue = array_search('lowtohigh', $tempPriceFilterArr)) !== false) {
                     $gProductPriceSortOn = "lowtohigh";
@@ -245,8 +244,8 @@ class ProductServicesV1 implements IProductServicesV1 {
             // prepare param obj to get shopstore delivery location details
             $shopStoreProductDeliveryParamObj = array();
             $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_id;
-            $shopStoreProductDeliveryParamObj['city_ids'] = "'" . $gcity_id . "'";
-            $shopStoreProductDeliveryParamObj['area_ids'] = "'" . $garea_id . "'";
+            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_id;
+            $shopStoreProductDeliveryParamObj['area_ids'] = $garea_id;
             $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
             if(count($retShopStoreDeliveryLocationDetailsArr) > 0 && $retShopStoreDeliveryLocationDetailsArr != false) {
                 // sorted on shops store ids bhai
@@ -255,18 +254,17 @@ class ProductServicesV1 implements IProductServicesV1 {
                 $sortedOnCountryCityAreaAffiliationDetailsArr = utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
                 if($sortedOnCountryCityAreaAffiliationDetailsArr != false && count($sortedOnCountryCityAreaAffiliationDetailsArr) > 0) {
                     // extract all shopstore countrycityareaids keys in arr and converted into string format
-                    $allCountryCityAreaAffiliatonIdsStr = "'" . implode("','", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr)) . "'";
+                    $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr));
                     // all shopstores ids
-                    $allShopStoresIdsStr = "'" . implode("','", array_keys($sortedOnAllShopStoreDeliveyLocationFacilityDetailsArr)) . "'";
-
+                    $allShopStoresIdsStr = implode(",", array_keys($sortedOnAllShopStoreDeliveyLocationFacilityDetailsArr));
                     // prepare param obj to get product type details
                     $paramObj1 = array();
                     $paramObj1['shop_storesids'] = $allShopStoresIdsStr;
                     $paramObj1['country_city_area_affiliationids'] = $allCountryCityAreaAffiliatonIdsStr;
-                    $paramObj1['product_typeids'] = "'" . $gproductTypeId . "'";
+                    $paramObj1['product_typeids'] = $gproductTypeId;
                     // fetch product type details
                     $retProductTypeDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
-                    if (count($retProductTypeDetailsArr) > 0 && $retProductTypeDetailsArr != false) {
+                    if(count($retProductTypeDetailsArr)>0 && $retProductTypeDetailsArr!=false){
                             // sort on product category ids
                             $sortedOnProductCategoryArr = utils::arraySort($retProductTypeDetailsArr, array("productTypeProductCategoryId"));
                             if (count($sortedOnProductCategoryArr) > 0 && $sortedOnProductCategoryArr != false) {
@@ -339,12 +337,13 @@ class ProductServicesV1 implements IProductServicesV1 {
                     $paramObj2 = array();
                     $paramObj2['shop_storesids'] = $allShopStoresIdsStr;
                     $paramObj2['country_city_area_affiliationids'] = $allCountryCityAreaAffiliatonIdsStr;
-                    $paramObj2['product_typeids'] = "'" . $gproductTypeId . "'";
-                    if ($gShopstoreId != '' && strlen($gShopstoreId) == 32) {
-                        $paramObj2['shop_storesids'] = "'" . $gShopstoreId . "'";
+                    $paramObj2['product_typeids'] = $gproductTypeId;
+                    if($gShopstoreId!='' && $gShopstoreId!=false && $gShopstoreId!=null){
+                        $paramObj2['shop_storesids'] = $gShopstoreId;
                     }
-                    if ($gproductTypeProductCategoryId != '' && strlen($gproductTypeProductCategoryId) == 32) {
-                        $paramObj2['product_categoryids'] = "'" . $gproductTypeProductCategoryId . "'";
+                    if($gproductTypeProductCategoryId!='' && $gproductTypeProductCategoryId!=false 
+                        && $gproductTypeProductCategoryId!=null){
+                        $paramObj2['product_categoryids'] = $gproductTypeProductCategoryId;
                     }
                     if (count($gProductPriceFilterArr) > 0 && $gProductPriceFilterArr != false) {
                         $paramObj2['product_price_filter'] = $gProductPriceFilterArr;
