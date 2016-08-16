@@ -231,21 +231,24 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check product delivery city
+        // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(strlen($paramJsonData['city_ids'])==32){
+            if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
+                && $paramJsonData['city_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check product delivery area
+        // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(strlen($paramJsonData['area_ids'])==32){
+            if($paramJsonData['area_ids']!='' && $paramJsonData['area_ids']!=false 
+                && $paramJsonData['area_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(strlen($paramJsonData['shopstoreids'])==32){
+            if($paramJsonData['shopstoreids']!='' && $paramJsonData['shopstoreids']!=false 
+                && $paramJsonData['shopstoreids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
