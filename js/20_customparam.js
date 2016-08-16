@@ -372,11 +372,11 @@ function checkAllParamToViewProductDetails(paramObj){
             && paramObj.hasOwnProperty('productTypeTitle')===true 
             && paramObj.hasOwnProperty('productTypeProductCategoryTitle')===true
             && paramObj.hasOwnProperty('productListTitle')===true){
-            if((paramObj['shopStoreId']).length===32 
-                && (paramObj['productTypeId']).length===32 
-                && (paramObj['productTypeProductCategoryId']).length===32
-                && (paramObj['productListId']).length===32
-                && (paramObj['productFeatureId']).length===32
+            if(parseInt(paramObj['shopStoreId'])>0
+                && parseInt(paramObj['productTypeId'])>0
+                && parseInt(paramObj['productTypeProductCategoryId'])>0
+                && parseInt(paramObj['productListId'])>0
+                && parseInt(paramObj['productFeatureId'])>0
                 && paramObj['shopStoreTitle']!==''
                 && paramObj['productTypeTitle']!==''
                 && paramObj['productTypeProductCategoryTitle']!==''
