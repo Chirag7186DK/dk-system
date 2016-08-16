@@ -91,9 +91,9 @@ class ProductServicesV1 implements IProductServicesV1 {
         // checking requested param obj
         if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
             // initial variable declare
-            $gcountry_ids = "'".implode("','", explode(",", MD5($dkParamDataArr['country_ids'])))."'";
-            $gcity_ids = "'".$dkParamDataArr['city_ids']."'";
-            $garea_ids = "'".$dkParamDataArr['area_ids']."'";
+            $gcountry_ids = $dkParamDataArr['country_ids'];
+            $gcity_ids = $dkParamDataArr['city_ids'];
+            $garea_ids = $dkParamDataArr['area_ids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
             // prepare param obj to get shopstore delivery location details
             $shopStoreProductDeliveryParamObj = array();
@@ -108,7 +108,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                 $sortedOnCountryCityAreaAffiliationDetailsArr = utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
                 if($sortedOnCountryCityAreaAffiliationDetailsArr!=false && count($sortedOnCountryCityAreaAffiliationDetailsArr)>0){
                     // fetch all countrycityareaids keys in arr and converted into string format
-                    $allCountryCityAreaAffiliatonIdsStr = "'" . implode("','", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr)) . "'";
+                    $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr));
                     // fetch all area based ka product type ka shopstore details
                     $retAreaBasedConductProductTypeShopStoreDetailsArr = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr, "'" . $gproductTypeId . "'");
                     if(count($retAreaBasedConductProductTypeShopStoreDetailsArr) > 0 && $retAreaBasedConductProductTypeShopStoreDetailsArr != false) {
@@ -116,12 +116,12 @@ class ProductServicesV1 implements IProductServicesV1 {
                         $sortedOnShopStoresDetailsArr = utils::arraySort($retAreaBasedConductProductTypeShopStoreDetailsArr, array("shopStoreId"));
                         if(count($sortedOnShopStoresDetailsArr)>0 && $sortedOnShopStoresDetailsArr!=false){
                             // all shopstores ids
-                            $allShopStoresIdsStr = "'".implode("','", array_keys($sortedOnShopStoresDetailsArr))."'";
+                            $allShopStoresIdsStr = implode(",", array_keys($sortedOnShopStoresDetailsArr));
                             // prepare param obj  to get product list
                             $applyWhereConditionArr = array();
                             $applyWhereConditionArr['shop_storesids'] = $allShopStoresIdsStr;
                             $applyWhereConditionArr['country_city_area_affiliationids'] = $allCountryCityAreaAffiliatonIdsStr;
-                            $applyWhereConditionArr['product_typeids'] = "'".$gproductTypeId."'";
+                            $applyWhereConditionArr['product_typeids'] = $gproductTypeId;
                             // fetch product list
                             $retAllShopStoresProductTypeProductCategoryProductListArr = ProductDao :: getProductTypeProductCategoryProductList($applyWhereConditionArr);
                             if(count($retAllShopStoresProductTypeProductCategoryProductListArr)>0 && $retAllShopStoresProductTypeProductCategoryProductListArr!=false){
