@@ -25,7 +25,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             $isShopStoreMenuSummaryInfoFound = 'N';
             // prepare param obj to get shopstore menu summary info
             $paramObj1 = array();
-            $paramObj1['shop_storesids'] = "'".$gshopstore_id."'";
+            $paramObj1['shop_storesids'] = $gshopstore_id;
             // fetch all product type details
             $retAllProductTypeDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($retAllProductTypeDetailsArr)>0 && $retAllProductTypeDetailsArr!=false){
@@ -58,14 +58,14 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             }
 
             // prepare param obj shopstore info
-            $retShopStoreInfoDetailsArr = ShopStoreDao::getShopStoresList("'".$gshopstore_id."'", '');
+            $retShopStoreInfoDetailsArr = ShopStoreDao::getShopStoresList($gshopstore_id, '');
             if(count($retShopStoreInfoDetailsArr)>0 && $retShopStoreInfoDetailsArr!=false){
                 $rsltJsonArr['shopstoreInfo'] = $retShopStoreInfoDetailsArr[0];
             }
 
             // prepare param obj to get shopstore delivery location details
             $shopStoreProductDeliveryParamObj = array();
-            $shopStoreProductDeliveryParamObj['shop_storesids'] = "'".$gshopstore_id."'";
+            $shopStoreProductDeliveryParamObj['shop_storesids'] = $gshopstore_id;
             $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
             if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
                 $rsltJsonArr['totalCountDeliveryArea'] = count($retShopStoreDeliveryLocationDetailsArr);
