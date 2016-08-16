@@ -248,14 +248,15 @@ class RatingReviewDao{
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND qrd.question_answerpattern='SELECT'
-                AND MD5 (urd.shopstore_id) = '$shopStoreId' ";
+                AND urd.shopstore_id='$shopStoreId' ";
                 if($productListId!=''){
-                    $sqlFetchQuery.= " AND MD5 (urd.product_listid) = '$productListId' ";
+                    $sqlFetchQuery.= " AND urd.product_listid='$productListId' ";
                 }    
             $sqlFetchQuery.= " GROUP BY urd.group_no ORDER BY urd.updated_datedtime DESC ";
             $command = $connection->createCommand($sqlFetchQuery);
             $retUserAvgRatingAboutProductDetailsArr = $command->queryAll();
-            if($retUserAvgRatingAboutProductDetailsArr!=false && count($retUserAvgRatingAboutProductDetailsArr)>0 && $retUserAvgRatingAboutProductDetailsArr!=false){
+            if(count($retUserAvgRatingAboutProductDetailsArr)>0 
+                && $retUserAvgRatingAboutProductDetailsArr!=false){
                 $retResult =  $retUserAvgRatingAboutProductDetailsArr;
             }
         }catch(Exception $ex){}   
