@@ -112,14 +112,14 @@ class LocationDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    COALESCE(MD5(cca.country_id), '') countryId,
-                    COALESCE(MD5(cca.city_id), '') cityId, 
-                    COALESCE(MD5(cca.area_id), '') areaId,
-                    COALESCE(a.name, '') areaTitle,
-                    COALESCE(MD5(cpts.cca_id), '') countryCityAreaAffiliationId,
-                    COALESCE(MD5(cpts.product_typeid), '') productTypeId,
+                    COALESCE(cca.country_id, '') countryId,
+                    COALESCE(cca.city_id, '') cityId, 
+                    COALESCE(cca.area_id, '') areaId,
+                    COALESCE(a.name,'') areaTitle,
+                    COALESCE(cpts.cca_id, '') countryCityAreaAffiliationId,
+                    COALESCE(cpts.product_typeid, '') productTypeId,
                     COALESCE(pt.name, '') productTypeTitle,
-                    COALESCE(MD5(cpts.shopstore_id), '') shopStoreId,
+                    COALESCE(cpts.shopstore_id, '') shopStoreId,
                     COALESCE(s.shopstore_name, '') shopStoreTitle
                     FROM DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE cpts
                     JOIN DK_COUNTRYCITYAREAAFFILIATION cca ON cca.id=cpts.cca_id 
@@ -144,7 +144,7 @@ class LocationDao{
                     if($shopStoreId!=''){
                         $sql.=" AND cpts.shopstore_id IN ($shopStoreId) AND s.id IN ($shopStoreId) ";
                     }
-            $sql.= "    ORDER BY pt.sort_order ASC ";        
+            $sql.= "  ORDER BY pt.sort_order ASC ";        
             $command = $connection->createCommand($sql);
             $retAreaBasedConductProductTypeShopStoreDetails = $command->queryAll();
             if(count($retAreaBasedConductProductTypeShopStoreDetails)>0 
