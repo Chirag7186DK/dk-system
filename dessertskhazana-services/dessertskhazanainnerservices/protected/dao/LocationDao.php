@@ -132,22 +132,23 @@ class LocationDao{
                     AND a.status='A'
                     AND pt.status='A'
                     AND s.status='A'
-                    AND MD5(cpts.cca_id) IN ($countryCityAreaAffiliationId)
-                    AND MD5(s.country_city_area_affiliationId) IN ($countryCityAreaAffiliationId)
-                    AND MD5(cca.id) IN ($countryCityAreaAffiliationId) ";
+                    AND cpts.cca_id IN ($countryCityAreaAffiliationId)
+                    AND s.country_city_area_affiliationId IN ($countryCityAreaAffiliationId)
+                    AND cca.id IN ($countryCityAreaAffiliationId) ";
                     if($productTypeId!=''){
-                        $sql.=" AND MD5(pt.id) IN ($productTypeId) AND MD5(cpts.product_typeid) IN ($productTypeId) ";
+                        $sql.=" AND pt.id IN ($productTypeId) AND cpts.product_typeid IN ($productTypeId) ";
                     }
                     if($notProductTypeId!=''){
-                        $sql.=" AND MD5(pt.id) NOT IN ($notProductTypeId) AND MD5(cpts.product_typeid) NOT IN ($notProductTypeId) ";
+                        $sql.=" AND pt.id NOT IN ($notProductTypeId) AND cpts.product_typeid NOT IN ($notProductTypeId) ";
                     }
                     if($shopStoreId!=''){
-                        $sql.=" AND MD5(cpts.shopstore_id) IN ($shopStoreId) AND MD5(s.id) IN ($shopStoreId) ";
+                        $sql.=" AND cpts.shopstore_id IN ($shopStoreId) AND s.id IN ($shopStoreId) ";
                     }
             $sql.= "    ORDER BY pt.sort_order ASC ";        
             $command = $connection->createCommand($sql);
             $retAreaBasedConductProductTypeShopStoreDetails = $command->queryAll();
-            if(count($retAreaBasedConductProductTypeShopStoreDetails)>0 && $retAreaBasedConductProductTypeShopStoreDetails!=false && $retAreaBasedConductProductTypeShopStoreDetails!=''){
+            if(count($retAreaBasedConductProductTypeShopStoreDetails)>0 
+                && $retAreaBasedConductProductTypeShopStoreDetails!=false){
                 $retResult =  $retAreaBasedConductProductTypeShopStoreDetails;    
             }
         }catch(Exception $ex){}
