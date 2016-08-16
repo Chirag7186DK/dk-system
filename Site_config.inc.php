@@ -43,10 +43,6 @@ $SMSPASSWORD = 'q27d!g!taledu';
 $SMSSENDER = 'SCHOOL';
 $SMSDOMAIN = 'http://www.businesssms.co.in';
 
-// CJ defined this two constant for aws ses service activation and send mail to client members
-$SESACCESSKEY = "AKIAJ4IIK6J3BNVKBOKQ";
-$SESSECRETKEY = "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";
-$EMAILSENDER = 'sims@digitaledu.net';
 
 // custom powered by defined title
 $poweredby = 'Chirag D Jain';
