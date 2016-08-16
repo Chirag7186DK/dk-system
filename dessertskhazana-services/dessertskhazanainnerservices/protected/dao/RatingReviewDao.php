@@ -125,12 +125,13 @@ class RatingReviewDao{
                 JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
-                AND MD5(urd.shopstore_id)='$shopStoreId'
+                AND urd.shopstore_id='$shopStoreId'
                 AND urd.answer_pattern='SELECT'       
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
             $retAvgRatingProductDetailsArr = $command->queryAll();
-            if($retAvgRatingProductDetailsArr!=false && count($retAvgRatingProductDetailsArr)>0 && $retAvgRatingProductDetailsArr!=false){
+            if(count($retAvgRatingProductDetailsArr)>0 
+                && $retAvgRatingProductDetailsArr!=false){
                 $retResult =  $retAvgRatingProductDetailsArr;
             }
         }catch(Exception $ex){}   
