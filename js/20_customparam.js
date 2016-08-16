@@ -749,11 +749,17 @@ function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetail
             }
         }
     }
-    
-    if(returnParamObj['country_ids']==='1' && (returnParamObj['city_ids']).length===32
-        && (returnParamObj['area_ids']).length===32 && (returnParamObj['store_ids']).length===32
-        && (returnParamObj['product_typesids']).length===32 && (returnParamObj['product_categoryids']).length===32
-        && (returnParamObj['product_ids']).length===32 && (returnParamObj['product_featureids']).length===32){
+    if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
+        && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
+        && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
+        && returnParamObj['area_ids']!==null && returnParamObj['product_typesids']!==false 
+        && returnParamObj['product_typesids']!=='' && returnParamObj['product_typesids']!==null
+        && returnParamObj['store_ids']!==null && returnParamObj['store_ids']!==false 
+        && returnParamObj['store_ids']!=='' && returnParamObj['product_categoryids']!==null
+        && returnParamObj['product_categoryids']!==null && returnParamObj['product_categoryids']!==false
+        && returnParamObj['product_ids']!=='' && returnParamObj['product_ids']!==null
+        && returnParamObj['product_ids']!==null && returnParamObj['product_featureids']!==''
+        && returnParamObj['product_featureids']!==null && returnParamObj['product_featureids']!==false){
         return returnParamObj;
     }else{
         return false;
