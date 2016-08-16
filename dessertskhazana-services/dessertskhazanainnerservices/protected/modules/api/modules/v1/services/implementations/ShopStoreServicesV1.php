@@ -159,8 +159,8 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
 
             // prepare param obj to get product type  of given shopstore
             $paramObj1 = array();
-            $paramObj1['shop_storesids'] = "'".$gShopstoreId."'";
-            $paramObj1['product_typeids'] = "'".$gproductTypeId."'";
+            $paramObj1['shop_storesids'] = $gShopstoreId;
+            $paramObj1['product_typeids'] = $gproductTypeId;
             // fetch product type details
             $retProductTypeDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($retProductTypeDetailsArr)>0 && $retProductTypeDetailsArr!=false){
@@ -171,7 +171,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     // iterate each product category 
                     foreach($sortedOnProductCategoryArr as $eachProductCategoryId=>$productCategoryDetailsArr){
                         $isRequestedProductCategoryMatched = 'N';
-                        if(strlen($gproductTypeProductCategoryId)!=32){
+                        if($gproductTypeProductCategoryId!=false && $gproductTypeProductCategoryId!=''){
                             $gproductTypeProductCategoryId = $eachProductCategoryId;
                         }
                         if($eachProductCategoryId==$gproductTypeProductCategoryId){
@@ -230,9 +230,9 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
 
             // prepare param obj to get product list
             $paramObj2 = array();
-            $paramObj2['shop_storesids'] = "'".$gShopstoreId."'";
-            $paramObj2['product_typeids'] = "'".$gproductTypeId."'";
-            $paramObj2['product_categoryids'] = "'".$gproductTypeProductCategoryId."'";
+            $paramObj2['shop_storesids'] = $gShopstoreId;
+            $paramObj2['product_typeids'] = $gproductTypeId;
+            $paramObj2['product_categoryids'] = $gproductTypeProductCategoryId;
             if(count($gProductPriceFilterArr)>0 && $gProductPriceFilterArr!=false){
                 $paramObj2['product_price_filter'] = $gProductPriceFilterArr;
             }
