@@ -93,19 +93,22 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(strlen($paramJsonData['city_ids'])==32){
+            if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
+                && $paramJsonData['city_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check delivery area_ids key present or not
+        // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(strlen($paramJsonData['area_ids'])==32){
+            if($paramJsonData['area_ids']!='' && $paramJsonData['area_ids']!=false 
+                && $paramJsonData['area_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
         // check producttype_ids key present or not
         if(array_key_exists('producttype_ids', $paramJsonData)){
-            if(strlen($paramJsonData['producttype_ids'])==32){
+            if($paramJsonData['producttype_ids']!='' && $paramJsonData['producttype_ids']!=false 
+                && $paramJsonData['producttype_ids']!=null){
                 $givenParamDataCorrectCount++;
             }
         }
