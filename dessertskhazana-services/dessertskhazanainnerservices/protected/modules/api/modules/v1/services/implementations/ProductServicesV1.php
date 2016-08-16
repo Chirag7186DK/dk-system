@@ -15,9 +15,9 @@ class ProductServicesV1 implements IProductServicesV1 {
             $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails'] = false;
             $rsltJsonArr['allProductTypeList'] = false;
             // initial variable declare
-            $gcountry_ids = "'".implode("','", explode(",", MD5($dkParamDataArr['country_ids'])))."'";
-            $gcity_ids = "'".$dkParamDataArr['city_ids']."'";
-            $garea_ids = "'".$dkParamDataArr['area_ids']."'";
+            $gcountry_ids = $dkParamDataArr['country_ids'];
+            $gcity_ids = $dkParamDataArr['city_ids'];
+            $garea_ids = $dkParamDataArr['area_ids'];
             $gproducttype_ids = $dkParamDataArr['producttype_ids'];
             // prepare param obj
             $shopStoreProductDeliveryParamObj = array();
@@ -30,7 +30,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                 $sortedOnCountryCityAreaAffiliationDetailsArr = utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
                 if($sortedOnCountryCityAreaAffiliationDetailsArr!=false && count($sortedOnCountryCityAreaAffiliationDetailsArr)>0){
                     // fetch all countrycityareaids keys in arr and converted into string format
-                    $allCountryCityAreaAffiliatonIdsStr = "'".implode("','", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr))."'";
+                    $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr));
                     // fetch all area based ka product type ka shopstore details
                     $retAreaBasedConductProductTypeShopStoreDetailsArr = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr);
                     if(count($retAreaBasedConductProductTypeShopStoreDetailsArr) > 0 && $retAreaBasedConductProductTypeShopStoreDetailsArr != false) {
