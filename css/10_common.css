@@ -1,0 +1,31 @@
+
+html, body{
+    font-family:'Montserrat', Roboto, sans-serif;
+    font-size:100%!important;
+    background-color:#fff!important;
+}
+
+input, textarea, select, .form-control{
+    border-radius:0px!important;
+}
+
+.bootstrap-select .btn:focus, 
+.bootstrap-select a:focus,
+.btn:focus{
+    outline:none!important;
+    box-shadow:none!important;
+}
+
+.form-control:focus, input:focus{
+    border:1px solid #ccc!important;
+    outline:none!important;
+    box-shadow:none!important;
+}
+
+.accountSignUpSignInIconClass{
+    color: #FAB005!important;
+    border-radius:50%!important;
+    border:1px solid #FAB005!important;
+    padding:5px!important;
+    background-color:#fff!important;
+}

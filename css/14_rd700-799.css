@@ -1,0 +1,2630 @@
+
+@media screen and (min-width:700px) and (max-width:799px){
+
+    /* scroll btn css code */
+
+    .scrollToTopBtn{
+        bottom: 60px!important;
+        font-size: 25px!important;
+        font-weight: bold!important;
+        height: 40px!important;
+        position: fixed!important;
+        right: 30px!important;
+        text-align: center!important;
+        text-decoration: none;
+        width: 40px!important;
+        z-index: 9999!important;
+        color: #fff!important;
+        background-color:#fb366e!important;
+        line-height:35px!important;
+        border-radius:50%!important;
+    }
+
+    .scrollToTopBtn:hover, .scrollToTopBtn:focus{
+        background-color:#fb366e!important;
+        color:#fff!important;
+        border:1px solid #FF6600!important;
+        border-radius:50%!important;
+    }
+
+
+    /* first header css */
+
+    .fHeaderRowBorderDivClass{
+        border-bottom:2px solid #e7486b!important;
+    }
+
+    .stickFHeaderContainerDivClass{
+        position:fixed!important;
+        z-index:99!important;
+        background-color:#fff!important;
+    }
+
+    .notStickFHeaderContainerDivClass{
+        position:inherit!important;
+        z-index:0!important;
+        background-color:#fff!important;
+    }
+
+    .webLogoHClass{
+        text-align:center;
+        padding-top:5px!important;
+        margin:0px!important;
+    }
+    
+    .dkLogoImgClass{
+        margin-left:-17px!important;
+    }
+
+    .topMenuBarULClass{
+        text-align:center!important;
+    }
+
+    .topMenuBarULClass li a {
+        color:#999!important;
+        font-size:12px!important;
+        text-decoration:none!important;
+    }
+
+    .topMenuBarULClass li i {
+        color:#FAB005!important;
+    }
+
+    .showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass{
+        text-align:center;
+        color:#999!important;
+        font-weight:bold!important;
+    }
+
+    .showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass{
+        color:rgba(154, 205, 50, 0.51)!important;
+    }
+
+
+    /* dk delivery city area desserts container css code */
+
+    .dkDeliveryCityAreaDessertsContainerDivClass{
+        background-image:url(../images/dk/homebanner/landing_pagebg-1500|500.png);
+        background-size:cover;
+        height:320px!important;
+        border-bottom: 1px solid #e6e0e0;
+    }
+
+    .dkDeliveryCityAreaDessertsTagLinesContainerDivClass{
+        margin-top:8px!important;
+    }
+
+    .dkDeliveryCityAreaDessertsTagLinesPClass{
+        text-align: center;
+        color: #f32956!important;
+        font-size:18px!important;
+        font-weight:bold!important;
+    }
+
+    .dkDeliveryCityListContainerDivClass{
+        margin-top:5px!important;
+    }
+
+    .dkDeliveryCityListWrapperDivClass{
+        padding-left:160px!important;
+    }
+
+    .dkDeliveryCityLblSClass{
+        color:rgb(1, 122, 241)!important;
+        font-size:17px!important;
+        font-weight:500!important;
+        font-family:serif!important;
+    }
+
+    .dkDeliveryCityListWrapperDivClass .dropdown-menu>.active>a{
+        background:#fb366e!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+    }
+    
+    .dkDeliveryCityListWrapperDivClass .btn-group{
+        width:105%!important;
+    }
+
+    .dkDeliveryCityListWrapperDivClass .btn, 
+    .dkDeliveryCityListWrapperDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        font-size:18px!important;
+        box-shadow:none!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+        border-color:#CDCEE8!important;
+        width:60%!important;
+    }
+    
+    .dkDeliveryCityListWrapperDivClass .dropdown-menu{
+        min-width:60%!important;
+        border-radius:0px!important;
+    }
+
+    .dkDeliveryAreaListContainerDivClass{
+        margin-top:28px!important;
+    }
+
+    .dkDeliveryAreaListWrapperDivClass{
+        padding-left:160px!important;
+    }
+
+    .dkDeliveryAreaLblSClass{
+        color:rgb(1, 122, 241)!important;
+        font-size:17px!important;
+        font-weight:500!important;
+        font-family:serif!important;
+    }
+
+    .dkDeliveryAreaListWrapperDivClass .dropdown-menu>.active>a{
+        background:#fb366e!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+    
+    .dkDeliveryAreaListWrapperDivClass .btn-group{
+        width:105%!important;
+    }
+    
+    .dkDeliveryAreaListWrapperDivClass .btn, 
+    .dkDeliveryAreaListWrapperDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        font-size:18px!important;
+        box-shadow:none!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+        border-color:#CDCEE8!important;
+        width:60%!important;
+    }
+    
+    .dkDeliveryAreaListWrapperDivClass .dropdown-menu{
+        min-width:60%!important;
+        border-radius:0px!important;
+    }
+
+    .dkDeliveryAreaDessertsProductListContainerDivClass{
+        margin-top:28px!important;
+    }
+
+    .dkDeliveryAreaDessertsProductListWrapperDivClass{
+        padding-left:160px!important;
+    }
+
+    .dkDeliveryAreaDessertsProductLblSClass{
+        color:rgb(1, 122, 241)!important;
+        font-size:17px!important;
+        font-weight:500!important;
+        font-family:serif!important;
+    }
+
+    .dkDeliveryAreaDessertsProductListWrapperDivClass .dropdown-menu>.active>a{
+        background:#fb366e!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+    
+    .dkDeliveryAreaDessertsProductListWrapperDivClass .btn-group{
+        width:105%!important;
+    }
+
+    .dkDeliveryAreaDessertsProductListWrapperDivClass .btn, 
+    .dkDeliveryAreaDessertsProductListWrapperDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        font-size:18px!important;
+        box-shadow:none!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+        border-color:#CDCEE8!important;
+        width:60%!important;
+    }
+
+    .dkDeliveryAreaDessertsProductListWrapperDivClass .dropdown-menu{
+        min-width:60%!important;
+        border-radius:0px!important;
+    }
+
+    
+    /*  what is desserts khazana css */
+
+
+    .whatIsDessertsKhazanaMainContainerDivClass{
+        margin-top:30px;
+    }
+
+    .dkPartyOrderContainerDivClass{
+        margin-bottom:20px!important;
+        width:49.4%!important;
+        background-size:cover;
+    }
+    
+    .dkPartyOrderWrapperDivClass{
+        border:1px solid #d6caca!important;
+    }
+    
+    .partyOrderImgClass{
+        width:100%!important;
+    }
+    
+    .partyOrderPClass{
+        text-align:center!important;
+        font-size:15px!important;
+        margin:0px!important;
+        background:#fff!important;
+        padding:10px!important;
+        color:#fb366e!important;
+        font-weight:bold!important;
+        cursor:pointer!important;
+    }
+    
+    .dkCoperateSpecialOffersContainerDivClass{
+        margin-bottom:20px!important;
+        width:49.4%!important;
+        background-size:cover;
+    }
+    
+    .dkCoperateSpecialOffersWrapperDivClass{
+        border:1px solid #d6caca!important;
+    }
+
+    .coperateOrderImgClass{
+        width:100%!important;
+    }
+    
+    .corporateOrderPClass{
+        text-align:center!important;
+        font-size:15px!important;
+        margin:0px!important;
+        background:#fff!important;
+        padding:10px!important;
+        color:#fb366e!important;
+        font-weight:bold!important;
+        cursor:pointer!important;
+    }
+    
+    .dkCustomizeDessertsOrderContainerDivClass{
+        margin-bottom:20px!important;
+        background-size:cover;
+        width:49.4%!important;
+    }
+    
+    .dkCustomizeDessertsOrderWrapperDivClass{
+        border:1px solid #d6caca!important;
+    }
+
+    .customizeOrderImgClass{
+        width:100%!important;
+    }
+    
+    .customizeOrderPClass{
+        text-align:center!important;
+        font-size:15px!important;
+        margin:0px!important;
+        background:#fff!important;
+        padding:10px!important;
+        color:#fb366e!important;
+        font-weight:bold!important;
+        cursor:pointer!important;
+    }
+
+    /*  dashboard level css code  */
+
+    .dl_DeliveryAreabasedDkServedAllDessertsContainerDivClass{
+        margin-top:15px!important;
+    }
+
+    .smileIconClass{
+        font-size:22px!important;
+    }
+
+    .dl_DkServedDessertsProductNoteLIClass{
+        text-align:center;
+        list-style:none!important;
+        font-weight:normal!important;
+        font-size:20px!important;
+        color:#f17023!important;
+        font-family:serif;
+    }
+
+    .dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass{
+        padding-right:0px!important;
+        height:147px!important;
+        white-space:nowrap!important;
+        margin-top:15px!important;
+        padding-left:0px!important;
+    }
+    
+    .dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass .owl-item{
+        width:auto!important;
+    }
+
+    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass{
+        color:rgb(249, 99, 99)!important;
+        background-color:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        cursor:pointer;
+        border:2px solid #fff!important;
+        float:left!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+    }
+
+    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductIconPClass{
+        text-align: center;
+        margin: 0px!important;
+    }
+
+    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductIconClass{
+        font-size:50px!important;
+    }
+
+    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductTitleHClass{
+        text-align:center;
+        margin:3px!important;
+        font-size:18px!important;
+        font-family:serif;
+        text-transform:uppercase;
+    }
+
+    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductInfoPClass{
+        padding-top:2px!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        text-align: center;
+        margin:0px!important;
+        font-size:16px!important;
+        font-family:serif!important;
+    }
+
+    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .viewDessertsProductPClass{
+        text-align:center;
+        margin:0px!important;
+        margin-top:12px!important;
+        font-size:14px!important;
+        font-family: serif;
+        color:#F560F5!important;
+        cursor:pointer!important;
+    }
+
+    .dl_AllProductTypeProductListContainerDivClass{
+        margin-top:30px;
+        padding-left:2px!important;
+        padding-right:2px!important;
+    }
+
+    .dl_EachProductTypeProductListContainerDivClass{
+        margin-bottom:20px!important;
+    }
+
+    .dl_allProductBoxWidgetContainerDivClass{
+        border:1px solid #CDCEE8!important;
+        box-shadow:0 2px 5px -1px #bdbdbd!important;
+    }
+
+    .eachProductTypeTitleContainerDivClass{
+        background-color:#fb366e!important;
+        padding-top:4px!important;
+        box-shadow:0 2px 5px -1px #bdbdbd!important;
+    }
+
+    .productTypeTitleBtnClass, 
+    .productTypeTitleBtnClass:hover{
+        background:none!important;
+        color:#fff!important;
+        font-weight:bold!important;
+        cursor:none!important;
+        font-size:20px;
+        font-family:serif!important;
+    }
+
+    .viewAllProductAboutProductTypeBtnClass, 
+    .viewAllProductAboutProductTypeBtnClass:hover{
+        font-weight:bold!important;
+        border-radius:0px!important;
+        margin-right:1%!important;
+        background:#fff!important;
+        color:rgb(70, 75, 80)!important;
+        margin-top:5px!important;
+        font-family:serif!important;
+    }
+
+    .dl_productBoxWidgetDivClass{
+        margin-top:10px!important;
+        margin-bottom:10px!important;
+        padding-left:1px!important;
+        width:50%!important;
+    }
+
+    .dl_productBoxWidgetDividerLineDivClass{
+        margin-bottom:10px;
+        border:1px solid #fb366e!important;
+    }
+
+    .dl_productStoreNameContainerPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .dl_productNamePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .dl_productCutPriceTextSClass{
+        text-decoration:line-through!important;
+        color:#999999!important;;
+        font-size:13px!important;
+        margin-right:6px;
+    }
+
+    .dl_productPayBlgPriceTextSClass{
+        font-size:20px!important;
+        margin-right:6px;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .dl_productDiscountPercentTextSClass{
+        color:#60bf79!important;
+        font-size:14px!important;
+    }
+
+    .dl_productWeightPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+
+    .dl_productDeliveryLocationPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+
+    .dl_specificProductAddWishListBtnClass{
+        border-radius:0px!important;
+        background-color:#ED143D!important;
+        color:#fff!important;
+        font-weight:bold!important;
+        margin-right:4%!important;
+    }
+
+    .dl_specificProductAddBtnClass{
+        border-radius:0px!important;
+        background-color:rgba(154, 205, 50, 0.88)!important;
+        color:#fff!important;
+        font-weight:bold!important;
+        margin-right:4%!important;
+    }
+
+    .dl_specificProductViewDetailsBtnClass{
+        border-radius:0px!important;
+        background:#3eb1e7!important;
+        color:#fff!important;
+        font-weight:bold!important;
+        margin-right:4%!important;
+    }
+
+    .dl_specificViewStoreDetailsBtnClass{
+        border-radius:0px!important;
+        background-color:#fdee00!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold!important;
+    }
+
+
+
+    /*  view product css code  */
+
+    .dkVCompleteOffersContainerDivClass{
+        background-color:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        margin-right:1%;
+        width:51.4%!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+
+    .dkVSpecialOffersContainerDivClass{
+        background-color:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        width:47.5%!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+
+    .enableChangeDkDeliveryCityAreaDessertsProductBtnClass{
+        border-radius:0px!important;
+        background:#fb366e!important;
+        color:#fff!important;
+        margin-left:1%!important;
+        font-weight:bold!important;
+        padding:3px!important;
+        text-transform:uppercase;
+        border:#fb366e!important;
+    }
+
+    .vpd_containerDivClass{
+        background-color:rgba(245, 245, 245, 0.17)!important;
+    }
+
+    .vpd_userProductBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .vpd_userProductBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:17px!important;
+        padding-top:6px!important;
+    }
+
+    .vpd_userProductBreadcrumbULClass li a, 
+    .vpd_userProductBreadcrumbULClass li a:hover{
+        color:#fb366e!important;
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+    }
+
+    .vpd_userProductBreadcrumbProductTypeCategoryTypeProductListLIClass{
+        color:rgba(120, 120, 120, 0.6)!important;
+    }
+
+    .vpd_shopStoreServedAllDessertsProductContainerDivClass{
+        margin-top:20px!important;
+        margin-bottom:10px!important;
+        padding-left:0px!important;
+    }
+
+    .vpd_storeServedDessertsProductNoteLIClass{
+        text-align:center;
+        list-style:none!important;
+        font-weight:normal!important;
+        font-size:20px!important;
+        color:#f17023!important;
+        font-family:serif;
+    }
+
+    .vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        height:147px!important;
+        white-space:nowrap!important;
+        margin-top:15px!important;
+    }
+
+    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass{
+        color:rgb(249, 99, 99)!important;
+        background-color:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        cursor:pointer;
+        border:2px solid #fff!important;
+        float:left!important;
+        padding-left:7px!important;
+        padding-right:7px!important;
+    }
+    
+    .vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass .owl-item{
+        width:auto!important;
+    }
+
+    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconPClass{
+        text-align: center;
+        margin: 0px!important;
+    }
+
+    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconClass{
+        font-size:50px!important;
+    }
+
+    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductTitleHClass{
+        text-align:center;
+        margin:3px!important;
+        font-size:18px!important;
+        font-family:serif;
+        text-transform:uppercase;
+    }
+
+    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductInfoPClass{
+        padding-top:2px!important;
+        text-align: center;
+        margin:0px!important;
+        font-size:16px!important;
+        font-family: serif;
+    }
+
+    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .viewDessertsProductPClass{
+        text-align:center;
+        margin:0px!important;
+        margin-top:12px!important;
+        font-size:14px!important;
+        font-family: serif;
+        color:#F560F5!important;
+        cursor:pointer!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        margin-top:30px;
+        background-color:#fff!important;
+        border:1px solid #CDCEE8!important;
+        margin-right:16px!important;
+        padding-bottom:10px;
+    }
+
+    .vpd_productImagesDetailsLabelPClass{
+        margin-top:10px;
+        color:#fb366e!important;
+        font-size:20px!important;
+        font-family:serif!important;
+        font-weight:700!important;
+    }
+
+    .vpd_horizontalLineClass{
+        border-top:1px solid #fb366e!important;
+    }
+
+    .vpd_productDetailsContainerDivClass{
+        margin-top:30px;
+        background-color:#fff!important;
+        border:1px solid #CDCEE8!important;
+        margin-right:20px!important;
+    }
+
+    .vpd_productDetailsContainerDivClass p{
+        margin-bottom:20px;
+    }
+
+    .vpd_productDetailsLabelPClass{
+        margin-top:10px;
+        color:#fb366e!important;
+        font-size:20px!important;
+        font-family:serif;
+        font-weight:700!important;
+    }
+
+    .vpd_productStoreNameContainerPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .vpd_productNamePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_productDeliveryLocationPClass{
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_productSelectMeasurementLabelPClass{
+        color:rgb(70, 75, 80)!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:30%;
+    }
+
+    .vpd_productCutPriceTextSClass{
+        text-decoration:line-through!important;
+        color:#999999!important;;
+        font-size:14px!important;
+        margin-right:6px;
+    }
+
+    .vpd_productPayBlgPriceTextSClass{
+        font-size:20px!important;
+        margin-right:6px;
+    }
+
+    .vpd_productDiscountPercentTextSClass{
+        color:#60bf79!important;
+        font-size:14px!important;
+    }
+
+    .vpd_productQtyInputClass{
+        width:30%;
+    }
+
+    .vpd_productAvgRatedIconClass{
+        color:rgba(205, 46, 216, 0.73)!important;
+    }
+
+    .vpd_productDeliveryLocationIconClass{
+        color:rgba(154, 205, 50, 0.51)!important;
+    }
+
+    .vpd_productCommentBoxPClass{
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_specificProductAddBtnClass{
+        border-radius:0px!important;
+        background-color:rgba(154, 205, 50, 0.88)!important;
+        color:#fff!important;
+        margin-right:2%!important;
+        font-weight:bold!important;
+    }
+
+    .vpd_specificProductAddToWishlistbtnClass{
+        border-radius:0px!important;
+        background-color:#ED143D!important;
+        color:#fff!important;
+        font-weight:bold!important;
+    }
+
+    .vpd_orderSummaryContainerDivClass{
+        margin-top:30px;
+        background-color:#fff!important;
+        border:1px solid #CDCEE8!important;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_orderSummaryLabelPClass{
+        margin-top:10px;
+        color:#fb366e!important;
+        font-size:20px!important;
+        font-family:serif;
+        font-weight:700!important;
+    }
+
+    .vpd_orderSummaryCheckoutBtnClass{
+        border-radius:0px!important;
+        background-color:rgba(154, 205, 50, 0.88)!important;
+        color:#fff!important;
+        margin-right:2%!important;
+        opacity:0.2;
+        font-weight:bold!important;
+    }
+
+    .vpd_orderSummaryContainerDivClass p{
+        margin-bottom:20px;
+    }
+
+    .vpd_horizontallySpaceContainerDivClass{
+        margin:20px;
+    }
+    
+    .vpd_featuresContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .vpd_productDescriptionPanelHeadingDivClass{
+        border-bottom:1px solid #fb366e!important;
+    }
+
+    .vpd_productDescriptionLabelHClass{
+        color:#fb366e!important;
+        font-family:serif!important;
+        font-size:20px!important;
+        margin:0px!important;
+    }
+
+    .vpd_productDescriptionPanelContainerDivClass{
+        border-radius:0px!important;
+        border:1px solid #eee!important;
+    }
+
+    .vpd_productDescriptionPanelBodyContainerDivClass{
+        padding-top:12px;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_productDescriptionULClass{
+        color:rgba(0, 0, 0, 0.73)!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+
+    .vpd_productRatingReviewDetailsContainerDivClass{
+        margin-top:15px;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+
+    .vpd_productRatingReviewPanelHeadingDivClass{
+        border-bottom:1px solid #fb366e!important;
+    }
+
+    .vpd_productRatingReviewLabelHClass{
+        color:#fb366e!important;
+        font-family:serif!important;
+        font-size:20px!important;
+        margin:0px!important;
+        font-weight:normal!important;
+    }
+
+    .vpd_productRatingReviewPanelContainerDivClass{
+        border-radius:0px!important;
+        border:1px solid #eee!important;
+    }
+
+    .vpd_summaryReviewRatingDetailsContainerDivClass{
+        padding-top:12px!important;
+        padding-bottom:10px!important;
+        border:1px solid #eee!important;
+    }
+
+    .vpd_summaryReviewRatingDetailsLabelSpanClass{
+        color:#800080!important;
+        font-size:16px!important;
+    }
+
+    .vpd_allMaxRatingQuestionSummaryReviewRatingDetailsDivClass{
+        margin-top:10px!important;
+        margin-bottom:10px!important;
+    }
+
+    .vpd_eachMaxRatingQuestionSummaryReviewRatingDetailsDivClass{
+        background:rgba(62, 177, 231, 0.14)!important;
+        margin-right:2%!important;
+        padding-top:5px!important;
+        padding-bottom:10px!important;
+    }
+
+    .vpd_maxRatingAboutQuestionTitleHClass{
+        font-weight: bold;
+        color:#5C63D6!important;
+        font-size:15px!important;
+    }
+
+    .vpd_maxRatingAboutQuestionAnswerDetailsHClass{
+        color:#5C63D6!important;
+        font-size:13px!important;
+    }
+
+    .vpd_takeUserReviewRatingAboutProductContainerDivClass{
+        padding-top:12px!important;
+        padding-bottom:10px!important;
+        border:1px solid #eee!important;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_takeUserReviewRatingAboutProductLabelPClass{
+        color:#800080!important;
+        font-size:16px!important;
+    }
+
+    .vpd_eachTakeUserReviewRatingTypeAboutProductContainerDivClass{
+        padding-top:8px!important;
+        padding-bottom:8px!important;
+    }
+
+    .vpd_ratingAboutProductSelectCtrlClass{
+        width:30%!important;
+    }
+
+    .vpd_submitReviewBtnWrapperDivClass{
+        padding-top:8px!important;
+        padding-bottom:8px!important;
+    }
+
+    .vpd_submitRatingReviewAboutProductBtnClass{
+        border-radius:0px!important;
+        background-color:#fdee00!important;
+        color:#000!important;
+        font-weight:bold!important;
+        margin-right:2%!important;
+    }
+
+    .vpd_disableSubmitRatingReviewBtnClass{
+        opacity:0.2!important;
+    }
+
+    .vpd_infoAbtToEnableSubmitRatingReviewBtnSClass{
+        color:rgba(240, 99, 122, 0.85)!important;
+        font-size:12px!important;
+        font-family:serif!important;
+    }
+
+    .vpd_displayAllUserReviewAboutProductContainerDivClass{
+        padding-top:12px!important;
+        padding-bottom:10px!important;
+        border:1px solid #eee!important
+    }
+
+    .vpd_allUserReviewRatingDetailsLabelSpanClass{
+        color:#800080!important;
+        font-size:16px!important;
+    }
+
+    .vpd_displayEachUserReviewAboutProductContainerDivClass{
+        padding-top:12px!important;
+        padding-bottom:10px!important;
+        border-bottom:1px solid #eee!important;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_displayEachUserReviewAboutProductContainerDivClass:last-child{
+        border-bottom:none!important;
+    }
+
+    .vpd_userNameIntialLetterRatedReviewedAbtProductSClass{
+        background-color:#5fcbef!important;
+        font-size:25px!important;
+        line-height:35px!important;
+        color:#fff!important;
+        text-align:center!important;
+        width:40px!important;
+        height:40px!important;
+        border-radius:50%!important;
+    }
+
+    .vpd_eachUserNameRatedReviewAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+        font-weight:bold!important;
+    }
+
+    .vpd_userAvgRatedAboutProductSClass{
+        padding:2px!important;
+        color:rgba(205, 46, 216, 0.73)!important;
+        font-size:10px;
+        font-weight:bold!important;
+    }
+
+    .vpd_eachUserRatedAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:13px;
+    }
+
+    .vpd_ratedQuestionAboutProductSClass{
+        padding:2px!important;
+        color:rgba(205, 46, 216, 0.44)!important;
+    }
+
+
+    /* all product list specific product type css code*/
+
+    .dkAllCompleteOffersContainerDivClass{
+        background:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        margin-right:1%;
+        width:51%!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+
+    .dkAllSpecialOffersContainerDivClass{
+        background:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        width:47.4%!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+    
+    .vap_userProductBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .vap_userProductBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:11px!important;
+        padding-top:6px!important;
+    }
+
+    .vap_userProductBreadcrumbULClass li a, 
+    .vap_userProductBreadcrumbULClass li a:hover{
+        color:#fb366e!important;
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+    }
+
+    .vap_userProductBreadcrumbProductTypeCategoryTypeProductListLIClass{
+        color:rgba(120, 120, 120, 0.6)!important;
+    }
+    
+    .vap_deliveryAreabasedDkServedAllDessertsContainerDivClass{
+        margin-top:15px!important;
+        padding-left:0px!important;
+    }
+    
+    .vap_dkServedDessertsProductNoteLIClass{
+        text-align:center;
+        list-style:none!important;
+        font-weight:normal!important;
+        font-size:17px!important;
+        color:#f17023!important;
+        font-family:serif;
+    }
+
+    .vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass{
+        padding-right:0px!important;
+        height:120px!important;
+        white-space:nowrap!important;
+        margin-top:15px!important;
+        padding-left:0px!important;
+    }
+
+    .vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass .owl-item{
+        width:auto!important;
+    }
+
+    .vap_deliveryAreabasedDkServedEachDessertsProductDivClass{
+        color:rgb(249, 99, 99)!important;
+        background-color:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        cursor:pointer;
+        border:2px solid #fff!important;
+        float:left!important;
+    }
+    
+    .vap_dessertsProductIconPClass{
+        text-align: center;
+        margin:0px!important;
+    }
+
+    .vap_dessertsProductIconClass{
+        font-size:50px!important;
+    }
+
+    .vap_dessertsProductTitleHClass{
+        text-align:center;
+        margin:3px!important;
+        font-size:18px!important;
+        font-family:serif;
+        text-transform:uppercase;
+    }
+
+    .vap_dessertsProductInfoPClass{
+        padding-top:2px!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        text-align: center;
+        margin:0px!important;
+        font-size:16px!important;
+        font-family:serif!important;
+        padding-left:7px!important;
+        padding-right:7px!important;
+    }
+
+    .vap_viewDessertsProductPClass{
+        text-align:center;
+        margin:0px!important;
+        margin-top:12px!important;
+        font-size:14px!important;
+        font-family: serif;
+        color:#F560F5!important;
+        cursor:pointer!important;
+    }
+    
+    .vap_productAllCategoryWrapperDivClass{
+        margin-top:55px;
+        padding-top:10px;
+        padding-bottom:20px;
+        border:1px solid #DCE0EF!important;
+        margin-bottom:20px;
+        background-color:whitesmoke!important;
+    }
+
+    .vap_productInfoAbtProductCategoryMsgPClass{
+        text-align:center;
+        font-weight:bold;
+        color:rgb(70, 75, 80)!important;
+        font-weight:normal!important;
+        font-family:serif;
+        font-size:18px!important;
+    }
+
+    .totalCountProductCategorySClass{
+        background-color:#fb366e!important;
+        font-weight:bold;
+        font-size:15px!important;
+    }
+
+     .vap_productAllCategoryContainerDivClass{
+        margin-top:5px!important;
+        padding-left:6px!important;
+        padding-right:0px!important;
+        white-space:nowrap!important;
+        cursor:pointer!important;
+        list-style:none!important;
+    }
+    
+    .vap_productAllCategoryContainerDivClass .owl-item{
+        width:auto!important;
+        margin-right:20px!important;
+    }
+
+    .vap_eachProductCategoryContainerDivClass{
+        text-align:center;
+        background:whitesmoke!important;
+        border-bottom:1px solid #fb366e!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        float:left!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        font-size:12px!important;
+    }
+
+    .vap_eachRequestedProductCategoryLabelDivClass{
+        background-color:#fb366e!important;
+        color:#fff!important;
+        padding-left:10px!important;
+        padding-right:10px!important;
+    }
+    
+    
+    .vapWrapperDivClass{
+        padding-left:1px!important;
+        padding-right:1px!important;
+    }
+
+    .vap_allProductFilterOperationWrapperDivClass{
+        padding-top:10px;
+        padding-bottom:20px;
+        border:1px solid #DCE0EF!important;
+        margin-bottom:20px;
+        padding-left:0px!important;
+        background-color:whitesmoke!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .vap_productAllCategoryWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .vap_tipAbtFilterProductPClass{
+        padding:2px!important;
+        text-align:center;
+        font-weight:bold;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:18px!important;
+    }
+
+    .vap_toggleProductFilterBtnClass, .vap_toggleProductFilterBtnClass:hover{
+        border-radius:0px!important;
+        font-weight:bold!important;
+        padding:0px!important;
+        padding-left:10px!important;
+        padding-right:10px!important;
+        margin-left:1%!important;
+        background:#3eb1e7!important;
+        color:#fff!important;
+        cursor:pointer;
+        font-family:serif!important;
+    }
+    
+    .vap_productFilterOperationContainerDivClass{
+        padding-top:10px!important;
+    }
+    
+    .vap_productFilterPopupBodyDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass{
+        text-align:center;
+        font-size:18px!important;
+        color:rgba(218, 13, 47, 0.85)!important;
+    }
+    
+    .vap_shopStoreFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-top:20px!important;
+        margin-bottom:20px!important;
+    }
+
+    .vap_shopStoreFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+    
+    .vap_shopStoreFilterOperationDivClass .btn,  
+    .vap_shopStoreFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_shopStoreFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelStoreFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_priceFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+    }
+
+    .vap_priceFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+    
+    .vap_priceFilterOperationDivClass .btn, 
+    .vap_priceFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_priceFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelPriceFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_sizeFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+    }
+
+    .vap_sizeFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+    
+    .vap_sizeFilterOperationDivClass .btn, 
+    .vap_sizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_sizeFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelSizeFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_discountFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+    }
+
+    .vap_discountFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+    }
+    
+    .vap_discountFilterOperationDivClass .btn, 
+    .vap_discountFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_discountFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelDiscountFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass{
+        font-family:serif!important;
+        color:rgba(218, 13, 47, 0.85)!important;
+        font-size:20px!important;
+        font-weight:normal!important;
+        text-align:center!important;
+    }
+
+    .vap_productBoxWidgetDivClass{
+        margin-top:15px!important;
+        margin-bottom:15px!important;
+        padding-left:1px!important;
+    }
+
+    .vap_productBoxWidgetDividerLineDivClass{
+        margin-bottom:10px;
+        border:1px solid rgba(240, 99, 122, 0.85)!important;
+    }
+
+    .vap_productStoreNameContainerPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .vap_productNamePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .vap_productCutPriceTextSClass{
+        text-decoration:line-through!important;
+        color:#999999!important;;
+        font-size:13px!important;
+        margin-right:6px;
+    }
+
+    .vap_productPayBlgPriceTextSClass{
+        font-size:20px!important;
+        margin-right:6px;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vap_productDiscountPercentTextSClass{
+        color:#60bf79!important;
+        font-size:14px!important;
+    }
+
+    .vap_productWeightPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+
+    .vap_productDeliveryLocationPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+
+    .vap_specificProductAddWishListBtnClass{
+        border-radius:0px!important;
+        background-color:#ED143D!important;
+        color:#fff!important;
+        font-weight:bold!important;
+    }
+
+    .vap_specificProductAddBtnClass{
+        border-radius:0px!important;
+        background-color:rgba(154, 205, 50, 0.88)!important;
+        color:#fff!important;
+        font-weight:bold!important;
+    }
+
+    .vap_specificProductViewDetailsBtnClass{
+        border-radius:0px!important;
+        background:#3eb1e7!important;
+        color:#fff!important;
+        font-weight:bold!important;
+    }
+
+    .vap_specificViewStoreDetailsBtnClass{
+        border-radius:0px!important;
+        background-color:#fdee00!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold!important;
+    }
+
+    .vap_notFoundProductMsgDivClass{
+        text-align:center;
+        font-size:15px!important;
+    }
+
+
+    /*  cshopstore css code */
+
+    .dkAllCompleteOffersContainerDivClass{
+        background:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        margin-right:1%;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+
+    .dkAllSpecialOffersContainerDivClass{
+        background:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+
+    .cshopstore_userProductBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .cshopstore_userProductBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:12px!important;
+        padding-top:6px!important;
+    }
+    
+    .cshopstore_userProductBreadcrumbULClass li{
+        padding-bottom:3px!important;
+    }
+
+    .cshopstore_userProductBreadcrumbULClass li a, 
+    .cshopstore_userProductBreadcrumbULClass li a:hover{
+        color:#fb366e!important;
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+    }
+
+    .cshopstore_userProductBreadcrumbProductTypeCategoryTypeProductListLIClass{
+        color:rgba(120, 120, 120, 0.6)!important;
+    }
+  
+    .cshopStoreSummaryInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-top:20px!important;
+    }
+    
+    .cshopStoreSummaryInfoWrapperDivClass .owl-item{
+        margin-right:20px!important;
+    }
+    
+    .cshopsstoreSelfSummaryInfoDivClass{
+        text-align:center!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background-color:whitesmoke!important;
+        border-bottom:2px solid #8DA0E2!important;
+    }
+
+    .cShopStoreNameTextLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-weight:bold!important;
+        color:#7B68F1!important;
+        font-size:16px!important;
+    }
+    
+    .cShopStoreLocatedInfoLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-size:14px!important;
+        font-weight:bold!important;
+        color:#808A94!important;
+        padding-top:3px!important;
+        padding-bottom:3px!important;
+    }
+    
+    .cShopStoreDeliveryInfoLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-size:14px!important;
+        font-weight:bold!important;
+        color:#808A94!important;
+        padding-top:3px!important;
+        padding-bottom:3px!important;
+    }
+
+    .showMoreShopSummaryInfoPClass{
+        margin:5px!important;
+        font-family: serif!important;
+        font-size:14px!important;
+        font-weight:bold!important;
+        color:darkorange!important;
+        cursor:pointer!important;
+    }
+    
+    .cshopsstoreSummaryReviewRatingDivClass{
+        text-align:center;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background-color:whitesmoke!important;
+        border-bottom: 2px solid #8DA0E2!important;
+        min-height:130px!important;
+    }
+
+    .cShopStoreReviewRatingTextLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-weight:bold!important;
+        color:#7B68F1!important;
+        font-size:16px!important;
+    }
+
+    .cShopStoreReviewdRatingUsercountInfoLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        font-weight:600!important;
+        color:#808A94!important;
+        padding-top:3px!important;
+        padding-bottom:3px!important;
+    }
+
+    .showMoreShopReviewRatingInfoPClass{
+        margin:5px!important;
+        font-family: serif!important;
+        font-size:14px!important;
+        font-weight:bold!important;
+        color:darkorange!important;
+        cursor:pointer!important;
+    }
+
+    .cshopsstoreMenuSummaryInfoDivClass{
+        text-align:center;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background-color:whitesmoke!important;
+        border-bottom:2px solid #8DA0E2!important;
+        min-height:130px!important;
+    }
+    
+    .cShopStoreMenuTextLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-weight:bold!important;
+        color:#7B68F1!important;
+        font-size:16px!important;
+    }
+    
+    .cShopStoreDessertsMenuInfoLblPClass{
+        margin:0px!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        font-weight:600!important;
+        color:#808A94!important;
+        padding-top:3px!important;
+        padding-bottom:3px!important;
+    }
+
+    .showMoreShopMenuSummaryInfoPClass{
+        margin:5px!important;
+        font-family: serif!important;
+        font-size:14px!important;
+        font-weight:bold!important;
+        color:darkorange!important;
+        cursor:pointer!important;
+    }
+    
+    .cshopStoreServedAllDessertsProductContainerDivClass{
+        margin-top:20px!important;
+        margin-bottom:10px!important;
+        padding-left:0px!important;
+    }
+
+    .cshopstoreServedDessertsProductNoteLIClass{
+        text-align:center;
+        list-style:none!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#f17023!important;
+        font-family:serif;
+    }
+
+    .cshopStoreServedAllDessertsProductScrollerWrapperDivClass{
+        padding-right:0px!important;
+        height:147px!important;
+        white-space:nowrap!important;
+        margin-top:15px!important;
+        padding-left:0px!important;
+    }
+    
+    .cshopStoreServedAllDessertsProductScrollerWrapperDivClass .owl-item{
+        width:auto!important;
+    }
+    
+    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass{
+        color:rgb(249, 99, 99)!important;
+        background-color:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        cursor:pointer;
+        border:2px solid #fff!important;
+        float:left!important;
+    }
+
+    
+    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconPClass{
+        text-align: center;
+        margin: 0px!important;
+    }
+
+    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconClass{
+        font-size:50px!important;
+    }
+
+    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductTitleHClass{
+        text-align:center;
+        margin:3px!important;
+        font-size:18px!important;
+        font-family:serif;
+        text-transform:uppercase;
+    }
+
+    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductInfoPClass{
+        padding-top:2px!important;
+        text-align: center;
+        margin:0px!important;
+        font-size:16px!important;
+        font-family:serif;
+        padding-right:5px!important;
+        padding-left:5px!important;
+    }
+
+    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .viewDessertsProductPClass{
+        text-align:center;
+        margin:0px!important;
+        margin-top:12px!important;
+        font-size:14px!important;
+        font-family: serif;
+        color:#F560F5!important;
+        cursor:pointer!important;
+    }
+
+    .cShopStoreViewAllProductDetailsBodyWrapperDivClass{
+        padding-left:1px!important;
+        padding-right:1px!important;
+    }
+
+    .cShopStoreProductAllCategoryWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px;
+        padding-bottom:20px;
+        border:1px solid #DCE0EF!important;
+        margin-bottom:20px;
+        background-color:whitesmoke!important;
+    }
+
+    .infoAbtProductCategoriesPClass{
+        text-align:center;
+        font-weight:bold;
+        color:rgb(70, 75, 80)!important;
+        font-weight:normal!important;
+        font-family:serif;
+        font-size:18px!important;
+    }
+
+    .totalCountProductCategorySClass{
+        background-color:#fb366e!important;
+        font-weight:bold;
+        font-size:15px!important;
+    }
+    
+    .cShopStoreProductAllCategoryContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        cursor:pointer!important;
+    }
+    
+    .cShopStoreProductAllCategoryContainerDivClass .owl-item{
+        width:auto!important;
+        margin-right:20px!important;
+    }
+
+    .cshopstore_eachProductCategoryContainerLIClass{
+        text-align:center!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        background:whitesmoke!important;
+        border-bottom:1px solid #fb366e!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        float:left!important;
+        list-style:none!important;
+    }
+
+    .cshopstore_eachRequestedProductCategoryLIClass{
+        background-color:#fb366e!important;
+        color:#fff!important;
+    }
+    
+    .cShopStoreProductFilterOperationWrapperDivClass{
+        padding-top:10px;
+        padding-bottom:20px;
+        border:1px solid #DCE0EF!important;
+        margin-bottom:20px;
+        padding-left:0px!important;
+        background-color:whitesmoke!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .cshopstore_productFilterOperationContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+
+    .cshopstore_tipAbtFilterProductPClass{
+        padding:2px!important;
+        text-align:center;
+        font-weight:bold;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:12px!important;
+    }
+
+    .cshopstore_toggleProductFilterBtnClass, 
+    .cshopstore_toggleProductFilterBtnClass:hover{
+        border-radius:0px!important;
+        font-weight:bold!important;
+        padding:0px!important;
+        padding-left:10px!important;
+        padding-right:10px!important;
+        margin-left:1%!important;
+        background:#3eb1e7!important;
+        color:#fff!important;
+        cursor:pointer;
+        font-family:serif!important;
+    }
+    
+    .cshopstore_productFilterOperationContainerDivClass{
+        padding-top:10px!important;
+    }
+    
+    .cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass{
+        text-align:center;
+        font-size:18px!important;
+        color:rgba(218, 13, 47, 0.85)!important;
+        padding-top:10px!important;
+    }
+
+    .cshopstore_priceFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-top:20px!important;
+        margin-bottom:20px!important;
+    }
+
+    .cshopstore_priceFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+    }
+    
+    .cshopstore_priceFilterOperationDivClass .btn, 
+    .cshopstore_priceFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .cshopstore_priceFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+    
+    .cshopstore_labelPriceFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+    
+    .cshopstore_sizeFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+    }
+
+    .cshopstore_sizeFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+    }
+    
+    .cshopstore_sizeFilterOperationDivClass .btn, 
+    .cshopstore_sizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .cshopstore_sizeFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .cshopstore_labelSizeFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .cshopstore_discountFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+    }
+
+    .cshopstore_discountFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+    
+    .cshopstore_discountFilterOperationDivClass .btn, 
+    .cshopstore_discountFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .cshopstore_discountFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .cshopstore_labelDiscountFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass{
+        font-family:serif!important;
+        color:rgba(218, 13, 47, 0.85)!important;
+        font-size:18px!important;
+        font-weight:normal!important;
+        text-align:center!important;
+    }
+
+    .cshopstore_productBoxWidgetDivClass{
+        margin-top:15px!important;
+        margin-bottom:15px!important;
+        padding-left:1px!important;
+    }
+
+    .cshopstore_productBoxWidgetDividerLineDivClass{
+        margin-bottom:10px;
+        border:1px solid rgba(240, 99, 122, 0.85)!important;
+    }
+
+    .cshopstore_productStoreNameContainerPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .cshopstore_productNamePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+    }
+
+    .cshopstore_productCutPriceTextSClass{
+        text-decoration:line-through!important;
+        color:#999999!important;;
+        font-size:13px!important;
+        margin-right:6px;
+    }
+
+    .cshopstore_productPayBlgPriceTextSClass{
+        font-size:20px!important;
+        margin-right:6px;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .cshopstore_productDiscountPercentTextSClass{
+        color:#60bf79!important;
+        font-size:14px!important;
+    }
+
+    .cshopstore_productWeightPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+
+    .cshopstore_productDeliveryLocationPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+
+    .cshopstore_specificProductAddWishListBtnClass{
+        border-radius:0px!important;
+        background-color:#ED143D!important;
+        color:#fff!important;
+        margin-right:2%!important;
+        font-weight:bold!important;
+    }
+
+    .cshopstore_specificProductAddBtnClass{
+        border-radius:0px!important;
+        background-color:rgba(154, 205, 50, 0.88)!important;
+        color:#fff!important;
+        margin-right:2%!important;
+        font-weight:bold!important;
+    }
+
+    .cshopstore_specificProductViewDetailsBtnClass{
+        border-radius:0px!important;
+        background:#3eb1e7!important;
+        color:#fff!important;
+        margin-right:2%!important;
+        font-weight:bold!important;
+    }
+
+    .cshopstore_notFoundProductMsgDivClass{
+        text-align: center;
+        font-size:15px!important;
+        padding-top:10px!important;
+        padding-bottom: 10px!important;
+        color: #f54264!important;
+    }
+
+    .cshopstore_allUserReviewAboutProductContainerDivClass{
+        margin-top:15px!important;
+        padding-top:15px!important;
+        padding-bottom:15px!important;
+        border:1px solid #DCE0EF!important;
+    }
+
+    .cshopstore_allUserReviewRatingDetailsLabelSpanClass{
+        color:#800080!important;
+        font-size:24px!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+
+    .cshopstore_displayEachUserReviewAboutProductContainerDivClass{
+        padding-top:12px!important;
+        padding-bottom:12px!important;
+        border-bottom:1px solid #eee!important;
+        color:rgb(70, 75, 80)!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+
+    .cshopstore_userNameIntialLetterRatedReviewedAbtProductSClass{
+        background-color:#5fcbef!important;
+        font-size:25px!important;
+        line-height:35px!important;
+        color:#fff!important;
+        text-align:center!important;
+        width:40px!important;
+        height:40px!important;
+        border-radius:50%!important;
+        font-family:serif!important;
+        font-weight:bold!important;
+    }
+
+    .cshopstore_eachUserNameRatedReviewAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:22px!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+
+    .cshopstore_userAvgRatedAboutProductSClass{
+        padding:2px!important;
+        color:rgb(229, 5, 245)!important;
+        font-size:12px!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+
+    .cshopstore_eachUserRatedAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:16px!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+
+    .cshopstore_ratedQuestionAboutProductSClass{
+        padding:2px!important;
+        color:rgba(205, 46, 216, 0.44)!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+    
+    .cshopstore_productDeliveryAreaWrapperDivClass{
+        margin-top:20px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:whitesmoke!important;
+        border:1px solid #DCE0EF!important;
+    }
+    
+    .cShopstoreProductDeliveryAreaHeaderPClass{
+        text-align:center!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:18px!important;
+        color:#8c7de6!important;
+    }
+    
+    .cShopstoreProductDeliveryAreaIconClass{
+        color:rgba(154, 205, 50, 0.88)!important;
+    }
+    
+    .cShopstoreProductDeliveryAreaBodyPClass{
+        text-align:center!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:11px!important;
+        color:#7c838a!important;
+    }
+    
+    .cshopstore_productDeliveryAreaNotFoundMsgDivClass{
+        text-align:left!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:15px!important;
+        color:#fb366e!important;
+    }
+    
+    .cshopstore_workingStyleWrapperDivClass{
+        margin-top:20px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:whitesmoke!important;
+        border:1px solid #DCE0EF!important;
+    }
+    
+    .cShopstoreWorkingStyleHeaderPClass{
+        text-align:center!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:18px!important;
+        color:#8c7de6!important;
+    }
+    
+    .cShopstoreWorkingStyleIconClass{
+        color:rgba(154, 205, 50, 0.88)!important;
+    }
+    
+    .cShopStoreWorkingEachDaySchedulePClass{
+        text-align:left!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:11px!important;
+        color:#7c838a!important;
+        font-style:italic!important;
+    }
+    
+    .cShopStoreWorkingTodayDaySchedulePClass{
+        color:#fb366e!important;
+    }
+    
+    .cshopstore_workingStyleNotFoundMsgDivClass{
+        text-align:left!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:15px!important;
+        color:#fb366e!important;
+    }
+    
+    /* party order css code */
+    
+    .po_userProductBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .po_userProductBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:15px!important;
+        padding-top:6px!important;
+    }
+
+    .po_userProductBreadcrumbULClass li a, 
+    .po_userProductBreadcrumbULClass li a:hover{
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+    }
+    
+    .po_userProductBreadcrumbHomeTitleLIClass a{
+        color:#fb366e!important;
+    }
+    
+    .po_userProductBreadcrumbPartyTitleLIClass a{
+        color:rgba(120, 120, 120, 0.6)!important;
+    }
+    
+    .po_videoCoverageContainerDivClass{
+        background:whitesmoke!important;
+        color:#fb366e!important;
+        height:250px!important;
+        margin-top:20px;
+        text-align:center!important;
+        padding:20px;
+    }
+    
+    .po_contentContainerDivClass{
+        background:whitesmoke!important;
+        color:#fb366e!important;
+        height:250px!important;
+        margin-top:20px;
+        text-align:center!important;
+        padding:20px;
+    }
+    
+    .po_formContentWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formHeaderPClass{
+        color:#fb366e!important;
+        font-weight:bold!important;
+        text-align:center;
+        font-size:12px!important;
+    }
+    
+    .po_smileIconClass{
+        font-size:20px!important;
+        color:#fb366e!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #DCE0EF!important;
+        background:#eceff1!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass div{
+        margin-bottom:15px;
+    }
+    
+    .po_formfieldLabelPClass{
+        color:#778ca0!important;
+        font-weight:bold!important;
+        font-size:12px!important;
+    }
+    
+    .po_formfieldHintPClass{
+        font-size:11px!important;
+        color:#708090!important;
+        font-weight:bold!important;
+    }
+    
+    .po_formfieldiconclass{
+        color:#fa8072!important;
+        font-size:15px!important;
+    }
+    
+    .po_contactPersonNameInputClass,
+    .po_contactMobileInputClass,
+    .po_contactEmailInputClass,
+    .po_nosPeopleInputClass,
+    .po_dateInputClass,
+    .po_occasionTitleInputClass{
+        height:40px!important;
+    }
+    
+    .po_errorMsgContainerDivClass{
+        color:#4747d0!important;
+    }
+    
+    .partyOrderRequestSubmtBtnClass, .partyOrderRequestSubmtBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#fb366e!important;
+        color:#fff!important;
+    }
+    
+    .po_thankyouContentWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #DCE0EF!important;
+        background:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_thankyoubodyPClass{
+        color:#fb366e!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+        padding-bottom:20px!important;
+    }
+    
+    .po_thankyousmileIconClass{
+        font-size:50px!important;
+        color:#fb366e!important;
+    }
+    
+    .redirectToViewPartyOrderRequestBtnClass, 
+    .redirectToViewPartyOrderRequestBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#242424!important;
+        color:#fff!important;
+    }
+    
+    /* customize order css code */
+    
+    .co_userProductBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .co_userProductBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:15px!important;
+        padding-top:6px!important;
+    }
+
+    .co_userProductBreadcrumbULClass li a, 
+    .co_userProductBreadcrumbULClass li a:hover{
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+    }
+    
+    .co_userProductBreadcrumbHomeTitleLIClass a{
+        color:#fb366e!important;
+    }
+    
+    .po_userProductBreadcrumbCustomizeTitleLIClass a{
+        color:rgba(120, 120, 120, 0.6)!important;
+    }
+    
+    .co_videoCoverageContainerDivClass{
+        background:whitesmoke!important;
+        color:#fb366e!important;
+        height:250px!important;
+        margin-top:20px;
+        text-align:center!important;
+        padding:20px;
+    }
+    
+    .co_contentContainerDivClass{
+        background:whitesmoke!important;
+        color:#fb366e!important;
+        height:250px!important;
+        margin-top:20px;
+        text-align:center!important;
+        padding:20px;
+    }
+    
+    .co_formContentWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formHeaderPClass{
+        color:#fb366e!important;
+        font-weight:bold!important;
+        text-align:center;
+        font-size:12px!important;
+    }
+    
+    .co_smileIconClass{
+        font-size:20px!important;
+        color:#fb366e!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #DCE0EF!important;
+        background:#eceff1!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass div{
+        margin-bottom:15px;
+    }
+    
+    .co_formfieldLabelPClass{
+        color:#778ca0!important;
+        font-weight:bold!important;
+        font-size:12px!important;
+    }
+    
+    .co_formfieldHintPClass{
+        font-size:11px!important;
+        color:#708090!important;
+        font-weight:bold!important;
+    }
+    
+    .co_formfieldiconclass{
+        color:#fa8072!important;
+        font-size:15px!important;
+    }
+    
+    .co_contactPersonNameInputClass,
+    .co_contactMobileInputClass,
+    .co_contactEmailInputClass,
+    .co_nosPeopleInputClass,
+    .co_dateInputClass,
+    .co_occasionTitleInputClass{
+        height:40px!important;
+    }
+    
+    .co_errorMsgContainerDivClass{
+        color:#4747d0!important;
+    }
+    
+    .customizeOrderRequestSubmtBtnClass, 
+    .customizeOrderRequestSubmtBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#fb366e!important;
+        color:#fff!important;
+    }
+    
+    .co_thankyouContentWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_thankyouContentWrapperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #DCE0EF!important;
+        background:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_thankyoubodyPClass{
+        color:#fb366e!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+        padding-bottom:20px!important;
+    }
+    
+    .co_thankyousmileIconClass{
+        font-size:50px!important;
+        color:#fb366e!important;
+    }
+    
+    .redirectToViewCustomizeOrderRequestBtnClass, 
+    .redirectToViewCustomizeOrderRequestBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#242424!important;
+        color:#fff!important;
+    }
+    
+    
+    /* corporate tie-up css code */
+    
+    .ct_userProductBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .ct_userProductBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:15px!important;
+        padding-top:6px!important;
+    }
+
+    .ct_userProductBreadcrumbULClass li a, 
+    .ct_userProductBreadcrumbULClass li a:hover{
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+    }
+    
+    .ct_userProductBreadcrumbHomeTitleLIClass a{
+        color:#fb366e!important;
+    }
+    
+    .ct_userProductBreadcrumbCorporateTieupTitleLIClass a{
+        color:rgba(120, 120, 120, 0.6)!important;
+    }
+    
+    .ct_videoCoverageContainerDivClass{
+        background:whitesmoke!important;
+        color:#fb366e!important;
+        height:250px!important;
+        margin-top:20px;
+        text-align:center!important;
+        padding:20px;
+    }
+    
+    .ct_contentContainerDivClass{
+        background:whitesmoke!important;
+        color:#fb366e!important;
+        height:250px!important;
+        margin-top:20px;
+        text-align:center!important;
+        padding:20px;
+    }
+    
+    .ct_formContentWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .ct_formHeaderPClass{
+        color:#fb366e!important;
+        font-weight:bold!important;
+        text-align:center;
+        font-size:12px!important;
+    }
+    
+    .ct_smileIconClass{
+        font-size:20px!important;
+        color:#fb366e!important;
+    }
+    
+    .ct_formContentWrappperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #DCE0EF!important;
+        background:#eceff1!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .ct_formContentWrappperContainerDivClass div{
+        margin-bottom:15px;
+    }
+    
+    .ct_formfieldLabelPClass{
+        color:#778ca0!important;
+        font-weight:bold!important;
+        font-size:12px!important;
+    }
+    
+    .ct_formfieldHintPClass{
+        font-size:11px!important;
+        color:#708090!important;
+        font-weight:bold!important;
+    }
+    
+    .ct_formfieldiconclass{
+        color:#fa8072!important;
+        font-size:15px!important;
+    }
+    
+    .ct_contactPersonNameInputClass,
+    .ct_contactMobileInputClass,
+    .ct_contactEmailInputClass,
+    .ct_nosPeopleInputClass,
+    .ct_dateInputClass,
+    .ct_occasionTitleInputClass{
+        height:40px!important;
+    }
+    
+    .ct_errorMsgContainerDivClass{
+        color:#4747d0!important;
+    }
+    
+    .corporateTieupRequestSubmtBtnClass, 
+    .corporateTieupRequestSubmtBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#fb366e!important;
+        color:#fff!important;
+    }
+    
+    .ct_thankyouContentWrapperDivClass{
+        margin-top:20px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .ct_thankyouContentWrapperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #DCE0EF!important;
+        background:whitesmoke!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .ct_thankyoubodyPClass{
+        color:#fb366e!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+        padding-bottom:20px!important;
+    }
+    
+    .ct_thankyousmileIconClass{
+        font-size:50px!important;
+        color:#fb366e!important;
+    }
+    
+    .redirectToViewCorporateTieupRequestBtnClass, 
+    .redirectToViewCorporateTieupRequestBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#242424!important;
+        color:#fff!important;
+    }
+    
+}

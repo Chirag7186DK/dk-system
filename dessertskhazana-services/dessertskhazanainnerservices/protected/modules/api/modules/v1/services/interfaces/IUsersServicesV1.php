@@ -1,0 +1,12 @@
+<?php
+
+/**
+* @author CJ defined this function 2016-07-24
+*/
+
+interface IUsersServicesV1{
+    public function addTrackUserInfoAccessingWebsitesDetails($dkInDtoArray);
+    public function generateUserSessionId($dkInDtoArray);
+    public function checkUserAuthentication($dkInDtoArray);
+    public function getUserDashboardSummaryDataDetails($dkInDtoArray);
+}
