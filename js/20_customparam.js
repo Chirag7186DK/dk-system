@@ -883,13 +883,16 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
             
         }
     }
-    
-    if(returnParamObj['country_ids']==='1' && (returnParamObj['city_ids']).length===32
-        && (returnParamObj['area_ids']).length===32 && (returnParamObj['product_typesids']).length===32){
+    if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
+        && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
+        && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
+        && returnParamObj['area_ids']!==null && returnParamObj['product_typesids']!==false 
+        && returnParamObj['product_typesids']!=='' && returnParamObj['product_typesids']!==null){
         return returnParamObj;
     }else{
         return false;
     }
+    
     
 }
 
