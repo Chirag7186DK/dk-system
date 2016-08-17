@@ -14,7 +14,7 @@ $YII_DB_PASS = "chirag";
 //define("LIB_PATH",'/var/www/html/libdessertskhazana/');
 define("LIB_PATH",'/var/www/html/lib/');
 
-$BaseSitePath = 'http://localhost/dessertskhazana/';
+$BaseSitePath = 'http://localhost/dk-system/';
 //$BaseSitePath = 'http://192.168.1.103/dessertskhazana/';
 
 // $openSISPath
