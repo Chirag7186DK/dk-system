@@ -21,7 +21,7 @@ class ShopStoreController extends V1Controller{
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCShopStoreSummaryInfo($dkParamDataArr);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -43,7 +43,7 @@ class ShopStoreController extends V1Controller{
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCShopStoreProductTypeProductCategoryAllProductDetails($dkParamDataArr);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -65,7 +65,7 @@ class ShopStoreController extends V1Controller{
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCshopstoreWorkingstyleDetails($dkParamDataArr);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -87,7 +87,7 @@ class ShopStoreController extends V1Controller{
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCshopstoreProductdeliveryAreaInfo($dkParamDataArr);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
