@@ -936,7 +936,6 @@ app.controller('LocationController', function($scope, $rootScope, $http, Locatio
         $rootScope.collectDataToLoadProductTypeAllProductListForDashboarLevel = function(preparedParamObj){
             try{   
                 var retStatus = checkAllParamToViewDessertsProducTypeProductListDashboardLevel(preparedParamObj);
-                alert(retStatus);
                 if(retStatus===true){
                     // refresh delivery area based product type list dropdown
                     // refresh producttype list select control element 
