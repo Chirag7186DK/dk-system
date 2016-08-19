@@ -520,9 +520,9 @@ function checkAllParamToViewCShopStore(paramObj){
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDkDeliveryCityDetails(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -532,15 +532,15 @@ function getParamObjFromSessionForLoadingDkDeliveryCityDetails(){
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
             }
         }
-        if(returnParamObj['country_ids']==='1'){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1'){
+            return retParamObj;
         }else{
             return false;
         }
@@ -552,10 +552,10 @@ function getParamObjFromSessionForLoadingDkDeliveryCityDetails(){
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDKDeliveryAreaDetails(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
-        returnParamObj['area_ids'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
+        retParamObj['area_ids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -565,18 +565,18 @@ function getParamObjFromSessionForLoadingDKDeliveryAreaDetails(){
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                    retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
         }
-        if(returnParamObj['country_ids']==='1'){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1'){
+            return retParamObj;
         }else{
             return false;
         }
@@ -588,11 +588,11 @@ function getParamObjFromSessionForLoadingDKDeliveryAreaDetails(){
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDKDeliveryAreaBasedProductTypeDetails(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
-        returnParamObj['area_ids'] = '';
-        returnParamObj['producttype_ids'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
+        retParamObj['area_ids'] = '';
+        retParamObj['producttype_ids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -602,24 +602,22 @@ function getParamObjFromSessionForLoadingDKDeliveryAreaBasedProductTypeDetails()
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                    retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('dessertsproduct')===true){
-                    returnParamObj['producttype_ids'] = dkDeliveryCityAreaDessertsProductObj['dessertsproduct'];
+                    retParamObj['producttype_ids'] = dkDeliveryCityAreaDessertsProductObj['dessertsproduct'];
                 }
             }
         }
-        if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
-            && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
-            && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
-            && returnParamObj['area_ids']!==null){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
+            && parseInt(retParamObj['area_ids'])>0){
+            return retParamObj;
         }else{
             return false;
         }
@@ -698,11 +696,11 @@ function checkParamDataToRedirectForRequestCorporateTieup(){
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDashboardLevelProduct(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
-        returnParamObj['area_ids'] = '';
-        returnParamObj['product_typesids'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
+        retParamObj['area_ids'] = '';
+        retParamObj['product_typesids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -712,25 +710,22 @@ function getParamObjFromSessionForLoadingDashboardLevelProduct(){
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                    retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('dessertsproduct')===true){
-                    returnParamObj['product_typesids'] = dkDeliveryCityAreaDessertsProductObj['dessertsproduct'];
+                    retParamObj['product_typesids'] = dkDeliveryCityAreaDessertsProductObj['dessertsproduct'];
                 }
             }
         }
-        if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
-            && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
-            && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
-            && returnParamObj['area_ids']!==null && returnParamObj['product_typesids']!==false 
-            && returnParamObj['product_typesids']!=='' && returnParamObj['product_typesids']!==null){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
+            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0){
+            return retParamObj;
         }else{
             return false;
         }
@@ -742,15 +737,15 @@ function getParamObjFromSessionForLoadingDashboardLevelProduct(){
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetails(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
-        returnParamObj['area_ids'] = '';
-        returnParamObj['store_ids'] = '';
-        returnParamObj['product_typesids'] = '';
-        returnParamObj['product_categoryids'] = '';
-        returnParamObj['product_ids'] = '';
-        returnParamObj['product_featureids'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
+        retParamObj['area_ids'] = '';
+        retParamObj['store_ids'] = '';
+        retParamObj['product_typesids'] = '';
+        retParamObj['product_categoryids'] = '';
+        retParamObj['product_ids'] = '';
+        retParamObj['product_featureids'] = '';
 
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -761,47 +756,40 @@ function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetail
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                    retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    returnParamObj['store_ids'] = userProductObj['shopstore_value'];
+                    retParamObj['store_ids'] = userProductObj['shopstore_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    returnParamObj['product_typesids'] = userProductObj['producttype_value'];
+                    retParamObj['product_typesids'] = userProductObj['producttype_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    returnParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    returnParamObj['product_ids'] = userProductObj['producttype_listvalue'];
+                    retParamObj['product_ids'] = userProductObj['producttype_listvalue'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_featurevalue')===true){
-                    returnParamObj['product_featureids'] = userProductObj['producttype_featurevalue'];
+                    retParamObj['product_featureids'] = userProductObj['producttype_featurevalue'];
                 }
             }
         }
-        if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
-            && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
-            && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
-            && returnParamObj['area_ids']!==null && returnParamObj['product_typesids']!==false 
-            && returnParamObj['product_typesids']!=='' && returnParamObj['product_typesids']!==null
-            && returnParamObj['store_ids']!==null && returnParamObj['store_ids']!==false 
-            && returnParamObj['store_ids']!=='' && returnParamObj['product_categoryids']!==null
-            && returnParamObj['product_categoryids']!==null && returnParamObj['product_categoryids']!==false
-            && returnParamObj['product_ids']!=='' && returnParamObj['product_ids']!==null
-            && returnParamObj['product_ids']!==null && returnParamObj['product_featureids']!==''
-            && returnParamObj['product_featureids']!==null && returnParamObj['product_featureids']!==false){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
+            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0
+            && parseInt(retParamObj['store_ids'])>0 && parseInt(retParamObj['product_categoryids'])>0
+            && parseInt(retParamObj['product_ids'])>0 && parseInt(retParamObj['product_featureids'])>0){
+            return retParamObj;
         }else{
             return false;
         }
@@ -814,8 +802,8 @@ function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetail
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForLoadingProductDescriptionDetails(){
     try{
-        var returnParamObj = {};
-        returnParamObj['product_ids'] = '';
+        var retParamObj = {};
+        retParamObj['product_ids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -825,13 +813,12 @@ function getParamObjFromSessionForLoadingProductDescriptionDetails(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    returnParamObj['product_ids'] = userProductObj['producttype_listvalue'];
+                    retParamObj['product_ids'] = userProductObj['producttype_listvalue'];
                 }
             }
         }
-        if(returnParamObj['product_ids']!=='' && returnParamObj['product_ids']!==false 
-            && returnParamObj['product_ids']!==null){
-            return returnParamObj;
+        if(parseInt(retParamObj['product_ids'])>0){
+            return retParamObj;
         }else{
             return false;
         }
@@ -843,16 +830,16 @@ function getParamObjFromSessionForLoadingProductDescriptionDetails(){
 // CJ defined this function 2016-06-17
 function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
-        returnParamObj['area_ids'] = '';
-        returnParamObj['product_typesids'] = '';
-        returnParamObj['product_categoryids'] = '';
-        returnParamObj['shopstoreids'] = '';
-        returnParamObj['product_price_filter'] = '';
-        returnParamObj['product_size_filter'] = '';
-        returnParamObj['product_discount_filter'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
+        retParamObj['area_ids'] = '';
+        retParamObj['product_typesids'] = '';
+        retParamObj['product_categoryids'] = '';
+        retParamObj['shopstoreids'] = '';
+        retParamObj['product_price_filter'] = '';
+        retParamObj['product_size_filter'] = '';
+        retParamObj['product_discount_filter'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -862,13 +849,13 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                    retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             // extract data from user product
@@ -876,32 +863,29 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    returnParamObj['product_typesids'] = userProductObj['producttype_value'];
+                    retParamObj['product_typesids'] = userProductObj['producttype_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    returnParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    returnParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
                 if(userProductObj.hasOwnProperty('product_price_filter')===true){
-                    returnParamObj['product_price_filter'] = userProductObj['product_price_filter'];
+                    retParamObj['product_price_filter'] = userProductObj['product_price_filter'];
                 }
                 if(userProductObj.hasOwnProperty('product_size_filter')===true){
-                    returnParamObj['product_size_filter'] = userProductObj['product_size_filter'];
+                    retParamObj['product_size_filter'] = userProductObj['product_size_filter'];
                 }
                 if(userProductObj.hasOwnProperty('product_discount_filter')===true){
-                    returnParamObj['product_discount_filter'] = userProductObj['product_discount_filter'];
+                    retParamObj['product_discount_filter'] = userProductObj['product_discount_filter'];
                 }
 
             }
         }
-        if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
-            && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
-            && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
-            && returnParamObj['area_ids']!==null && returnParamObj['product_typesids']!==false 
-            && returnParamObj['product_typesids']!=='' && returnParamObj['product_typesids']!==null){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
+            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0){
+            return retParamObj;
         }else{
             return false;
         }
@@ -914,11 +898,11 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
 // CJ defined this function 2016-06-24
 function getParamObjForLoadingCShopStoreSummaryInfo(){
     try{
-        var returnParamObj = {};
-        returnParamObj['country_ids'] = '';
-        returnParamObj['city_ids'] = '';
-        returnParamObj['area_ids'] = '';
-        returnParamObj['shopstoreids'] = '';
+        var retParamObj = {};
+        retParamObj['country_ids'] = '';
+        retParamObj['city_ids'] = '';
+        retParamObj['area_ids'] = '';
+        retParamObj['shopstoreids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -928,13 +912,13 @@ function getParamObjForLoadingCShopStoreSummaryInfo(){
                 // extract user suggested city area session data
                 var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                    retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             // extract data from user product
@@ -942,16 +926,13 @@ function getParamObjForLoadingCShopStoreSummaryInfo(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    returnParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
             }
         }
-        if(returnParamObj['country_ids']==='1' && returnParamObj['city_ids']!==false 
-            && returnParamObj['city_ids']!=='' && returnParamObj['city_ids']!==null 
-            && returnParamObj['area_ids']!==false && returnParamObj['area_ids']!=='' 
-            && returnParamObj['area_ids']!==null && returnParamObj['shopstoreids']!==false 
-            && returnParamObj['shopstoreids']!=='' && returnParamObj['shopstoreids']!==null){
-            return returnParamObj;
+        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
+            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['shopstoreids'])>0){
+            return retParamObj;
         }else{
             return false;
         }
@@ -963,50 +944,58 @@ function getParamObjForLoadingCShopStoreSummaryInfo(){
 
 // CJ defined this function 2016-07-18
 function getParamObjForLoadingCShopStoreWorkingStyleDetails(){
-    var returnParamObj = {};
-    returnParamObj['shopstoreids'] = '';
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk param session data
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        // extract data from user product
-        if(dkParamObj.hasOwnProperty('userProduct')===true){
-            // extract user userProduct session data
-            var userProductObj = dkParamObj['userProduct'];
-            if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                returnParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+    try{
+        var retParamObj = {};
+        retParamObj['shopstoreids'] = '';
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            // extract data from user product
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                // extract user userProduct session data
+                var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('shopstore_value')===true){
+                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                }
             }
         }
-    }
-    if((returnParamObj['shopstoreids']).length===32){
-        return returnParamObj;
-    }else{
+        if(parseInt(retParamObj['shopstoreids'])>0){
+            return retParamObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
         return false;
     }
 }
 
 // CJ defined this function 2016-07-18
 function getParamObjForLoadingCShopStoreProductDeliveryAreaDetails(){
-    var returnParamObj = {};
-    returnParamObj['shopstoreids'] = '';
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk param session data
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        // extract data from user product
-        if(dkParamObj.hasOwnProperty('userProduct')===true){
-            // extract user userProduct session data
-            var userProductObj = dkParamObj['userProduct'];
-            if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                returnParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+    try{
+        var retParamObj = {};
+        retParamObj['shopstoreids'] = '';
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            // extract data from user product
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                // extract user userProduct session data
+                var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('shopstore_value')===true){
+                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                }
             }
         }
-    }
-    if((returnParamObj['shopstoreids']).length===32){
-        return returnParamObj;
-    }else{
+        if(parseInt(retParamObj['shopstoreids'])>0){
+            return retParamObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
         return false;
     }
 }
@@ -1096,7 +1085,7 @@ function getParamDataObjForCustomizeOrderRequest(){
 
 // CJ defined this function 2016-07-24
 function getParamDataObjForCorporateTieupRequest(){
-    var returnParamObj = {};
+    var retParamObj = {};
     // checking session param
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1106,12 +1095,12 @@ function getParamDataObjForCorporateTieupRequest(){
             // extract corporateTieup param obj
             var partyOrderParamObj = dkParamObj['corporateTieup'];
             if(partyOrderParamObj.hasOwnProperty('corporateTieupTitle')!==''){
-                returnParamObj['is_LoggedInUser'] = 'N';
-                returnParamObj['profile_id'] = '2';
+                retParamObj['is_LoggedInUser'] = 'N';
+                retParamObj['profile_id'] = '2';
             }
         }
     }
-    return returnParamObj;
+    return retParamObj;
 }
 
 
@@ -1427,21 +1416,21 @@ function storeUserOrderItemInSession(productDetailsObj, fcontentClass){
         // through dashboard/store/all products page
         if(productDetailsObj!==false && productDetailsObj!==undefined 
             && jQuery.isEmptyObject(productDetailsObj)===false){
-            if(productDetailsObj.hasOwnProperty('unMd5ShopStoreId')===true
-                && productDetailsObj.hasOwnProperty('unMD5ProductTypeId')===true
-                && productDetailsObj.hasOwnProperty('unMD5ProductTypeProductCategoryId')===true
-                && productDetailsObj.hasOwnProperty('unMd5ProductListId')===true
-                && productDetailsObj.hasOwnProperty('unMd5ProductFeatureId')===true){
-                if(parseInt(productDetailsObj['unMd5ShopStoreId'])>0
-                    && parseInt(productDetailsObj['unMD5ProductTypeId'])>0
-                    && parseInt(productDetailsObj['unMD5ProductTypeProductCategoryId'])>0
-                    && parseInt(productDetailsObj['unMd5ProductListId'])>0
-                    && parseInt(productDetailsObj['unMd5ProductFeatureId'])>0){
-                    userOrderItemObj['shopstore_id'] = productDetailsObj['unMd5ShopStoreId'];
-                    userOrderItemObj['product_typeid'] = productDetailsObj['unMD5ProductTypeId'];
-                    userOrderItemObj['product_categoryid'] = productDetailsObj['unMD5ProductTypeProductCategoryId'];
-                    userOrderItemObj['product_listid'] = productDetailsObj['unMd5ProductListId'];
-                    userOrderItemObj['product_featureid'] = productDetailsObj['unMd5ProductFeatureId'];
+            if(productDetailsObj.hasOwnProperty('shopStoreId')===true
+                && productDetailsObj.hasOwnProperty('productTypeId')===true
+                && productDetailsObj.hasOwnProperty('productTypeProductCategoryId')===true
+                && productDetailsObj.hasOwnProperty('productListId')===true
+                && productDetailsObj.hasOwnProperty('productFeatureId')===true){
+                if(parseInt(productDetailsObj['shopStoreId'])>0
+                    && parseInt(productDetailsObj['productTypeId'])>0
+                    && parseInt(productDetailsObj['productTypeProductCategoryId'])>0
+                    && parseInt(productDetailsObj['productListId'])>0
+                    && parseInt(productDetailsObj['productFeatureId'])>0){
+                    userOrderItemObj['shopstore_id'] = productDetailsObj['shopStoreId'];
+                    userOrderItemObj['product_typeid'] = productDetailsObj['productTypeId'];
+                    userOrderItemObj['product_categoryid'] = productDetailsObj['productTypeProductCategoryId'];
+                    userOrderItemObj['product_listid'] = productDetailsObj['productListId'];
+                    userOrderItemObj['product_featureid'] = productDetailsObj['productFeatureId'];
                     userOrderItemObj['product_featuresize'] = productDetailsObj['productFeatureDisplayMeasurementType'];
                     userOrderItemObj['product_featuresprice'] = productDetailsObj['productFeatureOnlineSellingPrice'];
                     userOrderItemObj['product_featuresqty'] = '1';
@@ -1652,16 +1641,16 @@ function getParamDataForWLCreation(){
 // CJ defined this function 2016-08-01
 function getParamDataToDeleteUserWL(wishListDataObj){
     try{
-        var returnParamObj = {};
+        var retParamObj = {};
         if(wishListDataObj!==false && jQuery.isEmptyObject(wishListDataObj)===false){
             if(wishListDataObj.hasOwnProperty('unMd5UserId')
                 && wishListDataObj.hasOwnProperty('wlId')){
-                returnParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
-                returnParamObj['wishListId'] = wishListDataObj['wlId'];
-                returnParamObj['status'] = 'Z';
+                retParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
+                retParamObj['wishListId'] = wishListDataObj['wlId'];
+                retParamObj['status'] = 'Z';
             }
         }
-        return returnParamObj;
+        return retParamObj;
     }catch(ex){
         console.log("problem in getParamDataToDeleteUserWL=>"+ex);
         return false;
@@ -1671,35 +1660,35 @@ function getParamDataToDeleteUserWL(wishListDataObj){
 // CJ defined this function 2016-08-02
 function getParamDataForUWLUpdation(fcClass, wishListDataObj){
     try{
-        var returnParamObj = {};
+        var retParamObj = {};
         if($('.'+fcClass).length===1 && wishListDataObj!==false 
             && jQuery.isEmptyObject(wishListDataObj)===false){
             if($('.'+fcClass).find('input.wls_wishListTitleInputClass').length===1){
                 var inputVal = removeHtmlStripTagsOfContent($('.'+fcClass).find('input.wls_wishListTitleInputClass').val());
                 if(inputVal!=='' && inputVal!==false){
-                    returnParamObj['title'] = inputVal;
+                    retParamObj['title'] = inputVal;
                 }
             }
             if($('.'+fcClass).find('select.wld_eachWLDefaultSettingsOptionClass').length===1){
                 var inputVal = removeHtmlStripTagsOfContent($('.'+fcClass).find('select.wld_eachWLDefaultSettingsOptionClass').find('option:selected').val());
                 if(inputVal!=='' && inputVal!==false){
-                    returnParamObj['is_defaultsetting'] = inputVal;
+                    retParamObj['is_defaultsetting'] = inputVal;
                 }
             }
             if($('.'+fcClass).find('select.wld_eachWLPrivacySettingsOptionClass').length===1){
                 var inputVal = removeHtmlStripTagsOfContent($('.'+fcClass).find('select.wld_eachWLPrivacySettingsOptionClass').find('option:selected').val());
                 if(inputVal!=='' && inputVal!==false){
-                    returnParamObj['is_publicly'] = inputVal;
+                    retParamObj['is_publicly'] = inputVal;
                 }
             }
             if(wishListDataObj.hasOwnProperty('unMd5UserId')
                 && wishListDataObj.hasOwnProperty('wlId')){
-                returnParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
-                returnParamObj['wishListId'] = wishListDataObj['wlId'];
+                retParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
+                retParamObj['wishListId'] = wishListDataObj['wlId'];
             }
         }
-        if(Object.keys(returnParamObj).length===5){
-            return returnParamObj;
+        if(Object.keys(retParamObj).length===5){
+            return retParamObj;
         }else{
             return false;
         }
@@ -1976,15 +1965,15 @@ function clearStoredProductDataFromSessionForUWL(){
 
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForRatingReviewDetails(){
-    var returnParamObj = {};
-    returnParamObj['country_ids'] = '';
-    returnParamObj['city_ids'] = '';
-    returnParamObj['area_ids'] = '';
-    returnParamObj['store_ids'] = '';
-    returnParamObj['product_typesids'] = '';
-    returnParamObj['product_categoryids'] = '';
-    returnParamObj['product_ids'] = '';
-    returnParamObj['product_featureids'] = '';
+    var retParamObj = {};
+    retParamObj['country_ids'] = '';
+    retParamObj['city_ids'] = '';
+    retParamObj['area_ids'] = '';
+    retParamObj['store_ids'] = '';
+    retParamObj['product_typesids'] = '';
+    retParamObj['product_categoryids'] = '';
+    retParamObj['product_ids'] = '';
+    retParamObj['product_featureids'] = '';
     
     // checking session param
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -1995,41 +1984,41 @@ function getParamObjFromSessionForRatingReviewDetails(){
             // extract user suggested city area session data
             var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
             if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
             }
             if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
             }
             if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
             }
         }
         if(dkParamObj.hasOwnProperty('userProduct')===true){
             // extract user userProduct session data
             var userProductObj = dkParamObj['userProduct'];
             if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                returnParamObj['store_ids'] = userProductObj['shopstore_value'];
+                retParamObj['store_ids'] = userProductObj['shopstore_value'];
             }
             if(userProductObj.hasOwnProperty('producttype_value')===true){
-                returnParamObj['product_typesids'] = userProductObj['producttype_value'];
+                retParamObj['product_typesids'] = userProductObj['producttype_value'];
             }
             if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                returnParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
             }
             if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                returnParamObj['product_ids'] = userProductObj['producttype_listvalue'];
+                retParamObj['product_ids'] = userProductObj['producttype_listvalue'];
             }
             if(userProductObj.hasOwnProperty('producttype_featurevalue')===true){
-                returnParamObj['product_featureids'] = userProductObj['producttype_featurevalue'];
+                retParamObj['product_featureids'] = userProductObj['producttype_featurevalue'];
             }
         }
     }
     
-    if(returnParamObj['country_ids']==='1' && (returnParamObj['city_ids']).length===32
-        && (returnParamObj['area_ids']).length===32 && (returnParamObj['store_ids']).length===32
-        && (returnParamObj['product_typesids']).length===32 && (returnParamObj['product_categoryids']).length===32
-        && (returnParamObj['product_ids']).length===32 && (returnParamObj['product_featureids']).length===32){
-        return returnParamObj;
+    if(retParamObj['country_ids']==='1' && (retParamObj['city_ids']).length===32
+        && (retParamObj['area_ids']).length===32 && (retParamObj['store_ids']).length===32
+        && (retParamObj['product_typesids']).length===32 && (retParamObj['product_categoryids']).length===32
+        && (retParamObj['product_ids']).length===32 && (retParamObj['product_featureids']).length===32){
+        return retParamObj;
     }else{
         return false;
     }
@@ -2039,11 +2028,11 @@ function getParamObjFromSessionForRatingReviewDetails(){
 
 // CJ defined this function 2016-06-26
 function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
-    var returnParamObj = {};
-    returnParamObj['country_ids'] = '';
-    returnParamObj['city_ids'] = '';
-    returnParamObj['area_ids'] = '';
-    returnParamObj['store_ids'] = '';
+    var retParamObj = {};
+    retParamObj['country_ids'] = '';
+    retParamObj['city_ids'] = '';
+    retParamObj['area_ids'] = '';
+    retParamObj['store_ids'] = '';
     
     // checking session param
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -2054,27 +2043,27 @@ function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
             // extract user suggested city area session data
             var dkDeliveryCityAreaDessertsProductObj = dkParamObj['dkDeliveryCityAreaDessertsProduct'];
             if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                returnParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
+                retParamObj['country_ids'] = dkDeliveryCityAreaDessertsProductObj['countryvalue'];
             }
             if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                returnParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
+                retParamObj['city_ids'] = dkDeliveryCityAreaDessertsProductObj['cityvalue'];
             }
             if(dkDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                returnParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
+                retParamObj['area_ids'] = dkDeliveryCityAreaDessertsProductObj['areavalue'];
             }
         }
         if(dkParamObj.hasOwnProperty('userProduct')===true){
             // extract user userProduct session data
             var userProductObj = dkParamObj['userProduct'];
             if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                returnParamObj['store_ids'] = userProductObj['shopstore_value'];
+                retParamObj['store_ids'] = userProductObj['shopstore_value'];
             }
         }
     }
     
-    if(returnParamObj['country_ids']==='1' && (returnParamObj['city_ids']).length===32
-        && (returnParamObj['area_ids']).length===32 && (returnParamObj['store_ids']).length===32){
-        return returnParamObj;
+    if(retParamObj['country_ids']==='1' && (retParamObj['city_ids']).length===32
+        && (retParamObj['area_ids']).length===32 && (retParamObj['store_ids']).length===32){
+        return retParamObj;
     }else{
         return false;
     }
