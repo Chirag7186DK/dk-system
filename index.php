@@ -46,7 +46,7 @@
                         <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
                     </li>
                     <li ng-controller="UCustomerController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserCAccount('ordercart');">
-                        <i class="fa fa-shopping-basket"></i> (Rs: {{subtotalOrderAmt}}, Item: {{ordercartItemRequestedCount}})
+                        <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
                     <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Log In / Sign Up with desserts khazana account">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Log In / Sign Up
@@ -100,34 +100,6 @@
                 <div id="dkDeliveryAreaDessertsProductListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaBasedProductTypeList(isDkDeliveryAreaChanged)" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaDessertsProductListWrapperDivClass">
                     <span class="dkDeliveryAreaDessertsProductLblSClass">Type desire desserts product</span>
                     <select id="dkDeliveryAreaDessertsProductListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Type desire desserts product"></select>
-                </div>
-            </div>
-        </div>
-
-        <!-- what is desserts khazana -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
-                <div class='dkPartyOrderWrapperDivClass'>
-                    <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
-                    <p ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='partyOrderPClass' title='Click to request for party orders'>
-                        <span>PARTY ORDERS</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
-                <div class='dkCustomizeDessertsOrderWrapperDivClass'>
-                    <img src='#' class='customizeOrderImgClass' load-customizeorder-images-directive>
-                    <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass' title='Click to request for customize orders'>
-                        <span>CUSTOMIZE ORDER</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCoperateSpecialOffersContainerDivClass">
-                <div class='dkCoperateSpecialOffersWrapperDivClass'>
-                    <img src='#' class='coperateOrderImgClass' load-coperatetieup-images-directive>
-                    <p ng-controller="CorporateTieupController" ng-click="redirectToViewCorporateTieupRequest()" class='corporateOrderPClass' title='Click to request for corporate tie-up'>
-                        <span>CORPORATE TIE-UP</span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -223,6 +195,34 @@
             <!-- not found show msg div -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dashBoardLevelNotFoundProductTypeProductCategoryProductListMsgDivClass">
                 {{productTypeProductCategoryProductListNotFoundForDashBoardLevelMsgStr}}
+            </div>
+        </div>
+
+        <!-- what is desserts khazana -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
+                <div class='dkPartyOrderWrapperDivClass'>
+                    <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
+                    <p ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='partyOrderPClass' title='Click to request for party orders'>
+                        <span>PARTY ORDERS</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
+                <div class='dkCustomizeDessertsOrderWrapperDivClass'>
+                    <img src='#' class='customizeOrderImgClass' load-customizeorder-images-directive>
+                    <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass' title='Click to request for customize orders'>
+                        <span>CUSTOMIZE ORDER</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCoperateSpecialOffersContainerDivClass">
+                <div class='dkCoperateSpecialOffersWrapperDivClass'>
+                    <img src='#' class='coperateOrderImgClass' load-coperatetieup-images-directive>
+                    <p ng-controller="CorporateTieupController" ng-click="redirectToViewCorporateTieupRequest()" class='corporateOrderPClass' title='Click to request for corporate tie-up'>
+                        <span>CORPORATE TIE-UP</span>
+                    </p>
+                </div>
             </div>
         </div>
          
