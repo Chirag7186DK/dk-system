@@ -21,7 +21,7 @@ class LocationController extends V1Controller{
                     $LocationServicesV1 = new LocationServicesV1();
                     $LocationServicesV1->getDeliveryCityDetails($dkParamDataArr);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -43,7 +43,7 @@ class LocationController extends V1Controller{
                     $LocationServicesV1 = new LocationServicesV1();
                     $LocationServicesV1->getDeliveryAreaDetails($dkParamDataArr);
                 }else{
-                    uitls :: generateResponseDataForInvalidRequestParamKeyData();
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
