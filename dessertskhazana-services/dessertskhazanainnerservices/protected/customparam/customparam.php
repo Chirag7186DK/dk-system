@@ -274,8 +274,8 @@ class customparam{
             }
         }
         // check shopStore id is blank or not
-        if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0){
+        if(array_key_exists('shopstoreids', $paramJsonData)){
+            if(($paramJsonData['shopstoreids'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
