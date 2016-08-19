@@ -135,8 +135,8 @@ class customparam{
             }
         }
         // check producttype_ids key present or not
-        if(array_key_exists('producttype_ids', $paramJsonData)){
-            if(($paramJsonData['producttype_ids'])>0){
+        if(array_key_exists('product_typesids', $paramJsonData)){
+            if(($paramJsonData['product_typesids'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
