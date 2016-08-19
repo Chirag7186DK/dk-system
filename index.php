@@ -109,7 +109,7 @@
             <!-- display selected desserts product type ordering by customer -->
             <li class='dl_DkServedDessertsProductNoteLIClass'>
                 <i class='fa fa-smile-o smileIconClass'></i> 
-                Hey you ordering for '{{defaultDKServedDessertsProductType}}' and also we can serve other ({{deliveryAreabasedDkServedDessertsProductTypeList.length}}) dessert(s) in your selected delivery area !!!
+                Hey you are viewing for '{{defaultDKServedDessertsProductType}}' and also we can serve other ({{deliveryAreabasedDkServedDessertsProductTypeList.length}}) desserts in your selected delivery area !!!
             </li> 
             <div id="dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                 <!-- iterate each desserts products info-->  
