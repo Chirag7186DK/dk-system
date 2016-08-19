@@ -124,7 +124,7 @@
                         No.s of variety available
                     </p>
                     <p ng-controller="LocationController" ng-click="collectDataToLoadProductTypeAllProductListForDashboarLevel(eachDessertsProductTypeDetails)" class="viewDessertsProductPClass">
-                        View product(s)
+                        View products
                     </p>
                 </div>
             </div>
