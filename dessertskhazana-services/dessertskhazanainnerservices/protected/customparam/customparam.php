@@ -33,8 +33,7 @@ class customparam{
             }
             // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
-                if($paramJsonData['city_ids']!='' && $paramJsonData['city_ids']!=false 
-                    && $paramJsonData['city_ids']!=null){
+                if(($paramJsonData['city_ids'])>0){
                     $givenParamDataCorrectCount++;
                 }
             }
