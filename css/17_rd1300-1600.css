@@ -329,16 +329,7 @@
         font-size:18px!important;
         font-family:serif;
         text-transform:uppercase;
-    }
-
-    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductInfoPClass{
-        padding-top:2px!important;
-        padding-left:5px!important;
-        padding-right:5px!important;
-        text-align: center;
         margin:0px!important;
-        font-size:16px!important;
-        font-family:serif!important;
     }
 
     .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .viewDessertsProductPClass{
@@ -349,6 +340,8 @@
         font-family: serif;
         color:#F560F5!important;
         cursor:pointer!important;
+        padding-left:20px!important;
+        padding-right:20px!important;
     }
 
 
