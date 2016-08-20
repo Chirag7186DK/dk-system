@@ -97,7 +97,7 @@ include "Site_config.inc.php";
                         |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeKey}}</a>
                     </li>
                     <li class='cshopstore_userBreadcrumbProductTypeCategoryTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeCategoryKey}}</a>
+                        |&nbsp; <a href="#">{{defaultSelectProductCategoryTitle}}</a>
                     </li>
                 </ul>
             </div>
@@ -180,7 +180,7 @@ include "Site_config.inc.php";
                 <!-- all product category list will be loaded here -->
                 <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
                     <p class='infoAbtProductCategoriesPClass'>
-                        Info *: <i class="fa fa-smile-o"></i> Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeCategoryKey}}' products from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
+                        Info *: <i class="fa fa-smile-o"></i> Hey you are viewing '{{defaultSelectProductCategoryTitle}}' products from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
                     </p>
                     <div id='cShopStoreProductAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryContainerDivClass">
                         <li ng-click="collectDataToViewCShopstore(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productCategoryList| orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='cshopstore_eachProductCategoryContainerLIClass' scroll-horizontally-dessertsproducttype-productcategorylist-cshopstorelevel>
