@@ -280,10 +280,6 @@
     
     /*  dashboard level css code  */
 
-    .dl_DeliveryAreabasedDkServedAllDessertsContainerDivClass{
-        margin-top:15px!important;
-    }
-
     .smileIconClass{
         font-size:22px!important;
     }
@@ -3451,10 +3447,6 @@
         font-weight:100!important;
         cursor:pointer!important;
         padding-bottom:4px!important;
-    }
-    
-    .createHorizontalSpaceDivClass{
-        margin:10px;
     }
     
     /* order cart section css code */
