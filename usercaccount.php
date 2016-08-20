@@ -88,22 +88,22 @@ include "Site_config.inc.php";
                 </p>
                 <!-- user as customer account showing different section label to access -->
                 <ul class="uca_allSectionListContainerULClass" ng-show='isShowUCustomerAccountOtherSectionList'>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserCAccount('personalinfo');">
+                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
                         Personal Info
                     </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserCAccount('requestordercart');">
+                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('requestordercart');">
                         Your Orders
                     </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserCAccount('customizeorder');">
+                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
                         Customize Orders
                     </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserCAccount('wishlist');">
+                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('wishlist');">
                         Your WishList
                     </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserCAccount('shareoffers');">
-                        Share offers
+                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
+                        Your WishList
                     </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserCAccount('myoffers');">
+                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
                         My offers
                     </li>
                 </ul>
