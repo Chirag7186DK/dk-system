@@ -26,9 +26,8 @@ include "Site_config.inc.php";
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
 
-        <!-- first header -->
+        <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
             <!-- webAppLogoAndMenuIconContainerDivClass --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
@@ -72,7 +71,7 @@ include "Site_config.inc.php";
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreBannerDivClass"></div>
 
-        <!-- what is desserts khazana -->
+        <!-- about store images banner -->
         <div style='display:none;' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkAllCompleteOffersContainerDivClass">
                 <h5>Desserts Khazana Complete Offers Will Come Image/Slider</h5>
