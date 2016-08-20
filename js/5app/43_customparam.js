@@ -8,6 +8,7 @@ function initializeDkSessionData(){
         userSessionObj['user_sessionstarttime'] = (new Date()).getTime();
         userSessionObj['user_sessionid'] = '';
         userSessionObj['udblogId'] = '';
+        userSessionObj['userProfileTypeId'] = '';
         userSessionObj['isUserInfoTrackedAccessingWebsites'] = 'N';
 
         var userRecentlyViewedProductObj = {};
