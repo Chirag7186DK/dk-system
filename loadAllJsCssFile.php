@@ -1,6 +1,6 @@
 <?php 
     
-    header("Cache-Control: no-store, no-cache"); 
+    //header("Cache-Control: no-store, no-cache"); 
     clearstatcache();
     
     // CJ define this function to sort files in numberically order
@@ -18,7 +18,7 @@
         foreach($ffs as $ff) {
             if($ff!='.' && $ff!= '..' && $ff!='.git'){
                 if(is_dir($dirname."/".$ff)){
-                    $collectedFiles = collectfiles("$dirname/$ff", $filetype);
+                    $collectedFiles = collectJsCssFiles("$dirname/$ff", $filetype);
                     if($collectedFiles!=''){
                        //array_push($outputFileList, $collectedFiles);
                     }
