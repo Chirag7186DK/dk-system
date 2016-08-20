@@ -53,23 +53,23 @@
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
                         <!-- user account showing different section label to access -->
-                        <div class="userAllSectionListDivClass" ng-if='isUserLoggedInSession==true'>
-                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
+                        <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
                                 Personal Info
                             </div>
-                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('requestordercart');">
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('requestordercart');">
                                 Your Orders
                             </div>
-                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
                                 Customize Orders
                             </div>
-                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('wishlist');">
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('wishlist');">
                                 Your WishList
                             </div>
-                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
-                                Your WishList
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
+                                Share Offers
                             </div>
-                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
                                 My offers
                             </div>
                         </div>
