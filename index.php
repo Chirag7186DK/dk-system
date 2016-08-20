@@ -26,9 +26,8 @@
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
         
-        <!-- first header -->
+        <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
             <!-- web logo header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
@@ -106,11 +105,13 @@
 
         <!-- desserts khazana served desserts product in your selected delivery area -->
         <div id='dl_DeliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-show="isDessertsProductTypeProductListLoaded" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsContainerDivClass'>
+            
             <!-- display selected desserts product type viewing by customer -->
             <li class='dl_DkServedDessertsProductNoteLIClass'>
                 <i class='fa fa-smile-o smileIconClass'></i> 
                 Hey you are viewing '{{defaultDKServedDessertsProductType}}' and also we can serve other <span class="badge dashboardDessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
             </li> 
+            
             <div id="dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                 <!-- iterate each desserts products info-->  
                 <div ng-repeat="eachDessertsProductTypeDetails in deliveryAreabasedDkServedDessertsProductTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='dl_DeliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-dashboardlevel>
@@ -125,10 +126,12 @@
                     </p>
                 </div>
             </div>
+            
         </div>
         
         <!-- load desserts product type product list for dashboard level -->
         <div id="dashboardLevelAllProductTypeProductListContainerDivId" ng-controller="ProductTypeProductCategoryProductDetailsController" ng-show="isDessertsProductTypeProductListLoaded" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_AllProductTypeProductListContainerDivClass">
+            
             <!-- each product type, product category iterate -->
             <div ng-repeat="eachProductTypeDetails in allProductTypeProductCategoryProductListForDashBoardLevel track by $index" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_EachProductTypeProductListContainerDivClass" scroll-top-when-display-rendering-finished-dessertsproductlist>
                 <!-- display each desserts product type, product category title -->
@@ -189,10 +192,12 @@
                     </div>
                 </div>
             </div>
+            
             <!-- not found show msg div -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dashBoardLevelNotFoundProductTypeProductCategoryProductListMsgDivClass">
                 {{productTypeProductCategoryProductListNotFoundForDashBoardLevelMsgStr}}
             </div>
+            
         </div>
 
         <!-- create horizontally space div between -->
