@@ -2048,7 +2048,7 @@ app.controller('ShopStoreController', function($scope, $rootScope, $http, ShopSt
         $rootScope.collectDataToViewCShopstore = function(paramDataObj){
             try{
                 var retStatus = checkAllParamToViewCShopStore(paramDataObj);
-                if(retStatus===false){
+                if(retStatus===true){
                     window.location.href = globalBaseSitePath+"viewstoreproduct.php";
                 }
             }catch(ex){
