@@ -929,7 +929,7 @@ app.controller('LocationController', function($scope, $rootScope, $http, Locatio
                 preparedParamObj['productTypeId'] = $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue;
                 preparedParamObj['productTypeTitle'] = $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle;
                 $rootScope.collectDataToLoadProductTypeAllProductListForDashboarLevel(preparedParamObj);
-            }    
+            } 
         };
        
         // collectDataToLoadProductTypeAllProductListForDashboarLevel, delivery area based on
