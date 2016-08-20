@@ -373,7 +373,8 @@ class ProductServicesV1 implements IProductServicesV1 {
                             foreach($sortedOnProductTypeProductCategoryDetailsArr as $eachProductTypeId => $productCategoryDetailsArr) {
                                 // iterate each product type ka product category 
                                 foreach($productCategoryDetailsArr as $eachProductCategoryId=>$productDetailsArr){
-                                    if($gproductTypeProductCategoryId==''||$gproductTypeProductCategoryId!=false){
+                                    if($gproductTypeProductCategoryId=='' || $gproductTypeProductCategoryId==null
+                                        || $gproductTypeProductCategoryId==false){
                                         $gproductTypeProductCategoryId = $eachProductCategoryId;
                                     }
                                     if($eachProductCategoryId==$gproductTypeProductCategoryId){
