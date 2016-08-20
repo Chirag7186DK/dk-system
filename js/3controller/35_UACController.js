@@ -5,16 +5,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         
         $rootScope.isShowUCustomerAccountOtherSectionList = false;
         
-        // storeRequestedSectionNameToAccessInUserCAccount
-        $rootScope.storeRequestedSectionNameToAccessInUserCAccount = function(requestedSectionName){
-            var isUserLoggedInSession = checkUserLoggedInSession();
-            if(requestedSectionName!=='' && requestedSectionName!==false 
-                && requestedSectionName!==undefined && isUserLoggedInSession===true){
-                storeRequestedSectionNameToAccessInUserCAccount(requestedSectionName);
-                window.location.href = globalBaseSitePath+"usercaccount.php";
-            }
-        };
-        
         // checkRequestedSectionAvailableToAccessInUserCAccount
         $rootScope.checkRequestedSectionAvailableToAccessInUserCAccount = function(){
             var isUserLoggedInSession = checkUserLoggedInSession();
