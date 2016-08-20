@@ -69,6 +69,7 @@
     }
     
     .userAccountAllSectionListDropdownDivClass{
+        display:none;
         background:#fff!important;
         box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
         position:absolute!important;
