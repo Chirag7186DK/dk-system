@@ -140,9 +140,9 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
         
         // toggleUserAccountSectionDropdown
         $rootScope.toggleUserAccountSectionDropdown = function(){
-            if($('.userAccountAllSectionListDropdownDivClass').is("hidden")===true){
+            if($('.userAccountAllSectionListDropdownDivClass').is(":hidden")===true){
                 $('.userAccountAllSectionListDropdownDivClass').css({"display":"block"});
-            }else if($('.userAccountAllSectionListDropdownDivClass').is("hidden")===false){
+            }else if($('.userAccountAllSectionListDropdownDivClass').is(":hidden")===false){
                 $('.userAccountAllSectionListDropdownDivClass').css({"display":"none"});
             }
         };
