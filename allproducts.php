@@ -121,6 +121,10 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
             <!-- all product category list will be loaded here -->
             <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 <p class='vap_productInfoAbtProductCategoryMsgPClass'>
@@ -132,6 +136,10 @@
                     </li>
                 </div>
             </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
             <!-- all product list will be loaded here -->
             <div id='vapWrapperDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
                 <!-- product filter operation main container div -->
