@@ -11,7 +11,7 @@
     }
     
     // CJ defined this function to collect files in array
-    function collectCssFiles($dirname, $filetype){
+    function collectJsCssFiles($dirname, $filetype){
         $dirname = rtrim($dirname, '\\/');
         $outputFileList = array();
         $ffs = scandir($dirname);
@@ -33,7 +33,7 @@
     }
     
     // collect all css files 
-    $css_filelist = collectCssFiles("css", "css");
+    $css_filelist = collectJsCssFiles("css", "css");
     if(count($css_filelist)>0 && $css_filelist!=false && $css_filelist!=null){
         $retStatusSortedFiles = usort($css_filelist , 'sortFilesNumberically');
         // iterate each css files to load in dom
@@ -48,30 +48,8 @@
         }
     }
     
-    // CJ defined this function to collect files in array
-    function collectJsFiles($dirname, $filetype){
-        $dirname = rtrim($dirname, '\\/');
-        $outputFileList = array();
-        $ffs = scandir($dirname);
-        foreach($ffs as $ff) {
-            if($ff!='.' && $ff!= '..' && $ff!='.git'){
-                if(is_dir($dirname."/".$ff)){
-                    $collectedFiles = collectfiles("$dirname/$ff", $filetype);
-                    if($collectedFiles!=''){
-                       //array_push($outputFileList, $collectedFiles);
-                    }
-                }else{
-                    if(strrpos($ff, '.'.$filetype)==(strlen($ff) - strlen('.' . $filetype))){
-                        array_push($outputFileList, $ff);
-                    }
-                }
-            }
-        }
-        return $outputFileList;
-    }
-    
     // collect all js files
-    $jsFileList = collectJsFiles("js", "js");
+    $jsFileList = collectJsCssFiles("js", "js");
     if(count($jsFileList)>0 && $jsFileList!=false && $jsFileList!=null){
         $retStatusSortedFiles = usort($jsFileList , 'sortFilesNumberically');
         for($count = 0; $count<count($jsFileList); $count++){
