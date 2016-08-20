@@ -110,6 +110,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultedSelectedProductTypeTitle'] = '';
+            $rsltJsonArr['defaultedSelectedProductTypeValue'] = '';
             $rsltJsonArr['defaultSelectProductCategoryTitle'] = '';
             $rsltJsonArr['defaultSelectProductCategoryValue'] = '';
             $rsltJsonArr['productCategoryList'] = false;
@@ -177,6 +178,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         if($eachProductCategoryId==$gproductTypeProductCategoryId){
                             $isRequestedProductCategoryMatched = 'Y';
                             $rsltJsonArr['defaultedSelectedProductTypeTitle'] = $productCategoryDetailsArr[0]['productTypeTitle'];
+                            $rsltJsonArr['defaultedSelectedProductTypeValue'] = $productCategoryDetailsArr[0]['productTypeId'];
                             $rsltJsonArr['defaultSelectProductCategoryTitle'] = strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']);
                             $rsltJsonArr['defaultSelectProductCategoryValue'] = $gproductTypeProductCategoryId;
                         }
