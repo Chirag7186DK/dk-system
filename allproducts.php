@@ -26,9 +26,8 @@
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
         
-        <!-- first header -->
+        <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
             <!-- webAppLogoAndMenuIconContainerDivClass --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
@@ -82,6 +81,7 @@
 
         <!-- view specific product type ka product category ka all product list summary info -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_containerDivClass">
+            
             <!-- customer bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_userBreadcrumbDivClass">
                 <ul class="vap_userBreadcrumbULClass list-inline">
@@ -101,11 +101,13 @@
         
             <!-- desserts khazana served desserts product in your selected delivery area -->
             <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
+                
                 <!-- display selected desserts product type ordering by customer -->
                 <li class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
                     Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeKey}}' and also we can serve other <span class="badge vap_dessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
                 </li> 
+                
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts products info  -->
                     <div ng-repeat="eachDessertsProductTypeDetails in deliveryAreabasedDkServedDessertsProductTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
@@ -120,6 +122,7 @@
                         </p>
                     </div>
                 </div>
+                
             </div>
             
             <!-- create horizontally space div between -->
@@ -127,14 +130,17 @@
             
             <!-- all product category list will be loaded here -->
             <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
+                
                 <p class='vap_productInfoAbtProductCategoryMsgPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeKey}}' products from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
                 </p>
+                
                 <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
                     <li ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
                         {{eachProductCategoryDetails.productCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
                     </li>
                 </div>
+                
             </div>
             
             <!-- create horizontally space div between -->
@@ -142,6 +148,7 @@
             
             <!-- all product list will be loaded here -->
             <div id='vapWrapperDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
+                
                 <!-- product filter operation main container div -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
                     <!-- info / tips about product filtering operation -->
@@ -185,7 +192,7 @@
                     <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
                 </div>
 
-                <!-- each product details iterate for displaying purpose -->
+                <!-- each product details iterate for displaying -->
                 <div maxheight-productboxwidget-allproductslevel ng-repeat="eachProductDetails in allProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 vap_productBoxWidgetDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
                     <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 vap_productBoxWidgetDividerLineDivClass'></div>
@@ -234,10 +241,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_notFoundProductMsgDivClass">
                     {{notFoundProductMsgStr}}
                 </div>
+                
             </div>
+            
         </div>
         
-        <!-- logged authenticated user web application data refresh -->
+        <!-- refresh web application data -->
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
