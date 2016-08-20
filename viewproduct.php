@@ -21,7 +21,7 @@
 
     <!-- body start here -->
     
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='userSessionController' ng-init="loadDefaultDataInDkSession('viewproduct'); checkInBackgroundDataAvailableForUpdationFromSession('viewproduct');">
+    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('viewproduct'); checkInBackgroundDataAvailableForUpdationFromSession('viewproduct');">
         
         <!-- common SCROLL TOP BUTTON -->
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
