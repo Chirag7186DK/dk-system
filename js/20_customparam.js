@@ -497,8 +497,8 @@ function checkAllParamToViewCShopStore(paramObj){
                     existingDkParamObj['userProduct']['shopstore_value'] = paramObj['shopStoreId'];
                     existingDkParamObj['userProduct']['producttype_value'] = paramObj['productTypeId'];
                     existingDkParamObj['userProduct']['producttype_categoryvalue'] = '';
-                    if(paramObj.hasOwnProperty('productCategoryId')===true){
-                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = paramObj['productCategoryId'];
+                    if(paramObj.hasOwnProperty('productTypeProductCategoryId')===true){
+                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = paramObj['productTypeProductCategoryId'];
                     }
                     existingDkParamObj['userProduct']['producttype_listvalue'] = '';
                     if(paramObj.hasOwnProperty('productListId')===true){
