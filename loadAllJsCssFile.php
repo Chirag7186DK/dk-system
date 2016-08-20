@@ -44,19 +44,19 @@
     
     // collect all js lib files
     $allJsFileList = array();
-    $allLibJsFileList = collectJsCssFiles("js/1_lib", "js");
+    $allLibJsFileList = collectJsCssFiles("js/1lib", "js");
     if(count($allLibJsFileList)>0 && $allLibJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allLibJsFileList);
     }
-    $allServicesJsFileList = collectJsCssFiles("js/2_services", "js");
+    $allServicesJsFileList = collectJsCssFiles("js/2services", "js");
     if(count($allServicesJsFileList)>0 && $allServicesJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allServicesJsFileList);
     }
-    $allControllerJsFileList = collectJsCssFiles("js/3_controller", "js");
+    $allControllerJsFileList = collectJsCssFiles("js/3controller", "js");
     if(count($allControllerJsFileList)>0 && $allControllerJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allControllerJsFileList);
     }
-    $allDirectiveJsFileList = collectJsCssFiles("js/4_directive", "js");
+    $allDirectiveJsFileList = collectJsCssFiles("js/4directive", "js");
     if(count($allDirectiveJsFileList)>0 && $allDirectiveJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allDirectiveJsFileList);
     }
