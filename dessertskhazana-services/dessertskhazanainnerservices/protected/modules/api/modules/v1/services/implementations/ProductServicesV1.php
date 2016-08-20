@@ -278,6 +278,8 @@ class ProductServicesV1 implements IProductServicesV1 {
                                     }
                                     if($eachProductCategoryId==$gproductTypeProductCategoryId){
                                         $isRequestedProductCategoryMatched = 'Y';
+                                        $rsltJsonArr['defaultedSelectedProductTypeTitle'] = $productCategoryDetailsArr[0]['productTypeTitle'];
+                                        $rsltJsonArr['defaultedSelectedProductTypeValue'] = $productCategoryDetailsArr[0]['productTypeId'];
                                         $rsltJsonArr['defaultSelectProductCategoryTitle'] = strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']);
                                         $rsltJsonArr['defaultSelectProductCategoryValue'] = $gproductTypeProductCategoryId;
                                     }
