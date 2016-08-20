@@ -130,7 +130,7 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
                 && authenticatedUserParamDataObj!==undefined && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                 storeRequestedSectionNameToAccessInUserCAccount(requestedSectionName);
                 if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
-                    // detected user as customer
+                    // detected user account as customer profile
                     if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
                         window.location.href = globalBaseSitePath+"usercaccount.php";
                     }
