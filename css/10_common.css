@@ -29,3 +29,7 @@ input, textarea, select, .form-control{
     padding:5px!important;
     background-color:#fff!important;
 }
+
+.createHorizontalSpaceDivClass{
+    margin:2px;
+}
