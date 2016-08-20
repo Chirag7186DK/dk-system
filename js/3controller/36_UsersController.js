@@ -124,11 +124,16 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
         
         // storeRequestedSectionNameToAccessInUserCAccount
         $rootScope.storeRequestedSectionNameToAccessInUserCAccount = function(requestedSectionName){
-            var isUserLoggedInSession = checkUserLoggedInSession();
+            var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
             if(requestedSectionName!=='' && requestedSectionName!==false 
-                && requestedSectionName!==undefined && isUserLoggedInSession===true){
+                && requestedSectionName!==undefined && authenticatedUserParamDataObj!==false
+                && authenticatedUserParamDataObj!==undefined && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                 storeRequestedSectionNameToAccessInUserCAccount(requestedSectionName);
+                if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
+                    
+                }
                 window.location.href = globalBaseSitePath+"usercaccount.php";
+                
             }
         };
         
