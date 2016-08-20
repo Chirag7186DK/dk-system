@@ -272,7 +272,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     // CJ defined this action 2016-07-18
     public function getCshopstoreWorkingstyleDetails($dkParamDataArr){
         $rspDetails = array();
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
             // fetch store working style details
             $retShopstoreWorkingstyleDetailsArr = ShopStoreDao :: getShopstoreWorkingstyleDetails($gshopstore_id);
@@ -286,7 +286,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     // CJ defined this action 2016-07-18
     public function getCshopstoreProductdeliveryAreaInfo($dkParamDataArr){
         $rspDetails = array();
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // prepare param obj to get shopstore delivery location details
             $shopStoreProductDeliveryAreaParamObj = array();
             $shopStoreProductDeliveryAreaParamObj['shop_storesids'] = $dkParamDataArr['shopstoreids'];
