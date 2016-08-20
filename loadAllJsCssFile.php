@@ -4,9 +4,20 @@
     clearstatcache();
     
     // CJ define this function to sort files in numberically order
-    function sortFilesNumberically($fileString1, $fileString2){
-        $substrFileStr1 = substr($fileString1, 0, strpos($fileString1, "_", 0));
-        $substrFileStr2 = substr($fileString2, 0, strpos($fileString2, "_", 0));
+    function extract_unit($string, $start, $end){
+        $pos = stripos($string, $start);
+        $str = substr($string, $pos);
+        $str_two = substr($str, strlen($start));
+        $second_pos = stripos($str_two, $end);
+        $str_three = substr($str_two, 0, $second_pos);
+        $unit = trim($str_three);
+        return $unit;
+    }
+    
+    // CJ define this function to sort files in numberically order
+    function sortFilesNumberically($fileNameString1, $fileNameString2){
+        $substrFileStr1 = extract_unit($fileNameString1, "/", "_");
+        $substrFileStr2 = extract_unit($fileNameString2, "/", "_");
         return ($substrFileStr1 < $substrFileStr2) ? -1 : 1;
     }
     
@@ -37,12 +48,12 @@
             $filename = $css_filelist[$count];
             if(($filename!=".") && ($filename!="..") && ($filename!="")){
                 $curTimeStamp = md5(mt_rand());
-                echo "<link rel='stylesheet' type='text/css' href='css/$filename?reload=$curTimeStamp'>";
+                echo "<link rel='stylesheet' type='text/css' href='$filename?reload=$curTimeStamp'>";
             }
         }
     }
     
-    // collect all js lib files
+    // collect all js files
     $allJsFileList = array();
     $allLibJsFileList = collectJsCssFiles("js/1lib", "js");
     if(count($allLibJsFileList)>0 && $allLibJsFileList!=false){
