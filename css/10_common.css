@@ -30,6 +30,6 @@ input, textarea, select, .form-control{
     background-color:#fff!important;
 }
 
-.createHorizontalSpaceDivClass{
-    margin:2px;
+.commonHorizontalSpaceDivClass{
+    margin:5px;
 }
