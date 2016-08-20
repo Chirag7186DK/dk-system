@@ -122,8 +122,8 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
             }
         };
         
-        // storeRequestedSectionNameToAccessInUserCAccount
-        $rootScope.storeRequestedSectionNameToAccessInUserCAccount = function(requestedSectionName){
+        // storeRequestedSectionNameToAccessInUserAccount
+        $rootScope.storeRequestedSectionNameToAccessInUserAccount = function(requestedSectionName){
             var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
             if(requestedSectionName!=='' && requestedSectionName!==false 
                 && requestedSectionName!==undefined && authenticatedUserParamDataObj!==false
