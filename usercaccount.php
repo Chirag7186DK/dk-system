@@ -50,7 +50,7 @@ include "Site_config.inc.php";
                             <div title="Click here to see more details about yourself" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
                                 Personal Info
                             </div>
-                            <div title="Click here to see your orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('requestordercart');">
+                            <div title="Click here to see your orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                                 Your Orders
                             </div>
                             <div title="Click here to see your customize orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
@@ -64,6 +64,9 @@ include "Site_config.inc.php";
                             </div>
                             <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
                                 My offers
+                            </div>
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
+                                Log Out
                             </div>
                         </div>
                     </li>
