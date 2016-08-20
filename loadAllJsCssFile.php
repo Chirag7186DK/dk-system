@@ -40,10 +40,8 @@
         for($count = 0; $count<count($css_filelist); $count++){
             $filename = $css_filelist[$count];
             if(($filename!=".") && ($filename!="..") && ($filename!="")){
-                if(strripos($filename, "device")==false){
-                    $curTimeStamp = md5(mt_rand());
-                    echo "<link rel='stylesheet' type='text/css' href='css/$filename?reload=$curTimeStamp'>";
-                }   
+                $curTimeStamp = md5(mt_rand());
+                echo "<link rel='stylesheet' type='text/css' href='css/$filename?reload=$curTimeStamp'>";
             }
         }
     }
