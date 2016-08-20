@@ -104,12 +104,15 @@
             </div>
         </div>
         
+        <!-- create horizontally space div between -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+
         <!-- desserts khazana served desserts product in your selected delivery area -->
         <div id='dl_DeliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-show="isDessertsProductTypeProductListLoaded" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsContainerDivClass'>
-            <!-- display selected desserts product type ordering by customer -->
+            <!-- display selected desserts product type viewing by customer -->
             <li class='dl_DkServedDessertsProductNoteLIClass'>
                 <i class='fa fa-smile-o smileIconClass'></i> 
-                Hey you are viewing for '{{defaultDKServedDessertsProductType}}' and also we can serve other ({{deliveryAreabasedDkServedDessertsProductTypeList.length}}) desserts in your selected delivery area !!!
+                Hey you are viewing '{{defaultDKServedDessertsProductType}}' and also we can serve other <span class="badge dashboardDessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
             </li> 
             <div id="dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                 <!-- iterate each desserts products info-->  
@@ -120,11 +123,8 @@
                     <h2 class="dessertsProductTitleHClass">
                         {{eachDessertsProductTypeDetails.productTypeTitle}}
                     </h2>
-                    <p class="dessertsProductInfoPClass">
-                        No.s of variety available
-                    </p>
                     <p ng-controller="LocationController" ng-click="collectDataToLoadProductTypeAllProductListForDashboarLevel(eachDessertsProductTypeDetails)" class="viewDessertsProductPClass">
-                        View products
+                        View desserts
                     </p>
                 </div>
             </div>
@@ -198,6 +198,9 @@
             </div>
         </div>
 
+        <!-- create horizontally space div between -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
         <!-- what is desserts khazana -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
@@ -226,7 +229,7 @@
             </div>
         </div>
          
-        <!-- logged authenticated user web application data refresh -->
+        <!-- refresh web application data -->
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
