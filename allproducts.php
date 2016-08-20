@@ -95,12 +95,16 @@
                     </li>
                 </ul>
             </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
             <!-- desserts khazana served desserts product in your selected delivery area -->
             <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
                 <!-- display selected desserts product type ordering by customer -->
                 <li class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
-                    Hey you ordering for '{{customerBreadCrumbOnWebApp.productTypeKey}}' and also we can serve other ({{deliveryAreabasedDkServedDessertsProductTypeList.length}}) dessert(s) in your selected delivery area !!!
+                    Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeKey}}' and also we can serve other <span class="badge vap_dessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
                 </li> 
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts products info  -->
@@ -111,11 +115,8 @@
                         <h2 class="vap_dessertsProductTitleHClass">
                             {{eachDessertsProductTypeDetails.productTypeTitle}}
                         </h2>
-                        <p class="vap_dessertsProductInfoPClass">
-                            No.s of variety available
-                        </p>
                         <p ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachDessertsProductTypeDetails)" class="vap_viewDessertsProductPClass">
-                            View product(s)
+                            View desserts
                         </p>
                     </div>
                 </div>
