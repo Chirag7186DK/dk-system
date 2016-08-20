@@ -481,7 +481,6 @@ function checkAllParamToViewAllProducts(paramObj){
 
 // CJ defined this function 2016-07-10
 function checkAllParamToViewCShopStore(paramObj){
-    alert(JSON.stringify(paramObj));
     var retStatus = false;
     try{
         if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
