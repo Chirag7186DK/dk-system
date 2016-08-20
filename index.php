@@ -54,9 +54,6 @@
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
                     </li>
-                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to show my promo/discount/offers/voucher code">
-                        <i class="fa fa-gift"></i> {{"Offers code"}}
-                    </li>
                     <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
                         <i class="fa fa-sign-out"></i> Log Out
                     </li>
