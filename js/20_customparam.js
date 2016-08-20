@@ -2070,8 +2070,8 @@ function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
         }
     }
     
-    if(retParamObj['country_ids']==='1' && (retParamObj['city_ids']).length===32
-        && (retParamObj['area_ids']).length===32 && (retParamObj['store_ids']).length===32){
+    if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
+        && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['store_ids'])>0){
         return retParamObj;
     }else{
         return false;
