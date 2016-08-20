@@ -43,10 +43,10 @@ include "Site_config.inc.php";
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
-                    <li ng-if='isUserLoggedInSession == true' ng-controller="UsersController" title="Click here to see more details about yourself">
+                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Hello, {{loggedUserName}}
                     </li>
-                    <li ng-if='isUserLoggedInSession == true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
+                    <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
                         <i class="fa fa-sign-out"></i> Log Out
                     </li>
                 </ul>
