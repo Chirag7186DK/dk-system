@@ -923,8 +923,9 @@ app.controller('LocationController', function($scope, $rootScope, $http, Locatio
                 storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(paramObj, 'Y');
                 // refresh all desserts product type list at dashboard level only
                 $rootScope.isDessertsProductTypeProductListLoaded = true;
-                angular.element('#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').scope().loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList();
-                // refresh each desserts product type products list at dashboard level only
+                if($('#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').length===1){
+                    angular.element('#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').scope().loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList();
+                }
                 var preparedParamObj = {};
                 preparedParamObj['productTypeId'] = $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue;
                 preparedParamObj['productTypeTitle'] = $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle;
