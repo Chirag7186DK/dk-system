@@ -272,10 +272,11 @@ class ProductServicesV1 implements IProductServicesV1 {
                                 // iterate each product category 
                                 foreach ($sortedOnProductCategoryArr as $eachProductCategoryId => $productCategoryDetailsArr){
                                     $isRequestedProductCategoryMatched = 'N';
-                                    if($gproductTypeProductCategoryId!=false && $gproductTypeProductCategoryId!=''){
+                                    if($gproductTypeProductCategoryId==false || $gproductTypeProductCategoryId==''
+                                        || $gproductTypeProductCategoryId==null){
                                         $gproductTypeProductCategoryId = $eachProductCategoryId;
                                     }
-                                    if ($eachProductCategoryId == $gproductTypeProductCategoryId) {
+                                    if($eachProductCategoryId==$gproductTypeProductCategoryId){
                                         $isRequestedProductCategoryMatched = 'Y';
                                         $rsltJsonArr['defaultSelectProductCategoryTitle'] = strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']);
                                         $rsltJsonArr['defaultSelectProductCategoryValue'] = $gproductTypeProductCategoryId;
