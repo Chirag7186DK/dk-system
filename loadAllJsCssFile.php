@@ -26,12 +26,14 @@
         $dirname = rtrim($givenDirname, '\\/');
         $outputFileList = array();
         $ffs = scandir($dirname);
-        foreach($ffs as $ff) {
-            if($ff!='.' && $ff!= '..' && $ff!='.git'){
-                if(is_dir($dirname."/".$ff)){
-                }else{
-                    if(strrpos($ff, '.'.$filetype)==(strlen($ff) - strlen('.' . $filetype))){
-                        array_push($outputFileList, $dirname."/".$ff);
+        if(count($ffs)>0 && $ffs!=false){
+            foreach($ffs as $ff){
+                if($ff!='.' && $ff!= '..' && $ff!='.git'){
+                    if(is_dir($dirname."/".$ff)){
+                    }else{
+                        if(strrpos($ff, '.'.$filetype)==(strlen($ff) - strlen('.' . $filetype))){
+                            array_push($outputFileList, $dirname."/".$ff);
+                        }
                     }
                 }
             }
