@@ -5,10 +5,10 @@
     
     // CJ define this function to sort files in numberically order
     function extract_unit($string, $start, $end){
-        $pos = stripos($string, $start);
+        $pos = strripos($string, $start);
         $str = substr($string, $pos);
         $str_two = substr($str, strlen($start));
-        $second_pos = stripos($str_two, $end);
+        $second_pos = strripos($str_two, $end);
         $str_three = substr($str_two, 0, $second_pos);
         $unit = trim($str_three);
         return $unit;
@@ -70,6 +70,10 @@
     $allDirectiveJsFileList = collectJsCssFiles("js/4directive", "js");
     if(count($allDirectiveJsFileList)>0 && $allDirectiveJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allDirectiveJsFileList);
+    }
+    $allAppJsFileList = collectJsCssFiles("js/5app", "js");
+    if(count($allAppJsFileList)>0 && $allAppJsFileList!=false){
+        $allJsFileList = array_merge($allJsFileList, $allAppJsFileList);
     }
     if(count($allJsFileList)>0 && $allJsFileList!=false && $allJsFileList!=null){
         $retStatusSortedFiles = usort($allJsFileList , 'sortFilesNumberically');
