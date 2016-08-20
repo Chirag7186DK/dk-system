@@ -751,6 +751,10 @@
         padding-right:0px!important;
     }
     
+    .vpd_featuresContainerDivClass .panel{
+        margin-bottom:0px!important;
+    }
+    
     .vpd_productDescriptionPanelHeadingDivClass{
         border-bottom:1px solid #fb366e!important;
     }
@@ -779,7 +783,12 @@
     }
 
     .vpd_productRatingReviewDetailsContainerDivClass{
-        margin-top:15px;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .vpd_productRatingReviewDetailsContainerDivClass .panel{
+        margin-bottom:0px!important;
     }
 
     .vpd_productRatingReviewPanelHeadingDivClass{
