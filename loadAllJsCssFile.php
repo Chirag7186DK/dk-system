@@ -67,7 +67,7 @@
     if(count($allControllerJsFileList)>0 && $allControllerJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allControllerJsFileList);
     }
-    $allDirectiveJsFileList = collectJsCssFiles("js/4directive", "js");
+    $allDirectiveJsFileList = collectJsCssFiles("js/4directives", "js");
     if(count($allDirectiveJsFileList)>0 && $allDirectiveJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allDirectiveJsFileList);
     }
