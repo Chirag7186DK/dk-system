@@ -21,7 +21,7 @@ include "Site_config.inc.php";
 
     <!-- body start here -->
 
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='userSessionController' ng-init="loadDefaultDataInDkSession('accountSignUpSignIn'); inBackgroundUpdateAvailableDataFromSession('accountSignUpSignIn');">
+    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('accountSignUpSignIn'); checkInBackgroundDataAvailableForUpdationFromSession('usercaccount');">
 
         <!-- common SCROLL TOP BUTTON -->
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
