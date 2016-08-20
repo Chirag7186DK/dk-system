@@ -67,7 +67,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                                 $eachProductTypeDetailsArr['productTokens'] = $productTokens;
                                 $eachProductTypeDetailsArr['productIcon'] = $productIcon;
                                 $eachProductTypeDetailsArr['isRequestedProductTypeIdMatched'] = $isRequestedProductTypeIdMatched;
-                                if(count($eachProductTypeDetailsArr) > 0 && $eachProductTypeDetailsArr != false) {
+                                if(count($eachProductTypeDetailsArr)>0 && $eachProductTypeDetailsArr!=false){
                                     array_push($finalAllProductTypeListArr, $eachProductTypeDetailsArr);
                                 }
                             }
