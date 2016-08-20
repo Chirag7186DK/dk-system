@@ -13,18 +13,19 @@ class ProductDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = "SELECT 
-                COALESCE(MD5(pt.id), '') productTypeId, COALESCE(pt.name, '') productTypeName
-                FROM DK_PRODUCTTYPE pt WHERE pt.status='A' AND pt.name IS NOT NULL ";
+                COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeName
+                FROM DK_PRODUCTTYPE pt 
+                WHERE pt.status='A' AND pt.name IS NOT NULL ";
                 if($product_type_id!='' && strlen($product_type_id)==32){
-                    $sqlFetchQuery.=" AND MD5(pt.id)='$product_type_id' ";
+                    $sqlFetchQuery.=" AND pt.id='$product_type_id' ";
                 }
                 if($product_typename!='' && $product_typename!=false && $product_typename!=null){
                     $sqlFetchQuery.=" AND pt.name = '$product_typename' ";
                 }
             $sqlFetchQuery.=" ORDER BY pt.sort_order ASC ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retCityListArr = $command->queryAll();
-            if($retCityListArr!=false && count($retCityListArr)>0 && $retCityListArr!=false){
+            $retProductTypeListArr = $command->queryAll();
+            if($retProductTypeListArr!=false && count($retProductTypeListArr)>0){
                 $retResult =  $retCityListArr;
             }
         }catch(Exception $ex){}   
@@ -92,7 +93,7 @@ class ProductDao{
                     if(array_key_exists('product_listids', $paramJson)){
                         if($paramJson['product_listids']!=false && $paramJson['product_listids']!='' 
                             && $paramJson['product_listids']!=null){
-                            $sql.=" AND ppimg.product_listid IN ('".$paramJson['product_listids']."') ";
+                            $sql.=" AND ppimg.product_listid IN (".$paramJson['product_listids'].") ";
                         } 
                     } 
                     
@@ -113,7 +114,7 @@ class ProductDao{
                 if(array_key_exists('shop_storesids', $paramJson)){
                     if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
                         && $paramJson['shop_storesids']!=null){
-                        $sql.=" AND ss.id IN ('".$paramJson['shop_storesids']."') AND spa.shoptstore_id IN ('".$paramJson['shop_storesids']."') ";
+                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND spa.shoptstore_id IN (".$paramJson['shop_storesids'].") ";
                     }
                 }
                 
@@ -121,7 +122,7 @@ class ProductDao{
                 if(array_key_exists('country_city_area_affiliationids', $paramJson)){
                     if($paramJson['country_city_area_affiliationids']!=false && $paramJson['country_city_area_affiliationids']!='' 
                         && $paramJson['country_city_area_affiliationids']!=null){
-                        $sql.=" AND ss.country_city_area_affiliationId IN ('".$paramJson['country_city_area_affiliationids']."') AND ccr.id IN ('".$paramJson['country_city_area_affiliationids']."') ";
+                        $sql.=" AND ss.country_city_area_affiliationId IN (".$paramJson['country_city_area_affiliationids'].") AND ccr.id IN (".$paramJson['country_city_area_affiliationids'].") ";
                     }
                 }
                 
@@ -129,7 +130,7 @@ class ProductDao{
                 if(array_key_exists('country_ids', $paramJson)){
                     if($paramJson['country_ids']!=false && $paramJson['country_ids']!='' 
                         && $paramJson['country_ids']!=null){
-                        $sql.=" AND country.id IN ('".$paramJson['country_ids']."') AND ccr.country_id IN ('".$paramJson['country_ids']."') ";
+                        $sql.=" AND country.id IN (".$paramJson['country_ids'].") AND ccr.country_id IN (".$paramJson['country_ids'].") ";
                     }
                 }
                 
@@ -137,7 +138,7 @@ class ProductDao{
                 if(array_key_exists('city_ids', $paramJson)){
                     if($paramJson['city_ids']!=false && $paramJson['city_ids']!='' 
                         && $paramJson['city_ids']!=null){
-                        $sql.=" AND city.id IN ('".$paramJson['city_ids']."') AND ccr.city_id IN ('".$paramJson['city_ids']."') ";
+                        $sql.=" AND city.id IN (".$paramJson['city_ids'].") AND ccr.city_id IN (".$paramJson['city_ids'].") ";
                     }
                 }
                 
@@ -145,7 +146,7 @@ class ProductDao{
                 if(array_key_exists('area_ids', $paramJson)){
                     if($paramJson['area_ids']!=false && $paramJson['area_ids']!='' 
                         && $paramJson['area_ids']!=null){
-                        $sql.=" AND area.id IN ('".$paramJson['area_ids']."') AND ccr.area_id IN ('".$paramJson['area_ids']."') ";
+                        $sql.=" AND area.id IN (".$paramJson['area_ids'].") AND ccr.area_id IN (".$paramJson['area_ids'].") ";
                     }
                 }
                 
@@ -153,8 +154,8 @@ class ProductDao{
                 if(array_key_exists('product_typeids', $paramJson)){
                     if($paramJson['product_typeids']!=false && $paramJson['product_typeids']!='' 
                         && $paramJson['product_typeids']!=null){
-                        $sql.=" AND pt.id IN ('".$paramJson['product_typeids']."') AND ppc.product_typeid IN ('".$paramJson['product_typeids']."') ";
-                        $sql.=" AND spa.product_typeid IN ('".$paramJson['product_typeids']."') ";
+                        $sql.=" AND pt.id IN (".$paramJson['product_typeids'].") AND ppc.product_typeid IN (".$paramJson['product_typeids'].") ";
+                        $sql.=" AND spa.product_typeid IN (".$paramJson['product_typeids'].") ";
                         $sql.=" AND sppc.shopstores_producttype_affiliationid = spa.id AND sppl.shopstores_producttype_affiliationid = spa.id ";
                     }
                 }
@@ -163,8 +164,8 @@ class ProductDao{
                 if(array_key_exists('product_categoryids', $paramJson)){
                     if($paramJson['product_categoryids']!=false && $paramJson['product_categoryids']!='' 
                         && $paramJson['product_categoryids']!=null){
-                        $sql.=" AND ppc.id IN ('".$paramJson['product_categoryids']."') AND sppl.shopstores_product_categoryid IN ('".$paramJson['product_categoryids']."') ";
-                        $sql.=" AND sppc.producttype_categoryid IN ('".$paramJson['product_categoryids']."') ";
+                        $sql.=" AND ppc.id IN (".$paramJson['product_categoryids'].") AND sppl.shopstores_product_categoryid IN (".$paramJson['product_categoryids'].") ";
+                        $sql.=" AND sppc.producttype_categoryid IN (".$paramJson['product_categoryids'].") ";
                     }
                 }
                 
@@ -172,7 +173,7 @@ class ProductDao{
                 if(array_key_exists('product_listids', $paramJson)){
                     if($paramJson['product_listids']!=false && $paramJson['product_listids']!='' 
                         && $paramJson['product_listids']!=null){
-                        $sql.=" AND sppl.id IN ('".$paramJson['product_listids']."') AND sppfd.product_listid IN ('".$paramJson['product_listids']."') ";
+                        $sql.=" AND sppl.id IN (".$paramJson['product_listids'].") AND sppfd.product_listid IN (".$paramJson['product_listids'].") ";
                     }
                 }
                 
@@ -242,8 +243,8 @@ class ProductDao{
                 if(array_key_exists('not_inproduct_typeids', $paramJson)){
                     if($paramJson['not_inproduct_typeids']!=false && $paramJson['not_inproduct_typeids']!='' 
                         && $paramJson['not_inproduct_typeids']!=null){
-                        $sql.=" AND pt.id NOT IN ('".$paramJson['not_inproduct_typeids']."') AND ppc.product_typeid NOT IN ('".$paramJson['not_inproduct_typeids']."') ";
-                        $sql.=" AND spa.product_typeid NOT IN ('".$paramJson['not_inproduct_typeids']."') AND sppc.shopstores_producttype_affiliationid NOT IN ('".$paramJson['not_inproduct_typeids']."') ";
+                        $sql.=" AND pt.id NOT IN (".$paramJson['not_inproduct_typeids'].") AND ppc.product_typeid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
+                        $sql.=" AND spa.product_typeid NOT IN (".$paramJson['not_inproduct_typeids'].") AND sppc.shopstores_producttype_affiliationid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
                         $sql.=" AND sppl.shopstores_producttype_affiliationid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
                     }
                 }
@@ -288,10 +289,10 @@ class ProductDao{
                 if($sqlOrderByStmt!=''){
                     $sql.= trim($sqlOrderByStmt, ",");
                 }
-            
             $command = $connection->createCommand($sql);
             $retShopStoresProductTypeProductCategoryProductListArr = $command->queryAll();
-            if(count($retShopStoresProductTypeProductCategoryProductListArr)>0 && $retShopStoresProductTypeProductCategoryProductListArr!=false && $retShopStoresProductTypeProductCategoryProductListArr!=''){
+            if(count($retShopStoresProductTypeProductCategoryProductListArr)>0 
+                && $retShopStoresProductTypeProductCategoryProductListArr!=false){
                 $retResult =  $retShopStoresProductTypeProductCategoryProductListArr;    
             }
         }catch(Exception $ex){}
@@ -303,7 +304,8 @@ class ProductDao{
         $retResult = false;
         try{
             $connection = Yii::app()->db;
-            $sqlFetchQuery = "SELECT COALESCE(ppimg.id, '') ppImgId,
+            $sqlFetchQuery = "SELECT 
+                COALESCE(ppimg.id, '') ppImgId,
                 COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
                 COALESCE(ppimg.image_filename, 'no-image.png') productImageFileName,
                 COALESCE(ppimg.file_path, 'images/producttype/default/') productImageFilePath
@@ -365,12 +367,12 @@ class ProductDao{
                 JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
-                AND MD5(urd.shopstore_id)='$shopStoreId'
-                AND MD5(urd.product_listid)='$productListId' 
+                AND urd.shopstore_id='$shopStoreId'
+                AND urd.product_listid='$productListId' 
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
             $retAvgRatingProductDetailsArr = $command->queryAll();
-            if($retAvgRatingProductDetailsArr!=false && count($retAvgRatingProductDetailsArr)>0 && $retAvgRatingProductDetailsArr!=false){
+            if($retAvgRatingProductDetailsArr!=false && count($retAvgRatingProductDetailsArr)>0){
                 $retResult =  $retAvgRatingProductDetailsArr;
             }
         }catch(Exception $ex){}   
@@ -384,9 +386,9 @@ class ProductDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COALESCE(MD5(urd.shopstore_id), '') shopStoreId,
-                COALESCE(MD5(urd.user_id), '') userId,
-                COALESCE(MD5(urd.product_listid), '') productListId,
+                COALESCE(urd.shopstore_id, '') shopStoreId,
+                COALESCE(urd.user_id,'') userId,
+                COALESCE(urd.product_listid, '') productListId,
                 COALESCE(urd.group_no, '') groupNo,
                 (CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 THEN SUM(urd.given_answerpoints) ELSE 0 END) totalRatingByUser,
                 COALESCE(
@@ -396,13 +398,14 @@ class ProductDao{
                 JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND MD5 (urd.shopstore_id) = '$shopStoreId'
-                AND MD5 (urd.user_id) = '$userId' 
-                AND MD5 (urd.product_listid) = '$productListId' 
+                AND urd.shopstore_id='$shopStoreId'
+                AND urd.user_id='$userId' 
+                AND urd.product_listid='$productListId' 
                 GROUP BY urd.group_no ";
             $command = $connection->createCommand($sqlFetchQuery);
             $retUserAvgRatingAboutProductDetailsArr = $command->queryAll();
-            if($retUserAvgRatingAboutProductDetailsArr!=false && count($retUserAvgRatingAboutProductDetailsArr)>0 && $retUserAvgRatingAboutProductDetailsArr!=false){
+            if($retUserAvgRatingAboutProductDetailsArr!=false 
+                && count($retUserAvgRatingAboutProductDetailsArr)>0){
                 $retResult =  $retUserAvgRatingAboutProductDetailsArr;
             }
         }catch(Exception $ex){}   
@@ -415,10 +418,10 @@ class ProductDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COALESCE(MD5(urd.shopstore_id), '') shopStoreId,
-                COALESCE(MD5(urd.user_id), '') userId,
+                COALESCE(urd.shopstore_id, '') shopStoreId,
+                COALESCE(urd.user_id, '') userId,
                 CONCAT(u.name, '') userName,
-                COALESCE(MD5(urd.product_listid), '') productListId,
+                COALESCE(urd.product_listid, '') productListId,
                 COALESCE(urd.group_no, '') groupNo,
                 COALESCE(qrd.question_title, '') questionTitle,
                 COALESCE(qrd.max_points, '') maxPoints,
@@ -429,13 +432,14 @@ class ProductDao{
                 JOIN DK_USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND MD5(urd.shopstore_id) = '$shopStoreId'
-                AND MD5(urd.product_listid) = '$productListId'
-                AND MD5(urd.user_id) = '$userId'
+                AND urd.shopstore_id='$shopStoreId'
+                AND urd.product_listid='$productListId'
+                AND urd.user_id='$userId'
                 AND urd.group_no = '$groupNo' ";
             $command = $connection->createCommand($sqlFetchQuery);
             $retReviewedAboutProductDetailsArr = $command->queryAll();
-            if($retReviewedAboutProductDetailsArr!=false && count($retReviewedAboutProductDetailsArr)>0 && $retReviewedAboutProductDetailsArr!=false){
+            if($retReviewedAboutProductDetailsArr!=false 
+                && count($retReviewedAboutProductDetailsArr)>0){
                 $retResult =  $retReviewedAboutProductDetailsArr;
             }
         }catch(Exception $ex){}   
