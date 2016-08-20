@@ -176,6 +176,7 @@ include "Site_config.inc.php";
 
             <!-- all product list will be loaded here -->
             <div id='cShopStoreViewAllProductDetailsBodyWrapperDivId' ng-show="isLoadCShopStoreProductTypeProductCategoryAllProductList" ng-controller="ShopStoreController" ng-init="loadCShopStoreProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
+                
                 <!-- all product category list will be loaded here -->
                 <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
                     <p class='infoAbtProductCategoriesPClass'>
@@ -187,6 +188,7 @@ include "Site_config.inc.php";
                         </li>
                     </div>
                 </div>
+                
                 <!-- product filter operation main container div -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
                     <!-- info / tips about product filtering operation -->
@@ -219,10 +221,12 @@ include "Site_config.inc.php";
                         </div>
                     </div>
                 </div>
+                
                 <!-- summary info display -->
                 <div ng-show='allProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
                     <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
                 </div>
+                
                 <!-- each product details iterate for displaying purpose -->
                 <div maxheight-productboxwidget-cshopstorelevel ng-repeat="eachProductDetails in allProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
@@ -264,10 +268,12 @@ include "Site_config.inc.php";
                         </button>
                     </p>
                 </div>
+                
                 <!-- not found show msg div -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
                     {{notFoundProductMsgStr}}
                 </div>
+                
             </div>
 
             <!-- displaying all user reviewed rating details -->
