@@ -1222,6 +1222,7 @@ function getParamDataAuthenticatedUserDetailsFromSession(){
                         && (userSessionParamObj['udblogId']).length===32){
                         retParamObj['udblogId'] = userSessionParamObj['udblogId'];
                         retParamObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                        retParamObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
                     }
                 }
             }
@@ -1230,7 +1231,7 @@ function getParamDataAuthenticatedUserDetailsFromSession(){
         console.log("problem in getParamDataAuthenticatedUserDetailsFromSession=>"+ex);
         retParamObj = false;
     }
-    if(Object.keys(retParamObj).length===2){
+    if(Object.keys(retParamObj).length===3){
         return retParamObj;
     }else{
         return false;
