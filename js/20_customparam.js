@@ -98,6 +98,10 @@ function resetDKSessionData(){
     }
 }
 
+
+/////////////////////// Tracking user accessing websites info related data //////////////////////////
+
+
 // CJ defined this function 2016-07-24
 function checkIsUserInfoTrackedAccessingWebsitesDetails(){
     var retStatus = false;
@@ -149,6 +153,7 @@ function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPa
     return retParamObj;
 }
 
+//////////////////////// City details ////////////////////////////////////
 
 // CJ defined this function 2016-07-10
 function storeDefaultDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSessionData){
@@ -302,6 +307,7 @@ function getCustomerDeliveryCityAreaDessertsProductTypeTextForHeader(){
     return retStr;
 }
 
+
 // CJ defined this function 2016-07-10
 function getCustomerBreadcrumb(){
     var customerBreadcrumbObj = {};
@@ -350,6 +356,7 @@ function getCustomerBreadcrumb(){
     }
     return customerBreadcrumbObj;
 }
+
 
 // CJ defined this function 2016-07-10
 function checkAllParamToViewDessertsProducTypeProductListDashboardLevel(paramObj){
@@ -2089,7 +2096,6 @@ function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
                     userEachQuesAnswerRatingReviewAbtProductObj['question_id'] = $(commentInputObj).attr('data-questionid');
                     userEachQuesAnswerRatingReviewAbtProductObj['given_answertext'] = removeHtmlStripTagsOfContent($(commentInputObj).val());
                     userEachQuesAnswerRatingReviewAbtProductObj['answer_pattern'] = $(commentInputObj).attr('data-questionpattern');
-                    
                     userAllQuesAnswerRatingReviewAbtProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
                 }
                 if($('.'+fcClass).find('select').length===3){
