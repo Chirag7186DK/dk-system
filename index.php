@@ -52,7 +52,7 @@
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
-                        <!-- user as customer account showing different section label to access -->
+                        <!-- user account showing different section label to access -->
                         <div class="userAllSectionListDivClass" ng-if='isUserLoggedInSession==true'>
                             <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
                                 Personal Info
