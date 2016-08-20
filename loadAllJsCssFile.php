@@ -11,8 +11,8 @@
     }
     
     // CJ defined this function to collect files in array
-    function collectJsCssFiles($dirname, $filetype){
-        $dirname = rtrim($dirname, '\\/');
+    function collectJsCssFiles($givenDirname, $filetype){
+        $dirname = rtrim($givenDirname, '\\/');
         $outputFileList = array();
         $ffs = scandir($dirname);
         foreach($ffs as $ff) {
