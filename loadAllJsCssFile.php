@@ -9,14 +9,14 @@
         $outputFileList = array();
         $ffs = scandir($dirname);
         foreach($ffs as $ff) {
-            if ($ff!='.' && $ff != '..' && $ff != '.svn'){
-                if (is_dir($dirname . "/" . $ff) && $ff != '.svn'){
+            if($ff!='.' && $ff!= '..' && $ff!='.git'){
+                if(is_dir($dirname."/".$ff)){
                     $collectedFiles = collectfiles("$dirname/$ff", $filetype);
                     if($collectedFiles!=''){
                        //array_push($outputFileList, $collectedFiles);
                     }
                 }else{
-                    if(strrpos($ff, '.'.$filetype) == (strlen($ff) - strlen('.' . $filetype))){
+                    if(strrpos($ff, '.'.$filetype)==(strlen($ff) - strlen('.' . $filetype))){
                         array_push($outputFileList, $ff);
                     }
                 }
