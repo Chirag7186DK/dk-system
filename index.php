@@ -44,7 +44,7 @@
                     <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your all wish list">
                         <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
                     </li>
-                    <li ng-controller="UCustomerController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserCAccount('ordercart');">
+                    <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                         <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
                     <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Log In / Sign Up with desserts khazana account">
@@ -52,6 +52,27 @@
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
+                        <!-- user as customer account showing different section label to access -->
+                        <div class="userAllSectionListDivClass" ng-if='isUserLoggedInSession'>
+                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
+                                Personal Info
+                            </div>
+                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('requestordercart');">
+                                Your Orders
+                            </div>
+                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
+                                Customize Orders
+                            </div>
+                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('wishlist');">
+                                Your WishList
+                            </div>
+                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
+                                Your WishList
+                            </div>
+                            <div class='userEachSectionListDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
+                                My offers
+                            </div>
+                        </div>
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
                         <i class="fa fa-sign-out"></i> Log Out
