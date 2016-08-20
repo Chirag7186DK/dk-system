@@ -13,13 +13,13 @@ class LocationDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    COALESCE(MD5(c.id), '') cityId, 
+                    COALESCE(c.id, '') cityId, 
                     COALESCE(c.name, '') cityName
                     FROM DK_CITYREACHED c 
                     WHERE 
                     c.status='A' AND c.name IS NOT NULL";
                     if($city_ids!=''){
-                        $sql.=" AND MD5(c.id) IN ($city_ids) ";
+                        $sql.=" AND c.id IN ($city_ids) ";
                     }
                     if($city_name!=''){
                         $sql.=" AND LOWER(c.name)='$city_name' ";
@@ -40,13 +40,13 @@ class LocationDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    COALESCE(MD5(a.id), '') areaId, 
+                    COALESCE(a.id, '') areaId, 
                     COALESCE(a.name, '') areaName
                     FROM DK_AREAREACHED a
                     WHERE 
                     a.status='A' AND a.name IS NOT NULL";
                     if($area_ids!=''){
-                        $sql.=" AND MD5(a.id) IN ($area_ids) ";
+                        $sql.=" AND a.id IN ($area_ids) ";
                     }
                     if($area_name!=''){
                         $sql.=" AND LOWER(a.name)='$area_name' ";
@@ -68,27 +68,26 @@ class LocationDao{
         $sqlGroupByStmt = '';
         try{
             $connection = Yii::App()->db;
-            $sql= " SELECT COALESCE(MD5(cca.id), '') ccaId,
-                    COALESCE(MD5(country.id), '') countryId, COALESCE(country.name, '') countryName,
-                    COALESCE(MD5(city.id), '') cityId, COALESCE(city.name, '') cityName,
-                    COALESCE(MD5(area.id), '') areaId, COALESCE(area.name, '') areaName
+            $sql= " SELECT 
+                    COALESCE(cca.id, '') ccaId,
+                    COALESCE(country.id, '') countryId, COALESCE(country.name, '') countryName,
+                    COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
+                    COALESCE(area.id, '') areaId, COALESCE(area.name, '') areaName
                     FROM DK_COUNTRYCITYAREAAFFILIATION cca
                     JOIN DK_COUNTRYREACHED country ON country.id=cca.country_id AND country.status='A'
                     JOIN DK_CITYREACHED city ON city.id=cca.city_id AND city.status='A'
                     JOIN DK_AREAREACHED area ON area.id=cca.area_id AND area.status='A'
                     WHERE cca.status='A' AND country.name IS NOT NULL 
                     AND city.name IS NOT NULL AND area.name IS NOT NULL ";
-                    
                     if($country_ids!=''){
-                        $sql.=" AND MD5(cca.country_id) IN ($country_ids) ";
+                        $sql.=" AND cca.country_id IN ($country_ids) ";
                     }
                     if($city_ids!=''){
-                        $sql.=" AND MD5(cca.city_id) IN ($city_ids) ";
+                        $sql.=" AND cca.city_id IN ($city_ids) ";
                     }
                     if($area_ids!=''){
-                        $sql.=" AND MD5(cca.area_id) IN ($area_ids) ";
+                        $sql.=" AND cca.area_id IN ($area_ids) ";
                     }
-                    
                     if($type_ofdetailsshow!='' && ($type_ofdetailsshow=='city_list' || $type_ofdetailsshow=='city_details')){
                         $sqlGroupByStmt.= " cca.country_id, cca.city_id ";
                     }
