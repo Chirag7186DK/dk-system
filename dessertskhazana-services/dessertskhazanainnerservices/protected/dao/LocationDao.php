@@ -27,7 +27,7 @@ class LocationDao{
             $sql.= " ORDER BY c.sort_order ASC ";    
             $command = $connection->createCommand($sql);
             $retCityList = $command->queryAll();
-            if(count($retCityList)>0 && $retCityList!=false && $retCityList!=''){
+            if(count($retCityList)>0 && $retCityList!=false){
                 $retResult =  $retCityList;    
             }
         }catch(Exception $ex){}
@@ -54,7 +54,7 @@ class LocationDao{
             $sql.= " ORDER BY a.sort_order ASC ";    
             $command = $connection->createCommand($sql);
             $retAreaList = $command->queryAll();
-            if(count($retAreaList)>0 && $retAreaList!=false && $retAreaList!=''){
+            if(count($retAreaList)>0 && $retAreaList!=false){
                 $retResult =  $retAreaList;    
             }
         }catch(Exception $ex){}
@@ -98,7 +98,7 @@ class LocationDao{
             $sql.= " ORDER BY country.sort_order ASC, city.sort_order ASC, area.sort_order ASC ";    
             $command = $connection->createCommand($sql);
             $retCountryCityAreaAffiliationList = $command->queryAll();
-            if(count($retCountryCityAreaAffiliationList)>0 && $retCountryCityAreaAffiliationList!=false && $retCountryCityAreaAffiliationList!=''){
+            if(count($retCountryCityAreaAffiliationList)>0 && $retCountryCityAreaAffiliationList!=false){
                 $retResult =  $retCountryCityAreaAffiliationList;    
             }
         }catch(Exception $ex){}
