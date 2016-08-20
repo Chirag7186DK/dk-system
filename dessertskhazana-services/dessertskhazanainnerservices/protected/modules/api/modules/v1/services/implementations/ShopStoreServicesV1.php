@@ -10,7 +10,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     // CJ defined this action 2016-06-24
     public function getCShopStoreSummaryInfo($dkParamDataArr){
         $rspDetails = array();
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['shopstoreInfo'] = array();
             $rsltJsonArr['totalCountDeliveryArea'] = '';
@@ -107,8 +107,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     // CJ defined this action 2016-06-24
     public function getCShopStoreProductTypeProductCategoryAllProductDetails($dkParamDataArr){
         $rspDetails = array();
-        // checking 
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultedSelectedProductTypeTitle'] = '';
             $rsltJsonArr['defaultSelectProductCategoryTitle'] = '';
@@ -171,7 +170,8 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     // iterate each product category 
                     foreach($sortedOnProductCategoryArr as $eachProductCategoryId=>$productCategoryDetailsArr){
                         $isRequestedProductCategoryMatched = 'N';
-                        if($gproductTypeProductCategoryId!=false && $gproductTypeProductCategoryId!=''){
+                        if($gproductTypeProductCategoryId==false || $gproductTypeProductCategoryId==null
+                            || $gproductTypeProductCategoryId!=''){
                             $gproductTypeProductCategoryId = $eachProductCategoryId;
                         }
                         if($eachProductCategoryId==$gproductTypeProductCategoryId){
@@ -263,9 +263,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                 if(count($productTypeProductCategoryAllProductList)>0 && $productTypeProductCategoryAllProductList!=false){
                     $rsltJsonArr['allProductDetailsList'] = $productTypeProductCategoryAllProductList;
                 }
-
             }
-
             $rspDetails["productTypeDetails"] = $rsltJsonArr;
         }
         ComponentsJson::GenerateJsonAndSend($rspDetails);
