@@ -481,6 +481,7 @@ function checkAllParamToViewAllProducts(paramObj){
 
 // CJ defined this function 2016-07-10
 function checkAllParamToViewCShopStore(paramObj){
+    alert(JSON.stringify(paramObj));
     var retStatus = false;
     try{
         if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
@@ -496,8 +497,8 @@ function checkAllParamToViewCShopStore(paramObj){
                     existingDkParamObj['userProduct']['shopstore_value'] = paramObj['shopStoreId'];
                     existingDkParamObj['userProduct']['producttype_value'] = paramObj['productTypeId'];
                     existingDkParamObj['userProduct']['producttype_categoryvalue'] = '';
-                    if(paramObj.hasOwnProperty('productTypeProductCategoryId')===true){
-                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = paramObj['productTypeProductCategoryId'];
+                    if(paramObj.hasOwnProperty('productCategoryId')===true){
+                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = paramObj['productCategoryId'];
                     }
                     existingDkParamObj['userProduct']['producttype_listvalue'] = '';
                     if(paramObj.hasOwnProperty('productListId')===true){
