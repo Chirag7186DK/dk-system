@@ -72,7 +72,7 @@ class ShopStoreDao{
                 if(array_key_exists('shop_storesids', $paramJson)){
                     if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
                         && $paramJson['shop_storesids']!=null){
-                        $sql.=" AND ss.id IN ('".$paramJson['shop_storesids']."') AND sdl.shoptstore_id IN ('".$paramJson['shop_storesids']."') ";
+                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND sdl.shoptstore_id IN (".$paramJson['shop_storesids'].") ";
                     }
                 }
                 
@@ -80,7 +80,7 @@ class ShopStoreDao{
                 if(array_key_exists('country_ids', $paramJson)){
                     if($paramJson['country_ids']!=false && $paramJson['country_ids']!='' 
                         && $paramJson['country_ids']!=null){
-                        $sql.=" AND sdl.country_id IN ('".$paramJson['country_ids']."') AND country.id IN ('".$paramJson['country_ids']."') ";
+                        $sql.=" AND sdl.country_id IN (".$paramJson['country_ids'].") AND country.id IN (".$paramJson['country_ids'].") ";
                     }
                 }
                 
@@ -88,7 +88,7 @@ class ShopStoreDao{
                 if(array_key_exists('city_ids', $paramJson)){
                     if($paramJson['city_ids']!=false && $paramJson['city_ids']!='' 
                         && $paramJson['city_ids']!=null){
-                        $sql.=" AND sdl.city_id IN ('".$paramJson['city_ids']."') AND city.id IN ('".$paramJson['city_ids']."') ";
+                        $sql.=" AND sdl.city_id IN (".$paramJson['city_ids'].") AND city.id IN (".$paramJson['city_ids'].") ";
                     }
                 }
                 
@@ -96,7 +96,7 @@ class ShopStoreDao{
                 if(array_key_exists('area_ids', $paramJson)){
                     if($paramJson['area_ids']!=false && $paramJson['area_ids']!='' 
                         && $paramJson['area_ids']!=null){
-                        $sql.=" AND sdl.area_id IN ('".$paramJson['area_ids']."') AND area.id IN ('".$paramJson['area_ids']."') ";
+                        $sql.=" AND sdl.area_id IN (".$paramJson['area_ids'].") AND area.id IN (".$paramJson['area_ids'].") ";
                     }
                 }
                 
