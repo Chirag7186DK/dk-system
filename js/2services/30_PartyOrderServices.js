@@ -1,28 +1,15 @@
 
-// CJ defined this function 2016-06-22
-app.factory('ShopStoreServices', function($http, $q){
+// CJ defined this function 2016-07-20
+app.factory('PartyOrdersServices', function($http, $q){
     try{
-        var shopstoreDetails = {};
-        
-        shopstoreDetails.getCShopStoreSummaryInfo = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/CShopStoreSummaryInfo", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
+        var partyOrdersDetails = {
+            addPartyOrderRequest:function(preparedParamJsonObj){
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/PartyOrders/ManagePartyOrdersRequest", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){});
+                return promiseObject;
+            }
         };
-        shopstoreDetails.getCShopStoreProductTypeProductCategoryAllProductList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/CShopStoreProductTypeProductCategoryAllProductDetails", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
-        };
-        shopstoreDetails.getCShopStoreWorkingStyleDetails = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/CshopstoreWorkingstyle", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
-        };
-        shopstoreDetails.getCShopStoreProductDeliveryAreaDetails = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/CshopstoreProductdeliveryAreaInfo", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
-        };
-        return shopstoreDetails;
+        return partyOrdersDetails;
     }catch(ex){
-        console.log("problem in Shopstore services ex=>"+ex);
         return false;
     }
 }); 
