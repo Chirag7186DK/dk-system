@@ -1430,6 +1430,8 @@ app.controller('ProductTypeProductCategoryProductDetailsController', function($s
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     
+                    $rootScope.defaultSelectProductTypeitle = '';
+                    $rootScope.defaultSelectProductTypeValue = '';
                     $rootScope.defaultSelectProductCategoryTitle = '';
                     $rootScope.defaultSelectProductCategoryValue = '';
                     $rootScope.productCategoryList = false;
@@ -1443,13 +1445,14 @@ app.controller('ProductTypeProductCategoryProductDetailsController', function($s
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    //console.log("loadProductTypeProductCategoryAllProductList retObj=>"+JSON.stringify(retObj));
                                     if(retObj.productTypeDetails.productCategoryList!==false){
                                         $rootScope.productCategoryList = retObj.productTypeDetails.productCategoryList;
                                     }
                                     $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
                                     if(retObj.productTypeDetails.defaultSelectProductCategoryValue!==''){
                                         var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                                        existingDkParamObj['userProduct']['producttype_name'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
+                                        existingDkParamObj['userProduct']['producttype_value'] = retObj.productTypeDetails.defaultedSelectedProductTypeValue;
                                         existingDkParamObj['userProduct']['producttype_categoryvalue'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
                                         existingDkParamObj['userProduct']['producttype_categoryname'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
                                         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
