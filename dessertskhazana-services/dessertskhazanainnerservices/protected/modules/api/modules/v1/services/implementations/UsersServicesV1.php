@@ -58,6 +58,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                         $rspDetails['userDetails']['udblogId'] = MD5($retLastInsertedUserInfoLogId);
                         $rspDetails['userDetails']['user_sessionid'] = $dkParamDataArr['user_sessionid'];
                         $rspDetails['userDetails']['user_sessionstarttime'] = $dkParamDataArr['user_sessionstarttime'];
+                        $rspDetails['userDetails']['userProfileTypeId'] = $dkParamDataArr['unmd5ProfileTypeId'];
                     }
                 }
             }else{
