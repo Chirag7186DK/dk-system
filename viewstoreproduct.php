@@ -275,6 +275,9 @@ include "Site_config.inc.php";
                 
             </div>
 
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
             <!-- displaying all user reviewed rating details -->
             <div ng-show="isShowShopStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadShopStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
                 <span class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
