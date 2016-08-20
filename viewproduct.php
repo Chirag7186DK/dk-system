@@ -83,6 +83,7 @@
 
         <!-- view specific product type ka product category ka product details -->
         <div ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass activateHeaderOnwindowScroll">
+            
             <!-- customer bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_userBreadcrumbDivClass">
                 <ul class="vpd_userBreadcrumbULClass list-inline">
@@ -105,11 +106,16 @@
                     </li>
                 </ul>
             </div>
+            
             <!-- shop store serve desserts product -->
             <div ng-show="vPDetails.isShopStoreServedOtherProducts" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreKey}}' store and also serve other ({{vPDetails.storeServedOtherProductsDetails.length}}) dessert(s) product are as follows :-
+                    Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreKey}}' and also can serve other 
+                    <span class="badge vpd_dessertsProductTypeCountSClass">
+                        {{vPDetails.storeServedOtherProductsDetails.length}}
+                    </span>
+                    desserts are as follows :-
                 </li>
                 <!-- display all desserts product can served by shop store in selected delivery area -->
                 <div id="vpd_shopStoreServedAllDessertsProductScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass'>
@@ -121,15 +127,16 @@
                         <h2 class="dessertsProductTitleHClass">
                             {{eachOtherProductServedDetailsByStore.productTypeTitle}}
                         </h2>
-                        <p class="dessertsProductInfoPClass">
-                            No.s of variety available
-                        </p>
                         <p ng-controller='ShopStoreController' ng-click="collectDataToViewCShopstore(eachOtherProductServedDetailsByStore)" class="viewDessertsProductPClass">
                             View product(s)
                         </p>
                     </div>
                 </div>
             </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
             <!-- show product images -->
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_productImagesContainerDivClass">
                 <p class='vpd_productImagesDetailsLabelPClass'>
@@ -218,8 +225,9 @@
                 </p>
             </div>
             
-            <!-- creating horizontally space by div -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_horizontallySpaceContainerDivClass"></div>
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+
             
             <!-- product description details -->
             <div ng-controller='ProductTypeProductCategoryProductDetailsController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_featuresContainerDivClass" ng-show="isProductDescriptionDetailsFound">
