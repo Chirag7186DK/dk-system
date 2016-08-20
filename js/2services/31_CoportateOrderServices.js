@@ -1,75 +1,17 @@
 
 // CJ defined this function 2016-07-24
-app.factory('UsersServices', function($http, $q, $rootScope){
+app.factory('CorporateTieupServices', function($http, $q){
     try{
-        
-        var userDetails = {};
-        
-        userDetails.checkUserAuthentication = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/CheckUserAuthentication", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
-        };
-        
-        // resetUserDashboardVariableData
-        userDetails.resetUserDashboardVariableData = function(userDashboardDataObj){
-            if(userDashboardDataObj!=='' && userDashboardDataObj!==false && userDashboardDataObj!==undefined){
-                $rootScope.loggedUserName = userDashboardDataObj['loggedUserName'];
-                $rootScope.userSinceFrom = userDashboardDataObj['userSinceFrom'];
-                $rootScope.isEnableRatingReviewSubmitButton = true;
-                if(userDashboardDataObj['isUserLoggedInSession']==='Y'){
-                    $rootScope.isUserLoggedInSession = true;
-                }else{
-                    $rootScope.isUserLoggedInSession = false;
-                }
-            }else{
-                $rootScope.loggedUserName = '';
-                $rootScope.userSinceFrom = '';
-                $rootScope.isEnableRatingReviewSubmitButton = false;
-                $rootScope.isUserLoggedInSession = false;
+        var corporateTieupDetails = {
+            addingCorporateTieupRequest:function(preparedParamJsonObj){
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CorporateTieup/ManageCorporateTieupRequest", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){
+                    return retResponseJson;
+                });
+                return promiseObject;
             }
         };
-        
-        // refreshUserDashboardSummaryDataDetails
-        userDetails.refreshUserDashboardSummaryDataDetails = function(){
-            try{
-                // fetch param data from session
-                var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
-                    // calling UsersServices 
-                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserDashboardSummaryData", 'apiFile', 'GET', '', fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
-                        $rootScope.$apply(function(){
-                            var userDashboardDataObj = false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userDashboardDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
-                            }
-                            if(userDashboardDataObj!=='' && userDashboardDataObj!==false && userDashboardDataObj!==undefined){
-                                userDetails.resetUserDashboardVariableData(userDashboardDataObj);
-                            }else{
-                                userDetails.resetUserDashboardVariableData(false);
-                            }
-                        });
-                    });
-                }else{
-                    userDetails.resetUserDashboardVariableData(false);
-                }
-            }catch(ex){
-                showHideLoaderBox('hide');
-                console.log("Problem in refreshUserDashboardSummaryDataDetails=>"+ex);
-            }
-        };
-        
-        return userDetails;
-        
+        return corporateTieupDetails;
     }catch(ex){
         return false;
     }
-}); 
+});
