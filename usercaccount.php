@@ -109,8 +109,8 @@ include "Site_config.inc.php";
                 </ul>
             </div>
 
-            <!-- create space div class -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 createHorizontalSpaceDivClass"></div>
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
             <!-- order cart section details with each tab level -->
             <div ng-if="requestedSectionName==='ordercart'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartSectionContainerDivClass">
@@ -134,8 +134,8 @@ include "Site_config.inc.php";
                     </li>
                 </div>
 
-                <!-- create space div class -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 createHorizontalSpaceDivClass"></div>
+                <!-- create horizontally space div between -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
                 <!-- requested order cart each section tabs info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllItemListSectionDivClass'>
