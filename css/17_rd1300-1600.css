@@ -67,11 +67,27 @@
     .topMenuBarULClass li i {
         color:#FAB005!important;
     }
+    
+    .userAccountAllSectionListDropdownDivClass{
+        background:#fff!important;
+        box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
+        position:absolute!important;
+        z-index:3;
+        margin-top:5px!important;
+    }
+    
+    .userAccountAllSectionListDropdownDivClass .userAccountEachSectionListDropdownDivClass{
+        padding:6px!important;
+        color:#999!important;
+        text-align:left!important;
+        cursor:pointer!important;
+    }
 
     .showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass{
         text-align:center;
         color:#999!important;
         font-weight:bold!important;
+        font-size:16px!important;
     }
 
     .showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass{
