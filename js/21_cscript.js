@@ -1,14 +1,4 @@
 
-// web-app loaded on devices type detect here
-var isWindowResize = 'N';
-var deviceWidth = parseInt($(window).width());
-var deviceHeight = parseInt($(window).height());
-console.log("on load deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight);
-//alert("on laod deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight);
-
-// web-app module defined here 
-var app = angular.module('DESSERTSKHAZANAAPP', []);
-
 ///////////////////// DK services start here ////////////////////////////////
 
 // CJ defined this function 2016-04-22
