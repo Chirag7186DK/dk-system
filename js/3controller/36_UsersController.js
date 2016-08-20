@@ -122,6 +122,16 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
             }
         };
         
+        // storeRequestedSectionNameToAccessInUserCAccount
+        $rootScope.storeRequestedSectionNameToAccessInUserCAccount = function(requestedSectionName){
+            var isUserLoggedInSession = checkUserLoggedInSession();
+            if(requestedSectionName!=='' && requestedSectionName!==false 
+                && requestedSectionName!==undefined && isUserLoggedInSession===true){
+                storeRequestedSectionNameToAccessInUserCAccount(requestedSectionName);
+                window.location.href = globalBaseSitePath+"usercaccount.php";
+            }
+        };
+        
     }catch(ex){
         console.log("problem in users controller ex=>"+ex);
     }
