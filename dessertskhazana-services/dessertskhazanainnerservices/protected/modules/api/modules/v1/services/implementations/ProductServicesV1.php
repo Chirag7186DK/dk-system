@@ -9,8 +9,8 @@ class ProductServicesV1 implements IProductServicesV1 {
     // CJ defined this action 2016-06-06
     public function getDeliveryAreaBasedProductTypeList($dkParamDataArr){
         $rspDetails = array();
-        // checking requested param datas
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        // checking requested param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails'] = false;
             $rsltJsonArr['allProductTypeList'] = false;
@@ -36,7 +36,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                     if(count($retAreaBasedConductProductTypeShopStoreDetailsArr)>0 && $retAreaBasedConductProductTypeShopStoreDetailsArr!=false){
                         // sorted on product type details
                         $sortedOnProductTypeDetailsArr = utils::arraySort($retAreaBasedConductProductTypeShopStoreDetailsArr, array("productTypeId"), array("productTypeId" => "productTypeTitle"));
-                        if (count($sortedOnProductTypeDetailsArr)>0 && $sortedOnProductTypeDetailsArr!=false){
+                        if(count($sortedOnProductTypeDetailsArr)>0 && $sortedOnProductTypeDetailsArr!=false){
                             $finalAllProductTypeListArr = array();
                             // iterate each product type info details
                             foreach($sortedOnProductTypeDetailsArr as $eachProductTypeIdTitle=>$eachProductTypeAllProductDetailsArr){
@@ -48,12 +48,12 @@ class ProductServicesV1 implements IProductServicesV1 {
                                 $eachProductTypeDetailsArr = array();
                                 $eachProductTypeDetailsArr['productTypeId'] = $eachProductTypeIdTitleExplodedOnHash[0];
                                 $eachProductTypeDetailsArr['productTypeTitle'] = $eachProductTypeIdTitleExplodedOnHash[1];
-                                if (strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='cakes'){
+                                if(strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='cakes'){
                                     $productTokens = 'CAKES,cakes,'.strtolower($eachProductTypeIdTitleExplodedOnHash[0]).",".$eachProductTypeIdTitleExplodedOnHash[0];
                                     $productTokens.=", ".strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
                                     $productIcon = 'fa fa-birthday-cake';
                                 }
-                                if (strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='ice cream'){
+                                if(strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='ice cream'){
                                     $productTokens = 'ICE CREAM, ice cream,' . strtolower($eachProductTypeIdTitleExplodedOnHash[0]) . "," . $eachProductTypeIdTitleExplodedOnHash[0];
                                     $productTokens.=", " . strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
                                     $productIcon = 'fa fa-birthday-cake';
@@ -71,14 +71,14 @@ class ProductServicesV1 implements IProductServicesV1 {
                                     array_push($finalAllProductTypeListArr, $eachProductTypeDetailsArr);
                                 }
                             }
-                            if($finalAllProductTypeListArr!=false && count($finalAllProductTypeListArr)>0) {
+                            if($finalAllProductTypeListArr!=false && count($finalAllProductTypeListArr)>0){
                                 $rsltJsonArr['allProductTypeList'] = $finalAllProductTypeListArr;
                             }
                         }
                     }
                 }
             }
-            if($rsltJsonArr['allProductTypeList']!=false && count($rsltJsonArr['allProductTypeList'])>0) {
+            if($rsltJsonArr['allProductTypeList']!=false && count($rsltJsonArr['allProductTypeList'])>0){
                 $rspDetails["deliveryAreaBasedProductTypeDetails"] = $rsltJsonArr;
             }
         }
@@ -89,7 +89,7 @@ class ProductServicesV1 implements IProductServicesV1 {
     public function getProductTypeProductCategoryProductListForDashboardLevel($dkParamDataArr){
         $rspDetails = array();
         // checking requested param obj
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // initial variable declare
             $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
@@ -169,7 +169,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                                     }
                                 }
                                 // final checking 
-                                if(count($allProductTypeProductCategoryProductList)>0){
+                                if(count($allProductTypeProductCategoryProductList)>0 && $allProductTypeProductCategoryProductList!=false){
                                     $rspDetails["allProductTypeProductCategoryProductList"] = $allProductTypeProductCategoryProductList;
                                     $rspDetails["defaultSelectedProductTypeDetails"] = false;
                                     if(count($dashBoardLevelDefaultProductTypeSelected)>0){
@@ -292,7 +292,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                                         )
                                     );
 
-                                    if ($isRequestedProductCategoryMatched == 'Y') {
+                                    if($isRequestedProductCategoryMatched=='Y'){
                                         // prepare data shopstore filering 
                                         // sort on shopstore ids
                                         $sortedOnShopStoresArr = utils::arraySort($productCategoryDetailsArr, array("shopStoreId"));
@@ -301,7 +301,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                                         // prepare data for price range, sorting etc filerting
                                         // sorted on online product price 
                                         $retSortedPriceRangeListArr = utils::arraySort($productCategoryDetailsArr, array('productFeatureOnlineSellingPrice'));
-                                        if (count($retSortedPriceRangeListArr) > 0 && $retSortedPriceRangeListArr != false) {
+                                        if(count($retSortedPriceRangeListArr) > 0 && $retSortedPriceRangeListArr != false) {
                                             $minPriceValue = min(array_keys($retSortedPriceRangeListArr));
                                             $maxPriceValue = max(array_keys($retSortedPriceRangeListArr));
                                             $resultArr = commonfunction :: preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, $gProductPriceFilterArr, $gProductPriceSortOn);
@@ -312,14 +312,14 @@ class ProductServicesV1 implements IProductServicesV1 {
                                         // prepare data for size range
                                         $retSortedOnProductSizeArr = array_keys(utils::arraySort($productCategoryDetailsArr, array("productFeatureDisplayMeasurementType")));
                                         $isProductSizeArrSorted = sort($retSortedOnProductSizeArr);
-                                        if ($isProductSizeArrSorted == true && count($retSortedOnProductSizeArr) > 0 && $retSortedOnProductSizeArr != false) {
+                                        if($isProductSizeArrSorted == true && count($retSortedOnProductSizeArr) > 0 && $retSortedOnProductSizeArr != false) {
                                             $rsltJsonArr['allProductSizeDetailsArr']['rangeList'] = commonfunction :: preparedProductSizeFilterationData($retSortedOnProductSizeArr, $gProductSizeFilterArr);
                                         }
 
                                         // prepare data for discount range, sorting etc filerting
                                         // sorted on product discount 
                                         $sortedProductDiscountListArr = array_values(array_filter(array_keys(utils::arraySort($productCategoryDetailsArr, array('productFeatureDiscount')))));
-                                        if (count($sortedProductDiscountListArr) > 0 && $sortedProductDiscountListArr != false) {
+                                        if(count($sortedProductDiscountListArr)>0 && $sortedProductDiscountListArr != false) {
                                             $minDiscountValue = min($sortedProductDiscountListArr);
                                             $maxDiscountValue = max($sortedProductDiscountListArr);
                                             $resultArr = commonfunction :: preparedProductDiscountFilterationData($minDiscountValue, $maxDiscountValue, $gProductDiscountFilterArr, $gProductDiscountSortOn);
@@ -364,7 +364,7 @@ class ProductServicesV1 implements IProductServicesV1 {
                     // fetch product list
                     $productTypeProductCategoryAllProductList = false;
                     $retAllShopStoresProductTypeProductCategoryProductListArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj2);
-                    if(count($retAllShopStoresProductTypeProductCategoryProductListArr) > 0 && $retAllShopStoresProductTypeProductCategoryProductListArr != false) {
+                    if(count($retAllShopStoresProductTypeProductCategoryProductListArr)>0 && $retAllShopStoresProductTypeProductCategoryProductListArr != false) {
                         // sort on product type id, product c$applyWhereConditionArrategory id
                         // preparing product list
                         $sortedOnProductTypeProductCategoryDetailsArr = utils::arraySort($retAllShopStoresProductTypeProductCategoryProductListArr, array("productTypeId", "productTypeProductCategoryId"));
@@ -408,7 +408,7 @@ class ProductServicesV1 implements IProductServicesV1 {
     public function getProductTypeProductCategoryProductDetails($dkParamDataArr){
         $rspDetails = array();
         // checking requested param data
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // initial variable declare
             $gShopStoreId = $dkParamDataArr['store_ids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
@@ -490,10 +490,10 @@ class ProductServicesV1 implements IProductServicesV1 {
                                 // iterate each product type details
                                 foreach ($sortedOnProductTypeDetailsShopStoresAffiliatedArr as $eachServedOtherProductTypeTitle => $servedOtherProductTypeDetailsArr) {
                                     $productIcon = 'fa fa-birthday-cake';
-                                    if (strtolower($eachServedOtherProductTypeTitle) == "cakes") {
+                                    if(strtolower($eachServedOtherProductTypeTitle)=="cakes"){
                                         $productIcon = 'fa fa-birthday-cake';
                                     }
-                                    if (strtolower($eachServedOtherProductTypeTitle) == "ice cream") {
+                                    if(strtolower($eachServedOtherProductTypeTitle)=="ice cream"){
                                         $productIcon = 'fa fa-birthday-cake';
                                     }
                                     array_push($storeServedOtherProductsDetails, 
@@ -532,7 +532,7 @@ class ProductServicesV1 implements IProductServicesV1 {
     public function getProductTypeProductCategoryProductDescriptionDetails($dkParamDataArr){
         $rspDetails = array();
         // checking requested param data
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!= '' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gproductListId = $dkParamDataArr['product_ids'];
             // fetch product description details
             $retProductDescriptionDetails = ProductDao::getProductDescriptionDetails($gproductListId);
