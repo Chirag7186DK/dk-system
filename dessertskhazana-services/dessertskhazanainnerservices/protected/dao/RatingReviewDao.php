@@ -235,9 +235,9 @@ class RatingReviewDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COALESCE(MD5(urd.shopstore_id), '') shopStoreId,
-                COALESCE(MD5(urd.user_id), '') userId,
-                COALESCE(MD5(urd.product_listid), '') productListId,
+                COALESCE(urd.shopstore_id, '') shopStoreId,
+                COALESCE(urd.user_id, '') userId,
+                COALESCE(urd.product_listid, '') productListId,
                 COALESCE(urd.group_no, '') groupNo,
                 (CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 THEN SUM(urd.given_answerpoints) ELSE 0 END) totalRatingByUser,
                 COALESCE(
