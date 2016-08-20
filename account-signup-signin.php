@@ -41,16 +41,10 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
                     <li title="Click here to contact us">
-                        <i class="fa fa-home"></i> 
-                        <a href="<?php echo $BaseSitePath; ?>">
-                            Home
-                        </a>
-                    </li>
-                    <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
                     <li title="Click here to view your current order cart all item(s)">
-                        <i class="fa fa-shopping-basket"></i> Cart ({{ordercartItemRequestedCount}})
+                        <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
                 </ul>
             </div>
