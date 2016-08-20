@@ -50,7 +50,6 @@ app.controller('ProductTypeProductCategoryProductDetailsController', function($s
             try{
                 // get param obj to product type ka product list
                 var preparedParamJsonObj = getParamObjFromSessionForLoadingDashboardLevelProduct();
-                console.log("loadProductTypeProductCategoryProductListForDashboardLevel preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
