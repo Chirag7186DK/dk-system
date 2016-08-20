@@ -128,7 +128,7 @@
             <!-- all product category list will be loaded here -->
             <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 <p class='vap_productInfoAbtProductCategoryMsgPClass'>
-                    Info *: <i class="fa fa-smile-o"></i> Hey you can choose '{{customerBreadCrumbOnWebApp.productTypeKey}}' desserts from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
+                    Info *: <i class="fa fa-smile-o"></i> Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeKey}}' products from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
                 </p>
                 <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
                     <li ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
