@@ -50,10 +50,10 @@
                     <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Log In / Sign Up with desserts khazana account">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Log In / Sign Up
                     </li>
-                    <li ng-controller="UsersController">
+                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
                         <!-- user account showing different section label to access -->
-                        <div class="userAccountAllSectionListDropdownDivClass">
+                        <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
                             <div title="Click here to see more details about yourself" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
                                 Personal Info
                             </div>
