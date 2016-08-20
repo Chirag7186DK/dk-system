@@ -31,5 +31,6 @@ input, textarea, select, .form-control{
 }
 
 .commonHorizontalSpaceDivClass{
-    margin:7px;
+    margin-top:15px;
+    margin-bottom:15px;
 }
