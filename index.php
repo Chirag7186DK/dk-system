@@ -113,7 +113,7 @@
             </li> 
             <div id="dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                 <!-- iterate each desserts products info-->  
-                <div ng-repeat="eachDessertsProductTypeDetails in deliveryAreabasedDkServedDessertsProductTypeList" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='dl_DeliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-dashboardlevel>
+                <div ng-repeat="eachDessertsProductTypeDetails in deliveryAreabasedDkServedDessertsProductTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='dl_DeliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-dashboardlevel>
                     <p class="dessertsProductIconPClass">
                         <i class="{{eachDessertsProductTypeDetails.productIcon}} dessertsProductIconClass"></i>
                     </p>
