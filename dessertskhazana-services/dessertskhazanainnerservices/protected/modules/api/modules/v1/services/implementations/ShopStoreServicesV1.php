@@ -171,7 +171,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     foreach($sortedOnProductCategoryArr as $eachProductCategoryId=>$productCategoryDetailsArr){
                         $isRequestedProductCategoryMatched = 'N';
                         if($gproductTypeProductCategoryId==false || $gproductTypeProductCategoryId==null
-                            || $gproductTypeProductCategoryId!=''){
+                            || $gproductTypeProductCategoryId==''){
                             $gproductTypeProductCategoryId = $eachProductCategoryId;
                         }
                         if($eachProductCategoryId==$gproductTypeProductCategoryId){
