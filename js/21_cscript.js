@@ -2678,7 +2678,7 @@ app.controller('ShopStoreController', function($scope, $rootScope, $http, ShopSt
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Hide Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.loadShopStoreAllUserRatingReviewed();
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = true;
+                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
                 $rootScope.cShopstoreProductDeliveryAreaNames = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
