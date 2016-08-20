@@ -27,10 +27,13 @@ $SiteTitle= 'DESSERTS KHAZANA';
 $apiAccessHashkey = 'trr36pdthb9xbhcppyqkgbpkq';
 
 // product started year
-$product_year = '2016';
+$product_versionyear = '2016';
 
 // decide is product in maintainenace mode
 $isProductInMaintainanceMode = 'N';
+
+// decide to enable/disable document right click
+$isDisableDocumentRightClick = 'N';
 
 // error reporting about generating/resolving
 $isSendSmsEmailToAdminOnErrorOccured = 'N';
@@ -42,7 +45,6 @@ $SMSUSERNAME = "yogesh.mahajan@digitaledu.net";
 $SMSPASSWORD = 'q27d!g!taledu';
 $SMSSENDER = 'SCHOOL';
 $SMSDOMAIN = 'http://www.businesssms.co.in';
-
 
 // custom powered by defined title
 $poweredby = 'Chirag D Jain';
