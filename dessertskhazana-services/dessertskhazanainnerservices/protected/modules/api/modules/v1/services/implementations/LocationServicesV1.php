@@ -10,7 +10,7 @@ class LocationServicesV1 implements ILocationServicesV1{
     // CJ defined this action 2016-06-06
     public function getDeliveryCityDetails($dkParamDataArr){
         $rspDetails = array();
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = false;
             $rsltJsonArr['allCityList'] = false;
@@ -78,7 +78,7 @@ class LocationServicesV1 implements ILocationServicesV1{
     public function getDeliveryAreaDetails($dkParamDataArr){
         $rspDetails = array();
         // checking requested param
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = false;
             $rsltJsonArr['allAreaList'] = false;
