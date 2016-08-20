@@ -3,6 +3,13 @@
     header("Cache-Control: no-store, no-cache"); 
     clearstatcache();
     
+    // CJ define this function to sort files in numberically order
+    function sortFilesNumberically($fileString1, $fileString2){
+        $substrFileStr1 = substr($fileString1, 0, strpos($fileString1, "_", 0));
+        $substrFileStr2 = substr($fileString2, 0, strpos($fileString2, "_", 0));
+        return ($substrFileStr1 < $substrFileStr2) ? -1 : 1;
+    }
+    
     // CJ defined this function to collect files in array
     function collectfiles($dirname, $filetype){
         $dirname = rtrim($dirname, '\\/');
@@ -24,14 +31,6 @@
         }
         return $outputFileList;
     }
-    
-    // CJ define this function to sort files in numberically order
-    function sortFilesNumberically($fileString1, $fileString2){
-        $substrFileStr1 = substr($fileString1, 0, strpos($fileString1, "_", 0));
-        $substrFileStr2 = substr($fileString2, 0, strpos($fileString2, "_", 0));
-        return ($substrFileStr1 < $substrFileStr2) ? -1 : 1;
-    } 
-    
     
     // collect all css files 
     $css_filelist = collectfiles("css", "css");
