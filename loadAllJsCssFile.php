@@ -18,13 +18,9 @@
         foreach($ffs as $ff) {
             if($ff!='.' && $ff!= '..' && $ff!='.git'){
                 if(is_dir($dirname."/".$ff)){
-                    $collectedFiles = collectJsCssFiles("$dirname/$ff", $filetype);
-                    if($collectedFiles!=''){
-                       //array_push($outputFileList, $collectedFiles);
-                    }
                 }else{
                     if(strrpos($ff, '.'.$filetype)==(strlen($ff) - strlen('.' . $filetype))){
-                        array_push($outputFileList, $ff);
+                        array_push($outputFileList, $dirname."/".$ff);
                     }
                 }
             }
@@ -46,15 +42,31 @@
         }
     }
     
-    // collect all js files
-    $jsFileList = collectJsCssFiles("js", "js");
-    if(count($jsFileList)>0 && $jsFileList!=false && $jsFileList!=null){
-        $retStatusSortedFiles = usort($jsFileList , 'sortFilesNumberically');
-        for($count = 0; $count<count($jsFileList); $count++){
-            $filename = $jsFileList[$count];
+    // collect all js lib files
+    $allJsFileList = array();
+    $allLibJsFileList = collectJsCssFiles("js/1_lib", "js");
+    if(count($allLibJsFileList)>0 && $allLibJsFileList!=false){
+        $allJsFileList = array_merge($allJsFileList, $allLibJsFileList);
+    }
+    $allServicesJsFileList = collectJsCssFiles("js/2_services", "js");
+    if(count($allServicesJsFileList)>0 && $allServicesJsFileList!=false){
+        $allJsFileList = array_merge($allJsFileList, $allServicesJsFileList);
+    }
+    $allControllerJsFileList = collectJsCssFiles("js/3_controller", "js");
+    if(count($allControllerJsFileList)>0 && $allControllerJsFileList!=false){
+        $allJsFileList = array_merge($allJsFileList, $allControllerJsFileList);
+    }
+    $allDirectiveJsFileList = collectJsCssFiles("js/4_directive", "js");
+    if(count($allDirectiveJsFileList)>0 && $allDirectiveJsFileList!=false){
+        $allJsFileList = array_merge($allJsFileList, $allDirectiveJsFileList);
+    }
+    if(count($allJsFileList)>0 && $allJsFileList!=false && $allJsFileList!=null){
+        $retStatusSortedFiles = usort($allJsFileList , 'sortFilesNumberically');
+        for($count = 0; $count<count($allJsFileList); $count++){
+            $filename = $allJsFileList[$count];
             if(($filename!=".") && ($filename!="..") && ($filename!="")){
                 $curTimeStamp = md5(mt_rand());
-                echo "<script src='js/$filename?reload=$curTimeStamp'></script>";
+                echo "<script src='$filename?reload=$curTimeStamp'></script>";
             }
         } 
     }
