@@ -2151,9 +2151,10 @@ app.controller('ShopStoreController', function($scope, $rootScope, $http, ShopSt
                                         }
                                         if(retObj.productTypeDetails.defaultSelectProductCategoryValue!==''){
                                             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                                            existingDkParamObj['userProduct']['producttype_value'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
-                                            existingDkParamObj['userProduct']['producttype_categoryvalue'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
+                                            existingDkParamObj['userProduct']['producttype_name'] = retObj.productTypeDetails.defaultedSelectedProductTypeTitle;
+                                            existingDkParamObj['userProduct']['producttype_value'] = retObj.productTypeDetails.defaultedSelectedProductTypeValue;
                                             existingDkParamObj['userProduct']['producttype_categoryname'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
+                                            existingDkParamObj['userProduct']['producttype_categoryvalue'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
                                             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                                         }
                                         if(retObj.productTypeDetails.allProductPriceDetailsArr!==false && retObj.productTypeDetails.allProductPriceDetailsArr!==undefined){
