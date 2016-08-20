@@ -247,6 +247,9 @@
                 </div>
             </div>
             
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
             <!-- product rating & reviews details -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productRatingReviewDetailsContainerDivClass">
                 <div class="panel vpd_productRatingReviewPanelContainerDivClass">
