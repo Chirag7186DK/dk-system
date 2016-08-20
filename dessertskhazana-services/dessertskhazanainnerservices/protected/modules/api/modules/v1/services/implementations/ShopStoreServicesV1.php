@@ -188,7 +188,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                                 "productTypeId"=>$gproductTypeId,
                                 "productTypeTitle"=>$productCategoryDetailsArr[0]['productTypeTitle'],
                                 "productTypeProductCategoryId"=>$eachProductCategoryId,
-                                "productCategoryTitle"=>strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']),
+                                "productTypeCategoryTitle"=>strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']),
                                 "isRequestedProductCategoryMatched"=>$isRequestedProductCategoryMatched,
                                 "totalProductCount"=>count($productCategoryDetailsArr)
                             )
