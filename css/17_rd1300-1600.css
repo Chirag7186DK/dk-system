@@ -746,10 +746,11 @@
         margin-bottom:20px;
     }
 
-    .vpd_horizontallySpaceContainerDivClass{
-        margin:20px;
+    .vpd_featuresContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
     }
-
+    
     .vpd_productDescriptionPanelHeadingDivClass{
         border-bottom:1px solid #fb366e!important;
     }
