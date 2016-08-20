@@ -1161,6 +1161,7 @@ function storeAuthenticatedUserDetailsInSession(paramObj){
                         userSessionParamObj['user_sessionid'] = paramObj['user_sessionid'];
                         userSessionParamObj['user_sessionstarttime'] = paramObj['user_sessionstarttime'];
                         userSessionParamObj['udblogId'] = paramObj['udblogId'];
+                        userSessionParamObj['userProfileTypeId'] = paramObj['userProfileTypeId'];
                         dkParamObj['userSession'] = userSessionParamObj;
                         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
                     }
