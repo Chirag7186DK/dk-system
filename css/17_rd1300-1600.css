@@ -1440,6 +1440,13 @@
     .cshopstore_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
         color:rgba(120, 120, 120, 0.6)!important;
     }
+    
+    .cshopstore_dessertsProductTypeCountSClass{
+        background:#f17023!important;
+        color:#fff!important;
+        font-weight:bold!important;
+        font-size:15px!important;
+    }
 
     .cshopStoreSummaryInfoWrapperDivClass{
         padding-left:0px!important;
@@ -2003,7 +2010,6 @@
     }
     
     .cshopstore_productDeliveryAreaWrapperDivClass{
-        margin-top:20px!important;
         padding-left:0px!important;
         padding-right:0px!important;
         padding-top:10px!important;
@@ -2041,7 +2047,6 @@
     }
     
     .cshopstore_workingStyleWrapperDivClass{
-        margin-top:20px!important;
         padding-left:0px!important;
         padding-right:0px!important;
         padding-top:10px!important;
