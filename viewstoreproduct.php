@@ -84,6 +84,7 @@ include "Site_config.inc.php";
 
         <!-- view shop store details like menu, information, rating/review from customer side -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreDetailsBodyWrapperDivClass">
+            
             <!-- customer bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
                 <ul class="cshopstore_userBreadcrumbULClass list-inline">
@@ -100,6 +101,7 @@ include "Site_config.inc.php";
                     </li>
                 </ul>
             </div>
+            
             <!-- shop store summary(self, rating/review/desserts menu) info -->
             <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCShopStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
                 <!-- shop store self info -->
@@ -149,7 +151,11 @@ include "Site_config.inc.php";
             <div ng-show="isToggleShopStoreDessertsMenu" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
                 <li class="cshopstoreServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you ordering from '{{shopstoreInfo.shopStoreNameInCaps}}' store and also serve other ({{allDessertsSummaryInfo.length}}) dessert(s) product are as follows :-
+                    Hey you are viewing '{{shopstoreInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
+                        <span class="badge cshopstore_dessertsProductTypeCountSClass">
+                            {{allDessertsSummaryInfo.length}}
+                        </span>
+                    dessert(s) product are as follows :-
                 </li>
                 <!-- display all desserts product can served by shop store in selected delivery area -->
                 <div id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
@@ -161,11 +167,8 @@ include "Site_config.inc.php";
                         <h2 class="dessertsProductTitleHClass">
                             {{eachDessertsServedDetailsByStore.productTypeTitle}}
                         </h2>
-                        <p class="dessertsProductInfoPClass">
-                            No.s of variety available
-                        </p>
                         <p ng-controller='ShopStoreController' ng-click="collectDataToViewCShopstore(eachDessertsServedDetailsByStore)" class="viewDessertsProductPClass">
-                            View product(s)
+                            View desserts
                         </p>
                     </div>
                 </div>
@@ -296,6 +299,9 @@ include "Site_config.inc.php";
                 </div>
             </div>
 
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
             <!-- store product delivery area -->
             <div ng-show='isShowCShopStoreProductDeliveryAreaDetails' ng-controller='ShopStoreController' ng-init="loadCShopStoresProductDeliveryArea()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productDeliveryAreaWrapperDivClass">
                 <div ng-show='cShopstoreProductDeliveryAreaNames' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productDeliveryAreaWrapperContainerDivClass">
@@ -310,6 +316,9 @@ include "Site_config.inc.php";
                     No product delivery area defined by '{{shopstoreInfo.shopStoreNameInCaps}}' store !
                 </div>
             </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- store working style -->
             <div ng-show='isShowCShopStoreWorkingStyleDetails' ng-controller='ShopStoreController' ng-init="loadCShopStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
@@ -332,7 +341,7 @@ include "Site_config.inc.php";
 
         </div>
         
-        <!-- logged authenticated user web application data refresh -->
+        <!-- refresh web application data -->
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
