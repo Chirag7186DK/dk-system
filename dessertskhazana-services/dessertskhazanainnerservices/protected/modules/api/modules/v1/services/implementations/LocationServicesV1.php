@@ -93,7 +93,7 @@ class LocationServicesV1 implements ILocationServicesV1{
             $shopStoreProductDeliveryParamObj['groupby_area_ids'] = 'Y';
             $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
             if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
-                // remove unused keys from json array
+                // remove unused keys from fetched array data
                 $removeJsonKeyFromEachInputJsonArr = array(
                     "shopStoreId"=>"0", "shopStoreName"=>"0", "countryCityAreaAffiliationId"=>"0", "countryId"=>"0", "countryName"=>"0",  
                     "ciytId"=>"0", "cityName"=>"0", "isPreorderAccept"=>"0", "takeAwayOrderAccept"=>"0", "cashOnDeliveryAccept"=>"0",
