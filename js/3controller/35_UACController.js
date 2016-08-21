@@ -17,6 +17,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     $rootScope.displayOrdercartSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='personalinfo'){
                     $rootScope.displayPersonalInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
+                }else if(requestedSectionName==='changepassword'){
+                    $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }
             }
         };
@@ -135,6 +137,13 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 showHideLoaderBox('hide');
                 console.log("problem in populateUserPersonalInfo ex=>"+ex);
             }
+        };
+        
+        
+        // displayChangePasswordInfoSectionToAccessInUserCAccount
+        $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
+            $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
+            $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
         };
         
         
