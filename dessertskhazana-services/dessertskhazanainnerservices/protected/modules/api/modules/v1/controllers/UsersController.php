@@ -143,7 +143,7 @@ class UsersController extends V1Controller{
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForUpdatingUserPersonalDetails($dkParamDataArr);
+                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForUpdatingUserPasswordDetails($dkParamDataArr);
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
                     $rspDetails = $UsersServicesV1->updateUserPasswordInfoData($dkParamDataArr);
