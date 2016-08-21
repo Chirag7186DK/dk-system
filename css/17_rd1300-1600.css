@@ -3433,41 +3433,6 @@
 
     /* user account css code */
 
-    .uca_allSectionListContainerDivClass{
-        margin-top:20px;
-        border:1px solid #002E6E!important;
-        background-color:#445c7d!important;
-        font-weight:bold!important;
-        border-color:#445c7d!important;
-    }
-
-    .uca_selectedSectionListMsgPClass{
-        margin-top:10px!important;
-        color:#fff!important;
-        cursor:pointer;
-        font-size:13px!important;
-    }
-
-    .otherSectionAvailableCountSClass{
-        background:#fff!important;
-        color:#00B9F5!important;
-        font-size:17px!important;
-    }
-
-    .uca_allSectionListContainerULClass{
-        font-family:serif!important;
-        font-size:17px!important;
-        padding-top:6px!important;
-        background:#fff!important;
-        border-color:#fff!important;
-    }
-
-    .uca_eachSectionListTitleLIClass{
-        color:#67717D!important;
-        font-weight:100!important;
-        cursor:pointer!important;
-        padding-bottom:4px!important;
-    }
 
     /* order cart section css code */
 
