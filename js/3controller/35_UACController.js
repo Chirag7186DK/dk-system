@@ -32,12 +32,16 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         // showEditableUserCustomerProfileInfo
         $rootScope.showEditableUserCustomerProfileInfo = function(displayPersonalInfoSectionType){
             $rootScope.displayPersonalInfoSectionType = displayPersonalInfoSectionType;
-            attachedFieldValidationUserCustomerProfileInfo();
         };
         
         // closeEditableUserCustomerProfileInfo
         $rootScope.closeEditableUserCustomerProfileInfo = function(displayPersonalInfoSectionType){
             $rootScope.displayPersonalInfoSectionType = displayPersonalInfoSectionType;
+        };
+        
+        // attachedFieldValidationUserCustomerProfileInfo
+        $rootScope.attachedFieldValidationUserCustomerProfileInfo = function(){
+            attachedFieldValidationUserCustomerProfileInfo();
         };
         
         // populateUserPersonalInfo
