@@ -1459,6 +1459,35 @@ function getParamDataToUpdateUserpersonalInfo(){
     } 
 }
 
+// CJ defined this function 2016-08-21
+function getParamDataToUpdateUserpasswordInfo(){
+    var retParamObj = {};
+    try{
+        if($('.editOldPasswordInputClass').length===1){
+            retParamObj['old_password'] = removeHtmlStripTagsOfContent($('.editOldPasswordInputClass').val());
+        }
+        if($('.editNewPasswordInputClass').length===1){
+            retParamObj['new_password'] = removeHtmlStripTagsOfContent($('.editNewPasswordInputClass').val());
+        }
+        if($('.editNewConfirmPasswordInputClass').length===1){
+            retParamObj['newc_password'] = removeHtmlStripTagsOfContent($('.editNewConfirmPasswordInputClass').val());
+        }
+        // fetch user session data
+        var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+        if(userSessionDataObj!==false && userSessionDataObj!==undefined 
+            && jQuery.isEmptyObject(userSessionDataObj)===false){
+            retParamObj = $.extend(retParamObj, userSessionDataObj);
+        }
+        if(Object.keys(retParamObj).length===6){
+            return retParamObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        console.log("problem in getParamDataToUpdateUserpasswordInfo=>"+ex);
+        return false;
+    } 
+}
 
 
 ///////////////// order cart related code here ///////////////////////////
