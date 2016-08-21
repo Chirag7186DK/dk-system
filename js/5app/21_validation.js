@@ -855,55 +855,36 @@ function validationUserProfileInfoData(){
 // CJ defined this fucntion 2016-08-21
 function validationUserChangePasswordInfoData(){
     var incorrectFieldDataCounter = 0;
-    if($('.editUsernameInputClass').length===1){
-        if($('.editUsernameInputClass').val()===''
-            || $('.editUsernameInputClass').val()===false){
-            $('.editUsernameInputClass').css({'border-color':'#f18178'});
+    if($('.editOldPasswordInputClass').length===1){
+        if($('.editOldPasswordInputClass').val()===''
+            || $('.editOldPasswordInputClass').val()===false){
+            $('.editOldPasswordInputClass').css({'border-color':'#f18178'});
             incorrectFieldDataCounter++;
-        }else if($('.editUsernameInputClass').val()!==''){
-            $('.editUsernameInputClass').css({'border-color':'#ccc'});
+        }else if($('.editOldPasswordInputClass').val()!==''){
+            $('.editOldPasswordInputClass').css({'border-color':'#ccc'});
         }
     }
-    if($('.editUseremailInputClass').length===1){
-        if($('.editUseremailInputClass').val()===''){
-            $('.editUseremailInputClass').css({'border-color':'#f18178'});
+    if($('.editNewPasswordInputClass').length===1){
+        if($('.editNewPasswordInputClass').val()===''){
+            $('.editNewPasswordInputClass').css({'border-color':'#f18178'});
             incorrectFieldDataCounter++;
-        }else if($('.editUseremailInputClass').val()!==''){
-            var enteredEmailId = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
-            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if(!enteredEmailId.match(emailPattern)){
-                $('.editUseremailInputClass').css({'border-color':'#f18178'});
-                incorrectFieldDataCounter++;
-            }else{
-                $('.editUseremailInputClass').css({'border-color':'#ccc'});
-            }
+        }else if($('.editNewPasswordInputClass').val()!==''){
+            $('.editNewPasswordInputClass').css({'border-color':'#ccc'});
         }
     }
-    if($('.editUsermobileInputClass').length===1){
-        if($('.editUsermobileInputClass').val()===''
-            || $('.editUsermobileInputClass').val()===false){
-            $('.editUsermobileInputClass').css({'border-color':'#f18178'});
+    if($('.editNewConfirmPasswordInputClass').length===1){
+        if($('.editNewConfirmPasswordInputClass').val()===''){
+            $('.editNewConfirmPasswordInputClass').css({'border-color':'#f18178'});
             incorrectFieldDataCounter++;
-        }else if($('.editUsermobileInputClass').val()!==''){
-            var enterMobileNo = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
-            var mobilePattern = /^[6-9]\d{9}$/g;
-            if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==10){
-                $('.editUsermobileInputClass').css({'border-color':'#f18178'});
-                incorrectFieldDataCounter++;
-            }else if(enterMobileNo.match(mobilePattern)===true && (enterMobileNo).length===10){
-                $('.editUsermobileInputClass').css({'border-color':'#ccc'});
-            }
+        }else if($('.editNewConfirmPasswordInputClass').val()!==''){
+            $('.editNewConfirmPasswordInputClass').css({'border-color':'#ccc'});
         }
     }
-    if($('.editUserbirthdateInputClass').length===1){
-        if($('.editUserbirthdateInputClass').val()===''
-            || $('.editUserbirthdateInputClass').val()===false){
-            $('.editUserbirthdateInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
-        }else if($('.editUserbirthdateInputClass').val()!==''){
-            $('.editUserbirthdateInputClass').css({'border-color':'#ccc'});
-        }
+    if((($('.editNewPasswordInputClass').val())!==($('.editNewConfirmPasswordInputClass').val()))
+        && $('.editNewPasswordInputClass').val()!=='' && $('.editNewPasswordInputClass').val()!==''){
+        incorrectFieldDataCounter++;
     }
+    
     if(incorrectFieldDataCounter>0){
         return false;
     }else{
