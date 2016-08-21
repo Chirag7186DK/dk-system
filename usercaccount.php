@@ -54,6 +54,9 @@ include "Site_config.inc.php";
                             <div title="Click here to see more details about yourself" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
                                 Personal Info
                             </div>
+                            <div title="Click here to change password details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('changepassword');">
+                                Change Password
+                            </div>
                             <div title="Click here to see your orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                                 Your Orders
                             </div>
