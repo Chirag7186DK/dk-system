@@ -188,7 +188,7 @@
                         </p>
                         <textarea placeholder="Party requirements" autocomplete="on" class='form-control po_messageInputClass' id='po_messageInputId' rows="5" cols="20"></textarea>
                         <p class="po_formfieldHintPClass">
-                            Eg: some requriements...
+                            Eg: Cakes,Chocolates,Sweets,Ice-cream, birthday party etc...
                         </p>
                     </div>
                     <div ng-show="isShowPartyOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_errorMsgContainerDivClass">
