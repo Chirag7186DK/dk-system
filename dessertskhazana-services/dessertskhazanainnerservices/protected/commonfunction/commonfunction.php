@@ -368,13 +368,13 @@ class commonfunction{
             $udblogId = $authenticatedUserJsonData['userLogId'];
             $explodedLoggedUsername = explode(" ", $authenticatedUserJsonData['userName']);
             $userAsCustomerInfoSectionListArr = array(
-                array("displayTitle"=>"Personal Info", "hoverTitle"=>""),
-                array("displayTitle"=>"Change Password", "hoverTitle"=>""),
-                array("displayTitle"=>"Your Orders", "hoverTitle"=>""),
-                array("displayTitle"=>"Party Order", "hoverTitle"=>""),
-                array("displayTitle"=>"Customize Order", "hoverTitle"=>""),
-                array("displayTitle"=>"Share Offers", "hoverTitle"=>""),
-                array("displayTitle"=>"My Offers", "hoverTitle"=>"")
+                array("displayTitle"=>"Personal Info", "hoverTitle"=>"", "sectionName"=>"personalinfo"),
+                array("displayTitle"=>"Change Password", "hoverTitle"=>"", "sectionName"=>"changepassword"),
+                array("displayTitle"=>"Your Orders", "hoverTitle"=>"", "sectionName"=>"ordercart"),
+                array("displayTitle"=>"Party Order", "hoverTitle"=>"", "sectionName"=>"partyorder"),
+                array("displayTitle"=>"Customize Order", "hoverTitle"=>"", "sectionName"=>"customizeorder"),
+                array("displayTitle"=>"Share Offers", "hoverTitle"=>"", "sectionName"=>"shareoffers"),
+                array("displayTitle"=>"My Offers", "hoverTitle"=>"", "sectionName"=>"myoffers"),
             );
             $retJsonData['userDetails'] = array(
                 "user_sessionid"=>$user_sessionid,
