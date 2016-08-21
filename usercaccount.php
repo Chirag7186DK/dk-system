@@ -198,7 +198,10 @@ include "Site_config.inc.php";
                             Gender
                         </span>
                         <span class="uca_personalInfoEditUserGenderValSClass">
-                            <input class='form-control' type='text' value='{{userPersonalDetails.gender}}'>
+                            <select class='form-control uca_personalInfoEditUserGenderSelectClass' ng-model="userPersonalDetails.gender">
+                                <option value='Male'>Male</option>
+                                <option value='Female'>Female</option>
+                            </select>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserGenderPClass">
