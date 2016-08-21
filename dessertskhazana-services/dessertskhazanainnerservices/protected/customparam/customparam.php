@@ -704,7 +704,8 @@ class customparam{
         }
         // check email key present or not
         if(array_key_exists('email', $paramJsonData)){
-            if(strlen($paramJsonData['email'])>0){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
+            if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
                 $givenParamDataCorrectCount++;
             }
         }
