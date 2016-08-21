@@ -9,4 +9,5 @@ interface IUsersServicesV1{
     public function generateUserSessionId($dkInDtoArray);
     public function checkUserAuthentication($dkInDtoArray);
     public function getUserDashboardSummaryDataDetails($dkInDtoArray);
+    public function getUserPersonalInfoData($dkInDtoArray);
 }
