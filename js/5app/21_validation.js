@@ -727,6 +727,7 @@ function validateProductDataToAddInOrdercart(fcClass){
 
 // CJ defined this fucntion 2016-08-21
 function attachedFieldValidationUserCustomerProfileInfo(){
+    alert($('.editUsernameInputClass').length);
     if($('.editUsernameInputClass').length===1){
         $('.editUsernameInputClass').alphanum(
             {
