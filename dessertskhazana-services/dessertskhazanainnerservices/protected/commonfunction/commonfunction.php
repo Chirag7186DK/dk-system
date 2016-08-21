@@ -367,12 +367,17 @@ class commonfunction{
             $user_sessionid = $authenticatedUserJsonData['user_sessionid'];
             $udblogId = $authenticatedUserJsonData['userLogId'];
             $explodedLoggedUsername = explode(" ", $authenticatedUserJsonData['userName']);
+            $userAsCustomerInfoSectionListArr = array(
+                "Personal Info", "Change Password", "Your Orders", "Party Orders", "Customize Orders",
+                "Share Offers", "My Offers"
+            );
             $retJsonData['userDetails'] = array(
                 "user_sessionid"=>$user_sessionid,
                 "udblogId"=>$udblogId,
                 "isUserLoggedInSession"=>"Y",
                 "loggedUserName"=>$explodedLoggedUsername[0],
-                "userSinceFrom"=>$authenticatedUserJsonData['userSinceFrom']
+                "userSinceFrom"=>$authenticatedUserJsonData['userSinceFrom'],
+                "userInfoSectionListArr"=>$userAsCustomerInfoSectionListArr
             );
         }
         return $retJsonData;
