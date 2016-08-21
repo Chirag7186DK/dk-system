@@ -198,6 +198,11 @@ class UsersDao{
                 AND ul.status='A' 
                 AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
                 AND ul.user_logno='".$paramJson['udblogId']."'";  
+                if(array_key_exists('old_password', $paramJson)){
+                    if($paramJson['old_password']!=''){
+                        $sql.=" AND u.pwd=MD5('".$paramJson['old_password']."')";
+                    }
+                }
             $command = $connection->createCommand($sql);
             $retUserLogDetailsArr = $command->queryAll();
             if(count($retUserLogDetailsArr)==1 && $retUserLogDetailsArr!=false){
