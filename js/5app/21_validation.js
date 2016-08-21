@@ -667,6 +667,7 @@ function validateDataUWLUpdation(fcClass){
 
 ////////////////////////// Rating/Review related code /////////////////////
 
+
 // CJ defined this function 2016-08-06
 function validateUserRatingReviewAbtProduct(fcClass){
     var blankFieldValueCount = 0 ;
@@ -729,7 +730,7 @@ function validateProductDataToAddInOrdercart(fcClass){
 
 
 // CJ defined this fucntion 2016-08-21
-function attachedFieldValidationUserCustomerProfileInfo(){
+function attachedFieldValidationUserProfileInfo(){
     if($('.editUsernameInputClass').length===1){
         $('.editUsernameInputClass').alphanum(
             {
@@ -788,5 +789,64 @@ function attachedFieldValidationUserCustomerProfileInfo(){
             changeMonth: true,
             changeYear: true
         });
+    }
+}
+
+// CJ defined this fucntion 2016-08-21
+function validationUserProfileInfoData(){
+    var incorrectFieldDataCounter = 0;
+    if($('.editUsernameInputClass').length===1){
+        if($('.editUsernameInputClass').val()===''
+            || $('.editUsernameInputClass').val()===false){
+            $('.editUsernameInputClass').css({'border-color':'#f18178'});
+            incorrectFieldDataCounter++;
+        }else if($('.editUsernameInputClass').val()!==''){
+            $('.editUsernameInputClass').css({'color':'#ccc'});
+        }
+    }
+    if($('.editUseremailInputClass').length===1){
+        if($('.editUseremailInputClass').val()===''){
+            $('.editUseremailInputClass').css({'border-color':'#f18178'});
+            incorrectFieldDataCounter++;
+        }else if($('.editUseremailInputClass').val()!==''){
+            var enteredEmailId = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
+            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(!enteredEmailId.match(emailPattern)){
+                $('.editUseremailInputClass').css({'border-color':'#f18178'});
+                incorrectFieldDataCounter++;
+            }else{
+                $('.editUseremailInputClass').css({'border-color':'#ccc'});
+            }
+        }
+    }
+    if($('.editUsermobileInputClass').length===1){
+        if($('.editUsermobileInputClass').val()===''
+            || $('.editUsermobileInputClass').val()===false){
+            $('.editUsermobileInputClass').css({'border-color':'#f18178'});
+            incorrectFieldDataCounter++;
+        }else if($('.editUsermobileInputClass').val()!==''){
+            var enterMobileNo = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
+            var mobilePattern = /^[6-9]\d{9}$/g;
+            if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==10){
+                $('.editUsermobileInputClass').css({'border-color':'#f18178'});
+                incorrectFieldDataCounter++;
+            }else if(enterMobileNo.match(mobilePattern)===true && (enterMobileNo).length===10){
+                $('.editUsermobileInputClass').css({'color':'#ccc'});
+            }
+        }
+    }
+    if($('.editUserbirthdateInputClass').length===1){
+        if($('.editUserbirthdateInputClass').val()===''
+            || $('.editUserbirthdateInputClass').val()===false){
+            $('.editUserbirthdateInputClass').css({'border-color':'#f18178'});
+            incorrectFieldDataCounter++;
+        }else if($('.editUserbirthdateInputClass').val()!==''){
+            $('.editUserbirthdateInputClass').css({'color':'#ccc'});
+        }
+    }
+    if(incorrectFieldDataCounter>0){
+        return false;
+    }else{
+        return true;
     }
 }
