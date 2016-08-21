@@ -1642,7 +1642,7 @@ function getParamDataForWLCreation(){
         console.log("problem in getParamDataForWLCreation=>"+ex);
         retParamDataObj = {};
     }
-    if(Object.keys(retParamDataObj).length===4){
+    if(Object.keys(retParamDataObj).length>=4){
         return retParamDataObj;
     }else{
         return false;
