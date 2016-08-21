@@ -23,6 +23,12 @@ app.factory('UsersServices', function($http, $q, $rootScope){
             return promiseObject;
         };
         
+        // updateUserPasswordInfo
+        userDetails.updateUserPasswordInfo = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UpdateUserPasswordInfoData", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
+        
         // resetUserDashboardVariableData
         userDetails.resetUserDashboardVariableData = function(userDashboardDataObj){
             if(userDashboardDataObj!=='' && userDashboardDataObj!==false && userDashboardDataObj!==undefined){
