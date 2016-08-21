@@ -1704,7 +1704,7 @@ function getParamDataForUWLUpdation(fcClass, wishListDataObj){
             return false;
         }
     }catch(ex){
-        console.log("problem in getParamDataToDeleteUserWL=>"+ex);
+        console.log("problem in getParamDataForUWLUpdation=>"+ex);
         return false;
     }
 }
