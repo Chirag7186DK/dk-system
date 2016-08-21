@@ -159,6 +159,23 @@ app.directive('viewProductmsginputDirective', function($timeout){
     };
 });
 
+// OrderProductqtyinputDirective
+app.directive('orderProductqtyinputDirective', function($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $el.numeric(
+                {
+                    "allowMinus":false, 
+                    "allowThouSep":false, 
+                    "allowLeadingSpaces":false, 
+                    "startWith":"1",
+                    "allowDecSep":false
+                }
+            );
+        }
+    };
+});
+
 
 // loadDklogoImagesDirective
 app.directive('loadDklogoImagesDirective', function(){
