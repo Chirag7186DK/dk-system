@@ -105,5 +105,21 @@ class UsersServicesV1 implements IUsersServicesV1{
         } 
         return $rspDetails;
     }
+    
+    // CJ defined this action 2016-08-21
+    public function updateUserPersonalInfoData($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isUserprofileInfoUpdated'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
+                $updateProfileInfoDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
+            }
+        } 
+        return $rspDetails;
+    }
 
 }
