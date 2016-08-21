@@ -1379,6 +1379,9 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
                     if(sectionName==='personalinfo'){
                         displaySectionName = 'Personal Info';
                     }
+                    if(sectionName==='changepassword'){
+                        displaySectionName = 'Change Password';
+                    }
                     dkParamObj['requestedSectionUserAccountObj'] = {
                         "requestedSectionName":sectionName,
                         "displaySectionName":displaySectionName
