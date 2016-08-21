@@ -1653,7 +1653,8 @@ function getParamDataForWLCreation(){
 function getParamDataToDeleteUserWL(wishListDataObj){
     try{
         var retParamObj = {};
-        if(wishListDataObj!==false && jQuery.isEmptyObject(wishListDataObj)===false){
+        if(wishListDataObj!==false && wishListDataObj!==undefined 
+            && jQuery.isEmptyObject(wishListDataObj)===false){
             if(wishListDataObj.hasOwnProperty('unMd5UserId')
                 && wishListDataObj.hasOwnProperty('wlId')){
                 retParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
