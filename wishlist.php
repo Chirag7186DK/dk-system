@@ -20,13 +20,12 @@ include "Site_config.inc.php";
     </head>
 
     <!-- body start here -->
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='userSessionController' ng-init="loadDefaultDataInDkSession('wishlist'); checkInBackgroundDataAvailableForUpdationFromSession('wishlist');">
+    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('wishlist'); checkInBackgroundDataAvailableForUpdationFromSession('wishlist');">
     
         <!-- common SCROLL TOP BUTTON -->
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
 
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
