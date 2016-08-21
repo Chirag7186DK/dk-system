@@ -680,6 +680,28 @@ class customparam{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-08-21
+    public static function checkParamDataForUpdatingUserPersonalDetails($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==2){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     /////////////////////////// wishlist related code //////////////////////
     
