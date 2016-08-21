@@ -1039,7 +1039,11 @@ function getParamDataObjForPartyOrderRequest(){
                 }
             }
         }
-        return retParamDataObj;
+        if(Object.keys(retParamDataObj).length===11){
+            return retParamDataObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         return false;
     }
@@ -1220,13 +1224,13 @@ function getParamDataAuthenticatedUserDetailsFromSession(){
                 }
             }
         }
+        if(Object.keys(retParamObj).length===3){
+            return retParamObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         console.log("problem in getParamDataAuthenticatedUserDetailsFromSession=>"+ex);
-        retParamObj = false;
-    }
-    if(Object.keys(retParamObj).length===3){
-        return retParamObj;
-    }else{
         return false;
     }
 }
