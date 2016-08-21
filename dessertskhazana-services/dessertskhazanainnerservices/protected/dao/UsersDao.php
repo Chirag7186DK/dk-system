@@ -199,7 +199,7 @@ class UsersDao{
                 AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
                 AND ul.user_logno='".$paramJson['udblogId']."'";  
                 if(array_key_exists('old_password', $paramJson)){
-                    if($paramJson['old_password']!=''){
+                    if($paramJson['old_password']!='' && strlen($paramJson['old_password'])>0){
                         $sql.=" AND u.pwd=MD5('".$paramJson['old_password']."')";
                     }
                 }
