@@ -158,11 +158,11 @@ include "Site_config.inc.php";
                                 Size: {{ordercartRequestedEachItemDetailsArrObj.itemMeasurementType}}
                             </p>
                             <p class='ordercartRequestedEachItemPriceDetailsPClass'> 
-                                <span class='ordercartRequestedEachItemDiscountPercentTextSClass'>
-                                    10%
+                                <span class='ordercartRequestedEachItemDiscountPercentTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount!==''">
+                                    {{ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount}}%
                                 </span>
-                                <span class='ordercartRequestedEachItemCutPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> 2000
+                                <span class='ordercartRequestedEachItemCutPriceTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount!==''">
+                                    <i class="fa fa-rupee"></i> {{ordercartRequestedEachItemDetailsArrObj.productFeatureBasePrice}}
                                 </span>
                                 <span class='ordercartRequestedEachItemPriceTextSClass'>
                                     <i class="fa fa-rupee"></i> {{ordercartRequestedEachItemDetailsArrObj.itemPerpriceIncart}}
@@ -200,7 +200,7 @@ include "Site_config.inc.php";
                         <label class="searchTextOrdercartItemRequestedLblClass">
                             Use for filtering and access fast canceled item !
                         </label>
-                        <input ng-model="searchTextOrdercartItemCancelled" type="text" class="form-control" placeholder="Find requested items across in current order cart !">
+                        <input ng-model="searchTextOrdercartItemCancelled" type="text" class="form-control" placeholder="Find cancelled items !">
                     </div>
                     <!-- each order item will display -->
                     <div ng-repeat="ordercartCancelledEachItemDetailsArrObj in ordercartCancelledAllItemDetailsArrObj | filter:searchTextOrdercartItemCancelled:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
@@ -209,7 +209,7 @@ include "Site_config.inc.php";
                         </div>
                         <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartCancelledEachItemDetailsDivClass'>
                             <p class="ordercartCancelledEachItemSellerNamePClass">
-                                Seller: {{ordercartCancelledEachItemDetailsArrObj.shopStoreName}}
+                                Seller: {{ordercartCancelledEachItemDetailsArrObj.shopStoreTitle}}
                             </p>
                             <p class="ordercartCancelledEachItemNamePClass">
                                 {{ordercartCancelledEachItemDetailsArrObj.productListTitle}}
