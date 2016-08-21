@@ -397,14 +397,15 @@ class commonfunction{
     
     // CJ defined this function 2016-08-01
     public static function preparedDataToStoreInfoAbtUserAsLog($authenticatedUserJsonData, $dkParamDataArr){
-        $retLastInsertedUserInfoLogId = false;
+        $userLogNo = false;
         if(count($authenticatedUserJsonData)>0 && $authenticatedUserJsonData!=false){
-            $userLogNo = "";
             // fetch user max log no
             $userMaxLogNo = UsersDao::generateMaxUserLogNo();
             if($userMaxLogNo>=0){
                 $sha1String = sha1($userMaxLogNo.time());
-                $userLogNo.="ULNO".$userMaxLogNo.time().$sha1String;
+                $userLogNo = "ULNO".$userMaxLogNo.time().$sha1String;
+            }else{
+                $userLogNo = "ULNO".time().$sha1String;
             }
             // track user info accessing web app details
             $userInfoLogDetails = array();
@@ -414,9 +415,10 @@ class commonfunction{
             $userInfoLogDetails['user_sessionstarttime'] = $dkParamDataArr['user_sessionstarttime'];
             $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
             $userInfoLogDetails['status'] = 'A';
-            $retLastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
+            $lastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
+            if($lastInsertedUserInfoLogId>0){}
         }
-        return $retLastInsertedUserInfoLogId;
+        return $userLogNo;
     }
     
     
