@@ -336,7 +336,8 @@ class commonfunction{
         $lastUserSessionNo = UsersDao :: generateMaxSessionNo();
         if($lastUserSessionNo>=0){
             $lastUserSessionNo++;
-            $userSessionId = "USID".$lastUserSessionNo.time();
+            $sha1String = sha1($lastUserSessionNo.time()); 
+            $userSessionId = "USID".$lastUserSessionNo.time().$sha1String;
             $statusLastAddedUserSessionNo = UsersDao :: addMaxUserSessionNo($lastUserSessionNo, $userSessionId);
             if($statusLastAddedUserSessionNo==false){
                 $userSessionId = false;
