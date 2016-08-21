@@ -107,8 +107,8 @@ include "Site_config.inc.php";
                 </ul>
             </div>
             
-            <!-- draw horizontally line -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 drawHorizontalLineWLDivClass"></div>
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
             <!-- display wish list setting icon -->
             <div ng-show="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-4 col-lg-3 wld_settingsWLIconContainerDivClass">
