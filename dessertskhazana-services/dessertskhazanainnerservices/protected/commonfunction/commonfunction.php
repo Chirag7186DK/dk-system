@@ -382,7 +382,7 @@ class commonfunction{
                 "isUserLoggedInSession"=>"Y",
                 "loggedUserName"=>$explodedLoggedUsername[0],
                 "userSinceFrom"=>$authenticatedUserJsonData['userSinceFrom'],
-                "userInfoSectionListArr"=>$userAsCustomerInfoSectionListArr
+                "userInfoAllSectionListArr"=>$userAsCustomerInfoSectionListArr
             );
         }
         return $retJsonData;
