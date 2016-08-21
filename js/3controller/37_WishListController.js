@@ -185,14 +185,14 @@ app.controller('WishListController', function ($scope, $rootScope, $http, WishLi
         };
 
         // collectDataUWLUpdation
-        $rootScope.collectDataUWLUpdation = function (fcClass, uwlDataObj) {
+        $rootScope.collectDataUWLUpdation = function (fcClass, uwlDataObj){
             // validate data
             $('.' + fcClass).find('.wld_eachWLErrorMsgPClass').empty();
             var retDataValidatedStatus = validateDataUWLUpdation(fcClass);
-            if (retDataValidatedStatus === true) {
+            if(retDataValidatedStatus===true){
                 // collect data for updating user wish list
                 var collectedUWLDataToUpdateObj = getParamDataForUWLUpdation(fcClass, uwlDataObj);
-                if (collectedUWLDataToUpdateObj !== false && jQuery.isEmptyObject(collectedUWLDataToUpdateObj) === false) {
+                if (collectedUWLDataToUpdateObj!==false && jQuery.isEmptyObject(collectedUWLDataToUpdateObj) === false) {
                     $rootScope.updateUserWL(collectedUWLDataToUpdateObj);
                 }
             }
