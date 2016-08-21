@@ -191,6 +191,8 @@ function removeHtmlStripTagsOfContent(givenContent){
             var regex = /(<([^>]+)>)/ig;
             var htmlStripTagLessContent = givenContent.replace(regex, "");
             return htmlStripTagLessContent;
+        }else{
+            return givenContent;
         }
     }catch(ex){
         //console.log("ex removeHtmlStripTagsOfContent=>"+givenContent+", ex=>"+ex);
