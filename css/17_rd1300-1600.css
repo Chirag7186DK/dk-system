@@ -3513,6 +3513,29 @@
         cursor:pointer;
     }
     
+    /*  change password css code  */
+    
+    .uca_changepasswordInfoSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        border:1px solid #DCE0EF!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+    }
+    
+    .uca_oldpasswordLblSClass,
+    .uca_newpasswordLblSClass,
+    .uca_newconfirmpasswordLblSClass{
+        color:#67717D!important;
+        font-size:13px!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        width:20%!important;
+    }
+
+    
+    
 
     /* order cart section css code */
 
