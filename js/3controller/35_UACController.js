@@ -19,15 +19,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
-        // toggleUCustomerAccountOtherSectionList
-        $rootScope.toggleUCustomerAccountOtherSectionList = function(){
-            if($rootScope.isShowUCustomerAccountOtherSectionList===false){
-                $rootScope.isShowUCustomerAccountOtherSectionList = true;
-            }else if($rootScope.isShowUCustomerAccountOtherSectionList===true){
-                $rootScope.isShowUCustomerAccountOtherSectionList = false;
-            }
-        };
-        
         // displayOrdercartSectionToAccessInUserCAccount
         $rootScope.displayOrdercartSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
