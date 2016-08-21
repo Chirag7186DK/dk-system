@@ -127,7 +127,7 @@ class UsersDao{
         try{
             $connection = Yii::App()->db;
             $sql= "SELECT 
-                COALESCE(MD5(ul.id), '') userLogId,
+                COALESCE(ul.user_logno, '') userLogId,
                 COALESCE(ul.user_sessionid, '') user_sessionid,
                 COALESCE(u.id, '') unmd5UserId, 
                 MD5(COALESCE(u.id, '')) userId, 
@@ -145,7 +145,7 @@ class UsersDao{
                 WHERE 1
                 AND ul.status='A' 
                 AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
-                AND MD5(ul.id)='".$paramJson['udblogId']."'";  
+                AND ul.user_logno='".$paramJson['udblogId']."'";  
             $command = $connection->createCommand($sql);
             $retUserLogDetailsArr = $command->queryAll();
             if(count($retUserLogDetailsArr)==1 && $retUserLogDetailsArr!=false){
