@@ -273,8 +273,8 @@ include "Site_config.inc.php";
                             <p class="ordercartOrderedEachItemSizePClass">
                                 Size: {{ordercartOrderedEachItemDetailsArrObj.itemMeasurementType}}
                             </p>
-                            <p class="ordercartCancelledEachItemQtyPClass">
-                                Bought Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
+                            <p class="ordercartOrderedEachItemQtyPClass">
+                                Ordered Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
                             </p>
                         </div>
                     </div>
