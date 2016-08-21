@@ -1434,21 +1434,26 @@ function getParamDataToUpdateUserpersonalInfo(){
             retParamObj['mobile'] = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
         }
         if($('.editUserbirthdateInputClass').length===1){
-            retParamObj['gender'] = removeHtmlStripTagsOfContent($('.editUserbirthdateInputClass').val());
+            retParamObj['birthdate'] = removeHtmlStripTagsOfContent($('.editUserbirthdateInputClass').val());
         }
         if($('.editUserGenderSelectClass').length===1){
             retParamObj['gender'] = removeHtmlStripTagsOfContent($('.editUserGenderSelectClass').find('option:selected').val());
         }
-        
+        // fetch user session data
+        var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+        if(userSessionDataObj!==false && userSessionDataObj!==undefined 
+            && jQuery.isEmptyObject(userSessionDataObj)===false){
+            retParamObj = $.extend(retParamObj, userSessionDataObj);
+        }
+        if(Object.keys(retParamObj).length===8){
+            return retParamObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         console.log("problem in getParamDataToUpdateUserpersonalInfo=>"+ex);
-        retParamObj = {};
-    } 
-    if(Object.keys(retParamObj).length===2){
-        return retParamObj;
-    }else{
         return false;
-    }
+    } 
 }
 
 
