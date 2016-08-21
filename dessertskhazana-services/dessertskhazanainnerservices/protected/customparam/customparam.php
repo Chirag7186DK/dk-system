@@ -431,21 +431,15 @@ class customparam{
     public static function checkParamDataForAddingPartyOrderRequest($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
-        // check is_LoggedInUser key present or not
-        if(array_key_exists('is_LoggedInUser', $paramJsonData)){
-            if($paramJsonData['is_LoggedInUser']!='' && $paramJsonData['is_LoggedInUser']!=false){
+        // check user_sessionid key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check profile_id key present or not
-        if(array_key_exists('profile_id', $paramJsonData)){
-            if($paramJsonData['profile_id']!='' && $paramJsonData['profile_id']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check user_id key present or not
-        if(array_key_exists('user_id', $paramJsonData)){
-            if($paramJsonData['user_id']!='' && $paramJsonData['user_id']!=false){
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if($paramJsonData['udblogId']=='' || strlen($paramJsonData['udblogId'])>=20){
                 $givenParamDataCorrectCount++;
             }
         }
