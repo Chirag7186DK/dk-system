@@ -40,8 +40,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         };
         
         // attachedFieldValidationUserCustomerProfileInfo
-        $rootScope.attachedFieldValidationUserCustomerProfileInfo = function(){
-            attachedFieldValidationUserCustomerProfileInfo();
+        $rootScope.attachedFieldValidationUserProfileInfo = function(){
+            attachedFieldValidationUserProfileInfo();
         };
         
         // populateUserPersonalInfo
@@ -89,7 +89,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         $rootScope.checkDataToUpdateUserpersonalnfo = function(){
             var retValidatedDataStatus = validationUserProfileInfoData();
             if(retValidatedDataStatus===true){
-                var userPersonalInfoParamData = getParamDataToUpdateUserpersonalInfo();
+                var userPersonalInfoParamData = validationUserProfileInfoData();
                 if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
                     && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
                     $rootScope.updateUserPersonalInfoInUserCAccount(userPersonalInfoParamData);
