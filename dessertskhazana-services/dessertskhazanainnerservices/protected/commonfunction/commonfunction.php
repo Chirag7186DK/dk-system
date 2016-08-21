@@ -903,4 +903,20 @@ class commonfunction{
         return $isItemRemovedFromOrdercart;
     }
     
+    
+    ////////////////// party order related code ///////////////////
+    
+    // CJ defined this function 2016-08-21
+    public static function generatePartyOrderNo(){
+        $lastPartyOrderId = PartyOrdersDao :: generateMaxPartyOrderNo();
+        if($lastPartyOrderId>=0 && $lastPartyOrderId!=''){
+            $lastPartyOrderId++;
+        }else{
+            $lastPartyOrderId = 1;
+        }
+        $humanReadablePartyOrderNo = "POR$lastPartyOrderId".time();
+        return $humanReadablePartyOrderNo;
+    }
+    
+    
 }
