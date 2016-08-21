@@ -13,16 +13,16 @@ class PartyOrdersDao{
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('is_LoggedInUser', $poRequestParamDetails)){
-            if($poRequestParamDetails['is_LoggedInUser']!=''){
-                $sqlColumnNames.=" is_LoggedInUser,";
-                $sqlValues.="'".$poRequestParamDetails['is_LoggedInUser']."',";
+        if(array_key_exists('partyorder_no', $poRequestParamDetails)){
+            if($poRequestParamDetails['partyorder_no']!=''){
+                $sqlColumnNames.=" partyorder_no,";
+                $sqlValues.="'".$poRequestParamDetails['partyorder_no']."',";
             }
         }
-        if(array_key_exists('profile_id', $poRequestParamDetails)){
-            if($poRequestParamDetails['profile_id']!=''){
-                $sqlColumnNames.=" profile_id,";
-                $sqlValues.="'".$poRequestParamDetails['profile_id']."',";
+        if(array_key_exists('user_sessionid', $poRequestParamDetails)){
+            if($poRequestParamDetails['user_sessionid']!=''){
+                $sqlColumnNames.=" user_sessionid,";
+                $sqlValues.="'".$poRequestParamDetails['user_sessionid']."',";
             }
         }
         if(array_key_exists('user_id', $poRequestParamDetails)){
@@ -91,10 +91,10 @@ class PartyOrdersDao{
                 $sqlValues.="'".$poRequestParamDetails['created_by']."',";
             }
         }
-        if(array_key_exists('status_id', $poRequestParamDetails)){
-            if($poRequestParamDetails['status_id']!=''){
-                $sqlColumnNames.=" status_id,";
-                $sqlValues.="'".$poRequestParamDetails['status_id']."',";
+        if(array_key_exists('status', $poRequestParamDetails)){
+            if($poRequestParamDetails['status']!=''){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$poRequestParamDetails['status']."',";
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
@@ -130,10 +130,10 @@ class PartyOrdersDao{
                 $sqlValues.="'".$poRequestParamDetails['description']."',";
             }
         }
-        if(array_key_exists('status_id', $poRequestParamDetails)){
-            if($poRequestParamDetails['status_id']!=''){
-                $sqlColumnNames.=" status_id,";
-                $sqlValues.="'".$poRequestParamDetails['status_id']."',";
+        if(array_key_exists('status', $poRequestParamDetails)){
+            if($poRequestParamDetails['status']!=''){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$poRequestParamDetails['status']."',";
             }
         }
         if(array_key_exists('created_by', $poRequestParamDetails)){
