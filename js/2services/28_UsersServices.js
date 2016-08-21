@@ -35,6 +35,7 @@ app.factory('UsersServices', function($http, $q, $rootScope){
                 $rootScope.loggedUserName = userDashboardDataObj['loggedUserName'];
                 $rootScope.userSinceFrom = userDashboardDataObj['userSinceFrom'];
                 $rootScope.isEnableRatingReviewSubmitButton = true;
+                $rootScope.userInfoSectionListArr = userDashboardDataObj['userInfoSectionListArr'];
                 if(userDashboardDataObj['isUserLoggedInSession']==='Y'){
                     $rootScope.isUserLoggedInSession = true;
                 }else{
@@ -45,6 +46,7 @@ app.factory('UsersServices', function($http, $q, $rootScope){
                 $rootScope.userSinceFrom = '';
                 $rootScope.isEnableRatingReviewSubmitButton = false;
                 $rootScope.isUserLoggedInSession = false;
+                $rootScope.userInfoSectionListArr = false;
             }
         };
         
