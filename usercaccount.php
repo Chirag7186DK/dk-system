@@ -268,6 +268,9 @@ include "Site_config.inc.php";
                     <!-- display order cart no wise all items details -->
                     <div ng-repeat="eachOrdercartNoAllItemDetailsArrObj in allOrdercartNoAllItemDetailsArrObj | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartnoWiseAllItemSectionContainerDivClass">
                         
+                        <!-- create horizontally space div between -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+                
                         <p class="uca_ordercartnoWiseAllItemSectionLabelPClass">
                             Showing 
                             <span class="badge uca_ordercartnoAllItemsCountSClass">
