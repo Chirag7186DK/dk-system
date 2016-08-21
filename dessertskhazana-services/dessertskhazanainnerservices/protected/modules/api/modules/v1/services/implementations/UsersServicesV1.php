@@ -116,7 +116,11 @@ class UsersServicesV1 implements IUsersServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
                 $updateProfileInfoDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
+                if($updateProfileInfoDataStatus==true){
+                    $rspDetails['isUserprofileInfoUpdated'] = 'TRUE';
+                }
             }
         } 
         return $rspDetails;
