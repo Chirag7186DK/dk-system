@@ -11,9 +11,15 @@ app.factory('UsersServices', function($http, $q, $rootScope){
             return promiseObject;
         };
         
-        // userPersonalInfo
-        userDetails.userPersonalInfo = function(preparedParamJsonObj){
+        // getUserPersonalInfo
+        userDetails.getUserPersonalInfo = function(preparedParamJsonObj){
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
+        
+        // updateUserPersonalInfo
+        userDetails.updateUserPersonalInfo = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
             return promiseObject;
         };
         
