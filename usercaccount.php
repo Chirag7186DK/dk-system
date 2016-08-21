@@ -213,7 +213,7 @@ include "Site_config.inc.php";
                         </span>
                     </p>
                     <p class="uca_personalInfoUpdateBtnPClass">
-                        <button class='btn uca_personalInfoUpdateBtnClass'>UPDATE</button>
+                        <button ng-click="checkDataToUpdateUserpersonalnfo()" class='btn uca_personalInfoUpdateBtnClass'>UPDATE</button>
                     </p>
                 </div>
                 
