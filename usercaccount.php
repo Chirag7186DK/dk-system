@@ -209,7 +209,7 @@ include "Site_config.inc.php";
                         </div>
                         <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartCancelledEachItemDetailsDivClass'>
                             <p class="ordercartCancelledEachItemNoSClass">
-                                Order No: {{ordercartCancelledEachItemDetailsArrObj.ordercartNo}}
+                                Ordered No: {{ordercartCancelledEachItemDetailsArrObj.ordercartNo}}
                             </p>
                             <p class="ordercartCancelledEachItemSellerNamePClass">
                                 Seller: {{ordercartCancelledEachItemDetailsArrObj.shopStoreTitle}}
@@ -262,7 +262,10 @@ include "Site_config.inc.php";
                         </div>
                         <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartOrderedEachItemDetailsDivClass'>
                             <p class="ordercartOrderedEachItemNoSClass">
-                                Order No: {{ordercartOrderedEachItemDetailsArrObj.ordercartNo}}
+                                Ordered No: {{ordercartOrderedEachItemDetailsArrObj.ordercartNo}}
+                            </p>
+                            <p class="ordercartOrderedEachItemStatusSClass">
+                                Ordered Status: {{ordercartOrderedEachItemDetailsArrObj.orderedItemStatus}}
                             </p>
                             <p class="ordercartOrderedEachItemSellerNamePClass">
                                 Seller: {{ordercartOrderedEachItemDetailsArrObj.shopStoreTitle}}
