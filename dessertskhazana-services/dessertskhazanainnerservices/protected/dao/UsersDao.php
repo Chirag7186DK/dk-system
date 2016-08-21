@@ -48,12 +48,35 @@ class UsersDao{
         return $lastInsertedId;
     }
     
+    // CJ defined this function 2016-08-19
+    public static function generateMaxUserLogNo(){
+        $maxUserLogNo = 0;
+        try{
+            $connection = Yii::App()->db;
+            $sql= " SELECT 
+                COALESCE(MAX(id),0) maxUserLogNo
+                FROM DK_USERLOG";
+            $command = $connection->createCommand($sql);
+            $userMaxLogNoDetailsArr = $command->queryAll();
+            if(count($userMaxLogNoDetailsArr)>0 && $userMaxLogNoDetailsArr!=false){
+                $maxUserLogNo = (int) $userMaxLogNoDetailsArr[0]['maxUserLogNo'];    
+            }
+        }catch(Exception $ex){}
+        return $maxUserLogNo;
+    }
+    
     // CJ defined this function 2016-08-01
     public static function addUserLogDetails($userLogDetails){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
+        if(array_key_exists('user_logno', $userLogDetails)){
+            if($userLogDetails['user_logno']!=''){
+                $sqlColumnNames.=" user_logno,";
+                $sqlValues.="'".$userLogDetails['user_logno']."',";
+            }
+        }
         if(array_key_exists('user_id', $userLogDetails)){
             if($userLogDetails['user_id']!=''){
                 $sqlColumnNames.=" user_id,";
