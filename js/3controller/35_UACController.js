@@ -63,7 +63,56 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     $rootScope.userPersonalDetails =  false;
 
                     // calling UsersServices 
-                    UsersServices.userPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                    UsersServices.getUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var userPersonalDetailsArrObj =  false;
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                userPersonalDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userPersonalDetails', retResponseJson);
+                            }
+                            if(userPersonalDetailsArrObj!==false && userPersonalDetailsArrObj!==undefined 
+                                && jQuery.isEmptyObject(userPersonalDetailsArrObj)===false){
+                                $rootScope.userPersonalDetails =  userPersonalDetailsArrObj;
+                            }else{
+                                $rootScope.userPersonalDetails =  false;
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in populateUserPersonalInfo ex=>"+ex);
+            }
+        };
+        
+        // checkDataToUpdateUserpersonalnfo
+        $rootScope.checkDataToUpdateUserpersonalnfo = function(){
+            var retValidatedDataStatus = validationUserProfileInfoData();
+            if(retValidatedDataStatus===true){
+                var userPersonalInfoParamData = getParamDataToUpdateUserpersonalInfo();
+                if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
+                    && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
+                    $rootScope.updateUserPersonalInfoInUserCAccount(userPersonalInfoParamData);
+                }
+            }
+        };
+        
+        // updateUserPersonalInfoInUserCAccount
+        $rootScope.updateUserPersonalInfoInUserCAccount = function(userPersonalInfoParamData){
+            try{
+                if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
+                    && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
+                    
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = userPersonalInfoParamData;
+                    
+                    // calling UsersServices 
+                    UsersServices.updateUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userPersonalDetailsArrObj =  false;
