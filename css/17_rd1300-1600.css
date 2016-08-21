@@ -3431,8 +3431,16 @@
     }
 
 
-    /* user account css code */
+    /* user as customer account css code */
 
+    
+    /* personal info section css code */
+    
+    .uca_personalInfoSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
 
     /* order cart section css code */
 
