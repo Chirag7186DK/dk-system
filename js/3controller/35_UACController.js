@@ -180,11 +180,12 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isUserpasswordInfoUpdated =  false;
-                            var notificationMsgStr = 'Your password not change, please try again !';
+                            var notificationMsgStr = 'Your password is not change, please try again !';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isUserpasswordInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserpasswordInfoUpdated', retResponseJson);
                             }
                             if(isUserpasswordInfoUpdated==='TRUE'){
+                                clearUserpasswordFormFieldInfo();
                                 notificationMsgStr = 'Your password changed successfully !';
                             }
                             showNotificationBoxMsg(notificationMsgStr);
