@@ -32,6 +32,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         // showEditableUserCustomerProfileInfo
         $rootScope.showEditableUserCustomerProfileInfo = function(displayPersonalInfoSectionType){
             $rootScope.displayPersonalInfoSectionType = displayPersonalInfoSectionType;
+            attachedFieldValidationUserCustomerProfileInfo();
         };
         
         // closeEditableUserCustomerProfileInfo
