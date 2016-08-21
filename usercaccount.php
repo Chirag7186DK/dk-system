@@ -265,7 +265,7 @@ include "Site_config.inc.php";
                                 Ordered No: {{ordercartOrderedEachItemDetailsArrObj.ordercartNo}}
                             </p>
                             <p class="ordercartOrderedEachItemStatusSClass">
-                                Ordered Status: {{ordercartOrderedEachItemDetailsArrObj.orderedItemStatus}}
+                                Status: {{ordercartOrderedEachItemDetailsArrObj.orderedItemStatus}}
                             </p>
                             <p class="ordercartOrderedEachItemSellerNamePClass">
                                 Seller: {{ordercartOrderedEachItemDetailsArrObj.shopStoreTitle}}
@@ -276,8 +276,14 @@ include "Site_config.inc.php";
                             <p class="ordercartOrderedEachItemSizePClass">
                                 Size: {{ordercartOrderedEachItemDetailsArrObj.itemMeasurementType}}
                             </p>
+                            <p class="ordercartOrderedEachItemPricePClass">
+                                <i class="fa fa-rupee"></i> {{ordercartOrderedEachItemDetailsArrObj.itemPerpriceIncart}}
+                            </p>
                             <p class="ordercartOrderedEachItemQtyPClass">
-                                Ordered Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
+                                Bought Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
+                            </p>
+                            <p class="ordercartOrderedEachItemTotalAmtPClass">
+                                Total Amt: {{ordercartOrderedEachItemDetailsArrObj.itemTotalAmt}}
                             </p>
                         </div>
                     </div>
