@@ -1130,8 +1130,8 @@ function checkUserLoggedInSession(){
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('udblogId')===true
                     && userSessionParamObj.hasOwnProperty('user_sessionid')===true){
-                    if((userSessionParamObj['user_sessionid']).length>7 
-                        && (userSessionParamObj['udblogId']).length===32){
+                    if((userSessionParamObj['user_sessionid']).length>=20 
+                        && (userSessionParamObj['udblogId']).length>=20){
                         retUserLoggedInStatus = true;
                     }
                 }
@@ -1338,7 +1338,7 @@ function getParamDataForUserSignInAuthentication(){
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>7 
+                    if((userSessionParamObj['user_sessionid']).length>=20 
                         && (userSessionParamObj['udblogId']).length===0){
                         retParamObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                         retParamObj['user_sessionstarttime'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionstarttime']);
@@ -1877,8 +1877,8 @@ function checkProductDataAvailableInSessionToAddUWL(){
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>7 
-                        && (userSessionParamObj['udblogId']).length===32){
+                    if((userSessionParamObj['user_sessionid']).length>=20 
+                        && (userSessionParamObj['udblogId']).length>=20){
                         if(dkParamObj.hasOwnProperty('wishList')===true){
                             if(jQuery.isEmptyObject(dkParamObj['wishList'])===false){
                                 var wishListDataObj = dkParamObj['wishList'];
@@ -1917,8 +1917,8 @@ function getStoredProductDataFromSessionToAddUWL(){
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>7 
-                        && (userSessionParamObj['udblogId']).length===32){
+                    if((userSessionParamObj['user_sessionid']).length>=20 
+                        && (userSessionParamObj['udblogId']).length>=20){
                         if(dkParamObj.hasOwnProperty('wishList')===true){
                             if(jQuery.isEmptyObject(dkParamObj['wishList'])===false){
                                 var wishListDataObj = dkParamObj['wishList'];
