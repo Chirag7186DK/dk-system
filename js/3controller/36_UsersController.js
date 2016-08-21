@@ -128,7 +128,7 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
             if(requestedSectionName!=='' && requestedSectionName!==false 
                 && requestedSectionName!==undefined && authenticatedUserParamDataObj!==false
                 && authenticatedUserParamDataObj!==undefined && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                storeRequestedSectionNameToAccessInUserCAccount(requestedSectionName);
+                storeRequestedSectionNameToAccessInUserAccount(requestedSectionName);
                 if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
                     // detected user account as customer profile
                     if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
