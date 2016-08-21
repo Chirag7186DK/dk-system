@@ -1361,7 +1361,7 @@ function getParamDataForUserSignInAuthentication(){
 
 
 // CJ defined this function 2016-08-15
-function storeRequestedSectionNameToAccessInUserCAccount(requestedSectionNameAccessInUserAccount){
+function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAccessInUserAccount){
     try{
         if(requestedSectionNameAccessInUserAccount!==false && requestedSectionNameAccessInUserAccount!=='' 
             && requestedSectionNameAccessInUserAccount!==undefined){
@@ -1385,7 +1385,7 @@ function storeRequestedSectionNameToAccessInUserCAccount(requestedSectionNameAcc
             }
         }
     }catch(ex){
-        console.log("problem in storeRequestedSectionNameToAccessInUserCAccount=>"+ex);
+        console.log("problem in storeRequestedSectionNameToAccessInUserAccount=>"+ex);
     }    
 }
 
