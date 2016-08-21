@@ -139,7 +139,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
-        
         // displayChangePasswordInfoSectionToAccessInUserCAccount
         $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
@@ -148,16 +147,53 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         
         // checkDataToUpdateUserpasswordInfo
         $rootScope.checkDataToUpdateUserpasswordInfo = function(){
-            var retValidatedDataStatus = validationUserProfileInfoData();
+            var retValidatedDataStatus = validationUserChangePasswordInfoData();
             if(retValidatedDataStatus===true){
-                var userPersonalInfoParamData = getParamDataToUpdateUserpersonalInfo();
-                if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
-                    && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
-                    $rootScope.updateUserPersonalInfoInUserCAccount(userPersonalInfoParamData);
+                var userChangePasswordInfoParamData = getParamDataToUpdateUserpasswordInfo();
+                if(userChangePasswordInfoParamData!==false && userChangePasswordInfoParamData!==undefined
+                    && jQuery.isEmptyObject(userChangePasswordInfoParamData)===false){
+                    $rootScope.updateUserPaswordInfoInUserCAccount(userChangePasswordInfoParamData);
                 }
             }else{
-                var notificationMsgStr = "Please enter valid data to update profile info !";
+                var notificationMsgStr = "Please enter valid password data to change !";
                 showNotificationBoxMsg(notificationMsgStr);
+            }
+        };
+        
+        
+        // updateUserPaswordInfoInUserCAccount
+        $rootScope.updateUserPaswordInfoInUserCAccount = function(userChangedPasswordInfoParamData){
+            try{
+                if(userChangedPasswordInfoParamData!==false && userChangedPasswordInfoParamData!==undefined
+                    && jQuery.isEmptyObject(userChangedPasswordInfoParamData)===false){
+                    
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = userChangedPasswordInfoParamData;
+                    
+                    // calling UsersServices 
+                    UsersServices.updateUserPasswordInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var isUserpasswordInfoUpdated =  false;
+                            var notificationMsgStr = 'Your password not change, please try again !';
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                isUserpasswordInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserpasswordInfoUpdated', retResponseJson);
+                            }
+                            if(isUserpasswordInfoUpdated==='TRUE'){
+                                notificationMsgStr = 'Your password changed successfully !';
+                            }
+                            showNotificationBoxMsg(notificationMsgStr);
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in populateUserPersonalInfo ex=>"+ex);
             }
         };
         
