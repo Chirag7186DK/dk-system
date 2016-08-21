@@ -247,7 +247,7 @@ include "Site_config.inc.php";
                 </div>
                 
                 <!-- ordered order cart all items info will be displayed -->
-                <div ng-if="displayOrdercartSectionType==='allordered'" ng-controller="OrderCartController" ng-init="populateAllOrderedOrdercartItemList('all_ordered')" id='uca_ordercartOrderedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedAllItemListSectionDivClass'>
+                <div ng-if="displayOrdercartSectionType==='allordered'" ng-controller="OrderCartController" ng-init="populateOrdercartAllOrderedItemList('all_ordered')" id='uca_ordercartOrderedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedAllItemListSectionDivClass'>
                     <!-- ordered item will be filtering -->
                     <div ng-if="ordercartOrderedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartOrderedItemDivClass">
                         <label class="searchTextOrdercartItemRequestedLblClass">
