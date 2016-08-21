@@ -423,7 +423,15 @@ class OrderCartDao{
                     COALESCE(uocim.product_featuresqty, 0) itemQty,
                     COALESCE(uocim.product_features_totalamount, 0) itemTotalAmt,
                     COALESCE(uocim.product_description,'') itemDescriptionIncart,
-                    'N' isCancelledItemAvailable
+                    (CASE 
+                        WHEN uocim.status='O' THEN 'Ordered'
+                        WHEN uocim.status='P' THEN 'Processing'
+                        WHEN uocim.status='W' THEN 'On the Way'
+                        WHEN uocim.status='D' THEN 'Delivered'
+                        WHEN uocim.status='PF' THEN 'Payment Failed'
+                        ELSE 'Call customer care to know status'
+                    END) orderedItemStatus,
+                    'N' isOrderedItemAvailable
                     FROM DK_USERORDERCART uoc 
                     JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
                     JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid
@@ -441,10 +449,10 @@ class OrderCartDao{
                         AND ppimg.is_showcasefile = 'Y'    
                     WHERE 1
                     AND (
-                        uoc.status='O' OR uoc.status='P' OR uoc.status='W'
-                        OR uoc.status='D' OR uoc.status='PF' OR uoc.status='W'
+                        uocim.status='O' OR uocim.status='P' OR uocim.status='W'
+                        OR uocim.status='D' OR uocim.status='PF'
                     )
-                    AND (uocim.status='R' OR uocim.status='A')
+                    AND (uoc.status='R' OR uoc.status='A')
                     AND uoc.user_id='$userid'
                     ORDER BY uoc.order_cartid ASC, uoc.updated_datedtime DESC";
             $command = $connection->createCommand($sql);
