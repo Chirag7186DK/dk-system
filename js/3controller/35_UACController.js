@@ -127,6 +127,50 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
+        // populateOrdercartAllOrderedItemList
+        $rootScope.populateOrdercartAllOrderedItemList = function(ordercartItemListByStatusType){
+            try{
+                // check is user logged in or not session
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
+                    && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
+                
+                    authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
+                    
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    
+                    $rootScope.ordercartOrderedAllItemDetailsArrObj =  false;
+                    
+                    // calling OrderCartServices 
+                    OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var ordercartOrderedAllItemDetailsArrObj =  false;
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                ordercartOrderedAllItemDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartAllItemDetails', retResponseJson);
+                            }
+                            if(ordercartOrderedAllItemDetailsArrObj!==false && ordercartOrderedAllItemDetailsArrObj!==undefined 
+                                && jQuery.isEmptyObject(ordercartOrderedAllItemDetailsArrObj)===false){
+                                $rootScope.ordercartOrderedAllItemDetailsArrObj =  ordercartOrderedAllItemDetailsArrObj;
+                            }else{
+                                $rootScope.ordercartOrderedAllItemDetailsArrObj =  false;
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in populateOrdercartAllOrderedItemList ex=>"+ex);
+            }
+        };
+        
+        
     }catch(ex){
         console.log("problem in UCustomerController ex=>"+ex);
     }
