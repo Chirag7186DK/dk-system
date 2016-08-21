@@ -107,7 +107,7 @@ include "Site_config.inc.php";
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_allSectionListContainerDivClass">
                 <!-- showing which section is accessed by user as customer -->
                 <p class='uca_selectedSectionListMsgPClass' ng-click="toggleUCustomerAccountOtherSectionList();">
-                    Hello, {{loggedUserName}} your viewing {{displayedSectionName}} section, view others 
+                    Hello, {{loggedUserName}} you are viewing {{displayedSectionName}} section, view others 
                     <span class="badge otherSectionAvailableCountSClass">6</span> section click here !
                 </p>
                 <!-- user as customer account showing different section label to access -->
