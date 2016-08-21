@@ -3451,6 +3451,7 @@
     .uca_personalInfoTextUserBirthdateLblSClass{
         color:#67717D!important;
         font-size:13px!important;
+        padding-right:7px!important;
     }
     
     .uca_personalInfoTextUserNameValSClass,
@@ -3460,6 +3461,12 @@
     .uca_personalInfoTextUserBirthdateValSClass{
         color:#67717D!important;
         font-size:13px!important;
+    }
+    
+    .uca_editProfileLblPClass{
+        font-size:15px!important;
+        color:#00B9F5!important;
+        font-weight:bold!important;
     }
     
 
