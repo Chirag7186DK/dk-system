@@ -115,16 +115,16 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     UsersServices.updateUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
-                            var userPersonalDetailsArrObj =  false;
+                            var isUserprofileInfoUpdated =  false;
+                            var notificationMsgStr = 'User profile info not update, please try again !';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userPersonalDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userPersonalDetails', retResponseJson);
+                                isUserprofileInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserprofileInfoUpdated', retResponseJson);
                             }
-                            if(userPersonalDetailsArrObj!==false && userPersonalDetailsArrObj!==undefined 
-                                && jQuery.isEmptyObject(userPersonalDetailsArrObj)===false){
-                                $rootScope.userPersonalDetails =  userPersonalDetailsArrObj;
-                            }else{
-                                $rootScope.userPersonalDetails =  false;
+                            if(isUserprofileInfoUpdated==='TRUE'){
+                                notificationMsgStr = 'User profile info updated, successfully !';
+                                $rootScope.showEditableUserCustomerProfileInfo('text_personalinfo');
                             }
+                            showNotificationBoxMsg(notificationMsgStr);
                         });
                     });
                 }
