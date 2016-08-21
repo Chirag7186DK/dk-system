@@ -145,7 +145,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     
-                    $rootScope.ordercartOrderedAllItemDetailsArrObj =  false;
+                    $rootScope.allOrdercartNoAllItemDetailsArrObj =  false;
                     
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
@@ -157,9 +157,9 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                             }
                             if(ordercartOrderedAllItemDetailsArrObj!==false && ordercartOrderedAllItemDetailsArrObj!==undefined 
                                 && jQuery.isEmptyObject(ordercartOrderedAllItemDetailsArrObj)===false){
-                                $rootScope.ordercartOrderedAllItemDetailsArrObj =  ordercartOrderedAllItemDetailsArrObj;
+                                $rootScope.allOrdercartNoAllItemDetailsArrObj =  ordercartOrderedAllItemDetailsArrObj;
                             }else{
-                                $rootScope.ordercartOrderedAllItemDetailsArrObj =  false;
+                                $rootScope.allOrdercartNoAllItemDetailsArrObj =  false;
                             }
                         });
                     });
