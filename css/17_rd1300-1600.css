@@ -3720,6 +3720,16 @@
     
     
     /* order cart all ordered item section css code */
+    
+    .uca_ordercartnoWiseAllItemSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartnoWiseAllItemSectionLabelPClass{
+        color:#67717D!important;
+        font-size:15px!important;
+    }
 
     .uca_ordercartOrderedAllItemListSectionDivClass{
         padding-left:0px!important;
