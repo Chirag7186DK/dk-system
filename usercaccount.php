@@ -137,11 +137,13 @@ include "Site_config.inc.php";
 
                 <!-- requested order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllItemListSectionDivClass'>
+                    
                     <!-- requesting order item will be filtering -->
                     <div ng-if="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartRequestedItemDivClass">
                         <label class="searchTextOrdercartItemRequestedLblClass">Use for filtering and access fast requesting shopping item !</label>
                         <input ng-model="searchTextOrdercartItemRequested" type="text" class="form-control" placeholder="Find requested items across in current order cart !">
                     </div>
+                    
                     <!-- each order item will display -->
                     <div ng-repeat="ordercartRequestedEachItemDetailsArrObj in ordercartRequestedAllItemDetailsArrObj| filter:searchTextOrdercartItemRequested:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachItemSectionContainerDivClass">
                         <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartRequestedEachItemImageDivClass'>
@@ -179,10 +181,12 @@ include "Site_config.inc.php";
                             </p>
                         </div>
                     </div>
+                    
                     <!-- payment checkout button -->
                     <div ng-if="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCheckoutBtnDivClass">
                         <button class='btn uca_ordercartCheckoutBtnClass'>Proceed to Checkout</button>
                     </div>
+                    
                     <!-- no order requested item  found message div -->
                     <div ng-if="ordercartRequestedAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCheckoutBtnDivClass">
                         <p class="shoppingBagsEmptyPClass">Your Shopping Bags is Empty !</p>
@@ -195,6 +199,7 @@ include "Site_config.inc.php";
                 
                 <!-- canceled order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='cancelledordered'" ng-controller="OrderCartController" ng-init="populateOrdercartCancelledItemList('ZC,ZA')" id='uca_ordercartCancelledAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledAllItemListSectionDivClass'>
+                    
                     <!-- canceled order item will be filtering -->
                     <div ng-if="ordercartCancelledAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartCancelledItemDivClass">
                         <label class="searchTextOrdercartItemRequestedLblClass">
@@ -202,6 +207,7 @@ include "Site_config.inc.php";
                         </label>
                         <input ng-model="searchTextOrdercartItemCancelled" type="text" class="form-control" placeholder="Find canceled items !">
                     </div>
+                    
                     <!-- each order item will display -->
                     <div ng-repeat="ordercartCancelledEachItemDetailsArrObj in ordercartCancelledAllItemDetailsArrObj | filter:searchTextOrdercartItemCancelled:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
                         <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartCancelledEachItemImageDivClass'>
@@ -237,6 +243,8 @@ include "Site_config.inc.php";
                             </p>
                         </div>
                     </div>
+                    
+                    <!-- no canceled ordered item found message div -->
                     <div ng-if="ordercartCancelledAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoCancelledItemFoundDivClass">
                         <p class="orderCancelledItemEmptyPClass">Your Shopping Bags is Empty !</p>
                         <p>
@@ -248,46 +256,53 @@ include "Site_config.inc.php";
                 
                 <!-- ordered order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='allordered'" ng-controller="OrderCartController" ng-init="populateOrdercartAllOrderedItemList('all_ordered')" id='uca_ordercartOrderedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedAllItemListSectionDivClass'>
+                    
                     <!-- ordered item will be filtering -->
-                    <div ng-if="ordercartOrderedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartOrderedItemDivClass">
+                    <div ng-if="allOrdercartNoAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartOrderedItemDivClass">
                         <label class="searchTextOrdercartItemRequestedLblClass">
                             Use for filtering and access fast ordered item !
                         </label>
                         <input ng-model="searchTextOrdercartItemOrdered" type="text" class="form-control" placeholder="Find ordered items !">
                     </div>
-                    <!-- each ordered item will display -->
-                    <div ng-repeat="ordercartOrderedEachItemDetailsArrObj in ordercartOrderedAllItemDetailsArrObj | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
-                        <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartOrderedEachItemImageDivClass'>
-                            <img style='width:100%;' class='ordercartOrderedEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
-                        </div>
-                        <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartOrderedEachItemDetailsDivClass'>
-                            <p class="ordercartOrderedEachItemNoSClass">
-                                Ordered No: {{ordercartOrderedEachItemDetailsArrObj.ordercartNo}}
-                            </p>
-                            <p class="ordercartOrderedEachItemStatusSClass">
-                                Status: {{ordercartOrderedEachItemDetailsArrObj.orderedItemStatus}}
-                            </p>
-                            <p class="ordercartOrderedEachItemSellerNamePClass">
-                                Seller: {{ordercartOrderedEachItemDetailsArrObj.shopStoreTitle}}
-                            </p>
-                            <p class="ordercartOrderedEachItemNamePClass">
-                                {{ordercartOrderedEachItemDetailsArrObj.productListTitle}}
-                            </p>
-                            <p class="ordercartOrderedEachItemSizePClass">
-                                Size: {{ordercartOrderedEachItemDetailsArrObj.itemMeasurementType}}
-                            </p>
-                            <p class="ordercartOrderedEachItemPricePClass">
-                                <i class="fa fa-rupee"></i> {{ordercartOrderedEachItemDetailsArrObj.itemPerpriceIncart}}
-                            </p>
-                            <p class="ordercartOrderedEachItemQtyPClass">
-                                Bought Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
-                            </p>
-                            <p class="ordercartOrderedEachItemTotalAmtPClass">
-                                Total Amt: {{ordercartOrderedEachItemDetailsArrObj.itemTotalAmt}}
-                            </p>
+                    
+                    <!-- display order cart no wise all items details -->
+                    <div ng-repeat="eachOrdercartNoAllItemDetailsArrObj in allOrdercartNoAllItemDetailsArrObj | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartnoWiseAllItemSectionContainerDivClass">
+                        <p class="uca_ordercartnoWiseAllItemSectionLabelPClass">
+                            Showing {{eachOrdercartNoAllItemDetailsArrObj['totalOrderedItems']}} items in ordered no {{eachOrdercartNoAllItemDetailsArrObj['ordercartNo']}}
+                        </p>
+                        <!-- each ordered item will display -->
+                        <div ng-repeat="ordercartOrderedEachItemDetailsArrObj in eachOrdercartNoAllItemDetailsArrObj['orderedAllItemsDetailsArr'] | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedEachItemSectionContainerDivClass">
+                            <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartOrderedEachItemImageDivClass'>
+                                <img style='width:100%;' class='ordercartOrderedEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
+                            </div>
+                            <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartOrderedEachItemDetailsDivClass'>
+                                <p class="ordercartOrderedEachItemStatusSClass">
+                                    Status: {{ordercartOrderedEachItemDetailsArrObj.orderedItemStatus}}
+                                </p>
+                                <p class="ordercartOrderedEachItemSellerNamePClass">
+                                    Seller: {{ordercartOrderedEachItemDetailsArrObj.shopStoreTitle}}
+                                </p>
+                                <p class="ordercartOrderedEachItemNamePClass">
+                                    {{ordercartOrderedEachItemDetailsArrObj.productListTitle}}
+                                </p>
+                                <p class="ordercartOrderedEachItemSizePClass">
+                                    Size: {{ordercartOrderedEachItemDetailsArrObj.itemMeasurementType}}
+                                </p>
+                                <p class="ordercartOrderedEachItemPricePClass">
+                                    <i class="fa fa-rupee"></i> {{ordercartOrderedEachItemDetailsArrObj.itemPerpriceIncart}}
+                                </p>
+                                <p class="ordercartOrderedEachItemQtyPClass">
+                                    Bought Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
+                                </p>
+                                <p class="ordercartOrderedEachItemTotalAmtPClass">
+                                    Total Amt: {{ordercartOrderedEachItemDetailsArrObj.itemTotalAmt}}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div ng-if="ordercartOrderedAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoOrderedItemFoundDivClass">
+                    
+                    <!-- no ordered item found message div -->
+                    <div ng-if="allOrdercartNoAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoOrderedItemFoundDivClass">
                         <p class="orderedItemEmptyPClass">Your Shopping Bags is Empty !</p>
                         <p>
                             <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
