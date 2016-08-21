@@ -45,8 +45,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     
                     $rootScope.userPersonalDetails =  false;
 
-                    // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
+                    // calling UsersServices 
+                    UsersServices.userPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userPersonalDetailsArrObj =  false;
