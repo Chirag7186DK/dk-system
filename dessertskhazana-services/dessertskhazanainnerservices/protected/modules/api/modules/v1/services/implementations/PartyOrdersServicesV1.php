@@ -14,7 +14,7 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
         // check requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // add party order request status
-            $dkParamDataArr['status_id'] = 'R';
+            $dkParamDataArr['status'] = 'R';
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
