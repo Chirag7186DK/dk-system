@@ -696,7 +696,37 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==2){
+        // check name key present or not
+        if(array_key_exists('name', $paramJsonData)){
+            if(strlen($paramJsonData['name'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check email key present or not
+        if(array_key_exists('email', $paramJsonData)){
+            if(strlen($paramJsonData['email'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check mobile key present or not
+        if(array_key_exists('mobile', $paramJsonData)){
+            if(strlen($paramJsonData['mobile'])==10){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check gender key present or not
+        if(array_key_exists('gender', $paramJsonData)){
+            if(strlen($paramJsonData['gender'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check birthdate key present or not
+        if(array_key_exists('birthdate', $paramJsonData)){
+            if(strlen($paramJsonData['birthdate'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==7){
             $retStatus = 'TRUE';
         }
         return $retStatus;
