@@ -89,11 +89,14 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         $rootScope.checkDataToUpdateUserpersonalnfo = function(){
             var retValidatedDataStatus = validationUserProfileInfoData();
             if(retValidatedDataStatus===true){
-                var userPersonalInfoParamData = validationUserProfileInfoData();
+                var userPersonalInfoParamData = getParamDataToUpdateUserpersonalInfo();
                 if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
                     && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
                     $rootScope.updateUserPersonalInfoInUserCAccount(userPersonalInfoParamData);
                 }
+            }else{
+                var notificationMsgStr = "Please enter valid data to update profile info !";
+                showNotificationBoxMsg(notificationMsgStr);
             }
         };
         
