@@ -15,9 +15,59 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 var requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
                 if(requestedSectionName==='ordercart'){
                     $rootScope.displayOrdercartSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
+                }else if(requestedSectionName==='personalinfo'){
+                    $rootScope.displayPersonalInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }
             }
         };
+        
+        // displayPersonalInfoSectionToAccessInUserCAccount
+        $rootScope.displayPersonalInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
+            $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
+            $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
+        };
+        
+        // populateUserPersonalInfo
+        $rootScope.populateUserPersonalInfoInUserCAccount = function(){
+            try{
+                // check is user logged in or not session
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
+                    && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
+                    
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    
+                    $rootScope.userPersonalDetails =  false;
+
+                    // calling OrderCartServices 
+                    OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var userPersonalDetailsArrObj =  false;
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                userPersonalDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userPersonalDetails', retResponseJson);
+                            }
+                            if(userPersonalDetailsArrObj!==false && userPersonalDetailsArrObj!==undefined 
+                                && jQuery.isEmptyObject(userPersonalDetailsArrObj)===false){
+                                $rootScope.userPersonalDetails =  userPersonalDetailsArrObj;
+                            }else{
+                                $rootScope.userPersonalDetails =  false;
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in populateUserPersonalInfo ex=>"+ex);
+            }
+        };
+        
         
         // displayOrdercartSectionToAccessInUserCAccount
         $rootScope.displayOrdercartSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
