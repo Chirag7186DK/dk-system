@@ -786,5 +786,4 @@ function attachedFieldValidationUserCustomerProfileInfo(){
             changeYear: true
         });
     }
-    alert($('.editUsernameInputClass').length);
 }
