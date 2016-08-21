@@ -94,16 +94,25 @@
                 </ul>
             </div>
             
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
             <!-- party order video -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_videoCoverageContainerDivClass">
                Party order video will be come here with full width
             </div>
             
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
             <!-- party order content -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_contentContainerDivClass">
                 Party order content will be come here
             </div>
             
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
             <!-- party order form content -->
             <div ng-show="isShowPartyOrderRequestFormContent" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_formContentWrapperDivClass">
                 <p class="po_formHeaderPClass">
