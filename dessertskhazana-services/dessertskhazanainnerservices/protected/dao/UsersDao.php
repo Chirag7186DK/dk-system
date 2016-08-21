@@ -121,6 +121,50 @@ class UsersDao{
         return $lastInsertedId;
     }
     
+    // CJ defined this function 2016-08-21
+    public static function updateUserPersonalInfoData($paramJson){
+        $connection = Yii::app()->db;
+        $dynamicSql = "";
+        $retStatus = false;
+        if(array_key_exists('name', $paramJson)){
+            if($paramJson['name']!=''){
+                $dynamicSql.=" name='".$paramJson['name']."',";
+            }
+        }
+        if(array_key_exists('email', $paramJson)){
+            if($paramJson['email']!=''){
+                $dynamicSql.=" email='".$paramJson['email']."',";
+            }
+        }
+        if(array_key_exists('mobile', $paramJson)){
+            if($paramJson['mobile']!=''){
+                $dynamicSql.=" mobile='".$paramJson['mobile']."',";
+            }
+        }
+        if(array_key_exists('gender', $paramJson)){
+            if($paramJson['gender']!=''){
+                $dynamicSql.=" gender='".$paramJson['gender']."',";
+            }
+        }
+        if(array_key_exists('birthdate', $paramJson)){
+            if($paramJson['birthdate']!=''){
+                $dynamicSql.=" birthdate='".$paramJson['birthdate']."',";
+            }
+        }
+        if($dynamicSql!='' && array_key_exists('user_id', $paramJson)){
+            if($paramJson['user_id']!=''){
+                $sqlQuery = " UPDATE DK_USERS SET ".rtrim($dynamicSql, ',');
+                $sqlQuery.=" WHERE id='".$paramJson['user_id']."'";
+                $command = $connection->createCommand($sqlQuery);
+                $result = $command->execute();
+                if($result>0){
+                    $retStatus = true;
+                }
+            }
+        }
+        return $retStatus;
+    }
+    
     // CJ defined this function 2016-07-27 , udblog mdg format can be bug here plz think on it CJ
     public static function getUserLogDetails($paramJson){
         $retResult = false;
