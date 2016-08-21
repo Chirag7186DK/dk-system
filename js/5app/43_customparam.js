@@ -1218,8 +1218,8 @@ function getParamDataAuthenticatedUserDetailsFromSession(){
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>7 
-                        && (userSessionParamObj['udblogId']).length===32){
+                    if((userSessionParamObj['user_sessionid']).length>=20
+                        && (userSessionParamObj['udblogId']).length>=20){
                         retParamObj['udblogId'] = userSessionParamObj['udblogId'];
                         retParamObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
                         retParamObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
