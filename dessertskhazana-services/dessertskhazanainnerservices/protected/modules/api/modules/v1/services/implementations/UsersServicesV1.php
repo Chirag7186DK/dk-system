@@ -126,4 +126,25 @@ class UsersServicesV1 implements IUsersServicesV1{
         return $rspDetails;
     }
 
+    // CJ defined this action 2016-08-21
+    public function updateUserPasswordInfoData($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isUserpasswordInfoUpdated'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['pwd'] = MD5($dkParamDataArr['new_password']);
+                $updateChangedPasswordInfoDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
+                if($updateChangedPasswordInfoDataStatus==true){
+                    $rspDetails['isUserpasswordInfoUpdated'] = 'TRUE';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+
 }
