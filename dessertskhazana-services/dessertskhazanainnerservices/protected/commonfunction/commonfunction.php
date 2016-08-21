@@ -843,6 +843,13 @@ class commonfunction{
                 if(count($sortedOnCartnoAllItemDetailsArr)>0 && $sortedOnCartnoAllItemDetailsArr!=false){
                     // iterate each order cartno all item details arr
                     foreach($sortedOnCartnoAllItemDetailsArr as $ordercartNoKey=>$allOrderedItemDetailsArr){
+                        array_push($retDataArr, 
+                            array(
+                                "ordercartNo"=>$ordercartNoKey,
+                                "tottalOrderedItems"=>count($allOrderedItemDetailsArr),
+                                "orderAllItemsDetailsArr"=>$allOrderedItemDetailsArr
+                            )
+                        );
                     }
                 }
             }
