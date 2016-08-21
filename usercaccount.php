@@ -248,7 +248,7 @@ include "Site_config.inc.php";
                     </span>
                 </p>
                 <p class="uca_changePasswordBtnPClass">
-                    <button ng-click="checkDataToUpdateUserpersonalnfo()" class='btn uca_changePasswordBtnClass'>
+                    <button ng-click="checkDataToUpdateUserpasswordInfo()" class='btn uca_changePasswordBtnClass'>
                         SAVE
                     </button>
                 </p>
