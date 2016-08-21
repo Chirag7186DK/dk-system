@@ -76,6 +76,7 @@ include "Site_config.inc.php";
                     </li>
                 </ul>
             </div>
+            
             <!-- show customer delivery city area desserts product type on header as text -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
                 <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
@@ -110,6 +111,16 @@ include "Site_config.inc.php";
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
+            
+            <!-- display user personal info section details -->
+            <div ng-if="requestedSectionName==='personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
+                <!-- edit personal info label text -->
+                <p class='uca_editProfileLblPClass'>
+                    <i class="fa fa-edit"> Edit Profile</i>
+                </p>
+            </div>
+            
+            
             <!-- order cart section details with each tab level -->
             <div ng-if="requestedSectionName==='ordercart'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartSectionContainerDivClass">
 
