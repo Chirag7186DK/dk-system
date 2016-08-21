@@ -53,9 +53,9 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !';
                     // store user info as login status
-                    $retLastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userAuthenticationDetailsArr[0], $dkParamDataArr);
-                    if($retLastInsertedUserInfoLogId>0 && $retLastInsertedUserInfoLogId!=false){
-                        $rspDetails['userDetails']['udblogId'] = MD5($retLastInsertedUserInfoLogId);
+                    $lastInsertedUserInfoLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userAuthenticationDetailsArr[0], $dkParamDataArr);
+                    if($lastInsertedUserInfoLogNo!=false && $lastInsertedUserInfoLogNo!=''){
+                        $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogNo;
                         $rspDetails['userDetails']['user_sessionid'] = $dkParamDataArr['user_sessionid'];
                         $rspDetails['userDetails']['user_sessionstarttime'] = $dkParamDataArr['user_sessionstarttime'];
                         $rspDetails['userDetails']['userProfileTypeId'] = $userAuthenticationDetailsArr[0]['unmd5ProfileTypeId'];
