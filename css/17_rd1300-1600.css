@@ -2158,8 +2158,6 @@
     }
 
     .po_formContentWrapperDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
     }
 
     .po_formHeaderPClass{
@@ -2187,8 +2185,7 @@
     }
 
     .po_formfieldLabelPClass{
-        color:#778ca0!important;
-        font-weight:bold!important;
+        color:#828282!important;
     }
 
     .po_formfieldHintPClass{
