@@ -2127,18 +2127,18 @@
 
     .po_userBreadcrumbULClass li a, 
     .po_userBreadcrumbULClass li a:hover{
-        color:#e6a4b7!important;
+        color:#828282!important;
         border-bottom:2px dotted #CDCEE8!important;
         text-decoration:none!important;
         font-weight:100!important;
     }
 
     .po_userBreadcrumbHomeTitleLIClass a{
-        color:#fb366e!important;
+        color:#828282!important;
     }
 
     .po_userBreadcrumbPartyTitleLIClass a{
-        color:rgba(120, 120, 120, 0.6)!important;
+        color:#828282!important;
     }
 
     .po_videoCoverageContainerDivClass{
