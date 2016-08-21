@@ -44,6 +44,9 @@ include "Site_config.inc.php";
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
+                    <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your all wish list">
+                        <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
+                    </li>
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Hello, {{loggedUserName}}
                         <!-- user account showing different section label to access -->
@@ -320,6 +323,9 @@ include "Site_config.inc.php";
         
         <!-- checking which section is requested by end user for showing purpose  -->
         <div ng-controller="UCustomerController" ng-init="checkRequestedSectionAvailableToAccessInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+        
+        <!-- refresh web application data -->
+        <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
         <?php
