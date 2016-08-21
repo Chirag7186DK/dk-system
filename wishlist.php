@@ -75,6 +75,7 @@ include "Site_config.inc.php";
                     </li>
                 </ul>
             </div>
+            
             <!-- show customer delivery city area desserts product type on header as text -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
                 <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
@@ -423,7 +424,7 @@ include "Site_config.inc.php";
             </div>
         </div>    
         
-        <!-- logged authenticated user web application data refresh -->
+        <!-- refresh web application data -->
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
