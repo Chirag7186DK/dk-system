@@ -3651,10 +3651,15 @@
 
     .uca_ordercartCancelledEachItemSectionContainerDivClass:last-child{
     }
+    
+    .ordercartCancelledEachItemNoSClass{
+        color:#67717D!important;
+        font-size:14px!important;
+    }
 
     .ordercartCancelledEachItemSellerNamePClass{
         color:#67717D!important;
-        font-size:14px!important;
+        font-size:13px!important;
     }
 
     .ordercartCancelledEachItemNamePClass{
