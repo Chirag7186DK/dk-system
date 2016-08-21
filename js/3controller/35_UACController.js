@@ -8,7 +8,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         // checkRequestedSectionAvailableToAccessInUserCAccount
         $rootScope.checkRequestedSectionAvailableToAccessInUserCAccount = function(){
             var isUserLoggedInSession = checkUserLoggedInSession();
-            var requestedSectionConfigDataObj =  getStoredRequestedSectionNameToAccessInUserCAccount();
+            var requestedSectionConfigDataObj =  getStoredRequestedSectionNameToAccessInUserAccount();
             if(isUserLoggedInSession===true && requestedSectionConfigDataObj!==false 
                 && requestedSectionConfigDataObj!==undefined 
                 && jQuery.isEmptyObject(requestedSectionConfigDataObj)===false){
