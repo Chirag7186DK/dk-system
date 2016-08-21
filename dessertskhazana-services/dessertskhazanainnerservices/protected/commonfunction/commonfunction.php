@@ -365,8 +365,6 @@ class commonfunction{
         // checking data length
         if(count($authenticatedUserJsonData)>0 && $authenticatedUserJsonData!=false){
             $user_sessionid = $authenticatedUserJsonData['user_sessionid'];
-            $md5UserId = $authenticatedUserJsonData['userId'];
-            $unmd5UserId = $authenticatedUserJsonData['unmd5UserId'];
             $udblogId = $authenticatedUserJsonData['userLogId'];
             $explodedLoggedUsername = explode(" ", $authenticatedUserJsonData['userName']);
             $retJsonData['userDetails'] = array(
