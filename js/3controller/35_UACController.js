@@ -146,6 +146,21 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
         };
         
+        // checkDataToUpdateUserpasswordInfo
+        $rootScope.checkDataToUpdateUserpasswordInfo = function(){
+            var retValidatedDataStatus = validationUserProfileInfoData();
+            if(retValidatedDataStatus===true){
+                var userPersonalInfoParamData = getParamDataToUpdateUserpersonalInfo();
+                if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
+                    && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
+                    $rootScope.updateUserPersonalInfoInUserCAccount(userPersonalInfoParamData);
+                }
+            }else{
+                var notificationMsgStr = "Please enter valid data to update profile info !";
+                showNotificationBoxMsg(notificationMsgStr);
+            }
+        };
+        
         
         // displayOrdercartSectionToAccessInUserCAccount
         $rootScope.displayOrdercartSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
