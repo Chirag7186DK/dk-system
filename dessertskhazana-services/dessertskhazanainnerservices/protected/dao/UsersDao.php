@@ -151,6 +151,11 @@ class UsersDao{
                 $dynamicSql.=" birthdate='".$paramJson['birthdate']."',";
             }
         }
+        if(array_key_exists('updated_by', $paramJson)){
+            if($paramJson['updated_by']!=''){
+                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
+            }
+        }
         if($dynamicSql!='' && array_key_exists('user_id', $paramJson)){
             if($paramJson['user_id']!=''){
                 $sqlQuery = " UPDATE DK_USERS SET ".rtrim($dynamicSql, ',');
