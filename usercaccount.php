@@ -144,6 +144,22 @@ include "Site_config.inc.php";
                             {{userPersonalDetails.mobile}}
                         </span>
                     </p>
+                    <p class="uca_personalInfoTextUserGenderPClass">
+                        <span class="uca_personalInfoTextUserGenderLblSClass">
+                            Gender
+                        </span>
+                        <span class="uca_personalInfoTextUserGenderValSClass">
+                            {{userPersonalDetails.gender}}
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserGenderPClass">
+                        <span class="uca_personalInfoTextUserBirthdateLblSClass">
+                            Gender
+                        </span>
+                        <span class="uca_personalInfoTextUserBirthdateValSClass">
+                            {{userPersonalDetails.birthdate}}
+                        </span>
+                    </p>
                 </div>
                 
             </div>
