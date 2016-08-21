@@ -113,12 +113,12 @@ include "Site_config.inc.php";
 
             
             <!-- display user personal info section details -->
-            <div ng-if="requestedSectionName==='personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
+            <div ng-if="requestedSectionName==='personalinfo'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
                 
                 <!-- user personal info as text display -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoTextSectionContainerDivClass">
+                <div ng-if="displayPersonalInfoSectionType==='text_personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoTextSectionContainerDivClass">
                     <!-- edit personal info label text -->
-                    <p class='uca_editProfileLblPClass pull-right' ng-click="toggleEditableUserCustomerProfileInfo()">
+                    <p class='uca_editProfileLblPClass pull-right' ng-click="showEditableUserCustomerProfileInfo('edit_personalinfo')">
                         <i class="fa fa-pencil"> Edit Profile</i>
                     </p>
                     <p class="uca_personalInfoTextUserNamePClass">
@@ -164,9 +164,9 @@ include "Site_config.inc.php";
                 </div>
                 
                 <!-- user personal info as editable mode -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
+                <div ng-if="displayPersonalInfoSectionType==='edit_personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
                     <!-- close edit personal info label text -->
-                    <p class='uca_closeProfileLblPClass pull-right' ng-click="toggleEditableUserCustomerProfileInfo()">
+                    <p class='uca_closeProfileLblPClass pull-right' ng-click="closeEditableUserCustomerProfileInfo('text_personalinfo')">
                         <i class="fa fa-close"> Close Profile</i>
                     </p>
                     <p class="uca_personalInfoTextUserNamePClass">
