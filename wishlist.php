@@ -108,7 +108,7 @@ include "Site_config.inc.php";
                 </ul>
             </div>
             
-            <!-- create horizontally space div between -->
+            <!-- create horizontally space between div -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
             <!-- display wish list setting icon -->
