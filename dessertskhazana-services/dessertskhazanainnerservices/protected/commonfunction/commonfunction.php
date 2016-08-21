@@ -846,7 +846,7 @@ class commonfunction{
                         array_push($retDataArr, 
                             array(
                                 "ordercartNo"=>$ordercartNoKey,
-                                "tottalOrderedItems"=>count($allOrderedItemDetailsArr),
+                                "totalOrderedItems"=>count($allOrderedItemDetailsArr),
                                 "orderedAllItemsDetailsArr"=>$allOrderedItemDetailsArr
                             )
                         );
