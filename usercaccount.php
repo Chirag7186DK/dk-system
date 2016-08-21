@@ -184,7 +184,7 @@ include "Site_config.inc.php";
                         <button class='btn uca_ordercartCheckoutBtnClass'>Proceed to Checkout</button>
                     </div>
                     <!-- no order requested item  found message div -->
-                    <div ng-hide="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCheckoutBtnDivClass">
+                    <div ng-if="ordercartRequestedAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCheckoutBtnDivClass">
                         <p class="shoppingBagsEmptyPClass">Your Shopping Bags is Empty !</p>
                         <p>
                             <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
@@ -237,7 +237,7 @@ include "Site_config.inc.php";
                             </p>
                         </div>
                     </div>
-                    <div ng-hide="ordercartCancelledAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoCancelledItemFoundDivClass">
+                    <div ng-if="ordercartCancelledAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoCancelledItemFoundDivClass">
                         <p class="orderCancelledItemEmptyPClass">Your Shopping Bags is Empty !</p>
                         <p>
                             <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
