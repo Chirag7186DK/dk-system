@@ -93,7 +93,7 @@ class UsersController extends V1Controller{
     }
     
     // CJ defined this action 2016-08-14
-    public function actionUserPersonalInfoData(){
+    public function actionManageUserPersonalInfoData(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
             $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
@@ -105,6 +105,25 @@ class UsersController extends V1Controller{
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
                     $rspDetails = $UsersServicesV1->getUserPersonalInfoData($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+        if(ComponentsHttp::httpMethod()=="PUT"){
+            // checking requested param key name 
+            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                // checking param key value data & return status
+                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForUpdatingUserPersonalDetails($dkParamDataArr);
+                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                    $UsersServicesV1 = new UsersServicesV1();
+                    $rspDetails = $UsersServicesV1->updateUserPersonalInfoData($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
