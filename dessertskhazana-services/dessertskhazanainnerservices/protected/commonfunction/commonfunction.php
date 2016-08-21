@@ -399,9 +399,17 @@ class commonfunction{
     public static function preparedDataToStoreInfoAbtUserAsLog($authenticatedUserJsonData, $dkParamDataArr){
         $retLastInsertedUserInfoLogId = false;
         if(count($authenticatedUserJsonData)>0 && $authenticatedUserJsonData!=false){
+            $userLogNo = "";
+            // fetch user max log no
+            $userMaxLogNo = UsersDao::generateMaxUserLogNo();
+            if($userMaxLogNo>=0){
+                $sha1String = sha1($userMaxLogNo.time());
+                $userLogNo.="ULNO".$userMaxLogNo.time().$sha1String;
+            }
             // track user info accessing web app details
             $userInfoLogDetails = array();
             $userInfoLogDetails['user_id'] = $authenticatedUserJsonData['unmd5UserId'];
+            $userInfoLogDetails['user_logno'] = $userLogNo;
             $userInfoLogDetails['user_sessionid'] = $dkParamDataArr['user_sessionid'];
             $userInfoLogDetails['user_sessionstarttime'] = $dkParamDataArr['user_sessionstarttime'];
             $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
