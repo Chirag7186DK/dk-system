@@ -114,7 +114,6 @@ include "Site_config.inc.php";
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
-            
             <!-- display user personal info section details -->
             <div ng-if="requestedSectionName==='personalinfo'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
                 
@@ -222,6 +221,36 @@ include "Site_config.inc.php";
                 
             </div>
             
+            <!-- change password info section details -->
+            <div ng-if="requestedSectionName==='changepassword'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_changepasswordInfoSectionContainerDivClass">
+                <p class="uca_OldPasswordPClass">
+                    <span class="uca_oldpasswordLblSClass">
+                        OLD PASSWORD
+                    </span>
+                    <span class="uca_oldpasswordEditValSClass">
+                        <input placeholder='OLD PASSWORD' class='form-control editOldPasswordInputClass' type='password' value=''>
+                    </span>
+                </p>
+                <p class="uca_NewPasswordPClass">
+                    <span class="uca_newpasswordLblSClass">
+                        NEW PASSWORD
+                    </span>
+                    <span class="uca_newpasswordEditValSClass">
+                        <input placeholder='NEW PASSWORD' class='form-control editNewPasswordInputClass' type='password' value=''>
+                    </span>
+                </p>
+                <p class="uca_NewConfirmPasswordPClass">
+                    <span class="uca_newconfirmpasswordLblSClass">
+                        CONFIRM PASSWORD
+                    </span>
+                    <span class="uca_newconfirmpasswordEditValSClass">
+                        <input placeholder='CONFIRM PASSWORD' class='form-control editNewConfirmPasswordInputClass' type='password' value=''>
+                    </span>
+                </p>
+                <p class="uca_personalInfoUpdateBtnPClass">
+                    <button ng-click="checkDataToUpdateUserpersonalnfo()" class='btn uca_personalInfoUpdateBtnClass'>UPDATE</button>
+                </p>
+            </div>
             
             <!-- order cart section details with each tab level -->
             <div ng-if="requestedSectionName==='ordercart'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartSectionContainerDivClass">
@@ -433,7 +462,6 @@ include "Site_config.inc.php";
                 </div>
 
             </div>
-
 
         </div>    
 
