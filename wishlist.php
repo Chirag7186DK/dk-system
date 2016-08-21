@@ -68,9 +68,6 @@ include "Site_config.inc.php";
                             <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
                                 My offers
                             </div>
-                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
-                                Log Out
-                            </div>
                         </div>
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
