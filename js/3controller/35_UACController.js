@@ -25,6 +25,18 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         $rootScope.displayPersonalInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
             $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
+            $rootScope.displayPersonalInfoSectionType = "text_personalinfo";
+        };
+        
+        
+        // showEditableUserCustomerProfileInfo
+        $rootScope.showEditableUserCustomerProfileInfo = function(displayPersonalInfoSectionType){
+            $rootScope.displayPersonalInfoSectionType = displayPersonalInfoSectionType;
+        };
+        
+        // closeEditableUserCustomerProfileInfo
+        $rootScope.closeEditableUserCustomerProfileInfo = function(displayPersonalInfoSectionType){
+            $rootScope.displayPersonalInfoSectionType = displayPersonalInfoSectionType;
         };
         
         // populateUserPersonalInfo
