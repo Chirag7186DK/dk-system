@@ -801,7 +801,7 @@ function validationUserProfileInfoData(){
             $('.editUsernameInputClass').css({'border-color':'#f18178'});
             incorrectFieldDataCounter++;
         }else if($('.editUsernameInputClass').val()!==''){
-            $('.editUsernameInputClass').css({'color':'#ccc'});
+            $('.editUsernameInputClass').css({'border-color':'#ccc'});
         }
     }
     if($('.editUseremailInputClass').length===1){
@@ -831,7 +831,7 @@ function validationUserProfileInfoData(){
                 $('.editUsermobileInputClass').css({'border-color':'#f18178'});
                 incorrectFieldDataCounter++;
             }else if(enterMobileNo.match(mobilePattern)===true && (enterMobileNo).length===10){
-                $('.editUsermobileInputClass').css({'color':'#ccc'});
+                $('.editUsermobileInputClass').css({'border-color':'#ccc'});
             }
         }
     }
@@ -841,7 +841,7 @@ function validationUserProfileInfoData(){
             $('.editUserbirthdateInputClass').css({'border-color':'#f18178'});
             incorrectFieldDataCounter++;
         }else if($('.editUserbirthdateInputClass').val()!==''){
-            $('.editUserbirthdateInputClass').css({'color':'#ccc'});
+            $('.editUserbirthdateInputClass').css({'border-color':'#ccc'});
         }
     }
     if(incorrectFieldDataCounter>0){
