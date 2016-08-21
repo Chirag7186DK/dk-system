@@ -56,11 +56,17 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
                                 showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     // console.log("addPartyOrdersRequest retResponseJson=>"+JSON.stringify(retResponseJson));
-                                    var retStatus = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'isPartyOrderRequestSend', retResponseJson);
-                                    if(retStatus==='YES'){
-                                        clearPartyOrderRequestFormField();
-                                        $rootScope.isShowPartyOrderRequestFormContent = false;
-                                        $rootScope.isShowPartyOrderRequestSendThankyouMsg = true;
+                                    var poRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'poRequestedStatusDetails', retResponseJson);
+                                    if(poRequestedStatusDetails!==false && poRequestedStatusDetails!==undefined 
+                                        && jQuery.isEmptyObject(poRequestedStatusDetails)===false){
+                                        if(poRequestedStatusDetails['isPartyOrderRequestSend']==='YES'){
+                                            clearPartyOrderRequestFormField();
+                                            $rootScope.isShowPartyOrderRequestFormContent = false;
+                                            $rootScope.isShowPartyOrderRequestSendThankyouMsg = true;
+                                        }else{
+                                            $rootScope.isShowPartyOrderRequestErrorMsg = true;
+                                            $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
+                                        }
                                     }else{
                                         $rootScope.isShowPartyOrderRequestErrorMsg = true;
                                         $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
