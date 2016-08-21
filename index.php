@@ -54,7 +54,7 @@
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
                         <!-- user account showing different section label to access -->
                         <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
-                            <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
+                            <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="{{userInfoEachSectionListArrObj.hoverTitle}}" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
                                 {{userInfoEachSectionListArrObj.displayTitle}}
                             </div>
                         </div>
