@@ -1390,7 +1390,7 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
 }
 
 // CJ defined this function 2016-08-15
-function getStoredRequestedSectionNameToAccessInUserCAccount(){
+function getStoredRequestedSectionNameToAccessInUserAccount(){
     var retParamObj = {};
     try{
         // checking session param
@@ -1405,7 +1405,7 @@ function getStoredRequestedSectionNameToAccessInUserCAccount(){
             }
         }
     }catch(ex){
-        console.log("problem in getStoredRequestedSectionNameToAccessInUserCAccount=>"+ex);
+        console.log("problem in getStoredRequestedSectionNameToAccessInUserAccount=>"+ex);
         retParamObj = {};
     } 
     if(Object.keys(retParamObj).length===2){
