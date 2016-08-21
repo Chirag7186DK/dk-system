@@ -733,6 +733,41 @@ class customparam{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-08-21
+    public static function checkParamDataForUpdatingUserPasswordDetails($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check old_password key present or not
+        if(array_key_exists('old_password', $paramJsonData)){
+            if(strlen($paramJsonData['old_password'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check old_password key present or not
+        if(array_key_exists('new_password', $paramJsonData)){
+            if(strlen($paramJsonData['new_password'])>0 && strlen($paramJsonData['newc_password'])>0
+                && $paramJsonData['new_password']==$paramJsonData['newc_password']){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==4){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     /////////////////////////// wishlist related code //////////////////////
     
