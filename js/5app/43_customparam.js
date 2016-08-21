@@ -1392,6 +1392,7 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
     }    
 }
 
+
 // CJ defined this function 2016-08-15
 function getStoredRequestedSectionNameToAccessInUserAccount(){
     var retParamObj = {};
@@ -1417,6 +1418,39 @@ function getStoredRequestedSectionNameToAccessInUserAccount(){
         return false;
     }
 }
+
+
+// CJ defined this function 2016-08-21
+function getParamDataToUpdateUserpersonalInfo(){
+    var retParamObj = {};
+    try{
+        if($('.editUsernameInputClass').length===1){
+            retParamObj['name'] = removeHtmlStripTagsOfContent($('.editUsernameInputClass').val());
+        }
+        if($('.editUseremailInputClass').length===1){
+            retParamObj['email'] = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
+        }
+        if($('.editUsermobileInputClass').length===1){
+            retParamObj['mobile'] = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
+        }
+        if($('.editUserbirthdateInputClass').length===1){
+            retParamObj['gender'] = removeHtmlStripTagsOfContent($('.editUserbirthdateInputClass').val());
+        }
+        if($('.editUserGenderSelectClass').length===1){
+            retParamObj['gender'] = removeHtmlStripTagsOfContent($('.editUserGenderSelectClass').find('option:selected').val());
+        }
+        
+    }catch(ex){
+        console.log("problem in getParamDataToUpdateUserpersonalInfo=>"+ex);
+        retParamObj = {};
+    } 
+    if(Object.keys(retParamObj).length===2){
+        return retParamObj;
+    }else{
+        return false;
+    }
+}
+
 
 
 ///////////////// order cart related code here ///////////////////////////
