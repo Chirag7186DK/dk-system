@@ -368,13 +368,13 @@ class commonfunction{
             $udblogId = $authenticatedUserJsonData['userLogId'];
             $explodedLoggedUsername = explode(" ", $authenticatedUserJsonData['userName']);
             $userAsCustomerInfoSectionListArr = array(
-                array("displayTitle"=>"Personal Info", "hoverTitle"=>"", "sectionName"=>"personalinfo"),
-                array("displayTitle"=>"Change Password", "hoverTitle"=>"", "sectionName"=>"changepassword"),
-                array("displayTitle"=>"Your Orders", "hoverTitle"=>"", "sectionName"=>"ordercart"),
-                array("displayTitle"=>"Party Order", "hoverTitle"=>"", "sectionName"=>"partyorder"),
-                array("displayTitle"=>"Customize Order", "hoverTitle"=>"", "sectionName"=>"customizeorder"),
-                array("displayTitle"=>"Share Offers", "hoverTitle"=>"", "sectionName"=>"shareoffers"),
-                array("displayTitle"=>"My Offers", "hoverTitle"=>"", "sectionName"=>"myoffers"),
+                array("displayTitle"=>"Personal Info", "hoverTitle"=>"Click here to see personal info details", "sectionName"=>"personalinfo"),
+                array("displayTitle"=>"Change Password", "hoverTitle"=>"Click here to change your password details", "sectionName"=>"changepassword"),
+                array("displayTitle"=>"Your Orders", "hoverTitle"=>"Click here to see your orders details", "sectionName"=>"ordercart"),
+                array("displayTitle"=>"Party Order", "hoverTitle"=>"Click here to see your party orders", "sectionName"=>"partyorder"),
+                array("displayTitle"=>"Customize Order", "hoverTitle"=>"Click here to see your customize orders", "sectionName"=>"customizeorder"),
+                array("displayTitle"=>"Share Offers", "hoverTitle"=>"Click here to see your share offers", "sectionName"=>"shareoffers"),
+                array("displayTitle"=>"My Offers", "hoverTitle"=>"Click here to see your offers", "sectionName"=>"myoffers"),
             );
             $retJsonData['userDetails'] = array(
                 "user_sessionid"=>$user_sessionid,
