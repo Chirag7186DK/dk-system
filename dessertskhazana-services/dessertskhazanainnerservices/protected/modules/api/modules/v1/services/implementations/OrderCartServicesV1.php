@@ -61,6 +61,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                 if($ordercartItemListByStatusType=='all_ordered'){
                     $rspDetails['ordercartAllItemDetails'] = commonfunction :: getAllOrderedOrdercartItemDetails($userId);
                 }
+                // $rspDetails['ordercartAllItemDetails'] = false;
             }
         } 
         return $rspDetails;
