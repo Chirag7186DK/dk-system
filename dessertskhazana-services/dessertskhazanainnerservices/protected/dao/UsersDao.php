@@ -141,6 +141,11 @@ class UsersDao{
                 $dynamicSql.=" mobile='".$paramJson['mobile']."',";
             }
         }
+        if(array_key_exists('pwd', $paramJson)){
+            if($paramJson['pwd']!=''){
+                $dynamicSql.=" pwd='".$paramJson['pwd']."',";
+            }
+        }
         if(array_key_exists('gender', $paramJson)){
             if($paramJson['gender']!=''){
                 $dynamicSql.=" gender='".$paramJson['gender']."',";
