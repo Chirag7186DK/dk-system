@@ -10,7 +10,9 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
     // CJ defined this action 2016-08-21
     public function addPartyOrdersRequest($dkParamDataArr){
         $rspDetails = array();
-        $rspDetails["isPartyOrderRequestSend"] = 'NO';
+        $rspDetails["partyOrderRequestDetails"] = array();
+        $rspDetails['partyOrderRequestDetails']["isPartyOrderRequestSend"] = 'NO';
+        $rspDetails['partyOrderRequestDetails']["partyOrderNo"] = '';
         // check requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // add party order request status
@@ -24,7 +26,8 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
             $dkParamDataArr['partyorder_no'] = commonfunction :: generatePartyOrderNo();
             $lastPORID = PartyOrdersDao::addPartyOrderRequest($dkParamDataArr);
             if($lastPORID>0){
-                $rspDetails["isPartyOrderRequestSend"] = 'YES';
+                $rspDetails['partyOrderRequestDetails']["isPartyOrderRequestSend"] = 'YES';
+                $rspDetails['partyOrderRequestDetails']["partyOrderNo"] = $dkParamDataArr['partyorder_no'];
                 // send sms to end user to inform about party order request recieve by desserts khazana
                 // $retEmailSentStatus = commonfunction :: preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($dkParamDataArr);
                 // $smsMsgBody = "Sms Testing CJ";
