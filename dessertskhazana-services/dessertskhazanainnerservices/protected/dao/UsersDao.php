@@ -140,6 +140,7 @@ class UsersDao{
                 COALESCE(DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y'), '') userSinceFrom,
                 COALESCE(u.pincode, '') userPincode,
                 COALESCE(u.gender, '') userGender,
+                COALESCE(u.birthdate, '') userBirthdate,
                 COALESCE(u.status, 'Z') userStatus
                 FROM DK_USERLOG ul
                 JOIN DK_USERS u ON ul.user_id=u.id AND u.status='A' 
