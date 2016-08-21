@@ -161,7 +161,7 @@ include "Site_config.inc.php";
                                 <span class='ordercartRequestedEachItemDiscountPercentTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount!==''">
                                     {{ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount}}%
                                 </span>
-                                <span class='ordercartRequestedEachItemCutPriceTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount!==''">
+                                <span class='ordercartRequestedEachItemCutPriceTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureBasePrice!==''">
                                     <i class="fa fa-rupee"></i> {{ordercartRequestedEachItemDetailsArrObj.productFeatureBasePrice}}
                                 </span>
                                 <span class='ordercartRequestedEachItemPriceTextSClass'>
