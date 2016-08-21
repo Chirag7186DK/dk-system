@@ -3434,7 +3434,7 @@
     /* user as customer account css code */
 
     
-    /* personal info section css code */
+    /* personal info as text display section css code */
     
     .uca_personalInfoSectionContainerDivClass{
         padding-left:0px!important;
@@ -3468,6 +3468,44 @@
         color:#00B9F5!important;
         font-weight:bold!important;
     }
+    
+    
+    /* personal info as edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        border:1px solid #DCE0EF!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+    }
+    
+    .uca_closeProfileLblPClass{
+        font-size:15px!important;
+        color:#00B9F5!important;
+        font-weight:bold!important;
+    }
+    
+    .uca_personalInfoTextUserNameLblSClass,
+    .uca_personalInfoTextUserEmailLblSClass,
+    .uca_personalInfoTextUserMobileLblSClass,
+    .uca_personalInfoTextUserGenderLblSClass,
+    .uca_personalInfoTextUserBirthdateLblSClass{
+        color:#67717D!important;
+        font-size:13px!important;
+        padding-right:7px!important;
+    }
+    
+    .uca_personalInfoEditUserNameValSClass,
+    .uca_personalInfoEditUserEmailValSClass,
+    .uca_personalInfoEditUserMobileValSClass,
+    .uca_personalInfoEditUserGenderValSClass,
+    .uca_personalInfoEditUserBirthdateValSClass{
+        color:#67717D!important;
+        font-size:13px!important;
+    }
+    
+    
     
 
     /* order cart section css code */
