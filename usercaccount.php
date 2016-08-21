@@ -51,23 +51,8 @@ include "Site_config.inc.php";
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Hello, {{loggedUserName}}
                         <!-- user account showing different section label to access -->
                         <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
-                            <div title="Click here to see more details about yourself" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
-                                Personal Info
-                            </div>
-                            <div title="Click here to change password details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('changepassword');">
-                                Change Password
-                            </div>
-                            <div title="Click here to see your orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('ordercart');">
-                                Your Orders
-                            </div>
-                            <div title="Click here to see your customize orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
-                                Customize Orders
-                            </div>
-                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
-                                Share Offers
-                            </div>
-                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
-                                My offers
+                            <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="{{userInfoEachSectionListArrObj.hoverTitle}}" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
+                                {{userInfoEachSectionListArrObj.displayTitle}}
                             </div>
                         </div>
                     </li>
