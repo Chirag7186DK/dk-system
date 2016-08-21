@@ -3472,14 +3472,6 @@
     
     /* personal info as edit mode display section css code */
     
-    .uca_personalInfoEditSectionContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        border:1px solid #DCE0EF!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-    
     .uca_closeProfileLblPClass{
         font-size:15px!important;
         color:#00B9F5!important;
@@ -3505,7 +3497,17 @@
         font-size:13px!important;
     }
     
+    .uca_personalInfoEditSectionContainerDivClass input{
+        width:20%!important;
+    }
     
+    .uca_personalInfoUpdateBtnClass{
+        font-weight:bold;
+        font-size:15px!important;
+        border-radius:0px!important;
+        color:#fff!important;
+        background:#00B9F5!important;
+    }
     
 
     /* order cart section css code */
