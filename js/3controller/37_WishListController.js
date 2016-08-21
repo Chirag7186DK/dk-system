@@ -26,19 +26,20 @@ app.controller('WishListController', function ($scope, $rootScope, $http, WishLi
             $rootScope.userAllWLWiseItemArrJsonData = false;
             $rootScope.searchedAllUserwiseWLSummaryArrJsonObj = false;
             $rootScope.searchedUserwiseWLAllItemArrJsonObj = false;
-            if (purposeType === 'showwlcreation') {
+            if(purposeType==='showwlcreation'){
                 $rootScope.isShowCreateUWLFormContent = true;
+                attachedFieldValidationWLCreation();
             }
         };
 
         // toggleWLCreationFContent
-        $rootScope.toggleUWLCreationFContent = function () {
+        $rootScope.toggleUWLCreationFContent = function(){
             $rootScope.resetUWLVariable('showwlcreation');
             $rootScope.checkProductDataAvailableInSessionToAddUWL();
         };
 
         // collectDataUWLCreation
-        $rootScope.collectDataUWLCreation = function () {
+        $rootScope.collectDataUWLCreation = function(){
             // validate data
             var retDataValidatedStatus = validateDataUWLCreation();
             if (retDataValidatedStatus === true) {
@@ -51,7 +52,7 @@ app.controller('WishListController', function ($scope, $rootScope, $http, WishLi
         };
 
         // createUserWL 
-        $rootScope.createUserWL = function (paramDataObj) {
+        $rootScope.createUserWL = function (paramDataObj){
             try {
                 if (paramDataObj !== false && jQuery.isEmptyObject(paramDataObj) === false) {
                     var jsonParamBlockUIObject = {};
