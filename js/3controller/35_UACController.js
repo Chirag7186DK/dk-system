@@ -27,11 +27,17 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             $rootScope.uca_toggleOrdercartSectionList($rootScope.requestedSectionName);
         };
         
-        $rootScope.uca_toggleOrdercartSectionList = function(displayOrdercartSectionType){
+        // uca_toggleOrdercartSectionList
+        $rootScope.uca_toggleOrdercartSectionList = function(displayOrdercartSectionType, clickedElementId, clickedElementParentClass){
             if(displayOrdercartSectionType==='ordercart' || displayOrdercartSectionType==='requestitem'){
                 $rootScope.displayOrdercartSectionType = 'requestitem';
             }else{
                 $rootScope.displayOrdercartSectionType = displayOrdercartSectionType;
+            }
+            // toggle backgroun class also
+            if(clickedElementId!==undefined && clickedElementParentClass!==undefined){
+                $('.'+clickedElementParentClass).find('li').removeClass('uca_ordercartSelectedTabLabelSectionContainerLIClass');
+                $('#'+clickedElementId).addClass('uca_ordercartSelectedTabLabelSectionContainerLIClass');
             }
         };
         
