@@ -1254,7 +1254,7 @@ function getUserSessionIdFromUserSession(){
                 if(userSessionParamObj.hasOwnProperty('user_sessionid')===true){
                     if(userSessionParamObj['user_sessionid']!=='' 
                         && userSessionParamObj['user_sessionid']!==false
-                        && (userSessionParamObj['user_sessionid']).length>7
+                        && (userSessionParamObj['user_sessionid']).length>=20
                         && userSessionParamObj['user_sessionid']!==undefined){
                         userSessionId = userSessionParamObj['user_sessionid'];
                     }
@@ -1973,6 +1973,7 @@ function clearStoredProductDataFromSessionForUWL(){
 
 
 /////////////////// Rating/Review related code ///////////////////
+
 
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForRatingReviewDetails(){
