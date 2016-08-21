@@ -3499,7 +3499,8 @@
         font-size:13px!important;
     }
     
-    .uca_personalInfoEditSectionContainerDivClass input{
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
         width:20%!important;
     }
     
