@@ -1025,8 +1025,8 @@ function getParamDataObjForPartyOrderRequest(){
                 // extract party order param obj
                 var partyOrderParamObj = dkParamObj['partyOrder'];
                 if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                    retParamDataObj['user_sessionid'] = dkParamObj['user_sessionid'];
-                    retParamDataObj['udblogId'] = dkParamObj['udblogId'];
+                    retParamDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    retParamDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
                     retParamDataObj['name'] = removeHtmlStripTagsOfContent($('#po_contactPersonNameInputId').val());
                     retParamDataObj['mobile'] = removeHtmlStripTagsOfContent($('#po_contactMobileInputId').val());
                     retParamDataObj['email'] = removeHtmlStripTagsOfContent($('#po_contactEmailInputId').val());
