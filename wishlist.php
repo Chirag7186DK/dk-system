@@ -422,6 +422,7 @@ include "Site_config.inc.php";
                     </div>
                 </div>
             </div>
+            
         </div>    
         
         <!-- refresh web application data -->
