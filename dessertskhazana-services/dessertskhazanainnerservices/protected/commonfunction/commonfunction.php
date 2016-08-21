@@ -847,7 +847,7 @@ class commonfunction{
                             array(
                                 "ordercartNo"=>$ordercartNoKey,
                                 "tottalOrderedItems"=>count($allOrderedItemDetailsArr),
-                                "orderAllItemsDetailsArr"=>$allOrderedItemDetailsArr
+                                "orderedAllItemsDetailsArr"=>$allOrderedItemDetailsArr
                             )
                         );
                     }
