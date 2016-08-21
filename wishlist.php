@@ -29,26 +29,49 @@ include "Site_config.inc.php";
 
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
-            <!-- webAppLogoAndMenuIconContainerDivClass --->
+            
+            <!-- web logo --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
+            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
-                    <li title="Click here to go home page">
-                        <i class="fa fa-home"></i> Home
+                    <li title="Click here to contact us">
+                        <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
-                    <li title="Click here to view your current order cart all item(s)">
-                        <i class="fa fa-shopping-basket"></i> Cart ({{ordercartItemRequestedCount}})
+                    <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
+                        <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
+                    </li>
+                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
+                        <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
+                        <!-- user account showing different section label to access -->
+                        <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
+                            <div title="Click here to see more details about yourself" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
+                                Personal Info
+                            </div>
+                            <div title="Click here to see your orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('ordercart');">
+                                Your Orders
+                            </div>
+                            <div title="Click here to see your customize orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
+                                Customize Orders
+                            </div>
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
+                                Share Offers
+                            </div>
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
+                                My offers
+                            </div>
+                            <div class='userAccountEachSectionListDropdownDivClass' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
+                                Log Out
+                            </div>
+                        </div>
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
-                        <i class="fa fa-sign-out"></i> Sign-Out
-                    </li>
-                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
-                        <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
+                        <i class="fa fa-sign-out"></i> Log Out
                     </li>
                 </ul>
             </div>
@@ -58,6 +81,7 @@ include "Site_config.inc.php";
                     <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
                 </p>
             </div>
+            
         </div>
 
         <!-- header row border div class -->
@@ -75,17 +99,10 @@ include "Site_config.inc.php";
                         </a>
                     </li>
                     <li class='wl_userBreadcrumbWishListTitleLIClass'>
-                        |&nbsp; Wishlist
+                        |&nbsp; {{loggedUserName}}
                     </li>
-                </ul>
-            </div>
-            
-            <!-- display basic info about wish list user when he/she is sign-in with authentication details -->
-            <div ng-show="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wl_euserInfoDivClass">
-                <ul class="wl_euserInfoBreadcrumbULClass list-inline">
-                    <li class='wl_euserInfoBreadcrumbTitleLIClass'>
-                        Hello, {{loggedUserName}}, total <span class="badge wlCountSClass">{{wlmCount}}</span> item(s) in wishlist,
-                        & you associated with us since from {{userSinceFrom}}
+                    <li class='wl_userBreadcrumbWishListTitleLIClass'>
+                        |&nbsp; Wishlist
                     </li>
                 </ul>
             </div>
