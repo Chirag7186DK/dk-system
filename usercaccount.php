@@ -256,7 +256,7 @@ include "Site_config.inc.php";
                         <input ng-model="searchTextOrdercartItemOrdered" type="text" class="form-control" placeholder="Find ordered items !">
                     </div>
                     <!-- each ordered item will display -->
-                    <div ng-repeat="ordercartOrderedEachItemDetailsArrObj in ordercartOrderedAllItemDetailsArrObj | filter:searchTextOrdercartItemCancelled:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
+                    <div ng-repeat="ordercartOrderedEachItemDetailsArrObj in ordercartOrderedAllItemDetailsArrObj | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
                         <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartOrderedEachItemImageDivClass'>
                             <img style='width:100%;' class='ordercartOrderedEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
                         </div>
@@ -287,7 +287,7 @@ include "Site_config.inc.php";
                             </p>
                         </div>
                     </div>
-                    <div ng-hide="ordercartOrderedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoOrderedItemFoundDivClass">
+                    <div ng-if="ordercartOrderedAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoOrderedItemFoundDivClass">
                         <p class="orderedItemEmptyPClass">Your Shopping Bags is Empty !</p>
                         <p>
                             <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
