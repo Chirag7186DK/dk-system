@@ -647,7 +647,7 @@ function validateDataUWLUpdation(fcClass){
     var blankFieldValueCount = 0 ;
     if($('.'+fcClass).length===1){
         if($('.'+fcClass).find('input.wls_wishListTitleInputClass').length===1){
-            var inputVal = removeHtmlStripTagsOfContent($('.'+fcClass).find('input.wls_wishListTitleInputClass').val());
+            var inputVal = removeHtmlStripTagsOfContent($('.'+fcClass).find('.wls_wishListTitleInputClass').val());
             if(inputVal==='' || inputVal===false){
                 $('.'+fcClass).find('input.wls_wishListTitleInputClass').css({'border-color':'#f18178'});
                 $('.'+fcClass).find('input.wld_wlTitleContainer_ErrorClass').empty().append("Please enter your wish list title !");
