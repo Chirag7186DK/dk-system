@@ -40,7 +40,7 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
                 }else{
                     // get param obj to add party order request
                     var preparedParamJsonObj = getParamDataObjForPartyOrderRequest();
-                    // console.log("loadDKDeliveryAreaBasedProductTypeList preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
+                    // console.log("addPartyOrdersRequest preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var jsonParamBlockUIObject = {};
                         jsonParamBlockUIObject['css'] = {"padding":10};
