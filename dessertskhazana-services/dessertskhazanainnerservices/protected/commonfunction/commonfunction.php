@@ -833,12 +833,18 @@ class commonfunction{
     
     // CJ defined this function 2016-08-21
     public static function getAllOrderedOrdercartItemDetails($userId){
-        $retDataArr = false;
+        $retDataArr = array();
         if($userId!='' && $userId!=false){
             // fetching cancelled order cart all items by end user or admin members
             $ordercartAllItemDetailsArr = OrderCartDao :: getAllOrderedOrdercartItemDetails($userId);
             if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
-                $retDataArr = $ordercartAllItemDetailsArr;
+                // sorted on order cart no 
+                $sortedOnCartnoAllItemDetailsArr = utils :: arraySort($ordercartAllItemDetailsArr, array("ordercartNo"));
+                if(count($sortedOnCartnoAllItemDetailsArr)>0 && $sortedOnCartnoAllItemDetailsArr!=false){
+                    // iterate each order cartno all item details arr
+                    foreach($sortedOnCartnoAllItemDetailsArr as $ordercartNoKey=>$allOrderedItemDetailsArr){
+                    }
+                }
             }
         }
         return $retDataArr;
