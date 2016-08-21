@@ -208,6 +208,9 @@ include "Site_config.inc.php";
                             <img style='width:100%;' class='ordercartCancelledEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
                         </div>
                         <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartCancelledEachItemDetailsDivClass'>
+                            <p class="ordercartCancelledEachItemNoSClass">
+                                Order No: {{ordercartCancelledEachItemDetailsArrObj.ordercartNo}}
+                            </p>
                             <p class="ordercartCancelledEachItemSellerNamePClass">
                                 Seller: {{ordercartCancelledEachItemDetailsArrObj.shopStoreTitle}}
                             </p>
