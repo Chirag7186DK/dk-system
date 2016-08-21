@@ -210,8 +210,8 @@
             
         </div>
         
-        <!-- logged authenticated user dashboard summary details -->
-        <div id='authenticatedUserDashboardSummaryDataDivId' ng-controller="UsersController" ng-init="updateAuthenticatedUserDashboardSummaryDataDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+        <!-- refresh web application data -->
+        <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
         <?php 
