@@ -174,7 +174,7 @@ include "Site_config.inc.php";
                             Name
                         </span>
                         <span class="uca_personalInfoEditUserNameValSClass">
-                            <input class='form-control' type='text' value='{{userPersonalDetails.name}}'>
+                            <input class='form-control editUsernameInputClass' type='text' value='{{userPersonalDetails.name}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserEmailPClass">
@@ -182,7 +182,7 @@ include "Site_config.inc.php";
                             Email
                         </span>
                         <span class="uca_personalInfoEditUserEmailValSClass">
-                            <input class='form-control' type='text' value='{{userPersonalDetails.email}}'>
+                            <input class='form-control editUseremailInputClass' type='text' value='{{userPersonalDetails.email}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserMobilePClass">
@@ -190,7 +190,7 @@ include "Site_config.inc.php";
                             Mobile
                         </span>
                         <span class="uca_personalInfoEditUserMobileValSClass">
-                            <input class='form-control' type='text' value='{{userPersonalDetails.mobile}}'>
+                            <input class='form-control editUsermobileInputClass' type='text' value='{{userPersonalDetails.mobile}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserGenderPClass">
@@ -209,7 +209,7 @@ include "Site_config.inc.php";
                             DOB
                         </span>
                         <span class="uca_personalInfoEditUserBirthdateValSClass">
-                            <input class='form-control' type='text' value='{{userPersonalDetails.birthdate}}'>
+                            <input class='form-control editUserbirthdateInputClass' type='text' value='{{userPersonalDetails.birthdate}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoUpdateBtnPClass">
