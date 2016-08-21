@@ -114,11 +114,12 @@ include "Site_config.inc.php";
             
             <!-- display user personal info section details -->
             <div ng-if="requestedSectionName==='personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
+                
                 <!-- user personal info as text display -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoTextSectionContainerDivClass">
                     <!-- edit personal info label text -->
-                    <p class='uca_editProfileLblPClass pull-right'>
-                        <i class="fa fa-edit"> Edit Profile</i>
+                    <p class='uca_editProfileLblPClass pull-right' ng-click="toggleEditableUserCustomerProfileInfo()">
+                        <i class="fa fa-pencil"> Edit Profile</i>
                     </p>
                     <p class="uca_personalInfoTextUserNamePClass">
                         <span class="uca_personalInfoTextUserNameLblSClass">
@@ -130,7 +131,7 @@ include "Site_config.inc.php";
                     </p>
                     <p class="uca_personalInfoTextUserEmailPClass">
                         <span class="uca_personalInfoTextUserEmailLblSClass">
-                            Email ID
+                            Email
                         </span>
                         <span class="uca_personalInfoTextUserEmailValSClass">
                             {{userPersonalDetails.email}}
@@ -138,7 +139,7 @@ include "Site_config.inc.php";
                     </p>
                     <p class="uca_personalInfoTextUserMobilePClass">
                         <span class="uca_personalInfoTextUserMobileLblSClass">
-                            Mobile Number
+                            Mobile
                         </span>
                         <span class="uca_personalInfoTextUserMobileValSClass">
                             {{userPersonalDetails.mobile}}
@@ -154,11 +155,62 @@ include "Site_config.inc.php";
                     </p>
                     <p class="uca_personalInfoTextUserGenderPClass">
                         <span class="uca_personalInfoTextUserBirthdateLblSClass">
-                            Gender
+                            DOB
                         </span>
                         <span class="uca_personalInfoTextUserBirthdateValSClass">
                             {{userPersonalDetails.birthdate}}
                         </span>
+                    </p>
+                </div>
+                
+                <!-- user personal info as editable mode -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
+                    <!-- close edit personal info label text -->
+                    <p class='uca_closeProfileLblPClass pull-right' ng-click="toggleEditableUserCustomerProfileInfo()">
+                        <i class="fa fa-close"> Close Profile</i>
+                    </p>
+                    <p class="uca_personalInfoTextUserNamePClass">
+                        <span class="uca_personalInfoTextUserNameLblSClass">
+                            Name
+                        </span>
+                        <span class="uca_personalInfoEditUserNameValSClass">
+                            <input class='form-control' type='text' value='{{userPersonalDetails.name}}'>
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserEmailPClass">
+                        <span class="uca_personalInfoTextUserEmailLblSClass">
+                            Email
+                        </span>
+                        <span class="uca_personalInfoEditUserEmailValSClass">
+                            <input class='form-control' type='text' value='{{userPersonalDetails.email}}'>
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserMobilePClass">
+                        <span class="uca_personalInfoTextUserMobileLblSClass">
+                            Mobile
+                        </span>
+                        <span class="uca_personalInfoEditUserMobileValSClass">
+                            <input class='form-control' type='text' value='{{userPersonalDetails.mobile}}'>
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserGenderPClass">
+                        <span class="uca_personalInfoTextUserGenderLblSClass">
+                            Gender
+                        </span>
+                        <span class="uca_personalInfoEditUserGenderValSClass">
+                            <input class='form-control' type='text' value='{{userPersonalDetails.gender}}'>
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserGenderPClass">
+                        <span class="uca_personalInfoTextUserBirthdateLblSClass">
+                            DOB
+                        </span>
+                        <span class="uca_personalInfoEditUserBirthdateValSClass">
+                            <input class='form-control' type='text' value='{{userPersonalDetails.birthdate}}'>
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoUpdateBtnPClass">
+                        <button class='btn uca_personalInfoUpdateBtnClass'>UPDATE</button>
                     </p>
                 </div>
                 
