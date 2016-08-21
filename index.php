@@ -63,9 +63,6 @@
                             <div title="Click here to see your customize orders details" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
                                 Customize Orders
                             </div>
-                            <div title="Click here to see your wishlist" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('wishlist');">
-                                Your WishList
-                            </div>
                             <div class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
                                 Share Offers
                             </div>
