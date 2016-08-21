@@ -6,6 +6,23 @@
 */
 
 class PartyOrdersDao{
+    
+    // CJ defined this function 2016-08-21
+    public static function generateMaxPartyOrderNo(){
+        $maxPartyOrderId = 0;
+        try{
+            $connection = Yii::App()->db;
+            $sql= " SELECT COALESCE(MAX(por.id), 0) partyOrderId
+                FROM DK_PARTYORDERS_REQUEST por
+                WHERE 1";
+            $command = $connection->createCommand($sql);
+            $partyOrderDetailsArr = $command->queryAll();
+            if(count($partyOrderDetailsArr)==1 && $partyOrderDetailsArr!=false){
+                $maxPartyOrderId =  $partyOrderDetailsArr[0]['partyOrderId'];    
+            }
+        }catch(Exception $ex){}
+        return $maxPartyOrderId;
+    }
    
     // CJ defined this function 2016-07-20
     public static function addPartyOrderRequest($poRequestParamDetails){
