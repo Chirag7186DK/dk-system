@@ -27,16 +27,17 @@ include "Site_config.inc.php";
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
 
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
+           
             <!-- webAppLogoAndMenuIconContainerDivClass --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
+            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
@@ -98,37 +99,10 @@ include "Site_config.inc.php";
                         </a>
                     </li>
                     <li class='ma_userBreadcrumbMyAccountTitleLIClass'>
+                        |&nbsp; {{loggedUserName}}
+                    </li>
+                    <li class='ma_userBreadcrumbMyAccountTitleLIClass'>
                         |&nbsp; {{displayedSectionName}}
-                    </li>
-                </ul>
-            </div>
-
-            <!-- display basic info about user like name, since from -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_allSectionListContainerDivClass">
-                <!-- showing which section is accessed by user as customer -->
-                <p class='uca_selectedSectionListMsgPClass' ng-click="toggleUCustomerAccountOtherSectionList();">
-                    Hello, {{loggedUserName}} you are viewing {{displayedSectionName}} section, view others 
-                    <span class="badge otherSectionAvailableCountSClass">6</span> section click here !
-                </p>
-                <!-- user as customer account showing different section label to access -->
-                <ul class="uca_allSectionListContainerULClass" ng-show='isShowUCustomerAccountOtherSectionList'>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('personalinfo');">
-                        Personal Info
-                    </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('requestordercart');">
-                        Your Orders
-                    </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('customizeorder');">
-                        Customize Orders
-                    </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('wishlist');">
-                        Your WishList
-                    </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('shareoffers');">
-                        Your WishList
-                    </li>
-                    <li class='uca_eachSectionListTitleLIClass' ng-click="storeRequestedSectionNameToAccessInUserAccount('myoffers');">
-                        My offers
                     </li>
                 </ul>
             </div>
@@ -142,7 +116,7 @@ include "Site_config.inc.php";
                 <!-- order cart summary info -->
                 <p class='uca_ordercartSectionMsgPClass'>
                     <i class="fa fa-shopping-basket ordercartRequestedItemShoppingBagIconClass"></i> 
-                    Your shopping bags contains (Item: {{ordercartItemRequestedCount}}, Subtotal Rs: {{subtotalOrderAmt}})
+                    Your shopping bags contains (Items: {{ordercartItemRequestedCount}}, Subtotal Rs: {{subtotalOrderAmt}})
                 </p>
 
                 <!-- order cart all section header title -->
@@ -165,7 +139,7 @@ include "Site_config.inc.php";
                 <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllItemListSectionDivClass'>
                     <!-- requesting order item will be filtering -->
                     <div ng-if="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartRequestedItemDivClass">
-                        <label class="searchTextOrdercartItemRequestedLblClass">Use for filtering and access fast requesting item !</label>
+                        <label class="searchTextOrdercartItemRequestedLblClass">Use for filtering and access fast requesting shopping item !</label>
                         <input ng-model="searchTextOrdercartItemRequested" type="text" class="form-control" placeholder="Find requested items across in current order cart !">
                     </div>
                     <!-- each order item will display -->
@@ -196,7 +170,7 @@ include "Site_config.inc.php";
                             </p>
                             <p class="ordercartRequestedEachItemQtyPClass">
                                 Qty
-                                <input type='text' ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
+                                <input order-productqtyinput-directive type='text' ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
                             <p class="ordercartRequestedEachItemOperationPClass">
                                 <button ng-click="updateItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
