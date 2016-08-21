@@ -92,7 +92,16 @@ class UsersServicesV1 implements IUsersServicesV1{
         $rspDetails = array();
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $rspDetails['userPersonalDetails'] = array();
+                $rspDetails['userPersonalDetails']['name'] = $userSessionDetailsData['userName'];
+                $rspDetails['userPersonalDetails']['mobile'] = $userSessionDetailsData['userMobile'];
+                $rspDetails['userPersonalDetails']['email'] = $userSessionDetailsData['userEmail'];
+                $rspDetails['userPersonalDetails']['gender'] = $userSessionDetailsData['userGender'];
+                $rspDetails['userPersonalDetails']['birthdate'] = $userSessionDetailsData['userBirthdate'];
+            }
         } 
         return $rspDetails;
     }
