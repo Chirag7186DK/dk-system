@@ -247,8 +247,10 @@ include "Site_config.inc.php";
                         <input placeholder='CONFIRM PASSWORD' class='form-control editNewConfirmPasswordInputClass' type='password' value=''>
                     </span>
                 </p>
-                <p class="uca_personalInfoUpdateBtnPClass">
-                    <button ng-click="checkDataToUpdateUserpersonalnfo()" class='btn uca_personalInfoUpdateBtnClass'>UPDATE</button>
+                <p class="uca_changePasswordBtnPClass">
+                    <button ng-click="checkDataToUpdateUserpersonalnfo()" class='btn uca_changePasswordBtnClass'>
+                        SAVE
+                    </button>
                 </p>
             </div>
             
