@@ -831,6 +831,19 @@ class commonfunction{
         return $retDataArr;
     }
     
+    // CJ defined this function 2016-08-21
+    public static function getAllOrderedOrdercartItemDetails($userId){
+        $retDataArr = false;
+        if($userId!='' && $userId!=false){
+            // fetching cancelled order cart all items by end user or admin members
+            $ordercartAllItemDetailsArr = OrderCartDao :: getAllOrderedOrdercartItemDetails($userId);
+            if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
+                $retDataArr = $ordercartAllItemDetailsArr;
+            }
+        }
+        return $retDataArr;
+    }
+    
     // CJ defined this function 2016-08-14
     public static function preparedDataToRemoveItemFromOrdercart($paramJsonData){
         $isItemRemovedFromOrdercart =  'FALSE';
