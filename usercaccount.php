@@ -124,11 +124,11 @@ include "Site_config.inc.php";
                     <li ng-click="uca_toggleOrdercartSectionList('requestitem', 'uca_ordercartEachTabLabelSectionContainerLIId1', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all shopping item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId1' class='uca_ordercartEachTabLabelSectionContainerLIClass uca_ordercartSelectedTabLabelSectionContainerLIClass'>
                         Shopping Items
                     </li>
-                    <li ng-click="uca_toggleOrdercartSectionList('allordered', 'uca_ordercartEachTabLabelSectionContainerLIId2', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId2' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
-                        All Orders
-                    </li>
                     <li ng-click="uca_toggleOrdercartSectionList('cancelledordered', 'uca_ordercartEachTabLabelSectionContainerLIId3', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId3' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
                         Cancelled Orders
+                    </li>
+                    <li ng-click="uca_toggleOrdercartSectionList('allordered', 'uca_ordercartEachTabLabelSectionContainerLIId2', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId2' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
+                        All Ordered
                     </li>
                 </div>
 
@@ -200,7 +200,7 @@ include "Site_config.inc.php";
                         <label class="searchTextOrdercartItemRequestedLblClass">
                             Use for filtering and access fast canceled item !
                         </label>
-                        <input ng-model="searchTextOrdercartItemCancelled" type="text" class="form-control" placeholder="Find cancelled items !">
+                        <input ng-model="searchTextOrdercartItemCancelled" type="text" class="form-control" placeholder="Find canceled items !">
                     </div>
                     <!-- each order item will display -->
                     <div ng-repeat="ordercartCancelledEachItemDetailsArrObj in ordercartCancelledAllItemDetailsArrObj | filter:searchTextOrdercartItemCancelled:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
