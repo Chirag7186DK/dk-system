@@ -86,5 +86,15 @@ class UsersServicesV1 implements IUsersServicesV1{
         } 
         return $rspDetails;
     }
-   
+
+    // CJ defined this action 2016-08-21
+    public function getUserPersonalInfoData($dkParamDataArr){
+        $rspDetails = array();
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+        } 
+        return $rspDetails;
+    }
+
 }
