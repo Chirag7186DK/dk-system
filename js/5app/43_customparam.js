@@ -1376,6 +1376,9 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
                     if(sectionName==='ordercart'){
                         displaySectionName = 'Order cart';
                     }
+                    if(sectionName==='personalinfo'){
+                        displaySectionName = 'Personal Info';
+                    }
                     dkParamObj['requestedSectionUserAccountObj'] = {
                         "requestedSectionName":sectionName,
                         "displaySectionName":displaySectionName
