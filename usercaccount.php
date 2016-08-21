@@ -218,18 +218,19 @@ include "Site_config.inc.php";
                                 Size: {{ordercartCancelledEachItemDetailsArrObj.itemMeasurementType}}
                             </p>
                             <p class='ordercartCancelledEachItemPriceDetailsPClass'> 
-                                <span class='ordercartCancelledEachItemDiscountPercentTextSClass'>
-                                    10%
+                                Current Price: 
+                                <span class='ordercartCancelledEachItemDiscountPercentTextSClass' ng-if="ordercartCancelledEachItemDetailsArrObj.productFeatureDiscount!==''">
+                                    {{ordercartCancelledEachItemDetailsArrObj.productFeatureDiscount}}%
                                 </span>
-                                <span class='ordercartCancelledEachItemCutPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> 2000
+                                <span class='ordercartCancelledEachItemCutPriceTextSClass' ng-if="ordercartCancelledEachItemDetailsArrObj.productFeatureBasePrice!==''">
+                                    <i class="fa fa-rupee"></i> {{ordercartCancelledEachItemDetailsArrObj.productFeatureBasePrice}}
                                 </span>
                                 <span class='ordercartCancelledEachItemPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> {{ordercartCancelledEachItemDetailsArrObj.itemPerpriceIncart}}
+                                    <i class="fa fa-rupee"></i> {{ordercartCancelledEachItemDetailsArrObj.productFeatureOnlineSellingPrice}}
                                 </span>
                             </p>
                             <p class="ordercartCancelledEachItemQtyPClass">
-                                Qty: {{ordercartCancelledEachItemDetailsArrObj.itemQty}}
+                                Bought Qty: {{ordercartCancelledEachItemDetailsArrObj.itemQty}}
                             </p>
                         </div>
                     </div>
