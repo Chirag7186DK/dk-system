@@ -13,7 +13,6 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
             try{
                 // get param obj to get related city details
                 var retStatus = checkParamDataToRedirectForRequestPartyOrder();
-                // console.log("redirectToRequestPartyOrder retStatus=>"+retStatus);
                 if(retStatus===true){
                     window.location.href =  globalBaseSitePath+"partyorder.php";
                 }
