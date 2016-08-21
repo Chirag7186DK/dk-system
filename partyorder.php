@@ -20,18 +20,16 @@
     </head>
 
     <!-- body start here -->
-    
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='intializeDkSessionController' ng-init="loadDefaultDataInDkSession('partyorders')">
+    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('home'); checkInBackgroundDataAvailableForUpdationFromSession('home');">
         
         <!-- common SCROLL TOP BUTTON -->
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
         
-        <!-- first header -->
+        <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
-            <!-- webAppLogoAndMenuIconContainerDivClass --->
+            <!-- web logo header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
@@ -43,29 +41,37 @@
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
-                    <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your wish list">
+                    <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your all wish list">
                         <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
                     </li>
-                    <li title="Click here to view your current order cart">
-                        <i class="fa fa-shopping-basket"></i> Cart ({{ordercartItemRequestedCount}})
+                    <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
+                        <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
-                    <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Sign In/Sign Up for account details">
-                        <i class="fa fa-user"></i> Log In / Sign Up
+                    <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Log In / Sign Up with desserts khazana account">
+                        <i class="fa fa-user accountSignUpSignInIconClass"></i> Log In / Sign Up
                     </li>
-                    <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to Sign In/Sign Up for account details">
-                        <i class="fa fa-sign-out"></i> Sign-Out
+                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
+                        <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
+                        <!-- user account showing different section label to access -->
+                        <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
+                            <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="{{userInfoEachSectionListArrObj.hoverTitle}}" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
+                                {{userInfoEachSectionListArrObj.displayTitle}}
+                            </div>
+                        </div>
                     </li>
-                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to Sign In/Sign Up for account details">
-                        <i class="fa fa-user"></i> {{loggedUserName}}
+                    <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
+                        <i class="fa fa-sign-out"></i> Log Out
                     </li>
                 </ul>
             </div>
+            
             <!-- show customer delivery city area desserts product type on header as text -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
                 <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
                     <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
                 </p>
             </div>
+            
         </div>
         
         <!-- header row border div class -->
@@ -73,6 +79,7 @@
         
         <!-- party order  -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_bodyDivClass">
+            
             <!-- customer party order bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_userBreadcrumbDivClass">
                 <ul class="po_userBreadcrumbULClass list-inline">
@@ -86,14 +93,17 @@
                     </li>
                 </ul>
             </div>
+            
             <!-- party order video -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_videoCoverageContainerDivClass">
                Party order video will be come here with full width
             </div>
+            
             <!-- party order content -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_contentContainerDivClass">
                 Party order content will be come here
             </div>
+            
             <!-- party order form content -->
             <div ng-show="isShowPartyOrderRequestFormContent" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_formContentWrapperDivClass">
                 <p class="po_formHeaderPClass">
