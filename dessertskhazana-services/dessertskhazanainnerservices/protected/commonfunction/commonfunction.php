@@ -368,8 +368,13 @@ class commonfunction{
             $udblogId = $authenticatedUserJsonData['userLogId'];
             $explodedLoggedUsername = explode(" ", $authenticatedUserJsonData['userName']);
             $userAsCustomerInfoSectionListArr = array(
-                "Personal Info", "Change Password", "Your Orders", "Party Orders", "Customize Orders",
-                "Share Offers", "My Offers"
+                array("displayTitle"=>"Personal Info", "hoverTitle"=>""),
+                array("displayTitle"=>"Change Password", "hoverTitle"=>""),
+                array("displayTitle"=>"Your Orders", "hoverTitle"=>""),
+                array("displayTitle"=>"Party Order", "hoverTitle"=>""),
+                array("displayTitle"=>"Customize Order", "hoverTitle"=>""),
+                array("displayTitle"=>"Share Offers", "hoverTitle"=>""),
+                array("displayTitle"=>"My Offers", "hoverTitle"=>"")
             );
             $retJsonData['userDetails'] = array(
                 "user_sessionid"=>$user_sessionid,
