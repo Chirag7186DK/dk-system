@@ -267,9 +267,14 @@ include "Site_config.inc.php";
                     
                     <!-- display order cart no wise all items details -->
                     <div ng-repeat="eachOrdercartNoAllItemDetailsArrObj in allOrdercartNoAllItemDetailsArrObj | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartnoWiseAllItemSectionContainerDivClass">
+                        
                         <p class="uca_ordercartnoWiseAllItemSectionLabelPClass">
-                            Showing {{eachOrdercartNoAllItemDetailsArrObj['totalOrderedItems']}} items in ordered no {{eachOrdercartNoAllItemDetailsArrObj['ordercartNo']}}
+                            Showing 
+                            <span class="badge uca_ordercartnoAllItemsCountSClass">
+                                {{eachOrdercartNoAllItemDetailsArrObj['totalOrderedItems']}}
+                            </span> items in ordered no: {{eachOrdercartNoAllItemDetailsArrObj['ordercartNo']}}
                         </p>
+                        
                         <!-- each ordered item will display -->
                         <div ng-repeat="ordercartOrderedEachItemDetailsArrObj in eachOrdercartNoAllItemDetailsArrObj['orderedAllItemsDetailsArr'] | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedEachItemSectionContainerDivClass">
                             <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartOrderedEachItemImageDivClass'>
