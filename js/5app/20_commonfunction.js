@@ -160,17 +160,16 @@ function clearProductContentAfterAddedProductInOrdercart(fcClass){
 
 ////////////////// user info form content /////////////////
 
+
 // CJ define this funcion 2016-08-21
 function clearUserpasswordFormFieldInfo(){
-    if($('.'+fcClass).length===1){
-        if($('.'+fcClass).find('textarea').length===1){
-            $('.'+fcClass).find('textarea').val('');
-        }
-        if($('.'+fcClass).find("input[type='text']").length===1){
-            $('.'+fcClass).find("input[type='text']").val('1');
-        }
+    if($('.editOldPasswordInputClass').length===1){
+        $('.editOldPasswordInputClass').val('');
     }
-    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-    existingDkParamObj['userOrderItemObj'] = {};
-    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+    if($('.editNewPasswordInputClass').length===1){
+        $('.editNewPasswordInputClass').val('');
+    }
+    if($('.editNewConfirmPasswordInputClass').length===1){
+        $('.editNewConfirmPasswordInputClass').val('');
+    }
 }
