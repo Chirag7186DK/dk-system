@@ -114,10 +114,38 @@ include "Site_config.inc.php";
             
             <!-- display user personal info section details -->
             <div ng-if="requestedSectionName==='personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
-                <!-- edit personal info label text -->
-                <p class='uca_editProfileLblPClass'>
-                    <i class="fa fa-edit"> Edit Profile</i>
-                </p>
+                <!-- user personal info as text display -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoTextSectionContainerDivClass">
+                    <!-- edit personal info label text -->
+                    <p class='uca_editProfileLblPClass pull-right'>
+                        <i class="fa fa-edit"> Edit Profile</i>
+                    </p>
+                    <p class="uca_personalInfoTextUserNamePClass">
+                        <span class="uca_personalInfoTextUserNameLblSClass">
+                            Name
+                        </span>
+                        <span class="uca_personalInfoTextUserNameValSClass">
+                            {{userPersonalDetails.name}}
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserEmailPClass">
+                        <span class="uca_personalInfoTextUserEmailLblSClass">
+                            Email ID
+                        </span>
+                        <span class="uca_personalInfoTextUserEmailValSClass">
+                            {{userPersonalDetails.email}}
+                        </span>
+                    </p>
+                    <p class="uca_personalInfoTextUserMobilePClass">
+                        <span class="uca_personalInfoTextUserMobileLblSClass">
+                            Mobile Number
+                        </span>
+                        <span class="uca_personalInfoTextUserMobileValSClass">
+                            {{userPersonalDetails.mobile}}
+                        </span>
+                    </p>
+                </div>
+                
             </div>
             
             
