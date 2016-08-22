@@ -3954,6 +3954,37 @@
         font-size:17px!important;
         color:#67717D!important;
     }
+    
+    
+    /* user party order css code */
+    
+    .uca_partyorderSectionContainerDivClass{
+        background-color:#f6f4fb!important;
+    }
+
+    .uca_partyorderAllSectionHeaderContainerDivClass .owl-item{
+        width:auto!important;
+        margin-right:15px!important;
+    }
+
+    .uca_partyorderEachTabLabelSectionContainerLIClass{
+        text-align:center;
+        border-bottom:1px solid #00B9F5!important;
+        color:#67717D!important;
+        font-weight: bold!important;
+        font-family: serif!important;
+        float:left!important;
+        padding:12px!important;
+        font-size:15px!important;
+        list-style-type:none!important;
+        cursor:pointer;
+    }
+
+    .uca_partyorderSelectedTabLabelSectionContainerLIClass{
+        border-bottom: 1px solid #00B9F5!important;
+        color:#fff!important;
+        background:#00B9F5!important;
+    }
 
 
 }
