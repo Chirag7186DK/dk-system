@@ -918,5 +918,14 @@ class commonfunction{
         return $humanReadablePartyOrderNo;
     }
     
+    // CJ defined this function 2016-08-22
+    public static function getPartyOrderList($unMd5UserId){
+        $retJsonData = array();
+        if($unMd5UserId!='' && $unMd5UserId!=false){
+            
+        }
+        return $retJsonData;
+    }
+    
     
 }
