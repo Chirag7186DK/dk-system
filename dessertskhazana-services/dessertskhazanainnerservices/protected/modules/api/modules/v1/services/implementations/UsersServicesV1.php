@@ -140,8 +140,8 @@ class UsersServicesV1 implements IUsersServicesV1{
                 $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
                 $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
                 $dkParamDataArr['pwd'] = MD5($dkParamDataArr['new_password']);
-                $updateChangedPasswordInfoDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
-                if($updateChangedPasswordInfoDataStatus==true){
+                $updatedPasswordDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
+                if($updatedPasswordDataStatus==true){
                     $rspDetails['userpwdChangedStatusDetails']['ispwdChanged'] = 'TRUE';
                     $rspDetails['userpwdChangedStatusDetails']['statusMsg'] = 'Your password is changed successfully !';
                 }
