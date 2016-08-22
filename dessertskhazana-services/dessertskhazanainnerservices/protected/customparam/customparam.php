@@ -427,64 +427,7 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-20
-    public static function checkParamDataForAddingPartyOrderRequest($paramJsonData){
-        $retStatus = 'FALSE';
-        $givenParamDataCorrectCount = 0;
-        // check user_sessionid key present or not
-        if(array_key_exists('user_sessionid', $paramJsonData)){
-            if(strlen($paramJsonData['user_sessionid'])>=20){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check udblogId key present or not
-        if(array_key_exists('udblogId', $paramJsonData)){
-            if(strlen($paramJsonData['udblogId'])>=20){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check occassion_title key present or not
-        if(array_key_exists('occassion_title', $paramJsonData)){
-            if($paramJsonData['occassion_title']!='' && $paramJsonData['occassion_title']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check nos_person key present or not
-        if(array_key_exists('nos_person', $paramJsonData)){
-            if($paramJsonData['nos_person']!='' && $paramJsonData['nos_person']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check party_date key present or not
-        if(array_key_exists('party_date', $paramJsonData)){
-            if($paramJsonData['party_date']!='' && $paramJsonData['party_date']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check party_venue key present or not
-        if(array_key_exists('party_venue', $paramJsonData)){
-            if($paramJsonData['party_venue']!='' && $paramJsonData['party_venue']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check party_requirements key present or not
-        if(array_key_exists('party_requirements', $paramJsonData)){
-            if($paramJsonData['party_requirements']!='' && $paramJsonData['party_requirements']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check requirements key present or not
-        if(array_key_exists('file', $paramJsonData)){
-            if($paramJsonData['file']!='' && $paramJsonData['file']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if($givenParamDataCorrectCount>=7){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
-    
+
     // CJ defined this function 2016-07-24
     public static function checkParamDataForAddingCustomizeOrderRequest($paramJsonData){
         $retStatus = 'FALSE';
@@ -1321,6 +1264,67 @@ class customparam{
             }
         }
         if($givenParamDataCorrectCount==6){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
+    
+    ///////////////// party order related code //////////////////////////////////////
+    
+    // CJ defined this function 2016-07-20
+    public static function checkParamDataForAddingPartyOrderRequest($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check user_sessionid key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check occassion_title key present or not
+        if(array_key_exists('occassion_title', $paramJsonData)){
+            if($paramJsonData['occassion_title']!='' && $paramJsonData['occassion_title']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check nos_person key present or not
+        if(array_key_exists('nos_person', $paramJsonData)){
+            if($paramJsonData['nos_person']!='' && $paramJsonData['nos_person']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check party_date key present or not
+        if(array_key_exists('party_date', $paramJsonData)){
+            if($paramJsonData['party_date']!='' && $paramJsonData['party_date']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check party_venue key present or not
+        if(array_key_exists('party_venue', $paramJsonData)){
+            if($paramJsonData['party_venue']!='' && $paramJsonData['party_venue']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check party_requirements key present or not
+        if(array_key_exists('party_requirements', $paramJsonData)){
+            if($paramJsonData['party_requirements']!='' && $paramJsonData['party_requirements']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check requirements key present or not
+        if(array_key_exists('file', $paramJsonData)){
+            if($paramJsonData['file']!='' && $paramJsonData['file']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount>=7){
             $retStatus = 'TRUE';
         }
         return $retStatus;
