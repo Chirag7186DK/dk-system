@@ -206,7 +206,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_thankyouContentWrapperContainerDivClass">
                     <p class="po_thankyoubodyPClass">
                         <i class="fa fa-smile-o po_thankyousmileIconClass"></i> 
-                        Hurrah! Your details have been submitted & request partyorder no: {{requestedPartyOrderNo}}
+                        Hurrah! Your details have been submitted & request party order no: {{requestedPartyOrderNo}}
                         Let’s begin the party order preparations.
                     </p>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
