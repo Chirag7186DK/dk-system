@@ -2157,102 +2157,7 @@
         padding:20px;
     }
 
-    .po_formHeaderPClass{
-        color:#fb366e!important;
-        font-weight:bold!important;
-        text-align:center;
-    }
-
-    .po_smileIconClass{
-        font-size:20px!important;
-        color:#fb366e!important;
-    }
-
-    .po_formContentWrappperContainerDivClass{
-        margin-top:10px!important;
-        border:1px dashed #FFDC00!important;
-        background:#fff!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-left:25%!important;
-    }
-
-    .po_formContentWrappperContainerDivClass div{
-        margin-bottom:15px;
-    }
-
-    .po_formfieldLabelPClass{
-        color:#828282!important;
-    }
-
-    .po_formfieldHintPClass{
-        font-size:11px!important;
-        color:#708090!important;
-        font-weight:bold!important;
-    }
-
-    .po_formfieldiconclass{
-        color:#fa8072!important;
-        font-size:15px!important;
-    }
-
-    .po_contactPersonNameInputClass,
-    .po_contactMobileInputClass,
-    .po_contactEmailInputClass,
-    .po_nosPeopleInputClass,
-    .po_dateInputClass,
-    .po_occasionTitleInputClass{
-        height:40px!important;
-    }
-
-    .po_errorMsgContainerDivClass{
-        color:#4747d0!important;
-    }
-
-    .partyOrderRequestSubmtBtnClass, 
-    .partyOrderRequestSubmtBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#fb366e!important;
-        color:#fff!important;
-    }
-
-    .po_thankyouContentWrapperDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-
-    .po_thankyouContentWrapperContainerDivClass{
-        border:1px dashed #FFDC00!important;
-        background:#fff!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-left:25%!important;
-    }
-
-    .po_thankyoubodyPClass{
-        color:#fb366e!important;
-        font-weight:bold!important;
-        text-align:center;
-        white-space:pre-line!important;
-        padding-bottom:20px!important;
-    }
-
-    .po_thankyousmileIconClass{
-        font-size:50px!important;
-        color:#fb366e!important;
-    }
-
-    .redirectToViewPartyOrderRequestBtnClass, 
-    .redirectToViewPartyOrderRequestBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#242424!important;
-        color:#fff!important;
-    }
-
+    
     /* customize order css code */
 
     .co_userBreadcrumbDivClass{
@@ -3990,6 +3895,7 @@
     .po_formHeaderPClass{
         color:#fb366e!important;
         font-size:13px!important;
+        text-align:center;
     }
 
     .po_smileIconClass{
@@ -4012,6 +3918,7 @@
 
     .po_formfieldLabelPClass{
         color:#828282!important;
+        font-size:13px!important;
     }
 
     .po_formfieldHintPClass{
