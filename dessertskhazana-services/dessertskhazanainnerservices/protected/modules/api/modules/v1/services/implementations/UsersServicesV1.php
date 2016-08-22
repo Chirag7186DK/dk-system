@@ -129,7 +129,9 @@ class UsersServicesV1 implements IUsersServicesV1{
     // CJ defined this action 2016-08-21
     public function updateUserPasswordInfoData($dkParamDataArr){
         $rspDetails = array();
-        $rspDetails['isUserpasswordInfoUpdated'] = 'FALSE';
+        $rspDetails['userpwdChangedStatusDetails'] = array();
+        $rspDetails['userpwdChangedStatusDetails']['ispwdChanged'] = 'FALSE';
+        $rspDetails['userpwdChangedStatusDetails']['statusMsg'] = 'Your password is not change, please try again !';
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // fetch user session details
@@ -140,8 +142,12 @@ class UsersServicesV1 implements IUsersServicesV1{
                 $dkParamDataArr['pwd'] = MD5($dkParamDataArr['new_password']);
                 $updateChangedPasswordInfoDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
                 if($updateChangedPasswordInfoDataStatus==true){
-                    $rspDetails['isUserpasswordInfoUpdated'] = 'TRUE';
+                    $rspDetails['userpwdChangedStatusDetails']['ispwdChanged'] = 'TRUE';
+                    $rspDetails['userpwdChangedStatusDetails']['statusMsg'] = 'Your password is changed successfully !';
                 }
+            }else{
+                $rspDetails['userpwdChangedStatusDetails']['ispwdChanged'] = 'FALSE';
+                $rspDetails['userpwdChangedStatusDetails']['statusMsg'] = 'Given old password is not matching, please enter valid password !';
             }
         } 
         return $rspDetails;
