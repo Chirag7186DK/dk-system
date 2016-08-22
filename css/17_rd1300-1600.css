@@ -3958,17 +3958,17 @@
     
     /* user party order css code */
     
-    .uca_partyorderSectionContainerDivClass{
+    .po_SectionContainerDivClass{
         background-color:#f6f4fb!important;
         padding-top:18px!important;
     }
 
-    .uca_partyorderAllSectionHeaderContainerDivClass .owl-item{
+    .po_AllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
         margin-right:15px!important;
     }
 
-    .uca_partyorderEachTabLabelSectionContainerLIClass{
+    .po_EachTabLabelSectionContainerLIClass{
         text-align:center;
         border-bottom:1px solid #00B9F5!important;
         color:#67717D!important;
@@ -3981,7 +3981,7 @@
         cursor:pointer;
     }
 
-    .uca_partyorderSelectedTabLabelSectionContainerLIClass{
+    .po_SelectedTabLabelSectionContainerLIClass{
         border-bottom: 1px solid #00B9F5!important;
         color:#fff!important;
         background:#00B9F5!important;
@@ -4082,170 +4082,6 @@
         background:#242424!important;
         color:#fff!important;
     }
-
-    /* customize order css code */
-
-    .co_userBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .co_userBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:15px!important;
-        padding-top:6px!important;
-    }
-
-    .co_userBreadcrumbULClass li a, 
-    .co_userBreadcrumbULClass li a:hover{
-        color:#e6a4b7!important;
-        border-bottom:2px dotted #CDCEE8!important;
-        text-decoration:none!important;
-        font-weight:100!important;
-    }
-
-    .co_userBreadcrumbHomeTitleLIClass a{
-        color:#fb366e!important;
-    }
-
-    .co_userBreadcrumbCustomizeTitleLIClass a{
-        color:rgba(120, 120, 120, 0.6)!important;
-    }
-
-    .co_videoCoverageContainerDivClass{
-        background:whitesmoke!important;
-        color:#fb366e!important;
-        height:250px!important;
-        margin-top:20px;
-        text-align:center!important;
-        padding:20px;
-    }
-
-    .co_contentContainerDivClass{
-        background:whitesmoke!important;
-        color:#fb366e!important;
-        height:250px!important;
-        margin-top:20px;
-        text-align:center!important;
-        padding:20px;
-    }
-
-    .co_formContentWrapperDivClass{
-        margin-top:20px;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-
-    .co_formHeaderPClass{
-        color:#fb366e!important;
-        font-weight:bold!important;
-        text-align:center;
-    }
-
-    .co_smileIconClass{
-        font-size:20px!important;
-        color:#fb366e!important;
-    }
-
-    .co_formContentWrappperContainerDivClass{
-        margin-top:10px!important;
-        border:1px dashed #DCE0EF!important;
-        background:#eceff1!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-left:25%!important;
-    }
-
-    .co_formContentWrappperContainerDivClass div{
-        margin-bottom:15px;
-    }
-
-    .co_formfieldLabelPClass{
-        color:#778ca0!important;
-        font-weight:bold!important;
-    }
-
-    .co_formfieldHintPClass{
-        font-size:11px!important;
-        color:#708090!important;
-        font-weight:bold!important;
-    }
-
-    .co_formfieldiconclass{
-        color:#fa8072!important;
-        font-size:15px!important;
-    }
-
-    .co_contactPersonNameInputClass,
-    .co_contactMobileInputClass,
-    .co_contactEmailInputClass,
-    .co_nosPeopleInputClass,
-    .co_dateInputClass,
-    .co_occasionTitleInputClass{
-        height:40px!important;
-    }
-
-    .co_errorMsgContainerDivClass{
-        color:#4747d0!important;
-    }
-
-    .customizeOrderRequestSubmtBtnClass, 
-    .customizeOrderRequestSubmtBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#fb366e!important;
-        color:#fff!important;
-    }
-
-    .co_thankyouContentWrapperDivClass{
-        margin-top:20px;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-
-    .co_thankyouContentWrapperContainerDivClass{
-        margin-top:10px!important;
-        border:1px dashed #DCE0EF!important;
-        background:whitesmoke!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-left:25%!important;
-    }
-
-    .co_thankyoubodyPClass{
-        color:#fb366e!important;
-        font-weight:bold!important;
-        text-align:center;
-        white-space:pre-line!important;
-        padding-bottom:20px!important;
-    }
-
-    .co_thankyousmileIconClass{
-        font-size:50px!important;
-        color:#fb366e!important;
-    }
-
-    .redirectToViewCustomizeOrderRequestBtnClass, 
-    .redirectToViewCustomizeOrderRequestBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#242424!important;
-        color:#fff!important;
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 
 }
