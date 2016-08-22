@@ -20,19 +20,22 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['partyorder_no'] = commonfunction :: generatePartyOrderNo();
+                $dkParamDataArr['name'] = $userSessionDetailsData['userName'];
+                $dkParamDataArr['mobile'] = $userSessionDetailsData['userMobile'];
+                $dkParamDataArr['email'] = $userSessionDetailsData['userEmail'];
                 $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
                 $dkParamDataArr['created_by'] = $userSessionDetailsData['unmd5UserId'];
+                $lastPORID = PartyOrdersDao::addPartyOrderRequest($dkParamDataArr);
+                if($lastPORID>0 && $lastPORID!=false){
+                    $rspDetails['poRequestedStatusDetails']["isPartyOrderRequestSend"] = 'YES';
+                    $rspDetails['poRequestedStatusDetails']["partyOrderNo"] = $dkParamDataArr['partyorder_no'];
+                    // send sms to end user to inform about party order request recieve by desserts khazana
+                    // $retEmailSentStatus = commonfunction :: preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($dkParamDataArr);
+                    // $smsMsgBody = "Sms Testing CJ";
+                    // $retSmsSentStatus = utils :: sendSMS(array("9975967186"), $smsMsgBody);
+                }   
             }
-            $dkParamDataArr['partyorder_no'] = commonfunction :: generatePartyOrderNo();
-            $lastPORID = PartyOrdersDao::addPartyOrderRequest($dkParamDataArr);
-            if($lastPORID>0){
-                $rspDetails['poRequestedStatusDetails']["isPartyOrderRequestSend"] = 'YES';
-                $rspDetails['poRequestedStatusDetails']["partyOrderNo"] = $dkParamDataArr['partyorder_no'];
-                // send sms to end user to inform about party order request recieve by desserts khazana
-                // $retEmailSentStatus = commonfunction :: preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($dkParamDataArr);
-                // $smsMsgBody = "Sms Testing CJ";
-                // $retSmsSentStatus = utils :: sendSMS(array("9975967186"), $smsMsgBody);
-            }   
         } 
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
