@@ -459,9 +459,6 @@ include "Site_config.inc.php";
                     </li>
                 </div>
 
-                <!-- create horizontally space div between -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
                 <!-- requesting new party order content form will be displayed -->
                 <div ng-if="displayPartyOrderInfoSectionType==='createpartyorder'" ng-controller="PartyOrdersController" ng-init="attachedFieldValidationPartyOrdersRequest()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
                     
@@ -534,7 +531,7 @@ include "Site_config.inc.php";
                                 Let’s begin the party order preparations.
                             </p>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <button ng-click="redirectToViewPartyOrderRequest()" class='btn redirectToViewPartyOrderRequestBtnClass' id='partyOrderRequestSubmtBtnId'>
+                                <button ng-click="toggleNewPartyOrderRequestFormContent()" class='btn redirectToViewPartyOrderRequestBtnClass' id='partyOrderRequestSubmtBtnId'>
                                     Another Party Order Request
                                 </button>
                             </div>
