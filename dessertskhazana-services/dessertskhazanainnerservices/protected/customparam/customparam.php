@@ -439,25 +439,7 @@ class customparam{
         }
         // check udblogId key present or not
         if(array_key_exists('udblogId', $paramJsonData)){
-            if($paramJsonData['udblogId']=='' || strlen($paramJsonData['udblogId'])>=20){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check contact_name key present or not
-        if(array_key_exists('name', $paramJsonData)){
-            if($paramJsonData['name']!='' && $paramJsonData['name']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check mobile key present or not
-        if(array_key_exists('mobile', $paramJsonData)){
-            if($paramJsonData['mobile']!='' && $paramJsonData['mobile']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check email key present or not
-        if(array_key_exists('email', $paramJsonData)){
-            if($paramJsonData['email']!='' && $paramJsonData['email']!=false){
+            if(strlen($paramJsonData['udblogId'])>=20){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -497,7 +479,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount>=10){
+        if($givenParamDataCorrectCount>=7){
             $retStatus = 'TRUE';
         }
         return $retStatus;
