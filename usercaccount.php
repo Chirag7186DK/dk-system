@@ -447,14 +447,14 @@ include "Site_config.inc.php";
             </div>
             
             <!-- party order section details with each tab level -->
-            <div ng-if="requestedSectionName==='partyorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_partyorderSectionContainerDivClass">
+            <div ng-if="requestedSectionName==='partyorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_SectionContainerDivClass">
                 
                 <!-- party order all section header title -->
-                <div scroll-horizontally-partyorder-allsectionheader-directive id='uca_partyorderAllSectionHeaderContainerDivId' class='uca_partyorderAllSectionHeaderContainerDivClass'>
-                    <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'uca_partyorderEachTabLabelSectionContainerLIId1', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to request new party order' id='uca_partyorderEachTabLabelSectionContainerLIId1' class='uca_partyorderEachTabLabelSectionContainerLIClass uca_partyorderSelectedTabLabelSectionContainerLIClass'>
+                <div scroll-horizontally-partyorder-allsectionheader-directive id='po_AllSectionHeaderContainerDivId' class='po_AllSectionHeaderContainerDivClass'>
+                    <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'po_EachTabLabelSectionContainerLIId1', 'po_AllSectionHeaderContainerDivClass');" title='Click to request new party order' id='po_EachTabLabelSectionContainerLIId1' class='po_EachTabLabelSectionContainerLIClass po_SelectedTabLabelSectionContainerLIClass'>
                         Create
                     </li>
-                    <li ng-click="uca_togglePartyOrderSectionList('allorders', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_togglePartyOrderSectionList('allorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
                 </div>
@@ -526,6 +526,22 @@ include "Site_config.inc.php";
                     </div>
                     
                 </div>
+                
+            <!-- thank you party order requested message content -->
+            <div ng-show="isShowPartyOrderRequestSendThankyouMsg" ng-controller="PartyOrdersController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_thankyouContentWrapperDivClass">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_thankyouContentWrapperContainerDivClass">
+                    <p class="po_thankyoubodyPClass">
+                        <i class="fa fa-smile-o po_thankyousmileIconClass"></i> 
+                        Hurrah! Your details have been submitted & request party order no: {{requestedPartyOrderNo}}
+                        Let’s begin the party order preparations.
+                    </p>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button ng-click="redirectToViewPartyOrderRequest()" class='btn redirectToViewPartyOrderRequestBtnClass' id='partyOrderRequestSubmtBtnId'>
+                            Another Party Order Request
+                        </button>
+                    </div>
+                </div>
+            </div>
 
             </div>
 
