@@ -550,7 +550,7 @@ include "Site_config.inc.php";
                 </div>
                 
                 <!-- requested order cart all items info will be displayed -->
-                <div ng-if="displayOrdercartSectionType==='allpartyorders'" ng-controller="PartyOrdersController" ng-init="getPartyOrdersList()" id='allPoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allPoListSectionDivClass'>
+                <div ng-if="displayPartyOrderInfoSectionType==='allpartyorders'" ng-controller="PartyOrdersController" ng-init="getPartyOrdersList()" id='allPoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allPoListSectionDivClass'>
                     
                     <!-- all party order will be filtering -->
                     <div ng-if="partyOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextPODivClass">
@@ -559,7 +559,7 @@ include "Site_config.inc.php";
                     </div>
                     
                     <!-- each party order will display -->
-                    <div ng-repeat="eachPartyOrderDetailsArrObj in partyOrderListArrObj | filter:searchTextPartyOrder:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
+                    <div ng-repeat="eachPartyOrderDetailsArrObj in partyOrderListArrObj|filter:searchTextPO:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
                         <p class="poNoPClass">
                             Order No: {{eachPartyOrderDetailsArrObj.partyOrderNo}}
                         </p>
@@ -573,13 +573,16 @@ include "Site_config.inc.php";
                             Person: {{eachPartyOrderDetailsArrObj.nosOfPerson}}
                         </p>
                         <p class="poDatePClass">
-                            Person: {{eachPartyOrderDetailsArrObj.partyDate}}
+                            Date: {{eachPartyOrderDetailsArrObj.partyDate}}
                         </p>
                         <p class="poVenuePClass">
-                            Person: {{eachPartyOrderDetailsArrObj.partyVenue}}
+                            Venue: {{eachPartyOrderDetailsArrObj.partyVenue}}
                         </p>
                         <p class="poRequirementsPClass">
-                            Person: {{eachPartyOrderDetailsArrObj.partyRequirements}}
+                            Requirements: {{eachPartyOrderDetailsArrObj.partyRequirements}}
+                        </p>
+                        <p ng-if="eachPartyOrderDetailsArrObj.porStatus=='PP'" class="poRequirementsPClass">
+                            Make Payment
                         </p>
                     </div>
                     
