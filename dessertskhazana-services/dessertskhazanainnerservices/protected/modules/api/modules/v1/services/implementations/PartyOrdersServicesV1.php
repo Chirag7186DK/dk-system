@@ -39,6 +39,22 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
         } 
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
-    
-   
+
+    // CJ defined this action 2016-08-22
+    public function getPartyOrderList($dkParamDataArr) {
+        $rspDetails = array();
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $user_id = $userSessionDetailsData['unmd5UserId'];
+                $partyOrderDetailsArr = commonfunction :: getPartyOrderList($user_id);
+                if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
+                    $rspDetails['partyOrderList'] = $partyOrderDetailsArr;
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+
 }
