@@ -920,9 +920,12 @@ class commonfunction{
     
     // CJ defined this function 2016-08-22
     public static function getPartyOrderList($unMd5UserId){
-        $retJsonData = array();
+        $retJsonData = false;
         if($unMd5UserId!='' && $unMd5UserId!=false){
-            
+            $partyOrderDetailsArr = PartyOrdersDao::getPartyOrderList($unMd5UserId);
+            if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
+                $retJsonData = $partyOrderDetailsArr;
+            }
         }
         return $retJsonData;
     }
