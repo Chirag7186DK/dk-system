@@ -1,10 +1,34 @@
 
 -- delete query 
 
-TRUNCATE TABLE  `DK_USERLOG`;
-TRUNCATE TABLE  `DK_USERSESSION`;
-TRUNCATE TABLE  `DK_TRACKUSERS_ACCESSWEBSITES`;
+-- TRUNCATE TABLE  `DK_USERLOG`;
+-- TRUNCATE TABLE  `DK_USERSESSION`;
+-- TRUNCATE TABLE  `DK_TRACKUSERS_ACCESSWEBSITES`;
 
+
+SELECT
+COALESCE(por.partyorder_no, '') partyOrderNo, 
+COALESCE(por.occassion_title, '') occassionTitle,
+COALESCE(por.nos_person, '') nosOfPerson, 
+COALESCE(por.party_date, '') partyDate, 
+COALESCE(por.party_venue, '') partyVenue, 
+COALESCE(por.party_requirements, '') partyRequirements,
+(CASE 
+    WHEN por.status='R' THEN 'Requested'
+    WHEN por.status='CV' THEN 'Consulting with vendor'
+    WHEN por.status='C' THEN 'Confirmed by you & me'
+    WHEN por.status='PP' THEN 'Payment Pending'
+    WHEN por.status='PF' THEN 'Payment Failed'
+    WHEN por.status='PF' THEN 'Deleted by you'
+    WHEN por.status='ZA' THEN 'Deleted by us'
+END) portLongStatusMsg,
+COALESCE(por.status, '') porStatus
+FROM DK_USERS u 
+JOIN DK_PARTYORDERS_REQUEST por ON por.user_id=u.id
+WHERE 
+u.id='1'
+AND por.user_id='1'
+AND u.status='A'
 
 -- SELECT 
 -- uoc.id ordercartId, uocim.id ordercartItemId, 
