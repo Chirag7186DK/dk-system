@@ -19,7 +19,8 @@ class PartyOrdersController extends V1Controller{
                 $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAddingPartyOrderRequest($dkParamDataArr);
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $PartyOrdersServicesV1 = new PartyOrdersServicesV1();
-                    $PartyOrdersServicesV1->addPartyOrdersRequest($dkParamDataArr);
+                    $rspDetails = $PartyOrdersServicesV1->addPartyOrdersRequest($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
@@ -37,7 +38,8 @@ class PartyOrdersController extends V1Controller{
                 $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $PartyOrdersServicesV1 = new PartyOrdersServicesV1();
-                    $PartyOrdersServicesV1->getPartyOrderList($dkParamDataArr);
+                    $rspDetails = $PartyOrdersServicesV1->getPartyOrderList($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
