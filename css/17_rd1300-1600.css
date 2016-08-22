@@ -3989,8 +3989,7 @@
     
     .po_formHeaderPClass{
         color:#fb366e!important;
-        font-weight:bold!important;
-        text-align:center;
+        font-size:13px!important;
     }
 
     .po_smileIconClass{
@@ -4016,7 +4015,7 @@
     }
 
     .po_formfieldHintPClass{
-        font-size:11px!important;
+        font-size:10px!important;
         color:#708090!important;
         font-weight:bold!important;
     }
