@@ -3988,7 +3988,45 @@
         background:#242424!important;
         color:#fff!important;
     }
+    
+    .allPoListSectionDivClass{
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+    
+    .inputSearchTextPODivClass{
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
 
-
+    .searchTextPOLblClass{
+        color: #67717D!important;
+        font-size: 12px!important;
+        font-weight: normal!important;
+    }
+    
+    .eachPOContainerDivClass{
+        padding-top: 20px!important;
+        padding-bottom: 20px!important;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+        border-bottom: 1px dashed #FAB005!important;
+    }
+    
+    .poNoPClass{
+        color: #67717D!important;
+        font-size: 14px!important;
+    }
+    
+    .poStatusPClass,
+    .poOccassionPClass,
+    .poPersonPClass,
+    .poDatePClass,
+    .poVenuePClass,
+    .poRequirementsPClass{
+        color: #67717D!important;
+        font-size: 14px!important;
+    }
+    
 }
 
