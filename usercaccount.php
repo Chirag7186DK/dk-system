@@ -454,7 +454,7 @@ include "Site_config.inc.php";
                     <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'uca_partyorderEachTabLabelSectionContainerLIId1', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to request new party order' id='uca_partyorderEachTabLabelSectionContainerLIId1' class='uca_partyorderEachTabLabelSectionContainerLIClass uca_partyorderSelectedTabLabelSectionContainerLIClass'>
                         Create
                     </li>
-                    <li ng-click="uca_toggleOrdercartSectionList('cancelledordered', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_toggleOrdercartSectionList('allorders', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
                 </div>
