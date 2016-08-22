@@ -86,6 +86,19 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
             }
         };
         
+        // toggleNewPartyOrderRequestFormContent
+        $rootScope.toggleNewPartyOrderRequestFormContent = function(){
+            try{
+                $rootScope.isShowPartyOrderRequestErrorMsg = false;
+                $rootScope.isShowPartyOrderRequestFormContent = true;
+                $rootScope.isShowPartyOrderRequestSendThankyouMsg = false;
+                $rootScope.partyOrderErrorMsgStr = '';
+                $rootScope.requestedPartyOrderNo = '';
+            }catch(ex){
+                console.log("problem in toggleNewPartyOrderRequestFormContent ex=>"+ex);
+            }
+        };
+        
     }catch(ex){
         console.log("problem in PartyOrdersController ex=>"+ex);
     }
