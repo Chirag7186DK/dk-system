@@ -581,18 +581,18 @@ app.directive('scrollHorizontallyOrdercartAllsectionheaderDirective', function()
 app.directive('scrollHorizontallyPartyorderAllsectionheaderDirective', function(){
     return function(scope, element, attrs){
         setTimeout(function(){
-            if($('#uca_partyorderAllSectionHeaderContainerDivId').length>0){
+            if($('#po_AllSectionHeaderContainerDivId').length>0){
                 var existingOwlOptions = {
                     navigation:false,
                     paginationSpeed:1000,
                     goToFirstSpeed:2000,
                     transitionStyle:"fade"
                 };
-                var owlObj = $("#uca_partyorderAllSectionHeaderContainerDivId").data('owlCarousel');
+                var owlObj = $("#po_AllSectionHeaderContainerDivId").data('owlCarousel');
                 if(owlObj!==false && owlObj!==undefined && owlObj!==''){
                     owlObj.reinit(existingOwlOptions);
                 }else{
-                    $("#uca_partyorderAllSectionHeaderContainerDivId").owlCarousel(existingOwlOptions);
+                    $("#po_AllSectionHeaderContainerDivId").owlCarousel(existingOwlOptions);
                 }
             }
         }, 1);
