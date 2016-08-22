@@ -8,7 +8,7 @@ app.factory('PartyOrdersServices', function($http, $q){
                 return promiseObject;
             },
             getPartyOrdersList:function(preparedParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/PartyOrders/ManagePartyOrders", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){});
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/PartyOrders/ManagePartyOrders", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
                 return promiseObject;
             }
         };
