@@ -8,7 +8,7 @@
 class PartyOrdersController extends V1Controller{
     
     // CJ defined this action 2016-07-20
-    public function actionManagePartyOrdersRequest(){
+    public function actionManagePartyOrders(){
         if(ComponentsHttp::httpMethod()=="POST"){
             // checking requested param key name 
             $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
