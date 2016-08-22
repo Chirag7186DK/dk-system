@@ -27,6 +27,24 @@ class PartyOrdersController extends V1Controller{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
             }
         }
+        if(ComponentsHttp::httpMethod()=="GET"){
+            // checking requested param key name 
+            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                // checking param key value data & return status
+                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
+                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                    $PartyOrdersServicesV1 = new PartyOrdersServicesV1();
+                    $PartyOrdersServicesV1->getPartyOrderList($dkParamDataArr);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
     }
     
 }
