@@ -133,7 +133,7 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
                     });
                 }
             }catch(ex){
-                console.log("problem in addPartyOrderRequest ex=>"+ex);
+                console.log("problem in getPartyOrdersList ex=>"+ex);
                 showHideLoaderBox('hide');
             }
         };
