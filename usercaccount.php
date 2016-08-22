@@ -457,6 +457,12 @@ include "Site_config.inc.php";
                     <li ng-click="uca_togglePartyOrderSectionList('allorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
+                    <li ng-click="uca_togglePartyOrderSectionList('allorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
+                        Message
+                    </li>
+                    <li ng-click="uca_togglePartyOrderSectionList('allorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
+                        Video
+                    </li>
                 </div>
 
                 <!-- requesting new party order content form will be displayed -->
