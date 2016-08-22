@@ -454,7 +454,7 @@ include "Site_config.inc.php";
                     <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'po_EachTabLabelSectionContainerLIId1', 'po_AllSectionHeaderContainerDivClass');" title='Click to request new party order' id='po_EachTabLabelSectionContainerLIId1' class='po_EachTabLabelSectionContainerLIClass po_SelectedTabLabelSectionContainerLIClass'>
                         Create
                     </li>
-                    <li ng-click="uca_togglePartyOrderSectionList('allorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_togglePartyOrderSectionList('allpartyorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
                     <li ng-click="uca_togglePartyOrderSectionList('partyordermsg', 'po_EachTabLabelSectionContainerLIId3', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId3' class='po_EachTabLabelSectionContainerLIClass'>
@@ -549,7 +549,46 @@ include "Site_config.inc.php";
                     
                 </div>
                 
-            
+                <!-- requested order cart all items info will be displayed -->
+                <div ng-if="displayOrdercartSectionType==='allpartyorders'" ng-controller="PartyOrdersController" ng-init="getPartyOrdersList()" id='allPoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allPoListSectionDivClass'>
+                    
+                    <!-- all party order will be filtering -->
+                    <div ng-if="partyOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextPODivClass">
+                        <label class="searchTextPOLblClass">Use for filtering and access fast party order details !</label>
+                        <input ng-model="searchTextPO" type="text" class="form-control" placeholder="Track party order details !">
+                    </div>
+                    
+                    <!-- each party order will display -->
+                    <div ng-repeat="eachPartyOrderDetailsArrObj in partyOrderListArrObj | filter:searchTextPartyOrder:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
+                        <p class="poNoPClass">
+                            Order No: {{eachPartyOrderDetailsArrObj.partyOrderNo}}
+                        </p>
+                        <p class="poStatusPClass">
+                            Status: {{eachPartyOrderDetailsArrObj.portLongStatusMsg}}
+                        </p>
+                        <p class="poOccassionPClass">
+                            Occassion: {{eachPartyOrderDetailsArrObj.occassionTitle}}
+                        </p>
+                        <p class="poPersonPClass">
+                            Person: {{eachPartyOrderDetailsArrObj.nosOfPerson}}
+                        </p>
+                        <p class="poDatePClass">
+                            Person: {{eachPartyOrderDetailsArrObj.partyDate}}
+                        </p>
+                        <p class="poVenuePClass">
+                            Person: {{eachPartyOrderDetailsArrObj.partyVenue}}
+                        </p>
+                        <p class="poRequirementsPClass">
+                            Person: {{eachPartyOrderDetailsArrObj.partyRequirements}}
+                        </p>
+                    </div>
+                    
+                    <!-- no party order found message div -->
+                    <div ng-if="partyOrderListArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="shoppingBagsEmptyPClass">To request party order click on 'Create' tab !</p>
+                    </div>
+                </div>
+                
 
             </div>
 
