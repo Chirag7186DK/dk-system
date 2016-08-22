@@ -3960,6 +3960,7 @@
     
     .uca_partyorderSectionContainerDivClass{
         background-color:#f6f4fb!important;
+        padding-top:20px!important;
     }
 
     .uca_partyorderAllSectionHeaderContainerDivClass .owl-item{
@@ -3974,7 +3975,7 @@
         font-weight: bold!important;
         font-family: serif!important;
         float:left!important;
-        padding:12px!important;
+        padding:10px!important;
         font-size:15px!important;
         list-style-type:none!important;
         cursor:pointer;
