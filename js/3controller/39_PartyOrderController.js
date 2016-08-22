@@ -66,7 +66,7 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
                                             $rootScope.isShowPartyOrderRequestSendThankyouMsg = true;
                                             $rootScope.requestedPartyOrderNo = poRequestedStatusDetails['partyOrderNo'];
                                         }else{
-                                            $rootScope.isShowPartyOrderRequestErrorMsg = true;
+                                            $rootScope.isShowPartyOrderRequestErrorMsg = false;
                                             $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
                                             $rootScope.requestedPartyOrderNo  = '';
                                         }
