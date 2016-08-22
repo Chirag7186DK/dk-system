@@ -448,13 +448,13 @@ include "Site_config.inc.php";
             
             <!-- party order section details with each tab level -->
             <div ng-if="requestedSectionName==='partyorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_partyorderSectionContainerDivClass">
-
+                
                 <!-- party order all section header title -->
                 <div scroll-horizontally-partyorder-allsectionheader-directive id='uca_partyorderAllSectionHeaderContainerDivId' class='uca_partyorderAllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'uca_partyorderEachTabLabelSectionContainerLIId1', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to request new party order' id='uca_partyorderEachTabLabelSectionContainerLIId1' class='uca_partyorderEachTabLabelSectionContainerLIClass uca_partyorderSelectedTabLabelSectionContainerLIClass'>
                         Create
                     </li>
-                    <li ng-click="uca_toggleOrdercartSectionList('allorders', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_togglePartyOrderSectionList('allorders', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
                 </div>
@@ -463,7 +463,68 @@ include "Site_config.inc.php";
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
                 <!-- requesting new party order content form will be displayed -->
-                <div ng-if="displayPartyOrderInfoSectionType==='createpartyorder'" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+                <div ng-if="displayPartyOrderInfoSectionType==='createpartyorder'" ng-controller="PartyOrdersController" ng-init="attachedFieldValidationPartyOrdersRequest()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+                    
+                    <p class="po_formHeaderPClass">
+                        <i class="fa fa-smile-o po_smileIconClass"></i> Hey please fill-up this form and we will get back within one hours. Party orders request will be accept only for Pune city.
+                    </p>
+                    
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_formContentWrappperContainerDivClass">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_occasionContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the occasion ?
+                            </p>
+                            <input placeholder="What's the occasion" autocomplete="on" type="text" id='po_occasionTitleInputId' class="form-control po_occasionTitleInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_peopleContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people to treat ?
+                            </p>
+                            <input placeholder="How many awesome people to treat" autocomplete="on" type="text" id='po_nosPeopleInputId' class="form-control po_nosPeopleInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: 20
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_dateContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-calendar faa-tada animated"></i> Party date (YYYY-MM-DD) ?
+                            </p>
+                            <input placeholder="Party date" autocomplete="on" type="text" id='po_dateInputId' class="form-control po_dateInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: <?php echo date('Y-m-d');?>
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_venueContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-map-marker faa-tada animated"></i> Party venue ?
+                            </p>
+                            <textarea placeholder="Party venue" autocomplete="on" class='form-control po_venueInputClass' id='po_venueInputId' rows="5" cols="20"></textarea>
+                            <p class="po_formfieldHintPClass">
+                                Eg: 421302 Bhiwandi
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_requirementsContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-envelope faa-tada animated"></i> Enter Requirements
+                            </p>
+                            <textarea placeholder="Party requirements" autocomplete="on" class='form-control po_messageInputClass' id='po_messageInputId' rows="5" cols="20"></textarea>
+                            <p class="po_formfieldHintPClass">
+                                Eg: Cakes,Chocolates,Sweets,Ice-cream, birthday party etc...
+                            </p>
+                        </div>
+                        <div ng-show="isShowPartyOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_errorMsgContainerDivClass">
+                            {{partyOrderErrorMsgStr}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_btnContainerDivClass">
+                            <button ng-click="addPartyOrdersRequest()" class='btn partyOrderRequestSubmtBtnClass' id='partyOrderRequestSubmtBtnId'>
+                                SEND REQUEST
+                            </button>
+                        </div>
+                    </div>
+                    
                 </div>
 
             </div>
