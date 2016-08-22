@@ -179,14 +179,16 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     UsersServices.updateUserPasswordInfo(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
-                            var isUserpasswordInfoUpdated =  false;
+                            var userpwdChangedStatusDetails =  false;
                             var notificationMsgStr = 'Your password is not change, please try again !';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isUserpasswordInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserpasswordInfoUpdated', retResponseJson);
+                                userpwdChangedStatusDetails = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'userpwdChangedStatusDetails', retResponseJson);
                             }
-                            if(isUserpasswordInfoUpdated==='TRUE'){
+                            if(userpwdChangedStatusDetails['ispwdChanged']==='TRUE'){
                                 clearUserpasswordFormFieldInfo();
-                                notificationMsgStr = 'Your password changed successfully !';
+                                notificationMsgStr = userpwdChangedStatusDetails['statusMsg'];
+                            }else if(userpwdChangedStatusDetails['ispwdChanged']==='FALSE'){
+                                notificationMsgStr = userpwdChangedStatusDetails['statusMsg'];
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
