@@ -99,6 +99,45 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
             }
         };
         
+        // getPartyOrdersList 
+        $rootScope.getPartyOrdersList = function(){
+            try{
+                var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
+                // console.log("addPartyOrdersRequest preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+                        
+                    var fetchAreaParamJsonObj = {};
+                    fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    
+                    $rootScope.partyOrderListArrObj = false;
+                    
+                    // calling PartyOrdersServices to add party order request
+                    PartyOrdersServices.getPartyOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            showHideLoaderBox('hide');
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                // console.log("addPartyOrdersRequest retResponseJson=>"+JSON.stringify(retResponseJson));
+                                var partyOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'partyOrderList', retResponseJson);
+                                if(partyOrderListArrObj!==false && partyOrderListArrObj!==undefined 
+                                    && jQuery.isEmptyObject(partyOrderListArrObj)===false){
+                                    $rootScope.partyOrderListArrObj = partyOrderListArrObj;
+                                }else{
+                                    $rootScope.partyOrderListArrObj = false;
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in addPartyOrderRequest ex=>"+ex);
+                showHideLoaderBox('hide');
+            }
+        };
+        
     }catch(ex){
         console.log("problem in PartyOrdersController ex=>"+ex);
     }
