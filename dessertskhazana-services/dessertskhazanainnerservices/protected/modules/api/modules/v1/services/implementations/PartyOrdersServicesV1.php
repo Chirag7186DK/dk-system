@@ -37,7 +37,7 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
                 }   
             }
         } 
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
 
     // CJ defined this action 2016-08-22
