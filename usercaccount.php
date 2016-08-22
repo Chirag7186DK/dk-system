@@ -465,11 +465,11 @@ include "Site_config.inc.php";
                 <!-- requesting new party order content form will be displayed -->
                 <div ng-if="displayPartyOrderInfoSectionType==='createpartyorder'" ng-controller="PartyOrdersController" ng-init="attachedFieldValidationPartyOrdersRequest()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
                     
-                    <p class="po_formHeaderPClass">
-                        <i class="fa fa-smile-o po_smileIconClass"></i> Hey please fill-up this form and we will get back within one hours. Party orders request will be accept only for Pune city.
-                    </p>
-                    
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_formContentWrappperContainerDivClass">
+                    <!-- party order form content -->
+                    <div ng-show="isShowPartyOrderRequestFormContent" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_formContentWrappperContainerDivClass">
+                        <p class="po_formHeaderPClass">
+                            <i class="fa fa-smile-o po_smileIconClass"></i> Hey please fill-up this form and we will get back within one hours. Party orders request will be accept only for Pune city.
+                        </p>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_occasionContainerDivClass">
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the occasion ?
@@ -525,23 +525,25 @@ include "Site_config.inc.php";
                         </div>
                     </div>
                     
+                    <!-- thank you party order requested message content -->
+                    <div ng-show="isShowPartyOrderRequestSendThankyouMsg" ng-controller="PartyOrdersController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_thankyouContentWrapperDivClass">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_thankyouContentWrapperContainerDivClass">
+                            <p class="po_thankyoubodyPClass">
+                                <i class="fa fa-smile-o po_thankyousmileIconClass"></i> 
+                                Hurrah! Your details have been submitted & request party order no: {{requestedPartyOrderNo}}
+                                Let’s begin the party order preparations.
+                            </p>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <button ng-click="redirectToViewPartyOrderRequest()" class='btn redirectToViewPartyOrderRequestBtnClass' id='partyOrderRequestSubmtBtnId'>
+                                    Another Party Order Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 
-            <!-- thank you party order requested message content -->
-            <div ng-show="isShowPartyOrderRequestSendThankyouMsg" ng-controller="PartyOrdersController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_thankyouContentWrapperDivClass">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_thankyouContentWrapperContainerDivClass">
-                    <p class="po_thankyoubodyPClass">
-                        <i class="fa fa-smile-o po_thankyousmileIconClass"></i> 
-                        Hurrah! Your details have been submitted & request party order no: {{requestedPartyOrderNo}}
-                        Let’s begin the party order preparations.
-                    </p>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <button ng-click="redirectToViewPartyOrderRequest()" class='btn redirectToViewPartyOrderRequestBtnClass' id='partyOrderRequestSubmtBtnId'>
-                            Another Party Order Request
-                        </button>
-                    </div>
-                </div>
-            </div>
+            
 
             </div>
 
