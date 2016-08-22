@@ -371,8 +371,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
             // toggle background color class also
             if(clickedElementId!==undefined && clickedElementParentClass!==undefined){
-                $('.'+clickedElementParentClass).find('li').removeClass('uca_partyorderSelectedTabLabelSectionContainerLIClass');
-                $('#'+clickedElementId).addClass('uca_partyorderSelectedTabLabelSectionContainerLIClass');
+                $('.'+clickedElementParentClass).find('li').removeClass('po_SelectedTabLabelSectionContainerLIClass');
+                $('#'+clickedElementId).addClass('po_SelectedTabLabelSectionContainerLIClass');
             }
         };
         
