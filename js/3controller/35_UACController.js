@@ -369,10 +369,10 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }else{
                 $rootScope.displayPartyOrderInfoSectionType = displayPartyOrderInfoSectionType;
             }
-            // toggle backgroun class also
+            // toggle background color class also
             if(clickedElementId!==undefined && clickedElementParentClass!==undefined){
-                // $('.'+clickedElementParentClass).find('li').removeClass('uca_ordercartSelectedTabLabelSectionContainerLIClass');
-                // $('#'+clickedElementId).addClass('uca_ordercartSelectedTabLabelSectionContainerLIClass');
+                $('.'+clickedElementParentClass).find('li').removeClass('uca_partyorderSelectedTabLabelSectionContainerLIClass');
+                $('#'+clickedElementId).addClass('uca_partyorderSelectedTabLabelSectionContainerLIClass');
             }
         };
         
