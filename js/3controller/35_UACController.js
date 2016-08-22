@@ -19,6 +19,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     $rootScope.displayPersonalInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='changepassword'){
                     $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
+                }else if(requestedSectionName==='partyorder'){
+                    $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }
             }
         };
@@ -29,7 +31,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
             $rootScope.displayPersonalInfoSectionType = "text_personalinfo";
         };
-        
         
         // showEditableUserCustomerProfileInfo
         $rootScope.showEditableUserCustomerProfileInfo = function(displayPersonalInfoSectionType){
@@ -352,6 +353,28 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
+        
+        // displayPartyOrderInfoSectionToAccessInUserCAccount
+        $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
+            $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
+            $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
+            $rootScope.displayPartyOrderInfoSectionType = "createpartyorder";
+            $rootScope.uca_togglePartyOrderSectionList($rootScope.displayPartyOrderInfoSectionType);
+        };
+        
+        // uca_togglePartyOrderSectionList
+        $rootScope.uca_togglePartyOrderSectionList = function(displayPartyOrderInfoSectionType, clickedElementId, clickedElementParentClass){
+            if(displayPartyOrderInfoSectionType==='createpartyorder' || displayPartyOrderInfoSectionType==='partyorder'){
+                $rootScope.displayPartyOrderInfoSectionType = 'createpartyorder';
+            }else{
+                $rootScope.displayPartyOrderInfoSectionType = displayPartyOrderInfoSectionType;
+            }
+            // toggle backgroun class also
+            if(clickedElementId!==undefined && clickedElementParentClass!==undefined){
+                // $('.'+clickedElementParentClass).find('li').removeClass('uca_ordercartSelectedTabLabelSectionContainerLIClass');
+                // $('#'+clickedElementId).addClass('uca_ordercartSelectedTabLabelSectionContainerLIClass');
+            }
+        };
         
     }catch(ex){
         console.log("problem in UCustomerController ex=>"+ex);
