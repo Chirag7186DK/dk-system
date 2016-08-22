@@ -7,6 +7,7 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
         $rootScope.isShowPartyOrderRequestFormContent = true;
         $rootScope.isShowPartyOrderRequestSendThankyouMsg = false;
         $rootScope.partyOrderErrorMsgStr = '';
+        $rootScope.requestedPartyOrderNo = '';
         
         // redirectToViewPartyOrderRequest 
         $rootScope.redirectToViewPartyOrderRequest = function(){
@@ -63,13 +64,16 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
                                             clearPartyOrderRequestFormField();
                                             $rootScope.isShowPartyOrderRequestFormContent = false;
                                             $rootScope.isShowPartyOrderRequestSendThankyouMsg = true;
+                                            $rootScope.requestedPartyOrderNo = poRequestedStatusDetails['partyOrderNo'];
                                         }else{
                                             $rootScope.isShowPartyOrderRequestErrorMsg = true;
                                             $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
+                                            $rootScope.requestedPartyOrderNo  = '';
                                         }
                                     }else{
                                         $rootScope.isShowPartyOrderRequestErrorMsg = true;
                                         $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
+                                        $rootScope.requestedPartyOrderNo  = '';
                                     }
                                 }
                             });
