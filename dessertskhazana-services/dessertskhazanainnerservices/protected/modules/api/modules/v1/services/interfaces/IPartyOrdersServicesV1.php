@@ -6,5 +6,5 @@
 
 interface IPartyOrdersServicesV1{
     public function addPartyOrdersRequest($dkInDtoArray);
-    public function getPartyOrderList();
+    public function getPartyOrderList($dkInDtoArray);
 }
