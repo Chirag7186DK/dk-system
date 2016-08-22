@@ -576,3 +576,25 @@ app.directive('scrollHorizontallyOrdercartAllsectionheaderDirective', function()
         }, 1);
     };
 });
+
+// scroll-horizontally-partyorder-allsectionheader-directive
+app.directive('scrollHorizontallyPartyorderAllsectionheaderDirective', function(){
+    return function(scope, element, attrs){
+        setTimeout(function(){
+            if($('#uca_partyorderAllSectionHeaderContainerDivId').length>0){
+                var existingOwlOptions = {
+                    navigation:false,
+                    paginationSpeed:1000,
+                    goToFirstSpeed:2000,
+                    transitionStyle:"fade"
+                };
+                var owlObj = $("#uca_partyorderAllSectionHeaderContainerDivId").data('owlCarousel');
+                if(owlObj!==false && owlObj!==undefined && owlObj!==''){
+                    owlObj.reinit(existingOwlOptions);
+                }else{
+                    $("#uca_partyorderAllSectionHeaderContainerDivId").owlCarousel(existingOwlOptions);
+                }
+            }
+        }, 1);
+    };
+});
