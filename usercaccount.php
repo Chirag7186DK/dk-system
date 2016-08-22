@@ -451,10 +451,10 @@ include "Site_config.inc.php";
 
                 <!-- party order all section header title -->
                 <div scroll-horizontally-partyorder-allsectionheader-directive id='uca_partyorderAllSectionHeaderContainerDivId' class='uca_partyorderAllSectionHeaderContainerDivClass'>
-                    <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'uca_partyorderEachTabLabelSectionContainerLIId1', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to request new party order' id='uca_partyorderEachTabLabelSectionContainerLIId1' class='uca_partyorderEachTabLabelSectionContainerLIClass uca_partyorderSelectedTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'uca_partyorderEachTabLabelSectionContainerLIId1', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to request new party order' id='uca_partyorderEachTabLabelSectionContainerLIId1' class='uca_partyorderEachTabLabelSectionContainerLIClass uca_partyorderSelectedTabLabelSectionContainerLIClass'>
                         Create
                     </li>
-                    <li ng-click="uca_toggleOrdercartSectionList('cancelledordered', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_toggleOrdercartSectionList('cancelledordered', 'uca_partyorderEachTabLabelSectionContainerLIId2', 'uca_partyorderAllSectionHeaderContainerDivClass');" title='Click to view all orders' id='uca_partyorderEachTabLabelSectionContainerLIId2' class='uca_partyorderEachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
                 </div>
