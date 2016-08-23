@@ -581,8 +581,13 @@ include "Site_config.inc.php";
                         <p class="poRequirementsPClass">
                             Requirements: {{eachPartyOrderDetailsArrObj.partyRequirements}}
                         </p>
+                        <p class="poEstimatedAmtPClass">
+                            Estimated Amt(Rs): {{eachPartyOrderDetailsArrObj.estimatedAmt}}
+                        </p>
                         <p ng-if="eachPartyOrderDetailsArrObj.porStatus=='PP'" class="poRequirementsPClass">
-                            <button ng-click="updateItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>MAKE PAYMENT</button>
+                            <button ng-click="updateItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
+                                MAKE PAYMENT (Rs: {{eachPartyOrderDetailsArrObj.confirmedAmt}})
+                            </button>
                         </p>
                     </div>
                     
