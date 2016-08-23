@@ -7,18 +7,26 @@ app.controller('CustomizeOrdersController', function($scope, $rootScope, $http, 
         $rootScope.isShowCustomizeOrderRequestFormContent = true;
         $rootScope.isShowCustomizeOrderRequestSendThankyouMsg = false;
         $rootScope.customizeOrderErrorMsgStr = '';
+        $rootScope.requestedPartyOrderNo = '';
         
         // redirectToViewCustomizeOrderRequest 
         $rootScope.redirectToViewCustomizeOrderRequest = function(){
             try{
-                // get param obj to get related city details
-                var retStatus = checkParamDataToRedirectForRequestCustomizeOrder();
-                // console.log("redirectToViewCustomizeOrderRequest retStatus=>"+retStatus);
-                if(retStatus===true){
-                    window.location.href =  globalBaseSitePath+"customizeorder.php";
+                // check user logged in dk session
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserParamDataObj!==false && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
+                    storeRequestedSectionNameToAccessInUserAccount('partyorder');
+                    if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
+                        // detected user account as customer profile
+                        if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
+                            window.location.href = globalBaseSitePath+"usercaccount.php";
+                        }
+                    }
+                }else{
+                    window.location.href = globalBaseSitePath + "customizeorder.php";
                 }
             }catch(ex){
-                console.log("problem in redirectToViewCustomizeOrderRequest ex=>"+ex);
+                console.log("problem in redirectToViewPartyOrderRequest ex=>"+ex);
             }
         };
         
@@ -56,15 +64,23 @@ app.controller('CustomizeOrdersController', function($scope, $rootScope, $http, 
                             $scope.$apply(function(){
                                 showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    // console.log("addPartyOrdersRequest retResponseJson=>"+JSON.stringify(retResponseJson));
-                                    var retStatus = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'isCustomizeOrderRequestSend', retResponseJson);
-                                    if(retStatus==='YES'){
-                                        clearCustomizeOrderRequestFormField();
-                                        $rootScope.isShowCustomizeOrderRequestFormContent = false;
-                                        $rootScope.isShowCustomizeOrderRequestSendThankyouMsg = true;
+                                    var coRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'coRequestedStatusDetails', retResponseJson);
+                                    if(coRequestedStatusDetails!==false && coRequestedStatusDetails!==undefined 
+                                        && jQuery.isEmptyObject(coRequestedStatusDetails)===false){
+                                        if(coRequestedStatusDetails['isCustomizeOrderRequestSend']==='YES'){
+                                            clearCustomizeOrderRequestFormField();
+                                            $rootScope.isShowCustomizeOrderRequestFormContent = false;
+                                            $rootScope.isShowCustomizeOrderRequestSendThankyouMsg = true;
+                                            $rootScope.requestedCustomizeOrderNo = coRequestedStatusDetails['customizeOrderNo'];
+                                        }else{
+                                            $rootScope.isShowCustomizeOrderRequestErrorMsg = false;
+                                            $rootScope.customizeOrderErrorMsgStr = 'Please try again to send request customize order !';
+                                            $rootScope.requestedCustomizeOrderNo  = '';
+                                        }
                                     }else{
                                         $rootScope.isShowCustomizeOrderRequestErrorMsg = true;
                                         $rootScope.customizeOrderErrorMsgStr = 'Please try again to send request customize order !';
+                                        $rootScope.requestedCustomizeOrderNo  = '';
                                     }
                                 }
                             });
