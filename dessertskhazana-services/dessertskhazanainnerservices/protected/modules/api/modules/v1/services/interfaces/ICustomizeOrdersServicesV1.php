@@ -6,4 +6,5 @@
 
 interface ICustomizeOrdersServicesV1{
     public function addCustomizeOrdersRequest($dkInDtoArray);
+    public function getCustomizeOrderList($dkInDtoArray);
 }
