@@ -1382,6 +1382,9 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
                     if(sectionName==='partyorder'){
                         displaySectionName = 'Party Order';
                     }
+                    if(sectionName==='customizeorder'){
+                        displaySectionName = 'Customize Order';
+                    }
                     dkParamObj['requestedSectionUserAccountObj'] = {
                         "requestedSectionName":sectionName,
                         "displaySectionName":displaySectionName
