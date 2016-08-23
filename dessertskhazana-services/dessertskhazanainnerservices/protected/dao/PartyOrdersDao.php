@@ -194,7 +194,8 @@ class PartyOrdersDao{
                     WHEN por.status='PF' THEN 'Deleted by you'
                     WHEN por.status='ZA' THEN 'Deleted by us'
                 END) portLongStatusMsg,
-                COALESCE(por.status, '') porStatus
+                COALESCE(por.status, '') porStatus,
+                '2000' estimatedAmt, '1800' confirmedAmt
                 FROM DK_USERS u 
                 JOIN DK_PARTYORDERS_REQUEST por ON por.user_id=u.id
                 WHERE 1
