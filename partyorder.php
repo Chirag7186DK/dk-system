@@ -112,10 +112,22 @@
                 Party order content will be come here
             </div>
             
+            <!-- if not logged user then sign-up/sign-in button -->
+            <div ng-if="isUserLoggedInSession==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 poSignInSignUpContainerDivClass">
+                <p class="poSignInSignUpInfoPClass">
+                    <i class="fa fa-user accountSignUpSignInIconClass"></i> 
+                    Please Log In / Sign Up to request for party order
+                </p>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 poSignInSignUpBtnDivClass">
+                    <button ng-click="redirectToAccountSignUpSignIn('partyorder')" class='btn poSignInSignUpBtnClass' id='poSignInSignUpBtnId'>
+                        Log In / Sign Up
+                    </button>
+                </div>
+            </div>
+            
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-            
-            
+        
             
         </div>
         
