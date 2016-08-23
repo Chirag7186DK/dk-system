@@ -582,7 +582,7 @@ include "Site_config.inc.php";
                             Requirements: {{eachPartyOrderDetailsArrObj.partyRequirements}}
                         </p>
                         <p ng-if="eachPartyOrderDetailsArrObj.porStatus=='PP'" class="poRequirementsPClass">
-                            Make Payment
+                            <button ng-click="updateItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>MAKE PAYMENT</button>
                         </p>
                     </div>
                     
