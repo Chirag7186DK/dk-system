@@ -4029,5 +4029,34 @@
         font-size:13px!important;
     }
     
+    .poSignInSignUpContainerDivClass{
+        
+    }
+    
+    .poSignInSignUpInfoPClass{
+        color:#828282!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+    }
+
+    .poSignInSignUpInfoPClass .accountSignUpSignInIconClass{
+        font-size:50px!important;
+        color:#fb366e!important;
+    }
+    
+    .poSignInSignUpBtnDivClass{
+        text-align:center!important;
+    }
+    
+    .poSignInSignUpBtnClass, 
+    .poSignInSignUpBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#5663ab!important;
+        color:#fff!important;
+    }
+    
 }
 
