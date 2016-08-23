@@ -30,16 +30,16 @@ class CustomizeOrdersDao{
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('is_LoggedInUser', $coRequestParamDetails)){
-            if($coRequestParamDetails['is_LoggedInUser']!=''){
-                $sqlColumnNames.=" is_LoggedInUser,";
-                $sqlValues.="'".$coRequestParamDetails['is_LoggedInUser']."',";
+        if(array_key_exists('customizeorder_no', $coRequestParamDetails)){
+            if($coRequestParamDetails['customizeorder_no']!=''){
+                $sqlColumnNames.=" customizeorder_no,";
+                $sqlValues.="'".$coRequestParamDetails['customizeorder_no']."',";
             }
         }
-        if(array_key_exists('profile_id', $coRequestParamDetails)){
-            if($coRequestParamDetails['profile_id']!=''){
-                $sqlColumnNames.=" profile_id,";
-                $sqlValues.="'".$coRequestParamDetails['profile_id']."',";
+        if(array_key_exists('user_sessionid', $coRequestParamDetails)){
+            if($coRequestParamDetails['user_sessionid']!=''){
+                $sqlColumnNames.=" user_sessionid,";
+                $sqlValues.="'".$coRequestParamDetails['user_sessionid']."',";
             }
         }
         if(array_key_exists('user_id', $coRequestParamDetails)){
@@ -78,22 +78,22 @@ class CustomizeOrdersDao{
                 $sqlValues.="'".$coRequestParamDetails['nos_person']."',";
             }
         }
-        if(array_key_exists('party_date', $coRequestParamDetails)){
-            if($coRequestParamDetails['party_date']!=''){
-                $sqlColumnNames.=" party_date,";
-                $sqlValues.="'".$coRequestParamDetails['party_date']."',";
+        if(array_key_exists('event_date', $coRequestParamDetails)){
+            if($coRequestParamDetails['event_date']!=''){
+                $sqlColumnNames.=" event_date,";
+                $sqlValues.="'".$coRequestParamDetails['event_date']."',";
             }
         }
-        if(array_key_exists('party_venue', $coRequestParamDetails)){
-            if($coRequestParamDetails['party_venue']!=''){
-                $sqlColumnNames.=" party_venue,";
-                $sqlValues.="'".$coRequestParamDetails['party_venue']."',";
+        if(array_key_exists('event_venue', $coRequestParamDetails)){
+            if($coRequestParamDetails['event_venue']!=''){
+                $sqlColumnNames.=" event_venue,";
+                $sqlValues.="'".$coRequestParamDetails['event_venue']."',";
             }
         }
-        if(array_key_exists('party_requirements', $coRequestParamDetails)){
-            if($coRequestParamDetails['party_requirements']!=''){
-                $sqlColumnNames.=" party_requirements,";
-                $sqlValues.="'".$coRequestParamDetails['party_requirements']."',";
+        if(array_key_exists('event_requirements', $coRequestParamDetails)){
+            if($coRequestParamDetails['event_requirements']!=''){
+                $sqlColumnNames.=" event_requirements,";
+                $sqlValues.="'".$coRequestParamDetails['event_requirements']."',";
             }
         }
         if(array_key_exists('file', $coRequestParamDetails)){
@@ -108,10 +108,10 @@ class CustomizeOrdersDao{
                 $sqlValues.="'".$coRequestParamDetails['created_by']."',";
             }
         }
-        if(array_key_exists('status_id', $coRequestParamDetails)){
-            if($coRequestParamDetails['status_id']!=''){
-                $sqlColumnNames.=" status_id,";
-                $sqlValues.="'".$coRequestParamDetails['status_id']."',";
+        if(array_key_exists('status', $coRequestParamDetails)){
+            if($coRequestParamDetails['status']!=''){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$coRequestParamDetails['status']."',";
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
@@ -181,9 +181,9 @@ class CustomizeOrdersDao{
                 COALESCE(cor.partyorder_no, '') partyOrderNo, 
                 COALESCE(cor.occassion_title, '') occassionTitle,
                 COALESCE(cor.nos_person, '') nosOfPerson, 
-                COALESCE(cor.party_date, '') eventDate, 
-                COALESCE(cor.party_venue, '') eventVenue, 
-                COALESCE(cor.party_requirements, '') customizeRequirements,
+                COALESCE(cor.event_date, '') eventDate, 
+                COALESCE(cor.event_venue, '') eventVenue, 
+                COALESCE(cor.event_requirements, '') customizeRequirements,
                 (CASE 
                     WHEN cor.status='R' THEN 'Requested'
                     WHEN cor.status='CV' THEN 'Consulting with vendor'
