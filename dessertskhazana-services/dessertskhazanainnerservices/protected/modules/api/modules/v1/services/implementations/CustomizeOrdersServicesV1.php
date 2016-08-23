@@ -7,33 +7,37 @@
 
 class CustomizeOrdersServicesV1 implements ICustomizeOrdersServicesV1{
     
-    // CJ defined this action 2016-07-20
+    // CJ defined this action 2016-08-21
     public function addCustomizeOrdersRequest($dkParamDataArr){
         $rspDetails = array();
-        $rspDetails["isCustomizeOrderRequestSend"] = 'NO';
-        // check requested param data
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
-            // fetch unmd5 user data 
-            $unmd5UserDataArr = UsersDao :: getUserDetails($dkParamDataArr);
-            if(count($unmd5UserDataArr)==1 && $unmd5UserDataArr!=false){
-                $dkParamDataArr['user_id'] = $unmd5UserDataArr[0]['unmd5UserId'];
-                $dkParamDataArr['created_by'] = $unmd5UserDataArr[0]['unmd5UserId'];
+        $rspDetails["coRequestedStatusDetails"] = array();
+        $rspDetails['coRequestedStatusDetails']["isCustomizeOrderRequestSend"] = 'NO';
+        $rspDetails['coRequestedStatusDetails']["partyOrderNo"] = '';
+        // check requested param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // add party order request status
+            $dkParamDataArr['status'] = 'R';
+            // fetch user session data details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['customizeorder_no'] = commonfunction :: generateCustomizeOrderNo();
+                $dkParamDataArr['name'] = $userSessionDetailsData['userName'];
+                $dkParamDataArr['mobile'] = $userSessionDetailsData['userMobile'];
+                $dkParamDataArr['email'] = $userSessionDetailsData['userEmail'];
+                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['created_by'] = $userSessionDetailsData['unmd5UserId'];
+                $lastCORID = CustomizeOrdersDao::addCustomizeOrderRequest($dkParamDataArr);
+                if($lastCORID>0 && $lastCORID!=false){
+                    $rspDetails['coRequestedStatusDetails']["isCustomizeOrderRequestSend"] = 'YES';
+                    $rspDetails['coRequestedStatusDetails']["customizeOrderNo"] = $dkParamDataArr['customizeorder_no'];
+                    // send sms to end user to inform about party order request recieve by desserts khazana
+                    // $retEmailSentStatus = commonfunction :: preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($dkParamDataArr);
+                    // $smsMsgBody = "Sms Testing CJ";
+                    // $retSmsSentStatus = utils :: sendSMS(array("9975967186"), $smsMsgBody);
+                }   
             }
-            // add party order request
-            $dkParamDataArr['status_id'] = '1';
-            $lastCORID = CustomizeOrdersDao::addCustomizeOrderRequest($dkParamDataArr);
-            if($lastCORID>0 && $lastCORID!=false){
-                $rspDetails["isCustomizeOrderRequestSend"] = 'YES';
-                // add request to log
-                $dkParamDataArr['customizeorder_id'] = $lastCORID;
-                $lastCORLogID = CustomizeOrdersDao::addCustomizeOrderRequestLog($dkParamDataArr);
-                // send sms to end user to inform about customize order request recieve by desserts khazana
-                $retEmailSentStatus = commonfunction :: preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($dkParamDataArr);
-                $smsMsgBody = "Sms Testing CJ";
-                $retSmsSentStatus = utils :: sendSMS(array("9975967186"), $smsMsgBody);
-            }   
         } 
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
     
     // CJ defined this action 2016-08-22
