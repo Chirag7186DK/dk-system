@@ -7,6 +7,23 @@
 
 class CustomizeOrdersDao{
    
+    // CJ defined this function 2016-08-21
+    public static function generateMaxCustomizeOrderNo(){
+        $maxCustomizeOrderId = 0;
+        try{
+            $connection = Yii::App()->db;
+            $sql= " SELECT COALESCE(MAX(cor.id), 0) customizeOrderId
+                FROM DK_CUSTOMIZEORDERS_REQUEST cor
+                WHERE 1";
+            $command = $connection->createCommand($sql);
+            $customizeOrderDetailsArr = $command->queryAll();
+            if(count($customizeOrderDetailsArr)==1 && $customizeOrderDetailsArr!=false){
+                $maxCustomizeOrderId =  $customizeOrderDetailsArr[0]['customizeOrderId'];    
+            }
+        }catch(Exception $ex){}
+        return $maxCustomizeOrderId;
+    }
+    
     // CJ defined this function 2016-07-24
     public static function addCustomizeOrderRequest($coRequestParamDetails){
         $connection = Yii::app()->db;
@@ -111,7 +128,6 @@ class CustomizeOrdersDao{
         return $lastInsertedId;
     }
     
-    
     // CJ defined this function 2016-07-24
     public static function addCustomizeOrderRequestLog($coRequestParamDetails){
         $connection = Yii::app()->db;
@@ -156,5 +172,42 @@ class CustomizeOrdersDao{
         return $lastInsertedId;
     }
     
+    // CJ defined this function 2016-08-23
+    public static function getCustomizeOrderList($userId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= " SELECT
+                COALESCE(cor.partyorder_no, '') partyOrderNo, 
+                COALESCE(cor.occassion_title, '') occassionTitle,
+                COALESCE(cor.nos_person, '') nosOfPerson, 
+                COALESCE(cor.party_date, '') eventDate, 
+                COALESCE(cor.party_venue, '') eventVenue, 
+                COALESCE(cor.party_requirements, '') customizeRequirements,
+                (CASE 
+                    WHEN cor.status='R' THEN 'Requested'
+                    WHEN cor.status='CV' THEN 'Consulting with vendor'
+                    WHEN cor.status='C' THEN 'Confirmed by you & me'
+                    WHEN cor.status='PP' THEN 'Payment Pending'
+                    WHEN cor.status='PF' THEN 'Payment Failed'
+                    WHEN cor.status='PF' THEN 'Deleted by you'
+                    WHEN cor.status='ZA' THEN 'Deleted by us'
+                END) cortLongStatusMsg,
+                COALESCE(cor.status, '') corStatus,
+                '2000' estimatedAmt, '1800' confirmedAmt
+                FROM DK_USERS u 
+                JOIN DK_CUSTOMIZEORDERS_REQUEST cor ON cor.user_id=u.id
+                WHERE 1
+                AND u.id='$userId'
+                AND cor.user_id='$userId'
+                AND u.status='A'";
+            $command = $connection->createCommand($sql);
+            $customizeOrderDetailsArr = $command->queryAll();
+            if(count($customizeOrderDetailsArr)>0 && $customizeOrderDetailsArr!=false){
+                $result =  $customizeOrderDetailsArr;
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
     
 }
