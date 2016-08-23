@@ -21,6 +21,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='partyorder'){
                     $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
+                }else if(requestedSectionName==='customizeorder'){
+                    $rootScope.displayCustomizeOrderInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }
             }
         };
@@ -375,6 +377,29 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 $('#'+clickedElementId).addClass('po_SelectedTabLabelSectionContainerLIClass');
             }
         };
+        
+        // displayCustomizeOrderInfoSectionToAccessInUserCAccount
+        $rootScope.displayCustomizeOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
+            $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
+            $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
+            $rootScope.displayCustomizeOrderInfoSectionType = "createcustomizeorder";
+            $rootScope.uca_togglePartyOrderSectionList($rootScope.displayCustomizeOrderInfoSectionType);
+        };
+        
+        // uca_toggleCustomizeOrderSectionList
+        $rootScope.uca_toggleCustomizeOrderSectionList = function(displayCustomizeOrderInfoSectionType, clickedElementId, clickedElementParentClass){
+            if(displayCustomizeOrderInfoSectionType==='createpartyorder' || displayCustomizeOrderInfoSectionType==='customizeorder'){
+                $rootScope.displayCustomizeOrderInfoSectionType = 'createcustomizeorder';
+            }else{
+                $rootScope.displayCustomizeOrderInfoSectionType = displayCustomizeOrderInfoSectionType;
+            }
+            // toggle background color class also
+            if(clickedElementId!==undefined && clickedElementParentClass!==undefined){
+                $('.'+clickedElementParentClass).find('li').removeClass('co_SelectedTabLabelSectionContainerLIClass');
+                $('#'+clickedElementId).addClass('co_SelectedTabLabelSectionContainerLIClass');
+            }
+        };
+        
         
     }catch(ex){
         console.log("problem in UCustomerController ex=>"+ex);
