@@ -13,7 +13,7 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
         $rootScope.redirectToViewPartyOrderRequest = function(){
             try{
                 // check user logged in dk session
-                var authenticatedUserParamDataObj = getParamDataForUserSignInAuthentication();
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                     storeRequestedSectionNameToAccessInUserAccount('partyorder');
                     if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
