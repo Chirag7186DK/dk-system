@@ -933,6 +933,18 @@ class commonfunction{
     
     ///////////// Customize order request ///////////////////////////
     
+    // CJ defined this function 2016-08-21
+    public static function generateCustomizeOrderNo(){
+        $lastCustomizeOrderId = CustomizeOrdersDao :: generateMaxCustomizeOrderNo();
+        if($lastCustomizeOrderId>=0 && $lastCustomizeOrderId!=''){
+            $lastCustomizeOrderId++;
+        }else{
+            $lastCustomizeOrderId = 1;
+        }
+        $humanReadableCustomizeOrderNo = "COR$lastCustomizeOrderId".time();
+        return $humanReadableCustomizeOrderNo;
+    }
+    
     // CJ defined this function 2016-08-22
     public static function getCustomizeOrderList($unMd5UserId){
         $retJsonData = false;
