@@ -931,4 +931,18 @@ class commonfunction{
     }
     
     
+    ///////////// Customize order request ///////////////////////////
+    
+    // CJ defined this function 2016-08-22
+    public static function getCustomizeOrderList($unMd5UserId){
+        $retJsonData = false;
+        if($unMd5UserId!='' && $unMd5UserId!=false){
+            $customizeOrderDetailsArr = CustomizeOrdersDao::getCustomizeOrderList($unMd5UserId);
+            if(count($customizeOrderDetailsArr)>0 && $customizeOrderDetailsArr!=false){
+                $retJsonData = $customizeOrderDetailsArr;
+            }
+        }
+        return $retJsonData;
+    }
+    
 }
