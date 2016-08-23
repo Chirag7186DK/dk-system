@@ -1,15 +1,15 @@
 
 // WishListController
-app.controller('WishListController', function ($scope, $rootScope, $http, WishListServices) {
-    try {
+app.controller('WishListController', function ($scope, $rootScope, $http, WishListServices){
+    try{
 
         // redirectToViewWishList
-        $rootScope.redirectToViewWishList = function (fromPageLoad) {
+        $rootScope.redirectToViewWishList = function (fromPageLoad){
             // check user logged in dk session
             var userLoggedInSessionStatus = checkUserLoggedInSession();
-            if (userLoggedInSessionStatus === true) {
+            if(userLoggedInSessionStatus===true){
                 window.location.href = globalBaseSitePath + "wishlist.php";
-            } else {
+            }else{
                 storePageDetailsUserAccessedFrom(fromPageLoad);
                 window.location.href = globalBaseSitePath + "account-signup-signin.php";
             }
