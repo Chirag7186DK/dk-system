@@ -105,6 +105,8 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
                 window.location.href = globalBaseSitePath+"allproducts.php";
             }else if(lastPageAccessedByUser==='viewstoreproduct'){
                 window.location.href = globalBaseSitePath+"viewstoreproduct.php";
+            }else if(lastPageAccessedByUser==='partyorder'){
+                $rootScope.storeRequestedSectionNameToAccessInUserAccount('partyorder');
             }
         };
         
