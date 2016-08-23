@@ -12,10 +12,11 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
         // redirectToViewPartyOrderRequest 
         $rootScope.redirectToViewPartyOrderRequest = function(){
             try{
-                // get param obj to get related city details
-                var retStatus = checkParamDataToRedirectForRequestPartyOrder();
-                if(retStatus===true){
-                    window.location.href =  globalBaseSitePath+"partyorder.php";
+                // check user logged in dk session
+                var userLoggedInSessionStatus = checkUserLoggedInSession();
+                if(userLoggedInSessionStatus===true){
+                }else{
+                    window.location.href = globalBaseSitePath + "partyorder.php";
                 }
             }catch(ex){
                 console.log("problem in redirectToViewPartyOrderRequest ex=>"+ex);
