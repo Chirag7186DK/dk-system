@@ -4029,10 +4029,6 @@
         font-size:13px!important;
     }
     
-    .poSignInSignUpContainerDivClass{
-        
-    }
-    
     .poSignInSignUpInfoPClass{
         color:#828282!important;
         font-weight:bold!important;
@@ -4042,7 +4038,9 @@
 
     .poSignInSignUpInfoPClass .accountSignUpSignInIconClass{
         font-size:50px!important;
-        color:#fb366e!important;
+        color:#FAB005!important;
+        padding:7px!important;
+        margin-bottom:5px!important;
     }
     
     .poSignInSignUpBtnDivClass{
