@@ -36,5 +36,21 @@ class CustomizeOrdersServicesV1 implements ICustomizeOrdersServicesV1{
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
     
+    // CJ defined this action 2016-08-22
+    public function getCustomizeOrderList($dkParamDataArr){
+        $rspDetails = array();
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $user_id = $userSessionDetailsData['unmd5UserId'];
+                $customizeOrderDetailsArr = commonfunction :: getCustomizeOrderList($user_id);
+                if(count($customizeOrderDetailsArr)>0 && $customizeOrderDetailsArr!=false){
+                    $rspDetails['customizeOrderList'] = $customizeOrderDetailsArr;
+                }
+            }
+        } 
+        return $rspDetails;
+    }
    
 }
