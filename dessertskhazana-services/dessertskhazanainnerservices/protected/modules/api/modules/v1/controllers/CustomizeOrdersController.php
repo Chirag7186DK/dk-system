@@ -19,7 +19,8 @@ class CustomizeOrdersController extends V1Controller{
                 $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAddingCustomizeOrderRequest($dkParamDataArr);
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $CustomizeOrdersServicesV1 = new CustomizeOrdersServicesV1();
-                    $CustomizeOrdersServicesV1->addCustomizeOrdersRequest($dkParamDataArr);
+                    $rspDetails = $CustomizeOrdersServicesV1->addCustomizeOrdersRequest($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
