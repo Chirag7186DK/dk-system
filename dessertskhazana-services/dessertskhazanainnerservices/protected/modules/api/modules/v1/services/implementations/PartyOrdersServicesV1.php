@@ -21,9 +21,6 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $dkParamDataArr['partyorder_no'] = commonfunction :: generatePartyOrderNo();
-                $dkParamDataArr['name'] = $userSessionDetailsData['userName'];
-                $dkParamDataArr['mobile'] = $userSessionDetailsData['userMobile'];
-                $dkParamDataArr['email'] = $userSessionDetailsData['userEmail'];
                 $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
                 $dkParamDataArr['created_by'] = $userSessionDetailsData['unmd5UserId'];
                 $lastPORID = PartyOrdersDao::addPartyOrderRequest($dkParamDataArr);
