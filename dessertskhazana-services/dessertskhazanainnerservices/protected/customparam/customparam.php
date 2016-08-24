@@ -428,87 +428,6 @@ class customparam{
     }
     
 
-    // CJ defined this function 2016-07-24
-    public static function checkParamDataForAddingCustomizeOrderRequest($paramJsonData){
-        $retStatus = 'FALSE';
-        $givenParamDataCorrectCount = 0;
-        // check is_LoggedInUser key present or not
-        if(array_key_exists('is_LoggedInUser', $paramJsonData)){
-            if($paramJsonData['is_LoggedInUser']!='' && $paramJsonData['is_LoggedInUser']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check profile_id key present or not
-        if(array_key_exists('profile_id', $paramJsonData)){
-            if($paramJsonData['profile_id']!='' && $paramJsonData['profile_id']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check user_id key present or not
-        if(array_key_exists('user_id', $paramJsonData)){
-            if($paramJsonData['user_id']!='' && $paramJsonData['user_id']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check contact_name key present or not
-        if(array_key_exists('name', $paramJsonData)){
-            if($paramJsonData['name']!='' && $paramJsonData['name']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check mobile key present or not
-        if(array_key_exists('mobile', $paramJsonData)){
-            if($paramJsonData['mobile']!='' && $paramJsonData['mobile']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check email key present or not
-        if(array_key_exists('email', $paramJsonData)){
-            if($paramJsonData['email']!='' && $paramJsonData['email']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check event_title key present or not
-        if(array_key_exists('event_title', $paramJsonData)){
-            if($paramJsonData['event_title']!='' && $paramJsonData['event_title']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check nos_person key present or not
-        if(array_key_exists('nos_person', $paramJsonData)){
-            if($paramJsonData['nos_person']!='' && $paramJsonData['nos_person']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check event_date key present or not
-        if(array_key_exists('event_date', $paramJsonData)){
-            if($paramJsonData['event_date']!='' && $paramJsonData['event_date']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check event_venue key present or not
-        if(array_key_exists('event_venue', $paramJsonData)){
-            if($paramJsonData['event_venue']!='' && $paramJsonData['event_venue']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check event_requirements key present or not
-        if(array_key_exists('event_requirements', $paramJsonData)){
-            if($paramJsonData['event_requirements']!='' && $paramJsonData['event_requirements']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check requirements key present or not
-        if(array_key_exists('file', $paramJsonData)){
-            if($paramJsonData['file']!='' && $paramJsonData['file']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if($givenParamDataCorrectCount>=10){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
     
     // CJ defined this function 2016-07-24
     public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
@@ -1329,6 +1248,68 @@ class customparam{
         }
         return $retStatus;
     }
+    
+    
+    ///////////////////// customize order related code ///////////////////////////
+    
+    // CJ defined this function 2016-07-20
+    public static function checkParamDataForAddingCustomizeOrderRequest($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check user_sessionid key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check event_title key present or not
+        if(array_key_exists('event_title', $paramJsonData)){
+            if($paramJsonData['event_title']!='' && $paramJsonData['event_title']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check nos_person key present or not
+        if(array_key_exists('nos_person', $paramJsonData)){
+            if($paramJsonData['nos_person']!='' && $paramJsonData['nos_person']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check event_date key present or not
+        if(array_key_exists('event_date', $paramJsonData)){
+            if($paramJsonData['party_date']!='' && $paramJsonData['event_date']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check event_venue key present or not
+        if(array_key_exists('event_venue', $paramJsonData)){
+            if($paramJsonData['event_venue']!='' && $paramJsonData['event_venue']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check event_requirements key present or not
+        if(array_key_exists('event_requirements', $paramJsonData)){
+            if($paramJsonData['event_requirements']!='' && $paramJsonData['event_requirements']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check requirements key present or not
+        if(array_key_exists('file', $paramJsonData)){
+            if($paramJsonData['file']!='' && $paramJsonData['file']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount>=7){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     
 }
