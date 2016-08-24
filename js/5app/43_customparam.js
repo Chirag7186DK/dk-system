@@ -1062,15 +1062,8 @@ function getParamDataObjForCustomizeOrderRequest(){
                 // extract customize order param obj
                 var partyOrderParamObj = dkParamObj['customizeOrder'];
                 if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                    retParamDataObj['user_id'] = '';
-                    retParamDataObj['is_LoggedInUser'] = 'N';
-                    var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
-                    if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
-                        && jQuery.isEmptyObject(userLoggedDataObj)===false){
-                        retParamDataObj['user_id'] = userLoggedDataObj['userLoggedId'];
-                        retParamDataObj['is_LoggedInUser'] = 'Y';
-                    }
-                    retParamDataObj['profile_id'] = '2';
+                    retParamDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    retParamDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
                     retParamDataObj['name'] = removeHtmlStripTagsOfContent($('#co_contactPersonNameInputId').val());
                     retParamDataObj['mobile'] = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
                     retParamDataObj['email'] = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
@@ -1083,7 +1076,11 @@ function getParamDataObjForCustomizeOrderRequest(){
                 }
             }
         }
-        return retParamDataObj;
+        if(Object.keys(retParamDataObj).length===11){
+            return retParamDataObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         return false;
     }
