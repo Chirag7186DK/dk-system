@@ -723,7 +723,7 @@ class commonfunction{
             $counterSuccess = 0;
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $unMd5UserLoggedId = $userSessionDetailsData[0]['unmd5UserId'];
+                $unMd5UserLoggedId = $userSessionDetailsData['unmd5UserId'];
                 // store one by one rating/review question answer details 
                 $userAllQuesAnwerRatingReviewAbtProductArr = $paramJsonData['userAllQuesAnwerRatingReviewAbtProductArr'];
                 if(count($userAllQuesAnwerRatingReviewAbtProductArr)==4){
