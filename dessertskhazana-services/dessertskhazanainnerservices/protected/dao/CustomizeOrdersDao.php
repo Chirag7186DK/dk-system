@@ -66,10 +66,10 @@ class CustomizeOrdersDao{
                 $sqlValues.="'".$coRequestParamDetails['email']."',";
             }
         }
-        if(array_key_exists('occassion_title', $coRequestParamDetails)){
-            if($coRequestParamDetails['occassion_title']!=''){
-                $sqlColumnNames.=" occassion_title,";
-                $sqlValues.="'".$coRequestParamDetails['occassion_title']."',";
+        if(array_key_exists('event_title', $coRequestParamDetails)){
+            if($coRequestParamDetails['event_title']!=''){
+                $sqlColumnNames.=" event_title,";
+                $sqlValues.="'".$coRequestParamDetails['event_title']."',";
             }
         }
         if(array_key_exists('nos_person', $coRequestParamDetails)){
@@ -178,8 +178,8 @@ class CustomizeOrdersDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT
-                COALESCE(cor.partyorder_no, '') partyOrderNo, 
-                COALESCE(cor.occassion_title, '') occassionTitle,
+                COALESCE(cor.customizeorder_no, '') customizeOrderNo, 
+                COALESCE(cor.event_title, '') eventTitle,
                 COALESCE(cor.nos_person, '') nosOfPerson, 
                 COALESCE(cor.event_date, '') eventDate, 
                 COALESCE(cor.event_venue, '') eventVenue, 
