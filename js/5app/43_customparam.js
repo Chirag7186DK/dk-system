@@ -1566,9 +1566,8 @@ function storeUserOrderItemInSession(productDetailsObj, fcontentClass){
 
 // CJ defined this function 2016-08-06
 function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, fromSession){
-    var retParamObj = {};
     try{
-        
+        var retParamObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
@@ -1638,16 +1637,14 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
                     retParamObj = $.extend(retParamObj, userOrderItemObj);
                 }
             }
-            
         }
-        
+        if(Object.keys(retParamObj).length===13){
+            return retParamObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         // console.log("problem in getParamDataToAddProductInOrdercart ex=>"+ex);
-        retParamObj = {};
-    }
-    if(Object.keys(retParamObj).length===12){
-        return retParamObj;
-    }else{
         return false;
     }
 }
