@@ -126,7 +126,7 @@ function attachedFieldValidationCustomizeOrdersRequest(){
     }
     if($('#co_dateInputId').length===1){
         var cdate = new Date();
-        $('#po_dateInputId').datepicker({
+        $('#co_dateInputId').datepicker({
             minDate:cdate,
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
