@@ -12,10 +12,10 @@ class CustomizeOrdersServicesV1 implements ICustomizeOrdersServicesV1{
         $rspDetails = array();
         $rspDetails["coRequestedStatusDetails"] = array();
         $rspDetails['coRequestedStatusDetails']["isCustomizeOrderRequestSend"] = 'NO';
-        $rspDetails['coRequestedStatusDetails']["partyOrderNo"] = '';
+        $rspDetails['coRequestedStatusDetails']["customizeOrderNo"] = '';
         // check requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            // add party order request status
+            // add customize order request status
             $dkParamDataArr['status'] = 'R';
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
