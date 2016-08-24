@@ -3932,9 +3932,6 @@
         font-size:15px!important;
     }
 
-    .po_contactPersonNameInputClass,
-    .po_contactMobileInputClass,
-    .po_contactEmailInputClass,
     .po_nosPeopleInputClass,
     .po_dateInputClass,
     .po_occasionTitleInputClass{
@@ -4049,6 +4046,198 @@
     
     .poSignInSignUpBtnClass, 
     .poSignInSignUpBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#5663ab!important;
+        color:#fff!important;
+    }
+    
+    /* user customize order css code */
+    
+    .co_SectionContainerDivClass{
+        background-color:#f6f4fb!important;
+        padding-top:18px!important;
+    }
+
+    .co_AllSectionHeaderContainerDivClass .owl-item{
+        width:auto!important;
+        margin-right:15px!important;
+    }
+
+    .co_EachTabLabelSectionContainerLIClass{
+        text-align:center;
+        border-bottom:1px solid #00B9F5!important;
+        color:#67717D!important;
+        font-weight: bold!important;
+        font-family: serif!important;
+        float:left!important;
+        padding:10px!important;
+        font-size:15px!important;
+        list-style-type:none!important;
+        cursor:pointer;
+    }
+
+    .co_SelectedTabLabelSectionContainerLIClass{
+        border-bottom: 1px solid #00B9F5!important;
+        color:#fff!important;
+        background:#00B9F5!important;
+    }
+    
+    .co_formHeaderPClass{
+        color:#fb366e!important;
+        font-size:13px!important;
+        text-align:center;
+    }
+
+    .co_smileIconClass{
+        font-size:20px!important;
+        color:#fb366e!important;
+    }
+
+    .co_formContentWrappperContainerDivClass{
+        margin-top:10px!important;
+        border:1px dashed #FFDC00!important;
+        background:#fff!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+    }
+
+    .co_formContentWrappperContainerDivClass div{
+        margin-bottom:15px;
+    }
+
+    .co_formfieldLabelPClass{
+        color:#828282!important;
+        font-size:13px!important;
+    }
+
+    .co_formfieldHintPClass{
+        font-size:10px!important;
+        color:#708090!important;
+        font-weight:bold!important;
+    }
+
+    .co_formfieldiconclass{
+        color:#fa8072!important;
+        font-size:15px!important;
+    }
+
+    .co_nosPeopleInputClass,
+    .co_dateInputClass,
+    .cooccasionTitleInputClass{
+        height:40px!important;
+    }
+
+    .co_errorMsgContainerDivClass{
+        color:#4747d0!important;
+    }
+
+    .partyOrderRequestSubmtBtnClass, 
+    .partyOrderRequestSubmtBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#fb366e!important;
+        color:#fff!important;
+    }
+
+    .co_thankyouContentWrapperDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        border:1px dashed #FFDC00!important;
+        background:#fff!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+    }
+
+    .co_thankyoubodyPClass{
+        color:#828282!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+        padding-bottom:20px!important;
+    }
+
+    .co_thankyousmileIconClass{
+        font-size:50px!important;
+        color:#fb366e!important;
+    }
+
+    .redirectToViewCustomizeOrderRequestBtnClass, 
+    .redirectToViewCustomizeOrderRequestBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#242424!important;
+        color:#fff!important;
+    }
+    
+    .allCoListSectionDivClass{
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+    
+    .inputSearchTextCODivClass{
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+
+    .searchTextCOLblClass{
+        color: #67717D!important;
+        font-size: 12px!important;
+        font-weight: normal!important;
+    }
+    
+    .eachCOContainerDivClass{
+        padding-top: 20px!important;
+        padding-bottom: 20px!important;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+        border-bottom: 1px dashed #FAB005!important;
+    }
+    
+    .coNoPClass{
+        color:#67717D!important;
+        font-size:14px!important;
+    }
+    
+    .coStatusPClass,
+    .coOccassionPClass,
+    .coPersonPClass,
+    .coDatePClass,
+    .coVenuePClass,
+    .coRequirementsPClass,
+    .coEstimatedAmtPClass{
+        color:#67717D!important;
+        font-size:13px!important;
+    }
+    
+    .coSignInSignUpInfoPClass{
+        color:#828282!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+    }
+
+    .coSignInSignUpInfoPClass .accountSignUpSignInIconClass{
+        font-size:50px!important;
+        color:#FAB005!important;
+        padding:7px!important;
+        margin-bottom:5px!important;
+    }
+    
+    .coSignInSignUpBtnDivClass{
+        text-align:center!important;
+    }
+    
+    .coSignInSignUpBtnClass, 
+    .coSignInSignUpBtnClass:hover{
         border-radius:0px!important;
         border:0px!important;
         font-weight:bold!important;
