@@ -48,24 +48,6 @@ class PartyOrdersDao{
                 $sqlValues.="'".$poRequestParamDetails['user_id']."',";
             }
         }
-        if(array_key_exists('name', $poRequestParamDetails)){
-            if($poRequestParamDetails['name']!=''){
-                $sqlColumnNames.=" name,";
-                $sqlValues.="'".$poRequestParamDetails['name']."',";
-            }
-        }
-        if(array_key_exists('mobile', $poRequestParamDetails)){
-            if($poRequestParamDetails['mobile']!=''){
-                $sqlColumnNames.=" mobile,";
-                $sqlValues.="'".$poRequestParamDetails['mobile']."',";
-            }
-        }
-        if(array_key_exists('email', $poRequestParamDetails)){
-            if($poRequestParamDetails['email']!=''){
-                $sqlColumnNames.=" email,";
-                $sqlValues.="'".$poRequestParamDetails['email']."',";
-            }
-        }
         if(array_key_exists('occassion_title', $poRequestParamDetails)){
             if($poRequestParamDetails['occassion_title']!=''){
                 $sqlColumnNames.=" occassion_title,";
