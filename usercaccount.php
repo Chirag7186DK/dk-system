@@ -611,10 +611,10 @@ include "Site_config.inc.php";
                     <li ng-click="uca_toggleCustomizeOrderSectionList('allcustomizeorders', 'co_EachTabLabelSectionContainerLIId2', 'co_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId2' class='co_EachTabLabelSectionContainerLIClass'>
                         All Orders
                     </li>
-                    <li ng-click="uca_toggleCustomizeOrderSectionList('partyordermsg', 'po_EachTabLabelSectionContainerLIId3', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId3' class='co_EachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_toggleCustomizeOrderSectionList('customizeordermsg', 'co_EachTabLabelSectionContainerLIId3', 'co_AllSectionHeaderContainerDivClass');" title='Click to view content' id='co_EachTabLabelSectionContainerLIId3' class='co_EachTabLabelSectionContainerLIClass'>
                         Message
                     </li>
-                    <li ng-click="uca_toggleCustomizeOrderSectionList('partyordervideo', 'po_EachTabLabelSectionContainerLIId4', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId4' class='co_EachTabLabelSectionContainerLIClass'>
+                    <li ng-click="uca_toggleCustomizeOrderSectionList('customizeordervideo', 'co_EachTabLabelSectionContainerLIId4', 'co_AllSectionHeaderContainerDivClass');" title='Click to view video' id='co_EachTabLabelSectionContainerLIId4' class='co_EachTabLabelSectionContainerLIClass'>
                         Video
                     </li>
                 </div>
@@ -627,55 +627,55 @@ include "Site_config.inc.php";
                     
                     <!-- customize order form content -->
                     <div ng-show="isShowCustomizeOrderRequestFormContent" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 co_formContentWrappperContainerDivClass">
-                        <p class="po_formHeaderPClass">
+                        <p class="co_formHeaderPClass">
                             <i class="fa fa-smile-o co_smileIconClass"></i> Hey please fill-up this form and we will get back within one hours. Customize orders request will be accept only for Pune city.
                         </p>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_occasionContainerDivClass">
-                            <p class="po_formfieldLabelPClass">
-                                <i class="po_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the occasion ?
+                            <p class="co_formfieldLabelPClass">
+                                <i class="co_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the event ?
                             </p>
-                            <input placeholder="What's the occasion" autocomplete="on" type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
-                            <p class="po_formfieldHintPClass">
+                            <input placeholder="What's the event" autocomplete="on" type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
+                            <p class="co_formfieldHintPClass">
                                 Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
                             </p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_peopleContainerDivClass">
-                            <p class="po_formfieldLabelPClass">
-                                <i class="po_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people in event ?
+                            <p class="co_formfieldLabelPClass">
+                                <i class="co_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people in event ?
                             </p>
-                            <input placeholder="How many awesome people to treat" autocomplete="on" type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
-                            <p class="po_formfieldHintPClass">
+                            <input placeholder="How many awesome people in event" autocomplete="on" type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
+                            <p class="co_formfieldHintPClass">
                                 Eg: 20
                             </p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_dateContainerDivClass">
-                            <p class="po_formfieldLabelPClass">
-                                <i class="po_formfieldiconclass fa fa-calendar faa-tada animated"></i> Event date (YYYY-MM-DD) ?
+                            <p class="co_formfieldLabelPClass">
+                                <i class="co_formfieldiconclass fa fa-calendar faa-tada animated"></i> Event date (YYYY-MM-DD) ?
                             </p>
-                            <input placeholder="Party date" autocomplete="on" type="text" id='po_dateInputId' class="form-control po_dateInputClass">
-                            <p class="po_formfieldHintPClass">
+                            <input placeholder="Event date" autocomplete="on" type="text" id='co_dateInputId' class="form-control co_dateInputClass">
+                            <p class="co_formfieldHintPClass">
                                 Eg: <?php echo date('Y-m-d');?>
                             </p>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_venueContainerDivClass">
-                            <p class="po_formfieldLabelPClass">
-                                <i class="po_formfieldiconclass fa fa-map-marker faa-tada animated"></i> Party venue ?
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_venueContainerDivClass">
+                            <p class="co_formfieldLabelPClass">
+                                <i class="co_formfieldiconclass fa fa-map-marker faa-tada animated"></i> Event venue ?
                             </p>
-                            <textarea placeholder="Party venue" autocomplete="on" class='form-control co_venueInputClass' id='co_venueInputId' rows="5" cols="20"></textarea>
-                            <p class="po_formfieldHintPClass">
+                            <textarea placeholder="Event venue" autocomplete="on" class='form-control co_venueInputClass' id='co_venueInputId' rows="5" cols="20"></textarea>
+                            <p class="co_formfieldHintPClass">
                                 Eg: 421302 Bhiwandi
                             </p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_requirementsContainerDivClass">
-                            <p class="po_formfieldLabelPClass">
-                                <i class="po_formfieldiconclass fa fa-envelope faa-tada animated"></i> Enter Requirements
+                            <p class="co_formfieldLabelPClass">
+                                <i class="co_formfieldiconclass fa fa-envelope faa-tada animated"></i> Enter Requirements
                             </p>
-                            <textarea placeholder="Party requirements" autocomplete="on" class='form-control co_messageInputClass' id='co_messageInputId' rows="5" cols="20"></textarea>
-                            <p class="po_formfieldHintPClass">
+                            <textarea placeholder="Event requirements" autocomplete="on" class='form-control co_messageInputClass' id='co_messageInputId' rows="5" cols="20"></textarea>
+                            <p class="co_formfieldHintPClass">
                                 Eg: Cakes,Chocolates,Sweets,Ice-cream, birthday party etc...
                             </p>
                         </div>
-                        <div ng-show="isShowCustomizeOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_errorMsgContainerDivClass">
+                        <div ng-show="isShowCustomizeOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_errorMsgContainerDivClass">
                             {{customizeOrderErrorMsgStr}}
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_btnContainerDivClass">
