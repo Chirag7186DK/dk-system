@@ -39,17 +39,11 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     }
 }
 
+
+////////////// party order related code ///////////
+
 // CJ define this funcion 2016-07-31
 function clearPartyOrderRequestFormField(){
-    if($('#po_contactPersonNameInputId').length===1){
-        $('#po_contactPersonNameInputId').val('');
-    }
-    if($('#po_contactMobileInputId').length===1){
-        $('#po_contactMobileInputId').val('');
-    }
-    if($('#po_contactEmailInputId').length===1){
-        $('#po_contactEmailInputId').val('');
-    }
     if($('#po_occasionTitleInputId').length===1){
         $('#po_occasionTitleInputId').val('');
     }
@@ -67,18 +61,10 @@ function clearPartyOrderRequestFormField(){
     }
 }
 
+////////////// customize order related code ///////////
 
 // CJ define this funcion 2016-07-24
 function clearCustomizeOrderRequestFormField(){
-    if($('#co_contactPersonNameInputId').length===1){
-        $('#co_contactPersonNameInputId').val('');
-    }
-    if($('#co_contactMobileInputId').length===1){
-        $('#co_contactMobileInputId').val('');
-    }
-    if($('#co_contactEmailInputId').length===1){
-        $('#co_contactEmailInputId').val('');
-    }
     if($('#co_occasionTitleInputId').length===1){
         $('#co_occasionTitleInputId').val('');
     }
