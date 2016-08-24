@@ -984,12 +984,18 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
         if(array_key_exists('userAllQuesAnwerRatingReviewAbtProductArr', $paramJsonData)){
             if(count($paramJsonData['userAllQuesAnwerRatingReviewAbtProductArr'])===4){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==2){
+        if($givenParamDataCorrectCount==3){
             $retStatus = 'TRUE';
         }
         return $retStatus;
