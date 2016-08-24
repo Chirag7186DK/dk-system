@@ -231,7 +231,7 @@
                 <p class='vpd_orderSummaryTotalProductAmtPClass'>
                     <i class="fa fa-rupee"></i> Subtotal Amount : {{subtotalOrderAmt}}
                 </p>
-                <p class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
+                <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
                     <button class="vpd_orderSummaryCheckoutBtnClass btn">Checkout to Pay Rs: {{subtotalOrderAmt}}</button>
                 </p>
             </div>
