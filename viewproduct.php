@@ -27,16 +27,17 @@
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
             <i class="fa fa-angle-up"></i>
         </a>
-        <!-- END SCROLL TOP BUTTON -->
         
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
+            
             <!-- webAppLogoAndMenuIconContainerDivClass --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
+            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
@@ -46,26 +47,34 @@
                     <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your all wish list">
                         <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
                     </li>
-                    <li title="Click here to view your current order cart all item(s)">
-                        <i class="fa fa-shopping-basket"></i> Cart ({{ordercartItemRequestedCount}})
+                    <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
+                        <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
                     <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Log In / Sign Up with desserts khazana account">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Log In / Sign Up
                     </li>
-                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" title="Click here to see more details about yourself">
+                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
+                        <!-- user account showing different section label to access -->
+                        <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
+                            <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="{{userInfoEachSectionListArrObj.hoverTitle}}" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
+                                {{userInfoEachSectionListArrObj.displayTitle}}
+                            </div>
+                        </div>
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
                         <i class="fa fa-sign-out"></i> Log Out
                     </li>
                 </ul>
             </div>
+            
             <!-- show customer delivery city area desserts product type on header as text -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
                 <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
                     <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
                 </p>
             </div>
+            
         </div>
         
         <!-- header row border div class -->
@@ -109,6 +118,7 @@
             
             <!-- shop store serve desserts product -->
             <div ng-show="vPDetails.isShopStoreServedOtherProducts" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
+                
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreKey}}' and also can serve other 
@@ -117,6 +127,7 @@
                     </span>
                     desserts are as follows :-
                 </li>
+                
                 <!-- display all desserts product can served by shop store in selected delivery area -->
                 <div id="vpd_shopStoreServedAllDessertsProductScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass'>
                     <!-- iterate each desserts products info  -->
@@ -199,7 +210,7 @@
                     <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
-                    <button title="Click to add {{vPDetails.productDetails[0]['productListTitle']}} item in order cart" ng-controller='OrderCartController' ng-click="checkingProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
+                    <button title="Click to add {{vPDetails.productDetails[0]['productListTitle']}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
                         <i class="fa fa-shopping-cart"></i> ADD
                     </button>
                     <button title="Click to add {{vPDetails.productDetails[0]['productListTitle']}} item in your default wishlist" ng-controller='WishListController' ng-click='prepareProductDataToAddInUWL(vPDetails.productDetails[0])' class="vpd_specificProductAddToWishlistbtnClass btn">
