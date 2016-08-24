@@ -33,7 +33,7 @@ class customparam{
             }
             // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
-                if(($paramJsonData['city_ids'])>0){
+                if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                     $givenParamDataCorrectCount++;
                 }
             }
@@ -59,13 +59,13 @@ class customparam{
             }
             // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
-                if(($paramJsonData['city_ids'])>0){
+                if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                     $givenParamDataCorrectCount++;
                 }
             }
             // check area_ids key present or not
             if(array_key_exists('area_ids', $paramJsonData)){
-                if(($paramJsonData['area_ids'])>0){
+                if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                     $givenParamDataCorrectCount++;
                 }
             }
@@ -90,19 +90,19 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check producttype_ids key present or not
         if(array_key_exists('producttype_ids', $paramJsonData)){
-            if(($paramJsonData['producttype_ids'])>0){
+            if(($paramJsonData['producttype_ids'])>0 && $paramJsonData['producttype_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -124,19 +124,19 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check producttype_ids key present or not
         if(array_key_exists('product_typesids', $paramJsonData)){
-            if(($paramJsonData['product_typesids'])>0){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -158,43 +158,43 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check shopStore id is blank or not
         if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0){
+            if(($paramJsonData['store_ids'])>0 && $paramJsonData['store_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type id is blank or not
         if(array_key_exists('product_typesids', $paramJsonData)){
-            if(($paramJsonData['product_typesids'])>0){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type ka product category id is blank or not
         if(array_key_exists('product_categoryids', $paramJsonData)){
-            if(($paramJsonData['product_categoryids'])>0){
+            if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type ka product category ka product id is blank or not
         if(array_key_exists('product_ids', $paramJsonData)){
-            if(($paramJsonData['product_ids'])>0){
+            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type ka product category ka product id is blank or not
         if(array_key_exists('product_featureids', $paramJsonData)){
-            if(($paramJsonData['product_featureids'])>0){
+            if(($paramJsonData['product_featureids'])>0 && $paramJsonData['product_featureids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -217,19 +217,19 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -251,31 +251,31 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check producttype_ids key present or not
         if(array_key_exists('product_typesids', $paramJsonData)){
-            if(($paramJsonData['product_typesids'])>0){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type ka product category id is blank or not
         if(array_key_exists('product_categoryids', $paramJsonData)){
-            if(($paramJsonData['product_categoryids'])>0){
+            if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -321,31 +321,31 @@ class customparam{
         }
         // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type id is blank or not
         if(array_key_exists('product_typesids', $paramJsonData)){
-            if(($paramJsonData['product_typesids'])>0){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product type ka product category id is blank or not
         if(array_key_exists('product_categoryids', $paramJsonData)){
-            if(($paramJsonData['product_categoryids'])>0){
+            if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check shopstoreids id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -385,7 +385,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -401,7 +401,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -417,7 +417,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check product type id is blank or not
         if(array_key_exists('product_ids', $paramJsonData)){
-            if(($paramJsonData['product_ids'])>0){
+            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -435,7 +435,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check user_id key present or not
         if(array_key_exists('user_sessionid', $paramJsonData)){
-            if($paramJsonData['user_sessionid']=='' || strlen($paramJsonData['user_sessionid'])>7){
+            if($paramJsonData['user_sessionid']=='' || strlen($paramJsonData['user_sessionid'])>=20){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -486,7 +486,7 @@ class customparam{
         }
         // check encoded_password key present or not
         if(array_key_exists('encoded_password', $paramJsonData)){
-            if($paramJsonData['encoded_password']!='' && $paramJsonData['encoded_password']!=false){
+            if(strlen($paramJsonData['encoded_password'])>0 && $paramJsonData['encoded_password']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -536,7 +536,7 @@ class customparam{
         }
         // check name key present or not
         if(array_key_exists('name', $paramJsonData)){
-            if(strlen($paramJsonData['name'])>0){
+            if(strlen($paramJsonData['name'])>0 && $paramJsonData['name']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -555,13 +555,13 @@ class customparam{
         }
         // check gender key present or not
         if(array_key_exists('gender', $paramJsonData)){
-            if(strlen($paramJsonData['gender'])>0){
+            if(strlen($paramJsonData['gender'])>0 && $paramJsonData['gender']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check birthdate key present or not
         if(array_key_exists('birthdate', $paramJsonData)){
-            if(strlen($paramJsonData['birthdate'])>0){
+            if(strlen($paramJsonData['birthdate'])>0 && $paramJsonData['birthdate']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -589,7 +589,7 @@ class customparam{
         }
         // check old_password key present or not
         if(array_key_exists('old_password', $paramJsonData)){
-            if(strlen($paramJsonData['old_password'])>0){
+            if(strlen($paramJsonData['old_password'])>0 && $paramJsonData['old_password']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -627,7 +627,7 @@ class customparam{
         }
         // check title key present or not
         if(array_key_exists('title', $paramJsonData)){
-            if($paramJsonData['title']!=''){
+            if($paramJsonData['title']!='' && strlen($paramJsonData['title'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -677,7 +677,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check title key present or not
         if(array_key_exists('title', $paramJsonData)){
-            if($paramJsonData['title']!=''){
+            if($paramJsonData['title']!='' && strlen($paramJsonData['title'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -871,7 +871,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check user_sessionid key present or not
         if(array_key_exists('user_sessionid', $paramJsonData)){
-            if(strlen($paramJsonData['user_sessionid'])>7){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
                 $givenParamDataCorrectCount++;
             }
         }
