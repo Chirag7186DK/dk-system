@@ -29,12 +29,14 @@
         
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
+            
             <!-- web logo header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
+            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
@@ -64,12 +66,14 @@
                     </li>
                 </ul>
             </div>
+            
             <!-- show customer delivery city area desserts product type on header as text -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
                 <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
                     <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
                 </p>
             </div>
+            
         </div>
         
         <!-- header row border div class -->
@@ -77,6 +81,7 @@
         
         <!-- dk delivery city area desserts product -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityAreaDessertsContainerDivClass">
+            
             <!-- desserts khazana tag lines -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityAreaDessertsTagLinesContainerDivClass">
                 <p class="dkDeliveryCityAreaDessertsTagLinesPClass">
@@ -86,24 +91,25 @@
             <!-- dk delivery city list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityListContainerDivClass">
                 <div id="dkDeliveryCityListWrapperDivId" ng-controller="LocationController" ng-init="loadDkDeliveryCityList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryCityListWrapperDivClass">
-                    <span class="dkDeliveryCityLblSClass">Type delivery city</span>
+                    <span class="dkDeliveryCityLblSClass">Choose delivery city</span>
                     <select id='dkDeliveryCityListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Type delivery city"></select>
                 </div>
             </div>
             <!-- dk delivery area list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaListContainerDivClass">
                 <div id="dkDeliveryAreaListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
-                    <span class="dkDeliveryAreaLblSClass">Type delivery area</span>
+                    <span class="dkDeliveryAreaLblSClass">Choose delivery area</span>
                     <select id="dkDeliveryAreaListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Type delivery area"></select>
                 </div>
             </div>
             <!-- dk desserts product list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaDessertsProductListContainerDivClass" ng-show="isDkDeliveryAreaChanged">
                 <div id="dkDeliveryAreaDessertsProductListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaBasedProductTypeList(isDkDeliveryAreaChanged)" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaDessertsProductListWrapperDivClass">
-                    <span class="dkDeliveryAreaDessertsProductLblSClass">Type desire desserts product</span>
+                    <span class="dkDeliveryAreaDessertsProductLblSClass">Choose desserts</span>
                     <select id="dkDeliveryAreaDessertsProductListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Type desire desserts product"></select>
                 </div>
             </div>
+            
         </div>
         
         <!-- create horizontally space div between -->
