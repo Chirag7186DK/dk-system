@@ -185,7 +185,7 @@ app.controller('RatingReviewController', function($scope, $rootScope, $http, Rat
             var validatedDataStatus = validateUserRatingReviewAbtProduct(fcontentCass);
             if(validatedDataStatus===true){
                 var paramDataObj  = getParamDataForAddingUserRatingReviewAbtProduct(fcontentCass);
-                if(Object.keys(paramDataObj).length===2 && paramDataObj!==false){
+                if(Object.keys(paramDataObj).length===3 && paramDataObj!==false){
                     $rootScope.addRatingReviewAboutProduct(paramDataObj, fcontentCass);
                 }else{
                     var notifyMsgStr = 'Please enter comment for rating & review about product !';
