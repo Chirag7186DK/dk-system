@@ -1282,7 +1282,7 @@ class customparam{
         }
         // check event_date key present or not
         if(array_key_exists('event_date', $paramJsonData)){
-            if($paramJsonData['party_date']!='' && $paramJsonData['event_date']!=false){
+            if($paramJsonData['event_date']!='' && $paramJsonData['event_date']!=false){
                 $givenParamDataCorrectCount++;
             }
         }
