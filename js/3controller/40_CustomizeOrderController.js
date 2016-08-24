@@ -7,7 +7,7 @@ app.controller('CustomizeOrdersController', function($scope, $rootScope, $http, 
         $rootScope.isShowCustomizeOrderRequestFormContent = true;
         $rootScope.isShowCustomizeOrderRequestSendThankyouMsg = false;
         $rootScope.customizeOrderErrorMsgStr = '';
-        $rootScope.requestedPartyOrderNo = '';
+        $rootScope.requestedCustomizeOrderNo = '';
         
         // redirectToViewCustomizeOrderRequest 
         $rootScope.redirectToViewCustomizeOrderRequest = function(){
