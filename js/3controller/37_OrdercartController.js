@@ -3,8 +3,8 @@
 app.controller('OrderCartController', function($scope, $rootScope, $http, OrderCartServices){
     try{
          
-        // checkingProductDataToAddInOrdercart 
-        $rootScope.checkingProductDataToAddInOrdercart = function(productDetailsObj, fcontentClass, fromPageLoad){
+        // checkProductDataToAddInOrdercart 
+        $rootScope.checkProductDataToAddInOrdercart = function(productDetailsObj, fcontentClass, fromPageLoad){
             try{
                 // check is user logged in or not session
                 var isUserLoggedInSession = checkUserLoggedInSession();
