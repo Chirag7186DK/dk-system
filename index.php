@@ -191,7 +191,7 @@
                             <button ng-controller='WishListController' ng-click="prepareProductDataToAddInUWL(eachProductDetails)" title='Click to add {{eachProductDetails.productListTitle}} item in your default wishlist' class="dl_specificProductAddWishListBtnClass btn">
                                 <i class="fa fa-heart"></i>
                             </button>
-                            <button ng-controller='OrderCartController' ng-click="checkingProductDataToAddInOrdercart(eachProductDetails, false, 'home')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="dl_specificProductAddBtnClass btn">
+                            <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'home')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="dl_specificProductAddBtnClass btn">
                                 <i class="fa fa-plus"></i>
                             </button>
                             <button title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="dl_specificProductViewDetailsBtnClass btn" ng-click='viewProductDetails(eachProductDetails)'>
