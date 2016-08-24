@@ -1,55 +1,6 @@
 
 // CJ defined this fucntion 2016-07-20
 function attachedFieldValidationPartyOrdersRequest(){
-    if($('#po_contactPersonNameInputId').length===1){
-        $('#po_contactPersonNameInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('#po_contactMobileInputId').length===1){
-        $('#po_contactMobileInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"10", 
-                "allowDecSep":false
-            }
-        );
-        //CJ added code here 2015-10-05
-        $('#po_contactMobileInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    if(currentTextVal.charAt(0)<=5){
-                        $(this).val('');
-                    }
-                }
-            }catch(ex){
-                $(this).val('');
-            }
-        });
-    }
-    if($('#po_contactEmailInputId').length===1){
-        $('#po_contactEmailInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                    if(!currentTextVal.match(mail)){
-                        $(this).css({'border-color':'#f18178'});
-                    }else{
-                        $(this).css({'border-color':'#ccc'});
-                    }
-                }
-            }catch(ex){
-            }
-        });
-    }
     if($('#po_occasionTitleInputId').length===1){
         $('#po_occasionTitleInputId').alphanum(
             {
@@ -101,43 +52,6 @@ function validateParamDataPartyOrderRequest(){
             var partyOrderParamObj = dkParamObj['partyOrder'];
             if(partyOrderParamObj.hasOwnProperty('title')!==''){
                 // check form field is blank or not for party order request
-                if($('#po_contactPersonNameInputId').length===1){
-                    if($('#po_contactPersonNameInputId').val()===''){
-                        $('#po_contactPersonNameInputId').css({"border-color":"#f18178"});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#po_contactPersonNameInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#po_contactMobileInputId').length===1){
-                    if($('#po_contactMobileInputId').val()===''){
-                        $('#po_contactMobileInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else if($('#po_contactMobileInputId').val()!==''){
-                        var enterMobileNo = removeHtmlStripTagsOfContent($('#po_contactMobileInputId').val());
-                        var mobilePattern = /^[6-9]\d{9}$/g;
-                        if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==9){
-                            $('#po_contactMobileInputId').css({'border-color':'#f18178'});
-                        }else{
-                            $('#po_contactMobileInputId').css({'border-color':'#ccc'});
-                        }
-                    }
-                }
-                if($('#po_contactEmailInputId').length===1){
-                    if($('#po_contactEmailInputId').val()===''){
-                        $('#po_contactEmailInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else if($('#po_contactEmailInputId').val()!==''){
-                        var enteredEmailId = removeHtmlStripTagsOfContent($('#po_contactEmailInputId').val());
-                        var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                        if(!enteredEmailId.match(emailPattern)){
-                            $('#po_contactEmailInputId').css({'border-color':'#f18178'});
-                            blankFieldValueCount++;
-                        }else{
-                            $('#po_contactEmailInputId').css({'border-color':'#ccc'});
-                        }
-                    }
-                }
                 if($('#po_occasionTitleInputId').length===1){
                     if($('#po_occasionTitleInputId').val()===''){
                         $('#po_occasionTitleInputId').css({'border-color':'#f18178'});
@@ -188,58 +102,8 @@ function validateParamDataPartyOrderRequest(){
     }
 }
 
-
-// CJ defined this fucntion 2016-07-24
+// CJ defined this fucntion 2016-07-20
 function attachedFieldValidationCustomizeOrdersRequest(){
-    if($('#co_contactPersonNameInputId').length===1){
-        $('#co_contactPersonNameInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('#co_contactMobileInputId').length===1){
-        $('#co_contactMobileInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"10", 
-                "allowDecSep":false
-            }
-        );
-        //CJ added code here 2015-10-05
-        $('#co_contactMobileInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    if(currentTextVal.charAt(0)<=6){
-                        $(this).val('');
-                    }
-                }
-            }catch(ex){
-                $(this).val('');
-            }
-        });
-    }
-    if($('#co_contactEmailInputId').length===1){
-        $('#co_contactEmailInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                    if(!currentTextVal.match(mail)){
-                        $(this).css({'border-color':'#f18178'});
-                    }else{
-                        $(this).css({'border-color':'#ccc'});
-                    }
-                }
-            }catch(ex){
-            }
-        });
-    }
     if($('#co_occasionTitleInputId').length===1){
         $('#co_occasionTitleInputId').alphanum(
             {
@@ -262,14 +126,22 @@ function attachedFieldValidationCustomizeOrdersRequest(){
     }
     if($('#co_dateInputId').length===1){
         var cdate = new Date();
-        $('#co_dateInputId').datepicker({
+        $('#po_dateInputId').datepicker({
             minDate:cdate,
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true
         });
     }
+    if($('#co_venueInputId').length===1){
+//        $("#po_venueInputId").geocomplete({
+//            details: ".po_venueContainerDivClass",
+//            country: 'IN',
+//            types: ["geocode"]
+//        });
+    }
 }
+
 
 // CJ defined this function 2016-07-20
 function validateParamDataCustomizeOrderRequest(){
@@ -284,43 +156,6 @@ function validateParamDataCustomizeOrderRequest(){
             var partyOrderParamObj = dkParamObj['customizeOrder'];
             if(partyOrderParamObj.hasOwnProperty('title')!==''){
                 // check form field is blank or not for party order request
-                if($('#co_contactPersonNameInputId').length===1){
-                    if($('#co_contactPersonNameInputId').val()===''){
-                        $('#co_contactPersonNameInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#co_contactPersonNameInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#co_contactMobileInputId').length===1){
-                    if($('#co_contactMobileInputId').val()===''){
-                        $('#co_contactMobileInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else if($('#co_contactMobileInputId').val()!==''){
-                        var enterMobileNo = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
-                        var mobilePattern = /^[6-9]\d{9}$/g;
-                        if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==9){
-                            $('#co_contactMobileInputId').css({'border-color':'#f18178'});
-                        }else{
-                            $('#co_contactMobileInputId').css({'border-color':'#ccc'});
-                        }
-                    }
-                }
-                if($('#co_contactEmailInputId').length===1){
-                    if($('#co_contactEmailInputId').val()===''){
-                        $('#co_contactEmailInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else if($('#co_contactEmailInputId').val()!==''){
-                        var enteredEmailId = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
-                        var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                        if(!enteredEmailId.match(emailPattern)){
-                            $('#co_contactEmailInputId').css({'border-color':'#f18178'});
-                            blankFieldValueCount++;
-                        }else{
-                            $('#co_contactEmailInputId').css({'border-color':'#ccc'});
-                        }
-                    }
-                }
                 if($('#co_occasionTitleInputId').length===1){
                     if($('#co_occasionTitleInputId').val()===''){
                         $('#co_occasionTitleInputId').css({'border-color':'#f18178'});
