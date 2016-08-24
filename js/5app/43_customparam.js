@@ -2183,12 +2183,21 @@ function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
                         var selectInputObj = $(this);
                         var points = $(this).find('option:selected').val();
                         var userEachQuesAnswerRatingReviewAbtProductObj = {};
-                        userEachQuesAnswerRatingReviewAbtProductObj['shopstore_id'] = $(selectInputObj).find('option:selected').attr('data-shopstoreid');
-                        userEachQuesAnswerRatingReviewAbtProductObj['product_listid'] = $(selectInputObj).find('option:selected').attr('data-productlistid');
-                        userEachQuesAnswerRatingReviewAbtProductObj['question_id'] = $(selectInputObj).find('option:selected').attr('data-questionid');
-                        userEachQuesAnswerRatingReviewAbtProductObj['given_answerpoints'] = points;
-                        userEachQuesAnswerRatingReviewAbtProductObj['answer_pattern'] = $(selectInputObj).find('option:selected').attr('data-questionpattern');
-                        userAllQuesAnswerRatingReviewAbtProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
+                        var shopstore_id = $(selectInputObj).find('option:selected').attr('data-shopstoreid');
+                        var product_listid = $(selectInputObj).find('option:selected').attr('data-productlistid');
+                        var question_id = $(selectInputObj).find('option:selected').attr('data-questionid');
+                        var given_answerpoints = points;
+                        var answer_pattern = $(selectInputObj).find('option:selected').attr('data-questionpattern');
+                        if(parseInt(shopstore_id)>0 && parseInt(product_listid)>0 
+                            && parseInt(question_id)>0 && given_answerpoints!=='' && answer_pattern!==''){
+                            userEachQuesAnswerRatingReviewAbtProductObj['shopstore_id'] = $(selectInputObj).find('option:selected').attr('data-shopstoreid');
+                            userEachQuesAnswerRatingReviewAbtProductObj['product_listid'] = $(selectInputObj).find('option:selected').attr('data-productlistid');
+                            userEachQuesAnswerRatingReviewAbtProductObj['question_id'] = $(selectInputObj).find('option:selected').attr('data-questionid');
+                            userEachQuesAnswerRatingReviewAbtProductObj['given_answerpoints'] = points;
+                            userEachQuesAnswerRatingReviewAbtProductObj['answer_pattern'] = $(selectInputObj).find('option:selected').attr('data-questionpattern');
+                            userAllQuesAnswerRatingReviewAbtProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
+                        }
+                        
                     });
                 }
                 if(userAllQuesAnswerRatingReviewAbtProductArr.length===4){
