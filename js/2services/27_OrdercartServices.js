@@ -57,6 +57,45 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
             }
         };
       
+        // addProductDataInOrdercartFromSession & item directly added in DB
+        orderDetails.addProductDataInOrdercartFromSession = function(productDetailsObj, fcontentClass, productDataFromSession){
+            try{
+                // collect product data
+                var preparedProductParamDataObj = getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, productDataFromSession);
+                if(preparedProductParamDataObj!==false && jQuery.isEmptyObject(preparedProductParamDataObj)===false){
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
+
+                    // calling OrderCartServices 
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/AddProductData", 'apiFile', 'POST', '', fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var isProductAddedInOrdercart = 'FALSE';
+                            var notificationMsgStr = "Please try again to add item in your order cart !";
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                isProductAddedInOrdercart = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isProductAddedInOrdercart', retResponseJson);
+                            }
+                            if(isProductAddedInOrdercart==='TRUE'){
+                                notificationMsgStr = "Item added in your order cart successfully !";
+                                clearProductContentAfterAddedProductInOrdercart(fcontentClass);
+                                // refresh user order cart dashboard summary data using services
+                                orderDetails.refreshUserOrdercartDashboardSummaryDataDetails();
+                            }
+                            showNotificationBoxMsg(notificationMsgStr);
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in addProductDataInOrdercart ex=>"+ex);
+            }
+        };
+      
         // addItemOrdercart
         orderDetails.addItemOrdercart = function(preparedParamJsonObj){
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/AddProductData", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){});
