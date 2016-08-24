@@ -2166,6 +2166,7 @@ function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
             if($('.'+fcClass).length===1){
                 var userAllQuesAnswerRatingReviewAbtProductArr = new Array();
                 paramDataObj['user_sessionid'] = userSessionDataObj['user_sessionid'];
+                paramDataObj['udblogId'] = userSessionDataObj['udblogId'];
                 if($('.'+fcClass).find('textarea').length===1){
                     var userEachQuesAnswerRatingReviewAbtProductObj = {};
                     var commentInputObj = $('.'+fcClass).find('textarea');
@@ -2199,7 +2200,7 @@ function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
         console.log("problem in getParamDataForAddingUserRatingReviewAbtProduct=>"+ex);
         paramDataObj = {};
     }
-    if(Object.keys(paramDataObj).length===2){
+    if(Object.keys(paramDataObj).length===3){
         return paramDataObj;
     }else{
         return false;
