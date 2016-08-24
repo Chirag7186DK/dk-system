@@ -222,7 +222,7 @@
             <!-- order summary details details -->
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_orderSummaryContainerDivClass">
                 <p class='vpd_orderSummaryLabelPClass'> 
-                    <i class='fa fa-credit-card'></i> PAYMENT SUMMARY
+                    <i class='fa fa-credit-card'></i> ORDER SUMMARY
                 </p>
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_orderSummaryTotalProductPricePClass'> 
