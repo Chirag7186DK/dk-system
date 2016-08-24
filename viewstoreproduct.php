@@ -29,12 +29,14 @@ include "Site_config.inc.php";
 
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
-            <!-- webAppLogoAndMenuIconContainerDivClass --->
+            
+            <!-- web log  header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
+            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
@@ -58,12 +60,14 @@ include "Site_config.inc.php";
                     </li>
                 </ul>
             </div>
+            
             <!-- show customer delivery city area desserts product type on header as text -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
                 <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
                     <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
                 </p>
             </div>
+            
         </div>
 
         <!-- header row border div class -->
@@ -103,6 +107,7 @@ include "Site_config.inc.php";
             
             <!-- shop store summary(self, rating/review/desserts menu) info -->
             <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCShopStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
+                
                 <!-- shop store self info -->
                 <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
                     <p class='cShopStoreNameTextLblPClass'>
@@ -120,6 +125,7 @@ include "Site_config.inc.php";
                         {{toggleShopStoreSelfSummaryInfoLblText}}
                     </p>
                 </div>
+                
                 <!-- cshopstore summary rating & review info -->
                 <div class='cshopsstoreSummaryReviewRatingDivClass' title="Click to show more detailed reviewed / rating about this seller">
                     <p class='cShopStoreReviewRatingTextLblPClass'>
@@ -132,6 +138,7 @@ include "Site_config.inc.php";
                         {{toggleShopStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
+                
                 <!-- desserts menu summary info -->
                 <div class='cshopsstoreMenuSummaryInfoDivClass' title="Click to show all desserts(menu) about this seller">
                     <p class='cShopStoreMenuTextLblPClass'>
@@ -144,10 +151,12 @@ include "Site_config.inc.php";
                         {{toggleShopStoreDessertsMenuSummaryInfoLblText}}
                     </p>
                 </div>
+                
             </div>
 
             <!-- shop store serve desserts product -->
             <div ng-show="isToggleShopStoreDessertsMenu" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
+                
                 <li class="cshopstoreServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you are viewing '{{shopstoreInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
@@ -156,6 +165,7 @@ include "Site_config.inc.php";
                         </span>
                     dessert(s) product are as follows :-
                 </li>
+                
                 <!-- display all desserts product can served by shop store in selected delivery area -->
                 <div id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
                     <!-- iterate each desserts products info  -->
@@ -171,6 +181,7 @@ include "Site_config.inc.php";
                         </p>
                     </div>
                 </div>
+                
             </div>
 
             <!-- all product list will be loaded here -->
@@ -259,7 +270,7 @@ include "Site_config.inc.php";
                         <button ng-controller='WishListController' ng-click='prepareProductDataToAddInUWL(eachProductDetails)' title='Click to add {{eachProductDetails.productListTitle}} item in your default wishlist' class="cshopstore_specificProductAddWishListBtnClass btn">
                             <i class="fa fa-heart"></i>
                         </button>
-                        <button ng-controller='OrderCartController' ng-click="checkingProductDataToAddInOrdercart(eachProductDetails, false, 'viewstoreproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="cshopstore_specificProductAddBtnClass btn">
+                        <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'viewstoreproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="cshopstore_specificProductAddBtnClass btn">
                             <i class="fa fa-plus"></i>
                         </button>
                         <button title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="cshopstore_specificProductViewDetailsBtnClass btn" ng-click='viewProductDetails(eachProductDetails)'>
@@ -354,7 +365,7 @@ include "Site_config.inc.php";
         
         <!-- load all css & js file-->
         <?php
-        include "loadAllJsCssFile.php";
+            include "loadAllJsCssFile.php";
         ?>
 
     </body>
