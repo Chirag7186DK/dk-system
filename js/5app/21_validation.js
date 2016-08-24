@@ -531,33 +531,37 @@ function validateUserRatingReviewAbtProduct(fcClass){
 
 // CJ defined this function 2016-08-06
 function validateProductDataToAddInOrdercart(fcClass){
-    var blankFieldValueCount = 0 ;
-    if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
-        if($('.'+fcClass).length===1){
-            if($('.'+fcClass).find('textarea').length===1){
-                var userMsgOnProduct = removeHtmlStripTagsOfContent($('.'+fcClass).find('textarea').val());
-                if(userMsgOnProduct==='' || userMsgOnProduct===false || userMsgOnProduct===undefined){
-                    $('.'+fcClass).find('textarea').css({'border-color':'#f18178'});
-                    blankFieldValueCount++;
-                }else{
-                    $('.'+fcClass).find('textarea').css({'border-color':'#ccc'});
+    try{
+        var blankFieldValueCount = 0 ;
+        if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
+            if($('.'+fcClass).length===1){
+                if($('.'+fcClass).find('textarea').length===1){
+                    var userMsgOnProduct = removeHtmlStripTagsOfContent($('.'+fcClass).find('textarea').val());
+                    if(userMsgOnProduct==='' || userMsgOnProduct===false || userMsgOnProduct===undefined){
+                        $('.'+fcClass).find('textarea').css({'border-color':'#f18178'});
+                        blankFieldValueCount++;
+                    }else{
+                        $('.'+fcClass).find('textarea').css({'border-color':'#ccc'});
+                    }
                 }
-            }
-            if($('.'+fcClass).find("input[type='text']").length===1){
-                var userProductQty = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
-                if(userProductQty==='' || userProductQty===false || userProductQty===undefined || parseInt(userProductQty)<0){
-                    $('.'+fcClass).find("input[type='text']").css({'border-color':'#f18178'});
-                    blankFieldValueCount++;
-                }else{
-                    $('.'+fcClass).find("input[type='text']").css({'border-color':'#ccc'});
+                if($('.'+fcClass).find("input[type='text']").length===1){
+                    var userProductQty = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
+                    if(userProductQty==='' || userProductQty===false || userProductQty===undefined || parseInt(userProductQty)<0){
+                        $('.'+fcClass).find("input[type='text']").css({'border-color':'#f18178'});
+                        blankFieldValueCount++;
+                    }else{
+                        $('.'+fcClass).find("input[type='text']").css({'border-color':'#ccc'});
+                    }
                 }
             }
         }
-    }
-    if(blankFieldValueCount>0){
+        if(blankFieldValueCount>0){
+            return false;
+        }else{
+            return true;
+        }
+    }catch(ex){
         return false;
-    }else{
-        return true;
     }
 }
 
