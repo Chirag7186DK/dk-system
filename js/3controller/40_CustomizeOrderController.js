@@ -93,6 +93,56 @@ app.controller('CustomizeOrdersController', function($scope, $rootScope, $http, 
             }
         };
         
+        // toggleNewCustomizeOrderRequestFormContent
+        $rootScope.toggleNewCustomizeOrderRequestFormContent = function(){
+            try{
+                $rootScope.isShowCustomizeOrderRequestErrorMsg = false;
+                $rootScope.isShowCustomizeOrderRequestFormContent = true;
+                $rootScope.isShowCustomizeOrderRequestSendThankyouMsg = false;
+                $rootScope.customizeOrderErrorMsgStr = '';
+                $rootScope.requestedCustomizeOrderNo = '';
+            }catch(ex){
+                console.log("problem in toggleNewCustomizeOrderRequestFormContent ex=>"+ex);
+            }
+        };
+        
+        // getCustomizeOrdersList 
+        $rootScope.getCustomizeOrdersList = function(){
+            try{
+                var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+                        
+                    var fetchAreaParamJsonObj = {};
+                    fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    
+                    $rootScope.customizeOrderListArrObj = false;
+                    
+                    // calling CustomizeOrdersServices to add party order request
+                    CustomizeOrdersServices.getCustomizeOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            showHideLoaderBox('hide');
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var customizeOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'customizeOrderList', retResponseJson);
+                                if(customizeOrderListArrObj!==false && customizeOrderListArrObj!==undefined 
+                                    && jQuery.isEmptyObject(customizeOrderListArrObj)===false){
+                                    $rootScope.customizeOrderListArrObj = customizeOrderListArrObj;
+                                }else{
+                                    $rootScope.customizeOrderListArrObj = false;
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in getCustomizeOrdersList ex=>"+ex);
+                showHideLoaderBox('hide');
+            }
+        };
+        
     }catch(ex){
         console.log("problem in CustomizeOrdersController ex=>"+ex);
     }
