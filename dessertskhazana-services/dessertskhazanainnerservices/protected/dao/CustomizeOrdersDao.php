@@ -48,24 +48,6 @@ class CustomizeOrdersDao{
                 $sqlValues.="'".$coRequestParamDetails['user_id']."',";
             }
         }
-        if(array_key_exists('name', $coRequestParamDetails)){
-            if($coRequestParamDetails['name']!=''){
-                $sqlColumnNames.=" name,";
-                $sqlValues.="'".$coRequestParamDetails['name']."',";
-            }
-        }
-        if(array_key_exists('mobile', $coRequestParamDetails)){
-            if($coRequestParamDetails['mobile']!=''){
-                $sqlColumnNames.=" mobile,";
-                $sqlValues.="'".$coRequestParamDetails['mobile']."',";
-            }
-        }
-        if(array_key_exists('email', $coRequestParamDetails)){
-            if($coRequestParamDetails['email']!=''){
-                $sqlColumnNames.=" email,";
-                $sqlValues.="'".$coRequestParamDetails['email']."',";
-            }
-        }
         if(array_key_exists('event_title', $coRequestParamDetails)){
             if($coRequestParamDetails['event_title']!=''){
                 $sqlColumnNames.=" event_title,";
