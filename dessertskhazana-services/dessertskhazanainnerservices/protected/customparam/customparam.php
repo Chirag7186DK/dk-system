@@ -926,13 +926,13 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
         if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0 && strlen($paramJsonData['store_ids'])>0){
+            if(($paramJsonData['store_ids'])>0 && $paramJsonData['store_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check product_ids is blank or not
         if(array_key_exists('product_ids', $paramJsonData)){
-            if(($paramJsonData['product_ids'])>0 && strlen($paramJsonData['product_ids'])>0){
+            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -948,7 +948,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
         if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0 && strlen($paramJsonData['store_ids'])>0){
+            if(($paramJsonData['store_ids'])>0 && $paramJsonData['store_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -964,7 +964,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
         if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0 && strlen($paramJsonData['store_ids'])>0){
+            if(($paramJsonData['store_ids'])>0 && $paramJsonData['store_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
