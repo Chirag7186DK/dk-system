@@ -599,6 +599,160 @@ include "Site_config.inc.php";
                 
 
             </div>
+            
+            <!-- customize order section details with each tab level -->
+            <div ng-if="requestedSectionName==='customizeorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_SectionContainerDivClass">
+                
+                <!-- customize order all section header title -->
+                <div scroll-horizontally-customizeorder-allsectionheader-directive id='co_AllSectionHeaderContainerDivId' class='co_AllSectionHeaderContainerDivClass'>
+                    <li ng-click="uca_toggleCustomizeOrderSectionList('createcustomizeorder', 'co_EachTabLabelSectionContainerLIId1', 'co_AllSectionHeaderContainerDivClass');" title='Click to request new customize order' id='co_EachTabLabelSectionContainerLIId1' class='co_EachTabLabelSectionContainerLIClass co_SelectedTabLabelSectionContainerLIClass'>
+                        Create
+                    </li>
+                    <li ng-click="uca_toggleCustomizeOrderSectionList('allcustomizeorders', 'co_EachTabLabelSectionContainerLIId2', 'co_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId2' class='co_EachTabLabelSectionContainerLIClass'>
+                        All Orders
+                    </li>
+                    <li ng-click="uca_toggleCustomizeOrderSectionList('partyordermsg', 'po_EachTabLabelSectionContainerLIId3', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId3' class='co_EachTabLabelSectionContainerLIClass'>
+                        Message
+                    </li>
+                    <li ng-click="uca_toggleCustomizeOrderSectionList('partyordervideo', 'po_EachTabLabelSectionContainerLIId4', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId4' class='co_EachTabLabelSectionContainerLIClass'>
+                        Video
+                    </li>
+                </div>
+                
+                <!-- create horizontally space div between -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
+                <!-- requesting new customize order content form will be displayed -->
+                <div ng-if="displayCustomizeOrderInfoSectionType==='createcustomizeorder'" ng-controller="CustomizeOrdersController" ng-init="attachedFieldValidationCustomizeOrdersRequest()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 co_createSectionDivClass'>
+                    
+                    <!-- customize order form content -->
+                    <div ng-show="isShowCustomizeOrderRequestFormContent" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 co_formContentWrappperContainerDivClass">
+                        <p class="po_formHeaderPClass">
+                            <i class="fa fa-smile-o co_smileIconClass"></i> Hey please fill-up this form and we will get back within one hours. Customize orders request will be accept only for Pune city.
+                        </p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_occasionContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the occasion ?
+                            </p>
+                            <input placeholder="What's the occasion" autocomplete="on" type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_peopleContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people in event ?
+                            </p>
+                            <input placeholder="How many awesome people to treat" autocomplete="on" type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: 20
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_dateContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-calendar faa-tada animated"></i> Event date (YYYY-MM-DD) ?
+                            </p>
+                            <input placeholder="Party date" autocomplete="on" type="text" id='po_dateInputId' class="form-control po_dateInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: <?php echo date('Y-m-d');?>
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_venueContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-map-marker faa-tada animated"></i> Party venue ?
+                            </p>
+                            <textarea placeholder="Party venue" autocomplete="on" class='form-control co_venueInputClass' id='co_venueInputId' rows="5" cols="20"></textarea>
+                            <p class="po_formfieldHintPClass">
+                                Eg: 421302 Bhiwandi
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_requirementsContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-envelope faa-tada animated"></i> Enter Requirements
+                            </p>
+                            <textarea placeholder="Party requirements" autocomplete="on" class='form-control co_messageInputClass' id='co_messageInputId' rows="5" cols="20"></textarea>
+                            <p class="po_formfieldHintPClass">
+                                Eg: Cakes,Chocolates,Sweets,Ice-cream, birthday party etc...
+                            </p>
+                        </div>
+                        <div ng-show="isShowCustomizeOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_errorMsgContainerDivClass">
+                            {{customizeOrderErrorMsgStr}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_btnContainerDivClass">
+                            <button ng-click="addCustomizeOrdersRequest()" class='btn customizeOrderRequestSubmtBtnClass' id='customizeOrderRequestSubmtBtnId'>
+                                SEND REQUEST
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- thank you customize order requested message content -->
+                    <div ng-show="isShowCustomizeOrderRequestSendThankyouMsg" ng-controller="CustomizeOrdersController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_thankyouContentWrapperDivClass">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 co_thankyouContentWrapperContainerDivClass">
+                            <p class="co_thankyoubodyPClass">
+                                <i class="fa fa-smile-o po_thankyousmileIconClass"></i> 
+                                Hurrah! Your details have been submitted & request customize order no: {{requestedCustomizeOrderNo}}
+                                Let’s begin the customize order preparations.
+                            </p>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <button ng-click="toggleNewCustomizeOrderRequestFormContent()" class='btn redirectToViewCustomizeOrderRequestBtnClass' id='customizeOrderRequestSubmtBtnId'>
+                                    Another Customize Order Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- requested customize cart all items info will be displayed -->
+                <div ng-if="displayCustomizeOrderInfoSectionType==='allcustomizeorders'" ng-controller="CustomizeOrdersController" ng-init="getCustomizeOrdersList()" id='allCoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allCoListSectionDivClass'>
+                    
+                    <!-- all customizee order will be filtering -->
+                    <div ng-if="customizeOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextPODivClass">
+                        <label class="searchTextPOLblClass">Use for filtering and access fast party order details !</label>
+                        <input ng-model="searchTextCO" type="text" class="form-control" placeholder="Track party order details !">
+                    </div>
+                    
+                    <!-- each customize order will display -->
+                    <div ng-repeat="eachCustomizeOrderDetailsArrObj in customizeOrderListArrObj | filter:searchTextCO:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
+                        <p class="coNoPClass">
+                            Order No: {{eachCustomizeOrderDetailsArrObj.customizeOrderNo}}
+                        </p>
+                        <p class="coStatusPClass">
+                            Status: {{eachCustomizeOrderDetailsArrObj.cortLongStatusMsg}}
+                        </p>
+                        <p class="coOccassionPClass">
+                            Event: {{eachCustomizeOrderDetailsArrObj.eventTitle}}
+                        </p>
+                        <p class="coPersonPClass">
+                            Person: {{eachCustomizeOrderDetailsArrObj.nosOfPerson}}
+                        </p>
+                        <p class="coDatePClass">
+                            Date: {{eachCustomizeOrderDetailsArrObj.eventDate}}
+                        </p>
+                        <p class="coVenuePClass">
+                            Venue: {{eachCustomizeOrderDetailsArrObj.eventVenue}}
+                        </p>
+                        <p class="coRequirementsPClass">
+                            Requirements: {{eachCustomizeOrderDetailsArrObj.eventRequirements}}
+                        </p>
+                        <p class="coEstimatedAmtPClass">
+                            Estimated Amt(Rs): {{eachCustomizeOrderDetailsArrObj.estimatedAmt}}
+                        </p>
+                        <p ng-if="eachCustomizeOrderDetailsArrObj.corStatus=='PP'" class="coRequirementsPClass">
+                            <button class='btn ordercartRequestedEachItemUpdateBtnClass'>
+                                MAKE PAYMENT (Rs: {{eachCustomizeOrderDetailsArrObj.confirmedAmt}})
+                            </button>
+                        </p>
+                    </div>
+                    
+                    <!-- no party order found message div -->
+                    <div ng-if="customizeOrderListArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="shoppingBagsEmptyPClass">To request customize order click on 'Create' tab !</p>
+                    </div>
+                </div>
+                
+
+            </div>
 
         </div>    
 
