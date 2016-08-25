@@ -137,13 +137,13 @@ class WishListServicesV1 implements IWishListServicesV1{
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
             // fetch unmd5 user data 
-            $retUnMd5UserDataArr = UsersDao :: getUserDetails($dkParamDataArr);
-            if(count($retUnMd5UserDataArr)==1 && $retUnMd5UserDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $toDeleteItemWishListDetailsArr = array();
-                $toDeleteItemWishListDetailsArr['updated_by'] = $retUnMd5UserDataArr[0]['unmd5UserId'];
+                $toDeleteItemWishListDetailsArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
                 $toDeleteItemWishListDetailsArr['wishListItemId'] = $dkParamDataArr['wishListItemId'];
-                $retStatusProductDeleted = WishListDao :: removeProductFromUWL($toDeleteItemWishListDetailsArr);
-                if($retStatusProductDeleted==true){
+                $retStatusProductRemoved = WishListDao :: removeProductFromUWL($toDeleteItemWishListDetailsArr);
+                if($retStatusProductRemoved==true){
                     $rspDetails['isProductRemovedFromUWL'] = 'TRUE';
                 }
             }
