@@ -1764,9 +1764,9 @@ function getParamDataForUWLUpdation(fcClass, wishListDataObj){
                     retParamObj['is_publicly'] = inputVal;
                 }
             }
-            if(wishListDataObj.hasOwnProperty('unMd5UserId')
+            if(wishListDataObj.hasOwnProperty('userId')
                 && wishListDataObj.hasOwnProperty('wlId')){
-                retParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
+                retParamObj['updated_by'] = wishListDataObj['userId'];
                 retParamObj['wishListId'] = wishListDataObj['wlId'];
             }
             var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
