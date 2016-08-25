@@ -55,9 +55,13 @@ class WishListServicesV1 implements IWishListServicesV1{
         $rspDetails['isUWLRemoved'] = 'FALSE';
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $retStatusWishListRemoved = WishListDao :: updateUWL($dkParamDataArr);
-            if($retStatusWishListRemoved==true){
-                $rspDetails['isUWLRemoved'] = 'TRUE';
+            // fetch temp user data details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $retStatusWishListRemoved = WishListDao :: updateUWL($dkParamDataArr);
+                if($retStatusWishListRemoved==true){
+                    $rspDetails['isUWLRemoved'] = 'TRUE';
+                }
             }
         } 
         return $rspDetails;
