@@ -1914,10 +1914,15 @@ function getParamDataToCopyProductFromUWLToUWL(elementId){
                     retParamDataObj['copyItemToWishListId'] = copyItemToWishListId;
                     retParamDataObj['copyWishListItemId'] = copyWishListItemId;
                     retParamDataObj['userLoggedId'] = userLoggedId;
+                    var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
+                        && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
+                        retParamDataObj = $.extend(retParamDataObj, authenticatedUserDataObj);
+                    }    
                 }
             }
         }
-        if(Object.keys(retParamDataObj).length===4){
+        if(Object.keys(retParamDataObj).length>=6){
             return retParamDataObj;
         }else{
             return false;
