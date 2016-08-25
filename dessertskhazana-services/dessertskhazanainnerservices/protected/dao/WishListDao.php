@@ -382,14 +382,14 @@ class WishListDao{
             && array_key_exists('moveItemToWishListId', $wishListProductDataParamDetails)
             && array_key_exists('moveWishListItemId', $wishListProductDataParamDetails)    
             && array_key_exists('updated_by', $wishListProductDataParamDetails)){
-            if(strlen($wishListProductDataParamDetails['moveItemFromWishListId'])==32 
-                && strlen($wishListProductDataParamDetails['moveWishListItemId'])==32   
+            if(($wishListProductDataParamDetails['moveItemFromWishListId'])>0
+                && ($wishListProductDataParamDetails['moveWishListItemId'])>0   
                 && $wishListProductDataParamDetails['moveItemToWishListId']!=''
                 && $wishListProductDataParamDetails['updated_by']!=''){
                 $sqlQuery.=" UPDATE DK_WISHLISTITEM set status='A', updated_by='".$wishListProductDataParamDetails['updated_by']."'";
                 $sqlQuery.=" , wishlist_id='".$wishListProductDataParamDetails['moveItemToWishListId']."'";
-                $sqlQuery.="  WHERE MD5(id)='".$wishListProductDataParamDetails['moveWishListItemId']."'";
-                $sqlQuery.="  AND MD5(wishlist_id)='".$wishListProductDataParamDetails['moveItemFromWishListId']."'";
+                $sqlQuery.="  WHERE id='".$wishListProductDataParamDetails['moveWishListItemId']."'";
+                $sqlQuery.="  AND wishlist_id='".$wishListProductDataParamDetails['moveItemFromWishListId']."'";
             } 
         } 
         if($sqlQuery!='' && $sqlQuery!=''){
