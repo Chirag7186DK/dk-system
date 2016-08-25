@@ -1908,8 +1908,8 @@ function getParamDataToCopyProductFromUWLToUWL(elementId){
                 var copyWishListItemId = removeHtmlStripTagsOfContent($('#'+elementId).find('option:selected').attr('data-copyitemid'));
                 var userLoggedId = removeHtmlStripTagsOfContent($('#'+elementId).find('option:selected').attr('data-userloggedid'));
                 if(copyItemFrmWishListId!==copyItemToWishListId 
-                    && (copyItemFrmWishListId).length===32 && (copyItemToWishListId).length===32
-                    && (userLoggedId).length===32 && (copyWishListItemId).length===32){
+                    && parseInt(copyItemFrmWishListId)>0 && parseInt(copyItemToWishListId)>0
+                    && parseInt(userLoggedId)>0 && parseInt(copyWishListItemId)>0){
                     retParamDataObj['copyItemFromWishListId'] = copyItemFrmWishListId;
                     retParamDataObj['copyItemToWishListId'] = copyItemToWishListId;
                     retParamDataObj['copyWishListItemId'] = copyWishListItemId;
@@ -1917,13 +1917,13 @@ function getParamDataToCopyProductFromUWLToUWL(elementId){
                 }
             }
         }
+        if(Object.keys(retParamDataObj).length===4){
+            return retParamDataObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         // console.log("problem in getParamDataToMoveProductFromWLToWL=>"+ex);
-        retParamDataObj = {};
-    }
-    if(Object.keys(retParamDataObj).length===4){
-        return retParamDataObj;
-    }else{
         return false;
     }
 }
