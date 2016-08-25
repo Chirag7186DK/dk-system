@@ -41,9 +41,4 @@ app.controller('dkSessionController', function($scope, $rootScope, UsersServices
         }
     };
     
-    // checkInBackgroundDataAvailableForUpdationFromSession
-    $rootScope.checkInBackgroundDataAvailableForUpdationFromSession = function(pageLoad){
-        OrderCartServices.addProductDataInOrdercartFromSession(false, false, 'session');
-    };
-    
 });
