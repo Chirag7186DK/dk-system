@@ -286,11 +286,11 @@ app.controller('WishListController', function ($scope, $rootScope, $http, WishLi
         };
 
         // collectDataToMoveProductFromWishListToWishList
-        $rootScope.collectDataToMoveProductFromUWLToUWL = function (elementId) {
-            if ($('#' + elementId).length > 0) {
+        $rootScope.collectDataToMoveProductFromUWLToUWL = function (elementId){
+            if($('#'+elementId).length>0){
                 var moveProductParamDataObj = getParamDataToMoveProductFromUWLToUWL(elementId);
                 // console.log("collectDataToMoveProductFromWLToWL retParamDataObj=>"+retParamDataObj);
-                if (moveProductParamDataObj !== false && jQuery.isEmptyObject(moveProductParamDataObj) === false) {
+                if(moveProductParamDataObj!==false && jQuery.isEmptyObject(moveProductParamDataObj)===false){
                     $rootScope.moveProductFromUWLToUWL(moveProductParamDataObj);
                 }
             }
