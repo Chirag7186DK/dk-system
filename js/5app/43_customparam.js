@@ -1834,8 +1834,7 @@ function getParamDataToRemoveProductFromUWL(productDataObj){
         if(productDataObj!==false && productDataObj!==undefined && jQuery.isEmptyObject(productDataObj)===false){
             if(productDataObj.hasOwnProperty('wishListItemId')===true
                 && productDataObj.hasOwnProperty('userLoggedId')===true){
-                if((productDataObj['wishListItemId']).length===32 
-                    && (productDataObj['wishListItemId']).length===32){
+                if(parseInt(productDataObj['wishListItemId'])>0 && parseInt(productDataObj['wishListItemId'])>0){
                     retParamDataObj['wishListItemId'] = productDataObj['wishListItemId'];
                     retParamDataObj['userLoggedId'] = productDataObj['userLoggedId'];
                 }
