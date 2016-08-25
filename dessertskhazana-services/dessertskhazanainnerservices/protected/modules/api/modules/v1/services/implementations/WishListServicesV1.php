@@ -175,42 +175,31 @@ class WishListServicesV1 implements IWishListServicesV1{
         $rspDetails = array();
         $rspDetails['isProductCopiedFromUWLToUWL'] = 'FALSE';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
-            $loggedUserWLId = '';
-            $createdBy = '';
-            $wlItemMd5Id = $dkParamDataArr['copyWishListItemId'];
-            $wlMd5Id = $dkParamDataArr['copyItemFromWishListId'];
-            // fetch unmd5 user only wish list data
-            $copyItemToWishListMd5Id = $dkParamDataArr['copyItemToWishListId'];
-            $unmd5UserWishListDataArr = WishListDao :: getUserWLDetails(array("wishListId"=>$copyItemToWishListMd5Id));
-            if(count($unmd5UserWishListDataArr)==1 && $unmd5UserWishListDataArr!=false){
-                $loggedUserWLId = $unmd5UserWishListDataArr[0]['unMd5WLId'];
-            }
-            // fetch unmd5 user data 
-            $unmd5UserDataArr = UsersDao :: getUserDetails($dkParamDataArr);
-            if(count($unmd5UserDataArr)==1 && $unmd5UserDataArr!=false){
-                $createdBy = $unmd5UserDataArr[0]['unmd5UserId'];
-            }
-            // fetch to copy item details from othr wish list
-            $wlItemDetailsArr = WishListDao :: getUserAllWLWiseItemDetails(
-                array(
-                    "wishListId"=>$wlMd5Id,
-                    "wishListItemId"=>$wlItemMd5Id
-                )    
-            );
-            if(count($wlItemDetailsArr)==1 && $wlItemDetailsArr!=false
-                && $loggedUserWLId>0  && $createdBy>0){
-                $addWLItemDataParamDetails = array();
-                $addWLItemDataParamDetails['wishlist_id'] = $loggedUserWLId;
-                $addWLItemDataParamDetails['shopstore_id'] = $wlItemDetailsArr[0]['unMd5ShopStoreId'];
-                $addWLItemDataParamDetails['product_typeid'] = $wlItemDetailsArr[0]['unMd5ProductTypeId'];
-                $addWLItemDataParamDetails['product_categoryid'] = $wlItemDetailsArr[0]['unMD5ProductCateogoryId'];
-                $addWLItemDataParamDetails['product_listid'] = $wlItemDetailsArr[0]['unMD5ProductListId'];
-                $addWLItemDataParamDetails['product_featureid'] = $wlItemDetailsArr[0]['unMd5ProductFeatureId'];
-                $addWLItemDataParamDetails['created_by'] = $createdBy;
-                $lastWLProductAddedInsertedId = WishListDao :: addProductToWishList($addWLItemDataParamDetails);
-                if($lastWLProductAddedInsertedId>0 && $lastWLProductAddedInsertedId!=false){
-                    $rspDetails['isProductCopiedFromUWLToUWL'] = 'TRUE';
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $unMd5UserLoggedId = $userSessionDetailsData['unmd5UserId'];
+                // fetch to copy item details from othr wish list
+                $wlItemDetailsArr = WishListDao :: getUserAllWLWiseItemDetails(
+                    array(
+                        "wishListId"=>$dkParamDataArr['copyItemFromWishListId'],
+                        "wishListItemId"=>$dkParamDataArr['copyWishListItemId']
+                    )    
+                );
+                if(count($wlItemDetailsArr)==1 && $wlItemDetailsArr!=false && $unMd5UserLoggedId>0){
+                    $addWLItemDataParamDetails = array();
+                    $addWLItemDataParamDetails['wishlist_id'] = $dkParamDataArr['copyItemToWishListId'];
+                    $addWLItemDataParamDetails['shopstore_id'] = $wlItemDetailsArr[0]['shopStoreId'];
+                    $addWLItemDataParamDetails['product_typeid'] = $wlItemDetailsArr[0]['productTypeId'];
+                    $addWLItemDataParamDetails['product_categoryid'] = $wlItemDetailsArr[0]['productTypeProductCategoryId'];
+                    $addWLItemDataParamDetails['product_listid'] = $wlItemDetailsArr[0]['productListId'];
+                    $addWLItemDataParamDetails['product_featureid'] = $wlItemDetailsArr[0]['productFeatureId'];
+                    $addWLItemDataParamDetails['created_by'] = $unMd5UserLoggedId;
+                    $lastWLProductAddedInsertedId = WishListDao :: addProductToUWL($addWLItemDataParamDetails);
+                    if($lastWLProductAddedInsertedId>0 && $lastWLProductAddedInsertedId!=false){
+                        $rspDetails['isProductCopiedFromUWLToUWL'] = 'TRUE';
+                    }
                 }
             }
         } 
