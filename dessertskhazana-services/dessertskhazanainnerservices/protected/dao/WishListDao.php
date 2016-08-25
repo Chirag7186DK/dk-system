@@ -69,10 +69,8 @@ class WishListDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    wl.id unMd5WLId, 
-                    MD5(wl.id) wlId,
-                    MD5(wl.user_id) userId,
-                    wl.user_id unMd5UserId, 
+                    wl.id wlId, 
+                    wl.user_id userId,
                     COALESCE(wl.title, '') wlTitle,
                     COALESCE(wl.is_publicly, 'N') isWLPublicly,
                     COALESCE(wl.is_defaultsetting, 'N') isDefaultWLSetting
@@ -80,22 +78,10 @@ class WishListDao{
                     JOIN DK_USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
                     JOIN DK_WISHLIST wl ON wl.user_id=u.id 
                         AND wl.profile_id=u.profile_typeid AND wl.status='A'";  
-                    // add userLoggedId in where condition
-                    if(array_key_exists('userLoggedId', $paramJson)){
-                        if(($paramJson['userLoggedId'])>0 && $paramJson['userLoggedId']!=''){
-                            $sql.=" AND wl.user_id='".$paramJson['userLoggedId']."' AND u.id='".$paramJson['userLoggedId']."'";
-                        } 
-                    } 
                     // add user_id in where condition
                     if(array_key_exists('user_id', $paramJson)){
                         if($paramJson['user_id']!='' && $paramJson['user_id']!=false){
                             $sql.=" AND wl.user_id='".$paramJson['user_id']."' AND u.id='".$paramJson['user_id']."'";
-                        } 
-                    } 
-                    // add userProfileTypeId in where condition
-                    if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if($paramJson['userProfileTypeId']!='' && ($paramJson['userProfileTypeId'])>0){
-                            $sql.=" AND wl.profile_id='".$paramJson['userProfileTypeId']."' AND u.profile_typeid='".$paramJson['userProfileTypeId']."'";
                         } 
                     } 
                     // add wishListId in where condition
