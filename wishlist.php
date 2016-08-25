@@ -292,7 +292,7 @@ include "Site_config.inc.php";
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wld_yourEachWLItemOperationDivClass">
                             <p class='wld_yourEachWLItemAddedDatePClass'>Updated {{eachWLItemDetails.productAddedDatedtime}}</p>
                             <p class='wld_yourEachWLItemOperationBtnWrapperPClass'> 
-                                <button title="Click to add {{eachWLItemDetails.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkingProductDataToAddInOrdercart(eachWLItemDetails, false, 'wishlist')" class="wld_yourEachWLSpecificProductAddBtnClass btn">
+                                <button title="Click to add {{eachWLItemDetails.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachWLItemDetails, false, 'wishlist')" class="wld_yourEachWLSpecificProductAddBtnClass btn">
                                     <i class="fa fa-shopping-cart"></i> ADD
                                 </button>
                                 <button ng-click="removeProductFromUWL(eachWLItemDetails)" title='Click to remove item from wish list' class="wld_yourEachWLSpecificProductDeleteBtnClass btn">
@@ -390,7 +390,7 @@ include "Site_config.inc.php";
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wld_searchedSingleUserwiseEachWLItemOperationDivClass">
                             <p class='wld_searchedSingleUserwiseEachWLItemAddedDatePClass'>Updated {{eachUWLItemDetails.productAddedDatedtime}}</p>
                             <p class='wld_searchedSingleUserwiseEachWLItemOperationBtnWrapperPClass'> 
-                                <button title='Click to add {{eachUWLItemDetails.productListTitle}} item in order cart' ng-controller='OrderCartController' ng-click="checkingProductDataToAddInOrdercart(eachProductDetails, false, 'wishlist')" class="wld_searchedSingleUserwiseEachWLItemAddBtnClass btn">
+                                <button title='Click to add {{eachUWLItemDetails.productListTitle}} item in order cart' ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'wishlist')" class="wld_searchedSingleUserwiseEachWLItemAddBtnClass btn">
                                     <i class="fa fa-shopping-cart"></i> ADD
                                 </button>
                                 <select title='Copy to my wish list' ng-change="collectDataToCopyProductFromUWLToUWL('wl_searchedSingleUserwiseEachWLItemCopySelection_'+$id, eachUWLWiseDetails)" ng-model="userEachWLDataObj.wishListId" id='wl_searchedSingleUserwiseEachWLItemCopySelection_{{$id}}' ng-show="eachUWLWiseDetails.isShowWLItemMoveOption" class='btn wl_searchedSingleUserwiseEachWLItemCopySelectionClass'>
