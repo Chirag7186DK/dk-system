@@ -1869,25 +1869,25 @@ function getParamDataToShowSearchedUserWLItemBySearchParam(userwiseWLSummaryData
         if(userwiseWLSummaryDataObj!==false && userwiseWLSummaryDataObj!==undefined 
             && jQuery.isEmptyObject(userwiseWLSummaryDataObj)===false){
             retParamDataObj['wishlistby'] = 'item';
-            var retUserDataParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
             if(userwiseWLSummaryDataObj.hasOwnProperty('userId')===true){
-                if((userwiseWLSummaryDataObj['userId']).length===32){
+                if(parseInt(userwiseWLSummaryDataObj['userId'])>0){
                     retParamDataObj['createrUserId'] = userwiseWLSummaryDataObj['userId'];
                     correctParamDataCount++;
                 }
             }
             if(userwiseWLSummaryDataObj.hasOwnProperty('wlId')===true){
-                if((userwiseWLSummaryDataObj['wlId']).length===32){
+                if(parseInt(userwiseWLSummaryDataObj['wlId'])>0){
                     retParamDataObj['wishListId'] = userwiseWLSummaryDataObj['wlId'];
                     correctParamDataCount++;
                 }
             }
-            if(retUserDataParamDataObj!==false && jQuery.isEmptyObject(retUserDataParamDataObj)===false){
-                retParamDataObj['user_sessionid'] = retUserDataParamDataObj['user_sessionid'];
-                correctParamDataCount++;
+            var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+            if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
+                && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
+                retParamDataObj = $.extend(retParamDataObj, authenticatedUserDataObj);
             }
         }
-        if(correctParamDataCount===3){
+        if(correctParamDataCount>=5){
             return retParamDataObj;
         }else{
             return false;
