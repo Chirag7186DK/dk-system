@@ -232,26 +232,26 @@ class WishListDao{
                     WHERE 1 ";  
                     // add userLoggedId in where condition
                     if(array_key_exists('userLoggedId', $paramJson)){
-                        if(strlen($paramJson['userLoggedId'])==32){
-                            $sql.=" AND MD5(u.id) IN ('".$paramJson['userLoggedId']."') AND MD5(wl.user_id) IN ('".$paramJson['userLoggedId']."') ";
+                        if(($paramJson['userLoggedId'])>0 && $paramJson['userLoggedId']!=''){
+                            $sql.=" AND u.id='".$paramJson['userLoggedId']."' AND wl.user_id='".$paramJson['userLoggedId']."'";
                         } 
                     } 
                     // add notUserLoggedId in where condition
                     if(array_key_exists('notUserLoggedId', $paramJson)){
-                        if(strlen($paramJson['notUserLoggedId'])==32){
-                            $sql.=" AND MD5(u.id) NOT IN ('".$paramJson['notUserLoggedId']."') AND MD5(wl.user_id) NOT IN ('".$paramJson['notUserLoggedId']."') ";
+                        if($paramJson['notUserLoggedId']!='' && ($paramJson['notUserLoggedId'])>0){
+                            $sql.=" AND u.id!='".$paramJson['notUserLoggedId']."' AND wl.user_id!='".$paramJson['notUserLoggedId']."'";
                         } 
                     } 
                     // add createrUserId in where condition
                     if(array_key_exists('createrUserId', $paramJson)){
-                        if(strlen($paramJson['createrUserId'])==32){
-                            $sql.=" AND MD5(u.id) IN ('".$paramJson['createrUserId']."') AND MD5(wl.user_id) IN ('".$paramJson['createrUserId']."') ";
+                        if($paramJson['createrUserId']!='' && ($paramJson['createrUserId'])>0){
+                            $sql.=" AND u.id='".$paramJson['createrUserId']."' AND wl.user_id='".$paramJson['createrUserId']."'";
                         } 
                     } 
                     // add userProfileTypeId in where condition
                     if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if(strlen($paramJson['userProfileTypeId'])==32){
-                            $sql.=" AND MD5(u.profile_typeid) IN ('".$paramJson['userProfileTypeId']."')";
+                        if($paramJson['userProfileTypeId']!='' && ($paramJson['userProfileTypeId'])>0){
+                            $sql.=" AND u.profile_typeid='".$paramJson['userProfileTypeId']."'";
                         } 
                     } 
                     // add user_name in where condition
