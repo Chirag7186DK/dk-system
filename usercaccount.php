@@ -20,7 +20,7 @@ include "Site_config.inc.php";
     </head>
 
     <!-- body start here -->
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('accountSignUpSignIn'); checkInBackgroundDataAvailableForUpdationFromSession('usercaccount');">
+    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('accountSignUpSignIn');">
 
         <!-- common SCROLL TOP BUTTON -->
         <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
@@ -766,25 +766,15 @@ include "Site_config.inc.php";
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        <!-- checking user account is active in session or not -->
-        <div ng-controller="UsersController" ng-init="checkUserCAccountIsActiveInSession()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+        <!-- refresh web application data -->
+        <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- checking which section is requested by end user for showing purpose  -->
         <div ng-controller="UCustomerController" ng-init="checkRequestedSectionAvailableToAccessInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
-        <!-- refresh web application data -->
-        <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-        
         <!-- load all css & js file-->
         <?php
-        include "loadAllJsCssFile.php";
+            include "loadAllJsCssFile.php";
         ?>
 
     </body>
