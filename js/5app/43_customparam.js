@@ -1841,11 +1841,11 @@ function getParamDataToRemoveProductFromUWL(productDataObj){
                 var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
                     && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
-                    retParamDataObj = $.extend(retParamObj, authenticatedUserDataObj);
+                    retParamDataObj = $.extend(retParamDataObj, authenticatedUserDataObj);
                 }
             }
         }
-        if(Object.keys(retParamDataObj).length>=7){
+        if(Object.keys(retParamDataObj).length>=4){
             return retParamDataObj;
         }else{
             return false;
