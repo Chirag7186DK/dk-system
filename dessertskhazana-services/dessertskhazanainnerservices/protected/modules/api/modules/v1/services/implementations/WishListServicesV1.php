@@ -94,7 +94,7 @@ class WishListServicesV1 implements IWishListServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $uwlParamData = array();
-                $uwlParamData['userLoggedId'] = $userSessionDetailsData['userId'];
+                $uwlParamData['userLoggedId'] = $userSessionDetailsData['unmd5UserId'];
                 $collectedDataArr = commonfunction :: collectDataForUserAllWLWiseItemDetails($uwlParamData);
                 if(count($collectedDataArr)>0 && $collectedDataArr!=false){
                     $rspDetails['userAllWLWiseItemDetails'] = $collectedDataArr;
