@@ -39,7 +39,7 @@ class WishListServicesV1 implements IWishListServicesV1{
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 // fetch user wish list
                 $userWLParamData = array();
-                $userWLParamData['userLoggedId'] = $userSessionDetailsData['userId'];
+                $userWLParamData['user_id'] = $userSessionDetailsData['unmd5UserId'];
                 $retUserWishListDetailsArr = WishListDao::getUserWLDetails($userWLParamData);
                 if(count($retUserWishListDetailsArr)>0 && $retUserWishListDetailsArr!=false){
                     $rspDetails['userAllWL'] = $retUserWishListDetailsArr;
