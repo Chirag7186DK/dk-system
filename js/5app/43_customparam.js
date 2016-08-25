@@ -1769,8 +1769,13 @@ function getParamDataForUWLUpdation(fcClass, wishListDataObj){
                 retParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
                 retParamObj['wishListId'] = wishListDataObj['wlId'];
             }
+            var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+            if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
+                && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
+                retParamObj = $.extend(retParamObj, authenticatedUserDataObj);
+            }
         }
-        if(Object.keys(retParamObj).length===5){
+        if(Object.keys(retParamObj).length>=7){
             return retParamObj;
         }else{
             return false;
