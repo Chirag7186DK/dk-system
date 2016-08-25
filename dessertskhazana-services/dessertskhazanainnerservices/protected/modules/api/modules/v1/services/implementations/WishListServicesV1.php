@@ -12,7 +12,7 @@ class WishListServicesV1 implements IWishListServicesV1{
         $rspDetails = array();
         $rspDetails['isUWLCreated'] = 'FALSE';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
@@ -89,7 +89,7 @@ class WishListServicesV1 implements IWishListServicesV1{
     public function getUserAllWLWiseItemDetails($dkParamDataArr){
         $rspDetails = array();
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // fetch temp user data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
@@ -109,19 +109,12 @@ class WishListServicesV1 implements IWishListServicesV1{
         $rspDetails = array();
         $rspDetails['isProductMovedFromUWLToUWL'] = 'FALSE';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
-            $moveItemToWishListMd5Id = $dkParamDataArr['moveItemToWishListId'];
-            // fetch unmd5 user data 
-            $unmd5UserDataArr = UsersDao :: getUserDetails($dkParamDataArr);
-            // fetch unmd5 user wish list data
-            $unmd5UserWishListDataArr = WishListDao :: getUserWLDetails(array("wishListId"=>$moveItemToWishListMd5Id));
-            if(count($unmd5UserDataArr)==1 && count($unmd5UserWishListDataArr)==1){
-                $toMoveItemWishListDetailsArr = array();
-                $toMoveItemWishListDetailsArr['moveItemFromWishListId'] = $dkParamDataArr['moveItemFromWishListId'];
-                $toMoveItemWishListDetailsArr['moveItemToWishListId'] = $unmd5UserWishListDataArr[0]['unMd5WLId'];
-                $toMoveItemWishListDetailsArr['moveWishListItemId'] = $dkParamDataArr['moveWishListItemId'];
-                $toMoveItemWishListDetailsArr['updated_by'] = $unmd5UserDataArr[0]['unmd5UserId'];
-                $retStatusProductMovedToWishList = WishListDao :: moveProductFromUWLToUWL($toMoveItemWishListDetailsArr);
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $retStatusProductMovedToWishList = WishListDao :: moveProductFromUWLToUWL($dkParamDataArr);
                 if($retStatusProductMovedToWishList==true){
                     $rspDetails['isProductMovedFromUWLToUWL'] = 'TRUE';
                 }
