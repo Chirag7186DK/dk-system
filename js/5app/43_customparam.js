@@ -1829,8 +1829,8 @@ function getParamDataToMoveProductFromUWLToUWL(elementId){
 
 // CJ defined this function 2016-08-02
 function getParamDataToRemoveProductFromUWL(productDataObj){
-    var retParamDataObj = {};
     try{
+        var retParamDataObj = {};
         if(productDataObj!==false && productDataObj!==undefined && jQuery.isEmptyObject(productDataObj)===false){
             if(productDataObj.hasOwnProperty('wishListItemId')===true
                 && productDataObj.hasOwnProperty('userLoggedId')===true){
@@ -1838,13 +1838,22 @@ function getParamDataToRemoveProductFromUWL(productDataObj){
                     retParamDataObj['wishListItemId'] = productDataObj['wishListItemId'];
                     retParamDataObj['userLoggedId'] = productDataObj['userLoggedId'];
                 }
+                var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
+                    && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
+                    retParamDataObj = $.extend(retParamObj, authenticatedUserDataObj);
+                }
             }
+        }
+        if(Object.keys(retParamDataObj).length>=7){
+            return retParamDataObj;
+        }else{
+            return false;
         }
     }catch(ex){
         // console.log("problem in getStoredProductDataFromSessionToAddWishList ex=>"+ex);
-        retParamDataObj = {};
+        return false;
     }
-    return retParamDataObj;
 }
 
 // CJ defined this function 2016-07-30
