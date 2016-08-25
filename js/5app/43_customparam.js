@@ -1872,13 +1872,11 @@ function getParamDataToShowSearchedUserWLItemBySearchParam(userwiseWLSummaryData
             if(userwiseWLSummaryDataObj.hasOwnProperty('userId')===true){
                 if(parseInt(userwiseWLSummaryDataObj['userId'])>0){
                     retParamDataObj['createrUserId'] = userwiseWLSummaryDataObj['userId'];
-                    correctParamDataCount++;
                 }
             }
             if(userwiseWLSummaryDataObj.hasOwnProperty('wlId')===true){
                 if(parseInt(userwiseWLSummaryDataObj['wlId'])>0){
                     retParamDataObj['wishListId'] = userwiseWLSummaryDataObj['wlId'];
-                    correctParamDataCount++;
                 }
             }
             var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
@@ -1887,7 +1885,7 @@ function getParamDataToShowSearchedUserWLItemBySearchParam(userwiseWLSummaryData
                 retParamDataObj = $.extend(retParamDataObj, authenticatedUserDataObj);
             }
         }
-        if(correctParamDataCount>=5){
+        if(Object.keys(retParamDataObj).length>=5){
             return retParamDataObj;
         }else{
             return false;
