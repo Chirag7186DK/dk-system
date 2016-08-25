@@ -1726,14 +1726,23 @@ function getParamDataToDeleteUserWL(wishListDataObj){
         var retParamObj = {};
         if(wishListDataObj!==false && wishListDataObj!==undefined 
             && jQuery.isEmptyObject(wishListDataObj)===false){
-            if(wishListDataObj.hasOwnProperty('unMd5UserId')
+            if(wishListDataObj.hasOwnProperty('userId')
                 && wishListDataObj.hasOwnProperty('wlId')){
-                retParamObj['updated_by'] = wishListDataObj['unMd5UserId'];
+                retParamObj['updated_by'] = wishListDataObj['userId'];
                 retParamObj['wishListId'] = wishListDataObj['wlId'];
                 retParamObj['status'] = 'Z';
             }
+            var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+            if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
+                && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
+                retParamObj = $.extend(retParamObj, authenticatedUserDataObj);
+            }
         }
-        return retParamObj;
+        if(Object.keys(retParamObj).length>=5){
+            return retParamObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         console.log("problem in getParamDataToDeleteUserWL=>"+ex);
         return false;
