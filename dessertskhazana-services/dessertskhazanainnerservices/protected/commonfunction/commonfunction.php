@@ -685,19 +685,19 @@ class commonfunction{
                     // iterate each user data
                     foreach($sortedOnUserAllWLDataArr as $eachUserMd5IdNameKey=>$sortedAllWishListDataArr){
                         // exploded string
-                        $explodedUserMd5IdNameKeyOnDoubleHash = explode("##", $eachUserMd5IdNameKey);
+                        $explodedUserIdNameKeyOnDoubleHash = explode("##", $eachUserMd5IdNameKey);
                         $eachUserWLSummaryDetailsArr = array();
-                        $eachUserWLSummaryDetailsArr['userId'] = $explodedUserMd5IdNameKeyOnDoubleHash[0];
-                        $eachUserWLSummaryDetailsArr['userName'] = $explodedUserMd5IdNameKeyOnDoubleHash[1];
-                        $eachUserWLSummaryDetailsArr['userState'] = $explodedUserMd5IdNameKeyOnDoubleHash[2];
-                        $eachUserWLSummaryDetailsArr['userCity'] = $explodedUserMd5IdNameKeyOnDoubleHash[3];
+                        $eachUserWLSummaryDetailsArr['userId'] = $explodedUserIdNameKeyOnDoubleHash[0];
+                        $eachUserWLSummaryDetailsArr['userName'] = $explodedUserIdNameKeyOnDoubleHash[1];
+                        $eachUserWLSummaryDetailsArr['userState'] = $explodedUserIdNameKeyOnDoubleHash[2];
+                        $eachUserWLSummaryDetailsArr['userCity'] = $explodedUserIdNameKeyOnDoubleHash[3];
                         $eachAllWLSummaryDetailsArr = array();
                         // iterate each wish list data of each user
                         foreach($sortedAllWishListDataArr as $eachWishListMd5IdNameKey=>$allItemDetailsArr){
                             // exploded string
                             $explodedWishListMd5IdNameKeyOnDoubleHash = explode("##", $eachWishListMd5IdNameKey);
                             array_push($eachAllWLSummaryDetailsArr, array(
-                                "userId"=>$explodedUserMd5IdNameKeyOnDoubleHash[0],
+                                "userId"=>$explodedUserIdNameKeyOnDoubleHash[0],
                                 "wlId"=>$explodedWishListMd5IdNameKeyOnDoubleHash[0],
                                 "wlTitle"=>$explodedWishListMd5IdNameKeyOnDoubleHash[1],
                                 "totalItem"=>count($allItemDetailsArr)
