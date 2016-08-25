@@ -739,31 +739,43 @@ class customparam{
     public static function checkParamDataToMoveProductFromUWLToUWL($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check moveItemFromWishListId key present or not
         if(array_key_exists('moveItemFromWishListId', $paramJsonData)){
-            if(strlen($paramJsonData['moveItemFromWishListId'])==32){
+            if(($paramJsonData['moveItemFromWishListId'])>0 && $paramJsonData['moveItemFromWishListId']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check moveItemToWishListId key present or not
         if(array_key_exists('moveItemToWishListId', $paramJsonData)){
-            if(strlen($paramJsonData['moveItemToWishListId'])==32){
+            if(($paramJsonData['moveItemToWishListId'])>0 && $paramJsonData['moveItemToWishListId']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check moveWishListItemId key present or not
         if(array_key_exists('moveWishListItemId', $paramJsonData)){
-            if(strlen($paramJsonData['moveWishListItemId'])==32){
+            if(($paramJsonData['moveWishListItemId'])>0 && $paramJsonData['moveWishListItemId']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check userLoggedId key present or not
         if(array_key_exists('userLoggedId', $paramJsonData)){
-            if(strlen($paramJsonData['userLoggedId'])==32){
+            if($paramJsonData['userLoggedId']!='' && ($paramJsonData['userLoggedId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==4){
+        if($givenParamDataCorrectCount==6){
             $retStatus = 'TRUE';
         }
         return $retStatus;
