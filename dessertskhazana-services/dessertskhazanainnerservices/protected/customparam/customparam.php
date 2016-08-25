@@ -649,13 +649,13 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check updated_by key present or not
         if(array_key_exists('updated_by', $paramJsonData)){
-            if($paramJsonData['updated_by']!=''){
+            if($paramJsonData['updated_by']!='' && ($paramJsonData['updated_by'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check wishListId key present or not
         if(array_key_exists('wishListId', $paramJsonData)){
-            if(strlen($paramJsonData['wishListId'])==32){
+            if(($paramJsonData['wishListId'])>0 && $paramJsonData['wishListId']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
