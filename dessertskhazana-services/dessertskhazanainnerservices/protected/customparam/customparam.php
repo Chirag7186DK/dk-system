@@ -773,19 +773,31 @@ class customparam{
     public static function checkParamDataToRemoveProductFromUWL($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check wishListItemId key present or not
         if(array_key_exists('wishListItemId', $paramJsonData)){
-            if(strlen($paramJsonData['wishListItemId'])==32){
+            if(($paramJsonData['wishListItemId'])>0 && $paramJsonData['wishListItemId']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         // check userLoggedId key present or not
         if(array_key_exists('userLoggedId', $paramJsonData)){
-            if(strlen($paramJsonData['userLoggedId'])==32){
+            if($paramJsonData['userLoggedId']!='' && ($paramJsonData['userLoggedId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==2){
+        if($givenParamDataCorrectCount==4){
             $retStatus = 'TRUE';
         }
         return $retStatus;
