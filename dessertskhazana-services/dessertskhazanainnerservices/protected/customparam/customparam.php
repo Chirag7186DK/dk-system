@@ -647,6 +647,18 @@ class customparam{
     public static function checkParamDataToDeleteUWL($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check updated_by key present or not
         if(array_key_exists('updated_by', $paramJsonData)){
             if($paramJsonData['updated_by']!='' && ($paramJsonData['updated_by'])>0){
@@ -665,7 +677,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==3){
+        if($givenParamDataCorrectCount==5){
             $retStatus = 'TRUE';
         }
         return $retStatus;
