@@ -390,7 +390,7 @@ include "Site_config.inc.php";
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wld_searchedSingleUserwiseEachWLItemOperationDivClass">
                             <p class='wld_searchedSingleUserwiseEachWLItemAddedDatePClass'>Updated {{eachUWLItemDetails.productAddedDatedtime}}</p>
                             <p class='wld_searchedSingleUserwiseEachWLItemOperationBtnWrapperPClass'> 
-                                <button title='Click to add {{eachUWLItemDetails.productListTitle}} item in order cart' ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'wishlist')" class="wld_searchedSingleUserwiseEachWLItemAddBtnClass btn">
+                                <button title='Click to add {{eachUWLItemDetails.productListTitle}} item in order cart' ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachUWLItemDetails, false, 'wishlist')" class="wld_searchedSingleUserwiseEachWLItemAddBtnClass btn">
                                     <i class="fa fa-shopping-cart"></i> ADD
                                 </button>
                                 <select title='Copy to my wish list' ng-change="collectDataToCopyProductFromUWLToUWL('wl_searchedSingleUserwiseEachWLItemCopySelection_'+$id, eachUWLWiseDetails)" ng-model="userEachWLDataObj.wishListId" id='wl_searchedSingleUserwiseEachWLItemCopySelection_{{$id}}' ng-show="eachUWLWiseDetails.isShowWLItemMoveOption" class='btn wl_searchedSingleUserwiseEachWLItemCopySelectionClass'>
