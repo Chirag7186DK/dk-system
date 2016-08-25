@@ -357,10 +357,10 @@ class WishListDao{
         $sqlQuery = '';
         if(array_key_exists('wishListItemId', $wishListProductDataParamDetails)
             && array_key_exists('updated_by', $wishListProductDataParamDetails)){
-            if(strlen($wishListProductDataParamDetails['wishListItemId'])==32 
+            if(($wishListProductDataParamDetails['wishListItemId'])>0
                 && $wishListProductDataParamDetails['updated_by']!=''){
                 $sqlQuery.=" UPDATE DK_WISHLISTITEM set status='Z', updated_by='".$wishListProductDataParamDetails['updated_by']."'";
-                $sqlQuery.=" WHERE MD5(id)='".$wishListProductDataParamDetails['wishListItemId']."'";
+                $sqlQuery.=" WHERE id='".$wishListProductDataParamDetails['wishListItemId']."'";
             } 
         } 
         if($sqlQuery!='' && $sqlQuery!=''){
