@@ -256,27 +256,27 @@ class WishListDao{
                     } 
                     // add user_name in where condition
                     if(array_key_exists('user_name', $paramJson)){
-                        if($paramJson['user_name']!=''){
+                        if($paramJson['user_name']!='' && strlen($paramJson['user_name'])>0){
                             $userName = $paramJson['user_name'];
                             $sql.=" AND u.name LIKE '%$userName%'";
                         } 
                     } 
                     // add email in where condition
                     if(array_key_exists('email', $paramJson)){
-                        if($paramJson['email']!=''){
+                        if($paramJson['email']!='' && strlen($paramJson['email'])>0){
                             $sql.=" AND u.email='".$paramJson['email']."'";
                         } 
                     } 
                     // add wish list id in where condition
                     if(array_key_exists('wishListId', $paramJson)){
-                        if(strlen($paramJson['wishListId'])==32){
-                            $sql.=" AND MD5(wl.id)='".$paramJson['wishListId']."' AND MD5(wlm.wishlist_id)='".$paramJson['wishListId']."'";
+                        if($paramJson['wishListId']!='' && ($paramJson['wishListId'])>0){
+                            $sql.=" AND wl.id='".$paramJson['wishListId']."' AND wlm.wishlist_id='".$paramJson['wishListId']."'";
                         } 
                     } 
                     // add wish list item id in where condition
                     if(array_key_exists('wishListItemId', $paramJson)){
-                        if(strlen($paramJson['wishListItemId'])==32){
-                            $sql.=" AND MD5(wlm.id)='".$paramJson['wishListItemId']."'";
+                        if($paramJson['wishListItemId']!='' && ($paramJson['wishListItemId'])>0){
+                            $sql.=" AND wlm.id='".$paramJson['wishListItemId']."'";
                         } 
                     } 
             $sql.= " ORDER BY wlm.updated_datedtime DESC";
