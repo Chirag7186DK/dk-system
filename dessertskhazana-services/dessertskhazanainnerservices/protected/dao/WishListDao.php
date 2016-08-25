@@ -82,7 +82,7 @@ class WishListDao{
                         AND wl.profile_id=u.profile_typeid AND wl.status='A'";  
                     // add userLoggedId in where condition
                     if(array_key_exists('userLoggedId', $paramJson)){
-                        if(strlen($paramJson['userLoggedId'])==32){
+                        if(($paramJson['userLoggedId'])>0 && $paramJson['userLoggedId']!=''){
                             $sql.=" AND wl.user_id='".$paramJson['userLoggedId']."' AND u.id='".$paramJson['userLoggedId']."'";
                         } 
                     } 
@@ -94,14 +94,14 @@ class WishListDao{
                     } 
                     // add userProfileTypeId in where condition
                     if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if(strlen($paramJson['userProfileTypeId'])==32){
-                            $sql.=" AND MD5(wl.profile_id) IN ('".$paramJson['userProfileTypeId']."') AND MD5(u.profile_typeid) IN ('".$paramJson['userProfileTypeId']."')";
+                        if($paramJson['userProfileTypeId']!='' && ($paramJson['userProfileTypeId'])>0){
+                            $sql.=" AND wl.profile_id='".$paramJson['userProfileTypeId']."' AND u.profile_typeid='".$paramJson['userProfileTypeId']."'";
                         } 
                     } 
                     // add wishListId in where condition
                     if(array_key_exists('wishListId', $paramJson)){
-                        if(strlen($paramJson['wishListId'])==32){
-                            $sql.=" AND MD5(wl.id) IN ('".$paramJson['wishListId']."')";
+                        if($paramJson['wishListId']!='' && ($paramJson['wishListId'])>0){
+                            $sql.=" AND wl.id='".$paramJson['wishListId']."'";
                         } 
                     } 
             $sql.=" ORDER BY wl.updated_datedtime DESC, COALESCE(wl.is_defaultsetting, 'N') ";
