@@ -419,7 +419,7 @@ class WishListDao{
         }
         if($dynamicSql!=''){
             $sqlQuery = " UPDATE DK_WISHLIST SET ".rtrim($dynamicSql, ',');
-            $sqlQuery.=" WHERE MD5(id)='".$paramJson['wishListId']."'";
+            $sqlQuery.=" WHERE id='".$paramJson['wishListId']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=0){
