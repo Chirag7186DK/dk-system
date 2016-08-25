@@ -83,7 +83,7 @@ class WishListDao{
                     // add userLoggedId in where condition
                     if(array_key_exists('userLoggedId', $paramJson)){
                         if(strlen($paramJson['userLoggedId'])==32){
-                            $sql.=" AND MD5(wl.user_id) IN ('".$paramJson['userLoggedId']."') AND MD5(u.id) IN ('".$paramJson['userLoggedId']."')";
+                            $sql.=" AND wl.user_id='".$paramJson['userLoggedId']."' AND u.id='".$paramJson['userLoggedId']."'";
                         } 
                     } 
                     // add user_id in where condition
