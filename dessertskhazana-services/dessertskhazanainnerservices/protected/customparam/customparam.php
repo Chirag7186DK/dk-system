@@ -879,25 +879,25 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check copyItemFromWishListId key present or not
         if(array_key_exists('copyItemFromWishListId', $paramJsonData)){
-            if(strlen($paramJsonData['copyItemFromWishListId'])==32){
+            if($paramJsonData['copyItemFromWishListId']!='' && ($paramJsonData['copyItemFromWishListId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check copyItemToWishListId key present or not
         if(array_key_exists('copyItemToWishListId', $paramJsonData)){
-            if(strlen($paramJsonData['copyItemToWishListId'])==32){
+            if($paramJsonData['copyItemToWishListId']!='' && ($paramJsonData['copyItemToWishListId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check copyWishListItemId key present or not
         if(array_key_exists('copyWishListItemId', $paramJsonData)){
-            if(strlen($paramJsonData['copyWishListItemId'])==32){
+            if($paramJsonData['copyWishListItemId']!='' && ($paramJsonData['copyWishListItemId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check userLoggedId key present or not
         if(array_key_exists('userLoggedId', $paramJsonData)){
-            if(strlen($paramJsonData['userLoggedId'])==32){
+            if($paramJsonData['userLoggedId']!='' && ($paramJsonData['userLoggedId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
