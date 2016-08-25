@@ -855,23 +855,17 @@ class customparam{
             if($paramJsonData['wishlistby']=='item'){
                 // check createrUserId key exists or not
                 if(array_key_exists('createrUserId', $paramJsonData)){
-                    if(strlen($paramJsonData['createrUserId'])==32){
-                        $givenParamDataCorrectCount++;
-                    }
-                }
-                // check userLoggedId key exists or not
-                if(array_key_exists('userLoggedId', $paramJsonData)){
-                    if(strlen($paramJsonData['userLoggedId'])==32){
+                    if(($paramJsonData['createrUserId'])>0 && $paramJsonData['createrUserId']!=''){
                         $givenParamDataCorrectCount++;
                     }
                 }
                 // check wishListId key exists or not
                 if(array_key_exists('wishListId', $paramJsonData)){
-                    if(strlen($paramJsonData['wishListId'])==32){
+                    if($paramJsonData['wishListId']!='' && ($paramJsonData['wishListId'])>0){
                         $givenParamDataCorrectCount++;
                     }
                 }
-                if($givenParamDataCorrectCount>=2){
+                if($givenParamDataCorrectCount==2){
                     $retStatus = 'TRUE';
                 }
             }
