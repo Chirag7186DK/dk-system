@@ -134,22 +134,10 @@ class WishListDao{
                     JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
                     JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
                     WHERE 1 ";  
-                    // add userLoggedId in where condition
-                    if(array_key_exists('userLoggedId', $paramJson)){
-                        if($paramJson['userLoggedId']!='' && $paramJson['userLoggedId']!=false){
-                            $sql.=" AND u.id='".$paramJson['user_id']."' AND wl.user_id='".$paramJson['user_id']."'";
-                        } 
-                    } 
                     // add user_id in where condition
                     if(array_key_exists('user_id', $paramJson)){
                         if($paramJson['user_id']!='' && $paramJson['user_id']!=false){
                             $sql.=" AND u.id='".$paramJson['user_id']."' AND wl.user_id='".$paramJson['user_id']."'";
-                        } 
-                    } 
-                    // add userProfileTypeId in where condition
-                    if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if($paramJson['userProfileTypeId']!='' && ($paramJson['userProfileTypeId'])>0){
-                            $sql.=" AND u.profile_typeid='".$paramJson['userProfileTypeId']."'";
                         } 
                     } 
             $sql.=" HAVING wlCount>0 AND wlmCount>0";        
@@ -232,12 +220,6 @@ class WishListDao{
                     if(array_key_exists('createrUserId', $paramJson)){
                         if($paramJson['createrUserId']!='' && ($paramJson['createrUserId'])>0){
                             $sql.=" AND u.id='".$paramJson['createrUserId']."' AND wl.user_id='".$paramJson['createrUserId']."'";
-                        } 
-                    } 
-                    // add userProfileTypeId in where condition
-                    if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if($paramJson['userProfileTypeId']!='' && ($paramJson['userProfileTypeId'])>0){
-                            $sql.=" AND u.profile_typeid='".$paramJson['userProfileTypeId']."'";
                         } 
                     } 
                     // add user_name in where condition
