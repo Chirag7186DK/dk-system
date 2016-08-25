@@ -877,6 +877,18 @@ class customparam{
     public static function checkParamDataToCopyProductFromUWLToUWL($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check copyItemFromWishListId key present or not
         if(array_key_exists('copyItemFromWishListId', $paramJsonData)){
             if($paramJsonData['copyItemFromWishListId']!='' && ($paramJsonData['copyItemFromWishListId'])>0){
@@ -901,7 +913,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==4){
+        if($givenParamDataCorrectCount==6){
             $retStatus = 'TRUE';
         }
         return $retStatus;
