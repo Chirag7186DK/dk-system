@@ -542,14 +542,16 @@
 
     .vpd_userBreadcrumbULClass li a, 
     .vpd_userBreadcrumbULClass li a:hover{
-        color:#e6a4b7!important;
+        color:#828282!important;
         border-bottom:2px dotted #CDCEE8!important;
         text-decoration:none!important;
         font-weight:100!important;
+        font-size:12px!important;
     }
 
     .vpd_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
-        color:rgba(120, 120, 120, 0.6)!important;
+        color:#828282!important;
+        font-size:12px!important;
     }
 
     .vpd_shopStoreServedAllDessertsProductContainerDivClass{
@@ -998,14 +1000,16 @@
 
     .vap_userBreadcrumbULClass li a, 
     .vap_userBreadcrumbULClass li a:hover{
-        color:#e6a4b7!important;
+        color:#828282!important;
         border-bottom:2px dotted #CDCEE8!important;
         text-decoration:none!important;
         font-weight:100!important;
+        font-size:12px!important;
     }
 
     .vap_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
-        color:rgba(120, 120, 120, 0.6)!important;
+        color:#828282!important;
+        font-size:12px!important;
     }
 
     .vap_deliveryAreabasedDkServedAllDessertsContainerDivClass{
