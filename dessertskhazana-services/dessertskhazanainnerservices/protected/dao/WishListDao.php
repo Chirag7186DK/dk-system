@@ -77,7 +77,13 @@ class WishListDao{
                     FROM DK_USERS u
                     JOIN DK_USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
                     JOIN DK_WISHLIST wl ON wl.user_id=u.id 
-                        AND wl.profile_id=u.profile_typeid AND wl.status='A'";  
+                        AND wl.profile_id=u.profile_typeid AND wl.status='A'"; 
+                    // add user_id in where condition
+                    if(array_key_exists('userLoggedId', $paramJson)){
+                        if($paramJson['userLoggedId']!='' && $paramJson['userLoggedId']!=false){
+                            $sql.=" AND wl.user_id='".$paramJson['userLoggedId']."' AND u.id='".$paramJson['userLoggedId']."'";
+                        } 
+                    } 
                     // add user_id in where condition
                     if(array_key_exists('user_id', $paramJson)){
                         if($paramJson['user_id']!='' && $paramJson['user_id']!=false){
