@@ -455,7 +455,7 @@ app.controller('WishListController', function ($scope, $rootScope, $http, WishLi
         };
 
         // collectDataToShowSearchedUserWLtemBySearchParam
-        $rootScope.collectDataToShowSearchedUserWLItemBySearchParam = function (userwiseWLSummaryDataObj) {
+        $rootScope.collectDataToShowSearchedUserWLItemBySearchParam = function (userwiseWLSummaryDataObj){
             $rootScope.resetUWLVariable('showSearchedAllUserwiseWLItem');
             var paramDataObj = getParamDataToShowSearchedUserWLItemBySearchParam(userwiseWLSummaryDataObj);
             $rootScope.getUserWLItemBySearchParam(paramDataObj);
