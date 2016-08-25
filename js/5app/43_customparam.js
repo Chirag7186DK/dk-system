@@ -1797,8 +1797,8 @@ function getParamDataForUWLUpdation(fcClass, wishListDataObj){
 
 // CJ defined this function 2016-08-02
 function getParamDataToMoveProductFromUWLToUWL(elementId){
-    var retParamDataObj = {};
     try{
+        var retParamDataObj = {};
         if($('#'+elementId).length>0){
             var currentSelectedValue = removeHtmlStripTagsOfContent($('#'+elementId).find('option:selected').val());
             if(currentSelectedValue!=='' && currentSelectedValue!==false){
@@ -1807,22 +1807,27 @@ function getParamDataToMoveProductFromUWLToUWL(elementId){
                 var moveWishListItemId = removeHtmlStripTagsOfContent($('#'+elementId).find('option:selected').attr('data-moveitemid'));
                 var userLoggedId = removeHtmlStripTagsOfContent($('#'+elementId).find('option:selected').attr('data-userloggedid'));
                 if(moveItemFrmWishListId!==moveItemToWishListId 
-                    && (moveItemFrmWishListId).length===32 && (moveItemToWishListId).length===32
-                    && (userLoggedId).length===32 && (moveWishListItemId).length===32){
+                    && parseInt(moveItemFrmWishListId)>0 && parseInt(moveItemToWishListId)>0
+                    && parseInt(userLoggedId)>0 && parseInt(moveWishListItemId)>0){
                     retParamDataObj['moveItemFromWishListId'] = moveItemFrmWishListId;
                     retParamDataObj['moveItemToWishListId'] = moveItemToWishListId;
                     retParamDataObj['moveWishListItemId'] = moveWishListItemId;
                     retParamDataObj['userLoggedId'] = userLoggedId;
                 }
+                var authenticatedUserDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserDataObj!==false && authenticatedUserDataObj!==undefined 
+                    && jQuery.isEmptyObject(authenticatedUserDataObj)===false){
+                    retParamDataObj = $.extend(retParamDataObj, authenticatedUserDataObj);
+                }
             }
+        }
+        if(Object.keys(retParamDataObj).length>=6){
+            return retParamDataObj;
+        }else{
+            return false;
         }
     }catch(ex){
         // console.log("problem in getParamDataToMoveProductFromWLToWL=>"+ex);
-        retParamDataObj = {};
-    }
-    if(Object.keys(retParamDataObj).length===4){
-        return retParamDataObj;
-    }else{
         return false;
     }
 }
