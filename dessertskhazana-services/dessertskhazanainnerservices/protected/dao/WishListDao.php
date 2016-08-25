@@ -150,8 +150,8 @@ class WishListDao{
                     WHERE 1 ";  
                     // add userLoggedId in where condition
                     if(array_key_exists('userLoggedId', $paramJson)){
-                        if(strlen($paramJson['userLoggedId'])==32){
-                            $sql.=" AND MD5(u.id)='".$paramJson['userLoggedId']."' AND MD5(wl.user_id)='".$paramJson['userLoggedId']."'";
+                        if($paramJson['userLoggedId']!='' && $paramJson['userLoggedId']!=false){
+                            $sql.=" AND u.id='".$paramJson['user_id']."' AND wl.user_id='".$paramJson['user_id']."'";
                         } 
                     } 
                     // add user_id in where condition
@@ -162,8 +162,8 @@ class WishListDao{
                     } 
                     // add userProfileTypeId in where condition
                     if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if(strlen($paramJson['userProfileTypeId'])==32){
-                            $sql.=" AND MD5(u.profile_typeid)='".$paramJson['userProfileTypeId']."'";
+                        if($paramJson['userProfileTypeId']!='' && ($paramJson['userProfileTypeId'])>0){
+                            $sql.=" AND u.profile_typeid='".$paramJson['userProfileTypeId']."'";
                         } 
                     } 
             $sql.=" HAVING wlCount>0 AND wlmCount>0";        
