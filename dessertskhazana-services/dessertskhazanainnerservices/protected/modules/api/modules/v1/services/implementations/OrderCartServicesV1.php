@@ -83,7 +83,11 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
         $rspDetails['isItemUpdatedFromOrdercart'] = 'FALSE';
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $rspDetails['isItemUpdatedFromOrdercart'] = commonfunction :: preparedDataToUpdateItemFromOrdercart($dkParamDataArr);
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $rspDetails['isItemUpdatedFromOrdercart'] = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
+            }
         } 
         return $rspDetails;
     }
