@@ -38,4 +38,19 @@ class DiscountCouponDao{
         return $result;
     }
     
+    // CJ defined this function 2016-08-26
+    public static function getUserSharingDiscountCouponList($userId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "";
+            $command = $connection->createCommand($sql);
+            $userSharingDiscountCouponListDetailsArr = $command->queryAll();
+            if(count($userSharingDiscountCouponListDetailsArr)>0 && $userSharingDiscountCouponListDetailsArr!=false){
+                $result =  $userSharingDiscountCouponListDetailsArr;
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
 }
