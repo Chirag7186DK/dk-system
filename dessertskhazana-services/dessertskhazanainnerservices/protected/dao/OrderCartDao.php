@@ -481,7 +481,7 @@ class OrderCartDao{
             }
         }
         if(array_key_exists('status', $paramJson)){
-            if($paramJson['status']!='' && ($paramJson['status'])>0){
+            if($paramJson['status']!='' && strlen($paramJson['status'])>=1){
                 $dynamicSql.=" status='".$paramJson['status']."',";
             }
         }
@@ -497,7 +497,7 @@ class OrderCartDao{
         }
         if($dynamicSql!='' && array_key_exists('ordercart_itemid', $paramJson)==true){
             if($paramJson['ordercart_itemid']!='' && ($paramJson['ordercart_itemid'])>0){
-                $sqlQuery = " UPDATE DK_USERORDERCART SET ".rtrim($dynamicSql, ',');
+                $sqlQuery = " UPDATE DK_USERORDERCART_ITEMDETAILS SET ".rtrim($dynamicSql, ',');
                 $sqlQuery.=" WHERE id='".$paramJson['ordercart_itemid']."'";
                 $command = $connection->createCommand($sqlQuery);
                 $result = $command->execute();
