@@ -1,6 +1,6 @@
 
 <?php
-include "Site_config.inc.php";
+    include "Site_config.inc.php";
 ?>
 
 <!DOCTYPE html>
