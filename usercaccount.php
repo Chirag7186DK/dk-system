@@ -467,7 +467,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
                 <!-- offers can be share info will be displayed -->
-                <div ng-if="displayShareOffersSectionType==='availableshareoffers'" ng-controller="UCustomerController" ng-init="populateUserSharingDiscountCouponList()" id='uca_userSharingAllDiscountCouponListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingAllDiscountCouponListSectionDivClass'>
+                <div ng-if="displayShareOffersSectionType==='availableshareoffers'" ng-controller="UCustomerController" ng-init="populateUserSharingDiscountCouponList()" id='uca_userSharingAllDiscountCouponListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingAllDiscountCouponListDivClass'>
                     
                     <!-- share offers can be filtering -->
                     <div ng-if="userSharingAllDiscountCouponDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextSharingOffersDivClass">
@@ -476,18 +476,18 @@
                     </div>
                     
                     <!-- each sharing offers will display -->
-                    <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListSectionDivClass">
+                    <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListDivClass">
                         <p class="shareOffersMsgPClass">
-                            {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
+                            Info: {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
                         </p>
                         <p class="shareOffersLimitPClass">
-                            {{userSharingEachDiscountCouponDetailsArrObj.shareLimit}}
+                            Sharing Limit: {{userSharingEachDiscountCouponDetailsArrObj.shareLimit}}
                         </p>
-                        <p class="shareOffersLimitPClass">
-                            {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
+                        <p class="shareOffersRemainingLimitPClass">
+                            Remaining Limit: {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
                         </p>
                         <p class="shareOffersExpiryDateTimePClass">
-                            {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
+                            Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
                         <p class="shareOffersBtnPClass">
                             <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn shareOffersBtnClass'>
@@ -498,8 +498,9 @@
                     
                     <!-- no offers available for sharing purpose -->
                     <div ng-if="userSharingAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharingOffersFoundDivClass">
-                        <p class="fa fa-gift shareOffersIconClass">No share offers available for you !</p>
+                        <p class="noShareOffersFoundPClass">No share offers available for you !</p>
                     </div>
+                    
                 </div>
                 
                 
