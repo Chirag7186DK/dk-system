@@ -534,10 +534,18 @@ class commonfunction{
                 for($eachIndex = 0; $eachIndex<count($sharingDiscountCouponSetupListByUserArr); $eachIndex++){
                     // check how many times user has been shared discount coupon list to others
                     $discountCouponId = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgId'];
-                    
+                    $shareLimit = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['shareLimit'];
+                    $countUserSharedDiscountCoupon = DiscountCouponDao :: getCountUserSharedDiscountCoupon($unMd5UserId, $discountCouponId);
+                    if($countUserSharedDiscountCoupon>=0 && $countUserSharedDiscountCoupon!='FALSE'
+                        && $countUserSharedDiscountCoupon<=$shareLimit && $shareLimit>0){
+                        $sharingDiscountCouponSetupListByUserArr[$eachIndex]['remainingShareLimt'] = ($shareLimit-$countUserSharedDiscountCoupon);
+                        array_push($userSharingDiscountCouponList, $sharingDiscountCouponSetupListByUserArr[$eachIndex]);
+                        
+                    }
                 }
             }
         }
+        return $userSharingDiscountCouponList;
     }
 
         
