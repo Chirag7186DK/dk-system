@@ -465,29 +465,34 @@ class OrderCartDao{
     }
     
     
-    // CJ defined this function 2016-08-14
-    public static function removeItemDetailsFromOrdercart($toDeleteItemOrdercartArr){
+    // CJ defined this function 2016-08-26
+    public static function updateItemInOrdercart($paramJson){
         $connection = Yii::app()->db;
         $dynamicSql = "";
         $retStatus = false;
-        if(array_key_exists('updated_by', $toDeleteItemOrdercartArr)){
-            if($toDeleteItemOrdercartArr['updated_by']!=''){
-                $dynamicSql.=" updated_by='".$toDeleteItemOrdercartArr['updated_by']."',";
+        if(array_key_exists('product_featuresqty', $paramJson)){
+            if($paramJson['product_featuresqty']!='' && ($paramJson['product_featuresqty'])>0){
+                $dynamicSql.=" product_featuresqty='".$paramJson['product_featuresqty']."',";
             }
         }
-        if(array_key_exists('status', $toDeleteItemOrdercartArr)){
-            if($toDeleteItemOrdercartArr['status']!=''){
-                $dynamicSql.=" status='".$toDeleteItemOrdercartArr['status']."',";
+        if(array_key_exists('product_features_totalamount', $paramJson)){
+            if($paramJson['product_features_totalamount']!='' && ($paramJson['product_features_totalamount'])>0){
+                $dynamicSql.=" product_features_totalamount='".$paramJson['product_features_totalamount']."',";
             }
         }
-        if(array_key_exists('reason', $toDeleteItemOrdercartArr)){
-            if($toDeleteItemOrdercartArr['reason']!=''){
-                $dynamicSql.=" reason='".$toDeleteItemOrdercartArr['reason']."',";
+        if(array_key_exists('status', $paramJson)){
+            if($paramJson['status']!='' && ($paramJson['status'])>0){
+                $dynamicSql.=" status='".$paramJson['status']."',";
+            }
+        }
+        if(array_key_exists('updated_by', $paramJson)){
+            if($paramJson['updated_by']!=''){
+                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
             }
         }
         if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_USERORDERCART_ITEMDETAILS SET ".rtrim($dynamicSql, ',');
-            $sqlQuery.=" WHERE id='".$toDeleteItemOrdercartArr['ordercart_itemid']."'";
+            $sqlQuery = " UPDATE DK_USERORDERCART SET ".rtrim($dynamicSql, ',');
+            $sqlQuery.=" WHERE id='".$paramJson['id']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>0){
@@ -496,6 +501,5 @@ class OrderCartDao{
         }
         return $retStatus;
     }
-    
     
 }
