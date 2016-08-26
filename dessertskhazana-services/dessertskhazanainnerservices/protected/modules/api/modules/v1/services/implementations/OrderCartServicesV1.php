@@ -75,7 +75,10 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
-                $rspDetails['isItemUpdatedFromOrdercart'] = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
+                $retUpdatedDataStatus = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
+                if($retUpdatedDataStatus==true){
+                    $rspDetails['isItemUpdatedFromOrdercart'] = 'TRUE';
+                }
             }
         } 
         return $rspDetails;
@@ -91,7 +94,10 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
-                $rspDetails['isItemRemovedFromOrdercart'] = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
+                $retRemovedDataStatus = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
+                if($retRemovedDataStatus==true){
+                    $rspDetails['$retRemovedDataStatus'] = 'TRUE';
+                }
             }
         } 
         return $rspDetails;
