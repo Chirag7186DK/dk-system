@@ -96,7 +96,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                 $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
                 $retRemovedDataStatus = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
                 if($retRemovedDataStatus==true){
-                    $rspDetails['$retRemovedDataStatus'] = 'TRUE';
+                    $rspDetails['isItemRemovedFromOrdercart'] = 'TRUE';
                 }
             }
         } 
