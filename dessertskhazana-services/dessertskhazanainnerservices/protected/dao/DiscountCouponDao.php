@@ -52,8 +52,9 @@ class DiscountCouponDao{
                     COALESCE(dcg.cashback_based, 0) cashbackBased,
                     COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
                     COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
-                    COALESCE(dcg.for_userid, '') userId,
+                    COALESCE(dcg.for_userid,'') userId,
                     COALESCE(dcg.share_limit, 0) shareLimit,
+                    COALESCE(dcg.end_datedtime, 0) expiredDateTime
                     FROM DK_DISCOUNTCOUPONGENERATION dcg
                     WHERE 1
                     AND dcg.status='A'
