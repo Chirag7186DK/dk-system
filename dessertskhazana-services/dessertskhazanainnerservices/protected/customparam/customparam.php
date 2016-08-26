@@ -1225,14 +1225,14 @@ class customparam{
             }
         }
         // check qty key present or not
-        if(array_key_exists('qty', $paramJsonData)){
-            if($paramJsonData['qty']!='' && ($paramJsonData['qty'])>0){
+        if(array_key_exists('product_featuresqty', $paramJsonData)){
+            if($paramJsonData['product_featuresqty']!='' && ($paramJsonData['product_featuresqty'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check totalamount key present or not
-        if(array_key_exists('totalamount', $paramJsonData)){
-            if($paramJsonData['totalamount']!='' && ($paramJsonData['totalamount'])>0){
+        if(array_key_exists('product_features_totalamount', $paramJsonData)){
+            if($paramJsonData['product_features_totalamount']!='' && ($paramJsonData['product_features_totalamount'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
