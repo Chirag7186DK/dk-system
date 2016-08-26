@@ -434,20 +434,16 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
                     
                     // calling OrderCartServices 
-                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItemList", 'apiFile', 'DELETE', '', fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isItemUpdatedFromOrdercart = 'FALSE';
-                            var notificationMsgStr = "Please try again to update item in your order cart !";
+                            var notificationMsgStr = "Please try again to update item in order cart !";
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isItemUpdatedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemUpdatedFromOrdercart', retResponseJson);
                             }
                             if(isItemUpdatedFromOrdercart==='TRUE'){
-                                notificationMsgStr = "Item updated in your order cart !";
-                                // refresh user order cart dashboard summary data using services
-                                orderDetails.refreshUserOrdercartDashboardSummaryDataDetails();
-                                // refresh order cart item list using services
-                                orderDetails.ordercartItemList('R');
+                                notificationMsgStr = "Item updated in order cart successfully !";
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
@@ -455,7 +451,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 }
             }catch(ex){
                 showHideLoaderBox('hide');
-                console.log("problem in removeItemOrdercart ex=>"+ex);
+                console.log("problem in updateItemOrdercart ex=>"+ex);
             }
         };
         
