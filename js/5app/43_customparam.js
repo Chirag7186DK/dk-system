@@ -1367,14 +1367,17 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
                 if(dkParamObj.hasOwnProperty('requestedSectionUserAccountObj')===true){
                     var sectionName = requestedSectionNameAccessInUserAccount;
                     var displaySectionName = requestedSectionNameAccessInUserAccount;
-                    if(sectionName==='ordercart'){
-                        displaySectionName = 'Order cart';
-                    }
                     if(sectionName==='personalinfo'){
                         displaySectionName = 'Personal Info';
                     }
                     if(sectionName==='changepassword'){
                         displaySectionName = 'Change Password';
+                    }
+                    if(sectionName==='ordercart'){
+                        displaySectionName = 'Order cart';
+                    }
+                    if(sectionName==='shareoffers'){
+                        displaySectionName = 'Share offers';
                     }
                     if(sectionName==='partyorder'){
                         displaySectionName = 'Party Order';
