@@ -1651,7 +1651,7 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
 
 
 // CJ defined this function 2016-08-26
-function getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass){
+function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
     try{
         var retParamObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
@@ -1682,7 +1682,7 @@ function getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass
             return false;
         }
     }catch(ex){
-        // console.log("problem in getParamDataToUpdateProductInOrdercart ex=>"+ex);
+        // console.log("problem in getParamDataToUpdateItemInOrdercart ex=>"+ex);
         return false;
     }
 }
