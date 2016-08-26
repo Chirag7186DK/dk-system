@@ -3665,6 +3665,98 @@
     }
     
     
+    /* user share offers css code */
+    
+    .uca_shareoffersSectionContainerDivClass{
+        background-color:#f6f4fb!important;
+    }
+
+    .uca_shareoffersAllSectionHeaderContainerDivClass .owl-item{
+        width:auto!important;
+        margin-right:15px!important;
+    }
+
+    .uca_shareoffersEachTabLabelSectionContainerLIClass{
+        text-align:center;
+        border-bottom:1px solid #00B9F5!important;
+        color:#67717D!important;
+        font-weight: bold!important;
+        font-family: serif!important;
+        float:left!important;
+        padding:12px!important;
+        font-size:15px!important;
+        list-style-type:none!important;
+        cursor:pointer;
+    }
+
+    .uca_shareoffersSelectedTabLabelSectionContainerLIClass{
+        border-bottom: 1px solid #00B9F5!important;
+        color:#fff!important;
+        background:#00B9F5!important;
+    }
+    
+    .uca_userSharingAllDiscountCouponListDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+
+    .searchTextSharingoffersILblClass{
+        color:#67717D!important;
+        font-size:12px!important;
+        font-weight:normal!important;
+    }
+
+    .inputSearchTextSharingOffersDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+
+    .uca_userSharingEachDiscountCouponListDivClass{
+        padding-top:20px!important;
+        padding-bottom:20px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        border-bottom:1px dashed #FAB005!important;
+    }
+
+    .uca_userSharingEachDiscountCouponListDivClass:last-child{
+    }
+
+    .shareOffersMsgPClass{
+        color:#67717D!important;
+        font-size:14px!important;
+    }
+
+    .shareOffersLimitPClass,
+    .shareOffersRemainingLimitPClass,
+    .shareOffersExpiryDateTimePClass{
+        color:#67717D!important;
+        font-size:13px!important;
+    }
+
+    .shareOffersBtnClass,
+    .shareOffersBtnClass:hover{
+        font-weight:bold;
+        font-size:12px!important;
+        border-radius:0px!important;
+        padding:2px!important;
+        color:#fff!important;
+        background:#00B9F5!important;
+        margin-right:1%!important;
+    }
+
+    .uca_noSharingOffersFoundDivClass{
+        text-align:center!important;
+    }
+
+    .noShareOffersFoundPClass{
+        font-size:17px!important;
+        color:#67717D!important;
+    }
+    
+    
+    
+    
     /* user party order css code */
     
     .po_userBreadcrumbDivClass{
