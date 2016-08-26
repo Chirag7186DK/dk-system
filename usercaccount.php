@@ -46,7 +46,7 @@ include "Site_config.inc.php";
                     <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your all wish list">
                         <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
                     </li>
-                    <li ng-if='isUserLoggedInSession==true' ng-controller="UCustomerController" ng-click="toggleUserAccountSectionDropdown('home')">
+                    <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Hello, {{loggedUserName}}
                         <!-- user account showing different section label to access -->
                         <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
