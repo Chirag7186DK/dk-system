@@ -23,7 +23,7 @@ class DiscountCouponDao{
                 COALESCE(dcg.cashback_based, 0) cashbackBased,
                 COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
                 COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
-                COALESCE(dcg.for_userid, '') forUserId
+                COALESCE(dcg.for_userid,'') forUserId
                 FROM DK_DISCOUNTCOUPONGENERATION dcg
                 LEFT JOIN DK_USERS u ON u.id=dcg.for_userid AND u.status='A' AND dcg.for_userid='$userId'
                 WHERE 1
@@ -39,7 +39,7 @@ class DiscountCouponDao{
     }
     
     // CJ defined this function 2016-08-26
-    public static function getUserDiscountCouponAvailableForSharing($userId){
+    public static function getSharingDiscountCouponSetupListForUser($userId){
         $result = false;
         try{
             $connection = Yii::App()->db;
@@ -52,7 +52,8 @@ class DiscountCouponDao{
                     COALESCE(dcg.cashback_based, 0) cashbackBased,
                     COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
                     COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
-                    COALESCE(dcg.for_userid, '') userId
+                    COALESCE(dcg.for_userid, '') userId,
+                    COALESCE(dcg.share_limit, 0) shareLimit,
                     FROM DK_DISCOUNTCOUPONGENERATION dcg
                     WHERE 1
                     AND dcg.status='A'
@@ -72,7 +73,7 @@ class DiscountCouponDao{
     
     // CJ defined this function 2016-08-26
     public static function getCountUserSharedDiscountCoupon($userId, $discountCouponId){
-        $result = false;
+        $countUserSharedDiscountCoupon = 0;
         try{
             $connection = Yii::App()->db;
             $sql= "SELECT
@@ -83,12 +84,14 @@ class DiscountCouponDao{
                     AND usdc.discount_couponid='$discountCouponId'
                     AND usdc.status='S'";
             $command = $connection->createCommand($sql);
-            $countUserSharedDiscountCouponDetailsArr = $command->queryAll();
-            if(count($countUserSharedDiscountCouponDetailsArr)>0 && $countUserSharedDiscountCouponDetailsArr!=false){
-                $result =  $countUserSharedDiscountCouponDetailsArr;
+            $retDataArr = $command->queryAll();
+            if(count($retDataArr)>0 && $retDataArr!=false){
+                $countUserSharedDiscountCoupon =  $retDataArr[0]['countUserSharedDiscountCoupon'];
             }
-        }catch(Exception $ex){}
-        return $result;
+        }catch(Exception $ex){
+            $countUserSharedDiscountCoupon = 'FALSE';
+        }
+        return $countUserSharedDiscountCoupon;
     }
     
 }
