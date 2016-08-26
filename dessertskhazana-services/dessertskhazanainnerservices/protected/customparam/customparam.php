@@ -1218,31 +1218,25 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check udblogId key present or not
-        if(array_key_exists('order_cartid', $paramJsonData)){
-            if($paramJsonData['order_cartid']!='' && $paramJsonData['order_cartid']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check udblogId key present or not
+        // check ordercart_itemid key present or not
         if(array_key_exists('ordercart_itemid', $paramJsonData)){
-            if($paramJsonData['ordercart_itemid']!='' && $paramJsonData['ordercart_itemid']!=false){
+            if($paramJsonData['ordercart_itemid']!='' && ($paramJsonData['ordercart_itemid'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check udblogId key present or not
-        if(array_key_exists('reason', $paramJsonData)){
-            if($paramJsonData['reason']!='' && $paramJsonData['reason']!=false){
+        // check qty key present or not
+        if(array_key_exists('qty', $paramJsonData)){
+            if($paramJsonData['qty']!='' && ($paramJsonData['qty'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check status key present or not
-        if(array_key_exists('status', $paramJsonData)){
-            if($paramJsonData['status']!='' && $paramJsonData['status']!=false){
+        // check totalamount key present or not
+        if(array_key_exists('totalamount', $paramJsonData)){
+            if($paramJsonData['totalamount']!='' && ($paramJsonData['totalamount'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==6){
+        if($givenParamDataCorrectCount==5){
             $retStatus = 'TRUE';
         }
         return $retStatus;
