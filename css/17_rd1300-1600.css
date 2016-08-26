@@ -3668,6 +3668,7 @@
     /* user share offers css code */
     
     .uca_shareoffersSectionContainerDivClass{
+        padding-top:20px!important;
         background-color:#f6f4fb!important;
     }
 
