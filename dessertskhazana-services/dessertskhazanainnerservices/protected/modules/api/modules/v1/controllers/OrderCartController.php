@@ -68,26 +68,6 @@ class OrderCartController extends V1Controller{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
             }
         }
-        
-        if(ComponentsHttp::httpMethod()=="DELETE"){
-            // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataToRemoveItemFromOrdercart($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
-                    $OrderCartServicesV1 = new OrderCartServicesV1();
-                    $rspDetails = $OrderCartServicesV1->removeItemDetailsFromOrdercart($dkParamDataArr);
-                    ComponentsJson::GenerateJsonAndSend($rspDetails);
-                }else{
-                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
-                }
-            }else{
-                commonfunction :: generateResponseDataForInvalidRequestParamKey();
-            }
-        }
-        
         if(ComponentsHttp::httpMethod()=="PUT"){
             // checking requested param key name 
             $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
@@ -106,7 +86,24 @@ class OrderCartController extends V1Controller{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
             }
         }
-        
+        if(ComponentsHttp::httpMethod()=="DELETE"){
+            // checking requested param key name 
+            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataToRemoveItemFromOrdercart($dkParamDataArr);
+                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                    $OrderCartServicesV1 = new OrderCartServicesV1();
+                    $rspDetails = $OrderCartServicesV1->removeItemDetailsFromOrdercart($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
     }
     
 }
