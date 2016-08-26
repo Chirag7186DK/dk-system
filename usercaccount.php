@@ -300,7 +300,7 @@ include "Site_config.inc.php";
                                 <input order-productqtyinput-directive type='text' ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
                             <p class="ordercartRequestedEachItemOperationPClass">
-                                <button ng-click="updateItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
+                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
                                 <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>REMOVE</button>
                                 <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemCheckoutBtnClass'>CHECKOUT</button>
                             </p>
@@ -585,7 +585,7 @@ include "Site_config.inc.php";
                             Estimated Amt(Rs): {{eachPartyOrderDetailsArrObj.estimatedAmt}}
                         </p>
                         <p ng-if="eachPartyOrderDetailsArrObj.porStatus=='PP'" class="poRequirementsPClass">
-                            <button ng-click="updateItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
+                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
                                 MAKE PAYMENT (Rs: {{eachPartyOrderDetailsArrObj.confirmedAmt}})
                             </button>
                         </p>
