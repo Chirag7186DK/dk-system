@@ -274,7 +274,7 @@ include "Site_config.inc.php";
                         <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartRequestedEachItemImageDivClass'>
                             <img style='width:100%;' class='ordercartRequestedEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
                         </div>
-                        <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartRequestedEachItemDetailsDivClass'>
+                        <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartRequestedEachItemDetailsDivClass ordercartRequestedEachItemDetailsDivClass{{$index}}'>
                             <p class="ordercartRequestedEachItemSellerNamePClass">
                                 Seller: {{ordercartRequestedEachItemDetailsArrObj.shopStoreName}}
                             </p>
@@ -300,7 +300,7 @@ include "Site_config.inc.php";
                                 <input order-productqtyinput-directive type='text' data-itemprice='{{ordercartRequestedEachItemDetailsArrObj.itemPerpriceIncart}}'  ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
                             <p class="ordercartRequestedEachItemOperationPClass">
-                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass');" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
+                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
                                 <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>REMOVE</button>
                                 <button class='btn ordercartRequestedEachItemCheckoutBtnClass'>CHECKOUT</button>
                             </p>
