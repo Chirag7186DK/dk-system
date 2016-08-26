@@ -524,9 +524,19 @@ class commonfunction{
     
     
     // CJ defined this function 2016-08-26
-    public static function preparedDataToGetSharingDiscountCouponList($unMd5UserId){
+    public static function preparedDataToGetUserSharingDiscountCouponList($unMd5UserId){
+        $userSharingDiscountCouponList = array();
         if($unMd5UserId!='' && ($unMd5UserId)>0){
-            
+            // fetch setup discount coupon list of user for sharing purpose
+            $sharingDiscountCouponSetupListByUserArr = DiscountCouponDao :: getSharingDiscountCouponSetupListByUser($unMd5UserId);
+            if(count($sharingDiscountCouponSetupListByUserArr)>0 && $sharingDiscountCouponSetupListByUserArr!=false){
+                // iterate each setup discount coupon list
+                for($eachIndex = 0; $eachIndex<count($sharingDiscountCouponSetupListByUserArr); $eachIndex++){
+                    // check how many times user has been shared discount coupon list to others
+                    $discountCouponId = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgId'];
+                    
+                }
+            }
         }
     }
 
