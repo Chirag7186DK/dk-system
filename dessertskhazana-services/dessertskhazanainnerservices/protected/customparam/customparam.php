@@ -1156,53 +1156,8 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-14
-    public static function checkParamDataToRemoveItemFromOrdercart($paramJsonData){
-        $retStatus = 'FALSE';
-        $givenParamDataCorrectCount = 0;
-        // check isUserLoggedIn key present or not
-        if(array_key_exists('user_sessionid', $paramJsonData)){
-            if(strlen($paramJsonData['user_sessionid'])>=20){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check udblogId key present or not
-        if(array_key_exists('udblogId', $paramJsonData)){
-            if(strlen($paramJsonData['udblogId'])>=20){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check udblogId key present or not
-        if(array_key_exists('order_cartid', $paramJsonData)){
-            if($paramJsonData['order_cartid']!='' && $paramJsonData['order_cartid']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check udblogId key present or not
-        if(array_key_exists('ordercart_itemid', $paramJsonData)){
-            if($paramJsonData['ordercart_itemid']!='' && $paramJsonData['ordercart_itemid']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check udblogId key present or not
-        if(array_key_exists('reason', $paramJsonData)){
-            if($paramJsonData['reason']!='' && $paramJsonData['reason']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check status key present or not
-        if(array_key_exists('status', $paramJsonData)){
-            if($paramJsonData['status']!='' && $paramJsonData['status']!=false){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if($givenParamDataCorrectCount==6){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
     
-    // CJ defined this function 2016-08-14
+    // CJ defined this function 2016-08-26
     public static function checkParamDataToUpdateItemFromOrdercart($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
@@ -1233,6 +1188,46 @@ class customparam{
         // check totalamount key present or not
         if(array_key_exists('product_features_totalamount', $paramJsonData)){
             if($paramJsonData['product_features_totalamount']!='' && ($paramJsonData['product_features_totalamount'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==5){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
+      // CJ defined this function 2016-08-26
+    public static function checkParamDataToRemoveItemFromOrdercart($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check ordercart_itemid key present or not
+        if(array_key_exists('ordercart_itemid', $paramJsonData)){
+            if($paramJsonData['ordercart_itemid']!='' && ($paramJsonData['ordercart_itemid'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check reason key present or not
+        if(array_key_exists('reason', $paramJsonData)){
+            if($paramJsonData['reason']!='' && strlen($paramJsonData['reason'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check status key present or not
+        if(array_key_exists('status', $paramJsonData)){
+            if($paramJsonData['status']=='ZC' || $paramJsonData['status']=='ZA'){
                 $givenParamDataCorrectCount++;
             }
         }
