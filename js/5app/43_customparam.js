@@ -1650,6 +1650,28 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
 }
 
 
+// CJ defined this function 2016-08-26
+function getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass){
+    try{
+        var retParamObj = {};
+        var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+        if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
+            && jQuery.isEmptyObject(userLoggedDataObj)===false){
+            retParamObj = $.extend(retParamObj, userLoggedDataObj);
+            
+        }
+        if(Object.keys(retParamObj).length===13){
+            return retParamObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        // console.log("problem in getParamDataToUpdateProductInOrdercart ex=>"+ex);
+        return false;
+    }
+}
+
+
 // CJ defined this function 2016-08-06
 function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
     var retParamObj = {};
