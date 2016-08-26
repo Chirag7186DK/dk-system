@@ -355,6 +355,100 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
+        // checkProductDataToUdateInOrdercart 
+        $rootScope.checkProductDataToUdateInOrdercart = function(productDetailsObj, fcontentClass){
+            try{
+                // validating product data status
+                var validatedDataStatus = validateProductDataToUpdateInOrdercart(fcontentClass);
+                if(validatedDataStatus===true && 
+                    (productDetailsObj!==false && productDetailsObj!==undefined && jQuery.isEmptyObject(productDetailsObj)===false)){
+                    $rootScope.updateItemOrdercart(productDetailsObj, fcontentClass);
+                }else{
+                    var notifyMsgStr = "Please enter product qty / message to update item in order cart !";
+                    showNotificationBoxMsg(notifyMsgStr);
+                }
+            }catch(ex){
+                console.log("problem in checkProductDataToUdateInOrdercart=>"+ex);
+            }
+        };
+        
+        // updateItemOrdercart
+        $rootScope.updateItemOrdercart = function(productDetailsObj, fcontentClass){
+            try{
+                // check is user logged in or not session
+                var paramDataObj = getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass);
+                if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
+                
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    
+                    // calling OrderCartServices 
+                    OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var isItemUpdatedFromOrdercart = 'FALSE';
+                            var notificationMsgStr = "Please try again to update item in order cart !";
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                isItemUpdatedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemUpdatedFromOrdercart', retResponseJson);
+                            }
+                            if(isItemUpdatedFromOrdercart==='TRUE'){
+                                notificationMsgStr = "Item updated in order cart successfully !";
+                                // refresh list
+                                $rootScope.populateOrdercartRequestedItemList('R');
+                            }
+                            showNotificationBoxMsg(notificationMsgStr);
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in updateItemOrdercart ex=>"+ex);
+            }
+        };
+        
+        // removeItemOrdercart
+        $rootScope.removeItemOrdercart = function(productDetailsObj){
+            try{
+                var paramDataObj = getParamDataToRemoveProductInOrdercart(productDetailsObj);
+                if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
+                
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    
+                    // calling OrderCartServices 
+                    OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var isItemRemovedFromOrdercart = 'FALSE';
+                            var notificationMsgStr = "Please try again to remove item from order cart !";
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                isItemRemovedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemRemovedFromOrdercart', retResponseJson);
+                            }
+                            if(isItemRemovedFromOrdercart==='TRUE'){
+                                notificationMsgStr = "Item remove from order cart successfully !";
+                                // refresh list
+                                $rootScope.populateOrdercartRequestedItemList('R');
+                            }
+                            showNotificationBoxMsg(notificationMsgStr);
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in updateItemOrdercart ex=>"+ex);
+            }
+        };
+        
         
         // displayPartyOrderInfoSectionToAccessInUserCAccount
         $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
@@ -401,59 +495,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         };
         
         
-        // checkProductDataToUdateInOrdercart 
-        $rootScope.checkProductDataToUdateInOrdercart = function(productDetailsObj, fcontentClass){
-            try{
-                // validating product data status
-                var validatedDataStatus = validateProductDataToUpdateInOrdercart(fcontentClass);
-                if(validatedDataStatus===true && 
-                    (productDetailsObj!==false && productDetailsObj!==undefined && jQuery.isEmptyObject(productDetailsObj)===false)){
-                    $rootScope.updateItemOrdercart(productDetailsObj, fcontentClass);
-                }else{
-                    var notifyMsgStr = "Please enter product qty / message to update item in order cart !";
-                    showNotificationBoxMsg(notifyMsgStr);
-                }
-            }catch(ex){
-                console.log("problem in checkProductDataToUdateInOrdercart=>"+ex);
-            }
-        };
-        
-        // updateItemOrdercart
-        $rootScope.updateItemOrdercart = function(productDetailsObj, fcontentClass){
-            try{
-                // check is user logged in or not session
-                var paramDataObj = getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass);
-                if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
-                
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    
-                    // calling OrderCartServices 
-                    OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
-                        $rootScope.$apply(function(){
-                            var isItemUpdatedFromOrdercart = 'FALSE';
-                            var notificationMsgStr = "Please try again to update item in order cart !";
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isItemUpdatedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemUpdatedFromOrdercart', retResponseJson);
-                            }
-                            if(isItemUpdatedFromOrdercart==='TRUE'){
-                                notificationMsgStr = "Item updated in order cart successfully !";
-                            }
-                            showNotificationBoxMsg(notificationMsgStr);
-                        });
-                    });
-                }
-            }catch(ex){
-                showHideLoaderBox('hide');
-                console.log("problem in updateItemOrdercart ex=>"+ex);
-            }
-        };
         
     }catch(ex){
         console.log("problem in UCustomerController ex=>"+ex);
