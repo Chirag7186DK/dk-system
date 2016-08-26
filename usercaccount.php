@@ -99,7 +99,7 @@ include "Site_config.inc.php";
             <div ng-if="requestedSectionName==='personalinfo'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoSectionContainerDivClass">
                 
                 <!-- user personal info as text display -->
-                <div ng-if="displayPersonalInfoSectionType==='text_personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoTextSectionContainerDivClass">
+                <div ng-if="displayPersonalInfoSectionType==='text_personalinfo'" ng-controller="UsersController" ng-init="populateUserPersonalInfoInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoTextSectionContainerDivClass">
                     <!-- edit personal info label text -->
                     <p class='uca_editProfileLblPClass pull-right' ng-click="showEditableUserCustomerProfileInfo('edit_personalinfo')">
                         <i class="fa fa-pencil"> Edit Profile</i>
@@ -147,7 +147,7 @@ include "Site_config.inc.php";
                 </div>
                 
                 <!-- user personal info as editable mode -->
-                <div ng-if="displayPersonalInfoSectionType==='edit_personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount(); attachedFieldValidationUserProfileInfo();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
+                <div ng-if="displayPersonalInfoSectionType==='edit_personalinfo'" ng-controller="UsersController" ng-init="populateUserPersonalInfoInUserCAccount(); attachedFieldValidationUserProfileInfo();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
                     <!-- close edit personal info label text -->
                     <p class='uca_closeProfileLblPClass pull-right' ng-click="closeEditableUserCustomerProfileInfo('text_personalinfo')">
                         <i class="fa fa-close"> Close Profile</i>
@@ -261,7 +261,7 @@ include "Site_config.inc.php";
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
                 <!-- requested order cart all items info will be displayed -->
-                <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllItemListSectionDivClass'>
+                <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UsersController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllItemListSectionDivClass'>
                     
                     <!-- requesting order item will be filtering -->
                     <div ng-if="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartRequestedItemDivClass">
@@ -770,7 +770,7 @@ include "Site_config.inc.php";
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- checking which section is requested by end user for showing purpose  -->
-        <div ng-controller="UCustomerController" ng-init="checkRequestedSectionAvailableToAccessInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+        <div ng-controller="UsersController" ng-init="checkRequestedSectionAvailableToAccessInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
         
         <!-- load all css & js file-->
         <?php
