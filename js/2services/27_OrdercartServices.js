@@ -95,6 +95,12 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
                 console.log("problem in addProductDataInOrdercart ex=>"+ex);
             }
         };
+        
+        // ordercartItemList
+        orderDetails.ordercartItemList = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
       
         // addItemOrdercart
         orderDetails.addItemOrdercart = function(preparedParamJsonObj){
@@ -102,15 +108,15 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
             return promiseObject;
         };
         
-        // ordercartItemList
-        orderDetails.ordercartItemList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
-        };
-        
         // updateItemOrdercart
         orderDetails.updateItemOrdercart = function(preparedParamJsonObj){
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
+        
+        // removeItemOrdercart
+        orderDetails.removeItemOrdercart = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'DELETE', '', preparedParamJsonObj).done(function(retResponseJson){});
             return promiseObject;
         };
         
