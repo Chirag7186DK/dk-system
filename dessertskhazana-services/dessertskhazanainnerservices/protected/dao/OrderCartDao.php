@@ -486,17 +486,19 @@ class OrderCartDao{
             }
         }
         if(array_key_exists('updated_by', $paramJson)){
-            if($paramJson['updated_by']!=''){
+            if($paramJson['updated_by']!='' && ($paramJson['updated_by'])>0){
                 $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
             }
         }
-        if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_USERORDERCART SET ".rtrim($dynamicSql, ',');
-            $sqlQuery.=" WHERE id='".$paramJson['id']."'";
-            $command = $connection->createCommand($sqlQuery);
-            $result = $command->execute();
-            if($result>0){
-                $retStatus = true;
+        if($dynamicSql!='' && array_key_exists('ordercart_itemid', $paramJson)==true){
+            if($paramJson['ordercart_itemid']!='' && ($paramJson['ordercart_itemid'])>0){
+                $sqlQuery = " UPDATE DK_USERORDERCART SET ".rtrim($dynamicSql, ',');
+                $sqlQuery.=" WHERE id='".$paramJson['ordercart_itemid']."'";
+                $command = $connection->createCommand($sqlQuery);
+                $result = $command->execute();
+                if($result>=0){
+                    $retStatus = true;
+                }
             }
         }
         return $retStatus;
