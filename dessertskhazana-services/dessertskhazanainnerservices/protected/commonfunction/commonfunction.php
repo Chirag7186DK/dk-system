@@ -538,9 +538,27 @@ class commonfunction{
                     $countUserSharedDiscountCoupon = DiscountCouponDao :: getCountUserSharedDiscountCoupon($unMd5UserId, $discountCouponId);
                     if($countUserSharedDiscountCoupon>=0 && $countUserSharedDiscountCoupon!='FALSE'
                         && $countUserSharedDiscountCoupon<=$shareLimit && $shareLimit>0){
+                        
+                        $promoCode = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgCode'];
+                        $promoTitle = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgTitle'];
+                        $isPercentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isPercentageBased'];
+                        $percentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['percentageBased'];
+                        $isCashbackBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isCashbackBased'];
+                        $cashbackBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['cashbackBased'];
+                        $aboveOrderAmt = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['aboveOrderAmt'];
+                        $aboveOrderAmtLblText = 'on order amount';
+                        $discountCouponMsg  = '';
+                        if($aboveOrderAmt>0 && $aboveOrderAmt!=false){
+                            $aboveOrderAmtLblText = " on above Rs $aboveOrderAmt order amount ";
+                        }
+                        if($isPercentageBased=='Y' && $percentageBased>0 && $percentageBased!=''){
+                            $discountCouponMsg = "Share this promo code $promoCode to your friends/colleagues will get him/her $percentageBased% off $aboveOrderAmtLblText !";
+                        }else if($isCashbackBased=='Y' && $cashbackBased>0 && $cashbackBased!=''){
+                            $discountCouponMsg = "Share this promo code $promoCode to your friends/colleagues will get him/her cashback Rs $cashbackBased $aboveOrderAmtLblText !";
+                        }
+                        $sharingDiscountCouponSetupListByUserArr[$eachIndex]['displayDiscountCouponMsg'] = $discountCouponMsg;
                         $sharingDiscountCouponSetupListByUserArr[$eachIndex]['remainingShareLimt'] = ($shareLimit-$countUserSharedDiscountCoupon);
                         array_push($userSharingDiscountCouponList, $sharingDiscountCouponSetupListByUserArr[$eachIndex]);
-                        
                     }
                 }
             }
