@@ -30,8 +30,8 @@ class OrderCartController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-08-06
-    public function actionAddProductData(){
+    // CJ defined this action 2016-08-14
+    public function actionManageOrdercartItem(){
         if(ComponentsHttp::httpMethod()=="POST"){
             // checking requested param key name 
             $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
@@ -50,11 +50,6 @@ class OrderCartController extends V1Controller{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
             }
         }
-    }
-    
-    // CJ defined this action 2016-08-14
-    public function actionManageOrdercartItemList(){
-        
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
             $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
