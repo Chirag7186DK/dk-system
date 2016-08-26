@@ -299,6 +299,9 @@ include "Site_config.inc.php";
                                 Qty
                                 <input order-productqtyinput-directive type='text' data-itemprice='{{ordercartRequestedEachItemDetailsArrObj.itemPerpriceIncart}}'  ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
+                            <p class="ordercartRequestedEachItemTotalAmtPClass">
+                                Total Amount: {{ordercartRequestedEachItemDetailsArrObj.itemTotalAmt}}
+                            </p>
                             <p class="ordercartRequestedEachItemOperationPClass">
                                 <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
                                 <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>REMOVE</button>
