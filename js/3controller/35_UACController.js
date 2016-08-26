@@ -376,7 +376,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         $rootScope.updateItemOrdercart = function(productDetailsObj, fcontentClass){
             try{
                 // check is user logged in or not session
-                var paramDataObj = getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass);
+                var paramDataObj = getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass);
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
                 
                     var jsonParamBlockUIObject = {};
@@ -414,7 +414,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         // removeItemOrdercart
         $rootScope.removeItemOrdercart = function(productDetailsObj){
             try{
-                var paramDataObj = getParamDataToRemoveProductInOrdercart(productDetailsObj);
+                var paramDataObj = getParamDataToRemoveItemFromOrdercart(productDetailsObj);
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
                 
                     var jsonParamBlockUIObject = {};
