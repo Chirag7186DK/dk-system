@@ -1688,37 +1688,33 @@ function getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass
 }
 
 
-// CJ defined this function 2016-08-06
+// CJ defined this function 2016-08-26
 function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
-    var retParamObj = {};
     try{
+        var retParamObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
-            retParamObj = $.extend(retParamObj, userLoggedDataObj);
-            
             if(productDetailsObj!==false && productDetailsObj!==undefined 
                 && jQuery.isEmptyObject(productDetailsObj)===false){
-                if(productDetailsObj.hasOwnProperty('ordercartId')===true
-                    && productDetailsObj.hasOwnProperty('ordercartItemId')===true){
-                    if(parseInt(productDetailsObj['ordercartId'])>0
-                        && parseInt(productDetailsObj['ordercartItemId'])>0){
-                        retParamObj['order_cartid'] = productDetailsObj['ordercartId'];
+                if(productDetailsObj.hasOwnProperty('ordercartItemId')===true){
+                    if(parseInt(productDetailsObj['ordercartItemId'])>0){
                         retParamObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
                         retParamObj['reason'] = 'Item removed by customer';
                         retParamObj['status'] = 'ZC';
+                        retParamObj = $.extend(retParamObj, userLoggedDataObj);
                     }
                 }
             }
         }
+        if(Object.keys(retParamObj).length===6){
+            return retParamObj;
+        }else{
+            return false;
+        }
     }catch(ex){
         // console.log("problem in getParamDataToRemoveItemFromOrdercart ex=>"+ex);
         retParamObj = {};
-    }
-    if(Object.keys(retParamObj).length===6){
-        return retParamObj;
-    }else{
-        return false;
     }
 }
 
