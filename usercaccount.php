@@ -297,12 +297,12 @@ include "Site_config.inc.php";
                             </p>
                             <p class="ordercartRequestedEachItemQtyPClass">
                                 Qty
-                                <input order-productqtyinput-directive type='text' ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
+                                <input order-productqtyinput-directive type='text' data-itemprice='{{ordercartRequestedEachItemDetailsArrObj.itemPerpriceIncart}}'  ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
                             <p class="ordercartRequestedEachItemOperationPClass">
-                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
+                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass');" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
                                 <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>REMOVE</button>
-                                <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemCheckoutBtnClass'>CHECKOUT</button>
+                                <button class='btn ordercartRequestedEachItemCheckoutBtnClass'>CHECKOUT</button>
                             </p>
                         </div>
                     </div>
