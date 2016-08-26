@@ -526,7 +526,7 @@ function validateUserRatingReviewAbtProduct(fcClass){
     }
 }
 
-////////////////////////// product related code /////////////////////
+////////////////////////// order cart related code /////////////////////
 
 
 // CJ defined this function 2016-08-06
@@ -564,6 +564,35 @@ function validateProductDataToAddInOrdercart(fcClass){
         return false;
     }
 }
+
+
+// CJ defined this function 2016-08-26
+function validateProductDataToUpdateInOrdercart(fcClass){
+    try{
+        var blankFieldValueCount = 0 ;
+        if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
+            if($('.'+fcClass).length===1){
+                if($('.'+fcClass).find("input[type='text']").length===1){
+                    var userProductQty = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
+                    if(userProductQty==='' || userProductQty===false || userProductQty===undefined || parseInt(userProductQty)<0){
+                        $('.'+fcClass).find("input[type='text']").css({'border-color':'#f18178'});
+                        blankFieldValueCount++;
+                    }else{
+                        $('.'+fcClass).find("input[type='text']").css({'border-color':'#ccc'});
+                    }
+                }
+            }
+        }
+        if(blankFieldValueCount>0){
+            return false;
+        }else{
+            return true;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
 
 ////////////////////////// user personal info /////////////////////
 
