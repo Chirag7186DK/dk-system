@@ -401,6 +401,64 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         };
         
         
+        // checkProductDataToUdateInOrdercart 
+        $rootScope.checkProductDataToUdateInOrdercart = function(productDetailsObj, fcontentClass){
+            try{
+                // validating product data status
+                var validatedDataStatus = validateProductDataToUpdateInOrdercart(fcontentClass);
+                if(validatedDataStatus===true && 
+                    (productDetailsObj!==false && productDetailsObj!==undefined && jQuery.isEmptyObject(productDetailsObj)===false)){
+                    $rootScope.updateItemOrdercart(productDetailsObj, fcontentClass);
+                }else{
+                    var notifyMsgStr = "Please enter product qty / message to update item in order cart !";
+                    showNotificationBoxMsg(notifyMsgStr);
+                }
+            }catch(ex){
+                console.log("problem in checkProductDataToUdateInOrdercart=>"+ex);
+            }
+        };
+        
+        // updateItemOrdercart
+        $rootScope.updateItemOrdercart = function(productDetailsObj, fcontentClass){
+            try{
+                // check is user logged in or not session
+                var paramDataObj = getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass);
+                if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
+                
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    
+                    // calling OrderCartServices 
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItemList", 'apiFile', 'DELETE', '', fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var isItemUpdatedFromOrdercart = 'FALSE';
+                            var notificationMsgStr = "Please try again to update item in your order cart !";
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                isItemUpdatedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemUpdatedFromOrdercart', retResponseJson);
+                            }
+                            if(isItemUpdatedFromOrdercart==='TRUE'){
+                                notificationMsgStr = "Item updated in your order cart !";
+                                // refresh user order cart dashboard summary data using services
+                                orderDetails.refreshUserOrdercartDashboardSummaryDataDetails();
+                                // refresh order cart item list using services
+                                orderDetails.ordercartItemList('R');
+                            }
+                            showNotificationBoxMsg(notificationMsgStr);
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in removeItemOrdercart ex=>"+ex);
+            }
+        };
+        
     }catch(ex){
         console.log("problem in UCustomerController ex=>"+ex);
     }
