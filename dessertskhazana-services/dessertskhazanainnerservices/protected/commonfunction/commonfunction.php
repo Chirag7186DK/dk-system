@@ -540,7 +540,6 @@ class commonfunction{
                         && $countUserSharedDiscountCoupon<=$shareLimit && $shareLimit>0){
                         
                         $promoCode = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgCode'];
-                        $promoTitle = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgTitle'];
                         $isPercentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isPercentageBased'];
                         $percentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['percentageBased'];
                         $isCashbackBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isCashbackBased'];
