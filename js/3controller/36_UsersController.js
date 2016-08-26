@@ -354,7 +354,6 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
             }
         };
         
-        
         // displayOrdercartSectionToAccessInUserCAccount
         $rootScope.displayOrdercartSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
@@ -506,7 +505,6 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
             }
         };
         
-        
         // displayPartyOrderInfoSectionToAccessInUserCAccount
         $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
@@ -550,6 +548,9 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
                 $('#'+clickedElementId).addClass('co_SelectedTabLabelSectionContainerLIClass');
             }
         };
+        
+        
+        
         
         
     }catch(ex){
