@@ -1658,9 +1658,25 @@ function getParamDataToUpdateProductInOrdercart(productDetailsObj, fcontentClass
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
             retParamObj = $.extend(retParamObj, userLoggedDataObj);
-            
+            if($('.'+fcontentClass).find("input[type='text']").length===1){
+                var userProductQty = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
+                var productPrice = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").attr('data-itemprice')));
+                if(parseInt(userProductQty)>0 && userProductQty!=='' 
+                    && parseFloat(productPrice)>0 && productPrice!==''
+                    && productDetailsObj!==false && productDetailsObj!==undefined 
+                    && jQuery.isEmptyObject(productDetailsObj)===false){
+                    if(productDetailsObj.hasOwnProperty('ordercartItemId')===true){
+                        if(parseInt(productDetailsObj['ordercartItemId'])>0){
+                            var productTotalAmt = (userProductQty * productPrice);
+                            retParamObj['product_featuresqty'] = userProductQty;
+                            retParamObj['product_features_totalamount'] = productTotalAmt;
+                            retParamObj['ordercart_itemid'] = productTotalAmt;
+                        }
+                    }
+                }
+            }
         }
-        if(Object.keys(retParamObj).length===13){
+        if(Object.keys(retParamObj).length>=5){
             return retParamObj;
         }else{
             return false;
