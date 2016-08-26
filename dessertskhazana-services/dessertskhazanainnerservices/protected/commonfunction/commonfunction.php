@@ -433,7 +433,6 @@ class commonfunction{
     /////////////////////// coupon discount related code ////////////////////////////////
     
     
-    
     // CJ defined this function 2016-08-13
     public static function checkDiscountCouponAvailableForUser($unMd5UserId, $subtotalOrderAmt, $retDataType='msgString'){
         $retData = array();
@@ -524,6 +523,14 @@ class commonfunction{
     }
     
     
+    // CJ defined this function 2016-08-26
+    public static function preparedDataToGetSharingDiscountCouponList($unMd5UserId){
+        if($unMd5UserId!='' && ($unMd5UserId)>0){
+            
+        }
+    }
+
+        
     ///////////////////////////// wishlist related code ////////////////////////////////
     
     
