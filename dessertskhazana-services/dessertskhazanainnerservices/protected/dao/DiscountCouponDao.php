@@ -60,6 +60,11 @@ class DiscountCouponDao{
                     AND CURDATE() BETWEEN dcg.start_datedtime AND dcg.end_datedtime
                     AND dcg.for_userid='$userId'
                     AND dcg.is_universally='N'
+                    AND ( 
+                        (dcg.is_percentagebased='Y' AND dcg.is_cashback_based='N' AND dcg.percentage_based>0)
+                            OR
+                        (dcg.is_percentagebased='N' AND dcg.is_cashback_based='Y' AND dcg.cashback_based>0)
+                    )
                     AND dcg.can_shareit='Y'
                     AND dcg.share_limit>0";
             $command = $connection->createCommand($sql);
