@@ -449,6 +449,63 @@
 
             </div>
             
+            
+            <!-- share offers section details with each tab level -->
+            <div ng-if="requestedSectionName==='shareoffers'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_shareoffersSectionContainerDivClass">
+
+                <!-- share offers all section header title -->
+                <div scroll-horizontally-shareoffers-allsectionheader-directive id='uca_shareoffersAllSectionHeaderContainerDivId' class='uca_shareoffersAllSectionHeaderContainerDivClass'>
+                    <li ng-click="uca_toggleShareoffersSectionList('availableshareoffers', 'uca_shareoffersEachTabLabelSectionContainerLIId1', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all available share offers ' id='uca_shareoffersEachTabLabelSectionContainerLIId1' class='uca_shareoffersEachTabLabelSectionContainerLIClass uca_shareoffersSelectedTabLabelSectionContainerLIClass'>
+                        Can Share Offers
+                    </li>
+                    <li ng-click="uca_toggleShareoffersSectionList('alloffersshared', 'uca_shareoffersEachTabLabelSectionContainerLIId2', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all offers shared by you' id='uca_shareoffersEachTabLabelSectionContainerLIId2' class='uca_shareoffersEachTabLabelSectionContainerLIClass'>
+                        All Offers Shared 
+                    </li>
+                </div>
+
+                <!-- create horizontally space div between -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+
+                <!-- offers can be share info will be displayed -->
+                <div ng-if="displayShareOffersSectionType==='availableshareoffers'" ng-controller="UCustomerController" ng-init="populateUserSharingDiscountCouponList()" id='uca_userSharingAllDiscountCouponListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingAllDiscountCouponListSectionDivClass'>
+                    
+                    <!-- share offers can be filtering -->
+                    <div ng-if="userSharingAllDiscountCouponDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextSharingOffersDivClass">
+                        <label class="searchTextSharingoffersILblClass">Use for filtering and access fast offers sharing to your colleagues/friends !</label>
+                        <input ng-model="searchTextSharingoffers" type="text" class="form-control" placeholder="Find offers to share with your friends/colleagues !">
+                    </div>
+                    
+                    <!-- each sharing offers will display -->
+                    <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListSectionDivClass">
+                        <p class="shareOffersMsgPClass">
+                            {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
+                        </p>
+                        <p class="shareOffersLimitPClass">
+                            {{userSharingEachDiscountCouponDetailsArrObj.shareLimit}}
+                        </p>
+                        <p class="shareOffersLimitPClass">
+                            {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
+                        </p>
+                        <p class="shareOffersExpiryDateTimePClass">
+                            {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
+                        </p>
+                        <p class="shareOffersBtnPClass">
+                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn shareOffersBtnClass'>
+                                SHARE OFFERS
+                            </button>
+                        </p>
+                    </div>
+                    
+                    <!-- no offers available for sharing purpose -->
+                    <div ng-if="userSharingAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharingOffersFoundDivClass">
+                        <p class="fa fa-gift shareOffersIconClass">No share offers available for you !</p>
+                    </div>
+                </div>
+                
+                
+
+            </div>
+            
             <!-- party order section details with each tab level -->
             <div ng-if="requestedSectionName==='partyorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_SectionContainerDivClass">
                 
