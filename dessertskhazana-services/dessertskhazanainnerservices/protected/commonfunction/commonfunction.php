@@ -371,10 +371,10 @@ class commonfunction{
                 array("displayTitle"=>"Personal Info", "hoverTitle"=>"Click here to see personal info details", "sectionName"=>"personalinfo"),
                 array("displayTitle"=>"Change Password", "hoverTitle"=>"Click here to change your password details", "sectionName"=>"changepassword"),
                 array("displayTitle"=>"Your Orders", "hoverTitle"=>"Click here to see your orders details", "sectionName"=>"ordercart"),
-                array("displayTitle"=>"Party Order", "hoverTitle"=>"Click here to see your party orders", "sectionName"=>"partyorder"),
-                array("displayTitle"=>"Customize Order", "hoverTitle"=>"Click here to see your customize orders", "sectionName"=>"customizeorder"),
-                array("displayTitle"=>"Share Offers", "hoverTitle"=>"Click here to see your share offers", "sectionName"=>"shareoffers"),
                 array("displayTitle"=>"My Offers", "hoverTitle"=>"Click here to see your offers", "sectionName"=>"myoffers"),
+                array("displayTitle"=>"Share Offers", "hoverTitle"=>"Click here to see your share offers", "sectionName"=>"shareoffers"),
+                array("displayTitle"=>"Party Order", "hoverTitle"=>"Click here to see your party orders", "sectionName"=>"partyorder"),
+                array("displayTitle"=>"Customize Order", "hoverTitle"=>"Click here to see your customize orders", "sectionName"=>"customizeorder")
             );
             $retJsonData['userDetails'] = array(
                 "user_sessionid"=>$user_sessionid,
@@ -525,7 +525,7 @@ class commonfunction{
     
     // CJ defined this function 2016-08-26
     public static function preparedDataToGetUserSharingDiscountCouponList($unMd5UserId){
-        $userSharingDiscountCouponList = array();
+        $userSharingAllDiscountCouponList = array();
         if($unMd5UserId!='' && ($unMd5UserId)>0){
             // fetch setup discount coupon list of user for sharing purpose
             $sharingDiscountCouponSetupListByUserArr = DiscountCouponDao :: getSharingDiscountCouponSetupListByUser($unMd5UserId);
@@ -557,12 +557,12 @@ class commonfunction{
                         }
                         $sharingDiscountCouponSetupListByUserArr[$eachIndex]['displayDiscountCouponMsg'] = $discountCouponMsg;
                         $sharingDiscountCouponSetupListByUserArr[$eachIndex]['remainingShareLimt'] = ($shareLimit-$countUserSharedDiscountCoupon);
-                        array_push($userSharingDiscountCouponList, $sharingDiscountCouponSetupListByUserArr[$eachIndex]);
+                        array_push($userSharingAllDiscountCouponList, $sharingDiscountCouponSetupListByUserArr[$eachIndex]);
                     }
                 }
             }
         }
-        return $userSharingDiscountCouponList;
+        return $userSharingAllDiscountCouponList;
     }
 
         
