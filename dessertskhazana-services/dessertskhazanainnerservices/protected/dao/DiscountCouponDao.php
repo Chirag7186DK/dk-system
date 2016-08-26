@@ -39,7 +39,7 @@ class DiscountCouponDao{
     }
     
     // CJ defined this function 2016-08-26
-    public static function getSharingDiscountCouponSetupListForUser($userId){
+    public static function getSharingDiscountCouponSetupListByUser($userId){
         $result = false;
         try{
             $connection = Yii::App()->db;
@@ -69,9 +69,9 @@ class DiscountCouponDao{
                     AND dcg.can_shareit='Y'
                     AND dcg.share_limit>0";
             $command = $connection->createCommand($sql);
-            $userDiscountCouponAvailableForSharingDetailsArr = $command->queryAll();
-            if(count($userDiscountCouponAvailableForSharingDetailsArr)>0 && $userDiscountCouponAvailableForSharingDetailsArr!=false){
-                $result =  $userDiscountCouponAvailableForSharingDetailsArr;
+            $userDiscountCouponAvailableBySharingDetailsArr = $command->queryAll();
+            if(count($userDiscountCouponAvailableBySharingDetailsArr)>0 && $userDiscountCouponAvailableBySharingDetailsArr!=false){
+                $result =  $userDiscountCouponAvailableBySharingDetailsArr;
             }
         }catch(Exception $ex){}
         return $result;
