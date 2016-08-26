@@ -17,7 +17,7 @@ class DiscountCouponServicesV1 implements IDiscountCouponServicesV1{
                 $userId = $userSessionDetailsData['unmd5UserId'];
                 $retDataArr = commonfunction :: preparedDataToGetUserSharingDiscountCouponList($userId);
                 if(count($retDataArr)>0 && $retDataArr!=false){
-                    $rspDetails['userSharingDiscountCouponList'] = $retDataArr;
+                    $rspDetails['userSharingAllDiscountCouponList'] = $retDataArr;
                 }
             }
         } 
