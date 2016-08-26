@@ -432,8 +432,10 @@ class commonfunction{
     
     /////////////////////// coupon discount related code ////////////////////////////////
     
+    
+    
     // CJ defined this function 2016-08-13
-    public static function checkCouponDiscountAvailableForUser($unMd5UserId, $subtotalOrderAmt, $retDataType='msgString'){
+    public static function checkDiscountCouponAvailableForUser($unMd5UserId, $subtotalOrderAmt, $retDataType='msgString'){
         $retData = array();
         // checking coupoun discount avilable or not for user
         $discountCouponDetailsArr = DiscountCouponDao :: getDiscountCouponAvailableForUser($unMd5UserId);
