@@ -6,4 +6,28 @@
 */
 
 class DiscountCouponController extends V1Controller{
+    
+    // CJ defined this action 2016-08-14
+    public function actionUserSharingDiscountCouponList(){
+        
+        if(ComponentsHttp::httpMethod()=="GET"){
+            // checking requested param key name 
+            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
+                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                    $DiscountCouponServicesV1 = new DiscountCouponServicesV1();
+                    $rspDetails = $DiscountCouponServicesV1->getUserSharingDiscountCouponList($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
 }
