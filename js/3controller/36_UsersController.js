@@ -151,6 +151,9 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
             }
         };
         
+        
+        /////////////// code for user as customer /////////////////////////
+        
         $rootScope.isShowUCustomerAccountOtherSectionList = false;
         
         // checkRequestedSectionAvailableToAccessInUserCAccount
