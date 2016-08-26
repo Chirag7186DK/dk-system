@@ -72,7 +72,7 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
                     fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
 
                     // calling OrderCartServices 
-                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/AddProductData", 'apiFile', 'POST', '', fetchedParamJsonObj).done(function(retResponseJson){
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isProductAddedInOrdercart = 'FALSE';
@@ -98,13 +98,19 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
       
         // addItemOrdercart
         orderDetails.addItemOrdercart = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/AddProductData", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){});
             return promiseObject;
         };
         
         // ordercartItemList
         orderDetails.ordercartItemList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItemList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
+        
+        // updateItemOrdercart
+        orderDetails.updateItemOrdercart = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
             return promiseObject;
         };
         
