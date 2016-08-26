@@ -114,49 +114,6 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
             return promiseObject;
         };
         
-        // removeItemOrdercart
-        orderDetails.removeItemOrdercart = function(productDataObj){
-            try{
-                // check is user logged in or not session
-                var paramDataObj = getParamDataToRemoveItemFromOrdercart(productDataObj);
-                if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
-                
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    
-                    // calling OrderCartServices 
-                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItemList", 'apiFile', 'DELETE', '', fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
-                        $rootScope.$apply(function(){
-                            var isItemRemovedFromOrdercart = 'FALSE';
-                            var notificationMsgStr = "Please try again to remove item from your order cart !";
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isItemRemovedFromOrdercart = extractDataFromReturnAjaxResponse('DELETE', 'apiFile', 'isItemRemovedFromOrdercart', retResponseJson);
-                            }
-                            if(isItemRemovedFromOrdercart==='TRUE'){
-                                notificationMsgStr = "Item removed from your order cart !";
-                                // refresh user order cart dashboard summary data using services
-                                orderDetails.refreshUserOrdercartDashboardSummaryDataDetails();
-                                // refresh order cart item list using services
-                                orderDetails.ordercartItemList('R');
-                            }
-                            showNotificationBoxMsg(notificationMsgStr);
-                        });
-                    });
-                }
-            }catch(ex){
-                showHideLoaderBox('hide');
-                console.log("problem in removeItemOrdercart ex=>"+ex);
-            }
-        };
-        
-        
-        
         return orderDetails;
         
     }catch(ex){
