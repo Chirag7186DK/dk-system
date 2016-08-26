@@ -1,6 +1,6 @@
 
 // OrderCartController
-app.controller('UCustomerController', function($scope, $rootScope, $http, UsersServices, WishListServices, OrderCartServices){
+app.controller('UCustomerController', function($scope, $rootScope, $http, UsersServices, WishListServices, OrderCartServices, DiscountCouponServices){
     try{
         
         $rootScope.isShowUCustomerAccountOtherSectionList = false;
@@ -13,12 +13,14 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 && requestedSectionConfigDataObj!==undefined 
                 && jQuery.isEmptyObject(requestedSectionConfigDataObj)===false){
                 var requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
-                if(requestedSectionName==='ordercart'){
-                    $rootScope.displayOrdercartSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
-                }else if(requestedSectionName==='personalinfo'){
+                if(requestedSectionName==='personalinfo'){
                     $rootScope.displayPersonalInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='changepassword'){
                     $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
+                }else if(requestedSectionName==='ordercart'){
+                    $rootScope.displayOrdercartSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
+                }else if(requestedSectionName==='shareoffers'){
+                    $rootScope.displayShareoffersSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='partyorder'){
                     $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='customizeorder'){
@@ -451,6 +453,70 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 console.log("problem in updateItemOrdercart ex=>"+ex);
             }
         };
+        
+        
+        // displayShareoffersSectionToAccessInUserCAccount
+        $rootScope.displayShareoffersSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
+            $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
+            $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
+            $rootScope.uca_toggleShareoffersSectionList($rootScope.requestedSectionName);
+        };
+        
+        // uca_toggleShareoffersSectionList
+        $rootScope.uca_toggleShareoffersSectionList = function(displayShareOffersSectionType, clickedElementId, clickedElementParentClass){
+            if(displayShareOffersSectionType==='shareoffers' || displayShareOffersSectionType==='availableshareoffers'){
+                $rootScope.displayShareOffersSectionType = 'availableshareoffers';
+            }else{
+                $rootScope.displayShareOffersSectionType = displayShareOffersSectionType;
+            }
+            // toggle backgroun class also
+            if(clickedElementId!==undefined && clickedElementParentClass!==undefined){
+                $('.'+clickedElementParentClass).find('li').removeClass('uca_shareoffersSelectedTabLabelSectionContainerLIClass');
+                $('#'+clickedElementId).addClass('uca_shareoffersSelectedTabLabelSectionContainerLIClass');
+            }
+        };
+        
+        // populateUserSharingDiscountCouponList
+        $rootScope.populateUserSharingDiscountCouponList = function(){
+            try{
+                // check is user logged in or not session
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
+                    && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
+                
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    
+                    $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
+
+                    // calling DiscountCouponServices 
+                    DiscountCouponServices.userSharingDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var userSharingAllDiscountCouponDetailsArrObj =  false;
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                userSharingAllDiscountCouponDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userSharingAllDiscountCouponList', retResponseJson);
+                            }
+                            if(userSharingAllDiscountCouponDetailsArrObj!==false && userSharingAllDiscountCouponDetailsArrObj!==undefined 
+                                && jQuery.isEmptyObject(userSharingAllDiscountCouponDetailsArrObj)===false){
+                                $rootScope.userSharingAllDiscountCouponDetailsArrObj =  userSharingAllDiscountCouponDetailsArrObj;
+                            }else{
+                                $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in populateUserSharingDiscountCouponList ex=>"+ex);
+            }
+        };
+        
         
         
         // displayPartyOrderInfoSectionToAccessInUserCAccount
