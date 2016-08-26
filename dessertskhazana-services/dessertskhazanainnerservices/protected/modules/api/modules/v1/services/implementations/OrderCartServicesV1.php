@@ -67,17 +67,6 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
     }
 
     // CJ defined this action 2016-08-14
-    public function removeItemDetailsFromOrdercart($dkParamDataArr){
-        $rspDetails = array();
-        $rspDetails['isItemRemovedFromOrdercart'] = 'FALSE';
-        // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $rspDetails['isItemRemovedFromOrdercart'] = commonfunction :: preparedDataToRemoveItemFromOrdercart($dkParamDataArr);
-        } 
-        return $rspDetails;
-    }
-
-    // CJ defined this action 2016-08-14
     public function updateItemDetailsFromOrdercart($dkParamDataArr){
         $rspDetails = array();
         $rspDetails['isItemUpdatedFromOrdercart'] = 'FALSE';
@@ -91,5 +80,21 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
         } 
         return $rspDetails;
     }
-
+    
+    
+    // CJ defined this action 2016-08-14
+    public function removeItemDetailsFromOrdercart($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isItemRemovedFromOrdercart'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $rspDetails['isItemRemovedFromOrdercart'] = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
+            }
+        } 
+        return $rspDetails;
+    }
+    
 }
