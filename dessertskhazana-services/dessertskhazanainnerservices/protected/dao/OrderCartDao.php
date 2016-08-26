@@ -485,6 +485,11 @@ class OrderCartDao{
                 $dynamicSql.=" status='".$paramJson['status']."',";
             }
         }
+        if(array_key_exists('reason', $paramJson)){
+            if($paramJson['reason']!='' && ($paramJson['reason'])>0){
+                $dynamicSql.=" reason='".$paramJson['reason']."',";
+            }
+        }
         if(array_key_exists('updated_by', $paramJson)){
             if($paramJson['updated_by']!='' && ($paramJson['updated_by'])>0){
                 $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
