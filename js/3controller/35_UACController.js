@@ -400,6 +400,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                                 notificationMsgStr = "Item updated in order cart successfully !";
                                 // refresh list
                                 $rootScope.populateOrdercartRequestedItemList('R');
+                                OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
@@ -438,6 +439,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                                 notificationMsgStr = "Item remove from order cart successfully !";
                                 // refresh list
                                 $rootScope.populateOrdercartRequestedItemList('R');
+                                OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
