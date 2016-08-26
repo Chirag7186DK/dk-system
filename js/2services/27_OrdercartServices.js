@@ -72,7 +72,7 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
                     fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
 
                     // calling OrderCartServices 
-                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', fetchedParamJsonObj).done(function(retResponseJson){
+                    orderDetails.addItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isProductAddedInOrdercart = 'FALSE';
