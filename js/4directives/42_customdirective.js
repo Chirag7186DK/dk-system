@@ -621,3 +621,25 @@ app.directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', funct
         }, 1);
     };
 });
+
+// scroll-horizontally-shareoffers-allsectionheader-directive
+app.directive('scrollHorizontallyShareoffersAllsectionheaderDirective', function(){
+    return function(scope, element, attrs){
+        setTimeout(function(){
+            if($('#uca_shareoffersAllSectionHeaderContainerDivId').length>0){
+                var existingOwlOptions = {
+                    navigation:false,
+                    paginationSpeed:1000,
+                    goToFirstSpeed:2000,
+                    transitionStyle:"fade"
+                };
+                var owlObj = $("#uca_shareoffersAllSectionHeaderContainerDivId").data('owlCarousel');
+                if(owlObj!==false && owlObj!==undefined && owlObj!==''){
+                    owlObj.reinit(existingOwlOptions);
+                }else{
+                    $("#uca_shareoffersAllSectionHeaderContainerDivId").owlCarousel(existingOwlOptions);
+                }
+            }
+        }, 1);
+    };
+});
