@@ -1670,7 +1670,7 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                             var productTotalAmt = (userProductQty * productPrice);
                             retParamObj['product_featuresqty'] = userProductQty;
                             retParamObj['product_features_totalamount'] = productTotalAmt;
-                            retParamObj['ordercart_itemid'] = productTotalAmt;
+                            retParamObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
                         }
                     }
                 }
