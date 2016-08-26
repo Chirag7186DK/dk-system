@@ -1459,14 +1459,16 @@
 
     .cshopstore_userBreadcrumbULClass li a, 
     .cshopstore_userBreadcrumbULClass li a:hover{
-        color:#e6a4b7!important;
         border-bottom:2px dotted #CDCEE8!important;
         text-decoration:none!important;
         font-weight:100!important;
+        color:#828282!important;
+        font-size:12px!important;
     }
 
     .cshopstore_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
-        color:rgba(120, 120, 120, 0.6)!important;
+        color:#828282!important;
+        font-size:12px!important;
     }
 
     .cshopstore_dessertsProductTypeCountSClass{
@@ -2284,19 +2286,17 @@
 
     .wl_userBreadcrumbULClass li a, 
     .wl_userBreadcrumbULClass li a:hover{
-        color:#828282!important;
         border-bottom:2px dotted #CDCEE8!important;
         text-decoration:none!important;
         font-weight:100!important;
-        cursor:pointer!important;
-        font-size:14px!important;
+        color:#828282!important;
+        font-size:12px!important;
     }
 
     .wl_userBreadcrumbWishListTitleLIClass,
     .wl_userBreadcrumbWishListSignOutTitleLIClass{
         color:#828282!important;
-        cursor:pointer;
-        font-size:14px!important;
+        font-size:12px!important;
     }
 
 
@@ -2567,8 +2567,6 @@
     }
 
     .wld_createWLIconDisplayDivClass{
-        //color:rgb(199, 81, 136)!important;
-        //background-color:whitesmoke!important;
         color:#665800!important;
         background-color:#FFDC00!important;
         padding-top:10px!important;
@@ -2666,8 +2664,6 @@
     }
 
     .wld_viewYourWLIconDisplayDivClass{
-        //color:rgb(199, 81, 136)!important;
-        //background-color:whitesmoke!important;
         color:#665800!important;
         background-color:#FFDC00!important;
         padding-top:10px!important;
@@ -3367,6 +3363,11 @@
     }
 
     .ordercartRequestedEachItemPriceDetailsPClass{
+        color:#67717D!important;
+        font-size:13px!important;
+    }
+    
+    .ordercartRequestedEachItemTotalAmtPClass{
         color:#67717D!important;
         font-size:13px!important;
     }
