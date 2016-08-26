@@ -498,7 +498,7 @@
                     
                     <!-- no offers available for sharing purpose -->
                     <div ng-if="userSharingAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharingOffersFoundDivClass">
-                        <p class="noShareOffersFoundPClass">No share offers available for you !</p>
+                        <p class="noShareOffersFoundPClass">No offers available for you to share with your friends/colleague !</p>
                     </div>
                     
                 </div>
