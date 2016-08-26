@@ -426,7 +426,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
                     
                     // calling OrderCartServices 
-                    OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.removeItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isItemRemovedFromOrdercart = 'FALSE';
