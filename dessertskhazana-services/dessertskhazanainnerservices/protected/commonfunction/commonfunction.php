@@ -865,44 +865,6 @@ class commonfunction{
         return $retDataArr;
     }
     
-    // CJ defined this function 2016-08-14
-    public static function preparedDataToRemoveItemFromOrdercart($paramJsonData){
-        $isItemRemovedFromOrdercart =  'FALSE';
-        // checking param data length
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            // fetch user session data details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
-            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $paramJsonData['updated_by'] = $userSessionDetailsData['unmd5UserId'];
-                // removing item from order cart
-                $isItemRemovedFromOrdercart = OrderCartDao :: removeItemDetailsFromOrdercart($paramJsonData);
-                if($isItemRemovedFromOrdercart==true){
-                    $isItemRemovedFromOrdercart = 'TRUE';
-                }
-            }
-        } 
-        return $isItemRemovedFromOrdercart;
-    }
-    
-    // CJ defined this function 2016-08-14
-    public static function preparedDataToUpdateItemFromOrdercart($paramJsonData){
-        $isItemRemovedFromOrdercart =  'FALSE';
-        // checking param data length
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            // fetch user session data details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
-            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $paramJsonData['updated_by'] = $userSessionDetailsData['unmd5UserId'];
-                // removing item from order cart
-                $isItemRemovedFromOrdercart = OrderCartDao :: removeItemDetailsFromOrdercart($paramJsonData);
-                if($isItemRemovedFromOrdercart==true){
-                    $isItemRemovedFromOrdercart = 'TRUE';
-                }
-            }
-        } 
-        return $isItemRemovedFromOrdercart;
-    }
-    
     
     ////////////////// party order related code ///////////////////
     
