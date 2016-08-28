@@ -378,7 +378,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             try{
                 // check is user logged in or not session
                 var paramDataObj = getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass);
-                alert("paramDataObj=>"+JSON.stringify(paramDataObj));
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
                 
                     var jsonParamBlockUIObject = {};
@@ -564,6 +563,10 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
+        // checkDataToShareOffers
+        $rootScope.checkDataToShareOffers = function(){
+            
+        };
         
         // displayPartyOrderInfoSectionToAccessInUserCAccount
         $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
