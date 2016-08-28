@@ -551,9 +551,9 @@ class commonfunction{
                             $aboveOrderAmtLblText = " on above Rs $aboveOrderAmt order amount ";
                         }
                         if($isPercentageBased=='Y' && $percentageBased>0 && $percentageBased!=''){
-                            $discountCouponMsg = "Share this promo code $promoCode to your friends/colleagues will get him/her $percentageBased% off $aboveOrderAmtLblText !";
+                            $discountCouponMsg = "Share this promo code '$promoCode' to your friends/colleagues will get him/her $percentageBased% off $aboveOrderAmtLblText !";
                         }else if($isCashbackBased=='Y' && $cashbackBased>0 && $cashbackBased!=''){
-                            $discountCouponMsg = "Share this promo code $promoCode to your friends/colleagues will get him/her cashback Rs $cashbackBased $aboveOrderAmtLblText !";
+                            $discountCouponMsg = "Share this promo code '$promoCode' to your friends/colleagues will get him/her cashback Rs $cashbackBased $aboveOrderAmtLblText !";
                         }
                         $sharingDiscountCouponSetupListByUserArr[$eachIndex]['displayDiscountCouponMsg'] = $discountCouponMsg;
                         $sharingDiscountCouponSetupListByUserArr[$eachIndex]['remainingShareLimt'] = ($shareLimit-$countUserSharedDiscountCoupon);
