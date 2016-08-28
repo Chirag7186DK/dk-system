@@ -1,7 +1,7 @@
 
 
 // LocationController using LocationServices
-angular.module('DESSERTSKHAZANAAPP').controller('LocationController', function($scope, $rootScope, $http, LocationServices){
+angular.module('DKAPP').controller('LocationController', function($scope, $rootScope, $http, LocationServices){
     try{
         
         // loadDkDeliveryCityList 
