@@ -224,10 +224,6 @@
                     <p class='vap_productWeightPClass'>
                         Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
                     </p>
-                    <p class='vap_productDeliveryLocationPClass'> 
-                        <!-- CJ need to think about product delivery location to show on screen -->
-                        Delivery <i class="fa fa-map-marker"></i> : At area
-                    </p>
                     <p class='vap_productBtnWrapperPClass'> 
                         <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'allproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="vap_specificProductAddBtnClass btn">
                             <i class="fa fa-plus"></i>
