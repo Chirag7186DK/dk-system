@@ -30,7 +30,7 @@
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
            
-            <!-- webAppLogoAndMenuIconContainerDivClass --->
+            <!-- web logo header--->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
@@ -42,9 +42,6 @@
                 <ul class="topMenuBarULClass list-inline">
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
-                    </li>
-                    <li ng-click="redirectToViewWishList('wishlist')" ng-controller="WishListController" title="Click here to see your all wish list">
-                        <i class="fa fa-heart"></i> Wishlist ({{wlmCount}})
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
                         <i class="fa fa-user accountSignUpSignInIconClass"></i> Hello, {{loggedUserName}}
