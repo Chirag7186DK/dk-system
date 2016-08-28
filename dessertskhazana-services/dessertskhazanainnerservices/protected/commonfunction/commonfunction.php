@@ -32,7 +32,7 @@ class commonfunction{
             $adminMobileNosArr = $SentSmsOnErrorOccured;
             if($isSendSmsEmailToAdminOnErrorOccured=='Y' && count($adminMobileNosArr)>0){
                 $smsMsgBody = "Sms Testing CJ";
-                $retSmsSentStatus = utils :: sendSMS(array("9975967186"), $smsMsgBody);
+                // $retSmsSentStatus = utils :: sendSMS(array("9975967186"), $smsMsgBody);
             }
         }
         return $retSmsSentStatus;
@@ -49,7 +49,7 @@ class commonfunction{
                 $toEmailIdArr = array('chirag.jain@digitaledu.net');
                 $msgSubject = 'Email Testing CJ';
                 $msgBody = 'Email Testing CJ';
-                $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
+                // $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
             }
         }
         return $retEmailSentStatus;
