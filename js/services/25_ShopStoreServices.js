@@ -1,4 +1,6 @@
 
+angular.module('DKAPP').factory('ShopStoreServices', ShopStoreServices);
+
 // CJ defined this function 2016-06-22
 app.factory('ShopStoreServices', function($http, $q){
     try{
