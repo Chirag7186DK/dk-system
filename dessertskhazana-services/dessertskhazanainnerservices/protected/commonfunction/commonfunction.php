@@ -566,8 +566,8 @@ class commonfunction{
     }
     
     
-     // CJ defined this function 2016-08-26
-    public static function preparedDataToGetUserSharingDiscountCouponList($unMd5UserId){
+    // CJ defined this function 2016-08-28
+    public static function preparedDataToGetUserSharedDiscountCouponList($unMd5UserId){
         $userSharingAllDiscountCouponList = array();
         if($unMd5UserId!='' && ($unMd5UserId)>0){
             // fetch setup discount coupon list of user for sharing purpose
