@@ -80,7 +80,7 @@ class DiscountCouponServicesV1 implements IDiscountCouponServicesV1{
                         $addSDCouponParamData['is_cashback_based'] = $discountCouponSetupDetailsArr[0]['isCashbackBased'];
                         $addSDCouponParamData['cashback_based'] = $discountCouponSetupDetailsArr[0]['cashbackBased'];
                         $addSDCouponParamData['start_datedtime'] = date('Y-m-d H:i:s');
-                        $addSDCouponParamData['end_datedtime'] = $endDateObj['date'];
+                        $addSDCouponParamData['end_datedtime'] = $endDateObj->date;
                         $addSDCouponParamData['above_orderamount'] = $discountCouponSetupDetailsArr[0]['aboveOrderAmt'];
                         $addSDCouponParamData['limit_used'] = '1';
                         $addSDCouponParamData['for_userid'] = '';
