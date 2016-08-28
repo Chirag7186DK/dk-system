@@ -69,7 +69,7 @@ class DiscountCouponServicesV1 implements IDiscountCouponServicesV1{
                         // deciding discount coupon valid end datetime what will be while sharing offers to other users
                         $startDateObj = date_create(date('Y-m-d H:i:s'));
                         $nosOfDays = $discountCouponSetupDetailsArr[0]['discountCouponValidNosDaysRemain'];
-                        $discountCouponValidEndDateTime = date_add($startDateObj, date_interval_create_from_date_string("$nosOfDays days"));
+                        $endDateObj = date_add($startDateObj, date_interval_create_from_date_string("$nosOfDays days"));
                         
                         $addSDCouponParamData =  array();
                         $addSDCouponParamData['code'] = $discountCouponSetupDetailsArr[0]['dcgCode'];
@@ -80,7 +80,7 @@ class DiscountCouponServicesV1 implements IDiscountCouponServicesV1{
                         $addSDCouponParamData['is_cashback_based'] = $discountCouponSetupDetailsArr[0]['isCashbackBased'];
                         $addSDCouponParamData['cashback_based'] = $discountCouponSetupDetailsArr[0]['cashbackBased'];
                         $addSDCouponParamData['start_datedtime'] = date('Y-m-d H:i:s');
-                        $addSDCouponParamData['end_datedtime'] = $discountCouponValidEndDateTime;
+                        $addSDCouponParamData['end_datedtime'] = $endDateObj['date'];
                         $addSDCouponParamData['above_orderamount'] = $discountCouponSetupDetailsArr[0]['aboveOrderAmt'];
                         $addSDCouponParamData['limit_used'] = '1';
                         $addSDCouponParamData['for_userid'] = '';
