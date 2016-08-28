@@ -1,6 +1,6 @@
 
 // UsersController
-app.controller('UsersController', function($scope, $rootScope, $http, UsersServices, WishListServices, OrderCartServices){
+app.controller('UsersController', function($scope, $rootScope, $http, UsersServices, OrderCartServices){
     try{
         
         // redirectToMyAccount
