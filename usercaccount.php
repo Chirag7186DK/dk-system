@@ -474,7 +474,7 @@
                     
                     <!-- each sharing offers will display -->
                     <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListDivClass">
-                        <p class="shareOffersMsgPClass">
+                        <p class="sharingOffersMsgPClass">
                             {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
                         </p>
                         <p class="sharingOffersLimitPClass">
