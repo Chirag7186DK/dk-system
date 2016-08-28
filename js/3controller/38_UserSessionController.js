@@ -1,6 +1,6 @@
 
 // dkSessionController using
-app.controller('dkSessionController', function($scope, $rootScope, UsersServices, OrderCartServices){
+app.controller('dkSessionController', function($scope, $rootScope){
     
     // global variable declare 
     // this variable will be reflect on ui screen
