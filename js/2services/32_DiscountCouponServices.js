@@ -17,6 +17,12 @@ app.factory('DiscountCouponServices', function($http, $q, $rootScope){
             return promiseObject;
         };
         
+        // addSharingOffersFrmOneUserToOtherUsers
+        discountCouponDetails.addSharingOffersFrmOneUserToOtherUsers = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/DiscountCoupon/SharingOffersFrmOneUserToOtherUser", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
+        
         return discountCouponDetails;
         
     }catch(ex){
