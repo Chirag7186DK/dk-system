@@ -1,5 +1,5 @@
 
-angular.module('DKAPP').factory('ShopStoreServices', ShopStoreServices);
+angular.module('DKAPP').factory('DiscountCouponServices', DiscountCouponServices);
 
 // CJ defined this function 2016-06-16
 function DiscountCouponServices($http, $q){
