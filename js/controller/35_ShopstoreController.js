@@ -28,7 +28,7 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
             try{
                 var retStatus = checkAllParamToViewCShopStore(paramDataObj);
                 if(retStatus===true){
-                    window.location.href = globalBaseSitePath+"viewstoreproduct.php";
+                    window.location.href = globalBaseSitePath+"storeproduct.php";
                 }
             }catch(ex){
                 console.log("problem in collectDataToViewCShopstore ex=>"+ex);
@@ -421,7 +421,7 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
                     existingDkParamObj['userProduct']['producttype_categoryname'] = productTypeCategoryTitle;
                     existingDkParamObj['userProduct']['producttype_listname'] = '';
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-                    window.location.href = globalBaseSitePath+"viewstoreproduct.php";
+                    window.location.href = globalBaseSitePath+"storeproduct.php";
                 }
             }catch(ex){
                 console.log("problem in collectDataToLoadAllProductListViaCShopStoreProductTypeProductCategory=>"+ex);
