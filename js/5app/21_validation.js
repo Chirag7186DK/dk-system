@@ -759,3 +759,41 @@ function validationUserChangePasswordInfoData(){
         return true;
     }
 }
+
+
+//////////////// Sharing offers code ////////////////////////////////////
+
+
+// CJ defined this function 2016-08-28
+function validateDataToShareOffers(fcClass){
+    try{
+        var incorrectFieldDataCounter = 0 ;
+        if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
+            if($('.'+fcClass).length===1){
+                if($('.'+fcClass).find("input[type='text']").length===1){
+                    var userMobileInputObj = $('.'+fcClass).find("input[type='text']"); 
+                    var userMobileValue = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
+                    if(userMobileValue==='' || userMobileValue===false){
+                        $(userMobileInputObj).css({'border-color':'#f18178'});
+                        incorrectFieldDataCounter++;
+                    }else if(userMobileValue!=='' && userMobileValue!==false){
+                        var mobilePattern = /^[6-9]\d{9}$/g;
+                        if(!userMobileValue.match(mobilePattern) && (userMobileValue).length!==10){
+                            $(userMobileInputObj).css({'border-color':'#f18178'});
+                            incorrectFieldDataCounter++;
+                        }else if(userMobileValue.match(mobilePattern)===true && (userMobileValue).length===10){
+                            $(userMobileInputObj).css({'border-color':'#ccc'});
+                        }
+                    }
+                }
+            }
+        }
+        if(incorrectFieldDataCounter>0){
+            return false;
+        }else{
+            return true;
+        }
+    }catch(ex){
+        return false;
+    }
+}
