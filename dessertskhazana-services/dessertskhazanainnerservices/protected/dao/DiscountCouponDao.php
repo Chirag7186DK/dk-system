@@ -125,4 +125,64 @@ class DiscountCouponDao{
         return $userSharedDiscountCouponOtherUsersList;
     }
     
+    // CJ defined this function 2016-08-28
+    public static function addUserSharedDiscountCoupon($paramJson){
+        $connection = Yii::app()->db;
+        $sqlColumnNames = "";
+        $sqlValues = "";
+        $lastInsertedId = false;
+        if(array_key_exists('discount_couponid', $paramJson)){
+            if($paramJson['discount_couponid']!=''){
+                $sqlColumnNames.=" discount_couponid,";
+                $sqlValues.="'".$paramJson['discount_couponid']."',";
+            }
+        }
+        if(array_key_exists('user_sessionid', $paramJson)){
+            if($paramJson['user_sessionid']!=''){
+                $sqlColumnNames.=" user_sessionid,";
+                $sqlValues.="'".$paramJson['user_sessionid']."',";
+            }
+        }
+        if(array_key_exists('sharedby_id', $paramJson)){
+            if($paramJson['sharedby_id']!=''){
+                $sqlColumnNames.=" sharedby_id,";
+                $sqlValues.="'".$paramJson['sharedby_id']."',";
+            }
+        }
+        if(array_key_exists('sharedon_mobile', $paramJson)){
+            if($paramJson['sharedon_mobile']!=''){
+                $sqlColumnNames.=" sharedon_mobile,";
+                $sqlValues.="'".$paramJson['sharedon_mobile']."',";
+            }
+        }
+        if(array_key_exists('created_by', $paramJson)){
+            if($paramJson['created_by']!=''){
+                $sqlColumnNames.=" created_by,";
+                $sqlValues.="'".$paramJson['created_by']."',";
+            }
+        }
+        if(array_key_exists('created_datedtime', $paramJson)){
+            if($paramJson['created_datedtime']!=''){
+                $sqlColumnNames.=" created_datedtime,";
+                $sqlValues.="'".$paramJson['created_datedtime']."',";
+            }
+        }
+        if(array_key_exists('status', $paramJson)){
+            if($paramJson['status']!=''){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$paramJson['status']."',";
+            }
+        }
+        if($sqlValues!='' && $sqlColumnNames!=''){
+            $sqlQuery = " INSERT INTO DK_USER_SHARED_DISCOUNTCOUPON " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>=1){
+                $lastInsertedId = $connection->getLastInsertID();
+            }
+        }
+        return $lastInsertedId;
+    }
+    
+    
 }
