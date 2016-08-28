@@ -540,7 +540,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
 
                     // calling DiscountCouponServices 
-                    DiscountCouponServices.userSharingDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
+                    DiscountCouponServices.userSharedDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userSharedAllDiscountCouponDetailsArrObj =  false;
