@@ -1,6 +1,7 @@
 
-// resizeWindowDirective
-app.directive('resizeWindowDirective', function($window){
+angular.module('DKAPP').controller('resizeWindowDirective', resizeWindowDirective);
+
+function resizeWindowDirective($window){
     return {
         link:function(scope){
             // caculate height, width
@@ -21,7 +22,7 @@ app.directive('resizeWindowDirective', function($window){
             scope.$on('$destroy', cleanUp);
         }
     };
-});
+}
 
 // scrollWindowDirective
 app.directive('scrollWindowDirective', function($window){
@@ -622,8 +623,9 @@ app.directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', funct
     };
 });
 
-// scroll-horizontally-shareoffers-allsectionheader-directive
-app.directive('scrollHorizontallyShareoffersAllsectionheaderDirective', function(){
+angular.module('DKAPP').controller('scrollHorizontallyShareoffersAllsectionheaderDirective', scrollHorizontallyShareoffersAllsectionheaderDirective);
+
+function scrollHorizontallyShareoffersAllsectionheaderDirective(){
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#uca_shareoffersAllSectionHeaderContainerDivId').length>0){
@@ -642,4 +644,4 @@ app.directive('scrollHorizontallyShareoffersAllsectionheaderDirective', function
             }
         }, 1);
     };
-});
+}
