@@ -1,6 +1,8 @@
 
+angular.module('DKAPP').factory('OrderCartServices', OrderCartServices);
+
 // CJ defined this function 2016-06-16
-app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
+function OrderCartServices($http, $q, $rootScope, UsersServices){
     try{
         
         var orderDetails = {};
@@ -125,4 +127,4 @@ app.factory('OrderCartServices', function($http, $q, $rootScope, UsersServices){
     }catch(ex){
         return false;
     }
-}); 
+} 
