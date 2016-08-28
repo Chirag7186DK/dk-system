@@ -996,5 +996,44 @@ class customparam{
     }
     
     
+    ////////////////////////// Sharing offers code //////////////////////////
+    
+    
+    // CJ defined this function 2016-08-28
+    public static function checkParamDataForAddingSharingOffersFrmOneUserToOtherUser($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check discount_couponid key present or not
+        if(array_key_exists('discount_couponid', $paramJsonData)){
+            if(($paramJsonData['discount_couponid'])>0 && $paramJsonData['discount_couponid']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('shared_onmobile', $paramJsonData)){
+            if(strlen($paramJsonData['shared_onmobile'])==20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        
+        if($givenParamDataCorrectCount==2){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
+    
     
 }
