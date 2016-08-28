@@ -62,7 +62,7 @@ class DiscountCouponController extends V1Controller{
             if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
+                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAddingSharingOffersFrmOneUserToOtherUser($dkParamDataArr);
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $DiscountCouponServicesV1 = new DiscountCouponServicesV1();
                     $rspDetails = $DiscountCouponServicesV1->addSharingOffersFrmOneUserToOtherUser($dkParamDataArr);
