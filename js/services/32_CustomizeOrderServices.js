@@ -1,6 +1,8 @@
 
+angular.module('DKAPP').factory('CustomizeOrdersServices', CustomizeOrdersServices);
+
 // CJ defined this function 2016-07-24
-app.factory('CustomizeOrdersServices', function($http, $q){
+function CustomizeOrdersServices($http, $q){
     try{
         var customizeOrdersDetails = {
             addCustomizeOrderRequest:function(preparedParamJsonObj){
@@ -18,4 +20,4 @@ app.factory('CustomizeOrdersServices', function($http, $q){
     }catch(ex){
         return false;
     }
-}); 
+}; 
