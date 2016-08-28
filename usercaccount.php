@@ -449,11 +449,16 @@
             
             <!-- share offers section details with each tab level -->
             <div ng-if="requestedSectionName==='shareoffers'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_shareoffersSectionContainerDivClass">
-
+                
+                <!-- sharing offers note-->
+                <p class='sharingOffersNotePClass'>
+                    Note: Offers can be share to your friends/colleague/family members by just typing 10 digits mobile no.s
+                </p>
+                
                 <!-- share offers all section header title -->
                 <div scroll-horizontally-shareoffers-allsectionheader-directive id='uca_shareoffersAllSectionHeaderContainerDivId' class='uca_shareoffersAllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_toggleShareoffersSectionList('availableshareoffers', 'uca_shareoffersEachTabLabelSectionContainerLIId1', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all available share offers ' id='uca_shareoffersEachTabLabelSectionContainerLIId1' class='uca_shareoffersEachTabLabelSectionContainerLIClass uca_shareoffersSelectedTabLabelSectionContainerLIClass'>
-                        Can Share Offers
+                        Sharing Offers({{totalCountUserSharingAllDiscountCoupon}})
                     </li>
                     <li ng-click="uca_toggleShareoffersSectionList('alloffersshared', 'uca_shareoffersEachTabLabelSectionContainerLIId2', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all offers shared by you' id='uca_shareoffersEachTabLabelSectionContainerLIId2' class='uca_shareoffersEachTabLabelSectionContainerLIClass'>
                         All Offers Shared 
@@ -486,13 +491,7 @@
                         <p class="sharingOffersExpiryDateTimePClass">
                             Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
-                        <p class="toggleSharingOffersDetailsLinkMsgPClass">
-                            <span ng-click="toggleShareOffersDetailsLinkMsg()">
-                                Click here to toggle details for offers sharing   
-                            </span>
-                        </p>
-                        <p class="sharingOffersBlankPClass"></p>
-                        <p class="sharingOffersOperationPClass" ng-if='isShowSharingOffersOperationDetails'>
+                        <p class="sharingOffersOperationPClass">
                             <input type='text' class='form-control sharingOffersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
                             <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn sharingOffersBtnClass'>
                                 SHARE OFFERS
