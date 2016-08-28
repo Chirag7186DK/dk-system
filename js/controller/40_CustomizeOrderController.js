@@ -1,6 +1,7 @@
 
-// CustomizeOrderController
-app.controller('CustomizeOrdersController', function($scope, $rootScope, $http, CustomizeOrdersServices){
+angular.module('DKAPP').controller('CustomizeOrdersController', CustomizeOrdersController);
+
+function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersServices){
     try{
         
         $rootScope.isShowCustomizeOrderRequestErrorMsg = false;
@@ -146,4 +147,4 @@ app.controller('CustomizeOrdersController', function($scope, $rootScope, $http, 
     }catch(ex){
         console.log("problem in CustomizeOrdersController ex=>"+ex);
     }
-});
+}
