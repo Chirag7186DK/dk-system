@@ -88,7 +88,7 @@ class DiscountCouponDao{
                     COALESCE(COUNT(*), 0) countUserSharedDiscountCoupon
                     FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
                     WHERE
-                    usdc.user_id='$userId'
+                    usdc.sharedby_id='$userId'
                     AND usdc.discount_couponid='$discountCouponId'
                     AND usdc.status='S'";
             $command = $connection->createCommand($sql);
