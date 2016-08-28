@@ -492,7 +492,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     
                     $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
-                    $rootScope.totalCountUserSharingAllDiscountCoupon =  0;
 
                     // calling DiscountCouponServices 
                     DiscountCouponServices.userSharingDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
@@ -504,10 +503,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                             }
                             if(userSharingAllDiscountCouponDetailsArrObj!==false && userSharingAllDiscountCouponDetailsArrObj!==undefined 
                                 && jQuery.isEmptyObject(userSharingAllDiscountCouponDetailsArrObj)===false){
-                                $rootScope.totalCountUserSharingAllDiscountCoupon =  userSharingAllDiscountCouponDetailsArrObj.length;
                                 $rootScope.userSharingAllDiscountCouponDetailsArrObj =  userSharingAllDiscountCouponDetailsArrObj;
                             }else{
-                                $rootScope.totalCountUserSharingAllDiscountCoupon =  0;
                                 $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
                             }
                         });
@@ -516,50 +513,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }catch(ex){
                 showHideLoaderBox('hide');
                 console.log("problem in populateUserSharingDiscountCouponList ex=>"+ex);
-            }
-        };
-        
-        // populateUserSharedDiscountCouponList
-        $rootScope.populateUserSharedDiscountCouponList = function(){
-            try{
-                // check is user logged in or not session
-                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
-                if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
-                    && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    
-                    $rootScope.userSharedAllDiscountCouponDetailsArrObj =  false;
-                    $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
-
-                    // calling DiscountCouponServices 
-                    DiscountCouponServices.userSharedDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
-                        $rootScope.$apply(function(){
-                            var userSharedAllDiscountCouponDetailsArrObj =  false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userSharedAllDiscountCouponDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userSharedAllDiscountCouponList', retResponseJson);
-                            }
-                            if(userSharedAllDiscountCouponDetailsArrObj!==false && userSharedAllDiscountCouponDetailsArrObj!==undefined 
-                                && jQuery.isEmptyObject(userSharedAllDiscountCouponDetailsArrObj)===false){
-                                $rootScope.totalCountUserSharingAllDiscountCoupon =  userSharedAllDiscountCouponDetailsArrObj.length;
-                                $rootScope.userSharedAllDiscountCouponDetailsArrObj =  userSharedAllDiscountCouponDetailsArrObj;
-                            }else{
-                                $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
-                                $rootScope.userSharedAllDiscountCouponDetailsArrObj =  false;
-                            }
-                        });
-                    });
-                }
-            }catch(ex){
-                showHideLoaderBox('hide');
-                console.log("problem in populateUserSharedDiscountCouponList ex=>"+ex);
             }
         };
         
@@ -598,6 +551,49 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
 
                     // calling DiscountCouponServices 
                     DiscountCouponServices.addSharingOffersFrmOneUserToOtherUsers(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var isOffersShared =  'FALSE';
+                            var notifyMsgStr = "Please try again to share offers !";
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                isOffersShared = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'isOffersShared', retResponseJson);
+                            }
+                            if(isOffersShared==='TRUE'){
+                                notifyMsgStr = "offers has been shared to your friends/colleagues on given mobile no.s !";
+                                $rootScope.populateUserSharingDiscountCouponList();
+                            }
+                            showNotificationBoxMsg(notifyMsgStr);
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in addSharingOffersFromOneUserToOtherUsers ex=>"+ex);
+            }
+        };
+        
+        
+        // populateUserSharedDiscountCouponList
+        $rootScope.populateUserSharedDiscountCouponList = function(){
+            try{
+                // check is user logged in or not session
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
+                    && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
+                
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    
+                    $rootScope.userSharedAllDiscountCouponDetailsArrObj =  false;
+                    $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
+
+                    // calling DiscountCouponServices 
+                    DiscountCouponServices.userSharedDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userSharedAllDiscountCouponDetailsArrObj =  false;
