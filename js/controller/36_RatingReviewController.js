@@ -1,6 +1,7 @@
 
-// RatingReviewController
-app.controller('RatingReviewController', function($scope, $rootScope, $http, RatingReviewServices){
+angular.module('DKAPP').controller('RatingReviewController', RatingReviewController);
+
+function RatingReviewController($scope, $rootScope, $http, RatingReviewServices){
     try{
         
         // loadAverageRatingReviewedAboutProduct 
@@ -242,5 +243,5 @@ app.controller('RatingReviewController', function($scope, $rootScope, $http, Rat
         console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
     }
     
-});
+}
 
