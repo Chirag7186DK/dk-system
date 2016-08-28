@@ -180,10 +180,6 @@
                         <p class='dl_productWeightPClass'>
                             Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
                         </p>
-                        <p class='dl_productDeliveryLocationPClass'> 
-                            <!-- CJ need to think about product delivery location to show on screen -->
-                            Delivery <i class="fa fa-map-marker"></i> : At 12 area
-                        </p>
                         <p class='dl_productBtnWrapperPClass'> 
                             <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'home')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="dl_specificProductAddBtnClass btn">
                                 <i class="fa fa-plus"></i>
