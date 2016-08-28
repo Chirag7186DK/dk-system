@@ -73,7 +73,6 @@ function OrderCartController($scope, $rootScope, $http, OrderCartServices){
             }
         };
        
-        
     }catch(ex){
         console.log("problem in OrdercartController ex=>"+ex);
     }
