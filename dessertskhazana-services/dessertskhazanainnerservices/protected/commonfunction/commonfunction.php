@@ -565,197 +565,6 @@ class commonfunction{
         return $userSharingAllDiscountCouponList;
     }
 
-        
-    ///////////////////////////// wishlist related code ////////////////////////////////
-    
-    
-    // CJ defined this function 2016-08-01
-    public static function collectDataForWLCountSummary($unmd5UserId){
-        $wlCountSummaryJsonData = array();
-        $wlCountSummaryJsonData['wlCount'] = 0;
-        // checking data length
-        if($unmd5UserId!='' && $unmd5UserId!=false){
-            // fetch user wish list details 
-            $userWLDetailsArr = WishListDao :: getUserWLDetails(array("user_id"=>$unmd5UserId));
-            if(count($userWLDetailsArr)>0 && $userWLDetailsArr!=false){
-                $wlCountSummaryJsonData['wlCount'] = count($userWLDetailsArr);
-            }
-        }
-        return $wlCountSummaryJsonData;
-    }
-    
-    // CJ defined this function 2016-08-01
-    public static function collectDataForWLItemCountSummary($unmd5UserId){
-        $wlItemCountSummaryJsonData = array();
-        $wlItemCountSummaryJsonData['wlmCount'] = 0;
-        // checking data length
-        if($unmd5UserId!=false && $unmd5UserId!=''){
-            // fetch wish list item count with item details count
-            $retArrJsonData = WishListDao::getUWLCount(array("user_id"=>$unmd5UserId));
-            if(count($retArrJsonData)==1 && $retArrJsonData!=false){
-                $wlItemCountSummaryJsonData['wlmCount'] = $retArrJsonData[0]['wlmCount'];
-            }
-        }
-        return $wlItemCountSummaryJsonData;
-    }
-    
-    // CJ defined this function 2016-08-01
-    public static function collectDataForUserWLDefaultSettingsId($userLoggedId){
-        $defaultUWLSettingsArr = array();
-        $defaultUWLSettingsArr['defaultUWLSettingsId'] = '';
-        $defaultUWLSettingsArr['defaultUnMd5UWLSettingsId'] = '';
-        $defaultUWLSettingsArr['defaultUWLSettingsName'] = '';
-        // checking data length
-        if(strlen($userLoggedId)==32){
-            // fetch user wish list default settings id
-            $retArrJsonData = WishListDao::getUserWLDetails(array("userLoggedId"=>$userLoggedId));
-            if(count($retArrJsonData)>0 && $retArrJsonData!=false){
-                // sort on default settings (Y)
-                $sortedOnDefaultSettingsWLArr = utils::arraySort($retArrJsonData, array("isDefaultWLSetting"));
-                if(array_key_exists('Y', $sortedOnDefaultSettingsWLArr)){
-                    $defaultWLSettingsId = $sortedOnDefaultSettingsWLArr['Y'][0]['wlId'];
-                    $defaultUWLSettingsArr['defaultUWLSettingsId'] = $defaultWLSettingsId;
-                    $defaultUWLSettingsArr['defaultUnMd5UWLSettingsId'] = $sortedOnDefaultSettingsWLArr['Y'][0]['unMd5WLId'];
-                    $defaultUWLSettingsArr['defaultUWLSettingsName'] = $sortedOnDefaultSettingsWLArr['Y'][0]['wlTitle'];
-                }else if(array_key_exists('N', $sortedOnDefaultSettingsWLArr)){
-                    $defaultWLSettingsId = $sortedOnDefaultSettingsWLArr['N'][0]['wlId'];
-                    $defaultUWLSettingsArr['defaultUWLSettingsId'] = $defaultWLSettingsId;
-                    $defaultUWLSettingsArr['defaultUnMd5UWLSettingsId'] = $sortedOnDefaultSettingsWLArr['N'][0]['unMd5WLId'];
-                    $defaultUWLSettingsArr['defaultUWLSettingsName'] = $sortedOnDefaultSettingsWLArr['N'][0]['wlTitle'];
-                }
-            }
-        }
-        return $defaultUWLSettingsArr;
-    }
-    
-    // CJ defined this function 2016-08-02
-    public static function collectDataForUserAllWLWiseItemDetails($paramJsonData, $isPassUserLoggedIdToFetchUWLItemList='N'){
-        $userAllWLWiseItemDetailsArr = array();
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            // fetch user all wish list for enabling move item from one wish list to another wish list
-            $userLoggedId = $paramJsonData['userLoggedId'];
-            $userAllWLForEnableMoveItemOptionArr = commonfunction :: getUserAllWLForEnableMoveItemOption(array("userLoggedId"=>$userLoggedId));
-            if($isPassUserLoggedIdToFetchUWLItemList=='Y'){
-                unset($paramJsonData['userLoggedId']);
-                $paramJsonData['notUserLoggedId'] = $userLoggedId;
-            }
-            // fetch user all wish list wise item details 
-            $retDataArr2 = WishListDao :: getUserAllWLWiseItemDetails($paramJsonData);
-            if(count($retDataArr2)>0 && $retDataArr2!=false){
-                // sorted on user all wish list id to collect all items in group wise
-                $sortedOnUWLDetailsArr = utils :: arraySort($retDataArr2, array("wishListId"));
-                // iterate user each wish list with all item details
-                foreach($sortedOnUWLDetailsArr as $eachUWLIdKey=>$allItemDetailsArr){
-                    $totalItemArrLength = count($allItemDetailsArr);
-                    // iterate each item to get rating and review details
-                    for($eachItemIndex = 0; $eachItemIndex<$totalItemArrLength; $eachItemIndex++){
-                        $allItemDetailsArr[$eachItemIndex]['userLoggedId'] = $userLoggedId;
-                        // fetch avg rating/review abt product
-                        $allItemDetailsArr[$eachItemIndex]['isUserRatedAndReviewAbtProduct'] = false;
-                        $store_ids = $allItemDetailsArr[$eachItemIndex]['shopStoreId'];
-                        $productListId = $allItemDetailsArr[$eachItemIndex]['productListId'];
-                        $retAvgRatedAndReviwedAbtProductDetailsArr = RatingReviewDao :: getAvgRatingAboutProductDetails($store_ids, $productListId);
-                        if(count($retAvgRatedAndReviwedAbtProductDetailsArr)==1 && $retAvgRatedAndReviwedAbtProductDetailsArr!=false){
-                            $allItemDetailsArr[$eachItemIndex]['totalAvgRatingAbtProduct'] = $retAvgRatedAndReviwedAbtProductDetailsArr[0]['totalAvgRatingAbtProduct'];
-                            $allItemDetailsArr[$eachItemIndex]['totalUserRatingAbtProduct'] = $retAvgRatedAndReviwedAbtProductDetailsArr[0]['totalUserRatingAbtProduct'];
-                        }
-                    }
-                    array_push($userAllWLWiseItemDetailsArr,
-                        array(
-                            "wlId"=>$eachUWLIdKey,
-                            "wlTitle"=>$allItemDetailsArr[0]['wishListTitle'],
-                            "userId"=>$allItemDetailsArr[0]['createrUserId'],
-                            "userName"=>$allItemDetailsArr[0]['userName'],
-                            "wlmCount"=>$totalItemArrLength,
-                            "wlAllItemDetails"=>$allItemDetailsArr,
-                            "isShowWLItemMoveOption"=>$userAllWLForEnableMoveItemOptionArr['isShowWLItemMoveOption'],
-                            "userAllWLData"=>$userAllWLForEnableMoveItemOptionArr['userAllWLData']
-                        )   
-                    );
-                }
-            }
-        }
-        if(count($userAllWLWiseItemDetailsArr)>0 && $userAllWLWiseItemDetailsArr!=false){
-            return $userAllWLWiseItemDetailsArr;
-        }else{
-            return false;
-        }
-    }
-    
-    // CJ defined this function 2016-08-02
-    public static function getUserAllWLForEnableMoveItemOption($paramJsonData){
-        $retDataArr1['userAllWLData'] = false;
-        $retDataArr1['isShowWLItemMoveOption'] = false;
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            $userAllWLDataArr = array();
-            // fetch user all wish list details
-            $retDataArr2 = WishListDao :: getUserWLDetails($paramJsonData);
-            if(count($retDataArr2)>1 && $retDataArr2!=false){
-                // iterate each data 
-                for($eachDataArr2Index = 0; $eachDataArr2Index<count($retDataArr2); $eachDataArr2Index++){
-                    array_push($userAllWLDataArr, 
-                        array(
-                            "wishListId"=>$retDataArr2[$eachDataArr2Index]['wlId'],
-                            "userLoggedId"=>$paramJsonData['userLoggedId'],
-                            "wishListTitle"=>$retDataArr2[$eachDataArr2Index]['wlTitle']
-                        )
-                    );
-                }
-                if(count($userAllWLDataArr)>0 && $userAllWLDataArr!=false){
-                    $retDataArr1['userAllWLData'] = $userAllWLDataArr;
-                    $retDataArr1['isShowWLItemMoveOption'] = true;
-                }
-            }
-        }
-        return $retDataArr1;
-    }
-
-    // CJ defined this function 2016-07-30
-    public static function preparedAllUserwiseWLSummaryData($paramJsonData){
-        $retArr = array();
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            if($paramJsonData['search_by']=='personname'){
-                $dkParamDataArr['user_name'] = $paramJsonData['search_string'];
-            }
-            if($paramJsonData['search_by']=='email'){
-                $dkParamDataArr['email'] = $paramJsonData['search_string'];
-            }
-            // fetch wish list wise item details 
-            $allItemDetailsArr = WishListDao :: getUserAllWLWiseItemDetails($dkParamDataArr);
-            if(count($allItemDetailsArr)>0 && $allItemDetailsArr!=false){
-                // sorted on user all WL
-                $sortedOnUserAllWLDataArr = utils :: arraySort($allItemDetailsArr, array("createrUserId", "wishListId"), array("createrUserId"=>"userName##userState##userCity", "wishListId"=>"wishListTitle"));
-                if(count($sortedOnUserAllWLDataArr)>0 && $sortedOnUserAllWLDataArr!=false){
-                    // iterate each user data
-                    foreach($sortedOnUserAllWLDataArr as $eachUserMd5IdNameKey=>$sortedAllWishListDataArr){
-                        // exploded string
-                        $explodedUserIdNameKeyOnDoubleHash = explode("##", $eachUserMd5IdNameKey);
-                        $eachUserWLSummaryDetailsArr = array();
-                        $eachUserWLSummaryDetailsArr['userId'] = $explodedUserIdNameKeyOnDoubleHash[0];
-                        $eachUserWLSummaryDetailsArr['userName'] = $explodedUserIdNameKeyOnDoubleHash[1];
-                        $eachUserWLSummaryDetailsArr['userState'] = $explodedUserIdNameKeyOnDoubleHash[2];
-                        $eachUserWLSummaryDetailsArr['userCity'] = $explodedUserIdNameKeyOnDoubleHash[3];
-                        $eachAllWLSummaryDetailsArr = array();
-                        // iterate each wish list data of each user
-                        foreach($sortedAllWishListDataArr as $eachWishListMd5IdNameKey=>$allItemDetailsArr){
-                            // exploded string
-                            $explodedWishListMd5IdNameKeyOnDoubleHash = explode("##", $eachWishListMd5IdNameKey);
-                            array_push($eachAllWLSummaryDetailsArr, array(
-                                "userId"=>$explodedUserIdNameKeyOnDoubleHash[0],
-                                "wlId"=>$explodedWishListMd5IdNameKeyOnDoubleHash[0],
-                                "wlTitle"=>$explodedWishListMd5IdNameKeyOnDoubleHash[1],
-                                "totalItem"=>count($allItemDetailsArr)
-                            ));
-                        }
-                        $eachUserWLSummaryDetailsArr['allWLSumaryDetails'] = $eachAllWLSummaryDetailsArr;
-                        array_push($retArr, $eachUserWLSummaryDetailsArr);
-                    }
-                }
-            }
-        }
-        return $retArr;
-    }
-    
     
     /////////////////// Rating/Review related code ////////////////////////////
     
@@ -796,7 +605,7 @@ class commonfunction{
     
     
     ///////////////////////// order cart related code //////////////////////////
-    
+
     // CJ defined this function 2016-08-09
     public static function generateHumanReadableOrdercartId(){
         $humanReadableOrdercartId = 0;
@@ -910,7 +719,7 @@ class commonfunction{
     }
     
     
-    ////////////////// party order related code ///////////////////
+    /////////////////////////////// party order related code ///////////////////
     
     // CJ defined this function 2016-08-21
     public static function generatePartyOrderNo(){
@@ -937,7 +746,7 @@ class commonfunction{
     }
     
     
-    ///////////// Customize order request ///////////////////////////
+    //////////////////////// Customize order request ///////////////////////////
     
     // CJ defined this function 2016-08-21
     public static function generateCustomizeOrderNo(){
