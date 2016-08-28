@@ -6,4 +6,5 @@
 
 interface IDiscountCouponServicesV1{
     public function getUserSharingDiscountCouponList($dkParamDataArr);
+    public function getUserSharedDiscountCouponList($dkParamDataArr);
 }
