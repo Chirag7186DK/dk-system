@@ -98,13 +98,11 @@ function UsersController($scope, $rootScope, $http, UsersServices){
             var lastPageAccessedByUser = getPageDetailsUserAccessedFrom();
             if(lastPageAccessedByUser==='home'){
                 window.location.href = globalBaseSitePath;
-            }else if(lastPageAccessedByUser==='wishlist'){
-                window.location.href = globalBaseSitePath+"wishlist.php";
-            }else if(lastPageAccessedByUser==='viewproduct'){
+            }else if(lastPageAccessedByUser==='product'){
                 window.location.href = globalBaseSitePath+"product.php";
             }else if(lastPageAccessedByUser==='allproducts'){
                 window.location.href = globalBaseSitePath+"allproducts.php";
-            }else if(lastPageAccessedByUser==='viewstoreproduct'){
+            }else if(lastPageAccessedByUser==='storeproduct'){
                 window.location.href = globalBaseSitePath+"storeproduct.php";
             }else if(lastPageAccessedByUser==='partyorder'){
                 $rootScope.storeRequestedSectionNameToAccessInUserAccount('partyorder');
