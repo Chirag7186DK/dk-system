@@ -664,8 +664,6 @@ function UCustomerController($scope, $rootScope, $http, UsersServices, OrderCart
             }
         };
         
-        
-        
     }catch(ex){
         console.log("problem in UCustomerController ex=>"+ex);
     }
