@@ -115,9 +115,9 @@ function showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass($w
     };
 }
 
+angular.module('DKAPP').directive('preloadProductImagesClass', preloadProductImagesClass);
 
-// images pre loading directive
-app.directive('preloadProductImagesClass', function($timeout) {
+function preloadProductImagesClass($timeout){
     return {
         restrict: 'C',
         link: function (scope, elm){
@@ -130,10 +130,11 @@ app.directive('preloadProductImagesClass', function($timeout) {
             },0);
         }
     };
-});
+}
 
-// viewProductqtyinputDirective
-app.directive('viewProductqtyinputDirective', function($timeout){
+angular.module('DKAPP').directive('viewProductqtyinputDirective', viewProductqtyinputDirective);
+
+function viewProductqtyinputDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
             $el.numeric(
@@ -147,7 +148,7 @@ app.directive('viewProductqtyinputDirective', function($timeout){
             );
         }
     };
-});
+}
 
 
 // viewProductmsginputDirective
