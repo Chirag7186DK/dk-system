@@ -458,10 +458,10 @@
                 <!-- share offers all section header title -->
                 <div scroll-horizontally-shareoffers-allsectionheader-directive id='uca_shareoffersAllSectionHeaderContainerDivId' class='uca_shareoffersAllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_toggleShareoffersSectionList('availableshareoffers', 'uca_shareoffersEachTabLabelSectionContainerLIId1', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all available share offers ' id='uca_shareoffersEachTabLabelSectionContainerLIId1' class='uca_shareoffersEachTabLabelSectionContainerLIClass uca_shareoffersSelectedTabLabelSectionContainerLIClass'>
-                        Sharing Offers({{totalCountUserSharingAllDiscountCoupon}})
+                        Offers Sharing
                     </li>
                     <li ng-click="uca_toggleShareoffersSectionList('alloffersshared', 'uca_shareoffersEachTabLabelSectionContainerLIId2', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all offers shared by you' id='uca_shareoffersEachTabLabelSectionContainerLIId2' class='uca_shareoffersEachTabLabelSectionContainerLIClass'>
-                        All Offers Shared 
+                        Offers Shared 
                     </li>
                 </div>
 
@@ -520,7 +520,7 @@
                     </div>
                     
                     <!-- display shared offers wise all other users details -->
-                    <div ng-repeat="eachUserSharedDiscountCouponAllUserArrObj in userSharedAllDiscountCouponDetailsArrObj | filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachSharedOffersSectionContainerDivClass">
+                    <div ng-repeat="eachUserSharedDiscountCouponAllUserArrObj in userSharedAllDiscountCouponDetailsArrObj| filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachSharedOffersSectionContainerDivClass">
                         
                         <!-- create horizontally space div between -->
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
@@ -536,7 +536,7 @@
                         <!-- each shared offers user info will display -->
                         <div ng-repeat="userDetailsObj in eachUserSharedDiscountCouponAllUserArrObj.sharedOffersAllUserDetails | filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_sharedOffersWiseEachUserDivClass">
                             <p class='sharedOffersMobilePClass'>
-                                Shared On Mobile: {{userDetailsObj.sharedOnMobile}}
+                                On Mobile: {{userDetailsObj.sharedOnMobile}}
                             </p>
                             <p class='sharedOffersDatetimeClass'>
                                 Shared Datetime: {{userDetailsObj.sharedOnDateTime}}
