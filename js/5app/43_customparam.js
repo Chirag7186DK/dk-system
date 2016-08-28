@@ -1921,7 +1921,7 @@ function getParamDataToSharingOffersFromOneUserToOtherUsers(sharingOffersDataObj
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
             retParamObj = $.extend(retParamObj, userLoggedDataObj);
             if($('.'+fcontentClass).find("input[type='text']").length===1){
-                var userMobileVal = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
+                var userMobileVal = removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val());
                 if(userMobileVal!=='' && userMobileVal!==false
                     && sharingOffersDataObj!==false && sharingOffersDataObj!==undefined 
                     && jQuery.isEmptyObject(sharingOffersDataObj)===false){
