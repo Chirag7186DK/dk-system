@@ -25,7 +25,7 @@ class InDtoObjectFactory {
         try{
             $counterRequestedParamDataMatched = 0;
             $obj = new $inDtoClassName;
-            foreach ($inArray as $attr => $val){
+            foreach($inArray as $attr=>$val){
                 if(!property_exists($obj, $attr)){
                     break;
                 }else{
