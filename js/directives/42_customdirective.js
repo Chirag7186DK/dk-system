@@ -195,26 +195,27 @@ function loadDklogoImagesDirective(){
     };
 }
 
+angular.module('DKAPP').directive('loadPartyorderImagesDirective', loadPartyorderImagesDirective);
 
-// loadPartyorderImagesDirective
-app.directive('loadPartyorderImagesDirective', function(){
+function loadPartyorderImagesDirective(){
     return function(scope, element, attrs){
         loadPartyOrderImages(element);
         scope.$on('resize::resize', function() {
             loadPartyOrderImages();
         });
     };
-});
+}
 
-// loadCoperatetieupImagesDirective
-app.directive('loadCoperatetieupImagesDirective', function(){
+angular.module('DKAPP').directive('loadCoperatetieupImagesDirective', loadCoperatetieupImagesDirective);
+
+function loadCoperatetieupImagesDirective(){
     return function(scope, element, attrs){
         loadCoperateTieupImages(element);
         scope.$on('resize::resize', function() {
             loadCoperateTieupImages();
         });
     };
-});
+}
 
 // loadCustomizeorderImagesDirective
 app.directive('loadCustomizeorderImagesDirective', function(){
