@@ -2,7 +2,7 @@
 angular.module('DKAPP').factory('OrderCartServices', OrderCartServices);
 
 // CJ defined this function 2016-06-16
-function OrderCartServices($http, $q, $rootScope, UsersServices){
+function OrderCartServices($http, $q, $rootScope){
     try{
         
         var orderDetails = {};
