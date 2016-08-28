@@ -568,9 +568,9 @@ app.directive('scrollVerticallyOrdercartitemrequestedList', function(){
     };
 });
 
+angular.module('DKAPP').directive('scrollHorizontallyOrdercartAllsectionheaderDirective', scrollHorizontallyOrdercartAllsectionheaderDirective);
 
-// scroll-horizontally-ordercart-allsectionheader-directive
-app.directive('scrollHorizontallyOrdercartAllsectionheaderDirective', function(){
+function scrollHorizontallyOrdercartAllsectionheaderDirective(){
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#uca_ordercartAllSectionHeaderContainerDivId').length>0){
@@ -589,10 +589,11 @@ app.directive('scrollHorizontallyOrdercartAllsectionheaderDirective', function()
             }
         }, 1);
     };
-});
+}
 
-// scroll-horizontally-partyorder-allsectionheader-directive
-app.directive('scrollHorizontallyPartyorderAllsectionheaderDirective', function(){
+angular.module('DKAPP').directive('scrollHorizontallyPartyorderAllsectionheaderDirective', scrollHorizontallyPartyorderAllsectionheaderDirective);
+
+function scrollHorizontallyPartyorderAllsectionheaderDirective(){
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#po_AllSectionHeaderContainerDivId').length>0){
@@ -611,7 +612,7 @@ app.directive('scrollHorizontallyPartyorderAllsectionheaderDirective', function(
             }
         }, 1);
     };
-});
+}
 
 angular.module('DKAPP').directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', scrollHorizontallyCustomizeorderAllsectionheaderDirective);
 
