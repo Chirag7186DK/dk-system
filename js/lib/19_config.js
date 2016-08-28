@@ -14,5 +14,5 @@ console.log("on load deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight)
 //alert("on laod deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight);
 
 // web-app module defined here 
-var app = angular.module('DESSERTSKHAZANAAPP', []);
+var app = angular.module('DKAPP', []);
 
