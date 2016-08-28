@@ -1,6 +1,7 @@
 
-// ProductTypeProductCategoryProductDetailsController
-app.controller('ProductTypeProductCategoryProductDetailsController', function($scope, $rootScope, $http, ProductServices, LocationServices){
+angular.module('DKAPP').controller('ProductTypeProductCategoryProductDetailsController', ProductTypeProductCategoryProductDetailsController);
+
+function ProductTypeProductCategoryProductDetailsController($scope, $rootScope, $http, ProductServices, LocationServices){
     try{
         
         $rootScope.productViewAllFilterPopDivClass = '';
@@ -566,5 +567,5 @@ app.controller('ProductTypeProductCategoryProductDetailsController', function($s
         console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
     }
     
-});
+}
 
