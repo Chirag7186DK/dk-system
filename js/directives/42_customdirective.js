@@ -184,16 +184,16 @@ function orderProductqtyinputDirective($timeout){
     };
 }
 
+angular.module('DKAPP').directive('loadDklogoImagesDirective', loadDklogoImagesDirective);
 
-// loadDklogoImagesDirective
-app.directive('loadDklogoImagesDirective', function(){
+function loadDklogoImagesDirective(){
     return function(scope, element, attrs){
         loadDkLogoImages(element);
         scope.$on('resize::resize', function() {
             loadDkLogoImages();
         });
     };
-});
+}
 
 
 // loadPartyorderImagesDirective
