@@ -468,7 +468,7 @@
                 <!-- create horizontally space div between -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
-                <!-- offers can be share info will be displayed -->
+                <!-- all offers can be share info will be displayed -->
                 <div ng-if="displayShareOffersSectionType==='availableshareoffers'" ng-controller="UCustomerController" ng-init="populateUserSharingDiscountCouponList()" id='uca_userSharingAllDiscountCouponListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingAllDiscountCouponListDivClass'>
                     
                     <!-- share offers can be filtering -->
@@ -508,12 +508,12 @@
                     
                 </div>
                 
-                <!-- ordered order cart all items info will be displayed -->
+                <!-- all shared offers info will be displayed -->
                 <div ng-if="displayShareOffersSectionType==='alloffersshared'" ng-controller="UCustomerController" ng-init="populateUserSharedDiscountCouponList()" id='uca_sharedOffersListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_allSharedOffersListSectionDivClass'>
                     
                     <!-- shared offers will be filtering -->
                     <div ng-if="userSharedAllDiscountCouponDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextSharedoffersDivClass">
-                        <label class="searchTextSharedoffersLblClass">
+                        <label class="searchTextSharedOffersLblClass">
                             Use for filtering and access fast shared offers details !
                         </label>
                         <input ng-model="searchTextSharedoffers" type="text" class="form-control" placeholder="Find shared offers !">
@@ -527,7 +527,7 @@
                 
                         <p class="uca_sharedoffersWiseAllUserListSectionLabelPClass">
                             Promo code '{{eachUserSharedDiscountCouponAllUserArrObj.dcgCode}}' has been shared by you to   
-                            <span class="badge countSClass">
+                            <span class="badge uca_sharedofferwiseAllUsersCountSClass">
                                 {{eachUserSharedDiscountCouponAllUserArrObj.countAllUserList}}
                             </span>
                             friends/colleague
@@ -535,11 +535,11 @@
                         
                         <!-- each shared offers user info will display -->
                         <div ng-repeat="userDetailsObj in eachUserSharedDiscountCouponAllUserArrObj.sharedOffersAllUserDetails | filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_sharedOffersWiseEachUserDivClass">
-                            <p>
+                            <p class='sharedOffersMobilePClass'>
                                 Shared On Mobile: {{userDetailsObj.sharedOnMobile}}
                             </p>
-                            <p>
-                                Shared Datetime: {{userDetailsObj.sharedOnEmail}}
+                            <p class='sharedOffersDatetimeClass'>
+                                Shared Datetime: {{userDetailsObj.sharedOnDateTime}}
                             </p>
                         </div>
                         
