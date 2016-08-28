@@ -18,20 +18,13 @@ var dkapp = angular.module('DKAPP', []);
 
 dkapp.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
-            $stateProvider
-                    .state('login', {
-                            url: '/login',
-                            templateUrl: './app/login/login.html',
-                            controller: LoginCtrl,
-                            controllerAs: 'vm'
-                    })
-                    .state('dashboard', {
-                            url: '/dashboard',
-                            templateUrl: './app/dashboard/dashboard.html',
-                            controller: DashboardCtrl,
-                            controllerAs: 'vm'
-                    });
-
-            $urlRouterProvider.otherwise('/login');
+        $stateProvider
+            .state('', {
+                templateUrl: ''
+            })
+            .state('', {
+                templateUrl: ''
+            });
+        $urlRouterProvider.otherwise('/index.php');
     }
 ]);
