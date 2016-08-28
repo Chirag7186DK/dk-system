@@ -478,7 +478,7 @@
                     </div>
                     
                     <!-- each sharing offers will display -->
-                    <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListDivClass">
+                    <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListDivClass uca_userSharingEachDiscountCouponListDivClass{{$index}}">
                         <p class="sharingOffersMsgPClass">
                             {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
                         </p>
@@ -492,8 +492,8 @@
                             Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
                         <p class="sharingOffersOperationPClass">
-                            <input type='text' class='form-control sharingOffersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
-                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn sharingOffersBtnClass'>
+                            <input type='text' class='form-control sharingOffersUsersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
+                            <button ng-click="checkDataToShareOffers(ordercartRequestedEachItemDetailsArrObj, 'uca_userSharingEachDiscountCouponListDivClass'+$index);" class='btn sharingOffersBtnClass'>
                                 SHARE OFFERS
                             </button>
                         </p>
