@@ -1908,3 +1908,39 @@ function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
     }
 }
 
+
+/////////////////// sharing offers code ////////////////////////////
+
+
+// CJ defined this function 2016-08-28
+function getParamDataToSharingOffersFromOneUserToOtherUsers(sharingOffersDataObj, fcontentClass){
+    try{
+        var retParamObj = {};
+        var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+        if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
+            && jQuery.isEmptyObject(userLoggedDataObj)===false){
+            retParamObj = $.extend(retParamObj, userLoggedDataObj);
+            if($('.'+fcontentClass).find("input[type='text']").length===1){
+                var userMobileVal = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
+                if(userMobileVal!=='' && userMobileVal!==false
+                    && sharingOffersDataObj!==false && sharingOffersDataObj!==undefined 
+                    && jQuery.isEmptyObject(sharingOffersDataObj)===false){
+                    if(sharingOffersDataObj.hasOwnProperty('dcgId')===true){
+                        if(parseInt(sharingOffersDataObj['dcgId'])>0){
+                            retParamObj['discount_couponid'] = sharingOffersDataObj['dcgId'];
+                            retParamObj['shared_onmobile'] = userMobileVal;
+                        }
+                    }
+                }
+            }
+        }
+        if(Object.keys(retParamObj).length===5){
+            return retParamObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        // console.log("problem in getParamDataToUpdateItemInOrdercart ex=>"+ex);
+        return false;
+    }
+}
