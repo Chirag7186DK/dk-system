@@ -575,10 +575,12 @@ class commonfunction{
             if(count($sharingDiscountCouponSetupListByUserArr)>0 && $sharingDiscountCouponSetupListByUserArr!=false){
                 // iterate each setup discount coupon list
                 for($eachIndex = 0; $eachIndex<count($sharingDiscountCouponSetupListByUserArr); $eachIndex++){
+                    
                     // check how many times user has been shared discount coupon list to others
                     $discountCouponId = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgId'];
                     $shareLimit = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['shareLimit'];
-                    $countUserSharedDiscountCoupon = DiscountCouponDao :: getCountUserSharedDiscountCoupon($unMd5UserId, $discountCouponId);
+                    $countUserSharedDiscountCoupon = DiscountCouponDao :: getUserSharedDiscountCouponOtherUsersList($unMd5UserId, $discountCouponId);
+                    
                     if($countUserSharedDiscountCoupon>=0 && $countUserSharedDiscountCoupon!='FALSE'
                         && $countUserSharedDiscountCoupon<=$shareLimit && $shareLimit>0){
                         
