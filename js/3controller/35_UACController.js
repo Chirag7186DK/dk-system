@@ -1,6 +1,6 @@
 
 // OrderCartController
-app.controller('UCustomerController', function($scope, $rootScope, $http, UsersServices, WishListServices, OrderCartServices, DiscountCouponServices){
+app.controller('UCustomerController', function($scope, $rootScope, $http, UsersServices, OrderCartServices, DiscountCouponServices){
     try{
         
         $rootScope.isShowUCustomerAccountOtherSectionList = false;
