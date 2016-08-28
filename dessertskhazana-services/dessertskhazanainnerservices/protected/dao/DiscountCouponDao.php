@@ -304,10 +304,10 @@ class DiscountCouponDao{
                 $sqlValues.="'".$paramJson['sharedby_id']."',";
             }
         }
-        if(array_key_exists('sharedon_mobile', $paramJson)){
-            if($paramJson['sharedon_mobile']!=''){
-                $sqlColumnNames.=" sharedon_mobile,";
-                $sqlValues.="'".$paramJson['sharedon_mobile']."',";
+        if(array_key_exists('shared_onmobile', $paramJson)){
+            if($paramJson['shared_onmobile']!=''){
+                $sqlColumnNames.=" shared_onmobile,";
+                $sqlValues.="'".$paramJson['shared_onmobile']."',";
             }
         }
         if(array_key_exists('created_by', $paramJson)){
