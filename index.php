@@ -185,9 +185,6 @@
                             Delivery <i class="fa fa-map-marker"></i> : At 12 area
                         </p>
                         <p class='dl_productBtnWrapperPClass'> 
-                            <button ng-controller='WishListController' ng-click="prepareProductDataToAddInUWL(eachProductDetails)" title='Click to add {{eachProductDetails.productListTitle}} item in your default wishlist' class="dl_specificProductAddWishListBtnClass btn">
-                                <i class="fa fa-heart"></i>
-                            </button>
                             <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'home')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="dl_specificProductAddBtnClass btn">
                                 <i class="fa fa-plus"></i>
                             </button>
