@@ -101,7 +101,7 @@ function UsersController($scope, $rootScope, $http, UsersServices){
             }else if(lastPageAccessedByUser==='wishlist'){
                 window.location.href = globalBaseSitePath+"wishlist.php";
             }else if(lastPageAccessedByUser==='viewproduct'){
-                window.location.href = globalBaseSitePath+"viewproduct.php";
+                window.location.href = globalBaseSitePath+"product.php";
             }else if(lastPageAccessedByUser==='allproducts'){
                 window.location.href = globalBaseSitePath+"allproducts.php";
             }else if(lastPageAccessedByUser==='viewstoreproduct'){
