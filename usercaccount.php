@@ -477,25 +477,25 @@
                         <p class="shareOffersMsgPClass">
                             {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
                         </p>
-                        <p class="shareOffersLimitPClass">
+                        <p class="sharingOffersLimitPClass">
                             Sharing Limit: {{userSharingEachDiscountCouponDetailsArrObj.shareLimit}}
                         </p>
-                        <p class="shareOffersRemainingLimitPClass">
+                        <p class="sharingOffersRemainingLimitPClass">
                             Limit Remain: {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
                         </p>
-                        <p class="shareOffersExpiryDateTimePClass">
+                        <p class="sharingOffersExpiryDateTimePClass">
                             Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
-                        <p class="toggleShareOffersDetailsLinkMsgPClass">
-                            <span ng-click="toggleShareOffersLinkMsgPClass">
+                        <p class="toggleSharingOffersDetailsLinkMsgPClass">
+                            <span ng-click="toggleShareOffersDetailsLinkMsgPClass">
                                 Click here to toggle details for offers sharing   
                             </span>
                         </p>
-                        <p class="shareOffersBlankPClass"></p>
-                        <p class="shareOffersOperationPClass">
-                            <span class='shareOffersNoteSClass'>Note: Type friends/colleagues mobile for offers sharing !</span>
-                            <input type='text' class='form-control shareOffersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
-                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn shareOffersBtnClass'>
+                        <p class="sharingOffersBlankPClass"></p>
+                        <p class="sharingOffersOperationPClass">
+                            <span class='sharingOffersNoteSClass'>Note: Type friends/colleagues mobile for offers sharing !</span>
+                            <input type='text' class='form-control sharingOffersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
+                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn sharingOffersBtnClass'>
                                 SHARE OFFERS
                             </button>
                         </p>
@@ -503,7 +503,9 @@
                     
                     <!-- no offers available for sharing purpose -->
                     <div ng-if="userSharingAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharingOffersFoundDivClass">
-                        <p class="noShareOffersFoundPClass">No offers available for you to share with your friends/colleague !</p>
+                        <p class="noSharingOffersFoundPClass">
+                            No offers available for you or remain to share with your friends/colleagues !
+                        </p>
                     </div>
                     
                 </div>
