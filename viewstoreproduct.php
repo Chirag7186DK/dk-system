@@ -4,7 +4,7 @@ include "Site_config.inc.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en" ng-app='DESSERTSKHAZANAAPP'>
+<html lang="en" ng-app='DKAPP'>
 
     <!-- head section start here -->
     <head>
