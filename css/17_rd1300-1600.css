@@ -28,7 +28,7 @@
     }
 
 
-    /* first header css */
+    /* first header css code */
 
     .fHeaderRowBorderDivClass{
         border-bottom:2px solid #e7486b!important;
@@ -224,7 +224,7 @@
     }
 
 
-    /*  what is desserts khazana css */
+    /*  what is desserts khazana css code */
 
     .whatIsDessertsKhazanaMainContainerDivClass{
         border-bottom:1px solid #d6caca!important;
@@ -294,7 +294,7 @@
     }
 
 
-    /*  dashboard level css code  */
+    /*  home dashboard level css code  */
 
     .smileIconClass{
         font-size:22px!important;
@@ -1419,7 +1419,7 @@
     }
 
 
-    /*  cshopstore css code */
+    /*  customer point view shopstore css code */
 
 
     .dkAllCompleteOffersContainerDivClass{
@@ -2117,6 +2117,7 @@
     }
 
 
+    
     /* corporate tieup order css code */
 
     .ct_userBreadcrumbDivClass{
@@ -2270,37 +2271,8 @@
         color:#fff!important;
     }
 
-    /* wishlist related css code */
-
-    .wl_userBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .wl_userBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:17px!important;
-        padding-top:6px!important;
-    }
-
-    .wl_userBreadcrumbULClass li a, 
-    .wl_userBreadcrumbULClass li a:hover{
-        border-bottom:2px dotted #CDCEE8!important;
-        text-decoration:none!important;
-        font-weight:100!important;
-        color:#828282!important;
-        font-size:12px!important;
-    }
-
-    .wl_userBreadcrumbWishListTitleLIClass,
-    .wl_userBreadcrumbWishListSignOutTitleLIClass{
-        color:#828282!important;
-        font-size:12px!important;
-    }
-
-
-    /* wish list user signUp form css code */
+    
+    /* myaccount signUp form css code */
 
     .wl_userSignUpFormInfoWrapperDivClass{
         margin-top:20px;
@@ -2401,602 +2373,8 @@
         color:#fff!important;
     }
 
-    /*  wish list dashboard css code   */
 
-    .wl_euserInfoDivClass{
-        margin-top:20px;
-        border:1px solid #002E6E!important;
-        background-color:#002E6E!important;
-    }
-
-    .wl_euserInfoBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:17px!important;
-        padding-top:6px!important;
-    }
-
-    .wl_euserInfoBreadcrumbULClass li{
-        color:#fff!important;
-        font-weight:100!important;
-    }
-
-    .wlCountSClass{
-        background: #f3eded;
-        color:#000!important;
-        font-weight:bold;
-        font-size:20px!important;
-    }
-
-    .drawHorizontalLineWLDivClass{
-        padding:10px;
-        border:1px solid #fff!important;
-    }
-
-    .wld_msgContainerDivClass{
-        padding:10px!important;
-        background:#964c90!important;
-        color:#fff!important;
-        margin-top:15px!important;
-        margin-bottom:15px!important;
-    }
-
-    /* settings wish list */
-
-    .wld_settingsWLIconContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_settingsWLIconDisplayDivClass{
-        // color:rgb(199, 81, 136)!important;
-        // background-color:whitesmoke!important;
-        color:#665800!important;
-        background-color:#FFDC00!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        cursor:pointer!important;
-        border:7px solid #fff!important;
-    }
-
-    .wld_settingsWLIconPClass{
-        margin:0px!important;
-        text-align:center!important;
-    }
-
-    .wld_settingsWLIconClass{
-        font-size:50px!important;
-    }
-
-    .wld_settingsWLIconTitleHClass{
-        text-align:center!important;
-        font-size:15px!important;
-        font-family:serif;
-        text-transform:uppercase;
-        margin:5px!important;
-    }
-
-    .wld_allWLContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_allWLFilterOperationContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        padding-top:20px!important;
-        padding-bottom:20px!important;
-    }
-
-    .wld_eachWLContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        border:10px solid #fff!important;
-    }
-
-    .wld_eachWLContentDivClass{
-        background: #fff!important;
-        width:100%!important;
-        border:1px solid rgb(232, 208, 217)!important;
-        border-radius:2px!important;
-        padding:20px!important;
-        box-shadow:0 2px 4px rgba(0,0,0,.1)!important;
-    }
-
-    .wld_eachWLSetAsDefaultPClass{
-        position: absolute;
-        left:0;
-        top:0;
-        color:#fff!important;
-        font-weight:bold!important;
-        font-size:10px!important;
-        text-transform:uppercase;
-        background:#864a86!important;
-        padding:2px!important;
-    }
-
-    .wld_eachWLformfieldLabelPClass{
-        margin:0px!important;
-        color:#727375!important;
-        font-size:13px!important;
-    }
-
-    .wld_eachWLDefaultSettingsOptionClass,
-    .wld_eachWLDefaultSettingsOptionClass:hover,
-    .wld_eachWLPrivacySettingsOptionClass,
-    .wld_eachWLPrivacySettingsOptionClass:hover{
-        border-radius:0px!important;
-        padding:2px!important;
-        font-size:12px!important;
-    }
-
-    .wld_redirectToYourWLPClass{
-        margin:0px!important;
-        color:#a7069a!important;
-        font-size:13px!important;
-        cursor:pointer!important;
-    }
-
-    .wld_eachWLOperationBtnContainerPClass{
-        margin:20px 0px 20px!important;
-    }
-
-    .wld_eachWLSubmitBtnClass,
-    .wld_eachWLSubmitBtnClass:hover{
-        border-radius:0px!important;
-        padding:2px!important;
-        font-size:12px!important;
-        background:#00B9F5!important;
-        color:#fff!important;
-    }
-
-    .wld_eachWLDeleteBtnClass,
-    .wld_eachWLDeleteBtnClass:hover{
-        border-radius:0px!important;
-        padding:2px!important;
-        font-size:12px!important;
-        background:#00B9F5!important;
-        color:#fff!important;
-    }
-
-
-    /* create wish list */
-
-    .wld_createWLIconContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_createWLIconDisplayDivClass{
-        color:#665800!important;
-        background-color:#FFDC00!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        cursor:pointer!important;
-        border:7px solid #fff!important;
-    }
-
-    .wld_createWLIconPClass{
-        margin:0px!important;
-        text-align:center!important;
-    }
-
-    .wld_createWLIconClass{
-        font-size:50px!important;
-    }
-
-    .wld_createWLIconTitleHClass{
-        text-align:center!important;
-        font-size:15px!important;
-        font-family:serif;
-        text-transform:uppercase;
-        margin:5px!important;
-    }
-
-    .cwl_FormContentContainerDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-
-    .cwl_formHeaderPClass{
-        color:#fb366e!important;
-        font-weight:bold!important;
-        text-align:center;
-    }
-
-    .cwl_smileIconClass{
-        font-size:20px!important;
-        color:#fb366e!important;
-    }
-
-    .cwl_formContentWrappperContainerDivClass{
-        border:1px dashed #FFDC00!important;
-        background:#fff!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-left:25%!important;
-    }
-
-    .cwl_formContentWrappperContainerDivClass div{
-        margin-bottom:15px;
-    }
-
-    .cwl_formfieldLabelPClass{
-        color:#778ca0!important;
-        font-weight:bold!important;
-    }
-
-    .cwl_formfieldiconclass{
-        font-size:11px!important;
-        color:#708090!important;
-        font-weight:bold!important;
-    }
-
-    .cwl_titleInputClass,
-    .cwl_privacySettingsOptionClass{
-        height:40px!important;
-    }
-
-    .cwl_formfieldHintPClass{
-        font-size:11px!important;
-        color:#708090!important;
-        font-weight:bold!important;
-    }
-
-    .cwl_errorMsgContainerDivClass{
-        color:#4747d0!important;
-    }
-
-    .cwlSubmtBtnClass, 
-    .cwlSubmtBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#fb366e!important;
-        color:#fff!important;
-    }
-
-
-    /* view wish list */
-
-    .wld_viewYourWLIconContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_viewYourWLIconDisplayDivClass{
-        color:#665800!important;
-        background-color:#FFDC00!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        cursor:pointer!important;
-        border:7px solid #fff!important;
-    }
-
-    .wld_viewYourWLIconPClass{
-        margin:0px!important;
-        text-align:center!important;
-    }
-
-    .wld_viewYourWLIconClass{
-        font-size:50px!important;
-    }
-
-    .wld_viewYourWLIconTitleHClass{
-        text-align:center!important;
-        font-size:15px!important;
-        font-family:serif;
-        text-transform:uppercase;
-        margin:5px!important;
-    }
-
-    .wld_yourAllWLContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_yourEachWLContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_yourAllWLFilterOperationContainerDivClass{
-        padding-top:20px!important;
-        padding-bottom:20px!important;
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_yourWLTitlePClass{
-        color:#E91E63!important;
-        text-align:center!important;
-        padding:20px!important;
-        font-weight:bold!important;
-        text-transform:uppercase!important;
-    }
-
-    .wld_yourEachWLItemContainerDivClass{
-        margin-bottom:20px!important;
-        border-bottom:1px solid #e2e5e6!important;
-    }
-
-    .wld_yourEachWLProductStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .wld_yourEachWLProductNamePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .wld_yourEachWLProductReviewAndRatingPClass{
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_yourEachWLProductNotReviewAndRatingPClass{
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_yourEachWLProductWeightPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-    }
-
-    .wl_productCutPriceTextSClass{
-        text-decoration:line-through!important;
-        color:#999999!important;;
-        font-size:14px!important;
-        margin-right:6px;
-    }
-
-    .wld_yourEachWLProductPayBlgPriceTextSClass{
-        font-size:20px!important;
-        margin-right:6px;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_yourEachWLProductDiscountPercentTextSClass{
-        color:#60bf79!important;
-        font-size:14px!important;
-    }
-
-    .wld_yourWLItemAvgRatedIconClass{
-        color:rgba(205, 46, 216, 0.73)!important;
-    }
-
-    .wld_yourEachWLItemAddedDatePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .wld_yourEachWLSpecificProductAddBtnClass,
-    .wld_yourEachWLSpecificProductAddBtnClass{
-        border-radius:0px!important;
-        background-color:#3F51B5!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        padding:4px!important;
-        font-size:11px!important;
-    }
-
-    .wld_yourEachWLSpecificProductDeleteBtnClass,
-    .wld_yourEachWLSpecificProductDeleteBtnClass{
-        border-radius:0px!important;
-        background-color:#3F51B5!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        padding:4px!important;
-        font-size:11px!important;
-    }
-
-    .wld_yourWLItemMoveSelectionClass,
-    .wld_yourWLItemMoveSelectionClass:hover{
-        border-radius:0px!important;
-        padding:2px!important;
-        width:50%!important;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    /* search wish list */
-
-    .wld_searchWLFormContentContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_searchWLFormContentDisplayDivClass{
-        background-color:whitesmoke!important;
-        //color:#665800!important;
-        //background-color:#FFDC00!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        border:7px solid #fff!important;
-    }
-
-    .wld_searchInputDivClass{
-        padding:5px!important;
-    }
-
-    .wld_wishListSearchBtnDivClass{
-        text-align:center!important;
-        padding-top:8px!important;
-    }
-
-    .wld_wishListSearchBtnClass,
-    .wld_wishListSearchBtnClass:hover{
-        border-radius: 0px!important;
-        font-weight:bold!important;
-        padding:0px!important;
-        padding-left:10px!important;
-        padding-right:10px!important;
-        margin-left:1%!important;
-        background:#00B9F5!important;
-        color:#fff!important;
-        cursor:pointer!important;
-        font-family:serif!important;
-    }
-
-    .wld_searchedAllUserwiseWLSummaryContainerDivClass{
-        margin-top:15px!important;
-        margin-bottom:15px!important;
-        padding-left: 0px!important;
-        padding-right: 0px!important;
-    }
-
-    .wld_searchedAllUserwiseWLSummaryFilterOperationContainerDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        padding-left:0px!important;
-        padding-right: 0px!important;
-    }
-
-    .wld_searchedEachUserwiseWLSummaryContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        border: 10px solid #fff!important;
-    }
-
-    .searchedDisplayEachUserwiseWLDetailsDivClass{
-        background: #fff!important;
-        width:100%!important;
-        border:1px solid rgb(232, 208, 217)!important;
-        border-radius:2px!important;
-        padding:20px!important;
-        box-shadow: 0 2px 4px rgba(0,0,0,.1)!important;
-    }
-
-    .wld_searchedUserDetailsTitleDivClass{
-        font-size:15px!important;
-        font-weight:normal!important;
-        color:#50778a!important;
-        cursor:pointer!important;
-    }
-
-    .wld_userSmileIconClass{
-        font-size:40px!important;
-        color:rgb(199, 81, 136)!important;
-    }
-
-    .wld_searchedSingleUserwiseAllWLItemFilterOperationContainerDivClass{
-        padding-top:20px!important;
-        padding-bottom:20px!important;
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_searchedUserAllWLTitleContainerDivClass{
-        height:100px!important;
-    }
-
-    .wld_searchedUserEachWLTitlePClass{
-        font-size:12px!important;
-        font-weight:normal!important;
-        color:#50778a!important;
-        cursor:pointer!important;
-    }
-
-    .wld_searchedSingleUserwiseAllWLItemWrapperDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_searchedSingleUserwiseAllWLItemContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .wld_searchedSingleUserEachWLTitlePClass{
-        color:#E91E63!important;
-        text-align:center!important;
-        padding:20px!important;
-        font-weight:bold!important;
-        text-transform:uppercase!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemContainerDivClass{
-        margin-bottom:20px!important;
-        border-bottom:1px solid #e2e5e6!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemNamePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemReviewAndRatingPClass{
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemNotReviewAndRatingPClass{
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemWeightPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemCutPriceTextSClass{
-        text-decoration:line-through!important;
-        color:#999999!important;;
-        font-size:14px!important;
-        margin-right:6px;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemPayBlgPriceTextSClass{
-        font-size:20px!important;
-        margin-right:6px;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemDiscountPercentTextSClass{
-        color:#60bf79!important;
-        font-size:14px!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemAvgRatedIconClass{
-        color:rgba(205, 46, 216, 0.73)!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemAddedDatePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .wld_searchedSingleUserwiseEachWLItemAddBtnClass,
-    .wld_searchedSingleUserwiseEachWLItemAddBtnClass:hover{
-        border-radius:0px!important;
-        background-color:#3F51B5!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        padding:4px!important;
-        font-size:11px!important;
-    }
-
-    .wl_searchedSingleUserwiseEachWLItemCopySelectionClass,
-    .wl_searchedSingleUserwiseEachWLItemCopySelectionClass:hover{
-        border-radius:0px!important;
-        padding:2px!important;
-        width:50%!important;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .wld_notYourWLItemMoveSelectionClassFoundPClass{
-        color:#E91E63!important;
-        font-size:12px!important;
-    }
-
-    .hrClass{
-        border-color:#986694!important;
-    }
-
-
-    /*  myaccount signup-sigin css code */
+    /*  myaccount sigin form css code */
 
     .ma_userBreadcrumbDivClass{
         margin-top:20px;
@@ -3206,6 +2584,7 @@
         cursor:pointer;
     }
     
+    
     /*  change password css code  */
     
     .uca_changepasswordInfoSectionContainerDivClass{
@@ -3288,7 +2667,7 @@
         background:#00B9F5!important;
     }
 
-    /* order cart requested item section css code */
+    /* order cart requested all item section css code */
 
     .uca_ordercartRequestedAllItemListSectionDivClass{
         padding-left:0px!important;
@@ -3440,7 +2819,7 @@
     }
 
 
-    /* cancel order cart item section css code */
+    /* cancel order cart all item section css code */
 
     .uca_ordercartCancelledAllItemListSectionDivClass{
         padding-left:0px!important;
@@ -3757,7 +3136,6 @@
     
     
     
-    
     /* user party order css code */
     
     .po_userBreadcrumbDivClass{
@@ -3996,7 +3374,6 @@
     
     
     /* user customize order css code */
-    
     
     .co_userBreadcrumbDivClass{
         margin-top:20px;
