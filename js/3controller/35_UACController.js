@@ -516,8 +516,8 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
-        // checkDataToShareOffers
-        $rootScope.checkDataToShareOffers = function(sharingOffersDetailsObj, fcontentClass){
+        // checkDataToShareOffersToOtherUser
+        $rootScope.checkDataToShareOffersToOtherUser = function(sharingOffersDetailsObj, fcontentClass){
             try{
                 // validating sharing offers data status
                 var validatedDataStatus = validateDataToShareOffers(fcontentClass);
@@ -529,7 +529,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     showNotificationBoxMsg(notifyMsgStr);
                 }
             }catch(ex){
-                console.log("problem in checkDataToShareOffers=>"+ex);
+                console.log("problem in checkDataToShareOffersToOtherUser=>"+ex);
             }
         };
         
