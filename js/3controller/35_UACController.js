@@ -534,12 +534,12 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         };
         
         // addSharingOffersFromOneUserToOtherUsers
-        $rootScope.addSharingOffersFromOneUserToOtherUsers = function(){
+        $rootScope.addSharingOffersFromOneUserToOtherUsers = function(sharingOffersDetailsObj, fcontentClass){
             try{
-                // check is user logged in or not session
-                var sharingOffersParamDataObj = getParamDataToSharingOffersFromOneUserToOtherUsers();
-                if(sharingOffersParamDataObj!==false && sharingOffersParamDataObj!==undefined
-                    && jQuery.isEmptyObject(sharingOffersParamDataObj)===false){
+                
+                var paramDataObj = getParamDataToSharingOffersFromOneUserToOtherUsers(sharingOffersDetailsObj, fcontentClass);
+                if(paramDataObj!==false && paramDataObj!==undefined
+                    && jQuery.isEmptyObject(paramDataObj)===false){
                 
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
@@ -547,7 +547,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     showHideLoaderBox('show', jsonParamBlockUIObject);
 
                     var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = sharingOffersParamDataObj;
+                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
 
                     // calling DiscountCouponServices 
                     DiscountCouponServices.addSharingOffersFrmOneUserToOtherUsers(fetchedParamJsonObj).done(function(retResponseJson){
