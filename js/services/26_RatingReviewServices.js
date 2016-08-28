@@ -1,6 +1,8 @@
 
+angular.module('DKAPP').factory('RatingReviewServices', RatingReviewServices);
+
 // CJ defined this function 2016-04-22
-app.factory('RatingReviewServices', function($http, $q){
+function RatingReviewServices($http, $q){
     try{
         var ratingReviewDetails = {};
         
@@ -33,4 +35,4 @@ app.factory('RatingReviewServices', function($http, $q){
         console.log("problem in Rating/Review services ex=>"+ex);
         return false;
     }
-}); 
+}
