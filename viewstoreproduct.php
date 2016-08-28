@@ -270,9 +270,6 @@ include "Site_config.inc.php";
                         Delivery <i class="fa fa-map-marker"></i> : At area 12
                     </p>
                     <p class='cshopstore_productBtnWrapperPClass'> 
-                        <button ng-controller='WishListController' ng-click='prepareProductDataToAddInUWL(eachProductDetails)' title='Click to add {{eachProductDetails.productListTitle}} item in your default wishlist' class="cshopstore_specificProductAddWishListBtnClass btn">
-                            <i class="fa fa-heart"></i>
-                        </button>
                         <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'viewstoreproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="cshopstore_specificProductAddBtnClass btn">
                             <i class="fa fa-plus"></i>
                         </button>
