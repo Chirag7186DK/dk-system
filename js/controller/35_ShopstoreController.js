@@ -1,6 +1,8 @@
 
-// ShopStoreController
-app.controller('ShopStoreController', function($scope, $rootScope, $http, ShopStoreServices, RatingReviewServices){
+
+angular.module('DKAPP').controller('ShopStoreController', ShopStoreController);
+
+function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, RatingReviewServices){
     try{
         
         $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
@@ -724,6 +726,6 @@ app.controller('ShopStoreController', function($scope, $rootScope, $http, ShopSt
         console.log("problem in ShopstoreDetailsController ex=>"+ex);
     }
     
-});
+}
 
 
