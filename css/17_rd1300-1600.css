@@ -3100,11 +3100,12 @@
     }
 
     .uca_userSharingEachDiscountCouponListDivClass:last-child{
+        border-bottom:none!important;
     }
 
     .shareOffersMsgPClass{
-        color:#67717D!important;
-        font-size:14px!important;
+        color:#ed143d!important;
+        font-size:15px!important;
     }
 
     .shareOffersLimitPClass,
