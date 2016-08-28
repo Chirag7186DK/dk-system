@@ -1,6 +1,7 @@
 
-// CorporateTieupController
-app.controller('CorporateTieupController', function($scope, $rootScope, $http, CorporateTieupServices){
+angular.module('DKAPP').controller('CorporateTieupController', CorporateTieupController);
+
+function CorporateTieupController($scope, $rootScope, $http, CorporateTieupServices){
     try{
         
         $rootScope.isShowCorporateTieupRequestErrorMsg = false;
@@ -79,4 +80,4 @@ app.controller('CorporateTieupController', function($scope, $rootScope, $http, C
     }catch(ex){
         console.log("problem in corporate tieup controller ex=>"+ex);
     }
-});
+}
