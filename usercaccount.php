@@ -486,8 +486,10 @@
                         <p class="shareOffersExpiryDateTimePClass">
                             Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
-                        <p class="toggleShareOffersLinkMsgPClass">
-                            Click here to toggle details for offers sharing 
+                        <p class="toggleShareOffersDetailsLinkMsgPClass">
+                            <span ng-click="toggleShareOffersLinkMsgPClass">
+                                Click here to toggle details for offers sharing   
+                            </span>
                         </p>
                         <p class="shareOffersBlankPClass"></p>
                         <p class="shareOffersOperationPClass">
