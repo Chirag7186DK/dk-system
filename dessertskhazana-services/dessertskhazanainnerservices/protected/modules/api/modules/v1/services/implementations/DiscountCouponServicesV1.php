@@ -43,4 +43,29 @@ class DiscountCouponServicesV1 implements IDiscountCouponServicesV1{
         return $rspDetails;
     }
 
+    // CJ defined this service 2016-08-28
+    public function addSharingOffersFrmOneUserToOtherUser($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isOffersShared'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session data details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $unMd5UserId = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['user_sessionid'] = $dkParamDataArr['user_sessionid'];
+                $dkParamDataArr['sharedby_id'] = $unMd5UserId;
+                $dkParamDataArr['created_by'] = $unMd5UserId;
+                $dkParamDataArr['created_datedtime'] = date('Y-m-d H:i:s');
+                $dkParamDataArr['status'] = 'S';
+                // storing tracking shared offers data for other users
+                $offerSharedDataStatus = DiscountCouponDao :: addUserSharedDiscountCoupon($dkParamDataArr);
+                
+                
+                
+            }
+        } 
+        return $rspDetails;
+    }
+
 }
