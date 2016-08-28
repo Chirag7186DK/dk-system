@@ -229,9 +229,6 @@
                         Delivery <i class="fa fa-map-marker"></i> : At area
                     </p>
                     <p class='vap_productBtnWrapperPClass'> 
-                        <button ng-controller='WishListController' ng-click='prepareProductDataToAddInUWL(eachProductDetails)' title='Click to add {{eachProductDetails.productListTitle}} item in your default wishlist' class="vap_specificProductAddWishListBtnClass btn">
-                            <i class="fa fa-heart"></i>
-                        </button>
                         <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'allproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="vap_specificProductAddBtnClass btn">
                             <i class="fa fa-plus"></i>
                         </button>
