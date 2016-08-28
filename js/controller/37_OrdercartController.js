@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('OrderCartController', OrderCartController);
 
 // OrderCartController
-app.controller('OrderCartController', function($scope, $rootScope, $http, OrderCartServices){
+function OrderCartController($scope, $rootScope, $http, OrderCartServices){
     try{
          
         // checkProductDataToAddInOrdercart 
@@ -78,4 +78,4 @@ app.controller('OrderCartController', function($scope, $rootScope, $http, OrderC
         console.log("problem in OrdercartController ex=>"+ex);
     }
     
-});
+}
