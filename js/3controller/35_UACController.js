@@ -1,9 +1,8 @@
 
 // OrderCartController
 app.controller('UCustomerController', function($scope, $rootScope, $http, UsersServices, OrderCartServices, DiscountCouponServices){
+    
     try{
-        
-        $rootScope.isShowUCustomerAccountOtherSectionList = false;
         
         // checkRequestedSectionAvailableToAccessInUserCAccount
         $rootScope.checkRequestedSectionAvailableToAccessInUserCAccount = function(){
@@ -457,6 +456,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         
         // displayShareoffersSectionToAccessInUserCAccount
         $rootScope.displayShareoffersSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
+            $rootScope.isShowSharingOffersOperationDetails = false;
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
             $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
             $rootScope.uca_toggleShareoffersSectionList($rootScope.requestedSectionName);
@@ -516,8 +516,6 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                 console.log("problem in populateUserSharingDiscountCouponList ex=>"+ex);
             }
         };
-        
-        
         
         // displayPartyOrderInfoSectionToAccessInUserCAccount
         $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
