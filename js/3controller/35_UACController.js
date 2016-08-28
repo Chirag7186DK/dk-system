@@ -493,6 +493,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     
                     $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
+                    $rootScope.totalCountUserSharingAllDiscountCoupon =  0;
 
                     // calling DiscountCouponServices 
                     DiscountCouponServices.userSharingDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
@@ -504,8 +505,10 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                             }
                             if(userSharingAllDiscountCouponDetailsArrObj!==false && userSharingAllDiscountCouponDetailsArrObj!==undefined 
                                 && jQuery.isEmptyObject(userSharingAllDiscountCouponDetailsArrObj)===false){
+                                $rootScope.totalCountUserSharingAllDiscountCoupon =  userSharingAllDiscountCouponDetailsArrObj.length;
                                 $rootScope.userSharingAllDiscountCouponDetailsArrObj =  userSharingAllDiscountCouponDetailsArrObj;
                             }else{
+                                $rootScope.totalCountUserSharingAllDiscountCoupon =  0;
                                 $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
                             }
                         });
