@@ -7,8 +7,7 @@ product_versionyear = '2016';
 isProductInMaintainanceMode = 'N';
 isDisableDocumentRightClick = 'Y';
 
-// web-app loaded on devices type detect here
-var isWindowResize = 'N';
+// web-app loaded on devices type detect here width/height
 var deviceWidth = parseInt($(window).width());
 var deviceHeight = parseInt($(window).height());
 console.log("on load deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight);
