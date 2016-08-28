@@ -613,9 +613,9 @@ app.directive('scrollHorizontallyPartyorderAllsectionheaderDirective', function(
     };
 });
 
+angular.module('DKAPP').directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', scrollHorizontallyCustomizeorderAllsectionheaderDirective);
 
-// scroll-horizontally-customizeorder-allsectionheader-directive
-app.directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', function(){
+function scrollHorizontallyCustomizeorderAllsectionheaderDirective(){
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#co_AllSectionHeaderContainerDivId').length>0){
@@ -634,7 +634,7 @@ app.directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', funct
             }
         }, 1);
     };
-});
+}
 
 angular.module('DKAPP').directive('scrollHorizontallyShareoffersAllsectionheaderDirective', scrollHorizontallyShareoffersAllsectionheaderDirective);
     
