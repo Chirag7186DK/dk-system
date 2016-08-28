@@ -1,6 +1,8 @@
 
+angular.module('DKAPP').controller('PartyOrdersController', PartyOrdersController);
+
 // PartyOrdersController
-app.controller('PartyOrdersController', function($scope, $rootScope, $http, PartyOrdersServices){
+function PartyOrdersController($scope, $rootScope, $http, PartyOrdersServices){
     try{
         
         $rootScope.isShowPartyOrderRequestErrorMsg = false;
@@ -149,4 +151,4 @@ app.controller('PartyOrdersController', function($scope, $rootScope, $http, Part
     }catch(ex){
         console.log("problem in PartyOrdersController ex=>"+ex);
     }
-});
+}
