@@ -39,7 +39,7 @@ class DiscountCouponDao{
     }
     
     // CJ defined this function 2016-08-26
-    public static function getSharingDiscountCouponSetupListByUser($userId){
+    public static function getSharingDiscountCouponSetupListByUser($userId, $includeLimitation='Y'){
         $result = false;
         try{
             $connection = Yii::App()->db;
@@ -58,20 +58,22 @@ class DiscountCouponDao{
                     FROM DK_DISCOUNTCOUPONGENERATION dcg
                     WHERE 1
                     AND dcg.status='A'
-                    AND NOW() BETWEEN dcg.start_datedtime AND dcg.end_datedtime
-                    AND dcg.for_userid='$userId'
                     AND dcg.is_universally='N'
-                    AND ( 
-                        (dcg.is_percentagebased='Y' AND dcg.percentage_based>0 AND dcg.is_cashback_based='N' )
-                            OR
-                        (dcg.is_cashback_based='Y' AND dcg.cashback_based>0 AND dcg.is_percentagebased='N')
-                    )
                     AND dcg.can_shareit='Y'
-                    AND dcg.share_limit>0";
+                    AND dcg.share_limit>0
+                    AND dcg.for_userid='$userId'";
+                    if($includeLimitation=='Y'){
+                        $sql.=" AND NOW() BETWEEN dcg.start_datedtime AND dcg.end_datedtime
+                            AND ( 
+                                (dcg.is_percentagebased='Y' AND dcg.percentage_based>0 AND dcg.is_cashback_based='N' )
+                                    OR
+                                (dcg.is_cashback_based='Y' AND dcg.cashback_based>0 AND dcg.is_percentagebased='N')
+                            )";
+                    }
             $command = $connection->createCommand($sql);
-            $userDiscountCouponAvailableBySharingDetailsArr = $command->queryAll();
-            if(count($userDiscountCouponAvailableBySharingDetailsArr)>0 && $userDiscountCouponAvailableBySharingDetailsArr!=false){
-                $result =  $userDiscountCouponAvailableBySharingDetailsArr;
+            $sharingDiscountCouponSetupListByUser = $command->queryAll();
+            if(count($sharingDiscountCouponSetupListByUser)>0 && $sharingDiscountCouponSetupListByUser!=false){
+                $result =  $sharingDiscountCouponSetupListByUser;
             }
         }catch(Exception $ex){}
         return $result;
