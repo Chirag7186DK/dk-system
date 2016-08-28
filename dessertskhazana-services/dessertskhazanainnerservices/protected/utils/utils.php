@@ -175,7 +175,7 @@ class utils{
                 // maximum SMS allowed to send in one batch
                 $max_sms_count = 100;
                 //iterate each mobile no
-                for($j = 0; $j<count($mobileArr);){
+                for($j=0; $j<count($mobileArr);){
                     $sentTo = array();
                     for($i = 0; $i<$max_sms_count && $j<count($mobileArr); $i++, $j++){
                         $countryCode = 91;
