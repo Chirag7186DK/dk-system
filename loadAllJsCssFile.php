@@ -73,7 +73,7 @@
     if(count($allDirectiveJsFileList)>0 && $allDirectiveJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allDirectiveJsFileList);
     }
-    $allAppJsFileList = collectJsCssFiles("js/app", "js");
+    $allAppJsFileList = collectJsCssFiles("js/others", "js");
     if(count($allAppJsFileList)>0 && $allAppJsFileList!=false){
         $allJsFileList = array_merge($allJsFileList, $allAppJsFileList);
     }
