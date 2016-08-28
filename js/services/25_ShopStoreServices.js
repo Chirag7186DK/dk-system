@@ -2,7 +2,7 @@
 angular.module('DKAPP').factory('ShopStoreServices', ShopStoreServices);
 
 // CJ defined this function 2016-06-22
-app.factory('ShopStoreServices', function($http, $q){
+function ShopStoreServices($http, $q){
     try{
         var shopstoreDetails = {};
         
@@ -27,4 +27,4 @@ app.factory('ShopStoreServices', function($http, $q){
         console.log("problem in Shopstore services ex=>"+ex);
         return false;
     }
-}); 
+}
