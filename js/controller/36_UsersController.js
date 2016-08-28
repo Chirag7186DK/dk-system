@@ -1,6 +1,7 @@
 
-// UsersController
-app.controller('UsersController', function($scope, $rootScope, $http, UsersServices, OrderCartServices){
+angular.module('DKAPP').controller('UsersController', UsersController);
+
+function UsersController($scope, $rootScope, $http, UsersServices){
     try{
         
         // redirectToMyAccount
@@ -155,4 +156,4 @@ app.controller('UsersController', function($scope, $rootScope, $http, UsersServi
     }catch(ex){
         console.log("problem in users controller ex=>"+ex);
     }
-});
+}
