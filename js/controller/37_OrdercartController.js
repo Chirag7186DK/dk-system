@@ -1,4 +1,6 @@
 
+angular.module('DKAPP').controller('OrderCartController', OrderCartController);
+
 // OrderCartController
 app.controller('OrderCartController', function($scope, $rootScope, $http, OrderCartServices){
     try{
