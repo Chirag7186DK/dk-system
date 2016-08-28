@@ -564,6 +564,49 @@ class commonfunction{
         }
         return $userSharingAllDiscountCouponList;
     }
+    
+    
+     // CJ defined this function 2016-08-26
+    public static function preparedDataToGetUserSharingDiscountCouponList($unMd5UserId){
+        $userSharingAllDiscountCouponList = array();
+        if($unMd5UserId!='' && ($unMd5UserId)>0){
+            // fetch setup discount coupon list of user for sharing purpose
+            $sharingDiscountCouponSetupListByUserArr = DiscountCouponDao :: getSharingDiscountCouponSetupListByUser($unMd5UserId);
+            if(count($sharingDiscountCouponSetupListByUserArr)>0 && $sharingDiscountCouponSetupListByUserArr!=false){
+                // iterate each setup discount coupon list
+                for($eachIndex = 0; $eachIndex<count($sharingDiscountCouponSetupListByUserArr); $eachIndex++){
+                    // check how many times user has been shared discount coupon list to others
+                    $discountCouponId = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgId'];
+                    $shareLimit = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['shareLimit'];
+                    $countUserSharedDiscountCoupon = DiscountCouponDao :: getCountUserSharedDiscountCoupon($unMd5UserId, $discountCouponId);
+                    if($countUserSharedDiscountCoupon>=0 && $countUserSharedDiscountCoupon!='FALSE'
+                        && $countUserSharedDiscountCoupon<=$shareLimit && $shareLimit>0){
+                        
+                        $promoCode = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgCode'];
+                        $isPercentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isPercentageBased'];
+                        $percentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['percentageBased'];
+                        $isCashbackBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isCashbackBased'];
+                        $cashbackBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['cashbackBased'];
+                        $aboveOrderAmt = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['aboveOrderAmt'];
+                        $aboveOrderAmtLblText = 'on order amount';
+                        $discountCouponMsg  = '';
+                        if($aboveOrderAmt>0 && $aboveOrderAmt!=false){
+                            $aboveOrderAmtLblText = " on above Rs $aboveOrderAmt order amount ";
+                        }
+                        if($isPercentageBased=='Y' && $percentageBased>0 && $percentageBased!=''){
+                            $discountCouponMsg = "Share this promo code '$promoCode' to your friends/colleagues will get him/her $percentageBased% off $aboveOrderAmtLblText !";
+                        }else if($isCashbackBased=='Y' && $cashbackBased>0 && $cashbackBased!=''){
+                            $discountCouponMsg = "Share this promo code '$promoCode' to your friends/colleagues will get him/her cashback Rs $cashbackBased $aboveOrderAmtLblText !";
+                        }
+                        $sharingDiscountCouponSetupListByUserArr[$eachIndex]['displayDiscountCouponMsg'] = $discountCouponMsg;
+                        $sharingDiscountCouponSetupListByUserArr[$eachIndex]['remainingShareLimt'] = ($shareLimit-$countUserSharedDiscountCoupon);
+                        array_push($userSharingAllDiscountCouponList, $sharingDiscountCouponSetupListByUserArr[$eachIndex]);
+                    }
+                }
+            }
+        }
+        return $userSharingAllDiscountCouponList;
+    }
 
     
     /////////////////// Rating/Review related code ////////////////////////////
