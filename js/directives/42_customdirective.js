@@ -356,8 +356,9 @@ function scrollHorizontallyDessertsproducttypelistViewproductlevel(){
     };
 }
 
-// scrollHorizontallyDessertsproducttypelistAllproductlevel
-app.directive('scrollHorizontallyDessertsproducttypelistAllproductlevel', function(){
+angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistAllproductlevel', scrollHorizontallyDessertsproducttypelistAllproductlevel);
+
+function scrollHorizontallyDessertsproducttypelistAllproductlevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             setTimeout(function(){
@@ -378,11 +379,11 @@ app.directive('scrollHorizontallyDessertsproducttypelistAllproductlevel', functi
             }, 1);
         }
     };
-});
+}
 
+angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel', scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel);
 
-// scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel
-app.directive('scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel', function(){
+function scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel(){
     return function(scope, element, attrs){
         if(scope.$first){
             $(element).addClass('vap_eachRequestedProductCategoryLabelDivClass');
@@ -406,10 +407,11 @@ app.directive('scrollHorizontallyDessertsproducttypeProductcategorylistAllproduc
             }, 1);
         }
     };
-});
+}
 
-// maxheightProductboxwidgetAllproductslevel
-app.directive('maxheightProductboxwidgetAllproductslevel', function(){
+angular.module('DKAPP').directive('maxheightProductboxwidgetAllproductslevel', maxheightProductboxwidgetAllproductslevel);
+
+function maxheightProductboxwidgetAllproductslevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             // apply max height css on element
@@ -421,7 +423,8 @@ app.directive('maxheightProductboxwidgetAllproductslevel', function(){
             });
         }
     };
-});
+}
+
 
 angular.module('DKAPP').directive('scrollHorizontallyCshopstoresummaryinfo', scrollHorizontallyCshopstoresummaryinfo);
 
