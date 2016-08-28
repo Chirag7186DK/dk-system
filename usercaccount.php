@@ -493,7 +493,7 @@
                         </p>
                         <p class="sharingOffersOperationPClass">
                             <input type='text' class='form-control sharingOffersUsersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
-                            <button ng-click="checkDataToShareOffers(ordercartRequestedEachItemDetailsArrObj, 'uca_userSharingEachDiscountCouponListDivClass'+$index);" class='btn sharingOffersBtnClass'>
+                            <button ng-click="checkDataToShareOffersToOtherUser(ordercartRequestedEachItemDetailsArrObj, 'uca_userSharingEachDiscountCouponListDivClass'+$index);" class='btn sharingOffersBtnClass'>
                                 SHARE OFFERS
                             </button>
                         </p>
