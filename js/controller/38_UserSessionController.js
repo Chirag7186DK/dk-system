@@ -1,6 +1,8 @@
 
+angular.module('DKAPP').controller('dkSessionController', dkSessionController);
+
 // dkSessionController using
-app.controller('dkSessionController', function($scope, $rootScope){
+function dkSessionController($scope, $rootScope){
     
     // global variable declare 
     // this variable will be reflect on ui screen
@@ -41,4 +43,4 @@ app.controller('dkSessionController', function($scope, $rootScope){
         }
     };
     
-});
+}
