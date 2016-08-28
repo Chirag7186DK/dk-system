@@ -623,9 +623,9 @@ app.directive('scrollHorizontallyCustomizeorderAllsectionheaderDirective', funct
     };
 });
 
-angular.module('DKAPP').controller('scrollHorizontallyShareoffersAllsectionheaderDirective', scrollHorizontallyShareoffersAllsectionheaderDirective);
-
-function scrollHorizontallyShareoffersAllsectionheaderDirective(){
+angular.module('DKAPP').directive('scrollHorizontallyShareoffersAllsectionheaderDirective', scrollHorizontallyShareoffersAllsectionheaderDirective);
+    
+function scrollHorizontallyShareoffersAllsectionheaderDirective(){    
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#uca_shareoffersAllSectionHeaderContainerDivId').length>0){
