@@ -487,13 +487,12 @@
                             Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
                         <p class="toggleSharingOffersDetailsLinkMsgPClass">
-                            <span ng-click="toggleShareOffersDetailsLinkMsgPClass">
+                            <span ng-click="toggleShareOffersDetailsLinkMsg()">
                                 Click here to toggle details for offers sharing   
                             </span>
                         </p>
                         <p class="sharingOffersBlankPClass"></p>
-                        <p class="sharingOffersOperationPClass">
-                            <span class='sharingOffersNoteSClass'>Note: Type friends/colleagues mobile for offers sharing !</span>
+                        <p class="sharingOffersOperationPClass" ng-if='isShowSharingOffersOperationDetails'>
                             <input type='text' class='form-control sharingOffersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
                             <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn sharingOffersBtnClass'>
                                 SHARE OFFERS
