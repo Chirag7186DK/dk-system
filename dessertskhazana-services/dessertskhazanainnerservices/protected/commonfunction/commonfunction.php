@@ -537,7 +537,7 @@ class commonfunction{
                     $shareLimit = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['shareLimit'];
                     $countUserSharedDiscountCoupon = DiscountCouponDao :: getCountUserSharedDiscountCoupon($unMd5UserId, $discountCouponId);
                     if($countUserSharedDiscountCoupon>=0 && $countUserSharedDiscountCoupon!='FALSE'
-                        && $countUserSharedDiscountCoupon<=$shareLimit && $shareLimit>0){
+                        && $countUserSharedDiscountCoupon<$shareLimit && $shareLimit>0){
                         
                         $promoCode = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgCode'];
                         $isPercentageBased = $sharingDiscountCouponSetupListByUserArr[$eachIndex]['isPercentageBased'];
