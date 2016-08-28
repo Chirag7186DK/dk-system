@@ -103,7 +103,7 @@ function UsersController($scope, $rootScope, $http, UsersServices){
             }else if(lastPageAccessedByUser==='allproducts'){
                 window.location.href = globalBaseSitePath+"allproducts.php";
             }else if(lastPageAccessedByUser==='storeproduct'){
-                window.location.href = globalBaseSitePath+"storeproduct.php";
+                window.location.href = globalBaseSitePath+"storeproducts.php";
             }else if(lastPageAccessedByUser==='partyorder'){
                 $rootScope.storeRequestedSectionNameToAccessInUserAccount('partyorder');
             }else if(lastPageAccessedByUser==='customizeorder'){
