@@ -66,10 +66,12 @@ class DiscountCouponServicesV1 implements IDiscountCouponServicesV1{
                     // storing tracking shared offers data for other users
                     $lastInsertedIdOfferShared = DiscountCouponDao :: addUserSharedDiscountCoupon($dkParamDataArr);
                     if($lastInsertedIdOfferShared>0 && $lastInsertedIdOfferShared!=false){
+                        
                         // deciding discount coupon valid end datetime what will be while sharing offers to other users
-                        $startDateObj = date_create(date('Y-m-d H:i:s'));
-                        $nosOfDays = $discountCouponSetupDetailsArr[0]['discountCouponValidNosDaysRemain'];
-                        $endDateObj = date_add($startDateObj, date_interval_create_from_date_string("$nosOfDays days"));
+                        // date obj issuing
+                        // $startDateObj = date_create(date('Y-m-d H:i:s'));
+                        // $nosOfDays = $discountCouponSetupDetailsArr[0]['discountCouponValidNosDaysRemain'];
+                        // $endDateObj = date_add($startDateObj, date_interval_create_from_date_string("$nosOfDays days"));
                         
                         $addSDCouponParamData =  array();
                         $addSDCouponParamData['code'] = $discountCouponSetupDetailsArr[0]['dcgCode'];
