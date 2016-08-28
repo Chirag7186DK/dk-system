@@ -558,6 +558,7 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isOffersShared = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'isOffersShared', retResponseJson);
                             }
+                            alert(isOffersShared);
                             if(isOffersShared==='TRUE'){
                                 notifyMsgStr = "offers has been shared to your friends/colleagues on given mobile no.s !";
                                 $rootScope.populateUserSharingDiscountCouponList();
