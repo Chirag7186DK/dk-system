@@ -1,4 +1,6 @@
 
+/////////////////// DK session related code ////////////////////////////////
+
 // CJ define this funcion 2016-08-12
 function generateDkUserSessionId(){
     var existingUserSessionId = getUserSessionIdFromUserSession();
@@ -79,37 +81,6 @@ function clearCustomizeOrderRequestFormField(){
     }
     if($('#co_messageInputId').length===1){
         $('#co_messageInputId').val('');
-    }
-}
-
-
-
-////////////// wish list related code ///////////
-
-// CJ define this funcion 2016-07-28
-function clearWishListUserSignInFormContent(){
-    if($('#wl_userSignInMobileInputId').length===1){
-        $('#wl_userSignInMobileInputId').val('');
-    }
-    if($('#wl_userSignInPasswordInputId').length===1){
-        $('#wl_userSignInPasswordInputId').val('');
-    }
-}
-
-// CJ define this funcion 2016-07-28
-function clearWishListUserSignUpFormContent(){
-    if($('#wl_userSignInMobileInputId').length===1){
-        $('#wl_userSignInMobileInputId').val('');
-    }
-    if($('#wl_userSignInPasswordInputId').length===1){
-        $('#wl_userSignInPasswordInputId').val('');
-    }
-}
-
-// CJ define this funcion 2016-08-01
-function clearFormFieldWLCreation(){
-    if($('#cwl_titleInputId').length===1){
-        $('#cwl_titleInputId').val('');
     }
 }
 
