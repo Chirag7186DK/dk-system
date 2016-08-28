@@ -475,18 +475,24 @@
                     <!-- each sharing offers will display -->
                     <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListDivClass">
                         <p class="shareOffersMsgPClass">
-                            Info: {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
+                            {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
                         </p>
                         <p class="shareOffersLimitPClass">
                             Sharing Limit: {{userSharingEachDiscountCouponDetailsArrObj.shareLimit}}
                         </p>
                         <p class="shareOffersRemainingLimitPClass">
-                            Remaining Limit: {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
+                            Limit Remain: {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
                         </p>
                         <p class="shareOffersExpiryDateTimePClass">
-                            Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
+                            Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
                         </p>
-                        <p class="shareOffersBtnPClass">
+                        <p class="toggleShareOffersLinkMsgPClass">
+                            Click here to toggle details for offers sharing 
+                        </p>
+                        <p class="shareOffersBlankPClass"></p>
+                        <p class="shareOffersOperationPClass">
+                            <span class='shareOffersNoteSClass'>Note: Type friends/colleagues mobile for offers sharing !</span>
+                            <input type='text' class='form-control shareOffersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
                             <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn shareOffersBtnClass'>
                                 SHARE OFFERS
                             </button>
