@@ -1,6 +1,7 @@
 
-// OrderCartController
-app.controller('UCustomerController', function($scope, $rootScope, $http, UsersServices, OrderCartServices, DiscountCouponServices){
+angular.module('DKAPP').controller('UCustomerController', UCustomerController);
+
+function UCustomerController($scope, $rootScope, $http, UsersServices, OrderCartServices, DiscountCouponServices){
     
     try{
         
@@ -669,4 +670,4 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
         console.log("problem in UCustomerController ex=>"+ex);
     }
     
-});
+}
