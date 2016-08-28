@@ -1,7 +1,8 @@
 
 
-// LocationController using LocationServices
-angular.module('DKAPP').controller('LocationController', function($scope, $rootScope, $http, LocationServices){
+angular.module('DKAPP').controller('LocationController', LocationController);
+
+function LocationController($scope, $rootScope, $http, LocationServices){
     try{
         
         // loadDkDeliveryCityList 
@@ -344,4 +345,4 @@ angular.module('DKAPP').controller('LocationController', function($scope, $rootS
     }catch(ex){
         console.log("problem in location controller ex=>"+ex);
     }
-});
+}
