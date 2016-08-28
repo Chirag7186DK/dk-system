@@ -6,6 +6,21 @@
 -- TRUNCATE TABLE  `DK_TRACKUSERS_ACCESSWEBSITES`;
 
 
+SELECT 
+dcg.id dcgId,
+dcg.code dcgCode, 
+dcg.title dcgTitle,
+COALESCE(dcg.is_universally, 'N') isUniversallyAccepted,
+COALESCE(dcg.is_percentagebased, 'N') isPercentageBased,
+COALESCE(dcg.percentage_based, 0) percentageBased,
+COALESCE(dcg.is_cashback_based, 'N') isCashbackBased,
+COALESCE(dcg.cashback_based, 0) cashbackBased,
+COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
+COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
+COALESCE(dcg.for_userid, '') userId
+FROM DK_DISCOUNTCOUPONGENERATION dcg
+WHERE 1
+AND dcg.status='A'
 
 
 -- SELECT
@@ -44,15 +59,15 @@
 -- AND usdc.status='S'
 
 
-SELECT
-COALESCE(usdc.shared_onmobile, '') sharedOnMobile,
-COALESCE(usdc.shared_onemail, '') sharedOnEmail,
-COALESCE(DATE_FORMAT(usdc.created_datedtime,'%b %d %Y %h:%i %p'), '') sharedOnDate
-FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
-WHERE
-usdc.sharedby_id='1'
-AND usdc.discount_couponid='2'
-AND usdc.status='S'
+-- SELECT
+-- COALESCE(usdc.shared_onmobile, '') sharedOnMobile,
+-- COALESCE(usdc.shared_onemail, '') sharedOnEmail,
+-- COALESCE(DATE_FORMAT(usdc.created_datedtime,'%b %d %Y %h:%i %p'), '') sharedOnDate
+-- FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
+-- WHERE
+-- usdc.sharedby_id='1'
+-- AND usdc.discount_couponid='2'
+-- AND usdc.status='S'
 
 
 -- SELECT
