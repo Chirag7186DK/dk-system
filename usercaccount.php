@@ -501,14 +501,58 @@
                     
                     <!-- no offers available for sharing purpose -->
                     <div ng-if="userSharingAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharingOffersFoundDivClass">
-                        <p class="noSharingOffersFoundPClass">
+                        <p class="noSharingOffersFoundMsgPClass">
                             No offers available for you or remain to share with your friends/colleagues !
                         </p>
                     </div>
                     
                 </div>
                 
+                <!-- ordered order cart all items info will be displayed -->
+                <div ng-if="displayShareOffersSectionType==='alloffersshared'" ng-controller="UCustomerController" ng-init="populateUserSharedDiscountCouponList()" id='uca_sharedOffersListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_allSharedOffersListSectionDivClass'>
+                    
+                    <!-- shared offers will be filtering -->
+                    <div ng-if="userSharedAllDiscountCouponDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextSharedoffersDivClass">
+                        <label class="searchTextSharedoffersLblClass">
+                            Use for filtering and access fast shared offers details !
+                        </label>
+                        <input ng-model="searchTextSharedoffers" type="text" class="form-control" placeholder="Find shared offers !">
+                    </div>
+                    
+                    <!-- display shared offers wise all other users details -->
+                    <div ng-repeat="eachUserSharedDiscountCouponAllUserArrObj in userSharedAllDiscountCouponDetailsArrObj | filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachSharedOffersSectionContainerDivClass">
+                        
+                        <!-- create horizontally space div between -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
                 
+                        <p class="uca_sharedoffersWiseAllUserListSectionLabelPClass">
+                            Promo code '{{eachUserSharedDiscountCouponAllUserArrObj.dcgCode}}' has been shared by you to   
+                            <span class="badge countSClass">
+                                {{eachUserSharedDiscountCouponAllUserArrObj.countAllUserList}}
+                            </span>
+                            friends/colleague
+                        </p>
+                        
+                        <!-- each shared offers user info will display -->
+                        <div ng-repeat="userDetailsObj in eachUserSharedDiscountCouponAllUserArrObj.sharedOffersAllUserDetails | filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_sharedOffersWiseEachUserDivClass">
+                            <p>
+                                Shared On Mobile: {{userDetailsObj.sharedOnMobile}}
+                            </p>
+                            <p>
+                                Shared Datetime: {{userDetailsObj.sharedOnEmail}}
+                            </p>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- not shared any offers by you -->
+                    <div ng-if="userSharedAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharedOffersFoundDivClass">
+                        <p class="noSharedOffersFoundMsgPClass">
+                            No shared offers found !
+                        </p>
+                    </div>
+                    
+                </div>
 
             </div>
             
