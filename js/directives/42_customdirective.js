@@ -286,8 +286,9 @@ function customerBreadcrumbDirective(){
     };
 }
 
-// scrollHorizontallyDessertsproducttypelistDashboardlevel
-app.directive('scrollHorizontallyDessertsproducttypelistDashboardlevel', function(){
+angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistDashboardlevel', scrollHorizontallyDessertsproducttypelistDashboardlevel);
+
+function scrollHorizontallyDessertsproducttypelistDashboardlevel(){
     return {
         link:function(scope, element, attrs){
             if(scope.$last){
@@ -312,10 +313,11 @@ app.directive('scrollHorizontallyDessertsproducttypelistDashboardlevel', functio
             }
         }
     };
-});
+}
 
-// maxheightProductboxwidgetDashboardlevel
-app.directive('maxheightProductboxwidgetDashboardlevel', function(){
+angular.module('DKAPP').directive('maxheightProductboxwidgetDashboardlevel', maxheightProductboxwidgetDashboardlevel);
+
+function maxheightProductboxwidgetDashboardlevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             // apply max height css on element
@@ -327,10 +329,11 @@ app.directive('maxheightProductboxwidgetDashboardlevel', function(){
             });
         }
     };
-});
+}
 
-// scrollHorizontallyDessertsproducttypelistViewproductlevel
-app.directive('scrollHorizontallyDessertsproducttypelistViewproductlevel', function(){
+angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistViewproductlevel', scrollHorizontallyDessertsproducttypelistViewproductlevel);
+
+function scrollHorizontallyDessertsproducttypelistViewproductlevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             setTimeout(function(){
@@ -351,7 +354,7 @@ app.directive('scrollHorizontallyDessertsproducttypelistViewproductlevel', funct
             }, 1);
         }
     };
-});
+}
 
 // scrollHorizontallyDessertsproducttypelistAllproductlevel
 app.directive('scrollHorizontallyDessertsproducttypelistAllproductlevel', function(){
