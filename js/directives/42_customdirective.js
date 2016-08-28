@@ -1,5 +1,5 @@
 
-angular.module('DKAPP').controller('resizeWindowDirective', resizeWindowDirective);
+angular.module('DKAPP').directive('resizeWindowDirective', resizeWindowDirective);
 
 function resizeWindowDirective($window){
     return {
@@ -24,8 +24,9 @@ function resizeWindowDirective($window){
     };
 }
 
-// scrollWindowDirective
-app.directive('scrollWindowDirective', function($window){
+angular.module('DKAPP').directive('scrollWindowDirective', scrollWindowDirective);
+
+function scrollWindowDirective($window){
     return {
         link:function(scope){
             function onScroll(e){
@@ -41,10 +42,11 @@ app.directive('scrollWindowDirective', function($window){
             scope.$on('$destroy', cleanUp);
         }
     };
-});
+}
 
-// scrollToTopBtnClass
-app.directive("scrollToTopBtnClass", function($window){
+angular.module('DKAPP').directive('scrollToTopBtnClass', scrollToTopBtnClass);
+
+function scrollToTopBtnClass($window){
     return {
         restrict: 'C',
         link: function($scope, $el, $attrs){
@@ -66,10 +68,11 @@ app.directive("scrollToTopBtnClass", function($window){
             });
         }
     };
-});
+}
 
-// for onBodyScrollClass
-app.directive("onBodyScrollClass", function($window){
+angular.module('DKAPP').directive('onBodyScrollClass', onBodyScrollClass);
+
+function onBodyScrollClass($window){
     return {
         restrict: 'C',
         link: function($scope, $el, $attrs){
@@ -84,10 +87,12 @@ app.directive("onBodyScrollClass", function($window){
             });
         }
     };
-});
+}
 
-// showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass
-app.directive("showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass", function($window){
+
+angular.module('DKAPP').directive('showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass', scrollToTopBtnClass);
+
+function showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass($window){
     return {
         restrict: 'C',
         link: function($scope, $el, $attrs){
@@ -108,7 +113,7 @@ app.directive("showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivCl
             });
         }
     };
-});
+}
 
 
 // images pre loading directive
