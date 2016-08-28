@@ -423,8 +423,9 @@ app.directive('maxheightProductboxwidgetAllproductslevel', function(){
     };
 });
 
-// scrollHorizontallyCshopstoresummaryinfo
-app.directive('scrollHorizontallyCshopstoresummaryinfo', function(){
+angular.module('DKAPP').directive('scrollHorizontallyCshopstoresummaryinfo', scrollHorizontallyCshopstoresummaryinfo);
+
+function scrollHorizontallyCshopstoresummaryinfo(){
     return function(scope, element, attrs){
         // apply horizontal scrolling features
         setTimeout(function(){
@@ -445,10 +446,12 @@ app.directive('scrollHorizontallyCshopstoresummaryinfo', function(){
             }
         }, 1);
     };
-});
+}
 
-// scrollHorizontallyDessertsproducttypelistCshopstorelevel
-app.directive('scrollHorizontallyDessertsproducttypelistCshopstorelevel', function(){
+
+angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistCshopstorelevel', scrollHorizontallyDessertsproducttypelistCshopstorelevel);
+
+function scrollHorizontallyDessertsproducttypelistCshopstorelevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             // apply horizontal scrolling features
@@ -470,10 +473,12 @@ app.directive('scrollHorizontallyDessertsproducttypelistCshopstorelevel', functi
             }, 1);
         }
     };
-});
+}
 
-// scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel
-app.directive('scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel', function(){
+
+angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel', scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel);
+
+function scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel(){
     return function(scope, element, attrs){
         if(scope.$first){
             $(element).addClass('cshopstore_eachRequestedProductCategoryLIClass');
@@ -498,10 +503,11 @@ app.directive('scrollHorizontallyDessertsproducttypeProductcategorylistCshopstor
             }, 1);
         }
     };
-});
+}
 
-// maxheightProductboxwidgetCshopstorelevel
-app.directive('maxheightProductboxwidgetCshopstorelevel', function(){
+angular.module('DKAPP').directive('maxheightProductboxwidgetCshopstorelevel', maxheightProductboxwidgetCshopstorelevel);
+
+function maxheightProductboxwidgetCshopstorelevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             // apply max height css on element
@@ -513,7 +519,8 @@ app.directive('maxheightProductboxwidgetCshopstorelevel', function(){
             });
         }
     };
-});
+}
+
 
 // CJ defined this function 2016-07-18 
 function applyMaxHeightCssOnAllProductBoxWidget(applyMaxheightOnElementClassName){
@@ -532,41 +539,6 @@ function applyMaxHeightCssOnAllProductBoxWidget(applyMaxheightOnElementClassName
         // $("."+applyMaxheightOnElementClassName).css({"height":maxHeight+"px"});
     }
 }
-
-// scrollTopWhenDisplayRenderingFinishedDessertsproductlist
-app.directive('scrollTopWhenDisplayRenderingFinishedDessertsproductlist', function(){
-    return function(scope, $element, attrs){
-        if(scope.$last){
-            /*
-                var windowTopPos = angular.element('#dl_DeliveryAreabasedDkServedAllDessertsContainerDivId').offset().top;
-                $('html,body').animate({
-                    scrollTop:windowTopPos
-                });
-            */
-        }
-    };
-});
-
-// scrollVerticallyOrdercartitemrequestedList
-app.directive('scrollVerticallyOrdercartitemrequestedList', function(){
-    return function(scope, $element, attrs){
-        if(scope.$last){
-            /* slim scroll feature attached here */
-            if($('#dropdown_odrcartAllItemRequestedDivId').length>0){
-                $('#dropdown_odrcartAllItemRequestedDivId').slimscroll({
-                    height:'200px',
-                    allowPageScroll:false,
-                    railVisible:true,
-                    start:'top',
-                    color:'#00B9F5',
-                    alwaysVisible: true,
-                    distance:'0px',
-                    size:'6px'
-                });
-            }
-        }
-    };
-});
 
 angular.module('DKAPP').directive('scrollHorizontallyOrdercartAllsectionheaderDirective', scrollHorizontallyOrdercartAllsectionheaderDirective);
 
