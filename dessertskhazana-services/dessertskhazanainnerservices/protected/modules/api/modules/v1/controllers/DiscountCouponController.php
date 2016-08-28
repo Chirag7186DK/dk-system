@@ -65,7 +65,7 @@ class DiscountCouponController extends V1Controller{
                 $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
                 if($retParamDataCorrectIncorrectStatus=='TRUE'){
                     $DiscountCouponServicesV1 = new DiscountCouponServicesV1();
-                    $rspDetails = $DiscountCouponServicesV1->getUserSharedDiscountCouponList($dkParamDataArr);
+                    $rspDetails = $DiscountCouponServicesV1->addSharingOffersFrmOneUserToOtherUser($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
