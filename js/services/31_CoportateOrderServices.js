@@ -1,6 +1,8 @@
 
+angular.module('DKAPP').factory('CorporateTieupServices', CorporateTieupServices);
+
 // CJ defined this function 2016-07-24
-app.factory('CorporateTieupServices', function($http, $q){
+function CorporateTieupServices($http, $q){
     try{
         var corporateTieupDetails = {
             addingCorporateTieupRequest:function(preparedParamJsonObj){
@@ -14,4 +16,4 @@ app.factory('CorporateTieupServices', function($http, $q){
     }catch(ex){
         return false;
     }
-});
+};
