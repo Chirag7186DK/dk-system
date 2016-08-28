@@ -217,15 +217,16 @@ function loadCoperatetieupImagesDirective(){
     };
 }
 
-// loadCustomizeorderImagesDirective
-app.directive('loadCustomizeorderImagesDirective', function(){
+angular.module('DKAPP').directive('loadCustomizeorderImagesDirective', loadCustomizeorderImagesDirective);
+
+function loadCustomizeorderImagesDirective(){
     return function(scope, element, attrs){
         loadCustomizeOrderImages(element);
         scope.$on('resize::resize', function() {
             loadCustomizeOrderImages();
         });
     };
-});
+}
 
 
 // CJ defined this function 2016-07-10
