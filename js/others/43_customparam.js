@@ -45,8 +45,6 @@ function initializeDkSessionData(){
         var customizeOrderObj = {};
         customizeOrderObj['title'] = '';
 
-        var userWishListObj = {};
-    
         var userAccessLastPageFromObj = {"page":""};
 
         var userOrderItemObj = {};
@@ -60,7 +58,6 @@ function initializeDkSessionData(){
         dkParamObj['partyOrder'] = userPartyOrderObj;
         dkParamObj['corporateTieup'] = corporateTieupObj;
         dkParamObj['customizeOrder'] = customizeOrderObj;
-        dkParamObj['wishList'] = userWishListObj;
         dkParamObj['userRecentlyProduct'] = userRecentlyViewedProductObj;
         dkParamObj['userAccessLastPageFromObj'] = userAccessLastPageFromObj;
         dkParamObj['userOrderItemObj'] = userOrderItemObj;
@@ -92,7 +89,6 @@ function resetDKSessionData(){
                 dkParamObj['userAccessLastPageFromObj'] = {"page":""};
                 dkParamObj['userOrderItemObj'] = {};
                 dkParamObj['requestedSectionUserAccountObj'] = {};
-                dkParamObj['wishList'] = {};
                 sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
             }
         }
