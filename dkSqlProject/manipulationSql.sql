@@ -8,31 +8,31 @@
 
 
 
- SELECT
-dcg.id dcgId, dcg.code dcgCode, dcg.title dcgTitle,
-COALESCE(dcg.is_universally, 'N') isUniversallyAccepted,
-COALESCE(dcg.is_percentagebased, 'N') isPercentageBased,
-COALESCE(dcg.percentage_based, 0) percentageBased,
-COALESCE(dcg.is_cashback_based, 'N') isCashbackBased,
-COALESCE(dcg.cashback_based, 0) cashbackBased,
-COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
-COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
-COALESCE(dcg.for_userid,'') userId,
-COALESCE(dcg.share_limit, 0) shareLimit,
-COALESCE(DATE_FORMAT(dcg.end_datedtime,'%b %d %Y %h:%i %p'), '') expiredDateTime
-FROM DK_DISCOUNTCOUPONGENERATION dcg
-WHERE 1
-AND dcg.status='A'
-AND NOW() BETWEEN dcg.start_datedtime AND dcg.end_datedtime
-AND dcg.for_userid='1'
-AND dcg.is_universally='N'
-AND ( 
-    (dcg.is_percentagebased='Y' AND dcg.percentage_based>0 AND dcg.is_cashback_based='N' )
-        OR
-    (dcg.is_cashback_based='Y' AND dcg.cashback_based>0 AND dcg.is_percentagebased='N')
-)
-AND dcg.can_shareit='Y'
-AND dcg.share_limit>0
+-- SELECT
+-- dcg.id dcgId, dcg.code dcgCode, dcg.title dcgTitle,
+-- COALESCE(dcg.is_universally, 'N') isUniversallyAccepted,
+-- COALESCE(dcg.is_percentagebased, 'N') isPercentageBased,
+-- COALESCE(dcg.percentage_based, 0) percentageBased,
+-- COALESCE(dcg.is_cashback_based, 'N') isCashbackBased,
+-- COALESCE(dcg.cashback_based, 0) cashbackBased,
+-- COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
+-- COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
+-- COALESCE(dcg.for_userid,'') userId,
+-- COALESCE(dcg.share_limit, 0) shareLimit,
+-- COALESCE(DATE_FORMAT(dcg.end_datedtime,'%b %d %Y %h:%i %p'), '') expiredDateTime
+-- FROM DK_DISCOUNTCOUPONGENERATION dcg
+-- WHERE 1
+-- AND dcg.status='A'
+-- AND NOW() BETWEEN dcg.start_datedtime AND dcg.end_datedtime
+-- AND dcg.for_userid='1'
+-- AND dcg.is_universally='N'
+-- AND ( 
+--     (dcg.is_percentagebased='Y' AND dcg.percentage_based>0 AND dcg.is_cashback_based='N' )
+--         OR
+--     (dcg.is_cashback_based='Y' AND dcg.cashback_based>0 AND dcg.is_percentagebased='N')
+-- )
+-- AND dcg.can_shareit='Y'
+-- AND dcg.share_limit>0
 
 
 -- SELECT
@@ -43,6 +43,16 @@ AND dcg.share_limit>0
 -- AND usdc.discount_couponid='2'
 -- AND usdc.status='S'
 
+
+SELECT
+COALESCE(usdc.shared_onmobile, '') sharedOnMobile,
+COALESCE(usdc.shared_onemail, '') sharedOnEmail,
+COALESCE(DATE_FORMAT(usdc.created_datedtime,'%b %d %Y %h:%i %p'), '') sharedOnDate
+FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
+WHERE
+usdc.sharedby_id='1'
+AND usdc.discount_couponid='2'
+AND usdc.status='S'
 
 
 -- SELECT
