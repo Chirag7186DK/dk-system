@@ -277,13 +277,14 @@ function loadCustomizeOrderImages(){
     }
 }
 
-// customerBreadcrumbDirective
-app.directive('customerBreadcrumbDirective', function(){
+angular.module('DKAPP').directive('customerBreadcrumbDirective', customerBreadcrumbDirective);
+
+function customerBreadcrumbDirective(){
     return function(scope, element, attrs){
         // customer product breadcrumb fetch
         scope.customerBreadCrumbOnWebApp = getCustomerBreadcrumb();
     };
-});
+}
 
 // scrollHorizontallyDessertsproducttypelistDashboardlevel
 app.directive('scrollHorizontallyDessertsproducttypelistDashboardlevel', function(){
