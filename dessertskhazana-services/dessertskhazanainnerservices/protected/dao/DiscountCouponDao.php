@@ -100,4 +100,27 @@ class DiscountCouponDao{
         return $countUserSharedDiscountCoupon;
     }
     
+    // CJ defined this function 2016-08-26
+    public static function getUserSharedDiscountCouponOtherUsersList($userId, $discountCouponId){
+        $userSharedDiscountCouponOtherUsersList = 0;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT
+                    COALESCE(usdc.shared_onmobile, '') sharedOnMobile,
+                    COALESCE(usdc.shared_onemail, '') sharedOnEmail,
+                    COALESCE(DATE_FORMAT(usdc.created_datedtime,'%b %d %Y %h:%i %p'), '') sharedOnDate
+                    FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
+                    WHERE
+                    usdc.sharedby_id='$userId'
+                    AND usdc.discount_couponid='$discountCouponId'
+                    AND usdc.status='S'";
+            $command = $connection->createCommand($sql);
+            $retDataArr = $command->queryAll();
+            if(count($retDataArr)>0 && $retDataArr!=false){
+                $userSharedDiscountCouponOtherUsersList =  $retDataArr;
+            }
+        }catch(Exception $ex){}
+        return $userSharedDiscountCouponOtherUsersList;
+    }
+    
 }
