@@ -98,7 +98,7 @@ function ProductTypeProductCategoryProductDetailsController($scope, $rootScope, 
                 var rtStatus = checkAllParamToViewProductDetails(paramObj);
                 if(rtStatus===true){
                     // redirect to view product details
-                    window.location.href = globalBaseSitePath+"viewproduct.php";
+                    window.location.href = globalBaseSitePath+"product.php";
                 }
             }catch(ex){
                 console.log("problem in viewProductDetails ex=>"+ex);
