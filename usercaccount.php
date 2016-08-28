@@ -526,7 +526,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
                 
                         <p class="uca_sharedoffersWiseAllUserListSectionLabelPClass">
-                            Promo code '{{eachUserSharedDiscountCouponAllUserArrObj.dcgCode}}' has been shared by you to   
+                            Promo code '{{eachUserSharedDiscountCouponAllUserArrObj.dcgCode}}' has been shared by you to others   
                             <span class="badge uca_sharedofferwiseAllUsersCountSClass">
                                 {{eachUserSharedDiscountCouponAllUserArrObj.countAllUserList}}
                             </span>
