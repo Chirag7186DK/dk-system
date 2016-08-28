@@ -88,6 +88,7 @@ function resetDKSessionData(){
                 dkParamObj['userSession']['user_sessionstarttime'] = (new Date()).getTime();
                 dkParamObj['userSession']['user_sessionid'] = '';
                 dkParamObj['userSession']['udblogId'] = '';
+                dkParamObj['userSession']['userProfileTypeId'] = '';
                 dkParamObj['userAccessLastPageFromObj'] = {"page":""};
                 dkParamObj['userOrderItemObj'] = {};
                 dkParamObj['requestedSectionUserAccountObj'] = {};
