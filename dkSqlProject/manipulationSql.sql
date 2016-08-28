@@ -6,29 +6,71 @@
 -- TRUNCATE TABLE  `DK_TRACKUSERS_ACCESSWEBSITES`;
 
 
-SELECT
-COALESCE(por.partyorder_no, '') partyOrderNo, 
-COALESCE(por.occassion_title, '') occassionTitle,
-COALESCE(por.nos_person, '') nosOfPerson, 
-COALESCE(por.party_date, '') partyDate, 
-COALESCE(por.party_venue, '') partyVenue, 
-COALESCE(por.party_requirements, '') partyRequirements,
-(CASE 
-    WHEN por.status='R' THEN 'Requested'
-    WHEN por.status='CV' THEN 'Consulting with vendor'
-    WHEN por.status='C' THEN 'Confirmed by you & me'
-    WHEN por.status='PP' THEN 'Payment Pending'
-    WHEN por.status='PF' THEN 'Payment Failed'
-    WHEN por.status='PF' THEN 'Deleted by you'
-    WHEN por.status='ZA' THEN 'Deleted by us'
-END) portLongStatusMsg,
-COALESCE(por.status, '') porStatus
-FROM DK_USERS u 
-JOIN DK_PARTYORDERS_REQUEST por ON por.user_id=u.id
-WHERE 
-u.id='1'
-AND por.user_id='1'
-AND u.status='A'
+
+
+ SELECT
+dcg.id dcgId, dcg.code dcgCode, dcg.title dcgTitle,
+COALESCE(dcg.is_universally, 'N') isUniversallyAccepted,
+COALESCE(dcg.is_percentagebased, 'N') isPercentageBased,
+COALESCE(dcg.percentage_based, 0) percentageBased,
+COALESCE(dcg.is_cashback_based, 'N') isCashbackBased,
+COALESCE(dcg.cashback_based, 0) cashbackBased,
+COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
+COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
+COALESCE(dcg.for_userid,'') userId,
+COALESCE(dcg.share_limit, 0) shareLimit,
+COALESCE(DATE_FORMAT(dcg.end_datedtime,'%b %d %Y %h:%i %p'), '') expiredDateTime
+FROM DK_DISCOUNTCOUPONGENERATION dcg
+WHERE 1
+AND dcg.status='A'
+AND NOW() BETWEEN dcg.start_datedtime AND dcg.end_datedtime
+AND dcg.for_userid='1'
+AND dcg.is_universally='N'
+AND ( 
+    (dcg.is_percentagebased='Y' AND dcg.percentage_based>0 AND dcg.is_cashback_based='N' )
+        OR
+    (dcg.is_cashback_based='Y' AND dcg.cashback_based>0 AND dcg.is_percentagebased='N')
+)
+AND dcg.can_shareit='Y'
+AND dcg.share_limit>0
+
+
+-- SELECT
+-- COALESCE(COUNT(*), 0) countUserSharedDiscountCoupon
+-- FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
+-- WHERE
+-- usdc.user_id='1'
+-- AND usdc.discount_couponid='2'
+-- AND usdc.status='S'
+
+
+
+-- SELECT
+-- COALESCE(por.partyorder_no, '') partyOrderNo, 
+-- COALESCE(por.occassion_title, '') occassionTitle,
+-- COALESCE(por.nos_person, '') nosOfPerson, 
+-- COALESCE(por.party_date, '') partyDate, 
+-- COALESCE(por.party_venue, '') partyVenue, 
+-- COALESCE(por.party_requirements, '') partyRequirements,
+-- (CASE 
+--     WHEN por.status='R' THEN 'Requested'
+--     WHEN por.status='CV' THEN 'Consulting with vendor'
+--     WHEN por.status='C' THEN 'Confirmed by you & me'
+--     WHEN por.status='PP' THEN 'Payment Pending'
+--     WHEN por.status='PF' THEN 'Payment Failed'
+--     WHEN por.status='PF' THEN 'Deleted by you'
+--     WHEN por.status='ZA' THEN 'Deleted by us'
+-- END) portLongStatusMsg,
+-- COALESCE(por.status, '') porStatus
+-- FROM DK_USERS u 
+-- JOIN DK_PARTYORDERS_REQUEST por ON por.user_id=u.id
+-- WHERE 
+-- u.id='1'
+-- AND por.user_id='1'
+-- AND u.status='A'
+
+
+
 
 -- SELECT 
 -- uoc.id ordercartId, uocim.id ordercartItemId, 
