@@ -126,6 +126,126 @@ class DiscountCouponDao{
     }
     
     // CJ defined this function 2016-08-28
+    public static function addEntryDiscountCouponGeneration($paramJson){
+        $connection = Yii::app()->db;
+        $sqlColumnNames = "";
+        $sqlValues = "";
+        $lastInsertedId = false;
+        if(array_key_exists('code', $paramJson)){
+            if($paramJson['code']!=''){
+                $sqlColumnNames.=" code,";
+                $sqlValues.="'".$paramJson['code']."',";
+            }
+        }
+        if(array_key_exists('title', $paramJson)){
+            if($paramJson['title']!=''){
+                $sqlColumnNames.=" title,";
+                $sqlValues.="'".$paramJson['title']."',";
+            }
+        }
+        if(array_key_exists('is_universally', $paramJson)){
+            if($paramJson['is_universally']!=''){
+                $sqlColumnNames.=" is_universally,";
+                $sqlValues.="'".$paramJson['is_universally']."',";
+            }
+        }
+        if(array_key_exists('is_percentagebased', $paramJson)){
+            if($paramJson['is_percentagebased']!=''){
+                $sqlColumnNames.=" is_percentagebased,";
+                $sqlValues.="'".$paramJson['is_percentagebased']."',";
+            }
+        }
+        if(array_key_exists('percentage_based', $paramJson)){
+            if($paramJson['percentage_based']!=''){
+                $sqlColumnNames.=" percentage_based,";
+                $sqlValues.="'".$paramJson['percentage_based']."',";
+            }
+        }
+        if(array_key_exists('is_cashback_based', $paramJson)){
+            if($paramJson['is_cashback_based']!=''){
+                $sqlColumnNames.=" is_cashback_based,";
+                $sqlValues.="'".$paramJson['is_cashback_based']."',";
+            }
+        }
+        if(array_key_exists('cashback_based', $paramJson)){
+            if($paramJson['cashback_based']!=''){
+                $sqlColumnNames.=" cashback_based,";
+                $sqlValues.="'".$paramJson['cashback_based']."',";
+            }
+        }
+        if(array_key_exists('start_datedtime', $paramJson)){
+            if($paramJson['start_datedtime']!=''){
+                $sqlColumnNames.=" start_datedtime,";
+                $sqlValues.="'".$paramJson['start_datedtime']."',";
+            }
+        }
+        if(array_key_exists('end_datedtime', $paramJson)){
+            if($paramJson['end_datedtime']!=''){
+                $sqlColumnNames.=" end_datedtime,";
+                $sqlValues.="'".$paramJson['end_datedtime']."',";
+            }
+        }
+        if(array_key_exists('above_orderamount', $paramJson)){
+            if($paramJson['above_orderamount']!=''){
+                $sqlColumnNames.=" above_orderamount,";
+                $sqlValues.="'".$paramJson['above_orderamount']."',";
+            }
+        }
+        if(array_key_exists('limit_used', $paramJson)){
+            if($paramJson['limit_used']!=''){
+                $sqlColumnNames.=" limit_used,";
+                $sqlValues.="'".$paramJson['limit_used']."',";
+            }
+        }
+        if(array_key_exists('for_userid', $paramJson)){
+            if($paramJson['for_userid']!=''){
+                $sqlColumnNames.=" for_userid,";
+                $sqlValues.="'".$paramJson['for_userid']."',";
+            }
+        }
+        if(array_key_exists('can_shareit', $paramJson)){
+            if($paramJson['can_shareit']!=''){
+                $sqlColumnNames.=" can_shareit,";
+                $sqlValues.="'".$paramJson['can_shareit']."',";
+            }
+        }
+        if(array_key_exists('share_limit', $paramJson)){
+            if($paramJson['share_limit']!=''){
+                $sqlColumnNames.=" share_limit,";
+                $sqlValues.="'".$paramJson['share_limit']."',";
+            }
+        }
+        if(array_key_exists('created_by', $paramJson)){
+            if($paramJson['created_by']!=''){
+                $sqlColumnNames.=" created_by,";
+                $sqlValues.="'".$paramJson['created_by']."',";
+            }
+        }
+        if(array_key_exists('created_datedtime', $paramJson)){
+            if($paramJson['created_datedtime']!=''){
+                $sqlColumnNames.=" created_datedtime,";
+                $sqlValues.="'".$paramJson['created_datedtime']."',";
+            }
+        }
+        if(array_key_exists('status', $paramJson)){
+            if($paramJson['status']!=''){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$paramJson['status']."',";
+            }
+        }
+        if($sqlValues!='' && $sqlColumnNames!=''){
+            $sqlQuery = " INSERT INTO DK_DISCOUNTCOUPONGENERATION " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>=1){
+                $lastInsertedId = $connection->getLastInsertID();
+            }
+        }
+        return $lastInsertedId;
+    }
+    
+    
+    // CJ defined this function 2016-08-28
     public static function addUserSharedDiscountCoupon($paramJson){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
