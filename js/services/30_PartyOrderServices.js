@@ -2,7 +2,7 @@
 angular.module('DKAPP').factory('PartyOrdersServices', PartyOrdersServices);
 
 // CJ defined this function 2016-07-20
-app.factory('PartyOrdersServices', function($http, $q){
+function PartyOrdersServices($http, $q){
     try{
         var partyOrdersDetails = {
             addPartyOrderRequest:function(preparedParamJsonObj){
@@ -18,4 +18,4 @@ app.factory('PartyOrdersServices', function($http, $q){
     }catch(ex){
         return false;
     }
-}); 
+} 
