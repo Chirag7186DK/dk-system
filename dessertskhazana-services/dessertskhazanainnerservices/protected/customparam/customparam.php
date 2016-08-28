@@ -1023,12 +1023,12 @@ class customparam{
         }
         // check udblogId key present or not
         if(array_key_exists('shared_onmobile', $paramJsonData)){
-            if(strlen($paramJsonData['shared_onmobile'])==20){
+            if(strlen($paramJsonData['shared_onmobile'])==10){
                 $givenParamDataCorrectCount++;
             }
         }
         
-        if($givenParamDataCorrectCount==2){
+        if($givenParamDataCorrectCount==4){
             $retStatus = 'TRUE';
         }
         return $retStatus;
