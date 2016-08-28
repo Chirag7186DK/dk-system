@@ -166,8 +166,9 @@ function viewProductmsginputDirective($timeout){
     };
 }
 
-// OrderProductqtyinputDirective
-app.directive('orderProductqtyinputDirective', function($timeout){
+angular.module('DKAPP').directive('orderProductqtyinputDirective', orderProductqtyinputDirective);
+
+function orderProductqtyinputDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
             $el.numeric(
@@ -181,7 +182,7 @@ app.directive('orderProductqtyinputDirective', function($timeout){
             );
         }
     };
-});
+}
 
 
 // loadDklogoImagesDirective
