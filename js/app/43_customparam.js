@@ -1012,7 +1012,7 @@ function getParamObjForLoadingCShopStoreProductDeliveryAreaDetails(){
 }
 
 
-////////////////////////////////// party order related code ////////////////////////////
+//////////////////////// party order related code ////////////////////////////
 
 // CJ defined this function 2016-07-20
 function getParamDataObjForPartyOrderRequest(){
