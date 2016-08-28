@@ -584,6 +584,7 @@ class commonfunction{
                                 "dcgCode"=>$sharingDiscountCouponSetupListByUserArr[$eachIndex]['dcgCode'],
                                 "shareLimit"=>$sharingDiscountCouponSetupListByUserArr[$eachIndex]['shareLimit'],
                                 "expiredDateTime"=>$sharingDiscountCouponSetupListByUserArr[$eachIndex]['expiredDateTime'],
+                                "countAllUserList"=>count($dataArr),
                                 "sharedOffersAllUserDetails"=>$dataArr
                             )    
                         );
