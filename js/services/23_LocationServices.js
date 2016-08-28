@@ -1,5 +1,8 @@
 
-app.factory('LocationServices', function($http, $q){
+
+angular.module('DKAPP').factory('LocationServices', LocationServices);
+
+function LocationServices(){
     try{
         var locationDetails = {};
         
@@ -20,4 +23,4 @@ app.factory('LocationServices', function($http, $q){
         console.log("problem in LocationServices ex=>"+ex);
         return false;
     }
-}); 
+}
