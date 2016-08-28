@@ -1,6 +1,7 @@
 
-// RefreshWebAppDataController
-app.controller('RefreshWebAppDataController', function($scope, $rootScope, $http, UsersServices, OrderCartServices){
+angular.module('DKAPP').controller('RefreshWebAppDataController', RefreshWebAppDataController);
+
+function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, OrderCartServices){
     try{
         // refreshWebAppData
         $rootScope.refreshWebAppData = function(){
@@ -11,4 +12,4 @@ app.controller('RefreshWebAppDataController', function($scope, $rootScope, $http
     }catch(ex){
         console.log("problem in RefreshWebAppDataController ex=>"+ex);
     }
-});
+}
