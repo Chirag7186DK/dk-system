@@ -210,9 +210,6 @@
                     <button title="Click to add {{vPDetails.productDetails[0]['productListTitle']}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
                         <i class="fa fa-shopping-cart"></i> ADD
                     </button>
-                    <button title="Click to add {{vPDetails.productDetails[0]['productListTitle']}} item in your default wishlist" ng-controller='WishListController' ng-click='prepareProductDataToAddInUWL(vPDetails.productDetails[0])' class="vpd_specificProductAddToWishlistbtnClass btn">
-                        <i class="fa fa-heart"></i> WISH LIST
-                    </button>
                 </p>
             </div>
             
