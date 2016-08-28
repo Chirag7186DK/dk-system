@@ -206,7 +206,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
         <!-- what is desserts khazana -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
+        <div ng-if='isUserLoggedInSession==false' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
                 <div class='dkPartyOrderWrapperDivClass'>
                     <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
