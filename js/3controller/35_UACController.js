@@ -520,6 +520,51 @@ app.controller('UCustomerController', function($scope, $rootScope, $http, UsersS
             }
         };
         
+        // populateUserSharedDiscountCouponList
+        $rootScope.populateUserSharedDiscountCouponList = function(){
+            try{
+                // check is user logged in or not session
+                var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
+                    && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
+                
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    
+                    $rootScope.userSharedAllDiscountCouponDetailsArrObj =  false;
+                    $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
+
+                    // calling DiscountCouponServices 
+                    DiscountCouponServices.userSharingDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        $rootScope.$apply(function(){
+                            var userSharedAllDiscountCouponDetailsArrObj =  false;
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                userSharedAllDiscountCouponDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userSharedAllDiscountCouponList', retResponseJson);
+                            }
+                            if(userSharedAllDiscountCouponDetailsArrObj!==false && userSharedAllDiscountCouponDetailsArrObj!==undefined 
+                                && jQuery.isEmptyObject(userSharedAllDiscountCouponDetailsArrObj)===false){
+                                $rootScope.totalCountUserSharingAllDiscountCoupon =  userSharedAllDiscountCouponDetailsArrObj.length;
+                                $rootScope.userSharedAllDiscountCouponDetailsArrObj =  userSharedAllDiscountCouponDetailsArrObj;
+                            }else{
+                                $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
+                                $rootScope.userSharedAllDiscountCouponDetailsArrObj =  false;
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("problem in populateUserSharedDiscountCouponList ex=>"+ex);
+            }
+        };
+        
+        
         // displayPartyOrderInfoSectionToAccessInUserCAccount
         $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
