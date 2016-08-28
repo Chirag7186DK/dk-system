@@ -3103,39 +3103,39 @@
         border-bottom:none!important;
     }
 
-    .shareOffersMsgPClass{
+    .sharingOffersMsgPClass{
         color:#ed143d!important;
         font-size:15px!important;
     }
 
-    .shareOffersLimitPClass,
-    .shareOffersRemainingLimitPClass,
-    .shareOffersExpiryDateTimePClass{
+    .sharingOffersLimitPClass,
+    .sharingOffersRemainingLimitPClass,
+    .sharingOffersExpiryDateTimePClass{
         color:#67717D!important;
         font-size:13px!important;
     }
     
-    .toggleShareOffersDetailsLinkMsgPClass{
+    .toggleSharingOffersDetailsLinkMsgPClass{
         color:#a2b8d2!important;
         font-size:14px!important;
     }
     
-    .shareOffersBlankPClass{
+    .sharingOffersBlankPClass{
         margin:20px!important;
     }
     
-    .shareOffersNoteSClass{
+    .sharingOffersNoteSClass{
         color:#67717D!important;
         font-size:12px!important;
     }
     
-    .shareOffersMobileInputClass{
+    .sharingOffersMobileInputClass{
         margin-top:8px!important;
         width:30%!important;
     }
 
-    .shareOffersBtnClass,
-    .shareOffersBtnClass:hover{
+    .sharingOffersBtnClass,
+    .sharingOffersBtnClass:hover{
         margin-top:12px!important;
         font-weight:bold;
         font-size:12px!important;
@@ -3149,7 +3149,7 @@
         text-align:center!important;
     }
 
-    .noShareOffersFoundPClass{
+    .noSharingOffersFoundPClass{
         font-size:17px!important;
         color:#67717D!important;
     }
