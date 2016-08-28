@@ -110,7 +110,7 @@ class DiscountCouponDao{
             $sql= "SELECT
                     COALESCE(usdc.shared_onmobile, '') sharedOnMobile,
                     COALESCE(usdc.shared_onemail, '') sharedOnEmail,
-                    COALESCE(DATE_FORMAT(usdc.created_datedtime,'%b %d %Y %h:%i %p'), '') sharedOnDate
+                    COALESCE(DATE_FORMAT(usdc.created_datedtime,'%b %d %Y %h:%i %p'), '') sharedOnDateTime
                     FROM DK_USER_SHARED_DISCOUNTCOUPON usdc 
                     WHERE
                     usdc.sharedby_id='$userId'
