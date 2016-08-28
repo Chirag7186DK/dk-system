@@ -6,21 +6,24 @@
 -- TRUNCATE TABLE  `DK_TRACKUSERS_ACCESSWEBSITES`;
 
 
-SELECT 
-dcg.id dcgId,
-dcg.code dcgCode, 
-dcg.title dcgTitle,
-COALESCE(dcg.is_universally, 'N') isUniversallyAccepted,
-COALESCE(dcg.is_percentagebased, 'N') isPercentageBased,
-COALESCE(dcg.percentage_based, 0) percentageBased,
-COALESCE(dcg.is_cashback_based, 'N') isCashbackBased,
-COALESCE(dcg.cashback_based, 0) cashbackBased,
-COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
-COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
-COALESCE(dcg.for_userid, '') userId
-FROM DK_DISCOUNTCOUPONGENERATION dcg
-WHERE 1
-AND dcg.status='A'
+
+
+-- SELECT 
+-- dcg.id dcgId,
+-- dcg.code dcgCode, 
+-- dcg.title dcgTitle,
+-- COALESCE(dcg.is_universally, 'N') isUniversallyAccepted,
+-- COALESCE(dcg.is_percentagebased, 'N') isPercentageBased,
+-- COALESCE(dcg.percentage_based, 0) percentageBased,
+-- COALESCE(dcg.is_cashback_based, 'N') isCashbackBased,
+-- COALESCE(dcg.cashback_based, 0) cashbackBased,
+-- COALESCE(dcg.above_orderamount, '') aboveOrderAmt,
+-- COALESCE((CASE WHEN dcg.for_userid IS NULL THEN 'N' ELSE 'Y' END), 'N') isDiscountCouponAvailableForLoggedUser,
+-- COALESCE(dcg.for_userid, '') userId
+-- FROM DK_DISCOUNTCOUPONGENERATION dcg
+-- WHERE 1
+-- AND dcg.status='A'
+
 
 
 -- SELECT
@@ -439,3 +442,28 @@ AND dcg.status='A'
 -- AND u.profile_typeid='2'
 -- -- GROUP BY wl.id
 -- HAVING wishListCount>0 AND wishListItemCount>0
+
+
+
+
+
+SELECT 
+DATEDIFF('2016-08-30 00:00:00', '2016-08-28 00:00:00'),
+DATE_ADD('2016-08-30 23::00',INTERVAL 1 DAY)
+FROM DUAL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
