@@ -106,6 +106,7 @@ class LocationDao{
     }
     
     // CJ defined this function 2016-05-24
+    // very Important func
     public static function getAreaBasedConductProductTypeShopStoreDetails($countryCityAreaAffiliationId, $productTypeId='', $notProductTypeId='', $shopStoreId=''){
         $retResult = false;
         try{
