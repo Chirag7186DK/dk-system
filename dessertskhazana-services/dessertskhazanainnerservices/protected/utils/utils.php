@@ -140,7 +140,7 @@ class utils{
     
     // CJ defined this function 2016-07-23
     public static function getEmailMsgBodyContentForSending($msgBody, $from){
-        $content = "<table  border='0' style='font-family:Verdana, Geneva, sans-serif; font-size:13px;'>
+        $content = "<table border='0' style='font-family:Verdana, Geneva, sans-serif; font-size:13px;'>
             <tr>
                 <td style='color:black;'>".$msgBody."</td>
             </tr>
