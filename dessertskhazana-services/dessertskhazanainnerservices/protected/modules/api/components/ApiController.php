@@ -31,9 +31,9 @@ class ApiController extends Controller{
         $errorLineNo = $event->exception->getLine();
         $otherVars = '';
         // store error in db
-        $retLastInsertedErrorReportingLogId = utils :: generatingErrorReportingLog($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars);
-        $retSentSmsStatus = commonfunction :: preparedSmsDataToSendAdminMembersForErrorOccuredOnServer($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars);
-        $retSentEmailStatus = commonfunction :: preparedEmailDataToSendAdminMembersForErrorOccuredOnServer($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars);
+        $lastInsertedErrorReportingLogId = utils :: generatingErrorReportingLog($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars);
+        $sentSmsStatus = commonfunction :: preparedSmsDataToSendAdminMembersForErrorOccuredOnServer($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars);
+        $sentEmailStatus = commonfunction :: preparedEmailDataToSendAdminMembersForErrorOccuredOnServer($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars);
         commonfunction :: generateResponseDataForErrorOccured();
     }
     
