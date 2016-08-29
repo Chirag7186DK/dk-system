@@ -16,8 +16,8 @@ class LocationDao{
                     COALESCE(c.id, '') cityId, 
                     COALESCE(c.name, '') cityName
                     FROM DK_CITYREACHED c 
-                    WHERE 
-                    c.status='A' AND c.name IS NOT NULL";
+                    WHERE 1
+                    AND c.status='A' AND c.name IS NOT NULL";
                     if($city_ids!=''){
                         $sql.=" AND c.id IN ($city_ids) ";
                     }
