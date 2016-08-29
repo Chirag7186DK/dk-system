@@ -2,6 +2,7 @@
 
 // CJ added lines of code here 2016-07-24
 error_reporting(E_ALL);
+
 function dk_errorhandling($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars){
     global $SiteTitle;
     $preparingErrorMsgStr = "Error occured on site and at server level=>". $SiteTitle;
