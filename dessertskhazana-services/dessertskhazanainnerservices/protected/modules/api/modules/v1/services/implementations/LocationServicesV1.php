@@ -15,58 +15,23 @@ class LocationServicesV1 implements ILocationServicesV1{
             $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = false;
             $rsltJsonArr['allCityList'] = false;
             // initial variable declare here
-            $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
-            // prepare param obj
-            $shopStoreProductDeliveryParamObj = array();
-            $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_ids;
-            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_ids;
-            $shopStoreProductDeliveryParamObj['groupby_city_ids'] = 'Y';
-            $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
-            if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
-                // remove unused keys from fetched array data
-                $removeJsonKeyFromEachInputJsonArr = array(
-                    "shopStoreId"=>"0", "shopStoreName"=>"0", 
-                    "countryCityAreaAffiliationId"=>"0", "countryId"=>"0", "countryName"=>"0",  
-                    "areaId"=>"0", "areaName"=>"0", "isPreorderAccept"=>"0", "takeAwayOrderAccept"=>"0", 
-                    "cashOnDeliveryAccept"=>"0","isOnlinePaymentAccept"=>"0","isHomeDeliveryAccept"=>"0", 
-                    "orderDeliveryOpenTime"=>"0", "orderDeliveryCloseTime"=>"0"
-                );
-                $removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($retShopStoreDeliveryLocationDetailsArr, $removeJsonKeyFromEachInputJsonArr, 'keyname');
-                if(count($removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr)>0 && $removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr!=false){
-                    // final merging 
-                    $finalDeliveryCityLocationDetailsArr = utils::array_merge_common_elements(
-                        $removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr, 
-                        array(array("cityId"=>$gcity_ids)), 
-                        array("cityId"), array(), 
-                        array("isRequestedDeliveryCityMatched"=>"Y"), 
-                        array("isRequestedDeliveryCityMatched"=>"N")
-                    );
-                    if(count($finalDeliveryCityLocationDetailsArr)>0 && $finalDeliveryCityLocationDetailsArr!=false){
-                        $rsltJsonArr['allCityList'] = $finalDeliveryCityLocationDetailsArr;
-                        //sorted on matched delievery city
-                        $sortedOnMatchedDeliveryCityDetailsArr =  utils::arraySort($finalDeliveryCityLocationDetailsArr, array("isRequestedDeliveryCityMatched"));
-                        if($sortedOnMatchedDeliveryCityDetailsArr!=false && count($sortedOnMatchedDeliveryCityDetailsArr)>0){
-                            if(array_key_exists('Y', $sortedOnMatchedDeliveryCityDetailsArr)){
-                                // default selected delivery city to show
-                                $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                                    "cityId"=>$sortedOnMatchedDeliveryCityDetailsArr['Y'][0]['cityId'],
-                                    "cityName"=>$sortedOnMatchedDeliveryCityDetailsArr['Y'][0]['cityName'],
-                                    "cityIcon"=>"fa fa-map-marker"
-                                );
-                            }else{
-                                // default selected delivery city to show
-                                $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                                    "cityId"=>$sortedOnMatchedDeliveryCityDetailsArr['N'][0]['cityId'],
-                                    "cityName"=>$sortedOnMatchedDeliveryCityDetailsArr['N'][0]['cityName'],
-                                    "cityIcon"=>"fa fa-map-marker"
-                                );
-                            }
-                        }
+            $deliveryCityListDetailsArr = LocationDao::getCityList($gcity_ids, '');
+            if(count($deliveryCityListDetailsArr)>0 && $deliveryCityListDetailsArr!=false){
+                // iterate each delivery city details
+                for($eachIndex = 0; $eachIndex<count($deliveryCityListDetailsArr); $eachIndex++){
+                    $deliveryCityListDetailsArr[$eachIndex]['cityIcon'] = 'fa fa-map-marker';
+                    $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'N';
+                    if($deliveryCityListDetailsArr[$eachIndex]['cityId']==$gcity_ids){
+                        $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'Y';
+                        // default selected delivery city to show
+                        $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                            "cityId"=>$gcity_ids,
+                            "cityName"=>$deliveryCityListDetailsArr[$eachIndex]['cityName'],
+                            "cityIcon"=>"fa fa-map-marker"
+                        );
                     }
-                }            
-            }
-            if($rsltJsonArr['allCityList']!=false && count($rsltJsonArr['allCityList'])>0){
+                }
                 $rspDetails["deliveryCityDetails"] =  $rsltJsonArr;
             }
         } 
