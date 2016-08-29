@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 function dk_errorhandling($errorNo, $errorMsg, $errorFile, $errorLineNo, $otherVars){
     global $SiteTitle;
-    $preparingErrorMsgStr = "Error occured on site and at server level=>". $SiteTitle;
+    $preparingErrorMsgStr = "Error occured at server level=>". $SiteTitle;
     $preparingErrorMsgStr.=", ErrorNo=>".$errorNo;
     $preparingErrorMsgStr.=", Filepath=>".$errorFile;
     $preparingErrorMsgStr.=", Fileno=>".$errorLineNo;
