@@ -19,10 +19,12 @@ class LocationServicesV1 implements ILocationServicesV1{
             $deliveryCityListDetailsArr = LocationDao::getCityList($gcity_ids, '');
             if(count($deliveryCityListDetailsArr)>0 && $deliveryCityListDetailsArr!=false){
                 // iterate each delivery city details
+                $isRequestedDeliveryCityMatched = false;
                 for($eachIndex = 0; $eachIndex<count($deliveryCityListDetailsArr); $eachIndex++){
                     $deliveryCityListDetailsArr[$eachIndex]['cityIcon'] = 'fa fa-map-marker';
                     $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'N';
                     if($deliveryCityListDetailsArr[$eachIndex]['cityId']==$gcity_ids){
+                        $isRequestedDeliveryCityMatched = true;
                         $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'Y';
                         // default selected delivery city to show
                         $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
@@ -32,6 +34,15 @@ class LocationServicesV1 implements ILocationServicesV1{
                         );
                     }
                 }
+                if($isRequestedDeliveryCityMatched==false){
+                    // default selected delivery city to show
+                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                        "cityId"=>$deliveryCityListDetailsArr[0]['cityId'],
+                        "cityName"=>$deliveryCityListDetailsArr[0]['cityName'],
+                        "cityIcon"=>"fa fa-map-marker"
+                    );
+                }
+                $rsltJsonArr['allCityList'] = $deliveryCityListDetailsArr;
                 $rspDetails["deliveryCityDetails"] =  $rsltJsonArr;
             }
         } 
