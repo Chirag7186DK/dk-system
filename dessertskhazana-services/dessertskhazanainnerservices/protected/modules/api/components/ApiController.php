@@ -16,7 +16,7 @@ set_error_handler('dk_errorhandling');
 
 class ApiController extends Controller{
     
-    public function init() {
+    public function init(){
         parent::init();
         Yii::app()->attachEventHandler('onError', array($this, 'dk_errorhandling'));
         Yii::app()->attachEventHandler('onException', array($this, 'dk_errorhandling'));
