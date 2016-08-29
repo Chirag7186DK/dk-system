@@ -48,8 +48,7 @@ class ShopStoreDao{
             $connection = Yii::App()->db;
             
             $sql= " SELECT 
-                    COALESCE(ss.id, '') shopStoreId, 
-                    COALESCE(ss.shopstore_name, '') shopStoreName,
+                    COALESCE(ss.id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreName,
                     COALESCE(ss.country_city_area_affiliationId, '') countryCityAreaAffiliationId,
                     COALESCE(country.id, '') countryId, COALESCE(country.name, '') countryName, 
                     COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
@@ -157,7 +156,8 @@ class ShopStoreDao{
             
             $command = $connection->createCommand($sql);
             $retShopStoresProductDeliveryLocationListArr = $command->queryAll();
-            if(count($retShopStoresProductDeliveryLocationListArr)>0 && $retShopStoresProductDeliveryLocationListArr!=false && $retShopStoresProductDeliveryLocationListArr!=''){
+            if(count($retShopStoresProductDeliveryLocationListArr)>0 
+                && $retShopStoresProductDeliveryLocationListArr!=false){
                 $retResult =  $retShopStoresProductDeliveryLocationListArr;    
             }
         }catch(Exception $ex){}
