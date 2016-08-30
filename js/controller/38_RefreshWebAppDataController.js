@@ -19,7 +19,7 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
                     size:'normal', 
                     msg:"<p style='text-align:center;'>"+msgStr+"</p>",
                     delay:2000,
-                    position:"top right" 
+                    position:"top left" 
                 }; 
                 showNotificationBoxMsg('', notifyInfoConfigObj);
             }
