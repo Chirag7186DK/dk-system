@@ -90,27 +90,13 @@ function onBodyScrollClass($window){
 }
 
 
-angular.module('DKAPP').directive('showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass', scrollToTopBtnClass);
+angular.module('DKAPP').directive('showUserSelectedDeliveryAreaTextHeader', showUserSelectedDeliveryAreaTextHeader);
 
-function showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass($window){
+function showUserSelectedDeliveryAreaTextHeader(LocationServices){
     return {
         restrict: 'C',
         link: function($scope, $el, $attrs){
-            $scope.isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader = false;
-            $scope.customerDeliveryCityAreaDessertsProductTypeTextForHeader = '';
-            $scope.$on('scroll::scroll', function(){
-                if($window.pageYOffset>=12){
-                    var msgStr = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
-                    if(msgStr!=='' && msgStr!==undefined && msgStr!==false){
-                        //$scope.isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader = true;
-                        //$scope.customerDeliveryCityAreaDessertsProductTypeTextForHeader = msgStr;
-                    }
-                }else{
-                    $scope.isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader = false;
-                    $scope.customerDeliveryCityAreaDessertsProductTypeTextForHeader = '';
-                }
-                $scope.$apply();
-            });
+            LocationServices.showUserSelectedDeliveryAreaTextHeader();
         }
     };
 }
