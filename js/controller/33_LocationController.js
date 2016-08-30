@@ -187,7 +187,11 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         // buildedDKDeliveryAreaListHtmlSelectControlOnChangeEvent
         $rootScope.buildedDKDeliveryAreaListHtmlSelectControlOnChangeEvent = function(elementObj, areaDetailsLoadedOnPage){
             $(elementObj).on('changed.bs.select', function(e){
-                var paramObj = {"areaId":$(elementObj).selectpicker('val'), "areaName":($(elementObj).find('option:selected').text()).split(" ")[0]};
+                var paramObj = {
+                    "areaId":$(elementObj).selectpicker('val'), 
+                    "areaName":($(elementObj).find('option:selected').text()).split(" ")[0],
+                    "areaPincode":($(elementObj).find('option:selected').text()).split(" ")[1]
+                };
                 storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                 $rootScope.defaultedSelectedDKDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
                 // refresh desserts product type list based on city, area
