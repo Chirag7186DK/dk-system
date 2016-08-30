@@ -43,6 +43,9 @@
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
+                    <li class="showUserSelectedDeliveryAreaTextHeader" title="Click here to change delivery location">
+                        <i class="fa fa-map-marker"></i> At: {{userSelectedDeliveryAreaTextHeader}}
+                    </li>
                     <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                         <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
@@ -62,13 +65,6 @@
                         <i class="fa fa-sign-out"></i> Log Out
                     </li>
                 </ul>
-            </div>
-            
-            <!-- show customer delivery city area desserts product type on header as text -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
-                <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
-                    <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
-                </p>
             </div>
             
         </div>
