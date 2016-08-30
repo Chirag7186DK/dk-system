@@ -216,7 +216,7 @@ function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
             position:"bottom right" 
         };       
     }else{
-        configObj = notifyInfoConfigObj;
+        configObj = $.extend(configObj, notifyInfoConfigObj);
         configObj['width'] = deviceWidth;
     }
     Lobibox.notify('info', configObj);
