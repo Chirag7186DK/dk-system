@@ -11,6 +11,7 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!==false && infoObj!==undefined 
                 && infoObj!=='' && jQuery.isEmptyObject(infoObj)===false){
+                alert(JSON.stringify(infoObj));
                 var msgStr = "You are at : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
                 var notifyInfoConfigObj = {
                     icon:false,
