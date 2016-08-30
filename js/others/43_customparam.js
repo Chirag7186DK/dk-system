@@ -18,6 +18,7 @@ function initializeDkSessionData(){
         dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'] = '1';
         dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'] = '';
+        dkSelectedDeliveryCityAreaDessertsProductObj['areapincode'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproduct'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['countryname'] = 'India';
         dkSelectedDeliveryCityAreaDessertsProductObj['cityname'] = '';
@@ -200,6 +201,7 @@ function storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSes
                 if(paramObj.hasOwnProperty('areaId')===true && paramObj.hasOwnProperty('areaName')===true){
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areavalue'] = paramObj['areaId'];
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areaname'] = paramObj['areaName'];
+                    existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areapincode'] = paramObj['areaPincode'];
                     if(isResetAllSessionData==='Y'){
                         existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproduct'] = '';
                         existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproducttitle'] = '';
