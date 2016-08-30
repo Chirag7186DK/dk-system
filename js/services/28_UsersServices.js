@@ -13,6 +13,22 @@ function UsersServices($http, $q, $rootScope){
             return promiseObject;
         };
         
+        // userLogout
+        userDetails.userLogout = function(){
+            try{
+                // fetch param data from session
+                var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
+                    return promiseObject;
+                }
+            }catch(ex){
+                console.log("Problem in userLogout=>"+ex);
+            }
+        };
+        
         // getUserPersonalInfo
         userDetails.getUserPersonalInfo = function(preparedParamJsonObj){
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
