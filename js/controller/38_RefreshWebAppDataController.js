@@ -5,9 +5,24 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
     try{
         // refreshWebAppData
         $rootScope.refreshWebAppData = function(){
-            var retUserDashboardSummaryDataObj = UsersServices.refreshUserDashboardSummaryDataDetails();
-            var retUserOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
-            var retAddItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, false, 'session');
+            var userDashboardSummaryDataObj = UsersServices.refreshUserDashboardSummaryDataDetails();
+            var userOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+            var addItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, false, 'session');
+            var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
+            if(infoObj!==false && infoObj!==undefined 
+                && infoObj!=='' && jQuery.isEmptyObject(infoObj)===false){
+                var msgStr = "You are at: "+infoObj['userSelectedArea'];
+                var notifyInfoConfigObj = {
+                    icon:false,
+                    title:false,
+                    sound:false, 
+                    size:'normal', 
+                    msg:msgStr,
+                    delay:2000,
+                    position:"top right" 
+                }; 
+                showNotificationBoxMsg('', notifyInfoConfigObj);
+            }
         };
     }catch(ex){
         console.log("problem in RefreshWebAppDataController ex=>"+ex);
