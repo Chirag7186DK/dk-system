@@ -13,7 +13,6 @@ function LocationServices($http, $q, $rootScope){
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!=='' && infoObj!==undefined 
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
-                alert("infoObj=>"+JSON.stringify(infoObj));
                 $rootScope.isShowUserSelectedDeliveryAreaTextHeader = true;
                 $rootScope.userSelectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
                 var msgStr = "You are at : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
