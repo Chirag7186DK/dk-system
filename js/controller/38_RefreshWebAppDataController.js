@@ -11,13 +11,13 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!==false && infoObj!==undefined 
                 && infoObj!=='' && jQuery.isEmptyObject(infoObj)===false){
-                var msgStr = "You are at: "+infoObj['userSelectedArea'];
+                var msgStr = "You are at : "+infoObj['userSelectedArea'];
                 var notifyInfoConfigObj = {
                     icon:false,
                     title:false,
                     sound:false, 
                     size:'normal', 
-                    msg:msgStr,
+                    msg:"<p style='text-align:center;'>"+msgStr+"</p>",
                     delay:2000,
                     position:"top right" 
                 }; 
