@@ -121,22 +121,11 @@
                 Hey you are viewing '{{defaultDKServedDessertsProductType}}' and also we can serve other <span class="badge dashboardDessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
             </li> 
             
-            <div id="dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
-                <!-- iterate each desserts products info-->  
-                <div ng-repeat="eachDessertsProductTypeDetails in deliveryAreabasedDkServedDessertsProductTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='dl_DeliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-dashboardlevel>
-                    <p class="dessertsProductIconPClass">
-                        <i class="{{eachDessertsProductTypeDetails.productIcon}} dessertsProductIconClass"></i>
-                    </p>
-                    <h2 class="dessertsProductTitleHClass">
-                        {{eachDessertsProductTypeDetails.productTypeTitle}}
-                    </h2>
-                    <p ng-controller="LocationController" ng-click="collectDataToLoadProductTypeAllProductListForDashboarLevel(eachDessertsProductTypeDetails)" class="viewDessertsProductPClass">
-                        View desserts
-                    </p>
-                </div>
-            </div>
-            
         </div>
+        
+        <!-- create horizontally space div between -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+
         
         <!-- load desserts product type product list for dashboard level -->
         <div id="dashboardLevelAllProductTypeProductListContainerDivId" ng-controller="ProductTypeProductCategoryProductDetailsController" ng-show="isDessertsProductTypeProductListLoaded" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_AllProductTypeProductListContainerDivClass">
