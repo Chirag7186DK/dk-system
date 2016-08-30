@@ -219,7 +219,6 @@ function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
         configObj = $.extend(configObj, notifyInfoConfigObj);
         configObj['width'] = deviceWidth;
     }
-    console.log(JSON.stringify(configObj));
     Lobibox.notify('info', configObj);
 }
 
