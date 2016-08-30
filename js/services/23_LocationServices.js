@@ -2,9 +2,21 @@
 
 angular.module('DKAPP').factory('LocationServices', LocationServices);
 
-function LocationServices($http, $q){
+function LocationServices($http, $q, $scope, $rootScope){
     try{
         var locationDetails = {};
+        
+        // resetUserDashboardVariableData
+        LocationServices.showUserSelectedDeliveryAreaTextHeader = function(){
+            $rootScope.userSelectedDeliveryAreaTextHeader = '';
+            $rootScope.isShowserSelectedDeliveryAreaTextHeader = false;
+            var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
+            if(infoObj!=='' && infoObj!==undefined 
+                && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
+                $rootScope.isShowserSelectedDeliveryAreaTextHeader = true;
+                $rootScope.userSelectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
+            }   
+        };
         
         locationDetails.getDKDeliveryCityList = function(preparedParamJsonObj){
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
