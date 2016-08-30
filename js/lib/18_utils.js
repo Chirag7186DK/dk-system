@@ -203,8 +203,8 @@ function removeHtmlStripTagsOfContent(givenContent){
 // CJ defined this function 2016-07-30
 function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
     var configObj = {};
-    if(notifyInfoConfigObj===false || notifyInfoConfigObj!==undefined 
-        && notifyInfoConfigObj==='' || jQuery.isEmptyObject(notifyInfoConfigObj)===false){
+    if(notifyInfoConfigObj===false || notifyInfoConfigObj===undefined 
+        || notifyInfoConfigObj==='' || jQuery.isEmptyObject(notifyInfoConfigObj)===true){
         configObj = {
             icon:false,
             title:false,
@@ -219,6 +219,7 @@ function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
         configObj = $.extend(configObj, notifyInfoConfigObj);
         configObj['width'] = deviceWidth;
     }
+    console.log(JSON.stringify(configObj));
     Lobibox.notify('info', configObj);
 }
 
