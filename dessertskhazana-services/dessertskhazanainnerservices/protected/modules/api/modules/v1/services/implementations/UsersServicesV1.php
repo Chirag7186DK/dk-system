@@ -153,4 +153,25 @@ class UsersServicesV1 implements IUsersServicesV1{
         return $rspDetails;
     }
 
+    // CJ defined this action 2016-08-30
+    public function userLogoutFromWebsites($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isUserLogoutFromWebsites'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $udblogId = $userSessionDetailsData['userLogId'];
+                $userSessionId = $userSessionDetailsData['user_sessionid'];
+                $logoutStatus = UsersDao :: userLogoutFromWebsites($udblogId, $userSessionId);
+                if($logoutStatus=='TRUE'){
+                    $rspDetails['isUserLogoutFromWebsites'] = 'TRUE';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+
+    
 }
