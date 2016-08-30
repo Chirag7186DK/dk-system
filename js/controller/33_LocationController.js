@@ -5,6 +5,7 @@ angular.module('DKAPP').controller('LocationController', LocationController);
 function LocationController($scope, $rootScope, $http, LocationServices){
     try{
         
+        
         // loadDkDeliveryCityList 
         $rootScope.loadDkDeliveryCityList = function(loadOnPage){
             try{
@@ -165,7 +166,9 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var areaValue = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaId'];
                     var areaIcon = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaIcon'];
                     var areaName = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaName'];
-                    var eachOptionStr = "<option class='cityAreaSuggestionOptionClass' data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaName+"</option>";
+                    var areaPincode = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaPincode'];
+                    var areaStr = areaPincode + " - " +areaName;
+                    var eachOptionStr = "<option class='cityAreaSuggestionOptionClass' data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
                     $(areaListSelectControlElementObj).append(eachOptionStr);
                 }
             }
