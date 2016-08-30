@@ -21,7 +21,7 @@ function UsersServices($http, $q, $rootScope){
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
+                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', fetchedParamJsonObj).done(function(retResponseJson){});
                     return promiseObject;
                 }
             }catch(ex){
