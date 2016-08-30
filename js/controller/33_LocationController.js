@@ -5,7 +5,6 @@ angular.module('DKAPP').controller('LocationController', LocationController);
 function LocationController($scope, $rootScope, $http, LocationServices){
     try{
         
-        
         // loadDkDeliveryCityList 
         $rootScope.loadDkDeliveryCityList = function(loadOnPage){
             try{
