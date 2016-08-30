@@ -118,7 +118,7 @@
             <!-- display selected desserts product type viewing by customer -->
             <li class='dl_DkServedDessertsProductNoteLIClass'>
                 <i class='fa fa-smile-o smileIconClass'></i> 
-                Hey you are viewing '{{defaultDKServedDessertsProductType}}' and also we can serve other <span class="badge dashboardDessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
+                Hey you are viewing '{{defaultDKServedDessertsProductType}}' and also we can serve other <span class="badge dashboardDessertsProductTypeCountSClass">{{dkDeliveryAreaBasedProductTypeList.length}}</span> desserts in your selected delivery area !!!
             </li> 
             
         </div>
