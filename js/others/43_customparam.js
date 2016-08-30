@@ -300,9 +300,11 @@ function getInfoUserSelectedDeliveryCityAreaDessertsProductType(){
                         && dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areaname')===true
                         && dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('dessertsproducttitle')===true){
                         if(dkSelectedDeliveryCityAreaDessertsProductObj['cityname']!=='' 
-                            && dkSelectedDeliveryCityAreaDessertsProductObj['areaname']!=='' && dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle']!==''){
+                            && dkSelectedDeliveryCityAreaDessertsProductObj['areaname']!=='' && dkSelectedDeliveryCityAreaDessertsProductObj['areapincode']!==''
+                            && dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle']!==''){
                             infoObj['userSelectedCity'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['cityname']);
                             infoObj['userSelectedArea'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['areaname']);
+                            infoObj['userSelectedAreaPincode'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['areapincode']);
                             infoObj['userSelectedDesserts'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle']);
                         }
                     }
