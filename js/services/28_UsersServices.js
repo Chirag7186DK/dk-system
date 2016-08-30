@@ -13,8 +13,8 @@ function UsersServices($http, $q, $rootScope){
             return promiseObject;
         };
         
-        // userLogout
-        userDetails.userLogout = function(){
+        // signOutUser
+        userDetails.signOutUser = function(){
             try{
                 // fetch param data from session
                 var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
@@ -25,7 +25,7 @@ function UsersServices($http, $q, $rootScope){
                     return promiseObject;
                 }
             }catch(ex){
-                console.log("Problem in userLogout=>"+ex);
+                console.log("Problem in signOutUser=>"+ex);
             }
         };
         
