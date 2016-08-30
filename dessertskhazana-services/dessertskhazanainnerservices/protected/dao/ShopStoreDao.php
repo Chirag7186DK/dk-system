@@ -53,6 +53,7 @@ class ShopStoreDao{
                     COALESCE(country.id, '') countryId, COALESCE(country.name, '') countryName, 
                     COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
                     COALESCE(area.id, '') areaId, COALESCE(area.name, '') areaName,
+                    COALESCE(area.pincode, '') areaPincode,
                     COALESCE(sdl.is_preorderaccept, 'Y') isPreorderAccept, 
                     COALESCE(sdl.is_takeawayorderaccept, 'Y') takeAwayOrderAccept,
                     COALESCE(sdl.is_cashondeliveryaccept, 'Y') cashOnDeliveryAccept, 
