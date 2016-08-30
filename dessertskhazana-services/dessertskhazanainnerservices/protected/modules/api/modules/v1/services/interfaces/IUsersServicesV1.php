@@ -12,4 +12,5 @@ interface IUsersServicesV1{
     public function getUserPersonalInfoData($dkInDtoArray);
     public function updateUserPersonalInfoData($dkInDtoArray);
     public function updateUserPasswordInfoData($dkInDtoArray);
+    public function userLogoutFromWebsites($dkInDtoArray);
 }
