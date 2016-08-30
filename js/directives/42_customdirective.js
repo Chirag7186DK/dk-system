@@ -100,7 +100,7 @@ function showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass($w
             $scope.customerDeliveryCityAreaDessertsProductTypeTextForHeader = '';
             $scope.$on('scroll::scroll', function(){
                 if($window.pageYOffset>=12){
-                    var msgStr = getCustomerDeliveryCityAreaDessertsProductTypeTextForHeader();
+                    var msgStr = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
                     if(msgStr!=='' && msgStr!==undefined && msgStr!==false){
                         //$scope.isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader = true;
                         //$scope.customerDeliveryCityAreaDessertsProductTypeTextForHeader = msgStr;
