@@ -166,7 +166,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var areaIcon = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaIcon'];
                     var areaName = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaName'];
                     var areaPincode = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaPincode'];
-                    var areaStr = areaPincode + " - " +areaName;
+                    var areaStr = areaPincode + " " +areaName;
                     var eachOptionStr = "<option class='cityAreaSuggestionOptionClass' data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
                     $(areaListSelectControlElementObj).append(eachOptionStr);
                 }
@@ -189,8 +189,8 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             $(elementObj).on('changed.bs.select', function(e){
                 var paramObj = {
                     "areaId":$(elementObj).selectpicker('val'), 
-                    "areaName":($(elementObj).find('option:selected').text()).split(" ")[0],
-                    "areaPincode":($(elementObj).find('option:selected').text()).split(" ")[1]
+                    "areaName":($(elementObj).find('option:selected').text()).split(" ")[1],
+                    "areaPincode":($(elementObj).find('option:selected').text()).split(" ")[0]
                 };
                 storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                 $rootScope.defaultedSelectedDKDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
