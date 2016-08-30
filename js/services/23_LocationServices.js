@@ -15,6 +15,17 @@ function LocationServices($http, $q, $rootScope){
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
                 $rootScope.isShowUserSelectedDeliveryAreaTextHeader = true;
                 $rootScope.userSelectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
+                var msgStr = "You are at : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
+                var notifyInfoConfigObj = {
+                    icon:false,
+                    title:false,
+                    sound:false, 
+                    size:'normal', 
+                    msg:"<p style='text-align:center;'>"+msgStr+"</p>",
+                    delay:2000,
+                    position:"top left" 
+                }; 
+                showNotificationBoxMsg('', notifyInfoConfigObj);
             }  
         };
         
