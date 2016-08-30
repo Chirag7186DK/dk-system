@@ -320,4 +320,20 @@ class UsersDao{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-08-30
+    public static function userLogoutFromWebsites($udblogId, $userSessionId){
+        $retStatus = 'FALSE';
+        try{
+            $connection = Yii::App()->db;
+            $sql= " UPDATE DK_USERLOG SET status='Z', logout_datedtime='".date('Y-m-d H:i:s')."'
+                WHERE user_logno='$udblogId' AND user_sessionid='$userSessionId' ";
+            $command = $connection->createCommand($sql);
+            $result = $command->execute();
+            if($result>0){
+                $retStatus = 'TRUE';
+            }
+        }catch(Exception $ex){}
+        return $retStatus;
+    }
+    
 }
