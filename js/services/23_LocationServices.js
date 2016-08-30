@@ -2,12 +2,12 @@
 
 angular.module('DKAPP').factory('LocationServices', LocationServices);
 
-function LocationServices($http, $q, $scope, $rootScope){
+function LocationServices($http, $q, $rootScope){
     try{
         var locationDetails = {};
         
         // resetUserDashboardVariableData
-        LocationServices.showUserSelectedDeliveryAreaTextHeader = function(){
+        locationDetails.showUserSelectedDeliveryAreaTextHeader = function(){
             $rootScope.userSelectedDeliveryAreaTextHeader = '';
             $rootScope.isShowserSelectedDeliveryAreaTextHeader = false;
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
@@ -15,7 +15,7 @@ function LocationServices($http, $q, $scope, $rootScope){
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
                 $rootScope.isShowserSelectedDeliveryAreaTextHeader = true;
                 $rootScope.userSelectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
-            }   
+            }  
         };
         
         locationDetails.getDKDeliveryCityList = function(preparedParamJsonObj){
