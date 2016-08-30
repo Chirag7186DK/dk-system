@@ -9,11 +9,11 @@ function LocationServices($http, $q, $rootScope){
         // resetUserDashboardVariableData
         locationDetails.showUserSelectedDeliveryAreaTextHeader = function(){
             $rootScope.userSelectedDeliveryAreaTextHeader = '';
-            $rootScope.isShowserSelectedDeliveryAreaTextHeader = false;
+            $rootScope.isShowUserSelectedDeliveryAreaTextHeader = false;
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!=='' && infoObj!==undefined 
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
-                $rootScope.isShowserSelectedDeliveryAreaTextHeader = true;
+                $rootScope.isShowUserSelectedDeliveryAreaTextHeader = true;
                 $rootScope.userSelectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
             }  
         };
