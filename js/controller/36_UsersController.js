@@ -113,7 +113,7 @@ function UsersController($scope, $rootScope, $http, UsersServices){
         
         // signOutUser
         $rootScope.signOutUser = function(){
-            UsersServices.userLogout();
+            UsersServices.signOutUser();
             resetDKSessionData();
             window.location.href = globalBaseSitePath;
         };
