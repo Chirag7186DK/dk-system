@@ -89,18 +89,6 @@ function onBodyScrollClass($window){
     };
 }
 
-
-angular.module('DKAPP').directive('showUserSelectedDeliveryAreaTextHeader', showUserSelectedDeliveryAreaTextHeader);
-
-function showUserSelectedDeliveryAreaTextHeader(LocationServices){
-    return {
-        restrict: 'C',
-        link: function($scope, $el, $attrs){
-            LocationServices.showUserSelectedDeliveryAreaTextHeader();
-        }
-    };
-}
-
 angular.module('DKAPP').directive('preloadProductImagesClass', preloadProductImagesClass);
 
 function preloadProductImagesClass($timeout){
