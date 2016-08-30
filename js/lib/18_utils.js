@@ -201,9 +201,11 @@ function removeHtmlStripTagsOfContent(givenContent){
 }
 
 // CJ defined this function 2016-07-30
-function showNotificationBoxMsg(msgStr){
-    if(msgStr!=='' && msgStr!==undefined && msgStr!==false){
-        Lobibox.notify('info',{
+function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
+    var configObj = {};
+    if(notifyInfoConfigObj===false || notifyInfoConfigObj!==undefined 
+        && notifyInfoConfigObj==='' || jQuery.isEmptyObject(notifyInfoConfigObj)===false){
+        configObj = {
             icon:false,
             title:false,
             sound:false, 
@@ -212,8 +214,12 @@ function showNotificationBoxMsg(msgStr){
             delay:2000,
             width:deviceWidth,
             position:"bottom right" 
-        });
+        };       
+    }else{
+        configObj = notifyInfoConfigObj;
+        configObj['width'] = deviceWidth;
     }
+    Lobibox.notify('info', configObj);
 }
 
 // CJ defined this function 2016-07-30
