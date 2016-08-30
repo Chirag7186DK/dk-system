@@ -181,6 +181,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             }
             // refresh dependency element on ui screen
             $rootScope.refreshElementDependencyDeliveryArea(areaDetailsLoadedOnPage);
+            $scope.$broadcast('allCheckboxes',true);
             
         };
         
