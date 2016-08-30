@@ -283,12 +283,9 @@ function storeDefaultDessertsProductTypeDetailsDashboardLevelInSessionStorage(pa
 
 
 // CJ defined this function 2016-07-10
-function getInfoCustomerSelectedDeliveryCityAreaDessertsProductType(){
+function getInfoUserSelectedDeliveryCityAreaDessertsProductType(){
     try{
         var infoObj = {};
-        infoObj['selectedCity'] = '';
-        infoObj['selectedArea'] = '';
-        infoObj['selectedDesserts'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -302,9 +299,9 @@ function getInfoCustomerSelectedDeliveryCityAreaDessertsProductType(){
                         && dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('dessertsproducttitle')===true){
                         if(dkSelectedDeliveryCityAreaDessertsProductObj['cityname']!=='' 
                             && dkSelectedDeliveryCityAreaDessertsProductObj['areaname']!=='' && dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle']!==''){
-                            infoObj['selectedCity'] = '';
-                            infoObj['selectedArea'] = '';
-                            infoObj['selectedDesserts'] = '';
+                            infoObj['userSelectedCity'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['cityname']);
+                            infoObj['userSelectedArea'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['areaname']);
+                            infoObj['userSelectedDesserts'] = removeHtmlStripTagsOfContent(dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle']);
                         }
                     }
                 }
