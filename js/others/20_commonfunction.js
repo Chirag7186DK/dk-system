@@ -5,14 +5,9 @@
 function generateDkUserSessionId(){
     var existingUserSessionId = getUserSessionIdFromUserSession();
     if(existingUserSessionId==='' || existingUserSessionId===false || existingUserSessionId===undefined){
-        var jsonParamBlockUIObject = {};
-        jsonParamBlockUIObject['css'] = {"padding":10};
-        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-        showHideLoaderBox('show', jsonParamBlockUIObject);
         var fetchedParamJsonObj = {};
         fetchedParamJsonObj['dkParamDataArr'] = {"dummy":"data"};
         communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/GenerateUserSessionId", 'apiFile', 'POST', '', fetchedParamJsonObj).done(function(retResponseJson){
-            showHideLoaderBox('hide');
             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                 var userSessionId = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'userSessionId', retResponseJson);
                 if(userSessionId!=='' && userSessionId!==false && userSessionId!==undefined){
