@@ -67,7 +67,6 @@ function initializeDkSessionData(){
 
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
         generateDkUserSessionId();
-        addTrackingUserInfoAccessingWebsitesDetails('home');
         return true;
     }catch(ex){
         return false;
@@ -85,6 +84,7 @@ function resetDKSessionData(){
             // check userSession key present or not 
             if(dkParamObj.hasOwnProperty('userSession')===true){
                 dkParamObj['userSession']['user_sessionstarttime'] = (new Date()).getTime();
+                dkParamObj['userSession']['lastupdated_sessiontime'] = '';
                 dkParamObj['userSession']['user_sessionid'] = '';
                 dkParamObj['userSession']['udblogId'] = '';
                 dkParamObj['userSession']['userProfileTypeId'] = '';
@@ -102,56 +102,30 @@ function resetDKSessionData(){
 
 /////////////////////// Tracking user accessing websites info related data //////////////////////////
 
-
-// CJ defined this function 2016-07-24
-function checkIsUserInfoTrackedAccessingWebsitesDetails(){
-    var retStatus = false;
-    try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                // extract userSession param obj
-                var userSessionParamDataObj = dkParamObj['userSession'];
-                if(userSessionParamDataObj.hasOwnProperty('isUserInfoTrackedAccessingWebsites')==='N'){
-                    retStatus = false;
-                }else if(userSessionParamDataObj.hasOwnProperty('isUserInfoTrackedAccessingWebsites')==='Y'){
-                    retStatus = true;
-                }
-            }
-        }
-    }catch(ex){
-        retStatus = false;
-    }
-    return retStatus;
-}
-
 // CJ defined this function 2016-07-24
 function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
-    var retParamObj = {};
     try{
+        var retParamObj = {};
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSession')===true){
-                retParamObj['user_sessionid'] = '';
-                retParamObj['page_name'] = fromPageLoad;
-                if(dkParamObj['userSession']['user_sessionid']!=='' && (dkParamObj['userSession']['user_sessionid']).length>7){
+                if(dkParamObj['userSession']['user_sessionid']!=='' 
+                    && (dkParamObj['userSession']['user_sessionid']).length>=20){
                     retParamObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    retParamObj['page_name'] = fromPageLoad;
+                    // update user session data obj 
+                    dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
                 }
-                // update user session 
-                dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
-                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
             }
         }
+        return retParamObj;
     }catch(ex){
-        retParamObj =  {};
+        return false;
     }
-    return retParamObj;
 }
 
 
