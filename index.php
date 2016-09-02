@@ -22,11 +22,6 @@
     <!-- body start here -->
     <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('home');">
         
-        <!-- common SCROLL TOP BUTTON -->
-        <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
-            <i class="fa fa-angle-up"></i>
-        </a>
-        
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
             
@@ -107,91 +102,30 @@
         
         <!-- create horizontally space div between -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
-        <!-- desserts khazana served desserts product in your selected delivery area -->
-        <div id='dl_DeliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-show="isDessertsProductTypeProductListLoaded" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_DeliveryAreabasedDkServedAllDessertsContainerDivClass'>
-            
-            <!-- display selected desserts product type viewing by customer -->
-            <li class='dl_DkServedDessertsProductNoteLIClass'>
-                <i class='fa fa-smile-o smileIconClass'></i> 
-                Hey you are viewing '{{defaultDKServedDessertsProductType}}' and also we can serve other <span class="badge dashboardDessertsProductTypeCountSClass">{{dkDeliveryAreaBasedProductTypeList.length}}</span> desserts in your selected delivery area !!!
-            </li> 
-            
-        </div>
         
-        <!-- create horizontally space div between -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
-        
-        <!-- load desserts product type product list for dashboard level -->
-        <div id="dashboardLevelAllProductTypeProductListContainerDivId" ng-controller="ProductTypeProductCategoryProductDetailsController" ng-show="isDessertsProductTypeProductListLoaded" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_AllProductTypeProductListContainerDivClass">
-            
-            <!-- each product type, product category iterate -->
-            <div ng-repeat="eachProductTypeDetails in allProductTypeProductCategoryProductListForDashBoardLevel track by $index" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_EachProductTypeProductListContainerDivClass" scroll-top-when-display-rendering-finished-dessertsproductlist>
-                <!-- display each desserts product type, product category title -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachProductTypeTitleContainerDivClass">
-                    <p>
-                        <button class="productTypeTitleBtnClass btn">
-                            <i class="fa fa-birthday-cake"></i> {{eachProductTypeDetails.productTypeProductCategoryTitle}}
-                        </button>
-                        <button ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachProductTypeDetails)" class="viewAllProductAboutProductTypeBtnClass btn pull-right" title='Click to view {{eachProductTypeDetails.productCategoryTotalProductCount}} product(s) about {{eachProductTypeDetails.productTypeProductCategoryTitle}} desserts'>
-                            VIEW ALL ({{eachProductTypeDetails.productCategoryTotalProductCount}})
-                        </button>
+        <!-- what is desserts khazana -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
+                <div class='dkPartyOrderWrapperDivClass'>
+                    <p ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='partyOrderPClass' title='Click to request for party orders'>
+                        <span>PARTY ORDERS</span>
                     </p>
                 </div>
-                <!-- display each desserts product category, all product list -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dl_allProductBoxWidgetContainerDivClass">
-                    <div maxheight-productboxwidget-dashboardlevel ng-repeat="eachProductDetails in eachProductTypeDetails.allProductDetails" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 dl_productBoxWidgetDivClass">
-                        <img style='width:100%!important;' class='preloadProductImagesClass' data-original="{{eachProductDetails.productImageFilePath+eachProductDetails.productImageFileName}}" ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
-                        <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 dl_productBoxWidgetDividerLineDivClass'></div>
-                        <p class='dl_productStoreNameContainerPClass'>
-                            <span class="dl_productStoreLabelNameSpanClass">Seller : </span>
-                            <span class="dl_productStoreNameSpanClass">{{eachProductDetails.shopStoreTitle}}</span>
-                        </p>
-                        <p class='dl_productNamePClass'>
-                            {{eachProductDetails.productListTitle}}
-                        </p>
-                        <p class='dl_productPricePClass'> 
-                            <span class='productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount!==''">
-                                <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
-                            </span>
-                            <span class='dl_productPayBlgPriceTextSClass'>
-                                <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
-                            </span>
-                            <span class='dl_productDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount!==''">
-                                ({{eachProductDetails.productFeatureDiscount}}% Off)
-                            </span>
-                        </p>
-                        <p class='dl_productWeightPClass'>
-                            Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
-                        </p>
-                        <p class='dl_productBtnWrapperPClass'> 
-                            <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'home')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="dl_specificProductAddBtnClass btn">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                            <button title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="dl_specificProductViewDetailsBtnClass btn" ng-click='viewProductDetails(eachProductDetails)'>
-                                <i class="fa fa-list"></i>
-                            </button>
-                            <button ng-controller='ShopStoreController' ng-click='collectDataToViewCShopstore(eachProductDetails)' title='Click to view this seller store desserts(menu), information, review/rating' class="dl_specificViewStoreDetailsBtnClass btn">
-                                STORE
-                            </button>
-                        </p>
-                    </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
+                <div class='dkCustomizeDessertsOrderWrapperDivClass'>
+                    <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass' title='Click to request for customize orders'>
+                        <span>CUSTOMIZE ORDER</span>
+                    </p>
                 </div>
             </div>
-            
-            <!-- not found show msg div -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dashBoardLevelNotFoundProductTypeProductCategoryProductListMsgDivClass">
-                {{productTypeProductCategoryProductListNotFoundForDashBoardLevelMsgStr}}
-            </div>
-            
         </div>
-
+        
         <!-- create horizontally space div between -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
         <!-- what is desserts khazana -->
-        <div ng-if='isUserLoggedInSession==false' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
                 <div class='dkPartyOrderWrapperDivClass'>
                     <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
