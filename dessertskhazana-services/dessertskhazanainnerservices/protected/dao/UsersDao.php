@@ -31,12 +31,6 @@ class UsersDao{
                 $sqlValues.="'".$utawParamDetails['geolocation']."',";
             }
         }
-        if(array_key_exists('page_name', $utawParamDetails)){
-            if($utawParamDetails['page_name']!=''){
-                $sqlColumnNames.=" page_name,";
-                $sqlValues.="'".$utawParamDetails['page_name']."',";
-            }
-        }
         if($sqlValues!='' && $sqlColumnNames!=''){
             $sqlQuery = " INSERT INTO DK_TRACKUSERS_ACCESSWEBSITES " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
