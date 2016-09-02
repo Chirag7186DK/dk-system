@@ -12,27 +12,24 @@ function generateDkUserSessionId(){
                 var userSessionId = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'userSessionId', retResponseJson);
                 if(userSessionId!=='' && userSessionId!==false && userSessionId!==undefined){
                     storeUserSessionIdInSession(userSessionId);
+                    addTrackingUserInfoAccessingWebsitesDetails('home');
                 }
             }
         });
     }
 }
 
+
+/////////////////// Track user accessing websites  ////////////////////////////////
+
 // CJ define this funcion 2016-08-12
 function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     // get param obj 
     var preparedParamJsonObj = getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad);
-    // console.log("addTrackingUserInfoAccessingWebsitesDetails preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-        var jsonParamBlockUIObject = {};
-        jsonParamBlockUIObject['css'] = {"padding":10};
-        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-        showHideLoaderBox('show', jsonParamBlockUIObject);
         var fetchAreaParamJsonObj = {};
         fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageTrackUserAccessingWebsites", 'apiFile', 'POST', '', fetchAreaParamJsonObj).done(function(retResponseJson){
-            showHideLoaderBox('hide');
-        });
+        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageTrackUserAccessingWebsites", 'apiFile', 'POST', '', fetchAreaParamJsonObj).done(function(retResponseJson){});
     }
 }
 
