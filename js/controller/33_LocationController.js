@@ -241,10 +241,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                                     // console.log("getDKDeliveryAreaBasedProductTypeList retResponseJson=>"+JSON.stringify(retResponseJson));
                                     var retArrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedProductTypeDetails', retResponseJson);
                                     if(retArrJsonObj!==false && retArrJsonObj!==undefined && retArrJsonObj!==''){
-                                        if(retArrJsonObj.defaultSelectedAreaBasedProductTypeDetails!==false){
-                                        }else{
-                                            storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(false, 'Y');
-                                        }
+                                        storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(false, 'Y');
                                         $rootScope.dkDeliveryAreaBasedProductTypeList = retArrJsonObj.allProductTypeList;
                                         $rootScope.buildDKDeliveryAreaBasedProductListHtmlSelectControl($rootScope.dkDeliveryAreaBasedProductTypeList, loadDessertsProductaDetailsOnPage);
                                     }
@@ -283,19 +280,16 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             if($(productTypeListSelectControlElementObj).find('option').length>0){
                 $rootScope.buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent(productTypeListSelectControlElementObj);
             }
-            // refresh dependency element on ui screen
         };
         
         // buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent
         $rootScope.buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent = function(elementObj){
-            // product type details change by user then 
+            // desserts type details change by user then 
             $(elementObj).on('changed.bs.select', function(e){
-                var productTypeId = ($(elementObj).selectpicker('val'));
-                var productTypeTitle = ($(elementObj).find('option:selected').text());
-                $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue = productTypeId;
-                $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle = productTypeTitle;
-                // refresh dependency element on ui screen
-                $rootScope.refreshElementDependencyDeliveryAreabasedDessertsProductType();
+                var paramObj = {};
+                paramObj['matchedProductTypeId'] = ($(elementObj).selectpicker('val'));
+                paramObj['matchedProductTypeTitle'] = ($(elementObj).find('option:selected').text());
+                storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(false, 'Y');
             });
         };
        
