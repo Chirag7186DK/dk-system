@@ -55,18 +55,19 @@
     }
 
     .dkDeliveryCityAreaDessertsTagLinesContainerDivClass{
-        margin-top:8px!important;
+        margin-top:5px!important;
     }
 
     .dkDeliveryCityAreaDessertsTagLinesPClass{
-        text-align: center;
+        text-align:center!important;
         color: #f32956!important;
         font-size:25px!important;
         font-weight:bold!important;
+        margin:0px!important;
     }
 
     .dkDeliveryCityListContainerDivClass{
-        margin-top:5px!important;
+        margin-top:4px!important;
     }
 
     .dkDeliveryCityListWrapperDivClass{
@@ -102,7 +103,7 @@
     }
 
     .dkDeliveryAreaListContainerDivClass{
-        margin-top:28px!important;
+        margin-top:26px!important;
     }
 
     .dkDeliveryAreaListWrapperDivClass{
@@ -137,7 +138,7 @@
     }
 
     .dkDeliveryAreaDessertsProductListContainerDivClass{
-        margin-top:28px!important;
+        margin-top:26px!important;
     }
 
     .dkDeliveryAreaDessertsProductListWrapperDivClass{
