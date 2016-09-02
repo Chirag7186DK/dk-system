@@ -116,7 +116,6 @@ function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPa
                     && (dkParamObj['userSession']['user_sessionid']).length>=20){
                     retParamObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
                     retParamObj['usersession_startimestamp'] = dkParamObj['userSession']['usersession_starttimestamp'];
-                    retParamObj['page_name'] = fromPageLoad;
                     // update user session data obj 
                     dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
