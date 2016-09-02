@@ -45,18 +45,6 @@
         font-size:12px!important;
     }
 
-    .showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass{
-        text-align:center;
-        color:#999!important;
-        font-weight:bold!important;
-        font-size:16px!important;
-    }
-
-    .showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass{
-        color:rgba(154, 205, 50, 0.51)!important;
-    }
-
-
     /* dk delivery city area desserts container css code */
 
     .dkDeliveryCityAreaDessertsContainerDivClass{
@@ -185,11 +173,15 @@
 
 
     /*  what is desserts khazana css code */
-
-    .whatIsDessertsKhazanaMainContainerDivClass{
-        border-bottom:1px solid #d6caca!important;
+    
+    .whatIsDessertskhazanaTitlePClass{
+        text-align:center!important;
+        font-size:18px!important;
+        padding:15px!important;
+        color:#222!important;
+        font-weight:bold!important;
     }
-
+    
     .dkPartyOrderContainerDivClass{
         margin-bottom:20px!important;
         width:49.4%!important;
@@ -253,14 +245,68 @@
         cursor:pointer!important;
     }
 
+    .howItsWorkTitlePClass{
+        text-align:center!important;
+        font-size:18px!important;
+        padding:15px!important;
+        color:#222!important;
+        font-weight:bold!important;
+    }
+    
+    /* all product list specific product type css code*/
 
-    /*  home dashboard level css code  */
-
-    .smileIconClass{
-        font-size:22px!important;
+    .dkAllCompleteOffersContainerDivClass{
+        background:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        margin-right:1%;
+        width:51%!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
     }
 
-    .dl_DkServedDessertsProductNoteLIClass{
+    .dkAllSpecialOffersContainerDivClass{
+        background:whitesmoke;
+        height:250px!important;
+        text-align:center;
+        padding:20px!important;
+        width:47.4%!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold;
+    }
+
+    .vap_userBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .vap_userBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:12px!important;
+        padding-top:6px!important;
+    }
+
+    .vap_userBreadcrumbULClass li a, 
+    .vap_userBreadcrumbULClass li a:hover{
+        color:#828282!important;
+        border-bottom:2px dotted #CDCEE8!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+        font-size:12px!important;
+    }
+
+    .vap_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
+        color:#828282!important;
+        font-size:12px!important;
+    }
+
+    .vap_deliveryAreabasedDkServedAllDessertsContainerDivClass{
+        padding-left:0px!important;
+    }
+
+    .vap_dkServedDessertsProductNoteLIClass{
         text-align:center;
         list-style:none!important;
         font-weight:normal!important;
@@ -269,26 +315,26 @@
         font-family:serif;
     }
 
-    .dashboardDessertsProductTypeCountSClass{
+    .vap_dessertsProductTypeCountSClass{
         background:#f17023!important;
         color:#fff!important;
         font-weight:bold!important;
         font-size:15px!important;
     }
 
-    .dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass{
-        margin-top:10px!important;
-        padding-left:0px!important;
+    .vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass{
         padding-right:0px!important;
-        height:140px!important;
+        height:120px!important;
         white-space:nowrap!important;
+        margin-top:15px!important;
+        padding-left:0px!important;
     }
 
-    .dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass .owl-item{
+    .vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass .owl-item{
         width:auto!important;
     }
 
-    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass{
+    .vap_deliveryAreabasedDkServedEachDessertsProductDivClass{
         color:rgb(249, 99, 99)!important;
         background-color:whitesmoke!important;
         padding-top:10px!important;
@@ -298,24 +344,25 @@
         float:left!important;
     }
 
-    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductIconPClass{
+    .vap_dessertsProductIconPClass{
         text-align: center;
-        margin: 0px!important;
+        margin:0px!important;
     }
 
-    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductIconClass{
+    .vap_dessertsProductIconClass{
         font-size:50px!important;
     }
 
-    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .dessertsProductTitleHClass{
+    .vap_dessertsProductTitleHClass{
         text-align:center;
+        margin:3px!important;
         font-size:18px!important;
         font-family:serif;
         text-transform:uppercase;
         margin:0px!important;
     }
 
-    .dl_DeliveryAreabasedDkServedEachDessertsProductDivClass .viewDessertsProductPClass{
+    .vap_viewDessertsProductPClass{
         text-align:center;
         margin:0px!important;
         margin-top:12px!important;
@@ -327,125 +374,338 @@
         padding-right:20px!important;
     }
 
-    .dl_AllProductTypeProductListContainerDivClass{
-        padding-left:2px!important;
-        padding-right:2px!important;
+
+    .vap_productAllCategoryWrapperDivClass{
+        padding-top:10px;
+        padding-bottom:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
     }
 
-    .dl_EachProductTypeProductListContainerDivClass{
-        margin-bottom:20px!important;
-    }
-
-    .dl_allProductBoxWidgetContainerDivClass{
-        border:1px solid #CDCEE8!important;
-        box-shadow:0 2px 5px -1px #bdbdbd!important;
-    }
-
-    .eachProductTypeTitleContainerDivClass{
-        background-color:#fb366e!important;
-        padding-top:4px!important;
-        box-shadow:0 2px 5px -1px #bdbdbd!important;
-    }
-
-    .productTypeTitleBtnClass, .productTypeTitleBtnClass:hover{
-        background:none!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        cursor:none!important;
-        font-size:20px;
-        font-family:serif!important;
-    }
-
-    .viewAllProductAboutProductTypeBtnClass, 
-    .viewAllProductAboutProductTypeBtnClass:hover{
-        font-weight:bold!important;
-        border-radius:0px!important;
-        margin-right:1%!important;
-        background:#fff!important;
+    .vap_productInfoAbtProductCategoryMsgPClass{
+        text-align:center;
+        font-weight:bold;
         color:rgb(70, 75, 80)!important;
+        font-weight:normal!important;
+        font-family:serif;
+        font-size:18px!important;
+    }
+
+    .totalCountProductCategorySClass{
+        background-color:#fb366e!important;
+        font-weight:bold;
+        font-size:15px!important;
+    }
+
+    .vap_productAllCategoryContainerDivClass{
         margin-top:5px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        white-space:nowrap!important;
+        cursor:pointer!important;
+        list-style:none!important;
+    }
+
+    .vap_productAllCategoryContainerDivClass .owl-item{
+        width:auto!important;
+        margin-right:20px!important;
+    }
+
+    .vap_eachProductCategoryContainerDivClass{
+        text-align:center;
+        background:whitesmoke!important;
+        border-bottom:1px solid #fb366e!important;
+        color:rgb(70, 75, 80)!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        float:left!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        font-size:14px!important;
+    }
+
+    .vap_eachRequestedProductCategoryLabelDivClass{
+        background-color:#fb366e!important;
+        color:#fff!important;
+        padding-left:10px!important;
+        padding-right:10px!important;
+    }
+
+    .vapWrapperDivClass{
+        padding-left:1px!important;
+        padding-right:1px!important;
+    }
+
+    .vap_allProductFilterOperationWrapperDivClass{
+        padding-top:10px;
+        padding-bottom:20px;
+        border:1px solid #DCE0EF!important;
+        margin-bottom:20px;
+        padding-left:0px!important;
+        background-color:whitesmoke!important;
+    }
+
+    .vap_tipAbtFilterProductPClass{
+        padding:2px!important;
+        text-align:center;
+        font-weight:bold;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:18px!important;
+    }
+
+    .vap_toggleProductFilterBtnClass, 
+    .vap_toggleProductFilterBtnClass:hover{
+        border-radius:0px!important;
+        font-weight:bold!important;
+        padding:0px!important;
+        padding-left:10px!important;
+        padding-right:10px!important;
+        margin-left:1%!important;
+        background:#3eb1e7!important;
+        color:#fff!important;
+        cursor:pointer;
         font-family:serif!important;
     }
 
-    .dl_productBoxWidgetDivClass{
-        margin-top:10px!important;
-        margin-bottom:10px!important;
+    .vap_productFilterOperationContainerDivClass{
+        padding-top:10px!important;
+    }
+
+    .vap_productFilterPopupBodyDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+
+    .vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass{
+        text-align:center;
+        font-size:13px!important;
+        color:rgba(218, 13, 47, 0.85)!important;
+    }
+
+    .vap_shopStoreFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+        margin-left:25%!important;
+    }
+
+    .vap_shopStoreFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+
+    .vap_shopStoreFilterOperationDivClass .btn,  
+    .vap_shopStoreFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_shopStoreFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelStoreFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_priceFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+        margin-left:25%!important;
+    }
+
+    .vap_priceFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+
+    .vap_priceFilterOperationDivClass .btn, 
+    .vap_priceFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_priceFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelPriceFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_sizeFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+        margin-left:25%!important;
+    }
+
+    .vap_sizeFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+
+    .vap_sizeFilterOperationDivClass .btn, 
+    .vap_sizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_sizeFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelSizeFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_discountFilterOperationDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        margin-bottom:20px!important;
+        margin-left:25%!important;
+    }
+
+    .vap_discountFilterOperationDivClass .dropdown-menu>.active>a{
+        background:rgba(240, 99, 122, 0.85)!important;
+        font-weight: normal!important;
+        font-family: serif!important;
+        font-size:16px!important;
+    }
+
+    .vap_discountFilterOperationDivClass .btn, 
+    .vap_discountFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .vap_discountFilterOperationDivClass .btn:hover{
+        border-radius:0px!important;
+        height:40px!important;
+        background-color:#fff!important;
+        box-shadow:none!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:16px!important;
+        color:rgba(0, 0, 0, 0.73)!important;
+    }
+
+    .vap_labelDiscountFilterPClass{
+        text-align:left!important;
+        font-size:14px!important;
+        color:#f17023!important;
+    }
+
+    .vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass{
+        font-family:serif!important;
+        color:rgba(218, 13, 47, 0.85)!important;
+        font-size:20px!important;
+        font-weight:normal!important;
+        text-align:center!important;
+    }
+
+    .vap_productBoxWidgetDivClass{
+        margin-top:15px!important;
+        margin-bottom:15px!important;
         padding-left:1px!important;
     }
 
-    .dl_productBoxWidgetDividerLineDivClass{
+    .vap_productBoxWidgetDividerLineDivClass{
         margin-bottom:10px;
-        border:1px solid #fb366e!important;
+        border:1px solid rgba(240, 99, 122, 0.85)!important;
     }
 
-    .dl_productStoreNameContainerPClass{
+    .vap_productStoreNameContainerPClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
     }
 
-    .dl_productNamePClass{
+    .vap_productNamePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
     }
 
-    .dl_productCutPriceTextSClass{
+    .vap_productCutPriceTextSClass{
         text-decoration:line-through!important;
         color:#999999!important;;
         font-size:13px!important;
         margin-right:6px;
     }
 
-    .dl_productPayBlgPriceTextSClass{
+    .vap_productPayBlgPriceTextSClass{
         font-size:20px!important;
         margin-right:6px;
         color:rgb(70, 75, 80)!important;
     }
 
-    .dl_productDiscountPercentTextSClass{
+    .vap_productDiscountPercentTextSClass{
         color:#60bf79!important;
         font-size:14px!important;
     }
 
-    .dl_productWeightPClass{
+    .vap_productWeightPClass{
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
     }
 
-    .dl_productDeliveryLocationPClass{
+    .vap_productDeliveryLocationPClass{
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
     }
 
-    .dl_specificProductAddWishListBtnClass{
+    .vap_specificProductAddWishListBtnClass{
         border-radius:0px!important;
         background-color:#ED143D!important;
         color:#fff!important;
-        margin-right:2%!important;
+        margin-right:4%!important;
         font-weight:bold!important;
     }
 
-    .dl_specificProductAddBtnClass{
+    .vap_specificProductAddBtnClass{
         border-radius:0px!important;
         background-color:rgba(154, 205, 50, 0.88)!important;
         color:#fff!important;
-        margin-right:2%!important;
+        margin-right:4%!important;
         font-weight:bold!important;
     }
 
-    .dl_specificProductViewDetailsBtnClass{
+    .vap_specificProductViewDetailsBtnClass{
         border-radius:0px!important;
         background:#3eb1e7!important;
         color:#fff!important;
-        margin-right:2%!important;
+        margin-right:4%!important;
         font-weight:bold!important;
     }
 
-    .dl_specificViewStoreDetailsBtnClass{
+    .vap_specificViewStoreDetailsBtnClass{
         border-radius:0px!important;
         background-color:#fdee00!important;
         color:rgb(70, 75, 80)!important;
-        margin-right:2%!important;
         font-weight:bold!important;
+    }
+
+    .vap_notFoundProductMsgDivClass{
+        text-align:center;
+        font-size:15px!important;
     }
 
 
@@ -923,461 +1183,7 @@
     }
 
 
-    /* all product list specific product type css code*/
-
-    .dkAllCompleteOffersContainerDivClass{
-        background:whitesmoke;
-        height:250px!important;
-        text-align:center;
-        padding:20px!important;
-        margin-right:1%;
-        width:51%!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold;
-    }
-
-    .dkAllSpecialOffersContainerDivClass{
-        background:whitesmoke;
-        height:250px!important;
-        text-align:center;
-        padding:20px!important;
-        width:47.4%!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold;
-    }
-
-    .vap_userBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .vap_userBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:12px!important;
-        padding-top:6px!important;
-    }
-
-    .vap_userBreadcrumbULClass li a, 
-    .vap_userBreadcrumbULClass li a:hover{
-        color:#828282!important;
-        border-bottom:2px dotted #CDCEE8!important;
-        text-decoration:none!important;
-        font-weight:100!important;
-        font-size:12px!important;
-    }
-
-    .vap_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
-        color:#828282!important;
-        font-size:12px!important;
-    }
-
-    .vap_deliveryAreabasedDkServedAllDessertsContainerDivClass{
-        padding-left:0px!important;
-    }
-
-    .vap_dkServedDessertsProductNoteLIClass{
-        text-align:center;
-        list-style:none!important;
-        font-weight:normal!important;
-        font-size:20px!important;
-        color:#f17023!important;
-        font-family:serif;
-    }
-
-    .vap_dessertsProductTypeCountSClass{
-        background:#f17023!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        font-size:15px!important;
-    }
-
-    .vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass{
-        padding-right:0px!important;
-        height:120px!important;
-        white-space:nowrap!important;
-        margin-top:15px!important;
-        padding-left:0px!important;
-    }
-
-    .vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass .owl-item{
-        width:auto!important;
-    }
-
-    .vap_deliveryAreabasedDkServedEachDessertsProductDivClass{
-        color:rgb(249, 99, 99)!important;
-        background-color:whitesmoke!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        cursor:pointer;
-        border:2px solid #fff!important;
-        float:left!important;
-    }
-
-    .vap_dessertsProductIconPClass{
-        text-align: center;
-        margin:0px!important;
-    }
-
-    .vap_dessertsProductIconClass{
-        font-size:50px!important;
-    }
-
-    .vap_dessertsProductTitleHClass{
-        text-align:center;
-        margin:3px!important;
-        font-size:18px!important;
-        font-family:serif;
-        text-transform:uppercase;
-        margin:0px!important;
-    }
-
-    .vap_viewDessertsProductPClass{
-        text-align:center;
-        margin:0px!important;
-        margin-top:12px!important;
-        font-size:14px!important;
-        font-family: serif;
-        color:#F560F5!important;
-        cursor:pointer!important;
-        padding-left:20px!important;
-        padding-right:20px!important;
-    }
-
-
-    .vap_productAllCategoryWrapperDivClass{
-        padding-top:10px;
-        padding-bottom:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .vap_productInfoAbtProductCategoryMsgPClass{
-        text-align:center;
-        font-weight:bold;
-        color:rgb(70, 75, 80)!important;
-        font-weight:normal!important;
-        font-family:serif;
-        font-size:18px!important;
-    }
-
-    .totalCountProductCategorySClass{
-        background-color:#fb366e!important;
-        font-weight:bold;
-        font-size:15px!important;
-    }
-
-    .vap_productAllCategoryContainerDivClass{
-        margin-top:5px!important;
-        padding-left:0px!important;
-        padding-right:0px!important;
-        white-space:nowrap!important;
-        cursor:pointer!important;
-        list-style:none!important;
-    }
-
-    .vap_productAllCategoryContainerDivClass .owl-item{
-        width:auto!important;
-        margin-right:20px!important;
-    }
-
-    .vap_eachProductCategoryContainerDivClass{
-        text-align:center;
-        background:whitesmoke!important;
-        border-bottom:1px solid #fb366e!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold!important;
-        font-family:serif!important;
-        float:left!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        font-size:14px!important;
-    }
-
-    .vap_eachRequestedProductCategoryLabelDivClass{
-        background-color:#fb366e!important;
-        color:#fff!important;
-        padding-left:10px!important;
-        padding-right:10px!important;
-    }
-
-    .vapWrapperDivClass{
-        padding-left:1px!important;
-        padding-right:1px!important;
-    }
-
-    .vap_allProductFilterOperationWrapperDivClass{
-        padding-top:10px;
-        padding-bottom:20px;
-        border:1px solid #DCE0EF!important;
-        margin-bottom:20px;
-        padding-left:0px!important;
-        background-color:whitesmoke!important;
-    }
-
-    .vap_tipAbtFilterProductPClass{
-        padding:2px!important;
-        text-align:center;
-        font-weight:bold;
-        font-weight:normal!important;
-        font-family:serif!important;
-        font-size:18px!important;
-    }
-
-    .vap_toggleProductFilterBtnClass, 
-    .vap_toggleProductFilterBtnClass:hover{
-        border-radius:0px!important;
-        font-weight:bold!important;
-        padding:0px!important;
-        padding-left:10px!important;
-        padding-right:10px!important;
-        margin-left:1%!important;
-        background:#3eb1e7!important;
-        color:#fff!important;
-        cursor:pointer;
-        font-family:serif!important;
-    }
-
-    .vap_productFilterOperationContainerDivClass{
-        padding-top:10px!important;
-    }
-
-    .vap_productFilterPopupBodyDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass{
-        text-align:center;
-        font-size:13px!important;
-        color:rgba(218, 13, 47, 0.85)!important;
-    }
-
-    .vap_shopStoreFilterOperationDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        margin-bottom:20px!important;
-        margin-left:25%!important;
-    }
-
-    .vap_shopStoreFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
-        font-weight: normal!important;
-        font-family: serif!important;
-        font-size:16px!important;
-    }
-
-    .vap_shopStoreFilterOperationDivClass .btn,  
-    .vap_shopStoreFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .vap_shopStoreFilterOperationDivClass .btn:hover{
-        border-radius:0px!important;
-        height:40px!important;
-        background-color:#fff!important;
-        box-shadow:none!important;
-        font-weight:normal!important;
-        font-family:serif!important;
-        font-size:16px!important;
-        color:rgba(0, 0, 0, 0.73)!important;
-    }
-
-    .vap_labelStoreFilterPClass{
-        text-align:left!important;
-        font-size:14px!important;
-        color:#f17023!important;
-    }
-
-    .vap_priceFilterOperationDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        margin-bottom:20px!important;
-        margin-left:25%!important;
-    }
-
-    .vap_priceFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
-        font-weight: normal!important;
-        font-family: serif!important;
-        font-size:16px!important;
-    }
-
-    .vap_priceFilterOperationDivClass .btn, 
-    .vap_priceFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .vap_priceFilterOperationDivClass .btn:hover{
-        border-radius:0px!important;
-        height:40px!important;
-        background-color:#fff!important;
-        box-shadow:none!important;
-        font-weight:normal!important;
-        font-family:serif!important;
-        font-size:16px!important;
-        color:rgba(0, 0, 0, 0.73)!important;
-    }
-
-    .vap_labelPriceFilterPClass{
-        text-align:left!important;
-        font-size:14px!important;
-        color:#f17023!important;
-    }
-
-    .vap_sizeFilterOperationDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        margin-bottom:20px!important;
-        margin-left:25%!important;
-    }
-
-    .vap_sizeFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
-        font-weight: normal!important;
-        font-family: serif!important;
-        font-size:16px!important;
-    }
-
-    .vap_sizeFilterOperationDivClass .btn, 
-    .vap_sizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .vap_sizeFilterOperationDivClass .btn:hover{
-        border-radius:0px!important;
-        height:40px!important;
-        background-color:#fff!important;
-        box-shadow:none!important;
-        font-weight:normal!important;
-        font-family:serif!important;
-        font-size:16px!important;
-        color:rgba(0, 0, 0, 0.73)!important;
-    }
-
-    .vap_labelSizeFilterPClass{
-        text-align:left!important;
-        font-size:14px!important;
-        color:#f17023!important;
-    }
-
-    .vap_discountFilterOperationDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        margin-bottom:20px!important;
-        margin-left:25%!important;
-    }
-
-    .vap_discountFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
-        font-weight: normal!important;
-        font-family: serif!important;
-        font-size:16px!important;
-    }
-
-    .vap_discountFilterOperationDivClass .btn, 
-    .vap_discountFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .vap_discountFilterOperationDivClass .btn:hover{
-        border-radius:0px!important;
-        height:40px!important;
-        background-color:#fff!important;
-        box-shadow:none!important;
-        font-weight:normal!important;
-        font-family:serif!important;
-        font-size:16px!important;
-        color:rgba(0, 0, 0, 0.73)!important;
-    }
-
-    .vap_labelDiscountFilterPClass{
-        text-align:left!important;
-        font-size:14px!important;
-        color:#f17023!important;
-    }
-
-    .vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass{
-        font-family:serif!important;
-        color:rgba(218, 13, 47, 0.85)!important;
-        font-size:20px!important;
-        font-weight:normal!important;
-        text-align:center!important;
-    }
-
-    .vap_productBoxWidgetDivClass{
-        margin-top:15px!important;
-        margin-bottom:15px!important;
-        padding-left:1px!important;
-    }
-
-    .vap_productBoxWidgetDividerLineDivClass{
-        margin-bottom:10px;
-        border:1px solid rgba(240, 99, 122, 0.85)!important;
-    }
-
-    .vap_productStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .vap_productNamePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .vap_productCutPriceTextSClass{
-        text-decoration:line-through!important;
-        color:#999999!important;;
-        font-size:13px!important;
-        margin-right:6px;
-    }
-
-    .vap_productPayBlgPriceTextSClass{
-        font-size:20px!important;
-        margin-right:6px;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .vap_productDiscountPercentTextSClass{
-        color:#60bf79!important;
-        font-size:14px!important;
-    }
-
-    .vap_productWeightPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-    }
-
-    .vap_productDeliveryLocationPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-    }
-
-    .vap_specificProductAddWishListBtnClass{
-        border-radius:0px!important;
-        background-color:#ED143D!important;
-        color:#fff!important;
-        margin-right:4%!important;
-        font-weight:bold!important;
-    }
-
-    .vap_specificProductAddBtnClass{
-        border-radius:0px!important;
-        background-color:rgba(154, 205, 50, 0.88)!important;
-        color:#fff!important;
-        margin-right:4%!important;
-        font-weight:bold!important;
-    }
-
-    .vap_specificProductViewDetailsBtnClass{
-        border-radius:0px!important;
-        background:#3eb1e7!important;
-        color:#fff!important;
-        margin-right:4%!important;
-        font-weight:bold!important;
-    }
-
-    .vap_specificViewStoreDetailsBtnClass{
-        border-radius:0px!important;
-        background-color:#fdee00!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold!important;
-    }
-
-    .vap_notFoundProductMsgDivClass{
-        text-align:center;
-        font-size:15px!important;
-    }
-
+    
 
     /*  customer point view shopstore css code */
 
