@@ -290,6 +290,9 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 paramObj['matchedProductTypeId'] = ($(elementObj).selectpicker('val'));
                 paramObj['matchedProductTypeTitle'] = ($(elementObj).find('option:selected').text());
                 storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(paramObj, 'Y');
+                if((paramObj['matchedProductTypeTitle']).toLowerCase()==='cakes'){
+                    window.location.href =  globalBaseSitePath+"all-cakes.php";
+                }
             });
         };
        
