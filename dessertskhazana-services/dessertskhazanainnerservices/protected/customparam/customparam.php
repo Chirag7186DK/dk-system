@@ -118,6 +118,79 @@ class customparam{
         return $retStatus;
     }
     
+    ////////////////////// specific desserts type all products //////////////////////////
+    
+    // CJ defined this function 2016-07-18
+    public static function checkParamDataFetchingAllProductDetails($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check product delivery country
+        if(array_key_exists('country_ids', $paramJsonData)){
+            if($paramJsonData['country_ids']=='1'){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check city_ids key present or not
+        if(array_key_exists('city_ids', $paramJsonData)){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check area_ids key present or not
+        if(array_key_exists('area_ids', $paramJsonData)){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check producttype_ids key present or not
+        if(array_key_exists('product_typesids', $paramJsonData)){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product type ka product category id is blank or not
+        if(array_key_exists('product_categoryids', $paramJsonData)){
+            if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check shopStore id is blank or not
+        if(array_key_exists('shopstoreids', $paramJsonData)){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product price filter
+        if(array_key_exists('product_price_filter', $paramJsonData)){
+            if($paramJsonData['product_price_filter']!='' 
+                && $paramJsonData['product_price_filter']!=false 
+                && $paramJsonData['product_price_filter']!=null){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product size filter
+        if(array_key_exists('product_size_filter', $paramJsonData)){
+            if($paramJsonData['product_size_filter']!='' 
+                && $paramJsonData['product_size_filter']!=false 
+                && $paramJsonData['product_size_filter']!=null){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product discount filter
+        if(array_key_exists('product_discount_filter', $paramJsonData)){
+            if($paramJsonData['product_discount_filter']!='' 
+                && $paramJsonData['product_discount_filter']!=false 
+                && $paramJsonData['product_discount_filter']!=null){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount>=4){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
+    
     
     // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDessertsProductTypeCategoryProductDetails($paramJsonData){
@@ -212,75 +285,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-18
-    public static function checkParamDataFetchingAllProductDetails($paramJsonData){
-        $retStatus = 'FALSE';
-        $givenParamDataCorrectCount = 0;
-        // check product delivery country
-        if(array_key_exists('country_ids', $paramJsonData)){
-            if($paramJsonData['country_ids']=='1'){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check city_ids key present or not
-        if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check area_ids key present or not
-        if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check producttype_ids key present or not
-        if(array_key_exists('product_typesids', $paramJsonData)){
-            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check product type ka product category id is blank or not
-        if(array_key_exists('product_categoryids', $paramJsonData)){
-            if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check shopStore id is blank or not
-        if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check product price filter
-        if(array_key_exists('product_price_filter', $paramJsonData)){
-            if($paramJsonData['product_price_filter']!='' 
-                && $paramJsonData['product_price_filter']!=false 
-                && $paramJsonData['product_price_filter']!=null){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check product size filter
-        if(array_key_exists('product_size_filter', $paramJsonData)){
-            if($paramJsonData['product_size_filter']!='' 
-                && $paramJsonData['product_size_filter']!=false 
-                && $paramJsonData['product_size_filter']!=null){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check product discount filter
-        if(array_key_exists('product_discount_filter', $paramJsonData)){
-            if($paramJsonData['product_discount_filter']!='' 
-                && $paramJsonData['product_discount_filter']!=false 
-                && $paramJsonData['product_discount_filter']!=null){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if($givenParamDataCorrectCount>=4){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
     
     // CJ defined this function 2016-07-18
     public static function checkParamDataFetchingCshopstoreAllProductDetails($paramJsonData){
