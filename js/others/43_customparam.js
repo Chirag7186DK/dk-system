@@ -6,8 +6,8 @@
 function initializeDkSessionData(){
     try{
         var userSessionObj = {};
-        userSessionObj['user_sessionstarttime'] = (new Date()).getTime();
-        userSessionObj['lastupdated_sessiontime'] = '';
+        userSessionObj['usersession_starttimestamp'] = (new Date()).getTime();
+        userSessionObj['lastupdated_sessiontimestamp'] = '';
         userSessionObj['user_sessionid'] = '';
         userSessionObj['udblogId'] = '';
         userSessionObj['userProfileTypeId'] = '';
@@ -83,7 +83,7 @@ function resetDKSessionData(){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             // check userSession key present or not 
             if(dkParamObj.hasOwnProperty('userSession')===true){
-                dkParamObj['userSession']['user_sessionstarttime'] = (new Date()).getTime();
+                dkParamObj['userSession']['usersession_starttimestamp'] = (new Date()).getTime();
                 dkParamObj['userSession']['lastupdated_sessiontime'] = '';
                 dkParamObj['userSession']['user_sessionid'] = '';
                 dkParamObj['userSession']['udblogId'] = '';
@@ -115,6 +115,7 @@ function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPa
                 if(dkParamObj['userSession']['user_sessionid']!=='' 
                     && (dkParamObj['userSession']['user_sessionid']).length>=20){
                     retParamObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    retParamObj['usersession_startimestamp'] = dkParamObj['userSession']['usersession_starttimestamp'];
                     retParamObj['page_name'] = fromPageLoad;
                     // update user session data obj 
                     dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
