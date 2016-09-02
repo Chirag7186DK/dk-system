@@ -20,6 +20,8 @@ class customparam{
         }
     }
     
+    ////////////////////////// delivery city list  //////////////////////////
+    
     // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDeliveryCityListServingDessertsProductType($paramJsonData){
         $retStatus = 'FALSE';
@@ -45,6 +47,8 @@ class customparam{
         }
         return $retStatus;
     }
+    
+    ////////////////////////// delivery area list //////////////////////////
     
     // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDeliveryAreaListServingDessertsProductType($paramJsonData){
@@ -77,6 +81,8 @@ class customparam{
         }
         return $retStatus;
     }
+    
+    ////////////////////// delivery area served desserts type//////////////////////////
     
     // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDessertsProductTypeListServingInCountryCityArea($paramJsonData){
