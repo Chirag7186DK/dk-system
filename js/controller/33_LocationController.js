@@ -289,7 +289,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 var paramObj = {};
                 paramObj['matchedProductTypeId'] = ($(elementObj).selectpicker('val'));
                 paramObj['matchedProductTypeTitle'] = ($(elementObj).find('option:selected').text());
-                storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(false, 'Y');
+                storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(paramObj, 'Y');
             });
         };
        
