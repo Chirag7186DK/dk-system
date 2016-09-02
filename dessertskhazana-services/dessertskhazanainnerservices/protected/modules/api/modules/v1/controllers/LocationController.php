@@ -11,13 +11,13 @@ class LocationController extends V1Controller{
     public function actionDeliveryCity(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryCityListServingDessertsProductType($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryCityListServingDessertsProductType($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $LocationServicesV1 = new LocationServicesV1();
                     $LocationServicesV1->getDeliveryCityDetails($dkParamDataArr);
                 }else{
@@ -33,13 +33,13 @@ class LocationController extends V1Controller{
     public function actionDeliveryArea(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreaListServingDessertsProductType($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreaListServingDessertsProductType($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $LocationServicesV1 = new LocationServicesV1();
                     $LocationServicesV1->getDeliveryAreaDetails($dkParamDataArr);
                 }else{
