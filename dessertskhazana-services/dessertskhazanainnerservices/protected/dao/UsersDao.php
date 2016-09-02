@@ -19,6 +19,12 @@ class UsersDao{
                 $sqlValues.="'".$utawParamDetails['user_sessionid']."',";
             }
         }
+        if(array_key_exists('user_sessionstarttime', $utawParamDetails)){
+            if($utawParamDetails['user_sessionstarttime']!=''){
+                $sqlColumnNames.=" user_sessionstarttime,";
+                $sqlValues.="'".$utawParamDetails['user_sessionstarttime']."',";
+            }
+        }
         if(array_key_exists('ipaddress', $utawParamDetails)){
             if($utawParamDetails['ipaddress']!=''){
                 $sqlColumnNames.=" ipaddress,";
