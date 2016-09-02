@@ -103,29 +103,30 @@
         <!-- create horizontally space div between -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
-        <!-- what is desserts khazana -->
+        <!-- offers/promotion -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
                 <div class='dkPartyOrderWrapperDivClass'>
-                    <p ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='partyOrderPClass' title='Click to request for party orders'>
-                        <span>PARTY ORDERS</span>
+                    <p class='partyOrderPClass' title='Click to request for party orders'>
+                        <span>OFFERS / PROMOTION</span>
                     </p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
                 <div class='dkCustomizeDessertsOrderWrapperDivClass'>
                     <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass' title='Click to request for customize orders'>
-                        <span>CUSTOMIZE ORDER</span>
+                        <span>WE SERVED AT LOCATION</span>
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- create horizontally space div between -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
         <!-- what is desserts khazana -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
+            <p class='whatIsDessertskhazanaTitlePClass'>
+                <span>The Many Ways For Your Celebration </span>
+            </p>
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
                 <div class='dkPartyOrderWrapperDivClass'>
                     <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
@@ -150,6 +151,13 @@
                     </p>
                 </div>
             </div>
+        </div>
+        
+        <!-- how its works -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 howItsWorkContainerDivClass">
+            <p class='howItsWorkTitlePClass'>
+                <span>How it's works ?</span>
+            </p>
         </div>
          
         <!-- refresh web application data -->
