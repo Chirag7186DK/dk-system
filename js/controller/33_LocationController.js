@@ -167,7 +167,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var areaName = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaName'];
                     var areaPincode = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaPincode'];
                     var areaStr = areaPincode + " " +areaName;
-                    var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
+                    // var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
                     var eachOptionStr = "<option class='cityAreaSuggestionOptionClass' data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
                     $(areaListSelectControlElementObj).append(eachOptionStr);
                 }
@@ -324,35 +324,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     "matchedProductTypeTitle":$rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle
                 };
                 storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(paramObj, 'Y');
-                // refresh all desserts product type list at dashboard level only
-                $rootScope.isDessertsProductTypeProductListLoaded = true;
-                if($('#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').length===1){
-                    angular.element('#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').scope().loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList();
-                }
-                var preparedParamObj = {};
-                preparedParamObj['productTypeId'] = $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue;
-                preparedParamObj['productTypeTitle'] = $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle;
-                $rootScope.collectDataToLoadProductTypeAllProductListForDashboarLevel(preparedParamObj);
             } 
-        };
-       
-        // collectDataToLoadProductTypeAllProductListForDashboarLevel, delivery area based on
-        $rootScope.collectDataToLoadProductTypeAllProductListForDashboarLevel = function(preparedParamObj){
-            try{   
-                var retStatus = checkAllParamToViewDessertsProducTypeProductListDashboardLevel(preparedParamObj);
-                if(retStatus===true){
-                    // refresh delivery area based product type list dropdown
-                    // refresh producttype list select control element 
-                    var productTypeId = preparedParamObj['productTypeId'];
-                    var productTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsProductListSelectCtrlId");
-                    $(productTypeListSelectControlElementObj).selectpicker('refresh');
-                    $(productTypeListSelectControlElementObj).selectpicker('val', productTypeId);
-                    // refresh dashboard level product type all product list
-                    angular.element('#dashboardLevelAllProductTypeProductListContainerDivId').scope().loadProductTypeProductCategoryProductListForDashboardLevel();
-                }
-            }catch(ex){
-                console.log("problem in collectDataToLoadProductTypeAllProductListForDashboarLevel=>"+ex);
-            }
         };
         
     }catch(ex){
