@@ -20,19 +20,19 @@ class ProductServicesV1 implements IProductServicesV1 {
             $garea_ids = $dkParamDataArr['area_ids'];
             $gproducttype_ids = $dkParamDataArr['producttype_ids'];
             // prepare param obj
-            $shopStoreProductDeliveryParamObj = array();
-            $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_ids;
-            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_ids;
-            $shopStoreProductDeliveryParamObj['area_ids'] = $garea_ids;
-            $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
-            if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
+            $storeDeliveryParamObj = array();
+            $storeDeliveryParamObj['country_ids'] = $gcountry_ids;
+            $storeDeliveryParamObj['city_ids'] = $gcity_ids;
+            $storeDeliveryParamObj['area_ids'] = $garea_ids;
+            $storeDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($storeDeliveryParamObj);
+            if(count($storeDeliveryLocationDetailsArr)>0 && $storeDeliveryLocationDetailsArr!=false){
                 // sorted on country city area affiliaton ids
-                $sortedOnCountryCityAreaAffiliationDetailsArr = utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
-                if($sortedOnCountryCityAreaAffiliationDetailsArr!=false && count($sortedOnCountryCityAreaAffiliationDetailsArr)>0){
+                $sortedOnCCAIdArr = utils::arraySort($storeDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
+                if($sortedOnCCAIdArr!=false && count($sortedOnCCAIdArr)>0){
                     // fetch all countrycityareaids keys in arr and converted into string format
-                    $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr));
+                    $allCCAIdsStr = implode(",", array_keys($sortedOnCCAIdArr));
                     // fetch all area based ka product type ka shopstore details
-                    $retAreaBasedConductProductTypeShopStoreDetailsArr = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr);
+                    $retAreaBasedConductProductTypeShopStoreDetailsArr = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCCAIdsStr);
                     if(count($retAreaBasedConductProductTypeShopStoreDetailsArr)>0 && $retAreaBasedConductProductTypeShopStoreDetailsArr!=false){
                         // sorted on product type details
                         $sortedOnProductTypeDetailsArr = utils::arraySort($retAreaBasedConductProductTypeShopStoreDetailsArr, array("productTypeId"), array("productTypeId" => "productTypeTitle"));
