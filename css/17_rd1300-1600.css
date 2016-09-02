@@ -1,50 +1,10 @@
 
 @media screen and (min-width:1300px) and (max-width:1600px){
 
-    /* scroll btn css code */
-
-    .scrollToTopBtnClass{
-        bottom: 60px!important;
-        font-size: 25px!important;
-        font-weight: bold!important;
-        height: 40px!important;
-        position: fixed!important;
-        right: 30px!important;
-        text-align: center!important;
-        text-decoration: none;
-        width: 40px!important;
-        z-index: 9999!important;
-        color: #fff!important;
-        background-color:#fb366e!important;
-        line-height:35px!important;
-        border-radius:50%!important;
-    }
-
-    .scrollToTopBtnClass:hover, .scrollToTopBtnClass:focus{
-        background-color:#fb366e!important;
-        color:#fff!important;
-        border:1px solid #FF6600!important;
-        border-radius:50%!important;
-    }
-
-
     /* first header css code */
 
     .fHeaderRowBorderDivClass{
         border-bottom:2px solid #e7486b!important;
-    }
-
-    .stickFHeaderContainerDivClass{
-        position:fixed!important;
-        z-index:99!important;
-        background-color:#fff!important;
-        border-bottom:2px solid #e7486b!important;
-    }
-
-    .notStickFHeaderContainerDivClass{
-        position:inherit!important;
-        z-index:0!important;
-        background-color:#fff!important;
     }
 
     .webLogoHClass{
