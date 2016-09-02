@@ -319,6 +319,7 @@ class commonfunction{
     // CJ defined this function 2016-07-24
     public static function prepareParamDataForTrackingUserInfoAccessingWebsites($paramJsonData){
         if(count($paramJsonData)>0 && $paramJsonData!=false){
+            $paramJsonData['user_sessionstarttime'] = time();
             $retUserGeoLocationDetails = utils :: getUserAccessingWebsiteGeoLocationDetails();
             $paramJsonData = array_merge($paramJsonData, $retUserGeoLocationDetails);
         }
