@@ -32,10 +32,10 @@ class ProductServicesV1 implements IProductServicesV1 {
                     // fetch all countrycityareaids keys in arr and converted into string format
                     $allCCAIdsStr = implode(",", array_keys($sortedOnCCAIdArr));
                     // fetch all area based ka product type ka shopstore details
-                    $retAreaBasedConductProductTypeShopStoreDetailsArr = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCCAIdsStr);
-                    if(count($retAreaBasedConductProductTypeShopStoreDetailsArr)>0 && $retAreaBasedConductProductTypeShopStoreDetailsArr!=false){
+                    $areaBasedConductProductTypeShopStoreDetails = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCCAIdsStr);
+                    if(count($areaBasedConductProductTypeShopStoreDetails)>0 && $areaBasedConductProductTypeShopStoreDetails!=false){
                         // sorted on product type details
-                        $sortedOnProductTypeDetailsArr = utils::arraySort($retAreaBasedConductProductTypeShopStoreDetailsArr, array("productTypeId"), array("productTypeId" => "productTypeTitle"));
+                        $sortedOnProductTypeDetailsArr = utils::arraySort($areaBasedConductProductTypeShopStoreDetails, array("productTypeId"), array("productTypeId" => "productTypeTitle"));
                         if(count($sortedOnProductTypeDetailsArr)>0 && $sortedOnProductTypeDetailsArr!=false){
                             $finalAllProductTypeListArr = array();
                             // iterate each product type info details
