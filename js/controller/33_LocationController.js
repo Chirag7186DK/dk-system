@@ -92,9 +92,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         $rootScope.refreshElementDependencyDeliveryCity = function(cityDetailsLoadedOnPage){
             $rootScope.isDkDeliveryCityChanged = false;
             $rootScope.isDkDeliveryAreaChanged = false;
-            $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue = '';
-            $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle = '';
-            $rootScope.isDessertsProductTypeProductListLoaded = false;
             // refresh dk delivery area list, dk delivery city list, delivery desserts product type list
             if($rootScope.defaultedSelectedDKDeliveryCity!=='' && $rootScope.defaultedSelectedDKDeliveryCity!==false){
                 $rootScope.isDkDeliveryCityChanged = true;
@@ -210,9 +207,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         $rootScope.refreshElementDependencyDeliveryArea = function(areaDetailsLoadedOnPage){
             $rootScope.isDkDeliveryCityChanged = true;
             $rootScope.isDkDeliveryAreaChanged = false;
-            $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue = '';
-            $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle = '';
-            $rootScope.isDessertsProductTypeProductListLoaded = false;
             if($rootScope.defaultedSelectedDKDeliveryArea!=='' && $rootScope.defaultedSelectedDKDeliveryArea!==false){
                 $rootScope.isDkDeliveryAreaChanged = true;
                 // remove existing desserts product type list and add new one list
@@ -248,8 +242,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                                     var retArrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedProductTypeDetails', retResponseJson);
                                     if(retArrJsonObj!==false && retArrJsonObj!==undefined && retArrJsonObj!==''){
                                         if(retArrJsonObj.defaultSelectedAreaBasedProductTypeDetails!==false){
-                                            $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue = retArrJsonObj.defaultSelectedAreaBasedProductTypeDetails['matchedProductTypeId'];
-                                            $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle = retArrJsonObj.defaultSelectedAreaBasedProductTypeDetails['matchedProductTypeTitle'];
                                         }else{
                                             storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(false, 'Y');
                                         }
@@ -263,8 +255,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 }
             }catch(ex){
                 $rootScope.dkDeliveryAreaBasedProductTypeList = false;
-                $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue = '';
-                $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle = '';
                 showHideLoaderBox('hide');
                 console.log("problem in loadDKDeliveryAreaBasedProductTypeList ex=>"+ex);
             }
@@ -289,14 +279,11 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             }
             // refresh producttype list select control element 
             $(productTypeListSelectControlElementObj).selectpicker('refresh');
-            // showing default selected desserts product type list
-            $(productTypeListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue);
             // applying change event function
             if($(productTypeListSelectControlElementObj).find('option').length>0){
                 $rootScope.buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent(productTypeListSelectControlElementObj);
             }
             // refresh dependency element on ui screen
-            $rootScope.refreshElementDependencyDeliveryAreabasedDessertsProductType();
         };
         
         // buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent
@@ -312,20 +299,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             });
         };
        
-        // refreshElementDependencyDeliveryAreabasedDessertsProductType
-        $rootScope.refreshElementDependencyDeliveryAreabasedDessertsProductType = function(){
-            $rootScope.isDessertsProductTypeProductListLoaded = false;
-            if($rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue!==false
-                && $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue!==''
-                && $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle!==false
-                && $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle!==''){  
-                var paramObj = {
-                    "matchedProductTypeId":$rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue,
-                    "matchedProductTypeTitle":$rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle
-                };
-                storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(paramObj, 'Y');
-            } 
-        };
         
     }catch(ex){
         console.log("problem in location controller ex=>"+ex);
