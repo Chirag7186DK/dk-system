@@ -76,25 +76,28 @@
                     Celebrate your <i>CELEBRATIONS</i> with us, we are coming with <i>DESSERTS</i>...
                 </p>
             </div>
+            
             <!-- dk delivery city list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityListContainerDivClass">
                 <div id="dkDeliveryCityListWrapperDivId" ng-controller="LocationController" ng-init="loadDkDeliveryCityList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryCityListWrapperDivClass">
                     <span class="dkDeliveryCityLblSClass">Choose delivery city</span>
-                    <select id='dkDeliveryCityListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Type delivery city"></select>
+                    <select id='dkDeliveryCityListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Choose delivery city"></select>
                 </div>
             </div>
+            
             <!-- dk delivery area list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaListContainerDivClass">
                 <div id="dkDeliveryAreaListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
                     <span class="dkDeliveryAreaLblSClass">Choose delivery area</span>
-                    <select id="dkDeliveryAreaListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Type delivery area"></select>
+                    <select id="dkDeliveryAreaListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Choose delivery area"></select>
                 </div>
             </div>
+            
             <!-- dk desserts product list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaDessertsProductListContainerDivClass" ng-show="isDkDeliveryAreaChanged">
                 <div id="dkDeliveryAreaDessertsProductListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaBasedProductTypeList(isDkDeliveryAreaChanged)" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaDessertsProductListWrapperDivClass">
                     <span class="dkDeliveryAreaDessertsProductLblSClass">Choose desserts</span>
-                    <select id="dkDeliveryAreaDessertsProductListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Type desire desserts product"></select>
+                    <select id="dkDeliveryAreaDessertsProductListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Choose desserts"></select>
                 </div>
             </div>
             
