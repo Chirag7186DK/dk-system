@@ -70,14 +70,14 @@
         <!-- dk delivery city area desserts product -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityAreaDessertsContainerDivClass">
             
-            <!-- desserts khazana tag lines -->
+            <!-- tag lines -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityAreaDessertsTagLinesContainerDivClass">
                 <p class="dkDeliveryCityAreaDessertsTagLinesPClass">
                     Celebrate your <i>CELEBRATIONS</i> with us, we are coming with <i>DESSERTS</i>...
                 </p>
             </div>
             
-            <!-- dk delivery city list -->
+            <!-- delivery city list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryCityListContainerDivClass">
                 <div id="dkDeliveryCityListWrapperDivId" ng-controller="LocationController" ng-init="loadDkDeliveryCityList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryCityListWrapperDivClass">
                     <span class="dkDeliveryCityLblSClass">Choose delivery city</span>
@@ -85,7 +85,7 @@
                 </div>
             </div>
             
-            <!-- dk delivery area list -->
+            <!-- delivery area list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaListContainerDivClass">
                 <div id="dkDeliveryAreaListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
                     <span class="dkDeliveryAreaLblSClass">Choose delivery area</span>
@@ -93,7 +93,7 @@
                 </div>
             </div>
             
-            <!-- dk desserts product list -->
+            <!-- desserts type list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaDessertsProductListContainerDivClass" ng-show="isDkDeliveryAreaChanged">
                 <div id="dkDeliveryAreaDessertsProductListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaBasedProductTypeList(isDkDeliveryAreaChanged)" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaDessertsProductListWrapperDivClass">
                     <span class="dkDeliveryAreaDessertsProductLblSClass">Choose desserts</span>
