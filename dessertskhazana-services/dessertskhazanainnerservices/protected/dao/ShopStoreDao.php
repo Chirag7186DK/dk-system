@@ -62,17 +62,17 @@ class ShopStoreDao{
                     COALESCE(sdl.orderdelivery_opentime, '') orderDeliveryOpenTime, 
                     COALESCE(sdl.orderdelivery_closetime, '') orderDeliveryCloseTime
                     FROM DK_SHOPSTORES ss
-                    JOIN DK_SHOPSTORE_DELIVERYLOCATIONDETAILS sdl ON sdl.shoptstore_id=ss.id AND sdl.status='A'
-                    JOIN DK_COUNTRYREACHED country ON country.status='A' AND sdl.country_id=country.id
-                    JOIN DK_CITYREACHED city ON city.status='A' AND sdl.city_id=city.id
-                    JOIN DK_AREAREACHED area ON area.status='A' AND sdl.area_id=area.id";
+                    JOIN DK_SHOPSTORE_DELIVERYLOCATIONDETAILS sdl ON sdl.shopstore_id=ss.id AND sdl.status='A'
+                    JOIN DK_COUNTRYREACHED country ON sdl.country_id=country.id AND country.status='A'
+                    JOIN DK_CITYREACHED city ON sdl.city_id=city.id AND city.status='A' 
+                    JOIN DK_AREAREACHED area ON sdl.area_id=area.id AND area.status='A'";
             $sql.="  WHERE 1 ";
             
                 // add shop store in where condition
                 if(array_key_exists('shop_storesids', $paramJson)){
                     if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
                         && $paramJson['shop_storesids']!=null){
-                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND sdl.shoptstore_id IN (".$paramJson['shop_storesids'].") ";
+                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND sdl.shopstore_id IN (".$paramJson['shop_storesids'].") ";
                     }
                 }
                 
@@ -84,7 +84,7 @@ class ShopStoreDao{
                     }
                 }
                 
-                //add city in where condition
+                // add city in where condition
                 if(array_key_exists('city_ids', $paramJson)){
                     if($paramJson['city_ids']!=false && $paramJson['city_ids']!='' 
                         && $paramJson['city_ids']!=null){
@@ -92,7 +92,7 @@ class ShopStoreDao{
                     }
                 }
                 
-                //add area in where condition
+                // add area in where condition
                 if(array_key_exists('area_ids', $paramJson)){
                     if($paramJson['area_ids']!=false && $paramJson['area_ids']!='' 
                         && $paramJson['area_ids']!=null){
@@ -100,42 +100,42 @@ class ShopStoreDao{
                     }
                 }
                 
-                //add takeawayorder in where condition
+                // add takeawayorder in where condition
                 if(array_key_exists('takeawayorder', $paramJson)){
                     if($paramJson['takeawayorder']=='Y'){
                         $sql.=" AND sdl.is_takeawayorderaccept = 'Y'";
                     }
                 }
                 
-                //add preorder in where condition
+                // add preorder in where condition
                 if(array_key_exists('preorder', $paramJson)){
                     if($paramJson['preorder']=='Y'){
                         $sql.=" AND sdl.is_preorderaccept = 'Y'";
                     }
                 }
                 
-                //add cashdelivery in where condition
+                // add cashdelivery in where condition
                 if(array_key_exists('cashdelivery', $paramJson)){
                     if($paramJson['cashdelivery']=='Y'){
                         $sql.=" AND sdl.is_cashondeliveryaccept = 'Y'";
                     }
                 }
                 
-                //add onlinepayment in where condition
+                // add onlinepayment in where condition
                 if(array_key_exists('onlinepayment', $paramJson)){
                     if($paramJson['onlinepayment']=='Y'){
                         $sql.=" AND sdl.is_onlinepaymentaccept = 'Y'";
                     }
                 }
                 
-                //add homedelivery in where condition
+                // add homedelivery in where condition
                 if(array_key_exists('homedelivery', $paramJson)){
                     if($paramJson['homedelivery']=='Y'){
                         $sql.=" AND sdl.is_homedeliveryaccept = 'Y'";
                     }
                 }
                 
-                //add group by statement 
+                // add group by statement 
                 if(array_key_exists('groupby_area_ids', $paramJson)){
                     if($paramJson['groupby_area_ids']=='Y'){
                         $sqlGroupByStatement.=" sdl.area_id,";
@@ -150,16 +150,14 @@ class ShopStoreDao{
                 if($sqlGroupByStatement!=''){
                     $sql.= " GROUP BY ".trim($sqlGroupByStatement, ",");
                 }
-                
                 if($sqlOrderByStmt!=''){
                     $sql.= trim($sqlOrderByStmt, ",");
                 }
             
             $command = $connection->createCommand($sql);
-            $retShopStoresProductDeliveryLocationListArr = $command->queryAll();
-            if(count($retShopStoresProductDeliveryLocationListArr)>0 
-                && $retShopStoresProductDeliveryLocationListArr!=false){
-                $retResult =  $retShopStoresProductDeliveryLocationListArr;    
+            $storeDeliveryLocationListArr = $command->queryAll();
+            if(count($storeDeliveryLocationListArr)>0 && $storeDeliveryLocationListArr!=false){
+                $retResult =  $storeDeliveryLocationListArr;    
             }
         }catch(Exception $ex){}
         return $retResult;
