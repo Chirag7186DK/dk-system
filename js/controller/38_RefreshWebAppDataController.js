@@ -5,9 +5,9 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
     try{
         // refreshWebAppData
         $rootScope.refreshWebAppData = function(){
-            var userDashboardSummaryDataObj = UsersServices.refreshUserDashboardSummaryDataDetails();
-            var userOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
-            var addItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, false, 'session');
+            // var userDashboardSummaryDataObj = UsersServices.refreshUserDashboardSummaryDataDetails();
+            // var userOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+            // var addItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, false, 'session');
         };
     }catch(ex){
         console.log("problem in RefreshWebAppDataController ex=>"+ex);
