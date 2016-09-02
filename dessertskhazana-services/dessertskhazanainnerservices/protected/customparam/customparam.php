@@ -439,9 +439,9 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check page_name key present or not
-        if(array_key_exists('page_name', $paramJsonData)){
-            if($paramJsonData['page_name']!='' && $paramJsonData['page_name']!=false){
+        // check usersession_startimestamp key present or not
+        if(array_key_exists('usersession_startimestamp', $paramJsonData)){
+            if($paramJsonData['usersession_startimestamp']!='' && $paramJsonData['usersession_startimestamp']!=false){
                 $givenParamDataCorrectCount++;
             }
         }
