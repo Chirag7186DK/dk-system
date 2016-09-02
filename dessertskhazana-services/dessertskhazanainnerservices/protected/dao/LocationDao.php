@@ -112,8 +112,8 @@ class LocationDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    COALESCE(cca.country_id, '') countryId,COALESCE(cca.city_id, '') cityId, 
-                    COALESCE(cca.area_id, '') areaId,COALESCE(a.name,'') areaTitle,
+                    COALESCE(cca.country_id, '') countryId, COALESCE(cca.city_id, '') cityId, 
+                    COALESCE(cca.area_id, '') areaId, COALESCE(a.name,'') areaTitle,
                     COALESCE(cpts.cca_id, '') countryCityAreaAffiliationId,
                     COALESCE(cpts.product_typeid, '') productTypeId, COALESCE(pt.name, '') productTypeTitle,
                     COALESCE(cpts.shopstore_id, '') shopStoreId, COALESCE(s.shopstore_name, '') shopStoreTitle
@@ -122,9 +122,8 @@ class LocationDao{
                     JOIN DK_AREAREACHED a ON a.id=cca.area_id
                     JOIN DK_PRODUCTTYPE pt ON pt.id=cpts.product_typeid 
                     JOIN DK_SHOPSTORES s ON s.id=cpts.shopstore_id AND cpts.cca_id=s.country_city_area_affiliationId
-                    WHERE 
-                    cpts.status='A' AND cca.status='A' AND a.status='A'
-                    AND pt.status='A' AND s.status='A'
+                    WHERE 1
+                    AND cpts.status='A' AND cca.status='A' AND a.status='A' AND pt.status='A' AND s.status='A'
                     AND cpts.cca_id IN ($countryCityAreaAffiliationId)
                     AND s.country_city_area_affiliationId IN ($countryCityAreaAffiliationId)
                     AND cca.id IN ($countryCityAreaAffiliationId) ";
