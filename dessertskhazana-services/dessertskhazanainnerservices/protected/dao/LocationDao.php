@@ -138,10 +138,10 @@ class LocationDao{
                     }
             $sql.= "  ORDER BY pt.sort_order ASC ";        
             $command = $connection->createCommand($sql);
-            $retAreaBasedConductProductTypeShopStoreDetails = $command->queryAll();
-            if(count($retAreaBasedConductProductTypeShopStoreDetails)>0 
-                && $retAreaBasedConductProductTypeShopStoreDetails!=false){
-                $retResult =  $retAreaBasedConductProductTypeShopStoreDetails;    
+            $areaBasedConductProductTypeShopStoreDetails = $command->queryAll();
+            if(count($areaBasedConductProductTypeShopStoreDetails)>0 
+                && $areaBasedConductProductTypeShopStoreDetails!=false){
+                $retResult =  $areaBasedConductProductTypeShopStoreDetails;    
             }
         }catch(Exception $ex){}
         return $retResult;
