@@ -435,7 +435,7 @@ class customparam{
         $givenParamDataCorrectCount = 0;
         // check user_id key present or not
         if(array_key_exists('user_sessionid', $paramJsonData)){
-            if($paramJsonData['user_sessionid']=='' || strlen($paramJsonData['user_sessionid'])>=20){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
                 $givenParamDataCorrectCount++;
             }
         }
