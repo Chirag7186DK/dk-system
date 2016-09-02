@@ -20,12 +20,7 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allproducts');">
-
-        <!-- common SCROLL TOP BUTTON -->
-        <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
-            <i class="fa fa-angle-up"></i>
-        </a>
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allproducts');">
         
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
