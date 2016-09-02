@@ -31,32 +31,31 @@ class LocationServicesV1 implements ILocationServicesV1{
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
             // prepare param obj
-            $shopStoreProductDeliveryParamObj = array();
-            $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_ids;
-            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_ids;
-            $shopStoreProductDeliveryParamObj['groupby_area_ids'] = 'Y';
-            $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
-            if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
+            $storeDeliveryParamObj = array();
+            $storeDeliveryParamObj['country_ids'] = $gcountry_ids;
+            $storeDeliveryParamObj['city_ids'] = $gcity_ids;
+            $storeDeliveryParamObj['groupby_area_ids'] = 'Y';
+            $storeDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($storeDeliveryParamObj);
+            if(count($storeDeliveryLocationDetailsArr)>0 && $storeDeliveryLocationDetailsArr!=false){
                 // remove unused keys from fetched array data
-                $removeJsonKeyFromEachInputJsonArr = array(
+                $removeUnusedKeysDataArr = array(
                     "shopStoreId"=>"0", "shopStoreName"=>"0", "countryCityAreaAffiliationId"=>"0", "countryId"=>"0", "countryName"=>"0",  
                     "ciytId"=>"0", "cityName"=>"0", "isPreorderAccept"=>"0", "takeAwayOrderAccept"=>"0", "cashOnDeliveryAccept"=>"0",
                     "isOnlinePaymentAccept"=>"0", "isHomeDeliveryAccept"=>"0", "orderDeliveryOpenTime"=>"0", "orderDeliveryCloseTime"=>"0"
                 );
-                $removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($retShopStoreDeliveryLocationDetailsArr, $removeJsonKeyFromEachInputJsonArr, 'keyname');
-                if(count($removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr)>0 && $removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr!=false){
+                $removedUnusedKeyDataArr = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($storeDeliveryLocationDetailsArr, $removeUnusedKeysDataArr, 'keyname');
+                if(count($removedUnusedKeyDataArr)>0 && $removedUnusedKeyDataArr!=false){
                     // final merging 
-                    $finalDeliveryLocationDetailsArr = utils::array_merge_common_elements(
-                        $removedUnusedKeynameFromShopStoresDeliveryLocationsDetailsArr, 
-                        array(array("areaId"=>$garea_ids)), 
+                    $deliveryAreaListArr = utils::array_merge_common_elements(
+                        $removedUnusedKeyDataArr, array(array("areaId"=>$garea_ids)), 
                         array("areaId"), array(), 
                         array("isRequestedDeliveryAreaMatched"=>"Y", "areaIcon"=>"fa fa-map-marker"), 
                         array("isRequestedDeliveryAreaMatched"=>"N", "areaIcon"=>"fa fa-map-marker")
                     );
-                    if(count($finalDeliveryLocationDetailsArr)>0 && $finalDeliveryLocationDetailsArr!=false){
-                        $rsltJsonArr['allAreaList'] = $finalDeliveryLocationDetailsArr;
-                        //sorted on matched delivery area
-                        $sortedOnMatchedDeliveryAreaDetailsArr =  utils::arraySort($finalDeliveryLocationDetailsArr, array("isRequestedDeliveryAreaMatched"));
+                    if(count($deliveryAreaListArr)>0 && $deliveryAreaListArr!=false){
+                        $rsltJsonArr['allAreaList'] = $deliveryAreaListArr;
+                        // sorted on matched delivery area
+                        $sortedOnMatchedDeliveryAreaDetailsArr =  utils::arraySort($deliveryAreaListArr, array("isRequestedDeliveryAreaMatched"));
                         if($sortedOnMatchedDeliveryAreaDetailsArr!=false && count($sortedOnMatchedDeliveryAreaDetailsArr)>0){
                             if(array_key_exists('Y', $sortedOnMatchedDeliveryAreaDetailsArr)){
                                 $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = $sortedOnMatchedDeliveryAreaDetailsArr['Y'][0];
