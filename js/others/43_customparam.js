@@ -17,13 +17,13 @@ function initializeDkSessionData(){
 
         var dkSelectedDeliveryCityAreaDessertsProductObj = {};
         dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'] = '1';
+        dkSelectedDeliveryCityAreaDessertsProductObj['countryname'] = 'India';
         dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'] = '';
+        dkSelectedDeliveryCityAreaDessertsProductObj['cityname'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['areapincode'] = '';
-        dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproduct'] = '';
-        dkSelectedDeliveryCityAreaDessertsProductObj['countryname'] = 'India';
-        dkSelectedDeliveryCityAreaDessertsProductObj['cityname'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['areaname'] = '';
+        dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproduct'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle'] = '';
 
         var userProductObj = {};
