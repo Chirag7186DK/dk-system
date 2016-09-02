@@ -7,6 +7,7 @@ function initializeDkSessionData(){
     try{
         var userSessionObj = {};
         userSessionObj['user_sessionstarttime'] = (new Date()).getTime();
+        userSessionObj['lastupdated_sessiontime'] = '';
         userSessionObj['user_sessionid'] = '';
         userSessionObj['udblogId'] = '';
         userSessionObj['userProfileTypeId'] = '';
