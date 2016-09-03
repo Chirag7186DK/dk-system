@@ -91,7 +91,6 @@ class LocationDao{
                     if($type_ofdetailsshow!='' && ($type_ofdetailsshow=='city_list' || $type_ofdetailsshow=='city_details')){
                         $sqlGroupByStmt.= " cca.country_id, cca.city_id ";
                     }
-                    
                     if($sqlGroupByStmt!='' && $sqlGroupByStmt!=false){
                         $sql.= " GROUP BY ".$sqlGroupByStmt;
                     }
