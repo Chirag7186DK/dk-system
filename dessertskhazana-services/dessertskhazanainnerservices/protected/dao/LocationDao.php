@@ -107,7 +107,7 @@ class LocationDao{
     
     // CJ defined this function 2016-05-24
     // very Important func
-    public static function getCCABasedConductDessertsTypeDetails($ccaIds, $productTypeIds='', $notProductTypeIds='', $shopStoreIds=''){
+    public static function getCCABasedConductDessertsTypeDetails($ccaIds, $productTypeIds='', $notProductTypeIds='', $shopStoreIds='', $sqlGroupByStatement=''){
         $retResult = false;
         try{
             $connection = Yii::App()->db;
@@ -136,6 +136,9 @@ class LocationDao{
                     }
                     if($shopStoreIds!=''){
                         $sql.=" AND FIND_IN_SET_X($shopStoreIds, cpts.shopstore_ids)>0 AND s.id IN ($shopStoreIds) ";
+                    }
+                    if($sqlGroupByStatement!=''){
+                        $sql.= " GROUP BY ". trim($sqlGroupByStatement, ",");
                     }
             $sql.= "  ORDER BY pt.sort_order ASC ";        
             $command = $connection->createCommand($sql);
