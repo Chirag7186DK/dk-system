@@ -111,12 +111,12 @@
                 
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts products info  -->
-                    <div ng-repeat="eachDessertsProductTypeDetails in deliveryAreabasedDkServedDessertsProductTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
+                    <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsProductTypeDetails.productTypeTitle}} desserts' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
                         <p class="vap_dessertsProductIconPClass">
-                            <i class="{{eachDessertsProductTypeDetails.productIcon}} vap_dessertsProductIconClass"></i>
+                            <i class="{{eachDessertsTypeDetails.dessertsIcon}} vap_dessertsProductIconClass"></i>
                         </p>
                         <h2 class="vap_dessertsProductTitleHClass">
-                            {{eachDessertsProductTypeDetails.productTypeTitle}}
+                            {{eachDessertsTypeDetails.dessertsTypeTitle}}
                         </h2>
                         <p ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachDessertsProductTypeDetails)" class="vap_viewDessertsProductPClass">
                             View desserts
