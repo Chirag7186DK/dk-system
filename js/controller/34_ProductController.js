@@ -1,97 +1,141 @@
 
-angular.module('DKAPP').controller('ProductTypeProductCategoryProductDetailsController', ProductTypeProductCategoryProductDetailsController);
+angular.module('DKAPP').controller('ProductController', ProductController);
 
-function ProductTypeProductCategoryProductDetailsController($scope, $rootScope, $http, ProductServices, LocationServices){
+function ProductController($scope, $rootScope, $http, ProductServices, LocationServices){
     try{
         
         $rootScope.productViewAllFilterPopDivClass = '';
         $rootScope.isShowViewAllProductFilter = false;
         $rootScope.toggleViewAllProductFilterBtnLabel = "SHOW FILTER";
         
-        // loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList 
-        $rootScope.loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList = function(){
+        // loadDKDeliveryAreaBasedDessertsTypeList 
+        $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
             try{
-                // get param obj to product type details
-                var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaBasedProductTypeDetails();
-                // console.log("loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
+                // get param obj to desserts type list
+                var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaBasedDessertsTypeList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                    $rootScope.deliveryAreabasedDkServedDessertsProductTypeList = false;
-
-                    var fetchAreaParamJsonObj = {};
-                    fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
-                    // calling LocationServices to get dk delivery area based product type list
-                    LocationServices.getDKDeliveryAreaBasedProductTypeList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                    var fetchParamJsonObj = {};
+                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+                    // calling LocationServices
+                    LocationServices.getDKDeliveryAreaBasedProductTypeList(fetchParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retArrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedProductTypeDetails', retResponseJson);
-                                if(retArrJsonObj!==false && retArrJsonObj!==undefined && retArrJsonObj!==''){
-                                    $rootScope.isDessertsProductTypeProductListLoaded = true;
-                                    $rootScope.deliveryAreabasedDkServedDessertsProductTypeList = retArrJsonObj.allProductTypeList;
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                console.log("problem in loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList ex=>"+ex);
-                $rootScope.deliveryAreabasedDkServedDessertsProductTypeList = false;
-                showHideLoaderBox('hide');
+                console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
+                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
             }
         };
         
-        // loadProductTypeProductCategoryProductListForDashboardLevel 
-        $rootScope.loadProductTypeProductCategoryProductListForDashboardLevel = function(){
+        
+        // loadProductTypeAllProductCategoryList 
+        $rootScope.loadProductTypeAllProductCategoryList = function(){
             try{
-                // get param obj to product type ka product list
-                var preparedParamJsonObj = getParamObjFromSessionForLoadingDashboardLevelProduct();
+                // get param obj to load product all product category list
+                var preparedParamJsonObj = getParamObjForLoadingProductTypeAllProductCategoryList();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchParamJsonObj = {};
+                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.productTypeAllCategoryList = false;
+                    // calling ProductServices
+                    ProductServices.getProductTypeAllProductCategoryList(fetchParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.productTypeAllCategoryList = arrJsonObj.allDessertsTypeList;
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
+                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+            }
+        };
+           
+           
+        // loadProductTypeProductCategoryAllProductList 
+        $rootScope.loadProductTypeProductCategoryAllProductList = function(){
+            try{
+                // get param obj
+                var preparedParamJsonObj = getParamObjForLoadingProductTypeProductCategoryAllProductList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
                     jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
                     showHideLoaderBox('show', jsonParamBlockUIObject);
-                
+                    
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     
-                    $rootScope.allProductTypeProductCategoryProductListForDashBoardLevel = false;
-                    $rootScope.defaultDKServedDessertsProductType = '';
-                    $rootScope.productTypeProductCategoryProductListNotFoundForDashBoardLevelMsgStr = '';
+                    $rootScope.defaultSelectProductTypeitle = '';
+                    $rootScope.defaultSelectProductTypeValue = '';
+                    $rootScope.defaultSelectProductCategoryTitle = '';
+                    $rootScope.defaultSelectProductCategoryValue = '';
+                    $rootScope.productCategoryList = false;
+                    $rootScope.allProductDetailsList = false;
+                    $rootScope.notFoundProductMsgStr = '';
                     
-                    // calling ProductServices 
-                    ProductServices.getProductTypeProductCategoryProductListForDashboardLevel(fetchedParamJsonObj).done(function(retResponseJson){
+                    // calling ProductServices to get all product list
+                    ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("loadProductTypeProductCategoryProductListForDashboardLevel retObj=>"+JSON.stringify(retObj));
-                                    storeDefaultDessertsProductTypeDetailsDashboardLevelInSessionStorage(retObj.defaultSelectedProductTypeDetails);
-                                    $rootScope.defaultDKServedDessertsProductType = retObj.defaultSelectedProductTypeDetails['matchedProductTypeTitle'];
-                                    $rootScope.allProductTypeProductCategoryProductListForDashBoardLevel = retObj.allProductTypeProductCategoryProductList;
-                                    $rootScope.productTypeProductCategoryProductListNotFoundForDashBoardLevelMsgStr = '';
+                                    if(retObj.productTypeDetails.productCategoryList!==false){
+                                        $rootScope.productCategoryList = retObj.productTypeDetails.productCategoryList;
+                                    }
+                                    $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
+                                    if(retObj.productTypeDetails.defaultSelectProductCategoryValue!==''){
+                                        var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                                        existingDkParamObj['userProduct']['producttype_name'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
+                                        existingDkParamObj['userProduct']['producttype_value'] = retObj.productTypeDetails.defaultedSelectedProductTypeValue;
+                                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
+                                        existingDkParamObj['userProduct']['producttype_categoryname'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
+                                        sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+                                    }
+                                    if(retObj.productTypeDetails.allShopStoresDetailsArr!==false && retObj.productTypeDetails.allShopStoresDetailsArr!==undefined){
+                                        $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl(retObj.productTypeDetails.allShopStoresDetailsArr);
+                                    }
+                                    if(retObj.productTypeDetails.allProductPriceDetailsArr!==false && retObj.productTypeDetails.allProductPriceDetailsArr!==undefined){
+                                        $rootScope.buildAllProductPriceFilterListHtmlSelectControl(retObj.productTypeDetails.allProductPriceDetailsArr);
+                                    }
+                                    if(retObj.productTypeDetails.allProductSizeDetailsArr!==false && retObj.productTypeDetails.allProductSizeDetailsArr!==undefined){
+                                        $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
+                                    }
+                                    if(retObj.productTypeDetails.allProductDiscountDetailsArr!==false && retObj.productTypeDetails.allProductDiscountDetailsArr!==undefined){
+                                        $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
+                                    }
+                                    if(retObj.productTypeDetails.allProductDetailsList!==false && retObj.productTypeDetails.allProductDetailsList!==undefined){
+                                        $rootScope.allProductDetailsList = retObj.productTypeDetails.allProductDetailsList;
+                                    }else{
+                                        $rootScope.notFoundProductMsgStr = 'No products found used proper filter';
+                                    }
                                 }
-                            }else{
-                                $rootScope.dashBoardLevelNotFoundProductTypeProductCategoryProductListMsgStr = 'No product found !';
                             }
                         });
                     });
                 }
             }catch(ex){
-                $rootScope.allProductTypeProductCategoryProductListForDashBoardLevel = false;
-                $rootScope.defaultDKServedDessertsProductType = '';
-                $rootScope.productTypeProductCategoryProductListNotFoundForDashBoardLevelMsgStr = 'No product found !';
-                console.log("problem in productTypeProductCategoryProductListForDashBoardLevel ex=>"+ex);
+                $rootScope.allProductDetailsList = false;
+                $rootScope.notFoundProductMsgStr = 'No products found used proper filter';
+                console.log("problem in loadProductTypeProductCategoryAllProductList ex=>"+ex);
                 showHideLoaderBox('hide');
             }
-        };
-        
+        };   
+           
+           
         // viewProductDetails
         $rootScope.viewProductDetails = function(paramObj){
             try{
@@ -206,77 +250,7 @@ function ProductTypeProductCategoryProductDetailsController($scope, $rootScope, 
             }
         });
         
-        // loadProductTypeProductCategoryAllProductList 
-        $rootScope.loadProductTypeProductCategoryAllProductList = function(){
-            try{
-                // get param obj
-                var preparedParamJsonObj = getParamObjForLoadingProductTypeProductCategoryAllProductList();
-                // console.log("loadProductTypeProductCategoryAllProductList preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
-                    $rootScope.defaultSelectProductTypeitle = '';
-                    $rootScope.defaultSelectProductTypeValue = '';
-                    $rootScope.defaultSelectProductCategoryTitle = '';
-                    $rootScope.defaultSelectProductCategoryValue = '';
-                    $rootScope.productCategoryList = false;
-                    $rootScope.allProductDetailsList = false;
-                    $rootScope.notFoundProductMsgStr = '';
-                    
-                    // calling ProductServices to get all product list
-                    ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
-                            showHideLoaderBox('hide');
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    if(retObj.productTypeDetails.productCategoryList!==false){
-                                        $rootScope.productCategoryList = retObj.productTypeDetails.productCategoryList;
-                                    }
-                                    $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
-                                    if(retObj.productTypeDetails.defaultSelectProductCategoryValue!==''){
-                                        var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                                        existingDkParamObj['userProduct']['producttype_name'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
-                                        existingDkParamObj['userProduct']['producttype_value'] = retObj.productTypeDetails.defaultedSelectedProductTypeValue;
-                                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
-                                        existingDkParamObj['userProduct']['producttype_categoryname'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
-                                        sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-                                    }
-                                    if(retObj.productTypeDetails.allShopStoresDetailsArr!==false && retObj.productTypeDetails.allShopStoresDetailsArr!==undefined){
-                                        $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl(retObj.productTypeDetails.allShopStoresDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductPriceDetailsArr!==false && retObj.productTypeDetails.allProductPriceDetailsArr!==undefined){
-                                        $rootScope.buildAllProductPriceFilterListHtmlSelectControl(retObj.productTypeDetails.allProductPriceDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductSizeDetailsArr!==false && retObj.productTypeDetails.allProductSizeDetailsArr!==undefined){
-                                        $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductDiscountDetailsArr!==false && retObj.productTypeDetails.allProductDiscountDetailsArr!==undefined){
-                                        $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductDetailsList!==false && retObj.productTypeDetails.allProductDetailsList!==undefined){
-                                        $rootScope.allProductDetailsList = retObj.productTypeDetails.allProductDetailsList;
-                                    }else{
-                                        $rootScope.notFoundProductMsgStr = 'No products found used proper filter';
-                                    }
-                                }
-                            }
-                        });
-                    });
-                }
-            }catch(ex){
-                $rootScope.allProductDetailsList = false;
-                $rootScope.notFoundProductMsgStr = 'No products found used proper filter';
-                console.log("problem in loadProductTypeProductCategoryAllProductList ex=>"+ex);
-                showHideLoaderBox('hide');
-            }
-        };
+        
         
         // buildAllProductShopStoresFilterListHtmlSelectControl
         $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl = function(allShopStoreList){
