@@ -51,8 +51,14 @@ function LocationServices($http, $q, $rootScope){
             return promiseObject;
         };
         
-        locationDetails.getDKDeliveryAreaBasedProductTypeList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedProductTypeList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+        locationDetails.getDKDeliveryAreaBasedDessertsTypeList = function(preparedParamJsonObj){
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedProductTypeList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
             return promiseObject;
         };
         
