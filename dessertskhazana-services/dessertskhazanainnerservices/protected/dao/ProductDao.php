@@ -36,7 +36,7 @@ class ProductDao{
     public static function getProductTypeProductCategoryProductList($paramJson=array(), $selectStatementForGroupBy=''){
         $retResult = false;
         $sqlGroupByStatement = '';
-        $sqlOrderByStmt = " ORDER BY pt.id, ppc.id, spa.product_typeid, sppc.producttype_categoryid,";
+        $sqlOrderByStmt = " ORDER BY pt.id, ppc.id, spa.product_typeid, spfc.producttype_categoryid,";
         try{
             $connection = Yii::App()->db;
             
