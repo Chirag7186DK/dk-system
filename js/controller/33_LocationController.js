@@ -117,7 +117,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryAreaDetailsInSessionStorage(arrJsonObj.defaultSelectedDeliveryAreaDetails, 'N');
                                         if(arrJsonObj.defaultSelectedDeliveryAreaDetails!==false){
-                                            $rootScope.defaultedSelectedDKDeliveryArea = arrJsonObj.defaultSelectedDeliveryAreaDetails['areaId'];
+                                            $rootScope.defaultedSelectedDKDeliveryArea = arrJsonObj.defaultSelectedDeliveryAreaDetails['areaId']+"|"+arrJsonObj.defaultSelectedDeliveryAreaDetails['ccaId'];
                                         }
                                         $rootScope.dkDeliveryAreaList = arrJsonObj.allAreaList;
                                         $rootScope.buildDKDeliveryAreaListHtmlSelectControl($rootScope.dkDeliveryAreaList, loadAreaListOnPage);
@@ -148,9 +148,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                         var areaIcon = dkDeliveryAreaList[eachAreaIndex]['areaIcon'];
                         var areaName = dkDeliveryAreaList[eachAreaIndex]['areaName'];
                         var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
+                        var ccaIdVaue = dkDeliveryAreaList[eachAreaIndex]['ccaId'];
                         var areaStr = areaPincode + " " +areaName;
-                        // var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
-                        var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
+                        var areaValueStr = areaValue+"|"+ccaIdVaue;
+                        var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValueStr+"'>"+areaStr+"</option>";
                         $(areaListSelectControlElementObj).append(eachOptionStr);
                     }
                 }
@@ -177,9 +178,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     areaNamesStr+=selectedAreaSplittedArr[eachIndx]+" ";
                 }
                 var paramObj = {
-                    "areaId":$(elementObj).selectpicker('val'), 
+                    "areaId":($(elementObj).selectpicker('val')).split("|")[0], 
                     "areaPincode":selectedAreaSplittedArr[0],
-                    "areaName":(areaNamesStr.trim())
+                    "areaName":(areaNamesStr.trim()),
+                    "ccaId":($(elementObj).selectpicker('val')).split("|")[1]
                 };
                 storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                 $rootScope.defaultedSelectedDKDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
