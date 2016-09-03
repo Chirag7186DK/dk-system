@@ -37,31 +37,33 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // buildDKDeliveryCityListHtmlSelectControl
         $rootScope.buildDKDeliveryCityListHtmlSelectControl = function(cityList, cityListLoadedOnPage){
-            // get html element obj 
-            var cityListSelectControlElementObj = document.getElementById("dkDeliveryCityListSelectCtrlId");
-            // all options remove and destroy bootstrap select feature
-            $(cityListSelectControlElementObj).find('option').remove();
-            $(cityListSelectControlElementObj).selectpicker('destroy');
-            if(cityList.length>0 && cityList!==false){
-                // iterate each city list 
-                for(var eachCityIndex = 0; eachCityIndex<cityList.length; eachCityIndex++){
-                    var cityValue = cityList[eachCityIndex]['cityId'];
-                    var cityIcon = cityList[eachCityIndex]['cityIcon'];
-                    var cityName = cityList[eachCityIndex]['cityName'];
-                    var eachOptionStr = "<option data-icon='"+cityIcon+"' value='"+cityValue+"'>"+cityName+"</option>";
-                    $(cityListSelectControlElementObj).append(eachOptionStr);
+            if($('#dkDeliveryCityListSelectCtrlId').length===1){
+                // get html element obj 
+                var cityListSelectControlElementObj = document.getElementById("dkDeliveryCityListSelectCtrlId");
+                // all options remove and destroy bootstrap select feature
+                $(cityListSelectControlElementObj).find('option').remove();
+                $(cityListSelectControlElementObj).selectpicker('destroy');
+                if(cityList.length>0 && cityList!==false){
+                    // iterate each city list 
+                    for(var eachCityIndex = 0; eachCityIndex<cityList.length; eachCityIndex++){
+                        var cityValue = cityList[eachCityIndex]['cityId'];
+                        var cityIcon = cityList[eachCityIndex]['cityIcon'];
+                        var cityName = cityList[eachCityIndex]['cityName'];
+                        var eachOptionStr = "<option data-icon='"+cityIcon+"' value='"+cityValue+"'>"+cityName+"</option>";
+                        $(cityListSelectControlElementObj).append(eachOptionStr);
+                    }
                 }
+                // refresh city list select control element 
+                $(cityListSelectControlElementObj).selectpicker('refresh');
+                // showing default selected delivery city
+                $(cityListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryCity);
+                // apply change event on delivery city list
+                if($(cityListSelectControlElementObj).find('option').length>0){
+                    $rootScope.applyChangeEventDkDeliveryCityListSelectCtrlElement(cityListSelectControlElementObj, cityListLoadedOnPage);
+                }
+                // refresh dependency element
+                $rootScope.refreshDependencyElementOfDeliveryCityList();
             }
-            // refresh city list select control element 
-            $(cityListSelectControlElementObj).selectpicker('refresh');
-            // showing default selected delivery city
-            $(cityListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryCity);
-            // apply change event on delivery city list
-            if($(cityListSelectControlElementObj).find('option').length>0){
-                $rootScope.applyChangeEventDkDeliveryCityListSelectCtrlElement(cityListSelectControlElementObj, cityListLoadedOnPage);
-            }
-            // refresh dependency element
-            $rootScope.refreshDependencyElementOfDeliveryCityList();
         };
         
         // applyChangeEventDkDeliveryCityListSelectCtrlElement
@@ -134,34 +136,36 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // buildDKDeliveryAreaListHtmlSelectControl
         $rootScope.buildDKDeliveryAreaListHtmlSelectControl = function(dkDeliveryAreaList, loadAreaListOnPage){
-            var areaListSelectControlElementObj = document.getElementById("dkDeliveryAreaListSelectCtrlId");
-            // all options remove and destroy bootstrap select feature
-            $(areaListSelectControlElementObj).find('option').remove();
-            $(areaListSelectControlElementObj).selectpicker('destroy');
-            if(dkDeliveryAreaList.length>0 && dkDeliveryAreaList!==false){
-                // iterate each area list 
-                for(var eachAreaIndex = 0; eachAreaIndex<dkDeliveryAreaList.length; eachAreaIndex++){
-                    var areaValue = dkDeliveryAreaList[eachAreaIndex]['areaId'];
-                    var areaIcon = dkDeliveryAreaList[eachAreaIndex]['areaIcon'];
-                    var areaName = dkDeliveryAreaList[eachAreaIndex]['areaName'];
-                    var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
-                    var areaStr = areaPincode + " " +areaName;
-                    // var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
-                    var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
-                    $(areaListSelectControlElementObj).append(eachOptionStr);
+            if($('#dkDeliveryAreaListSelectCtrlId').length===1){    
+                var areaListSelectControlElementObj = document.getElementById("dkDeliveryAreaListSelectCtrlId");
+                // all options remove and destroy bootstrap select feature
+                $(areaListSelectControlElementObj).find('option').remove();
+                $(areaListSelectControlElementObj).selectpicker('destroy');
+                if(dkDeliveryAreaList.length>0 && dkDeliveryAreaList!==false){
+                    // iterate each area list 
+                    for(var eachAreaIndex = 0; eachAreaIndex<dkDeliveryAreaList.length; eachAreaIndex++){
+                        var areaValue = dkDeliveryAreaList[eachAreaIndex]['areaId'];
+                        var areaIcon = dkDeliveryAreaList[eachAreaIndex]['areaIcon'];
+                        var areaName = dkDeliveryAreaList[eachAreaIndex]['areaName'];
+                        var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
+                        var areaStr = areaPincode + " " +areaName;
+                        // var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
+                        var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
+                        $(areaListSelectControlElementObj).append(eachOptionStr);
+                    }
                 }
-            }
-            // refresh dk delivery area list select control element 
-            $(areaListSelectControlElementObj).selectpicker('refresh');
-            // showing default selected delivery area list
-            $(areaListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryArea);
-            // apply change event of area list
-            if($(areaListSelectControlElementObj).find('option').length>0){
-                $rootScope.applyChangeEventDkDeliveryAreaListSelectCtrlElement(areaListSelectControlElementObj, loadAreaListOnPage);
-            }
-            // refresh dependency element on ui screen
-            $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-            LocationServices.showUserSelectedDeliveryAreaTextHeader();
+                // refresh dk delivery area list select control element 
+                $(areaListSelectControlElementObj).selectpicker('refresh');
+                // showing default selected delivery area list
+                $(areaListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryArea);
+                // apply change event of area list
+                if($(areaListSelectControlElementObj).find('option').length>0){
+                    $rootScope.applyChangeEventDkDeliveryAreaListSelectCtrlElement(areaListSelectControlElementObj, loadAreaListOnPage);
+                }
+                // refresh dependency element on ui screen
+                $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
+                LocationServices.showUserSelectedDeliveryAreaTextHeader();
+            }     
         };
         
         // applyChangeEventDkDeliveryAreaListSelectCtrlElement
@@ -231,25 +235,27 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl
         $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl = function(allDessertsTypeList, loadDessertTypeListOnPage){
-            var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsTypeListSelectCtrlId");
-            // all options remove and destroy bootstrap select feature
-            $(dessertsTypeListSelectControlElementObj).find('option').remove();
-            $(dessertsTypeListSelectControlElementObj).selectpicker('destroy');
-            if(allDessertsTypeList.length>0 && allDessertsTypeList!==false){
-                // iterate each product type details 
-                for(var eachDessertsIndex = 0; eachDessertsIndex<allDessertsTypeList.length; eachDessertsIndex++){
-                    var producttypeValue = allDessertsTypeList[eachDessertsIndex]['productTypeId'];
-                    var productIcon = allDessertsTypeList[eachDessertsIndex]['productIcon'];
-                    var productTypeTitle = allDessertsTypeList[eachDessertsIndex]['productTypeTitle'];
-                    var eachOptionStr = "<option data-icon='"+productIcon+"' value='"+producttypeValue+"'>"+productTypeTitle+"</option>";
-                    $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
+            if($('#dkDeliveryAreaDessertsTypeListSelectCtrlId').length===1){       
+                var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsTypeListSelectCtrlId");
+                // all options remove and destroy bootstrap select feature
+                $(dessertsTypeListSelectControlElementObj).find('option').remove();
+                $(dessertsTypeListSelectControlElementObj).selectpicker('destroy');
+                if(allDessertsTypeList.length>0 && allDessertsTypeList!==false){
+                    // iterate each product type details 
+                    for(var eachDessertsIndex = 0; eachDessertsIndex<allDessertsTypeList.length; eachDessertsIndex++){
+                        var producttypeValue = allDessertsTypeList[eachDessertsIndex]['productTypeId'];
+                        var productIcon = allDessertsTypeList[eachDessertsIndex]['productIcon'];
+                        var productTypeTitle = allDessertsTypeList[eachDessertsIndex]['productTypeTitle'];
+                        var eachOptionStr = "<option data-icon='"+productIcon+"' value='"+producttypeValue+"'>"+productTypeTitle+"</option>";
+                        $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
+                    }
                 }
-            }
-            // refresh desserts type list select control element 
-            $(dessertsTypeListSelectControlElementObj).selectpicker('refresh');
-            // applying change event function
-            if($(dessertsTypeListSelectControlElementObj).find('option').length>0){
-                $rootScope.applyChangeEventDkDeliveryAreaBasedDessertsTypeListSelectCtrlElement(dessertsTypeListSelectControlElementObj);
+                // refresh desserts type list select control element 
+                $(dessertsTypeListSelectControlElementObj).selectpicker('refresh');
+                // applying change event function
+                if($(dessertsTypeListSelectControlElementObj).find('option').length>0){
+                    $rootScope.applyChangeEventDkDeliveryAreaBasedDessertsTypeListSelectCtrlElement(dessertsTypeListSelectControlElementObj);
+                }
             }
         };
         
