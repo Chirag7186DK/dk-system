@@ -41,72 +41,48 @@ class ProductDao{
             $connection = Yii::App()->db;
             
             $sql= " SELECT 
-                    COALESCE(pt.id, '') productTypeId,
-                    COALESCE(pt.name, '') productTypeTitle, 
-                    COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
-                    COALESCE(ppc.id, '') productTypeProductCategoryId, 
-                    COALESCE(ppc.name, '') productTypeProductCategoryTitle,
-                    COALESCE(spa.shoptstore_id, '') shopStoreId, 
-                    COALESCE(ss.shopstore_name, '') shopStoreTitle,
-                    COALESCE(ss.shop_storelabel, '') shopStoreLabel, 
-                    COALESCE(ss.shopstore_logofile, '') shopstore_logofile,
-                    COALESCE(ss.shopstore_mobile, '') shopstore_mobile,
-                    COALESCE(sppl.id, '') productListId, COALESCE(sppl.name, '') productListTitle,
-                    COALESCE(sppfd.id, '') productFeatureId, 
-                    COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
-                    COALESCE(sppfd.food_type, '') productFeatureFoodType, 
-                    COALESCE(sppfd.taste_type, '') productFeatureTasteType, 
-                    COALESCE(sppfd.pattern_type, '') productFeaturePatternType, 
-                    COALESCE(sppfd.order_opentime, '') productFeatureOrderOpenTime, 
-                    COALESCE(sppfd.order_closetime, '') productFeatureOrderOpenTime, 
-                    COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
-                    COALESCE(sppfd.product_discount, '') productFeatureDiscount,
-                    COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice,
-                    COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
-                    COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
-                    COALESCE(ppimg.file_path, 'images/') productImageFilePath,
                     COALESCE(ccr.country_id, '') countryId, 
-                    COALESCE(ccr.city_id, '') cityId, 
-                    COALESCE(ccr.area_id, '') areaId, 
-                    COALESCE(area.name, '') areaTitle ";
+                    COALESCE(ccr.city_id, '') cityId, COALESCE(country.name, '') cityName, 
+                    COALESCE(ccr.area_id, '') areaId, COALESCE(area.name, '') areaTitle,
+                    COALESCE(spa.shopstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+                    COALESCE(ss.shop_storelabel, '') shopStoreLabel, COALESCE(ss.shopstore_logofile, '') shopstore_logofile,
+                    COALESCE(ss.shopstore_mobile, '') shopstore_mobile,
+                    COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
+                    COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
+                    COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '') productTypeProductCategoryTitle,
+                    COALESCE(spl.id, '') productListId, COALESCE(spl.name, '') productListTitle,
+                    COALESCE(splld.id, '') productFeatureId, COALESCE(splld.food_type, '') productFeatureFoodType, 
+                    COALESCE(splld.taste_type, '') productFeatureTasteType, COALESCE(splld.pattern_type, '') productFeaturePatternType, 
+                    COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
+                    COALESCE(splld.baseprice, '') productFeatureBasePrice, COALESCE(splld.product_discount, '') productFeatureDiscount,
+                    COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
+                    COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
+                    COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
+                    COALESCE(splImg.file_path, 'images/') productImageFilePath ";
             $sql.= $selectStatementForGroupBy;
             $sql.="
                     FROM DK_PRODUCTTYPE pt
                     JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
                     JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
-                        AND sppc.producttype_categoryid=ppc.id AND sppc.status = 'A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
-                        AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.status = 'A'
-                    JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
+                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+                        AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
+                    JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+                    JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+                    JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
                     JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
                     JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
                     JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
                     JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
-                        ON sppfd.product_listid=sppl.id AND sppfd.status = 'A'
-                    LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
-                        ON ppimg.product_listid=sppl.id  AND ppimg.status = 'A' 
-                        AND ppimg.is_showcasefile = 'Y' ";
+                    LEFT JOIN DK_SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+                        ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y' ";
                         
                     // add product_listids in left join condition for image file mapping
                     if(array_key_exists('product_listids', $paramJson)){
                         if($paramJson['product_listids']!=false && $paramJson['product_listids']!='' 
                             && $paramJson['product_listids']!=null){
-                            $sql.=" AND ppimg.product_listid IN (".$paramJson['product_listids'].") ";
+                            $sql.=" AND splImg.product_listid IN (".$paramJson['product_listids'].") ";
                         } 
                     } 
-                    
-                    // add product_showcasefile in left join condition for image file mapping
-                    if(array_key_exists('product_showcasefile', $paramJson)){
-                        if($paramJson['product_showcasefile']!='Y'){
-                            $sql.=" AND ppimg.is_showcasefile = '".$paramJson['product_showcasefile']."' ";
-                        }else{
-                            $sql.=" AND ppimg.is_showcasefile = 'Y' ";
-                        }
-                    }else{
-                        $sql.=" AND ppimg.is_showcasefile = 'Y' ";
-                    }  
             
             $sql.="  WHERE 1 ";
             
@@ -114,39 +90,7 @@ class ProductDao{
                 if(array_key_exists('shop_storesids', $paramJson)){
                     if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
                         && $paramJson['shop_storesids']!=null){
-                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND spa.shoptstore_id IN (".$paramJson['shop_storesids'].") ";
-                    }
-                }
-                
-                // add country city area ka affiliation id is given in where condition
-                if(array_key_exists('country_city_area_affiliationids', $paramJson)){
-                    if($paramJson['country_city_area_affiliationids']!=false && $paramJson['country_city_area_affiliationids']!='' 
-                        && $paramJson['country_city_area_affiliationids']!=null){
-                        $sql.=" AND ss.country_city_area_affiliationId IN (".$paramJson['country_city_area_affiliationids'].") AND ccr.id IN (".$paramJson['country_city_area_affiliationids'].") ";
-                    }
-                }
-                
-                // add country in where condition
-                if(array_key_exists('country_ids', $paramJson)){
-                    if($paramJson['country_ids']!=false && $paramJson['country_ids']!='' 
-                        && $paramJson['country_ids']!=null){
-                        $sql.=" AND country.id IN (".$paramJson['country_ids'].") AND ccr.country_id IN (".$paramJson['country_ids'].") ";
-                    }
-                }
-                
-                // add city in where condition
-                if(array_key_exists('city_ids', $paramJson)){
-                    if($paramJson['city_ids']!=false && $paramJson['city_ids']!='' 
-                        && $paramJson['city_ids']!=null){
-                        $sql.=" AND city.id IN (".$paramJson['city_ids'].") AND ccr.city_id IN (".$paramJson['city_ids'].") ";
-                    }
-                }
-                
-                // add area in where condition
-                if(array_key_exists('area_ids', $paramJson)){
-                    if($paramJson['area_ids']!=false && $paramJson['area_ids']!='' 
-                        && $paramJson['area_ids']!=null){
-                        $sql.=" AND area.id IN (".$paramJson['area_ids'].") AND ccr.area_id IN (".$paramJson['area_ids'].") ";
+                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND spa.shopstore_id IN (".$paramJson['shop_storesids'].") ";
                     }
                 }
                 
@@ -156,7 +100,6 @@ class ProductDao{
                         && $paramJson['product_typeids']!=null){
                         $sql.=" AND pt.id IN (".$paramJson['product_typeids'].") AND ppc.product_typeid IN (".$paramJson['product_typeids'].") ";
                         $sql.=" AND spa.product_typeid IN (".$paramJson['product_typeids'].") ";
-                        $sql.=" AND sppc.shopstores_producttype_affiliationid = spa.id AND sppl.shopstores_producttype_affiliationid = spa.id ";
                     }
                 }
                 
@@ -164,8 +107,7 @@ class ProductDao{
                 if(array_key_exists('product_categoryids', $paramJson)){
                     if($paramJson['product_categoryids']!=false && $paramJson['product_categoryids']!='' 
                         && $paramJson['product_categoryids']!=null){
-                        $sql.=" AND ppc.id IN (".$paramJson['product_categoryids'].") AND sppl.shopstores_product_categoryid IN (".$paramJson['product_categoryids'].") ";
-                        $sql.=" AND sppc.producttype_categoryid IN (".$paramJson['product_categoryids'].") ";
+                        $sql.=" AND ppc.id IN (".$paramJson['product_categoryids'].") AND spac.producttype_categoryid IN (".$paramJson['product_categoryids'].") ";
                     }
                 }
                 
@@ -173,7 +115,7 @@ class ProductDao{
                 if(array_key_exists('product_listids', $paramJson)){
                     if($paramJson['product_listids']!=false && $paramJson['product_listids']!='' 
                         && $paramJson['product_listids']!=null){
-                        $sql.=" AND sppl.id IN (".$paramJson['product_listids'].") AND sppfd.product_listid IN (".$paramJson['product_listids'].") ";
+                        $sql.=" AND spl.id IN (".$paramJson['product_listids'].") AND splld.product_listid IN (".$paramJson['product_listids'].") ";
                     }
                 }
                 
@@ -186,7 +128,7 @@ class ProductDao{
                         for($eachSizeFilterIndex = 0; $eachSizeFilterIndex<count($productSizeFilterArr); $eachSizeFilterIndex++){
                             if($productSizeFilterArr[$eachSizeFilterIndex]!=''){
                                 $productSize = $productSizeFilterArr[$eachSizeFilterIndex];
-                                array_push($sizeFilterConditionArr, " (sppfd.display_measurementtype='".$productSize."')");
+                                array_push($sizeFilterConditionArr, " (splld.display_measurementtype='".$productSize."')");
                             }
                         }
                         if(count($sizeFilterConditionArr)>0 && $sizeFilterConditionArr!=false){
@@ -205,9 +147,9 @@ class ProductDao{
                             if($productPriceFilterArr[$eachPriceFilterIndex]!=''){
                                 $priceExplodeOnUnderScoreOptr = explode("_", $productPriceFilterArr[$eachPriceFilterIndex]);
                                 if(count($priceExplodeOnUnderScoreOptr)>1){
-                                    array_push($priceFilterConditionArr, " (sppfd.online_sellprice>=".$priceExplodeOnUnderScoreOptr[0]." AND sppfd.online_sellprice<=".$priceExplodeOnUnderScoreOptr[1].")");
+                                    array_push($priceFilterConditionArr, " (splld.online_sellprice>=".$priceExplodeOnUnderScoreOptr[0]." AND splld.online_sellprice<=".$priceExplodeOnUnderScoreOptr[1].")");
                                 }else{
-                                    array_push($priceFilterConditionArr, " (sppfd.online_sellprice=".$priceExplodeOnUnderScoreOptr[0].")");
+                                    array_push($priceFilterConditionArr, " (splld.online_sellprice=".$priceExplodeOnUnderScoreOptr[0].")");
                                 }
                             }
                         }
@@ -227,9 +169,9 @@ class ProductDao{
                             if($productDiscountFilterArr[$eachDiscountFilterIndex]!=''){
                                 $discountExplodeOnUnderScoreOptr = explode("_", $productDiscountFilterArr[$eachDiscountFilterIndex]);
                                 if(count($discountExplodeOnUnderScoreOptr)>1){
-                                    array_push($discountFilterConditionArr, " (sppfd.product_discount>=".$discountExplodeOnUnderScoreOptr[0]." AND sppfd.product_discount<=".$discountExplodeOnUnderScoreOptr[1].")");
+                                    array_push($discountFilterConditionArr, " (splld.product_discount>=".$discountExplodeOnUnderScoreOptr[0]." AND splld.product_discount<=".$discountExplodeOnUnderScoreOptr[1].")");
                                 }else{
-                                    array_push($discountFilterConditionArr, " (sppfd.product_discount=".$discountExplodeOnUnderScoreOptr[0].")");
+                                    array_push($discountFilterConditionArr, " (splld.product_discount=".$discountExplodeOnUnderScoreOptr[0].")");
                                 }
                             }
                         }
@@ -244,8 +186,7 @@ class ProductDao{
                     if($paramJson['not_inproduct_typeids']!=false && $paramJson['not_inproduct_typeids']!='' 
                         && $paramJson['not_inproduct_typeids']!=null){
                         $sql.=" AND pt.id NOT IN (".$paramJson['not_inproduct_typeids'].") AND ppc.product_typeid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
-                        $sql.=" AND spa.product_typeid NOT IN (".$paramJson['not_inproduct_typeids'].") AND sppc.shopstores_producttype_affiliationid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
-                        $sql.=" AND sppl.shopstores_producttype_affiliationid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
+                        $sql.=" AND spa.product_typeid NOT IN (".$paramJson['not_inproduct_typeids'].") ";
                     }
                 }
                 
@@ -259,27 +200,27 @@ class ProductDao{
                 // sort by price
                 if(array_key_exists('price_lowtohigh', $paramJson)){
                     if($paramJson['price_lowtohigh']=='Y'){
-                        $sqlOrderByStmt.=" sppfd.online_sellprice ASC,";
+                        $sqlOrderByStmt.=" splld.online_sellprice ASC,";
                     }
                 }else if(array_key_exists('price_hightolow', $paramJson)){
                     if($paramJson['price_hightolow']=='Y'){
-                        $sqlOrderByStmt.=" sppfd.online_sellprice DESC,";
+                        $sqlOrderByStmt.=" splld.online_sellprice DESC,";
                     }
                 }else{
-                    $sqlOrderByStmt.= "sppfd.online_sellprice ASC,";
+                    $sqlOrderByStmt.= "splld.online_sellprice ASC,";
                 }
                 
                 // sort by discount
                 if(array_key_exists('discount_lowtohigh', $paramJson)){
                     if($paramJson['discount_lowtohigh']=='Y'){
-                        $sqlOrderByStmt.=" sppfd.product_discount ASC";
+                        $sqlOrderByStmt.=" splld.product_discount ASC";
                     }
                 }else if(array_key_exists('discount_hightolow', $paramJson)){
                     if($paramJson['discount_hightolow']=='Y'){
-                        $sqlOrderByStmt.=" sppfd.product_discount DESC,";
+                        $sqlOrderByStmt.=" splld.product_discount DESC,";
                     }
                 }else{
-                    $sqlOrderByStmt.=" sppfd.product_discount ASC,";
+                    $sqlOrderByStmt.=" splld.product_discount ASC,";
                 }
                 
                 if($sqlGroupByStatement!=''){
@@ -290,10 +231,9 @@ class ProductDao{
                     $sql.= trim($sqlOrderByStmt, ",");
                 }
             $command = $connection->createCommand($sql);
-            $retShopStoresProductTypeProductCategoryProductListArr = $command->queryAll();
-            if(count($retShopStoresProductTypeProductCategoryProductListArr)>0 
-                && $retShopStoresProductTypeProductCategoryProductListArr!=false){
-                $retResult =  $retShopStoresProductTypeProductCategoryProductListArr;    
+            $productDetailsArr = $command->queryAll();
+            if(count($productDetailsArr)>0 && $productDetailsArr!=false){
+                $retResult =  $productDetailsArr;    
             }
         }catch(Exception $ex){}
         return $retResult;
