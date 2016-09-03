@@ -135,9 +135,9 @@ function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPa
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDkDeliveryCityList(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
+        var paramObj = {};
+        paramObj['country_ids'] = '';
+        paramObj['city_ids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -147,15 +147,15 @@ function getParamObjFromSessionForLoadingDkDeliveryCityList(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
             }
         }
-        if(retParamObj['country_ids']==='1'){
-            return retParamObj;
+        if(paramObj['country_ids']==='1'){
+            return paramObj;
         }else{
             return false;
         }
