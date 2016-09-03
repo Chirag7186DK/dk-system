@@ -5,35 +5,27 @@ angular.module('DKAPP').controller('LocationController', LocationController);
 function LocationController($scope, $rootScope, $http, LocationServices){
     try{
         
+        // current controller obj
+        var vm = this;
+        
         // loadDkDeliveryCityList 
-        $rootScope.loadDkDeliveryCityList = function(loadOnPage){
+        vm.loadDkDeliveryCityList = function(cityListLoadedOnPage){
             try{
-                // get param obj to get related city details
-                var preparedParamJsonObj = getParamObjFromSessionForLoadingDkDeliveryCityDetails();
-                // console.log("loadDkDeliveryCityList preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
+                // get param obj to get delivery city list
+                var preparedParamJsonObj = getParamObjFromSessionForLoadingDkDeliveryCityList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    
                     var fetchCityParamJsonObj = {};
                     fetchCityParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
-                    // calling LocationServices to get dk delivery city details
+                    // calling LocationServices to get dk delivery city list
                     LocationServices.getDKDeliveryCityList(fetchCityParamJsonObj).done(function(retResponseJson){
-                        // console.log("retResponseJson=>"+JSON.stringify(retResponseJson));
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', retResponseJson);
-                                // console.log("loadDkDeliveryCityList retResponseJson=>"+JSON.stringify(retArrObj));
-                                if(retArrObj!==false && retArrObj!==undefined && retArrObj!==''){
-                                    storeDefaultDeliveryCityDetailsInSessionStorage(retArrObj.defaultSelectedDeliveryCityDetails, 'N');
-                                    // final all dk delivery city list in variable and default city also
-                                    $rootScope.defaultedSelectedDKDeliveryCity = retArrObj.defaultSelectedDeliveryCityDetails['cityId'];
-                                    $rootScope.dkDeliveryCityList = retArrObj.allCityList;
-                                    $rootScope.buildDKDeliveryCityListlHtmlSelectControl($rootScope.dkDeliveryCityList, loadOnPage);
+                                var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', retResponseJson);
+                                if(arrObj!==false && arrObj!==undefined && arrObj!==''){
+                                    storeDefaultDeliveryCityDetailsInSessionStorage(arrObj.defaultSelectedDeliveryCityDetails, 'N');
+                                    vm.defaultedSelectedDKDeliveryCity = arrObj.defaultSelectedDeliveryCityDetails['cityId'];
+                                    vm.dkDeliveryCityList = arrObj.allCityList;
+                                    vm.buildDKDeliveryCityListHtmlSelectControl(vm.dkDeliveryCityList, cityListLoadedOnPage);
                                 }
                             }
                         });
@@ -41,66 +33,68 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 }
             }catch(ex){
                 console.log("problem in loadDkDeliveryCityList ex=>"+ex);
-                $rootScope.dkDeliveryCityList = false;
-                $rootScope.defaultedSelectedDKDeliveryCity = '';
-                showHideLoaderBox('hide');
+                vm.dkDeliveryCityList = false;
+                vm.defaultedSelectedDKDeliveryCity = '';
             }
         };
         
-        // buildDKDeliveryCityListlHtmlSelectControl
-        $rootScope.buildDKDeliveryCityListlHtmlSelectControl = function(cityList, cityDetailsLoadedOnPage){
+        // buildDKDeliveryCityListHtmlSelectControl
+        vm.buildDKDeliveryCityListHtmlSelectControl = function(cityList, cityListLoadedOnPage){
             // get html element obj 
             var cityListSelectControlElementObj = document.getElementById("dkDeliveryCityListSelectCtrlId");
             // all options remove and destroy bootstrap select feature
             $(cityListSelectControlElementObj).find('option').remove();
             $(cityListSelectControlElementObj).selectpicker('destroy');
-            if(cityList.length>0 && cityList!=='' && cityList!==undefined && cityList!==false){
-                // iterate each city details 
-                for(var eachCityDetailsArrIndex = 0; eachCityDetailsArrIndex<cityList.length; eachCityDetailsArrIndex++){
-                    var cityValue = cityList[eachCityDetailsArrIndex]['cityId'];
-                    var cityIcon = cityList[eachCityDetailsArrIndex]['cityIcon'];
-                    var cityName = cityList[eachCityDetailsArrIndex]['cityName'];
+            if(cityList.length>0 && cityList!==false){
+                // iterate each city list 
+                for(var eachCityIndex = 0; eachCityIndex<cityList.length; eachCityIndex++){
+                    var cityValue = cityList[eachCityIndex]['cityId'];
+                    var cityIcon = cityList[eachCityIndex]['cityIcon'];
+                    var cityName = cityList[eachCityIndex]['cityName'];
                     var eachOptionStr = "<option class='citySuggestionOptionClass' data-icon='"+cityIcon+"' value='"+cityValue+"'>"+cityName+"</option>";
                     $(cityListSelectControlElementObj).append(eachOptionStr);
                 }
             }
             // refresh city list select control element 
             $(cityListSelectControlElementObj).selectpicker('refresh');
-            // showing default selected city
+            // showing default selected delivery city
             $(cityListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryCity);
-            // apply change event on city list
+            // apply change event on delivery city list
             if($(cityListSelectControlElementObj).find('option').length>0){
-                $rootScope.buildedDKDeliveryCityListlHtmlSelectControlOnChangeEvent(cityListSelectControlElementObj, cityDetailsLoadedOnPage);
+                vm.applyChangeEventDkDeliveryCityListSelectCtrlElement(cityListSelectControlElementObj, cityListLoadedOnPage);
             }
             // refresh dependency element
-            $rootScope.refreshElementDependencyDeliveryCity();
+            vm.refreshDependencyElementOfDeliveryCityList();
         };
         
-        // buildedDKDeliveryCityListlHtmlSelectControlOnChangeEvent
-        $rootScope.buildedDKDeliveryCityListlHtmlSelectControlOnChangeEvent = function(elementObj, cityDetailsLoadedOnPage){
-            // city details change by user then 
+        // applyChangeEventDkDeliveryCityListSelectCtrlElement
+        vm.applyChangeEventDkDeliveryCityListSelectCtrlElement = function(elementObj, cityListLoadedOnPage){
+            // city list change by user 
             $(elementObj).on('changed.bs.select', function(e){
-                var paramObj = {"cityId":$(elementObj).selectpicker('val'), "cityName":$(elementObj).find('option:selected').text()};
+                var paramObj = {
+                    "cityId":$(elementObj).selectpicker('val'), 
+                    "cityName":$(elementObj).find('option:selected').text()
+                };
                 storeDefaultDeliveryCityDetailsInSessionStorage(paramObj, 'Y');
-                $rootScope.defaultedSelectedDKDeliveryCity = ($(elementObj).selectpicker('val'));
-                // refresh dk delivery area list, dk delivery city list, delivery desserts product type list
-                $rootScope.refreshElementDependencyDeliveryCity(cityDetailsLoadedOnPage, 'Y');
+                vm.defaultedSelectedDKDeliveryCity = ($(elementObj).selectpicker('val'));
+                // refresh dk delivery area list, delivery desserts type list
+                vm.refreshDependencyElementOfDeliveryCityList(cityListLoadedOnPage, 'Y');
             });
         };
         
-        // refreshElementDependencyDeliveryCity
-        $rootScope.refreshElementDependencyDeliveryCity = function(cityDetailsLoadedOnPage){
-            $rootScope.isDkDeliveryCityChanged = false;
-            $rootScope.isDkDeliveryAreaChanged = false;
-            // refresh dk delivery area list, dk delivery city list, delivery desserts product type list
-            if($rootScope.defaultedSelectedDKDeliveryCity!=='' && $rootScope.defaultedSelectedDKDeliveryCity!==false){
-                $rootScope.isDkDeliveryCityChanged = true;
-                // remove existing delivery area option list & refresh delivery area options list
+        // refreshDependencyElementOfDeliveryCityList
+        vm.refreshDependencyElementOfDeliveryCityList = function(cityListLoadedOnPage){
+            vm.isDkDeliveryCityChanged = false;
+            vm.isDkDeliveryAreaChanged = false;
+            // refresh dk delivery area list, delivery desserts type list
+            if(vm.defaultedSelectedDKDeliveryCity!=='' && vm.defaultedSelectedDKDeliveryCity!==false){
+                vm.isDkDeliveryCityChanged = true;
+                // remove existing delivery area list
                 if($('#dkDeliveryAreaListWrapperDivId').length===1){
                     $('#dkDeliveryAreaListSelectCtrlId').find('option').remove();
-                    angular.element('#dkDeliveryAreaListWrapperDivId').scope().loadDKDeliveryAreaList(cityDetailsLoadedOnPage);
+                    angular.element('#dkDeliveryAreaListWrapperDivId').scope().loadDKDeliveryAreaList(cityListLoadedOnPage);
                 }
-                // remove existing delivery area desserts product type option list
+                // remove existing delivery area desserts type list
                 if($('#dkDeliveryAreaDessertsProductListWrapperDivId').length===1){
                     $('#dkDeliveryAreaDessertsProductListSelectCtrlId').find('option').remove();
                 }
@@ -108,34 +102,26 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         };
         
         // loadDKDeliveryAreaList 
-        $rootScope.loadDKDeliveryAreaList = function(loadAreaDetailsOnPage){
+        vm.loadDKDeliveryAreaList = function(loadAreaListOnPage){
             try{
-                if($rootScope.isDkDeliveryCityChanged===true){
-                    // get param obj to dk delivery area details
-                    var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaDetails();
-                    // console.log("loadDKDeliveryAreaList preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
+                if(vm.isDkDeliveryCityChanged===true){
+                    // get param obj to dk delivery area list
+                    var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaList();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-                        
                         var fetchAreaParamJsonObj = {};
                         fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
                         // calling LocationServices to get dk delivery area list
                         LocationServices.getDKDeliveryAreaList(fetchAreaParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
-                                showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var retArrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
-                                    if(retArrJsonObj!==false && retArrJsonObj!==undefined && retArrJsonObj!==''){
-                                        storeDefaultDeliveryAreaDetailsInSessionStorage(retArrJsonObj.defaultSelectedDeliveryAreaDetails, 'N');
-                                        if(retArrJsonObj.defaultSelectedDeliveryAreaDetails!==false){
-                                            $rootScope.defaultedSelectedDKDeliveryArea = retArrJsonObj.defaultSelectedDeliveryAreaDetails['areaId'];
+                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
+                                    if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                        storeDefaultDeliveryAreaDetailsInSessionStorage(arrJsonObj.defaultSelectedDeliveryAreaDetails, 'N');
+                                        if(arrJsonObj.defaultSelectedDeliveryAreaDetails!==false){
+                                            vm.defaultedSelectedDKDeliveryArea = arrJsonObj.defaultSelectedDeliveryAreaDetails['areaId'];
                                         }
-                                        $rootScope.dkDeliveryAreaList = retArrJsonObj.allAreaList;
-                                        $rootScope.buildDKDeliveryAreaListHtmlSelectControl($rootScope.dkDeliveryAreaList, loadAreaDetailsOnPage);
+                                        vm.dkDeliveryAreaList = arrJsonObj.allAreaList;
+                                        vm.buildDKDeliveryAreaListHtmlSelectControl(vm.dkDeliveryAreaList, loadAreaListOnPage);
                                     }
                                 }
                             });
@@ -143,26 +129,25 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     }
                 }
             }catch(ex){
-                $rootScope.dkDeliveryAreaList = false;
-                $rootScope.defaultedSelectedDKDeliveryArea = '';
-                showHideLoaderBox('hide');
+                vm.dkDeliveryAreaList = false;
+                vm.defaultedSelectedDKDeliveryArea = '';
                 console.log("problem in loadDKDeliveryAreaList ex=>"+ex);
             }
         };
         
         // buildDKDeliveryAreaListHtmlSelectControl
-        $rootScope.buildDKDeliveryAreaListHtmlSelectControl = function(dkDeliveryAreaList, areaDetailsLoadedOnPage){
+        vm.buildDKDeliveryAreaListHtmlSelectControl = function(dkDeliveryAreaList, loadAreaListOnPage){
             var areaListSelectControlElementObj = document.getElementById("dkDeliveryAreaListSelectCtrlId");
             // all options remove and destroy bootstrap select feature
             $(areaListSelectControlElementObj).find('option').remove();
             $(areaListSelectControlElementObj).selectpicker('destroy');
-            if(dkDeliveryAreaList.length>0 && dkDeliveryAreaList!=='' && dkDeliveryAreaList!==undefined && dkDeliveryAreaList!==false){
-                // iterate each area details 
-                for(var eachAreaDetailsArrIndex = 0; eachAreaDetailsArrIndex<dkDeliveryAreaList.length; eachAreaDetailsArrIndex++){
-                    var areaValue = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaId'];
-                    var areaIcon = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaIcon'];
-                    var areaName = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaName'];
-                    var areaPincode = dkDeliveryAreaList[eachAreaDetailsArrIndex]['areaPincode'];
+            if(dkDeliveryAreaList.length>0 && dkDeliveryAreaList!==false){
+                // iterate each area list 
+                for(var eachAreaIndex = 0; eachAreaIndex<dkDeliveryAreaList.length; eachAreaIndex++){
+                    var areaValue = dkDeliveryAreaList[eachAreaIndex]['areaId'];
+                    var areaIcon = dkDeliveryAreaList[eachAreaIndex]['areaIcon'];
+                    var areaName = dkDeliveryAreaList[eachAreaIndex]['areaName'];
+                    var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
                     var areaStr = areaPincode + " " +areaName;
                     // var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
                     var eachOptionStr = "<option class='cityAreaSuggestionOptionClass' data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
@@ -172,18 +157,18 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             // refresh dk delivery area list select control element 
             $(areaListSelectControlElementObj).selectpicker('refresh');
             // showing default selected delivery area list
-            $(areaListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryArea);
+            $(areaListSelectControlElementObj).selectpicker('val', vm.defaultedSelectedDKDeliveryArea);
             // apply change event of area list
             if($(areaListSelectControlElementObj).find('option').length>0){
-                $rootScope.buildedDKDeliveryAreaListHtmlSelectControlOnChangeEvent(areaListSelectControlElementObj, areaDetailsLoadedOnPage);
+                vm.applyChangeEventDkDeliveryAreaListSelectCtrlElement(areaListSelectControlElementObj, loadAreaListOnPage);
             }
             // refresh dependency element on ui screen
-            $rootScope.refreshElementDependencyDeliveryArea(areaDetailsLoadedOnPage);
+            vm.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
             LocationServices.showUserSelectedDeliveryAreaTextHeader();
         };
         
-        // buildedDKDeliveryAreaListHtmlSelectControlOnChangeEvent
-        $rootScope.buildedDKDeliveryAreaListHtmlSelectControlOnChangeEvent = function(elementObj, areaDetailsLoadedOnPage){
+        // applyChangeEventDkDeliveryAreaListSelectCtrlElement
+        vm.applyChangeEventDkDeliveryAreaListSelectCtrlElement = function(elementObj, loadAreaListOnPage){
             $(elementObj).on('changed.bs.select', function(e){
                 var areaNamesStr = '';
                 var selectedAreaSplittedArr = ($(elementObj).find('option:selected').text()).split(" ");
@@ -196,54 +181,45 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     "areaName":(areaNamesStr.trim())
                 };
                 storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
-                $rootScope.defaultedSelectedDKDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
-                // refresh desserts product type list based on city, area
-                $rootScope.refreshElementDependencyDeliveryArea(areaDetailsLoadedOnPage);
+                vm.defaultedSelectedDKDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
+                // refresh desserts type list based on city, area
+                vm.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
                 LocationServices.showUserSelectedDeliveryAreaTextHeader();
             });
         };
         
-        // refreshElementDependencyDeliveryArea
-        $rootScope.refreshElementDependencyDeliveryArea = function(areaDetailsLoadedOnPage){
-            $rootScope.isDkDeliveryCityChanged = true;
-            $rootScope.isDkDeliveryAreaChanged = false;
-            if($rootScope.defaultedSelectedDKDeliveryArea!=='' && $rootScope.defaultedSelectedDKDeliveryArea!==false){
-                $rootScope.isDkDeliveryAreaChanged = true;
-                // remove existing desserts product type list and add new one list
+        // refreshDependencyElementOfDeliveryAreaList
+        vm.refreshDependencyElementOfDeliveryAreaList = function(loadAreaListOnPage){
+            vm.isDkDeliveryCityChanged = true;
+            vm.isDkDeliveryAreaChanged = false;
+            if(vm.defaultedSelectedDKDeliveryArea!=='' && vm.defaultedSelectedDKDeliveryArea!==false){
+                vm.isDkDeliveryAreaChanged = true;
+                // remove existing desserts type list
                 if($('#dkDeliveryAreaDessertsProductListWrapperDivId').length===1){
                     $('#dkDeliveryAreaDessertsProductListSelectCtrlId').find('option').remove();
-                    angular.element('#dkDeliveryAreaDessertsProductListWrapperDivId').scope().loadDKDeliveryAreaBasedProductTypeList($rootScope.isDkDeliveryAreaChanged, areaDetailsLoadedOnPage);
+                    angular.element('#dkDeliveryAreaDessertsProductListWrapperDivId').scope().loadDKDeliveryAreaBasedDessertsTypeList(vm.isDkDeliveryAreaChanged, loadAreaListOnPage);
                 }
             }
         };
         
-        // loadDKDeliveryAreaBasedProductTypeList 
-        $rootScope.loadDKDeliveryAreaBasedProductTypeList = function(isDkDeliveryAreaChanged, loadDessertsProductaDetailsOnPage){
+        // loadDKDeliveryAreaBasedDessertsTypeList 
+        vm.loadDKDeliveryAreaBasedDessertsTypeList = function(isDkDeliveryAreaChanged, loadDessertTypeListOnPage){
             try{
-                if(isDkDeliveryAreaChanged===true && $rootScope.isDkDeliveryAreaChanged===true){
-                    // get param obj to product type details
-                    var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaBasedProductTypeDetails();
-                    // console.log("loadDKDeliveryAreaBasedProductTypeList preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
+                if(isDkDeliveryAreaChanged===true && vm.isDkDeliveryAreaChanged===true){
+                    // get param obj to desserts type list
+                    var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaBasedDessertsTypeList();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-                        
                         var fetchAreaParamJsonObj = {};
                         fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
-                        // calling LocationServices to get dk delivery area based product type list
-                        LocationServices.getDKDeliveryAreaBasedProductTypeList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        // calling LocationServices to get dk delivery area based desserts type list
+                        LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchAreaParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
-                                showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    // console.log("getDKDeliveryAreaBasedProductTypeList retResponseJson=>"+JSON.stringify(retResponseJson));
-                                    var retArrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedProductTypeDetails', retResponseJson);
-                                    if(retArrJsonObj!==false && retArrJsonObj!==undefined && retArrJsonObj!==''){
-                                        storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(false, 'Y');
-                                        $rootScope.dkDeliveryAreaBasedProductTypeList = retArrJsonObj.allProductTypeList;
-                                        $rootScope.buildDKDeliveryAreaBasedProductListHtmlSelectControl($rootScope.dkDeliveryAreaBasedProductTypeList, loadDessertsProductaDetailsOnPage);
+                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedProductTypeDetails', retResponseJson);
+                                    if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                        storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(false, 'Y');
+                                        vm.dkDeliveryAreaBasedProductTypeList = arrJsonObj.allProductTypeList;
+                                        vm.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl(vm.dkDeliveryAreaBasedProductTypeList, loadDessertTypeListOnPage);
                                     }
                                 }
                             });
@@ -251,45 +227,43 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     }
                 }
             }catch(ex){
-                $rootScope.dkDeliveryAreaBasedProductTypeList = false;
-                showHideLoaderBox('hide');
+                vm.dkDeliveryAreaBasedProductTypeList = false;
                 console.log("problem in loadDKDeliveryAreaBasedProductTypeList ex=>"+ex);
             }
         };
         
-        // buildDKDeliveryAreaBasedProductListHtmlSelectControl
-        $rootScope.buildDKDeliveryAreaBasedProductListHtmlSelectControl = function(allDessertsProductTypeList, loadDessertsProductaDetailsOnPage){
-            var productTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsProductListSelectCtrlId");
+        // buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl
+        vm.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl = function(allDessertsTypeList, loadDessertTypeListOnPage){
+            var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsProductListSelectCtrlId");
             // all options remove and destroy bootstrap select feature
-            $(productTypeListSelectControlElementObj).find('option').remove();
-            $(productTypeListSelectControlElementObj).selectpicker('destroy');
-            if(allDessertsProductTypeList.length>0 && allDessertsProductTypeList!=='' 
-                && allDessertsProductTypeList!==undefined && allDessertsProductTypeList!==false){
+            $(dessertsTypeListSelectControlElementObj).find('option').remove();
+            $(dessertsTypeListSelectControlElementObj).selectpicker('destroy');
+            if(allDessertsTypeList.length>0 && allDessertsTypeList!==false){
                 // iterate each product type details 
-                for(var eachProductTypeDetailsArrIndex = 0; eachProductTypeDetailsArrIndex<allDessertsProductTypeList.length; eachProductTypeDetailsArrIndex++){
-                    var producttypeValue = allDessertsProductTypeList[eachProductTypeDetailsArrIndex]['productTypeId'];
-                    var productIcon = allDessertsProductTypeList[eachProductTypeDetailsArrIndex]['productIcon'];
-                    var productTypeTitle = allDessertsProductTypeList[eachProductTypeDetailsArrIndex]['productTypeTitle'];
+                for(var eachDessertsIndex = 0; eachDessertsIndex<allDessertsTypeList.length; eachDessertsIndex++){
+                    var producttypeValue = allDessertsTypeList[eachDessertsIndex]['productTypeId'];
+                    var productIcon = allDessertsTypeList[eachDessertsIndex]['productIcon'];
+                    var productTypeTitle = allDessertsTypeList[eachDessertsIndex]['productTypeTitle'];
                     var eachOptionStr = "<option class='deliveryAreaBasedProductTypeSuggestionOptionClass' data-icon='"+productIcon+"' value='"+producttypeValue+"'>"+productTypeTitle+"</option>";
-                    $(productTypeListSelectControlElementObj).append(eachOptionStr);
+                    $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
                 }
             }
-            // refresh producttype list select control element 
-            $(productTypeListSelectControlElementObj).selectpicker('refresh');
+            // refresh desserts type list select control element 
+            $(dessertsTypeListSelectControlElementObj).selectpicker('refresh');
             // applying change event function
-            if($(productTypeListSelectControlElementObj).find('option').length>0){
-                $rootScope.buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent(productTypeListSelectControlElementObj);
+            if($(dessertsTypeListSelectControlElementObj).find('option').length>0){
+                vm.applyChangeEventDkDeliveryAreaBasedDessertsTypeListSelectCtrlElement(dessertsTypeListSelectControlElementObj);
             }
         };
         
-        // buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent
-        $rootScope.buildedDKDeliveryAreaBasedProductTypeListlHtmlSelectControlOnChangeEvent = function(elementObj){
-            // desserts type details change by user then 
+        // applyChangeEventDkDeliveryAreaBasedDessertsTypeListSelectCtrlElement
+        vm.applyChangeEventDkDeliveryAreaBasedDessertsTypeListSelectCtrlElement = function(elementObj){
+            // desserts type details change by user 
             $(elementObj).on('changed.bs.select', function(e){
                 var paramObj = {};
                 paramObj['matchedProductTypeId'] = ($(elementObj).selectpicker('val'));
                 paramObj['matchedProductTypeTitle'] = ($(elementObj).find('option:selected').text());
-                storeDefaultDeliveryDessertsProductTypeDetailsInSessionStorage(paramObj, 'Y');
+                storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
                 if((paramObj['matchedProductTypeTitle']).toLowerCase()==='cakes'){
                     window.location.href =  globalBaseSitePath+"all-cakes.php";
                 }
