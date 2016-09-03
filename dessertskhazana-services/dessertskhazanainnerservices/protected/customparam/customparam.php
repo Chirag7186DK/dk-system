@@ -148,6 +148,12 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
+        // check ccaId key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check producttype_ids key present or not
         if(array_key_exists('product_typesids', $paramJsonData)){
             if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
