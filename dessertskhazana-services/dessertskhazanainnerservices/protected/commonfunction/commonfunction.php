@@ -392,7 +392,7 @@ class commonfunction{
                 // iterate each delivery area details
                 $isRequestedDeliveryAreaMatched = false;
                 for($eachIndex = 0; $eachIndex<count($deliveryAreaListDetailsArr); $eachIndex++){
-                    $deliveryAreaListDetailsArr[$eachIndex]['cityIcon'] = 'fa fa-map-marker';
+                    $deliveryAreaListDetailsArr[$eachIndex]['areaIcon'] = 'fa fa-map-marker';
                     $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'N';
                     if($deliveryAreaListDetailsArr[$eachIndex]['areaId']==$garea_ids){
                         $isRequestedDeliveryAreaMatched = true;
