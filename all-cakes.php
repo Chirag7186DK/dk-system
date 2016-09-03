@@ -85,11 +85,11 @@
                 <ul class="vap_userBreadcrumbULClass list-inline">
                     <li class='vap_userBreadcrumbHomeLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeKey}}
+                            Home
                         </a>
                     </li>
                     <li class='vap_userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeKey}}</a>
+                        |&nbsp; Cakes
                     </li>
                 </ul>
             </div>
@@ -97,13 +97,16 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
-            <!-- desserts khazana served desserts product in your selected delivery area -->
-            <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadDkDeliveryAreabasedDessertsKhazanaServedDessertsProductTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
+            <!-- view desserts khazana served all desserts type in your selected delivery area -->
+            <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
                 
-                <!-- display selected desserts product type ordering by customer -->
+                <!-- display selected desserts type title ordering by customer -->
                 <li class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
-                    Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeKey}}' and also we can serve other <span class="badge vap_dessertsProductTypeCountSClass">{{deliveryAreabasedDkServedDessertsProductTypeList.length}}</span> desserts in your selected delivery area !!!
+                    Hey you are viewing 'Cakes' and also we can serve other 
+                    <span class="badge vap_dessertsTypeCountSClass">
+                        {{dkDeliveryAreaBasedDessertsTypeList.length}}
+                    </span> desserts in your selected delivery area !!!
                 </li> 
                 
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
