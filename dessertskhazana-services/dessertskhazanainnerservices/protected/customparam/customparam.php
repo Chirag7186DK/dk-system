@@ -106,13 +106,19 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
+        // check ccaId key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check producttype_ids key present or not
         if(array_key_exists('producttype_ids', $paramJsonData)){
             if(($paramJsonData['producttype_ids'])>0 && $paramJsonData['producttype_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount>=3){
+        if($givenParamDataCorrectCount>=4){
             $retStatus = 'TRUE';
         }
         return $retStatus;
