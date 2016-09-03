@@ -20,67 +20,16 @@ class ProductServicesV1 implements IProductServicesV1{
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
             $gproducttype_ids = $dkParamDataArr['producttype_ids'];
-            // prepare param obj
-            $storeDeliveryParamObj = array();
-            $storeDeliveryParamObj['country_ids'] = $gcountry_ids;
-            $storeDeliveryParamObj['city_ids'] = $gcity_ids;
-            $storeDeliveryParamObj['area_ids'] = $garea_ids;
-            $storeDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($storeDeliveryParamObj);
-            if(count($storeDeliveryLocationDetailsArr)>0 && $storeDeliveryLocationDetailsArr!=false){
-                // sorted on country city area affiliaton ids
-                $sortedOnCCAIdArr = utils::arraySort($storeDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
-                if($sortedOnCCAIdArr!=false && count($sortedOnCCAIdArr)>0){
-                    // fetch all countrycityareaids keys in arr and converted into string format
-                    $allCCAIdsStr = implode(",", array_keys($sortedOnCCAIdArr));
-                    // fetch all area based ka product type ka shopstore details
-                    $areaBasedConductProductTypeShopStoreDetails = LocationDao::getAreaBasedConductProductTypeShopStoreDetails($allCCAIdsStr);
-                    if(count($areaBasedConductProductTypeShopStoreDetails)>0 && $areaBasedConductProductTypeShopStoreDetails!=false){
-                        // sorted on product type details
-                        $sortedOnProductTypeDetailsArr = utils::arraySort($areaBasedConductProductTypeShopStoreDetails, array("productTypeId"), array("productTypeId" => "productTypeTitle"));
-                        if(count($sortedOnProductTypeDetailsArr)>0 && $sortedOnProductTypeDetailsArr!=false){
-                            $finalAllProductTypeListArr = array();
-                            // iterate each product type info details
-                            foreach($sortedOnProductTypeDetailsArr as $eachProductTypeIdTitle=>$eachProductTypeAllProductDetailsArr){
-                                $productTokens = '';
-                                $productIcon = '';
-                                $isRequestedProductTypeIdMatched = 'N';
-                                $eachProductTypeIdTitleExplodedOnHash = explode("##", $eachProductTypeIdTitle);
-                                // prepare array
-                                $eachProductTypeDetailsArr = array();
-                                $eachProductTypeDetailsArr['productTypeId'] = $eachProductTypeIdTitleExplodedOnHash[0];
-                                $eachProductTypeDetailsArr['productTypeTitle'] = $eachProductTypeIdTitleExplodedOnHash[1];
-                                if(strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='cakes'){
-                                    $productTokens = 'CAKES,cakes,'.strtolower($eachProductTypeIdTitleExplodedOnHash[0]).",".$eachProductTypeIdTitleExplodedOnHash[0];
-                                    $productTokens.=", ".strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
-                                    $productIcon = 'fa fa-birthday-cake';
-                                }
-                                if(strtolower($eachProductTypeIdTitleExplodedOnHash[1])=='ice cream'){
-                                    $productTokens = 'ICE CREAM, ice cream,' . strtolower($eachProductTypeIdTitleExplodedOnHash[0]) . "," . $eachProductTypeIdTitleExplodedOnHash[0];
-                                    $productTokens.=", " . strtoupper($eachProductTypeIdTitleExplodedOnHash[0]);
-                                    $productIcon = 'fa fa-birthday-cake';
-                                }
-                                if($eachProductTypeIdTitleExplodedOnHash[0]==$gproducttype_ids){
-                                    $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails'] = array();
-                                    $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails']['matchedProductTypeId'] = $eachProductTypeIdTitleExplodedOnHash[0];
-                                    $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails']['matchedProductTypeTitle'] = $eachProductTypeIdTitleExplodedOnHash[1];
-                                    $isRequestedProductTypeIdMatched = 'Y';
-                                }
-                                $eachProductTypeDetailsArr['productTokens'] = $productTokens;
-                                $eachProductTypeDetailsArr['productIcon'] = $productIcon;
-                                $eachProductTypeDetailsArr['isRequestedProductTypeIdMatched'] = $isRequestedProductTypeIdMatched;
-                                if(count($eachProductTypeDetailsArr)>0 && $eachProductTypeDetailsArr!=false){
-                                    array_push($finalAllProductTypeListArr, $eachProductTypeDetailsArr);
-                                }
-                            }
-                            if($finalAllProductTypeListArr!=false && count($finalAllProductTypeListArr)>0){
-                                $rsltJsonArr['allProductTypeList'] = $finalAllProductTypeListArr;
-                            }
-                        }
-                    }
+            $sqlGroupByStatement = ' pt.id ';
+            // fetching country city area affiliation details
+            $ccaDetailsArr = LocationDao :: getCountryCityAreaAffiliationList($gcountry_ids, $gcity_ids, $garea_ids, '');
+            if(count($ccaDetailsArr)==1 && $ccaDetailsArr!=false){
+                $ccaIdsStr = implode(",", array_keys(utils :: arraySort($ccaDetailsArr, array("ccaId"))));
+                // fetch all desserts type details based on ccaIds
+                $ccaBasedConductDessertsTypeDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($ccaIdsStr);
+                if(count($ccaBasedConductDessertsTypeDetailsArr)>0 && $ccaBasedConductDessertsTypeDetailsArr!=false){
+                    
                 }
-            }
-            if($rsltJsonArr['allProductTypeList']!=false && count($rsltJsonArr['allProductTypeList'])>0){
-                $rspDetails["deliveryAreaBasedProductTypeDetails"] = $rsltJsonArr;
             }
         }
         ComponentsJson::GenerateJsonAndSend($rspDetails);
