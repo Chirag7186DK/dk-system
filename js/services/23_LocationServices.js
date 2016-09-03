@@ -35,7 +35,6 @@ function LocationServices($http, $q, $rootScope){
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                console.log("retResponseJson=>"+retResponseJson);
                 showHideLoaderBox('hide');
             });
             return promiseObject;
