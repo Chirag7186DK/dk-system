@@ -4,9 +4,9 @@ angular.module('DKAPP').factory('LocationServices', LocationServices);
 
 function LocationServices($http, $q, $rootScope){
     try{
+        
         var locationDetails = {};
         
-        // resetUserDashboardVariableData
         locationDetails.showUserSelectedDeliveryAreaTextHeader = function(){
             $rootScope.userSelectedDeliveryAreaTextHeader = '';
             $rootScope.isShowUserSelectedDeliveryAreaTextHeader = false;
@@ -30,18 +30,34 @@ function LocationServices($http, $q, $rootScope){
         };
         
         locationDetails.getDKDeliveryCityList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
             return promiseObject;
         };
+        
         locationDetails.getDKDeliveryAreaList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
             return promiseObject;
         };
+        
         locationDetails.getDKDeliveryAreaBasedProductTypeList = function(preparedParamJsonObj){
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedProductTypeList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
             return promiseObject;
         };
+        
         return locationDetails;
+        
     }catch(ex){
         console.log("problem in LocationServices ex=>"+ex);
         return false;
