@@ -191,6 +191,16 @@ class ProductDao{
                 }
                 
                 // group by condition statement
+                if(array_key_exists('groupby_product_typeids', $paramJson)){
+                    if($paramJson['groupby_product_typeids']=='Y'){
+                        $sqlGroupByStatement.=" pt.id,";
+                    }
+                }
+                if(array_key_exists('groupby_product_categoryids', $paramJson)){
+                    if($paramJson['groupby_product_categoryids']=='Y'){
+                        $sqlGroupByStatement.=" ppc.id,";
+                    }
+                }
                 if(array_key_exists('groupby_shopstores_ids', $paramJson)){
                     if($paramJson['groupby_shopstores_ids']=='Y'){
                         $sqlGroupByStatement.=" ss.id,";
