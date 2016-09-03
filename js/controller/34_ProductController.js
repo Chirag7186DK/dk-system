@@ -49,17 +49,17 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     ProductServices.getProductTypeAllProductCategoryList(fetchParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeAllCategoryList', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.productTypeAllCategoryList = arrJsonObj.allDessertsTypeList;
+                                    $rootScope.productTypeAllCategoryList = arrJsonObj;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
-                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+                console.log("problem in loadProductTypeAllProductCategoryList ex=>"+ex);
+                $rootScope.productTypeAllCategoryList = false;
             }
         };
            
