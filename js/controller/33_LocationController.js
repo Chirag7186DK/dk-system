@@ -107,10 +107,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     // get param obj to dk delivery area list
                     var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaList();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchAreaParamJsonObj = {};
-                        fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var fetchParamJsonObj = {};
+                        fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         // calling LocationServices to get dk delivery area list
-                        LocationServices.getDKDeliveryAreaList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        LocationServices.getDKDeliveryAreaList(fetchParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
@@ -210,10 +210,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     // get param obj to desserts type list
                     var preparedParamJsonObj = getParamObjFromSessionForLoadingDKDeliveryAreaBasedDessertsTypeList();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchAreaParamJsonObj = {};
-                        fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var fetchParamJsonObj = {};
+                        fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         // calling LocationServices to get dk delivery area based desserts type list
-                        LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
