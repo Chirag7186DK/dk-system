@@ -50,7 +50,8 @@ class ProductServicesV1 implements IProductServicesV1{
                         array_push($allDessertsTypeListArr, array(
                             "productTypeId"=>$iteratedDessertsTypeListId,
                             "productTypeTitle"=>$iteratedDessertsTypeTitle,
-                            "productIcon"=>$productIcon
+                            "productIcon"=>$productIcon,
+                            "isRequestedProductTypeIdMatched"=>$isRequestedDessertsTypeIdMatched
                         ));
                     }
                     $rsltJsonArr['allDessertsTypeList'] = $allDessertsTypeListArr;
