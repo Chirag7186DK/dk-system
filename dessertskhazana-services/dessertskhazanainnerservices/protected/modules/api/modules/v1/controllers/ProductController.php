@@ -29,6 +29,28 @@ class ProductController extends V1Controller{
         }
     }
     
+    // CJ defined this action 2016-09-03
+    public function actionProductTypeAllProductCategoryDetails(){
+        if(ComponentsHttp::httpMethod()=="GET"){
+            // checking requested param key name 
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                // checking param key value data & return status
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductTypeAllProductCategoryDetails($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                    $ProductServicesV1 = new ProductServicesV1();
+                    $ProductServicesV1->getProductTypeAllProductCategoryDetails($dkParamDataArr);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     // CJ defined this action 2016-06-06
     public function actionProductTypeProductCategoryAllProductDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
