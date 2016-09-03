@@ -401,7 +401,8 @@ class commonfunction{
                         $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
                             "areaId"=>$gcity_ids,
                             "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
-                            "areaIcon"=>"fa fa-map-marker"
+                            "areaIcon"=>"fa fa-map-marker",
+                            "ccaId"=>$deliveryAreaListDetailsArr[$eachIndex]['ccaId']
                         );
                     }
                 }
@@ -410,7 +411,8 @@ class commonfunction{
                     $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
                         "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
                         "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
-                        "areaIcon"=>"fa fa-map-marker"
+                        "areaIcon"=>"fa fa-map-marker",
+                        "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId']
                     );
                 }
                 $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
