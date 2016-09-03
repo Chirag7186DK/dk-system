@@ -387,7 +387,7 @@ class commonfunction{
             $gcountry_ids = $paramJsonData['country_ids'];
             $gcity_ids = $paramJsonData['city_ids'];
             $garea_ids = $paramJsonData['area_ids'];
-            $deliveryAreaListDetailsArr = LocationDao::getCountryCityAreaAffiliationList($gcountry_ids, $gcity_ids, '', '');
+            $deliveryAreaListDetailsArr = LocationDao::getCountryCityAreaAffiliationList('', $gcountry_ids, $gcity_ids, '', '');
             if(count($deliveryAreaListDetailsArr)>0 && $deliveryAreaListDetailsArr!=false){
                 // iterate each delivery area details
                 $isRequestedDeliveryAreaMatched = false;
