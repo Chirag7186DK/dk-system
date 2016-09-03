@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Description of ProductServicesV1
- * @author CJ defined this service 2016-06-06
- */
-class ProductServicesV1 implements IProductServicesV1 {
+* Description of ProductServicesV1
+* @author CJ defined this service 2016-06-06
+*/
+
+class ProductServicesV1 implements IProductServicesV1{
 
     // CJ defined this action 2016-06-06
-    public function getDeliveryAreaBasedProductTypeList($dkParamDataArr){
+    public function getDeliveryAreaBasedDessertsTypeList($dkParamDataArr){
         $rspDetails = array();
         // checking requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
