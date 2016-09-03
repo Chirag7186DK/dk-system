@@ -54,6 +54,7 @@ class ProductServicesV1 implements IProductServicesV1{
                         ));
                     }
                     $rsltJsonArr['allDessertsTypeList'] = $allDessertsTypeListArr;
+                    $rspDetails["deliveryAreaBasedDessertsTypeDetails"] = $rsltJsonArr;
                 }
             }
         }
