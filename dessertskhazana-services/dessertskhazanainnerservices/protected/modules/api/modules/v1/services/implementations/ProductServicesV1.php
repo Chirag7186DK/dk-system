@@ -65,8 +65,13 @@ class ProductServicesV1 implements IProductServicesV1{
             $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
+            $gccaIds = $dkParamDataArr['ccaId'];
             $gproducttype_ids = $dkParamDataArr['producttype_ids'];
-            
+            // fetch store details who do given desserts type business in ccaIds
+            $storeDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
+            if(count($storeDetailsArr)>0 && $storeDetailsArr!=false){
+                
+            }
         }
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
