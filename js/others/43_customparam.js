@@ -403,7 +403,7 @@ function getParamObjForLoadingProductTypeAllProductCategoryList(){
                 }
             }
         }
-        if(Object.keys(retParamObj).length===5){
+        if(Object.keys(retParamObj).length===4){
             return retParamObj;
         }else{
             return false;
