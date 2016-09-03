@@ -107,41 +107,42 @@ class LocationDao{
     
     // CJ defined this function 2016-05-24
     // very Important func
-    public static function getCCABasedConductBTypeDetails($countryCityAreaAffiliationId, $productTypeId='', $notProductTypeId='', $shopStoreId=''){
+    public static function getCCABasedConductDessertsTypeDetails($ccaIds, $productTypeIds='', $notProductTypeIds='', $shopStoreIds=''){
         $retResult = false;
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    COALESCE(cca.country_id, '') countryId, COALESCE(cca.city_id, '') cityId, 
-                    COALESCE(cca.area_id, '') areaId, COALESCE(a.name,'') areaTitle,
                     COALESCE(cpts.cca_id, '') countryCityAreaAffiliationId,
+                    COALESCE(cca.country_id, '') countryId, 
+                    COALESCE(cca.city_id, '') cityId, COALESCE(c.name, '') cityName,
+                    COALESCE(cca.area_id, '') areaId, COALESCE(a.name,'') areaName,
                     COALESCE(cpts.product_typeid, '') productTypeId, COALESCE(pt.name, '') productTypeTitle,
-                    COALESCE(cpts.shopstore_id, '') shopStoreId, COALESCE(s.shopstore_name, '') shopStoreTitle
+                    COALESCE(s.id, '') shopStoreId, COALESCE(s.shopstore_name, '') shopStoreTitle
                     FROM DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE cpts
                     JOIN DK_COUNTRYCITYAREAAFFILIATION cca ON cca.id=cpts.cca_id 
-                    JOIN DK_AREAREACHED a ON a.id=cca.area_id
+                    JOIN DK_CITYREACHED c ON c.id=cca.city_id 
+                    JOIN DK_AREAREACHED a ON a.id=cca.area_id 
                     JOIN DK_PRODUCTTYPE pt ON pt.id=cpts.product_typeid 
-                    JOIN DK_SHOPSTORES s ON s.id=cpts.shopstore_id AND cpts.cca_id=s.country_city_area_affiliationId
+                    JOIN DK_SHOPSTORES s ON FIND_IN_SET_X(s.id, cpts.shopstore_ids)>0
                     WHERE 1
-                    AND cpts.status='A' AND cca.status='A' AND a.status='A' AND pt.status='A' AND s.status='A'
-                    AND cpts.cca_id IN ($countryCityAreaAffiliationId)
-                    AND s.country_city_area_affiliationId IN ($countryCityAreaAffiliationId)
-                    AND cca.id IN ($countryCityAreaAffiliationId) ";
-                    if($productTypeId!=''){
-                        $sql.=" AND pt.id IN ($productTypeId) AND cpts.product_typeid IN ($productTypeId) ";
+                    AND cpts.status='A' AND cca.status='A' AND c.status='A' AND a.status='A' 
+                    AND pt.status='A' AND s.status='A'
+                    AND cpts.cca_id IN ($ccaIds) AND cca.id IN ($ccaIds) ";
+                    if($productTypeIds!=''){
+                        $sql.=" AND pt.id IN ($productTypeIds) AND cpts.product_typeid IN ($productTypeIds) ";
                     }
-                    if($notProductTypeId!=''){
-                        $sql.=" AND pt.id NOT IN ($notProductTypeId) AND cpts.product_typeid NOT IN ($notProductTypeId) ";
+                    if($notProductTypeIds!=''){
+                        $sql.=" AND pt.id NOT IN ($notProductTypeIds) AND cpts.product_typeid NOT IN ($notProductTypeIds) ";
                     }
-                    if($shopStoreId!=''){
-                        $sql.=" AND cpts.shopstore_id IN ($shopStoreId) AND s.id IN ($shopStoreId) ";
+                    if($shopStoreIds!=''){
+                        $sql.=" AND FIND_IN_SET_X($shopStoreIds, cpts.shopstore_ids)>0 AND s.id IN ($shopStoreIds) ";
                     }
             $sql.= "  ORDER BY pt.sort_order ASC ";        
             $command = $connection->createCommand($sql);
-            $areaBasedConductProductTypeShopStoreDetails = $command->queryAll();
-            if(count($areaBasedConductProductTypeShopStoreDetails)>0 
-                && $areaBasedConductProductTypeShopStoreDetails!=false){
-                $retResult =  $areaBasedConductProductTypeShopStoreDetails;    
+            $ccaBasedConductDessertsTypeDetails = $command->queryAll();
+            if(count($ccaBasedConductDessertsTypeDetails)>0 
+                && $ccaBasedConductDessertsTypeDetails!=false){
+                $retResult =  $ccaBasedConductDessertsTypeDetails;    
             }
         }catch(Exception $ex){}
         return $retResult;
