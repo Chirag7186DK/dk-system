@@ -372,6 +372,53 @@ class commonfunction{
         } 
         return $rspDetails;
     }
+    
+    ////////////////./////////////// delivery city related code ////////////////////////////////
+    
+  
+    // CJ defined this function 2016-09-02
+    public static function getDeliveryAreaListDetails($paramJsonData){
+        $rspDetails = array();
+        if(count($paramJsonData)>0 && $paramJsonData!=false){
+            $rsltJsonArr = array();
+            $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = false;
+            $rsltJsonArr['allAreaList'] = false;
+            // initial variable declare here
+            $gcountry_ids = $paramJsonData['country_ids'];
+            $gcity_ids = $paramJsonData['city_ids'];
+            $garea_ids = $paramJsonData['area_ids'];
+            $deliveryAreaListDetailsArr = LocationDao::getCountryCityAreaAffiliationList($gcountry_ids, $gcity_ids, '', '');
+            if(count($deliveryAreaListDetailsArr)>0 && $deliveryAreaListDetailsArr!=false){
+                // iterate each delivery area details
+                $isRequestedDeliveryAreaMatched = false;
+                for($eachIndex = 0; $eachIndex<count($deliveryAreaListDetailsArr); $eachIndex++){
+                    $deliveryAreaListDetailsArr[$eachIndex]['cityIcon'] = 'fa fa-map-marker';
+                    $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'N';
+                    if($deliveryAreaListDetailsArr[$eachIndex]['areaId']==$garea_ids){
+                        $isRequestedDeliveryAreaMatched = true;
+                        $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'Y';
+                        // default selected delivery area to show
+                        $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
+                            "areaId"=>$gcity_ids,
+                            "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
+                            "areaIcon"=>"fa fa-map-marker"
+                        );
+                    }
+                }
+                if($isRequestedDeliveryAreaMatched==false){
+                    // default selected delivery area to show
+                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                        "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
+                        "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
+                        "areaIcon"=>"fa fa-map-marker"
+                    );
+                }
+                $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
+                $rspDetails["deliveryAreaDetails"] =  $rsltJsonArr;
+            }
+        } 
+        return $rspDetails;
+    }
  
     
     ////////////////.///////////////  user related code ////////////////////////////////
