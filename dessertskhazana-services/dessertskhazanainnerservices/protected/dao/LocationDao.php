@@ -72,7 +72,8 @@ class LocationDao{
                     COALESCE(cca.id, '') ccaId,
                     COALESCE(country.id, '') countryId, COALESCE(country.name, '') countryName,
                     COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
-                    COALESCE(area.id, '') areaId, COALESCE(area.name, '') areaName
+                    COALESCE(area.id, '') areaId, COALESCE(area.name, '') areaName, 
+                    COALESCE(area.pincode, '') areaPincode
                     FROM DK_COUNTRYCITYAREAAFFILIATION cca
                     JOIN DK_COUNTRYREACHED country ON country.id=cca.country_id AND country.status='A'
                     JOIN DK_CITYREACHED city ON city.id=cca.city_id AND city.status='A'
