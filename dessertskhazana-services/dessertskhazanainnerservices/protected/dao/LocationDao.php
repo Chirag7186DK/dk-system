@@ -107,7 +107,7 @@ class LocationDao{
     
     // CJ defined this function 2016-05-24
     // very Important func
-    public static function getCCABasedConductDessertsTypeShopStoreDetails($countryCityAreaAffiliationId, $productTypeId='', $notProductTypeId='', $shopStoreId=''){
+    public static function getCCABasedConductBTypeDetails($countryCityAreaAffiliationId, $productTypeId='', $notProductTypeId='', $shopStoreId=''){
         $retResult = false;
         try{
             $connection = Yii::App()->db;
