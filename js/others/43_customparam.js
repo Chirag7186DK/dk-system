@@ -251,11 +251,13 @@ function storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSes
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areavalue'] = '';
             existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areaname'] = '';
+            existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['ccaId'] = '';
             if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
                 if(paramObj.hasOwnProperty('areaId')===true && paramObj.hasOwnProperty('areaName')===true){
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areavalue'] = paramObj['areaId'];
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areaname'] = paramObj['areaName'];
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areapincode'] = paramObj['areaPincode'];
+                    existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['ccaId'] = paramObj['ccaId'];
                     if(isResetAllSessionData==='Y'){
                         existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproduct'] = '';
                         existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproducttitle'] = '';
