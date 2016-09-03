@@ -19,7 +19,7 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsTypeListServingInCountryCityArea($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getDeliveryAreaBasedProductTypeList($dkParamDataArr);
+                    $ProductServicesV1->getDeliveryAreaBasedDessertsTypeList($dkParamDataArr);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
