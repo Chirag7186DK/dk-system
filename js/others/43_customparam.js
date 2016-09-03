@@ -201,12 +201,9 @@ function storeDefaultDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSes
 //////////////////////// Delivery area list related data ////////////////////////////////////
 
 // CJ defined this function 2016-06-05
-function getParamObjFromSessionForLoadingDKDeliveryAreaDetails(){
+function getParamObjFromSessionForLoadingDKDeliveryAreaList(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
+        var paramObj = {};
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -216,18 +213,26 @@ function getParamObjFromSessionForLoadingDKDeliveryAreaDetails(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    if(dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue']==='1'){
+                        paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    }
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'])>0 
+                        && dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue']!==''){
+                        paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    }
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'])>0 
+                        && dkSelectedDeliveryCityAreaDessertsProductObj['areavalue']!==''){
+                        paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    }
                 }
             }
         }
-        if(retParamObj['country_ids']==='1'){
-            return retParamObj;
+        if(Object.keys(paramObj).length>=2){
+            return paramObj;
         }else{
             return false;
         }
