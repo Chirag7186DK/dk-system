@@ -13,8 +13,8 @@ class ProductServicesV1 implements IProductServicesV1{
         // checking requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
-            $rsltJsonArr['defaultSelectedAreaBasedProductTypeDetails'] = false;
-            $rsltJsonArr['allProductTypeList'] = false;
+            $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails'] = false;
+            $rsltJsonArr['allDessertsTypeList'] = false;
             // initial variable declare
             $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
@@ -26,9 +26,34 @@ class ProductServicesV1 implements IProductServicesV1{
             if(count($ccaDetailsArr)==1 && $ccaDetailsArr!=false){
                 $ccaIdsStr = implode(",", array_keys(utils :: arraySort($ccaDetailsArr, array("ccaId"))));
                 // fetch all desserts type details based on ccaIds
-                $ccaBasedConductDessertsTypeDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($ccaIdsStr);
+                $ccaBasedConductDessertsTypeDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($ccaIdsStr, '', '', '', $sqlGroupByStatement);
                 if(count($ccaBasedConductDessertsTypeDetailsArr)>0 && $ccaBasedConductDessertsTypeDetailsArr!=false){
-                    
+                    $allDessertsTypeListArr = array();
+                    // iterate each desserts type list
+                    for($eachIndex = 0; $eachIndex<count($ccaBasedConductDessertsTypeDetailsArr); $eachIndex++){
+                        $productIcon = '';
+                        $isRequestedDessertsTypeIdMatched = 'N';
+                        $iteratedDessertsTypeListId = $ccaBasedConductDessertsTypeDetailsArr[$eachIndex]['productTypeId'];
+                        $iteratedDessertsTypeTitle = $ccaBasedConductDessertsTypeDetailsArr[$eachIndex]['productTypeTitle'];
+                        if(strtolower($iteratedDessertsTypeTitle)=='cakes'){
+                            $productIcon = 'fa fa-birthday-cake';
+                        }
+                        if(strtolower($iteratedDessertsTypeTitle)=='ice cream'){
+                            $productIcon = 'fa fa-birthday-cake';
+                        }
+                        if($gproducttype_ids==$iteratedDessertsTypeListId){
+                            $isRequestedDessertsTypeIdMatched = 'Y';
+                            $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails'] = array();
+                            $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['matchedProductTypeId'] = $iteratedDessertsTypeListId;
+                            $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['matchedProductTypeTitle'] = $iteratedDessertsTypeTitle;
+                        }
+                        array_push($allDessertsTypeListArr, array(
+                            "productTypeId"=>$iteratedDessertsTypeListId,
+                            "productTypeTitle"=>$iteratedDessertsTypeTitle,
+                            "productIcon"=>$productIcon
+                        ));
+                    }
+                    $rsltJsonArr['allDessertsTypeList'] = $allDessertsTypeListArr;
                 }
             }
         }
