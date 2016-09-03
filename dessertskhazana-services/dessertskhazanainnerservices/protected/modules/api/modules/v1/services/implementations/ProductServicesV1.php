@@ -62,15 +62,33 @@ class ProductServicesV1 implements IProductServicesV1{
         // checking requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // initial variable declare
-            $gcountry_ids = $dkParamDataArr['country_ids'];
-            $gcity_ids = $dkParamDataArr['city_ids'];
-            $garea_ids = $dkParamDataArr['area_ids'];
             $gccaIds = $dkParamDataArr['ccaId'];
             $gproducttype_ids = $dkParamDataArr['producttype_ids'];
             // fetch store details who do given desserts type business in ccaIds
-            $storeDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
-            if(count($storeDetailsArr)>0 && $storeDetailsArr!=false){
-                
+            $allStoreDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
+            if(count($allStoreDetailsArr)>0 && $allStoreDetailsArr!=false){
+                $allStoreIdsStr = implode(",", array_keys(utils :: arraySort($allStoreDetailsArr, array("shopStoreId"))));
+                $paramDataArr1 = array();
+                $paramDataArr1['product_typeids'] = $gproducttype_ids;
+                $paramDataArr1['shop_storesids'] = $allStoreIdsStr;
+                $paramDataArr1['groupby_product_typeids'] = 'Y';
+                $paramDataArr1['groupby_product_typeids'] = 'Y';
+                $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramDataArr1);
+                if(count($dataArr1)>0 && $dataArr1!=false){
+                    $productTypeAllCategoryList = array();
+                    // iterate each product type all product category list
+                    for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                        array_push($productTypeAllCategoryList, 
+                            array(
+                                "productTypeProductCategoryId"=>$dataArr1[$eachIndex]['productTypeProductCategoryId'],
+                                "productTypeProductCategoryTitle"=>$dataArr1[$eachIndex]['productTypeProductCategoryTitle'],
+                                "totalProductCount"=>'10',
+                                "isRequestedProductCategoryMatched"=>'N'
+                            )
+                        );
+                    }
+                    $rspDetails['productTypeAllCategoryList'] = $productTypeAllCategoryList;
+                }
             }
         }
         ComponentsJson::GenerateJsonAndSend($rspDetails);
