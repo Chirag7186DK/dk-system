@@ -140,8 +140,8 @@
                 </p>
                 
                 <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
-                    <li ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
-                        {{eachProductCategoryDetails.productCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
+                    <li ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
+                        {{eachProductCategoryDetails.productTypeProductCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
                     </li>
                 </div>
                 
@@ -151,7 +151,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- all product list will be loaded here -->
-            <div id='vapWrapperDivId' ng-controller="ProductController" ng-init="loadProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
+            <div id='vapWrapperDivId' ng-controller="ProductController" ng-show="true" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
                 
                 <!-- product filter operation main container div -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
