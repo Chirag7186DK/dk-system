@@ -25,6 +25,7 @@ function initializeDkSessionData(){
         dkSelectedDeliveryCityAreaDessertsProductObj['areaname'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproduct'] = '';
         dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproducttitle'] = '';
+        dkSelectedDeliveryCityAreaDessertsProductObj['ccaId'] = '';
 
         var userProductObj = {};
         userProductObj['shopstore_value'] = '';
