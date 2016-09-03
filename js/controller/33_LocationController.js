@@ -10,13 +10,11 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             try{
                 // get param obj to get delivery city list
                 var preparedParamJsonObj = getParamObjFromSessionForLoadingDkDeliveryCityList();
-                alert(preparedParamJsonObj);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchCityParamJsonObj = {};
                     fetchCityParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     // calling LocationServices to get dk delivery city list
                     LocationServices.getDKDeliveryCityList(fetchCityParamJsonObj).done(function(retResponseJson){
-                        console.log("retResponseJson=>"+JSON.stringify(retResponseJson));
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', retResponseJson);
@@ -39,7 +37,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // buildDKDeliveryCityListHtmlSelectControl
         $rootScope.buildDKDeliveryCityListHtmlSelectControl = function(cityList, cityListLoadedOnPage){
-            alert(cityList);
             // get html element obj 
             var cityListSelectControlElementObj = document.getElementById("dkDeliveryCityListSelectCtrlId");
             // all options remove and destroy bootstrap select feature
