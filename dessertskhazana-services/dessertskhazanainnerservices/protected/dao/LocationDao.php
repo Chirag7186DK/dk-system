@@ -63,7 +63,7 @@ class LocationDao{
        
     
     // CJ defined this function 2016-03-27
-    public static function getCountryCityAreaAffiliationList($country_ids='', $city_ids='', $area_ids='', $type_ofdetailsshow=''){
+    public static function getCountryCityAreaAffiliationList($ccaIds, $country_ids='', $city_ids='', $area_ids='', $type_ofdetailsshow=''){
         $retResult = false;
         $sqlGroupByStmt = '';
         try{
@@ -88,6 +88,9 @@ class LocationDao{
                     }
                     if($area_ids!=''){
                         $sql.=" AND cca.area_id IN ($area_ids) ";
+                    }
+                    if($ccaIds!=''){
+                        $sql.=" AND cca.id IN ($ccaIds) ";
                     }
                     if($type_ofdetailsshow!='' && ($type_ofdetailsshow=='city_list' || $type_ofdetailsshow=='city_details')){
                         $sqlGroupByStmt.= " cca.country_id, cca.city_id ";
