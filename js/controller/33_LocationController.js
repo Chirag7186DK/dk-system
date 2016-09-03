@@ -243,10 +243,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 if(allDessertsTypeList.length>0 && allDessertsTypeList!==false){
                     // iterate each product type details 
                     for(var eachDessertsIndex = 0; eachDessertsIndex<allDessertsTypeList.length; eachDessertsIndex++){
-                        var producttypeValue = allDessertsTypeList[eachDessertsIndex]['productTypeId'];
-                        var productIcon = allDessertsTypeList[eachDessertsIndex]['productIcon'];
-                        var productTypeTitle = allDessertsTypeList[eachDessertsIndex]['productTypeTitle'];
-                        var eachOptionStr = "<option data-icon='"+productIcon+"' value='"+producttypeValue+"'>"+productTypeTitle+"</option>";
+                        var dessertstypeValue = allDessertsTypeList[eachDessertsIndex]['dessertsTypeId'];
+                        var dessertsIcon = allDessertsTypeList[eachDessertsIndex]['dessertsIcon'];
+                        var dessertsTypeTitle = allDessertsTypeList[eachDessertsIndex]['dessertsTypeTitle'];
+                        var eachOptionStr = "<option data-icon='"+dessertsIcon+"' value='"+dessertstypeValue+"'>"+dessertsTypeTitle+"</option>";
                         $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
                     }
                 }
