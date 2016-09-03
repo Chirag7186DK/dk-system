@@ -212,11 +212,11 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                         LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchAreaParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedProductTypeDetails', retResponseJson);
+                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(false, 'Y');
-                                        $rootScope.dkDeliveryAreaBasedProductTypeList = arrJsonObj.allProductTypeList;
-                                        $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.dkDeliveryAreaBasedProductTypeList, loadDessertTypeListOnPage);
+                                        $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allProductTypeList;
+                                        $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.dkDeliveryAreaBasedDessertsTypeList, loadDessertTypeListOnPage);
                                     }
                                 }
                             });
@@ -224,8 +224,8 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     }
                 }
             }catch(ex){
-                $rootScope.dkDeliveryAreaBasedProductTypeList = false;
-                console.log("problem in loadDKDeliveryAreaBasedProductTypeList ex=>"+ex);
+                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+                console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
             }
         };
         
