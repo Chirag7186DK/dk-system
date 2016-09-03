@@ -110,7 +110,7 @@
                 </li> 
                 
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
-                    <!-- iterate each desserts type info display as horizontally scrolllable -->
+                    <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
                         <p class="vap_dessertsProductIconPClass">
                             <i class="{{eachDessertsTypeDetails.dessertsIcon}} vap_dessertsProductIconClass"></i>
@@ -129,11 +129,14 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
-            <!-- all product category list will be loaded here -->
-            <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
+            <!-- requested desserts type all product category list will be display here -->
+            <div ng-controller="ProductController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 
                 <p class='vap_productInfoAbtProductCategoryMsgPClass'>
-                    Info *: <i class="fa fa-smile-o"></i> Hey you are viewing '{{customerBreadCrumbOnWebApp.productTypeKey}}' products from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
+                    Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
+                    <span class="badge totalCountProductCategorySClass">
+                        {{productCategoryList.length}}
+                    </span> categories !
                 </p>
                 
                 <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
@@ -148,7 +151,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- all product list will be loaded here -->
-            <div id='vapWrapperDivId' ng-controller="ProductTypeProductCategoryProductDetailsController" ng-init="loadProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
+            <div id='vapWrapperDivId' ng-controller="ProductController" ng-init="loadProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
                 
                 <!-- product filter operation main container div -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
