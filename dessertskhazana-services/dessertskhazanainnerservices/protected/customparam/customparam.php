@@ -118,7 +118,42 @@ class customparam{
         return $retStatus;
     }
     
-    ////////////////////// specific desserts type all products //////////////////////////
+    ////////////////////// specific desserts type all products level //////////////////////////
+    
+    // CJ defined this function 2016-07-18
+    public static function checkParamDataFetchingProductTypeAllProductCategoryDetails($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check product delivery country
+        if(array_key_exists('country_ids', $paramJsonData)){
+            if($paramJsonData['country_ids']=='1'){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check city_ids key present or not
+        if(array_key_exists('city_ids', $paramJsonData)){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check area_ids key present or not
+        if(array_key_exists('area_ids', $paramJsonData)){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check producttype_ids key present or not
+        if(array_key_exists('product_typesids', $paramJsonData)){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==5){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     // CJ defined this function 2016-07-18
     public static function checkParamDataFetchingAllProductDetails($paramJsonData){
