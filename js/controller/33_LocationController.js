@@ -48,7 +48,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var cityValue = cityList[eachCityIndex]['cityId'];
                     var cityIcon = cityList[eachCityIndex]['cityIcon'];
                     var cityName = cityList[eachCityIndex]['cityName'];
-                    var eachOptionStr = "<option class='citySuggestionOptionClass' data-icon='"+cityIcon+"' value='"+cityValue+"'>"+cityName+"</option>";
+                    var eachOptionStr = "<option data-icon='"+cityIcon+"' value='"+cityValue+"'>"+cityName+"</option>";
                     $(cityListSelectControlElementObj).append(eachOptionStr);
                 }
             }
@@ -147,7 +147,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
                     var areaStr = areaPincode + " " +areaName;
                     // var areaValueStr = areaValue+"|"+areaName+"|"+areaPincode;
-                    var eachOptionStr = "<option class='cityAreaSuggestionOptionClass' data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
+                    var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValue+"'>"+areaStr+"</option>";
                     $(areaListSelectControlElementObj).append(eachOptionStr);
                 }
             }
@@ -231,7 +231,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl
         $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl = function(allDessertsTypeList, loadDessertTypeListOnPage){
-            var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsProductListSelectCtrlId");
+            var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsTypeListSelectCtrlId");
             // all options remove and destroy bootstrap select feature
             $(dessertsTypeListSelectControlElementObj).find('option').remove();
             $(dessertsTypeListSelectControlElementObj).selectpicker('destroy');
@@ -241,7 +241,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var producttypeValue = allDessertsTypeList[eachDessertsIndex]['productTypeId'];
                     var productIcon = allDessertsTypeList[eachDessertsIndex]['productIcon'];
                     var productTypeTitle = allDessertsTypeList[eachDessertsIndex]['productTypeTitle'];
-                    var eachOptionStr = "<option class='deliveryAreaBasedProductTypeSuggestionOptionClass' data-icon='"+productIcon+"' value='"+producttypeValue+"'>"+productTypeTitle+"</option>";
+                    var eachOptionStr = "<option data-icon='"+productIcon+"' value='"+producttypeValue+"'>"+productTypeTitle+"</option>";
                     $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
                 }
             }
