@@ -131,8 +131,9 @@ function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPa
 
 //////////////////////// Delivery city list related data ////////////////////////////////////
 
+
 // CJ defined this function 2016-06-05
-function getParamObjFromSessionForLoadingDkDeliveryCityDetails(){
+function getParamObjFromSessionForLoadingDkDeliveryCityList(){
     try{
         var retParamObj = {};
         retParamObj['country_ids'] = '';
