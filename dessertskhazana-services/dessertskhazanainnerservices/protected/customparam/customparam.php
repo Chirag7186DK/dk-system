@@ -85,7 +85,7 @@ class customparam{
     ////////////////////// delivery area served desserts type//////////////////////////
     
     // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingDessertsProductTypeListServingInCountryCityArea($paramJsonData){
+    public static function checkParamDataFetchingDessertsTypeListServingInCountryCityArea($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check country_ids key present or not
