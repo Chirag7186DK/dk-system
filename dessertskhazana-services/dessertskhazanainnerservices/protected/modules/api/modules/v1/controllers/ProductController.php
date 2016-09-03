@@ -8,7 +8,7 @@
 class ProductController extends V1Controller{
     
     // CJ defined this action 2016-06-06
-    public function actionDeliveryAreaBasedProductTypeList(){
+    public function actionDeliveryAreaBasedDessertsTypeList(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
             $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
@@ -16,7 +16,7 @@ class ProductController extends V1Controller{
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsProductTypeListServingInCountryCityArea($dkParamDataArr);
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsTypeListServingInCountryCityArea($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $ProductServicesV1->getDeliveryAreaBasedProductTypeList($dkParamDataArr);
