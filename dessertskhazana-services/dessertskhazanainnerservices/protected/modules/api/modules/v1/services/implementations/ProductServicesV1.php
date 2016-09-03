@@ -48,9 +48,9 @@ class ProductServicesV1 implements IProductServicesV1{
                             $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['matchedProductTypeTitle'] = $iteratedDessertsTypeTitle;
                         }
                         array_push($allDessertsTypeListArr, array(
-                            "productTypeId"=>$iteratedDessertsTypeListId,
-                            "productTypeTitle"=>$iteratedDessertsTypeTitle,
-                            "productIcon"=>$productIcon,
+                            "dessertsTypeId"=>$iteratedDessertsTypeListId,
+                            "dessertsTypeTitle"=>$iteratedDessertsTypeTitle,
+                            "dessertsIcon"=>$productIcon,
                             "isRequestedProductTypeIdMatched"=>$isRequestedDessertsTypeIdMatched
                         ));
                     }
