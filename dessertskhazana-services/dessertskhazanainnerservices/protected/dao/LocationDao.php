@@ -26,9 +26,9 @@ class LocationDao{
                     }
             $sql.= " ORDER BY c.sort_order ASC ";    
             $command = $connection->createCommand($sql);
-            $retCityList = $command->queryAll();
-            if(count($retCityList)>0 && $retCityList!=false){
-                $retResult =  $retCityList;    
+            $cityList = $command->queryAll();
+            if(count($cityList)>0 && $cityList!=false){
+                $retResult =  $cityList;    
             }
         }catch(Exception $ex){}
         return $retResult;
@@ -43,8 +43,8 @@ class LocationDao{
                     COALESCE(a.id, '') areaId, 
                     COALESCE(a.name, '') areaName
                     FROM DK_AREAREACHED a
-                    WHERE 
-                    a.status='A' AND a.name IS NOT NULL";
+                    WHERE 1
+                    AND a.status='A' AND a.name IS NOT NULL";
                     if($area_ids!=''){
                         $sql.=" AND a.id IN ($area_ids) ";
                     }
@@ -53,9 +53,9 @@ class LocationDao{
                     }
             $sql.= " ORDER BY a.sort_order ASC ";    
             $command = $connection->createCommand($sql);
-            $retAreaList = $command->queryAll();
-            if(count($retAreaList)>0 && $retAreaList!=false){
-                $retResult =  $retAreaList;    
+            $areaList = $command->queryAll();
+            if(count($areaList)>0 && $areaList!=false){
+                $retResult =  $areaList;    
             }
         }catch(Exception $ex){}
         return $retResult;
