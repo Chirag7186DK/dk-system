@@ -215,7 +215,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(false, 'Y');
-                                        $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allProductTypeList;
+                                        $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
                                         $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.dkDeliveryAreaBasedDessertsTypeList, loadDessertTypeListOnPage);
                                     }
                                 }
