@@ -62,18 +62,6 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
             }
         };
         
-        // collectDataToRedirectCShopstoreView
-        $rootScope.collectDataToViewCShopstore = function(paramDataObj){
-            try{
-                var retStatus = checkAllParamToViewCShopStore(paramDataObj);
-                if(retStatus===true){
-                    window.location.href = globalBaseSitePath+"storeproducts.php";
-                }
-            }catch(ex){
-                console.log("problem in collectDataToViewCShopstore ex=>"+ex);
-            }
-        };
-        
         // loadCShopStoreSummaryInfo 
         $rootScope.loadCShopStoreSummaryInfo = function(){
             try{
@@ -106,6 +94,8 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
                 console.log("problem in loadCShopStoreMenuSummaryInfo ex=>"+ex);
             }
         };
+        
+        
         
         // loadCShopStoreProductTypeProductCategoryAllProductList 
         $rootScope.loadCShopStoreProductTypeProductCategoryAllProductList = function(){
