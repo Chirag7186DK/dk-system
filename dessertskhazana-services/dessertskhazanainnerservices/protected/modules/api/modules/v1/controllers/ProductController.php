@@ -111,7 +111,8 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsProductTypeCategoryProductDetails($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getProductTypeProductCategoryProductDetails($dkParamDataArr);
+                    $rspDetails = $ProductServicesV1->getProductTypeProductCategoryProductDetails($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
