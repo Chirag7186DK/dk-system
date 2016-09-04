@@ -1,12 +1,9 @@
 
-angular.module('DKAPP').directive('showUserSelectedDeliveryAreaTextHeader', showUserSelectedDeliveryAreaTextHeader);
+angular.module('DKAPP').directive('showUserselecteddeliveryareatextheaderDirective', showUserselecteddeliveryareatextheaderDirective);
 
-function showUserSelectedDeliveryAreaTextHeader(LocationServices){
-    return {
-        link: function ($scope, $el, $attrs){
-            alert();
-            LocationServices.showUserSelectedDeliveryAreaTextHeader();
-        }
+function showUserselecteddeliveryareatextheaderDirective(LocationServices){
+    return function(scope, element, attrs){
+        LocationServices.showUserSelectedDeliveryAreaTextHeader();
     };
 }
 
