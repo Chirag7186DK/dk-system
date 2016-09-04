@@ -285,9 +285,9 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
             // fetch store working style details
-            $retShopstoreWorkingstyleDetailsArr = ShopStoreDao :: getShopstoreWorkingstyleDetails($gshopstore_id);
-            if(count($retShopstoreWorkingstyleDetailsArr)>0 && $retShopstoreWorkingstyleDetailsArr!=false){
-                $rspDetails["shopstoreWorkingStyleDetails"] = $retShopstoreWorkingstyleDetailsArr;
+            $dataArr1 = ShopStoreDao :: getShopstoreWorkingstyleDetails($gshopstore_id);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                $rspDetails["shopstoreWorkingStyleDetails"] = $dataArr1;
             }
         }
         ComponentsJson::GenerateJsonAndSend($rspDetails);
