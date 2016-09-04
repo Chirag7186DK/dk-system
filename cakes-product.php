@@ -75,20 +75,20 @@
                 <ul class="vpd_userBreadcrumbULClass list-inline">
                     <li class='userBreadcrumbHomeLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeKey}}
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
                     <li class='userBreadcrumbProductTypeCategoryTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.shopStoreKey}}</a>
+                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</a>
                     </li>
                     <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeKey}}</a>
+                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeTitle}}</a>
                     </li>
                     <li class='userBreadcrumbProductTypeCategoryTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeCategoryKey}}</a>
+                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productCategoryTitle}}</a>
                     </li>
                     <li class='vpd_userBreadcrumbProductTypeCategoryTypeProductListLIClass'>
-                        |&nbsp; {{customerBreadCrumbOnWebApp.productTypeCatgoryListKey}}
+                        |&nbsp; {{customerBreadCrumbOnWebApp.productListTitle}}
                     </li>
                 </ul>
             </div>
