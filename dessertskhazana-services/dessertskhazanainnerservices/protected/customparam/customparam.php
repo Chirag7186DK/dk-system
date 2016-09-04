@@ -374,12 +374,6 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check area_ids key present or not
-        if(array_key_exists('ccaId', $paramJsonData)){
-            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
             if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
