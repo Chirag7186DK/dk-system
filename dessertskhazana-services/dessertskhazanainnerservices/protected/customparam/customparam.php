@@ -278,8 +278,6 @@ class customparam{
         return $retStatus;
     }
     
-    
-    
     // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDessertsProductTypeCategoryProductDetails($paramJsonData){
         $retStatus = 'FALSE';
@@ -302,9 +300,15 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check shopStore id is blank or not
-        if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0 && $paramJsonData['store_ids']!=''){
+        // check ccaId key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check shopstoreids is blank or not
+        if(array_key_exists('shopstoreids', $paramJsonData)){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -321,8 +325,8 @@ class customparam{
             }
         }
         // check product type ka product category ka product id is blank or not
-        if(array_key_exists('product_ids', $paramJsonData)){
-            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
+        if(array_key_exists('productlist_ids', $paramJsonData)){
+            if(($paramJsonData['productlist_ids'])>0 && $paramJsonData['productlist_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -332,7 +336,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==8){
+        if($givenParamDataCorrectCount==9){
             $retStatus = 'TRUE';
         }
         return $retStatus;
