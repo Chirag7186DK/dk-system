@@ -90,19 +90,28 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         $rootScope.loadProductTypeProductCategoryFilterTypeList = function(){
             try{
                 // get param obj to load product type product category filter type list
-                var preparedParamJsonObj = getParamObjForProductTypeAllProductCategoryList();
+                var preparedParamJsonObj = getParamObjForProductTypeProductCategoryFilterTypeList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.productTypeAllProductCategoryList = false;
                     // calling ProductServices
                     ProductServices.getProductTypeProductCategoryFilterTypeList(fetchParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'filterOperationTypeList', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
-                                    $rootScope.storeProductTypeProductCategoryDataInSession(arrJsonObj.defaultSelectedProductCategoryDetails);
+                                    if(arrJsonObj.allShopStoresDetailsArr!==false && arrJsonObj.allShopStoresDetailsArr!==undefined){
+                                        $rootScope.buildStoresFilterListHtmlSelectControl(arrJsonObj.allShopStoresDetailsArr);
+                                    }
+                                    if(arrJsonObj.allProductPriceDetailsArr!==false && arrJsonObj.allProductPriceDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductPriceFilterListHtmlSelectControl(retObj.productTypeDetails.allProductPriceDetailsArr);
+                                    }
+                                    if(arrJsonObj.allProductSizeDetailsArr!==false && arrJsonObj.allProductSizeDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
+                                    }
+                                    if(arrJsonObj.allProductDiscountDetailsArr!==false && arrJsonObj.allProductDiscountDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
+                                    }
                                 }
                             }
                         });
@@ -111,6 +120,62 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }catch(ex){
                 $rootScope.loadProductTypeProductCategoryFilterTypeList = false;
                 console.log("problem in loadProductTypeProductCategoryFilterTypeList ex=>"+ex);
+            }
+        };
+        
+        // buildStoresFilterListHtmlSelectControl
+        $rootScope.buildStoresFilterListHtmlSelectControl = function(allShopStoreList){
+            try{
+                var defaultedSelectedShopStore = '';
+                var storeFilterListSelectControlElementObj = document.getElementById("allShopStoresFilterListSelectCtrlId");
+                // all options remove and destroy bootstrap select feature
+                $(storeFilterListSelectControlElementObj).find('option').remove();
+                $(storeFilterListSelectControlElementObj).selectpicker('destroy');
+                if(allShopStoreList.length>0 && allShopStoreList!==false){
+                    // iterate each shopstore details
+                    for(var eachStoreIndex = 0; eachStoreIndex<allShopStoreList.length; eachStoreIndex++){
+                        if(allShopStoreList[eachStoreIndex]['isRequestedStoreMatched']==='Y'){
+                            defaultedSelectedShopStore = allShopStoreList[eachStoreIndex]['shopStoresId'];
+                        }
+                        var dataIconstr = 'fa fa-user';
+                        var shopStoreValue = allShopStoreList[eachStoreIndex]['shopStoresId'];
+                        var shopStoreTitle = allShopStoreList[eachStoreIndex]['shopStoresTitle'];
+                        var eachOptionStr = "<option class='shopstoreFilterOperationOptionClass' data-icon='"+dataIconstr+"' value='"+shopStoreValue+"'>"+shopStoreTitle+"</option>";
+                        $(storeFilterListSelectControlElementObj).append(eachOptionStr);
+                    }
+                }
+                // refresh shopstore list select control element 
+                $(storeFilterListSelectControlElementObj).selectpicker('refresh');
+                // default selected shopstore 
+                if(parseInt(defaultedSelectedShopStore)>0 && defaultedSelectedShopStore!==''){
+                    $(storeFilterListSelectControlElementObj).selectpicker('val', defaultedSelectedShopStore);
+                }
+                // apply change function event
+                if($(storeFilterListSelectControlElementObj).find('option').length>0){
+                    $rootScope.applyChangeEventOnStoreFilterSelectCtrlElement(storeFilterListSelectControlElementObj);
+                }
+            }catch(ex){
+                console.log("problem in buildStoresFilterListHtmlSelectControl=>"+ex);
+            }
+        };
+        
+        // applyChangeEventOnStoreFilterSelectCtrlElement
+        $rootScope.applyChangeEventOnStoreFilterSelectCtrlElement = function(elementObj){
+            try{
+                $(elementObj).on('changed.bs.select', function(e){
+                    var selectedStoreValue = $(elementObj).selectpicker('val');
+                    // reset session storage about user product (shopstore value)
+                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    existingDkParamObj['userProduct']['shopstore_value'] = '';
+                    if(selectedStoreValue!=='' && parseInt(selectedStoreValue)>0){
+                        existingDkParamObj['userProduct']['shopstore_value'] = selectedStoreValue;
+                    }
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+                    // refresh the screen
+                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                });
+            }catch(ex){
+                console.log("problem in applyChangeEventOnStoreFilterSelectCtrlElement=>"+ex);
             }
         };
         
@@ -136,22 +201,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
                                     $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.requestedProductCategoryTitle;
-                                    if(retObj.productTypeDetails.allShopStoresDetailsArr!==false 
-                                        && retObj.productTypeDetails.allShopStoresDetailsArr!==undefined){
-                                        // $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl(retObj.productTypeDetails.allShopStoresDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductPriceDetailsArr!==false 
-                                        && retObj.productTypeDetails.allProductPriceDetailsArr!==undefined){
-                                        // $rootScope.buildAllProductPriceFilterListHtmlSelectControl(retObj.productTypeDetails.allProductPriceDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductSizeDetailsArr!==false 
-                                        && retObj.productTypeDetails.allProductSizeDetailsArr!==undefined){
-                                        // $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductDiscountDetailsArr!==false 
-                                        && retObj.productTypeDetails.allProductDiscountDetailsArr!==undefined){
-                                        // $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
-                                    }
                                     if(retObj.productTypeDetails.allProductDetailsList!==false 
                                         && retObj.productTypeDetails.allProductDetailsList!==undefined){
                                         $rootScope.allProductDetailsList = retObj.productTypeDetails.allProductDetailsList;
@@ -287,62 +336,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         
         
         
-        // buildAllProductShopStoresFilterListHtmlSelectControl
-        $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl = function(allShopStoreList){
-            try{
-                var defaultedSelectedShopStore = '';
-                var shopStoreFilterListSelectControlElementObj = document.getElementById("allShopStoresFilterListSelectCtrlId");
-                // all options remove and destroy bootstrap select feature
-                $(shopStoreFilterListSelectControlElementObj).find('option').remove();
-                $(shopStoreFilterListSelectControlElementObj).selectpicker('destroy');
-                if(allShopStoreList.length>0 && allShopStoreList!=='' && allShopStoreList!==undefined && allShopStoreList!==false){
-                    // iterate each shopstore details
-                    for(var eachShopstoreDetailsArrIndex = 0; eachShopstoreDetailsArrIndex<allShopStoreList.length; eachShopstoreDetailsArrIndex++){
-                        if(allShopStoreList[eachShopstoreDetailsArrIndex]['isRequestedShopstoresMatched']==='Y'){
-                            defaultedSelectedShopStore = allShopStoreList[eachShopstoreDetailsArrIndex]['shopStoresId'];
-                        }
-                        var dataIconstr = 'fa fa-user';
-                        var shopStoreValue = allShopStoreList[eachShopstoreDetailsArrIndex]['shopStoresId'];
-                        var shopStoreTitle = allShopStoreList[eachShopstoreDetailsArrIndex]['shopStoresTitle'];
-                        var eachOptionStr = "<option class='shopstoreFilterOperationOptionClass' data-icon='"+dataIconstr+"' value='"+shopStoreValue+"'>"+shopStoreTitle+"</option>";
-                        $(shopStoreFilterListSelectControlElementObj).append(eachOptionStr);
-                    }
-                }
-                // refresh shopstore list select control element 
-                $(shopStoreFilterListSelectControlElementObj).selectpicker('refresh');
-                // default selected shopstore 
-                if((defaultedSelectedShopStore).length===32){
-                    $(shopStoreFilterListSelectControlElementObj).selectpicker('val', defaultedSelectedShopStore);
-                }
-                // apply function event
-                if($(shopStoreFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.buildedProductShopStoreFilterListHtmlSelectControlOnChangeEvent(shopStoreFilterListSelectControlElementObj);
-                }
-            }catch(ex){
-                console.log("problem in buildAllProductShopStoresFilterListHtmlSelectControl=>"+ex);
-            }
-        };
-        
-        // buildedProductShopStoreFilterListHtmlSelectControlOnChangeEvent
-        $rootScope.buildedProductShopStoreFilterListHtmlSelectControlOnChangeEvent = function(elementObj){
-            try{
-                $(elementObj).on('changed.bs.select', function(e){
-                    var selectedShopStoreValues = $(elementObj).selectpicker('val');
-                    // reset session storage about user product(shopstore value)
-                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                    existingDkParamObj['userProduct']['shopstore_value'] = '';
-                    if(selectedShopStoreValues!=='' && (selectedShopStoreValues).length===32 && selectedShopStoreValues!==null){
-                        existingDkParamObj['userProduct']['shopstore_value'] = selectedShopStoreValues;
-                    }
-                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-                    // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
-                });
-            }catch(ex){
-                console.log("problem in buildedShopStoreFilterListHtmlSelectControlOnChangeEvent=>"+ex);
-            }
-        };
-        
+         
         // buildAllProductPriceFilterListHtmlSelectControl
         $rootScope.buildAllProductPriceFilterListHtmlSelectControl = function(allProductPriceDetails){
             try{    
