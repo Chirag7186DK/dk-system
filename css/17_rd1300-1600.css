@@ -1204,7 +1204,11 @@
         padding:2px!important;
         color:rgba(205, 46, 216, 0.44)!important;
     }
-
+    
+    .vpd_eachUserAvgRatedReviewAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:13px!important;
+    }
 
     
 
