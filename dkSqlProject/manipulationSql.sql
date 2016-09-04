@@ -1,11 +1,97 @@
 
+
+SELECT pt.id, pt.sort_order
+FROM DK_PRODUCTTYPE pt
+WHERE 1
+ORDER BY FIELD(pt.sort_order, 3) DESC;
+
+
+EXPLAIN
+SELECT 
+COALESCE(ccr.country_id, '') countryId, 
+COALESCE(ccr.city_id, '') cityId, COALESCE(country.name, '') cityName, 
+COALESCE(ccr.area_id, '') areaId, COALESCE(area.name, '') areaTitle,
+COALESCE(spa.shopstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+COALESCE(ss.shop_storelabel, '') shopStoreLabel, COALESCE(ss.shopstore_logofile, '') shopstore_logofile,
+COALESCE(ss.shopstore_mobile, '') shopstore_mobile,
+COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
+COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
+COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '') productTypeProductCategoryTitle,
+COALESCE(spl.id, '') productListId, COALESCE(spl.name, '') productListTitle,
+COALESCE(splld.id, '') productFeatureId, COALESCE(splld.food_type, '') productFeatureFoodType, 
+COALESCE(splld.taste_type, '') productFeatureTasteType, COALESCE(splld.pattern_type, '') productFeaturePatternType, 
+COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
+COALESCE(splld.baseprice, '') productFeatureBasePrice, COALESCE(splld.product_discount, '') productFeatureDiscount,
+COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
+COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
+COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
+COALESCE(splImg.file_path, 'images/') productImageFilePath
+FROM DK_PRODUCTTYPE pt
+JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+    AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
+JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
+JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
+JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
+JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
+LEFT JOIN DK_SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+    ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- delete query 
 
 -- TRUNCATE TABLE  `DK_USERLOG`;
 -- TRUNCATE TABLE  `DK_USERSESSION`;
 -- TRUNCATE TABLE  `DK_TRACKUSERS_ACCESSWEBSITES`;
 
-
+-- SELECT
+-- *
+-- FROM DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE ccps
+-- WHERE FIND_IN_SET_X('1,3', ccps.shopstore_ids)>0
 
 
 -- SELECT 
@@ -117,20 +203,20 @@
 -- COALESCE(MD5(sppl.id), '') productListId, 
 -- COALESCE(sppl.id, '') unMd5ProductListId,
 -- COALESCE(sppl.name, '') productListTitle,
--- COALESCE(MD5(sppfd.id), '') productFeatureId, 
--- COALESCE(sppfd.id, '') unMd5ProductFeatureId, 
--- COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
--- COALESCE(sppfd.food_type, '') productFeatureFoodType, 
--- COALESCE(sppfd.taste_type, '') productFeatureTasteType, 
--- COALESCE(sppfd.pattern_type, '') productFeaturePatternType, 
--- COALESCE(sppfd.order_opentime, '') productFeatureOrderOpenTime, 
--- COALESCE(sppfd.order_closetime, '') productFeatureOrderOpenTime, 
--- COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
--- COALESCE(sppfd.product_discount, '') productFeatureDiscount,
--- COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice,
--- COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
--- COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
--- COALESCE(ppimg.file_path, 'images/') productImageFilePath,
+-- COALESCE(MD5(splld.id), '') productFeatureId, 
+-- COALESCE(splld.id, '') unMd5ProductFeatureId, 
+-- COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
+-- COALESCE(splld.food_type, '') productFeatureFoodType, 
+-- COALESCE(splld.taste_type, '') productFeatureTasteType, 
+-- COALESCE(splld.pattern_type, '') productFeaturePatternType, 
+-- COALESCE(splld.order_opentime, '') productFeatureOrderOpenTime, 
+-- COALESCE(splld.order_closetime, '') productFeatureOrderOpenTime, 
+-- COALESCE(splld.baseprice, '') productFeatureBasePrice,
+-- COALESCE(splld.product_discount, '') productFeatureDiscount,
+-- COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
+-- COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
+-- COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
+-- COALESCE(splImg.file_path, 'images/') productImageFilePath,
 -- COALESCE(uocim.product_featuresize, '') itemMeasurementType,
 -- COALESCE(uocim.product_featuresprice, 0) itemPerpriceIncart,
 -- COALESCE(uocim.product_featuresqty, 0) itemQty,
@@ -146,11 +232,11 @@
 -- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
 -- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
---     ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
---     ON ppimg.product_listid=sppl.id  AND ppimg.status = 'A' 
---     AND ppimg.is_showcasefile = 'Y'    
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld 
+--     ON splld.product_listid=sppl.id AND splld.id=uocim.product_featureid
+-- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+--     ON splImg.product_listid=sppl.id  AND splImg.status = 'A' 
+--     AND splImg.is_showcasefile = 'Y'    
 -- WHERE 1
 -- AND (uoc.status='ZC' OR uoc.status='ZA' OR uoc.status='R')
 -- AND (uocim.status='ZC' OR uocim.status='ZA')
@@ -184,8 +270,8 @@
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
 --     AND sppl.status = 'A'
 -- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
---     ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid AND sppfd.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld 
+--     ON splld.product_listid=sppl.id AND splld.id=uocim.product_featureid AND splld.status = 'A'
 -- WHERE 
 -- uoc.status='R'
 -- AND uocim.status='R'
@@ -291,11 +377,11 @@
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid 
 --     AND sppl.id=wlm.product_listid AND sppl.status = 'A'
 -- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd ON sppfd.product_listid=sppl.id
---     AND sppfd.id=wlm.product_featureid AND sppfd.status = 'A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
---     ON ppimg.product_listid=sppl.id AND ppimg.status = 'A' 
---     AND ppimg.is_showcasefile = 'Y'
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
+--     AND splld.id=wlm.product_featureid AND splld.status = 'A'
+-- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+--     ON splImg.product_listid=sppl.id AND splImg.status = 'A' 
+--     AND splImg.is_showcasefile = 'Y'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
 -- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
 -- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
@@ -320,19 +406,19 @@
 -- COALESCE(sppl.name, '') productListTitle,
 -- MD5(wlm.product_listid) productListId,
 -- MD5(wlm.product_featureid) productFeatureId,
--- COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
--- COALESCE(sppfd.food_type, '') productFeatureFoodType, 
--- COALESCE(sppfd.taste_type, '') productFeatureTasteType, 
--- COALESCE(sppfd.pattern_type, '') productFeaturePatternType, 
--- COALESCE(sppfd.order_opentime, '') productFeatureOrderOpenTime, 
--- COALESCE(sppfd.order_closetime, '') productFeatureOrderOpenTime, 
--- COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
--- COALESCE(sppfd.product_discount, '') productFeatureDiscount,
--- COALESCE(sppfd.storeprice, '') productFeatureStorPrice,
--- COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice,
--- COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
--- COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
--- COALESCE(ppimg.file_path, 'images/') productImageFilePath
+-- COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
+-- COALESCE(splld.food_type, '') productFeatureFoodType, 
+-- COALESCE(splld.taste_type, '') productFeatureTasteType, 
+-- COALESCE(splld.pattern_type, '') productFeaturePatternType, 
+-- COALESCE(splld.order_opentime, '') productFeatureOrderOpenTime, 
+-- COALESCE(splld.order_closetime, '') productFeatureOrderOpenTime, 
+-- COALESCE(splld.baseprice, '') productFeatureBasePrice,
+-- COALESCE(splld.product_discount, '') productFeatureDiscount,
+-- COALESCE(splld.storeprice, '') productFeatureStorPrice,
+-- COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
+-- COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
+-- COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
+-- COALESCE(splImg.file_path, 'images/') productImageFilePath
 -- FROM DK_WISHLIST wl
 -- JOIN DK_WISHLISTITEM wlm ON wlm.wishlist_id=wl.id AND wlm.status='A'
 -- JOIN DK_USERS u ON u.id=wl.user_id AND u.status='A'
@@ -348,11 +434,11 @@
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid 
 --     AND sppl.id=wlm.product_listid AND sppl.status = 'A'
 -- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd ON sppfd.product_listid=sppl.id
---     AND sppfd.id=wlm.product_featureid AND sppfd.status = 'A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
---     ON ppimg.product_listid=sppl.id AND ppimg.status = 'A' 
---     AND ppimg.is_showcasefile = 'Y'
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
+--     AND splld.id=wlm.product_featureid AND splld.status = 'A'
+-- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+--     ON splImg.product_listid=sppl.id AND splImg.status = 'A' 
+--     AND splImg.is_showcasefile = 'Y'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
 -- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
 -- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
@@ -426,11 +512,11 @@
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid 
 --     AND sppl.id=wlm.product_listid AND sppl.status = 'A'
 -- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd ON sppfd.product_listid=sppl.id
---     AND sppfd.id=wlm.product_featureid AND sppfd.status = 'A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
---     ON ppimg.product_listid=sppl.id AND ppimg.status = 'A' 
---     AND ppimg.is_showcasefile = 'Y'
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
+--     AND splld.id=wlm.product_featureid AND splld.status = 'A'
+-- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+--     ON splImg.product_listid=sppl.id AND splImg.status = 'A' 
+--     AND splImg.is_showcasefile = 'Y'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
 -- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
 -- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
@@ -443,14 +529,6 @@
 -- -- GROUP BY wl.id
 -- HAVING wishListCount>0 AND wishListItemCount>0
 
-
-
-
-
-SELECT 
-DATEDIFF('2016-08-30 00:00:00', '2016-08-28 00:00:00'),
-DATE_ADD('2016-08-30 23::00',INTERVAL 1 DAY)
-FROM DUAL;
 
 
 
