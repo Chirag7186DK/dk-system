@@ -754,8 +754,8 @@ class customparam{
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
-        if(array_key_exists('store_ids', $paramJsonData)){
-            if(($paramJsonData['store_ids'])>0 && $paramJsonData['store_ids']!=''){
+        if(array_key_exists('shopstoreids', $paramJsonData)){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
