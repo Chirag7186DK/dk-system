@@ -29,6 +29,8 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     $isRequestedDessertsTypeIdMatched = 'N';
                     $iteratedDessertsTypeListId = $ccaBasedConductDessertsTypeDetailsArr[$eachIndex]['productTypeId'];
                     $iteratedDessertsTypeTitle = $ccaBasedConductDessertsTypeDetailsArr[$eachIndex]['productTypeTitle'];
+                    $storeId = $ccaBasedConductDessertsTypeDetailsArr[$eachIndex]['shopStoreId'];
+                    $storeTitle = $ccaBasedConductDessertsTypeDetailsArr[$eachIndex]['shopStoreTitle'];
                     if(strtolower($iteratedDessertsTypeTitle)=='cakes'){
                         $productIcon = 'fa fa-birthday-cake';
                     }
@@ -43,11 +45,15 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails'] = array();
                         $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['dessertsTypeId'] = $iteratedDessertsTypeListId;
                         $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['dessertsTypeTitle'] = $iteratedDessertsTypeTitle;
+                        $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['shopStoreId'] = $storeId;
+                        $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['shopStoreTitle'] = $storeTitle;
                     }
                     array_push($allDessertsTypeListArr, array(
                         "dessertsTypeId"=>$iteratedDessertsTypeListId,
                         "dessertsTypeTitle"=>$iteratedDessertsTypeTitle,
                         "dessertsIcon"=>$productIcon,
+                        "shopStoreId"=>$storeId,
+                        "shopStoreTitle"=>$storeTitle,
                         "isRequestedProductTypeIdMatched"=>$isRequestedDessertsTypeIdMatched
                     ));
                 }
