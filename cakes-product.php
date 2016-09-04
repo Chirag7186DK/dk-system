@@ -113,7 +113,7 @@
                         <h2 class="dessertsProductTitleHClass">
                             {{eachDessertsTypeDetails.dessertsTypeTitle}}
                         </h2>
-                        <p ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
+                        <p ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
                             View desserts
                         </p>
                     </div>
