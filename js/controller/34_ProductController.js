@@ -449,21 +449,21 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.vPDetails = false;
+                    $rootScope.vAllPDetails = false;
                     // calling ProductServices to get product details
                     ProductServices.getProductTypeProductCategoryProductDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.vPDetails = retObj.viewProductDetails;
+                                    $rootScope.vAllPDetails = retObj.viewProductDetails;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                $rootScope.vPDetails = false;
+                $rootScope.vAllPDetails = false;
                 console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
             }
         };
