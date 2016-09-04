@@ -220,7 +220,13 @@
                         </span>
                     </p>
                     <p class='vap_productWeightPClass'>
-                        Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
+                        Size : {{eachProductDetails.productFeatureDisplayMeasurementType}} 
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right vap_productVegIconClass">
+                            <i class="fa fa-square"></i>
+                        </span>
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
+                            <i class="fa fa-square"></i>
+                        </span>
                     </p>
                     <p class='vap_productBtnWrapperPClass'> 
                         <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'allproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="vap_specificProductAddBtnClass btn">
