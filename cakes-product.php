@@ -111,21 +111,21 @@
                     IMAGES
                 </p>
                 <hr class="vpd_horizontalLineClass">
-                <img style='width:100%;' class='preloadProductImagesClass' data-original="{{vPDetails.productDetails[0]['productImageFilePath']+vPDetails.productDetails[0]['productImageFileName']}}" ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
+                <img style='width:100%;' class='preloadProductImagesClass' data-original="{{vAllPDetails[0]['productImageFilePath']+vAllPDetails[0]['productImageFileName']}}" ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
             </div>
             
             <!-- show product details -->
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_productDetailsContainerDivClass">
                 <p class='vpd_productDetailsLabelPClass'>
-                    <i class='{{vPDetails.productTypeIconStr}}'></i> PRODUCT
+                    <i class='fa fa-birthday-cake'></i> PRODUCT
                 </p>
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_productStoreNameContainerPClass'>
-                    <span class="vpd_productStoreLabelNameSpanClass">Seller :</span> 
+                    <span class="vpd_productStoreLabelNameSpanClass">Seller: </span> 
                     <span class="vpd_productStoreNameSpanClass">{{customerBreadCrumbOnWebApp.shopStoreKey}}</span>
                 </p>
                 <p class='vpd_productNamePClass'>
-                    {{vPDetails.productDetails[0]['productListTitle']}}
+                    {{vAllPDetails[0]['productListTitle']}}
                 </p>
                 <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedAboutProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct" title="To see detailed reviewed / rating about this item please scroll down page to rating / review section">
                     {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} reviewed,
@@ -137,37 +137,35 @@
                     No rating & review from customer yet
                 </p>
                 <hr>
-                <p class='vpd_productDeliveryLocationPClass'> 
-                    Delivery <i class="fa fa-map-marker faa-tada animated vpd_productDeliveryLocationIconClass"></i> : Available at {{vPDetails.storeDeliveryArea}}
-                </p>
-                <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId" title="This item is also available in another size">
-                        <option ng-repeat="eachProductMeasurementDetails in vPDetails.productDetails" data-shopstore_id='{{eachProductMeasurementDetails.shopStoreId}}' data-product_typeid='{{eachProductMeasurementDetails.productTypeId}}' data-product_categoryid='{{eachProductMeasurementDetails.productTypeProductCategoryId}}' data-product_listid='{{eachProductMeasurementDetails.productListId}}' data-productfeatureid='{{eachProductMeasurementDetails.productFeatureId}}' data-productprice='{{eachProductMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}">{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}</option>
+                        <option ng-repeat="eachProductMeasurementDetails in vAllPDetails" data-shopstore_id='{{eachProductMeasurementDetails.shopStoreId}}' data-product_typeid='{{eachProductMeasurementDetails.productTypeId}}' data-product_categoryid='{{eachProductMeasurementDetails.productTypeProductCategoryId}}' data-product_listid='{{eachProductMeasurementDetails.productListId}}' data-productfeatureid='{{eachProductMeasurementDetails.productFeatureId}}' data-productprice='{{eachProductMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}">
+                            {{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}
+                        </option>
                     </select>
                 </p>
                 <p class='viewProductPricePClass' title="Item price varies based on size/weight"> 
-                    <span class='viewProductCutPriceTextSClass' ng-if="vPDetails.productDetails[0]['productFeatureDiscount']">
-                        <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
+                    <span class='viewProductCutPriceTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']">
+                        <i class="fa fa-rupee"></i> {{vAllPDetails[0]['productFeatureBasePrice']}}
                     </span>
                     <span class='vpd_productPayBlgPriceTextSClass'>
                         <i class="fa fa-rupee faa-tada animated"></i> 
-                        <i class='onlineProductSellingPriceTextClass'>{{vPDetails.productDetails[0]['productFeatureOnlineSellingPrice']}}</i>
+                        <i class='onlineProductSellingPriceTextClass'>{{vAllPDetails[0]['productFeatureOnlineSellingPrice']}}</i>
                     </span>
-                    <span class='vpd_productDiscountPercentTextSClass' ng-if="vPDetails.productDetails[0]['productFeatureDiscount']!==''">
-                        ({{vPDetails.productDetails[0]['productFeatureDiscount']}}% Off)
+                    <span class='vpd_productDiscountPercentTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']!==''">
+                        ({{vAllPDetails[0]['productFeatureDiscount']}}% Off)
                     </span>
                 </p>
                 <p class='vpd_productQtyPClass'> 
                     <input view-productqtyinput-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" title="Type Qty" value='1'>
                 </p>
-                <p class='vpd_productCommentBoxPClass' ng-show="vPDetails.isShowProductCommentBox" title="Type 40 characters only & not allowed any special characters"> 
+                <p class='vpd_productCommentBoxPClass' ng-show="true" title="Type 40 characters only & not allowed any special characters"> 
                     Message On Cake
                     <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
-                    <button title="Click to add {{vPDetails.productDetails[0]['productListTitle']}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
+                    <button title="Click to add {{customerBreadCrumbOnWebApp.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
                         <i class="fa fa-shopping-cart"></i> ADD
                     </button>
                 </p>
