@@ -215,7 +215,7 @@ class customparam{
         }
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
+            if($paramJsonData['shopstoreids']!='' && $paramJsonData['shopstoreids']!=false){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -243,7 +243,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount>=6){
+        if($givenParamDataCorrectCount>=7){
             $retStatus = 'TRUE';
         }
         return $retStatus;
