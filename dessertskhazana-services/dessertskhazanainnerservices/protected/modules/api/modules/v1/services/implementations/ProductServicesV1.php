@@ -312,7 +312,6 @@ class ProductServicesV1 implements IProductServicesV1{
             $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($dataArr1)>0 && $dataArr1!=false){
                 // iterate each product features details
-                $allProductDetailsArr = array();
                 for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
                     $isRequestedProductDetailsMatched = 'N';
                     if($dataArr1[$eachIndex]['productFeatureId']==$gproductFeatureId){
@@ -320,7 +319,7 @@ class ProductServicesV1 implements IProductServicesV1{
                     }
                     $dataArr1[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
                 }
-                $rspDetails['allProductDetails'] = $allProductDetailsArr;
+                $rspDetails['allProductDetails'] = $dataArr1;
             }
         }
         return $rspDetails;
