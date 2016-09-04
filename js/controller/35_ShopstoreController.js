@@ -17,8 +17,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
         $rootScope.isShowShopStoreRatingReviewDetails = false;
         $rootScope.allUserRatingReviewDetails = false;
         $rootScope.isEnableRatingReviewSubmitButton = false;
-        $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
-        $rootScope.cShopstoreProductDeliveryAreaNames = false;
         $rootScope.isShowCShopStoreWorkingStyleDetails = false;
         $rootScope.cShopstoreWorkingstyleDetails = false;
         
@@ -541,19 +539,12 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
         $rootScope.loadCShopStoresWorkingStyle = function(){
             try{
                 if($rootScope.isShowCShopStoreWorkingStyleDetails===true){
-                    // get param obj to load working style details
+                    // get param obj to load store working style details
                     var preparedParamJsonObj = getParamObjForLoadingCShopStoreWorkingStyleDetails();
-                    // console.log("loadCShopStoresWorkingStyle preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-
                         var fetchedParamJsonObj = {};
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.cShopstoreWorkingstyleDetails = false;
-
                         // calling ShopStoreServices 
                         ShopStoreServices.getCShopStoreWorkingStyleDetails(fetchedParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
@@ -561,7 +552,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                     if(retObj!==false && retObj!==undefined && retObj!==''){
-                                        // console.log("loadCShopStoresWorkingStyle retObj=>"+JSON.stringify(retObj));
                                         $rootScope.cShopstoreWorkingstyleDetails = retObj.shopstoreWorkingStyleDetails;
                                     }
                                 }
@@ -572,47 +562,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
             }catch(ex){
                 $rootScope.cShopstoreWorkingstyleDetails = false;
                 console.log("problem in loadCShopStoresWorkingStyle ex=>"+ex);
-                showHideLoaderBox('hide');
-            }
-        };
-        
-        
-        // loadCShopStoresProductDeliveryArea 
-        $rootScope.loadCShopStoresProductDeliveryArea = function(){
-            try{
-                if($rootScope.isShowCShopStoreProductDeliveryAreaDetails===true){
-                    // get param obj to load cshopstore product delivery info
-                    var preparedParamJsonObj = getParamObjForLoadingCShopStoreProductDeliveryAreaDetails();
-                    // console.log("loadCShopStoresProductDeliveryArea preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
-                    if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                        $rootScope.cShopstoreProductDeliveryAreaNames = false;
-
-                        // calling ShopStoreServices 
-                        ShopStoreServices.getCShopStoreProductDeliveryAreaDetails(fetchedParamJsonObj).done(function(retResponseJson){
-                            $scope.$apply(function(){
-                                showHideLoaderBox('hide');
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                    if(retObj!==false && retObj!==undefined && retObj!==''){
-                                        // console.log("loadCShopStoresProductDeliveryArea retObj=>"+JSON.stringify(retObj));
-                                        $rootScope.cShopstoreProductDeliveryAreaNames = retObj.cShopstoreProductDeliveryAreaNames;
-                                    }
-                                }
-                            });
-                        });
-                    }
-                }
-            }catch(ex){
-                $rootScope.cShopstoreProductDeliveryAreaNames = false;
-                console.log("problem in loadCShopStoresProductDeliveryArea ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
@@ -640,8 +589,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
-                $rootScope.cShopstoreProductDeliveryAreaNames = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
                 $rootScope.loadCShopStoreProductTypeProductCategoryAllProductList();
@@ -660,8 +607,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Hide Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.loadShopStoreAllUserRatingReviewed();
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
-                $rootScope.cShopstoreProductDeliveryAreaNames = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
             }else{
@@ -673,8 +618,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
-                $rootScope.cShopstoreProductDeliveryAreaNames = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
                 $rootScope.loadCShopStoreProductTypeProductCategoryAllProductList();
@@ -692,8 +635,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
-                $rootScope.cShopstoreProductDeliveryAreaNames = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
             }else{
@@ -705,8 +646,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
-                $rootScope.cShopstoreProductDeliveryAreaNames = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
             }
