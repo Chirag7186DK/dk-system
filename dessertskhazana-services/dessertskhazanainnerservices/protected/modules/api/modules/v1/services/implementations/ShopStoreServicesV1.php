@@ -18,6 +18,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             // initial variable declare
             $gccaIds = $dkParamDataArr['ccaId'];
             $gstoreIds = $dkParamDataArr['shopstoreids'];
+            $gproducttype_ids = $dkParamDataArr['product_typesids'];
             // fetch all desserts type details based on ccaIds store serving
             $ccaBasedConductDessertsTypeDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, '', '', $gstoreIds, '');
             if(count($ccaBasedConductDessertsTypeDetailsArr)>0 && $ccaBasedConductDessertsTypeDetailsArr!=false){
