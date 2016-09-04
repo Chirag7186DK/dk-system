@@ -56,6 +56,175 @@ class commonfunction{
     }
     
     
+      
+    // CJ defined this function 2016-07-23
+    public static function preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($paramJsonData){
+        $retEmailSentStatus = false;
+        try{
+            if(count($paramJsonData)>0 && $paramJsonData!=false){
+                if(array_key_exists('name', $paramJsonData)
+                    && array_key_exists('email', $paramJsonData)){
+                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
+                    $msgSubject = 'Email Testing CJ';
+                    $msgBody = 'Email Testing CJ';
+                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
+                }
+            }
+        }catch(Exception $ex){
+            $retEmailSentStatus = false;
+        }
+        return $retEmailSentStatus;
+    }
+    
+    // CJ defined this function 2016-07-24
+    public static function preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($paramJsonData){
+        $retEmailSentStatus = false;
+        try{
+            if(count($paramJsonData)>0 && $paramJsonData!=false){
+                if(array_key_exists('name', $paramJsonData)
+                    && array_key_exists('email', $paramJsonData)){
+                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
+                    $msgSubject = 'Email Testing CJ';
+                    $msgBody = 'Email Testing CJ';
+                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
+                }
+            }
+        }catch(Exception $ex){
+            $retEmailSentStatus = false;
+        }
+        return $retEmailSentStatus;
+    }
+    
+    // CJ defined this function 2016-07-24
+    public static function preparedDataSendingEmailAboutCorporateTieupRequestReceiveFromCustomer($paramJsonData){
+        $retEmailSentStatus = false;
+        try{
+            if(count($paramJsonData)>0 && $paramJsonData!=false){
+                $paramJsonData['name'] = '';
+                $paramJsonData['email'] = '';
+                if(array_key_exists('name', $paramJsonData)
+                    && array_key_exists('email', $paramJsonData)){
+                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
+                    $msgSubject = 'Email Testing CJ';
+                    $msgBody = 'Email Testing CJ';
+                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
+                }
+            }
+        }catch(Exception $ex){
+            $retEmailSentStatus = false;
+        }
+        return $retEmailSentStatus;
+    }
+    
+    // CJ defined this function 2016-07-24
+    public static function prepareParamDataForTrackingUserInfoAccessingWebsites($paramJsonData){
+        if(count($paramJsonData)>0 && $paramJsonData!=false){
+            $paramJsonData['user_sessionstarttime'] = time();
+            $retUserGeoLocationDetails = utils :: getUserAccessingWebsiteGeoLocationDetails();
+            $paramJsonData = array_merge($paramJsonData, $retUserGeoLocationDetails);
+        }
+        return $paramJsonData;
+    }
+    
+    
+    
+    ////////////////./////////////// delivery city related code ////////////////////////////////
+    
+  
+    // CJ defined this function 2016-09-02
+    public static function getDeliveryCityListDetails($paramJsonData){
+        $rspDetails = array();
+        if(count($paramJsonData)>0 && $paramJsonData!=false){
+            $rsltJsonArr = array();
+            $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = false;
+            $rsltJsonArr['allCityList'] = false;
+            // initial variable declare here
+            $gcity_ids = $paramJsonData['city_ids'];
+            $deliveryCityListDetailsArr = LocationDao::getCityList($gcity_ids, '');
+            if(count($deliveryCityListDetailsArr)>0 && $deliveryCityListDetailsArr!=false){
+                // iterate each delivery city details
+                $isRequestedDeliveryCityMatched = false;
+                for($eachIndex = 0; $eachIndex<count($deliveryCityListDetailsArr); $eachIndex++){
+                    $deliveryCityListDetailsArr[$eachIndex]['cityIcon'] = 'fa fa-map-marker';
+                    $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'N';
+                    if($deliveryCityListDetailsArr[$eachIndex]['cityId']==$gcity_ids){
+                        $isRequestedDeliveryCityMatched = true;
+                        $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'Y';
+                        // default selected delivery city to show
+                        $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                            "cityId"=>$gcity_ids,
+                            "cityName"=>$deliveryCityListDetailsArr[$eachIndex]['cityName'],
+                            "cityIcon"=>"fa fa-map-marker"
+                        );
+                    }
+                }
+                if($isRequestedDeliveryCityMatched==false){
+                    // default selected delivery city to show
+                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                        "cityId"=>$deliveryCityListDetailsArr[0]['cityId'],
+                        "cityName"=>$deliveryCityListDetailsArr[0]['cityName'],
+                        "cityIcon"=>"fa fa-map-marker"
+                    );
+                }
+                $rsltJsonArr['allCityList'] = $deliveryCityListDetailsArr;
+                $rspDetails["deliveryCityDetails"] =  $rsltJsonArr;
+            }
+        } 
+        return $rspDetails;
+    }
+    
+    ////////////////./////////////// delivery city related code ////////////////////////////////
+    
+  
+    // CJ defined this function 2016-09-02
+    public static function getDeliveryAreaListDetails($paramJsonData){
+        $rspDetails = array();
+        if(count($paramJsonData)>0 && $paramJsonData!=false){
+            $rsltJsonArr = array();
+            $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = false;
+            $rsltJsonArr['allAreaList'] = false;
+            // initial variable declare here
+            $gcountry_ids = $paramJsonData['country_ids'];
+            $gcity_ids = $paramJsonData['city_ids'];
+            $garea_ids = $paramJsonData['area_ids'];
+            $deliveryAreaListDetailsArr = LocationDao::getCountryCityAreaAffiliationList('', $gcountry_ids, $gcity_ids, '', '');
+            if(count($deliveryAreaListDetailsArr)>0 && $deliveryAreaListDetailsArr!=false){
+                // iterate each delivery area details
+                $isRequestedDeliveryAreaMatched = false;
+                for($eachIndex = 0; $eachIndex<count($deliveryAreaListDetailsArr); $eachIndex++){
+                    $deliveryAreaListDetailsArr[$eachIndex]['areaIcon'] = 'fa fa-map-marker';
+                    $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'N';
+                    if($deliveryAreaListDetailsArr[$eachIndex]['areaId']==$garea_ids){
+                        $isRequestedDeliveryAreaMatched = true;
+                        $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'Y';
+                        // default selected delivery area to show
+                        $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
+                            "areaId"=>$gcity_ids,
+                            "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
+                            "areaIcon"=>"fa fa-map-marker",
+                            "ccaId"=>$deliveryAreaListDetailsArr[$eachIndex]['ccaId']
+                        );
+                    }
+                }
+                if($isRequestedDeliveryAreaMatched==false){
+                    // default selected delivery area to show
+                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                        "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
+                        "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
+                        "areaIcon"=>"fa fa-map-marker",
+                        "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId']
+                    );
+                }
+                $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
+                $rspDetails["deliveryAreaDetails"] =  $rsltJsonArr;
+            }
+        } 
+        return $rspDetails;
+    }
+ 
+    
+    ////////////// product filter type list related code /////////////////////
+    
     // CJ defined this function 2016-07-12
     public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedStoreId=''){
         $allStoreWiseFilterDetailsArr = array();
@@ -264,172 +433,8 @@ class commonfunction{
         $retArr['rangeList'] = $productAllDiscountRangeArr;
         return $retArr;
     }    
-    
-    // CJ defined this function 2016-07-23
-    public static function preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($paramJsonData){
-        $retEmailSentStatus = false;
-        try{
-            if(count($paramJsonData)>0 && $paramJsonData!=false){
-                if(array_key_exists('name', $paramJsonData)
-                    && array_key_exists('email', $paramJsonData)){
-                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
-                    $msgSubject = 'Email Testing CJ';
-                    $msgBody = 'Email Testing CJ';
-                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
-                }
-            }
-        }catch(Exception $ex){
-            $retEmailSentStatus = false;
-        }
-        return $retEmailSentStatus;
-    }
-    
-    // CJ defined this function 2016-07-24
-    public static function preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($paramJsonData){
-        $retEmailSentStatus = false;
-        try{
-            if(count($paramJsonData)>0 && $paramJsonData!=false){
-                if(array_key_exists('name', $paramJsonData)
-                    && array_key_exists('email', $paramJsonData)){
-                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
-                    $msgSubject = 'Email Testing CJ';
-                    $msgBody = 'Email Testing CJ';
-                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
-                }
-            }
-        }catch(Exception $ex){
-            $retEmailSentStatus = false;
-        }
-        return $retEmailSentStatus;
-    }
-    
-    // CJ defined this function 2016-07-24
-    public static function preparedDataSendingEmailAboutCorporateTieupRequestReceiveFromCustomer($paramJsonData){
-        $retEmailSentStatus = false;
-        try{
-            if(count($paramJsonData)>0 && $paramJsonData!=false){
-                $paramJsonData['name'] = '';
-                $paramJsonData['email'] = '';
-                if(array_key_exists('name', $paramJsonData)
-                    && array_key_exists('email', $paramJsonData)){
-                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
-                    $msgSubject = 'Email Testing CJ';
-                    $msgBody = 'Email Testing CJ';
-                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
-                }
-            }
-        }catch(Exception $ex){
-            $retEmailSentStatus = false;
-        }
-        return $retEmailSentStatus;
-    }
-    
-    // CJ defined this function 2016-07-24
-    public static function prepareParamDataForTrackingUserInfoAccessingWebsites($paramJsonData){
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            $paramJsonData['user_sessionstarttime'] = time();
-            $retUserGeoLocationDetails = utils :: getUserAccessingWebsiteGeoLocationDetails();
-            $paramJsonData = array_merge($paramJsonData, $retUserGeoLocationDetails);
-        }
-        return $paramJsonData;
-    }
-    
-    
-    
-    ////////////////./////////////// delivery city related code ////////////////////////////////
-    
   
-    // CJ defined this function 2016-09-02
-    public static function getDeliveryCityListDetails($paramJsonData){
-        $rspDetails = array();
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            $rsltJsonArr = array();
-            $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = false;
-            $rsltJsonArr['allCityList'] = false;
-            // initial variable declare here
-            $gcity_ids = $paramJsonData['city_ids'];
-            $deliveryCityListDetailsArr = LocationDao::getCityList($gcity_ids, '');
-            if(count($deliveryCityListDetailsArr)>0 && $deliveryCityListDetailsArr!=false){
-                // iterate each delivery city details
-                $isRequestedDeliveryCityMatched = false;
-                for($eachIndex = 0; $eachIndex<count($deliveryCityListDetailsArr); $eachIndex++){
-                    $deliveryCityListDetailsArr[$eachIndex]['cityIcon'] = 'fa fa-map-marker';
-                    $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'N';
-                    if($deliveryCityListDetailsArr[$eachIndex]['cityId']==$gcity_ids){
-                        $isRequestedDeliveryCityMatched = true;
-                        $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'Y';
-                        // default selected delivery city to show
-                        $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                            "cityId"=>$gcity_ids,
-                            "cityName"=>$deliveryCityListDetailsArr[$eachIndex]['cityName'],
-                            "cityIcon"=>"fa fa-map-marker"
-                        );
-                    }
-                }
-                if($isRequestedDeliveryCityMatched==false){
-                    // default selected delivery city to show
-                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                        "cityId"=>$deliveryCityListDetailsArr[0]['cityId'],
-                        "cityName"=>$deliveryCityListDetailsArr[0]['cityName'],
-                        "cityIcon"=>"fa fa-map-marker"
-                    );
-                }
-                $rsltJsonArr['allCityList'] = $deliveryCityListDetailsArr;
-                $rspDetails["deliveryCityDetails"] =  $rsltJsonArr;
-            }
-        } 
-        return $rspDetails;
-    }
     
-    ////////////////./////////////// delivery city related code ////////////////////////////////
-    
-  
-    // CJ defined this function 2016-09-02
-    public static function getDeliveryAreaListDetails($paramJsonData){
-        $rspDetails = array();
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            $rsltJsonArr = array();
-            $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = false;
-            $rsltJsonArr['allAreaList'] = false;
-            // initial variable declare here
-            $gcountry_ids = $paramJsonData['country_ids'];
-            $gcity_ids = $paramJsonData['city_ids'];
-            $garea_ids = $paramJsonData['area_ids'];
-            $deliveryAreaListDetailsArr = LocationDao::getCountryCityAreaAffiliationList('', $gcountry_ids, $gcity_ids, '', '');
-            if(count($deliveryAreaListDetailsArr)>0 && $deliveryAreaListDetailsArr!=false){
-                // iterate each delivery area details
-                $isRequestedDeliveryAreaMatched = false;
-                for($eachIndex = 0; $eachIndex<count($deliveryAreaListDetailsArr); $eachIndex++){
-                    $deliveryAreaListDetailsArr[$eachIndex]['areaIcon'] = 'fa fa-map-marker';
-                    $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'N';
-                    if($deliveryAreaListDetailsArr[$eachIndex]['areaId']==$garea_ids){
-                        $isRequestedDeliveryAreaMatched = true;
-                        $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'Y';
-                        // default selected delivery area to show
-                        $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
-                            "areaId"=>$gcity_ids,
-                            "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
-                            "areaIcon"=>"fa fa-map-marker",
-                            "ccaId"=>$deliveryAreaListDetailsArr[$eachIndex]['ccaId']
-                        );
-                    }
-                }
-                if($isRequestedDeliveryAreaMatched==false){
-                    // default selected delivery area to show
-                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                        "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
-                        "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
-                        "areaIcon"=>"fa fa-map-marker",
-                        "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId']
-                    );
-                }
-                $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
-                $rspDetails["deliveryAreaDetails"] =  $rsltJsonArr;
-            }
-        } 
-        return $rspDetails;
-    }
- 
     
     ////////////////.///////////////  user related code ////////////////////////////////
     
