@@ -465,6 +465,39 @@ function storeProductTypeProductCategoryDataInSession(productTypeProductCategory
     }
 }
 
+// CJ defined this function 2016-09-03
+function getParamObjForProductTypeProductCategoryFilterTypeList(){
+    try{
+        var paramObj = {};
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                // extract user userProduct session data
+                var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('producttype_value')===true){
+                    if(parseInt(userProductObj['producttype_value'])>0
+                        && userProductObj['producttype_value']!==''){
+                        paramObj['product_typesids'] = userProductObj['producttype_value'];
+                    }
+                }
+                if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
+                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                }
+            }
+        }
+        if(Object.keys(paramObj).length>=5){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
 
 // CJ defined this function 2016-06-17
 function getParamObjForProductTypeProductCategoryAllProductList(){
