@@ -350,7 +350,6 @@ class ProductServicesV1 implements IProductServicesV1{
                         )
                     );
                 }   
-                $rspDetails["isProductDescriptionDetailsFound"] = 'TRUE';
                 $rspDetails["descriptionDetailsArr"] = $productDescriptionDetailsArr;
             }
         }
