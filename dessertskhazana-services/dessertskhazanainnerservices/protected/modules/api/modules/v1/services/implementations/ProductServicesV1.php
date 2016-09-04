@@ -134,7 +134,7 @@ class ProductServicesV1 implements IProductServicesV1{
     }
     
     // CJ defined this action 2016-09-03
-    public function getProductTypeProductCategoryFilterOperationList($dkParamDataArr){
+    public function getProductTypeProductCategoryFilterTypeList($dkParamDataArr){
         $rspDetails = array();
         // checking requested param data
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
