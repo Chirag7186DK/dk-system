@@ -91,15 +91,20 @@
             <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
                 
                 <!-- display selected desserts type title ordering by customer -->
-                <li class='vap_dkServedDessertsProductNoteLIClass'>
+                <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
                     Hey you are viewing 'Cakes' and also we can serve other 
                     <span class="badge vap_dessertsTypeCountSClass">
                         {{dkDeliveryAreaBasedDessertsTypeList.length}}
                     </span> desserts in your '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
+                <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" class='vap_dkServedDessertsProductNoteLIClass'>
+                    <i class='fa fa-smile-o smileIconClass'></i> 
+                    Hey you are viewing 'Cakes' desserts at '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
+                </li> 
+                 
                 
-                <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
+                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
                         <p class="vap_dessertsProductIconPClass">
@@ -122,14 +127,17 @@
             <!-- requested desserts type all product category list will be display here -->
             <div ng-controller="ProductController" ng-init="loadProductTypeAllProductCategoryList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 
-                <p class='vap_productInfoAbtProductCategoryMsgPClass'>
+                <p ng-if="productTypeAllProductCategoryList.length==1" class='vap_productInfoAbtProductCategoryMsgPClass'>
+                    Info *: <i class="fa fa-smile-o"></i> Hey now you will choose products !!!
+                </p>
+                <p ng-if="productTypeAllProductCategoryList.length>1" class='vap_productInfoAbtProductCategoryMsgPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
                         {{productTypeAllProductCategoryList.length}}
                     </span> categories !
                 </p>
                 
-                <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
+                <div ng-if="productTypeAllProductCategoryList.length>1" id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
                     <li id="vap_eachProductCategoryContainerLIId_{{$index}}" ng-click="toggleProductTypeProductCategoryElementClass('vap_eachProductCategoryContainerLIId_'+$index, 'vap_productAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSession(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerLIClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
                         {{eachProductCategoryDetails.productTypeProductCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
                     </li>
