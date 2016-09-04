@@ -495,21 +495,9 @@ function getParamObjForProductTypeProductCategoryFilterTypeList(){
                         paramObj['allShopstoreids'] = userProductObj['all_shopstorevalue'];
                     }
                 }
-                if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
-                }
-                if(userProductObj.hasOwnProperty('product_price_filter')===true){
-                    paramObj['product_price_filter'] = userProductObj['product_price_filter'];
-                }
-                if(userProductObj.hasOwnProperty('product_size_filter')===true){
-                    paramObj['product_size_filter'] = userProductObj['product_size_filter'];
-                }
-                if(userProductObj.hasOwnProperty('product_discount_filter')===true){
-                    paramObj['product_discount_filter'] = userProductObj['product_discount_filter'];
-                }
             }
         }
-        if(Object.keys(paramObj).length>=3){
+        if(Object.keys(paramObj).length==3){
             return paramObj;
         }else{
             return false;
