@@ -164,7 +164,7 @@ class commonfunction{
     }    
     
     // CJ defined this function 2016-07-12
-    public static function preparedProductSizeFilterationData($productAllSizeArrJsonData, $requestedProductSizeFilterArr){
+    public static function preparedProductSizeFilterationData($productAllSizeArrJsonData, $requestedProductSizeFilterArr = array()){
         $retProductAllSizeRangeListArr = array();
         try{
             if(count($productAllSizeArrJsonData)>0 && $productAllSizeArrJsonData!=false){
