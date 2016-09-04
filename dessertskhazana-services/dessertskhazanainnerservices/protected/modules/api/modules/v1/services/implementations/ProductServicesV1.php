@@ -63,7 +63,7 @@ class ProductServicesV1 implements IProductServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // initial variable declare
             $gccaIds = $dkParamDataArr['ccaId'];
-            $gproducttype_ids = $dkParamDataArr['producttype_ids'];
+            $gproducttype_ids = $dkParamDataArr['product_typesids'];
             // fetch store details who do given desserts type business in ccaIds
             $allStoreDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
             if(count($allStoreDetailsArr)>0 && $allStoreDetailsArr!=false){
@@ -72,7 +72,7 @@ class ProductServicesV1 implements IProductServicesV1{
                 $paramDataArr1['product_typeids'] = $gproducttype_ids;
                 $paramDataArr1['shop_storesids'] = $allStoreIdsStr;
                 $paramDataArr1['groupby_product_typeids'] = 'Y';
-                $paramDataArr1['groupby_product_typeids'] = 'Y';
+                $paramDataArr1['groupby_product_categoryids'] = 'Y';
                 $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramDataArr1);
                 if(count($dataArr1)>0 && $dataArr1!=false){
                     $productTypeAllCategoryList = array();
