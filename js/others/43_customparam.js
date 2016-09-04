@@ -443,7 +443,7 @@ function storeProductTypeProductCategoryDataInSession(productTypeProductCategory
             // extract dk param session data
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
-            userProductObj['shopstore_value'] = '';
+            userProductObj['shopstore_value'] = productTypeProductCategoryDataObj['shopStoreIds'];
             userProductObj['shopstore_name'] = '';
             userProductObj['producttype_value'] = productTypeProductCategoryDataObj['productTypeId'];
             userProductObj['producttype_name'] = productTypeProductCategoryDataObj['productTypeTitle'];
@@ -501,13 +501,21 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    paramObj['product_typesids'] = userProductObj['producttype_value'];
+                    if(parseInt(userProductObj['producttype_value'])>0
+                        && userProductObj['producttype_value']!==''){
+                        paramObj['product_typesids'] = userProductObj['producttype_value'];
+                    }
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    if(parseInt(userProductObj['producttype_categoryvalue'])>0
+                        && userProductObj['producttype_categoryvalue']!==''){
+                        paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    }
                 }
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    if(userProductObj['shopstore_value']!==''){
+                        paramObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    }
                 }
                 if(userProductObj.hasOwnProperty('product_price_filter')===true){
                     paramObj['product_price_filter'] = userProductObj['product_price_filter'];
@@ -521,7 +529,7 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
 
             }
         }
-        if(Object.keys(paramObj).length>=6){
+        if(Object.keys(paramObj).length>=7){
             return paramObj;
         }else{
             return false;
