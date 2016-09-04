@@ -23,6 +23,33 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
         $rootScope.isShowCShopStoreWorkingStyleDetails = false;
         $rootScope.cShopstoreWorkingstyleDetails = false;
         
+        // loadDKDeliveryAreaBasedDessertsTypeList 
+        $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
+            try{
+                // get param obj to desserts type list
+                var preparedParamJsonObj = getParamObjFromSessionAtDeliveryAreaBasedCStoreServeDessertsTypeList();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchParamJsonObj = {};
+                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+                    // calling ShopStoreServices
+                    ShopStoreServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
+                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+            }
+        };
+        
         // collectDataToRedirectCShopstoreView
         $rootScope.collectDataToViewCShopstore = function(paramDataObj){
             try{
