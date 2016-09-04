@@ -271,7 +271,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
                     window.location.href =  globalBaseSitePath+"all-cakes.php";
-                }else if((paramObj['matchedProductTypeTitle']).toLowerCase()==='chocolates'){
+                }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
                     window.location.href =  globalBaseSitePath+"all-chocolates.php";
                 }
             });
