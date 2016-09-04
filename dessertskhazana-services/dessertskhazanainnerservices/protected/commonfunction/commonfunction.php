@@ -92,7 +92,7 @@ class commonfunction{
     }
     
     // CJ defined this function 2016-07-12
-    public static function preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, $requestedProductPriceFilterArr, $requestedProductPriceSortOn){
+    public static function preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, $requestedProductPriceFilterArr=array(), $requestedProductPriceSortOn=''){
         $priceRangeArr = array();
         $priceGapValue = 399;
         if($minPriceValue!='' && $maxPriceValue!='' && $minPriceValue!=$maxPriceValue){
