@@ -110,7 +110,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                         $rootScope.buildPriceFilterListHtmlSelectControl(arrJsonObj.allProductPriceDetailsArr);
                                     }
                                     if(arrJsonObj.allProductSizeDetailsArr!==false && arrJsonObj.allProductSizeDetailsArr!==undefined){
-                                        // $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
+                                        $rootScope.buildSizeFilterListHtmlSelectControl(arrJsonObj.allProductSizeDetailsArr);
                                     }
                                     if(arrJsonObj.allProductDiscountDetailsArr!==false && arrJsonObj.allProductDiscountDetailsArr!==undefined){
                                         // $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
@@ -265,6 +265,64 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             });
         };
         
+        // buildSizeFilterListHtmlSelectControl
+        $rootScope.buildSizeFilterListHtmlSelectControl = function(allProductSizeDetails){
+            try{
+                var defaultedSelectedProductSize = '';
+                var productSizeFilterListSelectControlElementObj = document.getElementById("allProductSizeFilterListSelectCtrlId");
+                // all options remove and destroy bootstrap select feature
+                $(productSizeFilterListSelectControlElementObj).find('option').remove();
+                $(productSizeFilterListSelectControlElementObj).selectpicker('destroy');
+                if(jQuery.isEmptyObject(allProductSizeDetails)===false && allProductSizeDetails!=='' 
+                    && allProductSizeDetails!==undefined && allProductSizeDetails!==false){
+                    var allProductSizeList = allProductSizeDetails['rangeList'];
+                    // iterate each product size details
+                    var optionGroupStr = "<optgroup label='Size Range (Multiple selection)'>";
+                    for(var eachProductSizeArrIndex = 0; eachProductSizeArrIndex<allProductSizeList.length; eachProductSizeArrIndex++){
+                        var productSizeValue = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
+                        var optionStr = "<option class='productSizeFilterOperationOptionClass' value='"+productSizeValue+"'>"+productSizeValue+"</option>";
+                        optionGroupStr+= optionStr;
+                        if(allProductSizeList[eachProductSizeArrIndex]['isRequestedSizeRangeMatched']==='Y'){
+                            defaultedSelectedProductSize = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
+                        }
+                    }
+                    $(productSizeFilterListSelectControlElementObj).append(optionGroupStr);
+                }
+                // refresh product size list select control element 
+                $(productSizeFilterListSelectControlElementObj).selectpicker('refresh');
+                // default selected product size 
+                if(defaultedSelectedProductSize!=='' && defaultedSelectedProductSize!==false){
+                    $(productSizeFilterListSelectControlElementObj).selectpicker('val', defaultedSelectedProductSize);
+                }
+                // apply event
+                if($(productSizeFilterListSelectControlElementObj).find('option').length>0){
+                    $rootScope.buildedProductSizeFilterListHtmlSelectControlOnChangeEvent(productSizeFilterListSelectControlElementObj);
+                }
+            }catch(ex){
+                console.log("problem in buildAllProductSizeFilterListHtmlSelectControl=>"+ex);
+            } 
+        };
+        
+        // applyChangeEventOnSizeFilterSelectCtrlElement
+        $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement = function(elementObj){
+            try{
+                $(elementObj).on('changed.bs.select', function(e){
+                    var selectedSizeFilterValues = $(elementObj).selectpicker('val');
+                    // reset session storage about user product(size filter value)
+                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    existingDkParamObj['userProduct']['product_size_filter'] = '';
+                    if(selectedSizeFilterValues!=='' && selectedSizeFilterValues!==false && selectedSizeFilterValues!==null){
+                        existingDkParamObj['userProduct']['product_size_filter'] = (selectedSizeFilterValues).toString();
+                    }
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+                    // refresh the screen
+                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                });
+            }catch(ex){
+                console.log("problem in applyChangeEventOnSizeFilterSelectCtrlElement=>"+ex);
+            }
+        };
+       
            
         // loadProductTypeProductCategoryAllProductList 
         $rootScope.loadProductTypeProductCategoryAllProductList = function(){
@@ -424,64 +482,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         
          
         
-        // buildAllProductSizeFilterListHtmlSelectControl
-        $rootScope.buildAllProductSizeFilterListHtmlSelectControl = function(allProductSizeDetails){
-            try{
-                var defaultedSelectedProductSize = '';
-                var productSizeFilterListSelectControlElementObj = document.getElementById("allProductSizeFilterListSelectCtrlId");
-                // all options remove and destroy bootstrap select feature
-                $(productSizeFilterListSelectControlElementObj).find('option').remove();
-                $(productSizeFilterListSelectControlElementObj).selectpicker('destroy');
-                if(jQuery.isEmptyObject(allProductSizeDetails)===false && allProductSizeDetails!=='' 
-                    && allProductSizeDetails!==undefined && allProductSizeDetails!==false){
-                    var allProductSizeList = allProductSizeDetails['rangeList'];
-                    // iterate each product size details
-                    var optionGroupStr = "<optgroup label='Size Range (Multiple selection)'>";
-                    for(var eachProductSizeArrIndex = 0; eachProductSizeArrIndex<allProductSizeList.length; eachProductSizeArrIndex++){
-                        var productSizeValue = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
-                        var optionStr = "<option class='productSizeFilterOperationOptionClass' value='"+productSizeValue+"'>"+productSizeValue+"</option>";
-                        optionGroupStr+= optionStr;
-                        if(allProductSizeList[eachProductSizeArrIndex]['isRequestedSizeRangeMatched']==='Y'){
-                            defaultedSelectedProductSize = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
-                        }
-                    }
-                    $(productSizeFilterListSelectControlElementObj).append(optionGroupStr);
-                }
-                // refresh product size list select control element 
-                $(productSizeFilterListSelectControlElementObj).selectpicker('refresh');
-                // default selected product size 
-                if(defaultedSelectedProductSize!=='' && defaultedSelectedProductSize!==false){
-                    $(productSizeFilterListSelectControlElementObj).selectpicker('val', defaultedSelectedProductSize);
-                }
-                // apply event
-                if($(productSizeFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.buildedProductSizeFilterListHtmlSelectControlOnChangeEvent(productSizeFilterListSelectControlElementObj);
-                }
-            }catch(ex){
-                console.log("problem in buildAllProductSizeFilterListHtmlSelectControl=>"+ex);
-            } 
-        };
-        
-        // buildedProductSizeFilterListHtmlSelectControlOnChangeEvent
-        $rootScope.buildedProductSizeFilterListHtmlSelectControlOnChangeEvent = function(elementObj){
-            try{
-                $(elementObj).on('changed.bs.select', function(e){
-                    var selectedSizeFilterValues = $(elementObj).selectpicker('val');
-                    // reset session storage about user product(size filter value)
-                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                    existingDkParamObj['userProduct']['product_size_filter'] = '';
-                    if(selectedSizeFilterValues!=='' && selectedSizeFilterValues!==false && selectedSizeFilterValues!==null){
-                        existingDkParamObj['userProduct']['product_size_filter'] = (selectedSizeFilterValues).toString();
-                    }
-                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-                    // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
-                });
-            }catch(ex){
-                console.log("problem in buildedProductSizeFilterListHtmlSelectControlOnChangeEvent=>"+ex);
-            }
-        };
-        
+         
         // buildAllProductDiscountFilterListHtmlSelectControl
         $rootScope.buildAllProductDiscountFilterListHtmlSelectControl = function(allProductDiscountDetails){
             var defaultSelectedAllProductDiscountFilterArr = new Array();
