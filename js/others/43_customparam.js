@@ -417,9 +417,15 @@ function getParamObjForLoadingProductTypeAllProductCategoryList(){
                         paramObj['product_typesids'] = userProductObj['producttype_value'];
                     }
                 }
+                if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
+                    if(parseInt(userProductObj['producttype_categoryvalue'])>0
+                        && userProductObj['producttype_categoryvalue']!==''){
+                        paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    }
+                }
             }
         }
-        if(Object.keys(paramObj).length===5){
+        if(Object.keys(paramObj).length>=5){
             return paramObj;
         }else{
             return false;
