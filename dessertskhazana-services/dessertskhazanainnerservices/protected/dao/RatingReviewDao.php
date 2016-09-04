@@ -159,9 +159,9 @@ class RatingReviewDao{
                 AND urd.answer_pattern='SELECT'    
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retAvgRatingProductDetailsArr = $command->queryAll();
-            if($retAvgRatingProductDetailsArr!=false && count($retAvgRatingProductDetailsArr)>0){
-                $retResult =  $retAvgRatingProductDetailsArr;
+            $avgRatingProductDetailsArr = $command->queryAll();
+            if($avgRatingProductDetailsArr!=false && count($avgRatingProductDetailsArr)>0){
+                $retResult =  $avgRatingProductDetailsArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
