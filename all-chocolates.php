@@ -113,7 +113,7 @@
                         <h2 class="vap_dessertsProductTitleHClass">
                             {{eachDessertsTypeDetails.dessertsTypeTitle}}
                         </h2>
-                        <p ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachDessertsTypeDetails)" class="vap_viewDessertsProductPClass">
+                        <p ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewAllProductList(eachDessertsTypeDetails)" class="vap_viewDessertsProductPClass">
                             View desserts
                         </p>
                     </div>
