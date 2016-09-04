@@ -40,7 +40,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         $rootScope.loadProductTypeAllProductCategoryList = function(){
             try{
                 // get param obj to load product all product category list
-                var preparedParamJsonObj = getParamObjForLoadingProductTypeAllProductCategoryList();
+                var preparedParamJsonObj = getParamObjForProductTypeAllProductCategoryList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
@@ -91,28 +91,18 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         $rootScope.loadProductTypeProductCategoryAllProductList = function(){
             try{
                 // get param obj
-                var preparedParamJsonObj = getParamObjForLoadingProductTypeProductCategoryAllProductList();
+                var preparedParamJsonObj = getParamObjForProductTypeProductCategoryAllProductList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
                     
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     
-                    $rootScope.defaultSelectProductTypeitle = '';
-                    $rootScope.defaultSelectProductTypeValue = '';
-                    $rootScope.defaultSelectProductCategoryTitle = '';
-                    $rootScope.defaultSelectProductCategoryValue = '';
-                    $rootScope.productCategoryList = false;
                     $rootScope.allProductDetailsList = false;
                     $rootScope.notFoundProductMsgStr = '';
                     
                     // calling ProductServices to get all product list
                     ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
