@@ -487,28 +487,17 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             try{
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForLoadingProductDescriptionDetails();
-                // console.log("loadProductDescriptionDetails preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.productDescriptionDetailsArr = false;
                     $rootScope.isProductDescriptionDetailsFound = false;
-                    
                     // calling ProductServices 
                     ProductServices.getProductDescriptionDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("loadProductDescriptionDetails retObj=>"+JSON.stringify(retObj));
                                     $rootScope.isProductDescriptionDetailsFound = retObj.isProductDescriptionDetailsFound;
                                     $rootScope.productDescriptionDetailsArr = retObj.descriptionDetailsArr;
                                 }
@@ -517,7 +506,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 $rootScope.isProductDescriptionDetailsFound = false;
                 $rootScope.productDescriptionDetailsArr = false;
                 console.log("loadProductTypeProductCategoryProductDetails ex=>"+ex);
