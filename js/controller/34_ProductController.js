@@ -31,8 +31,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
-        // storeDessertsTypeDetailsInSessionStorageToViewAllProductList
-        $rootScope.storeDessertsTypeDetailsInSessionStorageToViewAllProductList = function(paramObj){
+        // storeDessertsTypeDataDetailsInSessionStorageToViewAllProductList
+        $rootScope.storeDessertsTypeDataDetailsInSessionStorageToViewAllProductList = function(paramObj){
             var storedDataStatus = storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
             if(storedDataStatus===true){  
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
