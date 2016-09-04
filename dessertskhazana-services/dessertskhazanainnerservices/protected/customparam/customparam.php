@@ -759,9 +759,9 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check product_ids is blank or not
-        if(array_key_exists('product_ids', $paramJsonData)){
-            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
+        // check productlist_ids is blank or not
+        if(array_key_exists('productlist_ids', $paramJsonData)){
+            if(($paramJsonData['productlist_ids'])>0 && $paramJsonData['productlist_ids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
