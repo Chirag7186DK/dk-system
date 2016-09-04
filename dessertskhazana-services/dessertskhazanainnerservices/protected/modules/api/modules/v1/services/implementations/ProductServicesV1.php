@@ -335,27 +335,26 @@ class ProductServicesV1 implements IProductServicesV1{
         $rspDetails = array();
         // checking requested param data
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gproductListId = $dkParamDataArr['product_ids'];
+            $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch product description details
-            $retProductDescriptionDetails = ProductDao::getProductDescriptionDetails($gproductListId);
-            if(count($retProductDescriptionDetails) > 0 && $retProductDescriptionDetails != false) {
+            $dataArr1 = ProductDao::getProductDescriptionDetails($gproductListId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
                 $productDescriptionDetailsArr = array();
-                // iterate each product description details
-                for($eachProductDescriptionDetailsArrIndex = 0; $eachProductDescriptionDetailsArrIndex < count($retProductDescriptionDetails); $eachProductDescriptionDetailsArrIndex++) {
-                    $productDescriptionTitle = $retProductDescriptionDetails[$eachProductDescriptionDetailsArrIndex]['productDescriptionTitle'];
-                    $productContentExplodedOnDoubleHashOptr = explode("##", $retProductDescriptionDetails[$eachProductDescriptionDetailsArrIndex]['productDescription']);
+                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                    $productDescriptionTitle = $dataArr1[$eachIndex]['productDescriptionTitle'];
+                    $productContentExplodedOnDoubleHashOptr = explode("##", $dataArr1[$eachIndex]['productDescription']);
                     array_push($productDescriptionDetailsArr, 
                         array(
-                            "descriptionTitle" => $productDescriptionTitle,
-                            "descriptionPointsArr" => $productContentExplodedOnDoubleHashOptr
+                            "descriptionTitle"=>$productDescriptionTitle,
+                            "descriptionPointsArr"=>$productContentExplodedOnDoubleHashOptr
                         )
                     );
-                }
-                $rspDetails["isProductDescriptionDetailsFound"] = true;
+                }   
+                $rspDetails["isProductDescriptionDetailsFound"] = 'TRUE';
                 $rspDetails["descriptionDetailsArr"] = $productDescriptionDetailsArr;
             }
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
 
 }
