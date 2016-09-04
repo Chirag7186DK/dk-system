@@ -130,7 +130,7 @@
                 </p>
                 
                 <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
-                    <li ng-click="storeDataToLoadProductTypeProductCategoryProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
+                    <li ng-click="storeDataToLoadProductTypeProductCategoryProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
                         {{eachProductCategoryDetails.productTypeProductCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
                     </li>
                 </div>
