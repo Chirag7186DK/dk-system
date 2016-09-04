@@ -433,7 +433,7 @@ function getParamObjForLoadingProductTypeAllProductCategoryList(){
 // CJ defined this function 2016-09-04
 function storeProductTypeProductCategoryDataInSession(productTypeProductCategoryDataObj){
     try{
-        var paramObj = {};
+        var storeDataStatus = false;
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -452,7 +452,9 @@ function storeProductTypeProductCategoryDataInSession(productTypeProductCategory
             userProductObj['productviewed_bystatus'] = 'productwise';
             existingDkParamObj['userProduct'] = userProductObj;
             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+            storeDataStatus = true;
         }
+        return storeDataStatus;
     }catch(ex){
         return false;
     }
