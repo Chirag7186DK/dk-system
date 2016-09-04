@@ -198,7 +198,7 @@
                         <span class="vap_productStoreNameSpanClass">{{eachProductDetails.shopStoreTitle}}</span>
                     </p>
                     <p class='vap_storeNearByPClass'>
-                        {{eachProductDetails.areaTitle}}
+                        Near by: {{eachProductDetails.areaTitle}}
                     </p>
                     <p class='vap_productNamePClass'>
                         {{eachProductDetails.productListTitle}}
