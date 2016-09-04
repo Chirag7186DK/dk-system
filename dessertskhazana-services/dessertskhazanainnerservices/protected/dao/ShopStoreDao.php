@@ -8,7 +8,7 @@
 class ShopStoreDao{
    
     // CJ defined this function 2016-06-06
-    public static function getShopStoresList($shop_storeids='', $country_city_area_affiliationIds=''){
+    public static function getShopStoresList($shop_storeids='', $ccaId=''){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
@@ -21,18 +21,16 @@ class ShopStoreDao{
                 COALESCE(ss.address, '') shopStoreAddress
                 FROM DK_SHOPSTORES ss 
                 WHERE ss.status='A'";
-                if($shop_storeids!='' && $shop_storeids!=false 
-                    && $shop_storeids!=null){
+                if($shop_storeids!='' && $shop_storeids!=false && $shop_storeids!=null){
                     $sqlFetchQuery.=" AND ss.id IN ($shop_storeids)";
                 }
-                if($country_city_area_affiliationIds!='' 
-                    && $country_city_area_affiliationIds!=false && $country_city_area_affiliationIds!=null){
-                    $sqlFetchQuery.=" AND ss.country_city_area_affiliationId IN ($country_city_area_affiliationIds) ";
+                if($ccaId!='' && $ccaId!=false && $ccaId!=null){
+                    $sqlFetchQuery.=" AND ss.country_city_area_affiliationId IN ($ccaId) ";
                 }
             $command = $connection->createCommand($sqlFetchQuery);
-            $retShopStoresListArr = $command->queryAll();
-            if(count($retShopStoresListArr)>0 && $retShopStoresListArr!=false){
-                $retResult =  $retShopStoresListArr;
+            $storeListArr = $command->queryAll();
+            if(count($storeListArr)>0 && $storeListArr!=false){
+                $retResult =  $storeListArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
