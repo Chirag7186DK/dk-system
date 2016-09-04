@@ -216,6 +216,14 @@ class ProductDao{
                     }
                 }
                 
+                // sort by sort_productfeaturesid
+                if(array_key_exists('sort_productfeaturesid', $paramJson)){
+                    if($paramJson['sort_productfeaturesid']!='' && $paramJson['sort_productfeaturesid']!=false){
+                        $sqlOrderByStmt.= $paramJson['sort_productfeaturesid'].",";
+                    }
+                }
+                
+                
                 // sort by price
                 if(array_key_exists('price_lowtohigh', $paramJson)){
                     if($paramJson['price_lowtohigh']=='Y'){
