@@ -290,7 +290,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                 $rspDetails["shopstoreWorkingStyleDetails"] = $dataArr1;
             }
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
 
     // CJ defined this action 2016-07-18
