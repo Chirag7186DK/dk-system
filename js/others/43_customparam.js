@@ -727,33 +727,34 @@ function checkAllParamToViewProductDetails(paramObj){
     try{
         if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
             if(paramObj.hasOwnProperty('shopStoreId')===true 
-                && paramObj.hasOwnProperty('productTypeId')===true
-                && paramObj.hasOwnProperty('productTypeProductCategoryId')===true 
-                && paramObj.hasOwnProperty('productListId')===true
-                && paramObj.hasOwnProperty('productFeatureId')===true 
                 && paramObj.hasOwnProperty('shopStoreTitle')===true
+                && paramObj.hasOwnProperty('productTypeId')===true
                 && paramObj.hasOwnProperty('productTypeTitle')===true 
+                && paramObj.hasOwnProperty('productTypeProductCategoryId')===true 
                 && paramObj.hasOwnProperty('productTypeProductCategoryTitle')===true
-                && paramObj.hasOwnProperty('productListTitle')===true){
+                && paramObj.hasOwnProperty('productListId')===true
+                && paramObj.hasOwnProperty('productListTitle')===true
+                && paramObj.hasOwnProperty('productFeatureId')===true ){
                 if(parseInt(paramObj['shopStoreId'])>0 && parseInt(paramObj['productTypeId'])>0
                     && parseInt(paramObj['productTypeProductCategoryId'])>0
                     && parseInt(paramObj['productListId'])>0 && parseInt(paramObj['productFeatureId'])>0
                     && paramObj['shopStoreTitle']!=='' && paramObj['productTypeTitle']!==''
                     && paramObj['productTypeProductCategoryTitle']!=='' && paramObj['productListTitle']!==''){
+                    
                     // extract dk param obj && reset user product & dkSelectedDeliveryCityAreaDessertsProduct data
                     var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproduct'] = paramObj['productTypeId'];
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproducttitle'] = paramObj['productTypeTitle'];
                     existingDkParamObj['userProduct']['shopstore_value'] = paramObj['shopStoreId'];
+                    existingDkParamObj['userProduct']['shopstore_name'] = paramObj['shopStoreTitle'];
                     existingDkParamObj['userProduct']['producttype_value'] = paramObj['productTypeId'];
+                    existingDkParamObj['userProduct']['producttype_name'] =  paramObj['productTypeTitle'];
                     existingDkParamObj['userProduct']['producttype_categoryvalue'] = paramObj['productTypeProductCategoryId'];
+                    existingDkParamObj['userProduct']['producttype_categoryname'] = paramObj['productTypeProductCategoryTitle'];
                     existingDkParamObj['userProduct']['producttype_listvalue'] = paramObj['productListId'];
+                    existingDkParamObj['userProduct']['producttype_listname'] = paramObj['productListTitle'];
                     existingDkParamObj['userProduct']['producttype_featurevalue'] = paramObj['productFeatureId'];
                     existingDkParamObj['userProduct']['productviewed_bystatus'] = 'productwise';
-                    existingDkParamObj['userProduct']['shopstore_name'] = paramObj['shopStoreTitle'];
-                    existingDkParamObj['userProduct']['producttype_name'] =  paramObj['productTypeTitle'];
-                    existingDkParamObj['userProduct']['producttype_categoryname'] = paramObj['productTypeProductCategoryTitle'];
-                    existingDkParamObj['userProduct']['producttype_listname'] = paramObj['productListTitle'];
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     retStatus = true;
                 }
