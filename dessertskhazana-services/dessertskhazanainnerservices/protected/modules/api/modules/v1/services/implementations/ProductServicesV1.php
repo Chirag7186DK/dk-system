@@ -35,6 +35,9 @@ class ProductServicesV1 implements IProductServicesV1{
                     if(strtolower($iteratedDessertsTypeTitle)=='ice cream'){
                         $productIcon = 'fa fa-birthday-cake';
                     }
+                    if(strtolower($iteratedDessertsTypeTitle)=='chocolates'){
+                        $productIcon = 'fa fa-birthday-cake';
+                    }
                     if($gproducttype_ids==$iteratedDessertsTypeListId){
                         $isRequestedDessertsTypeIdMatched = 'Y';
                         $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails'] = array();
