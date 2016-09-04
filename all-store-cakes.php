@@ -89,7 +89,7 @@
             <!-- store summary(self,rating/review/desserts menu) info -->
             <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCShopStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
                 
-                <!-- shop store self info -->
+                <!-- store basic info -->
                 <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
                     <p class='cShopStoreNameTextLblPClass'>
                         <span class="cshopstoreNameSClass">
@@ -97,7 +97,7 @@
                         </span>
                     </p>
                     <p class='cShopStoreLocatedInfoLblPClass'>
-                        Located : {{shopstoreInfo.shopStoreAddress}}
+                        Near By : {{shopstoreInfo.shopStoreAddress}}
                     </p>
                     <p ng-click="toggleShopStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
                         {{toggleShopStoreSelfSummaryInfoLblText}}
@@ -117,13 +117,13 @@
                     </p>
                 </div>
                 
-                <!-- desserts menu summary info -->
+                <!-- desserts type summary info -->
                 <div class='cshopsstoreMenuSummaryInfoDivClass' title="Click to show all desserts(menu) about this seller">
                     <p class='cShopStoreMenuTextLblPClass'>
                         OUR MENU
                     </p>
                     <p class='cShopStoreDessertsMenuInfoLblPClass'>
-                        {{totalCountDessertsType}} Desserts ({{totalCountAllDessertsTypeProduct}} products)
+                        {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
                     </p>
                     <p ng-click="toggleShopStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
                         {{toggleShopStoreDessertsMenuSummaryInfoLblText}}
@@ -132,29 +132,30 @@
                 
             </div>
 
-            <!-- shop store serve desserts product -->
-            <div ng-show="isToggleShopStoreDessertsMenu" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
+            <!-- store served all desserts type info -->
+            <div ng-show="isToggleShopStoreDessertsMenu" ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
                 
-                <li class="cshopstoreServedDessertsProductNoteLIClass">
+                <!-- display selected desserts type title ordering by customer -->
+                <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" class="cshopstoreServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you are viewing '{{shopstoreInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
                         <span class="badge cshopstore_dessertsProductTypeCountSClass">
-                            {{allDessertsSummaryInfo.length}}
+                            {{dkDeliveryAreaBasedDessertsTypeList.length}}
                         </span>
-                    dessert(s) product are as follows :-
+                    desserts in your '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li>
                 
-                <!-- display all desserts product can served by shop store in selected delivery area -->
-                <div id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
-                    <!-- iterate each desserts products info  -->
-                    <div ng-repeat="eachDessertsServedDetailsByStore in allDessertsSummaryInfo" title='Click to view this shopstore all {{eachDessertsServedDetailsByStore.productTypeTitle}} desserts products' class='cshopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-cshopstorelevel>
+                <!-- display all desserts type can served by store in your selected delivery area -->
+                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
+                    <!-- iterate each desserts type info display as horizontally scrolling -->
+                    <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='cshopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-cshopstorelevel>
                         <p class="dessertsProductIconPClass">
-                            <i class="{{eachDessertsServedDetailsByStore.productIcon}} dessertsProductIconClass"></i>
+                            <i class="{{eachDessertsTypeDetails.dessertsIcon}} dessertsProductIconClass"></i>
                         </p>
                         <h2 class="dessertsProductTitleHClass">
-                            {{eachDessertsServedDetailsByStore.productTypeTitle}}
+                            {{eachDessertsTypeDetails.dessertsTypeTitle}}
                         </h2>
-                        <p ng-controller='ShopStoreController' ng-click="collectDataToViewCShopstore(eachDessertsServedDetailsByStore)" class="viewDessertsProductPClass">
+                        <p ng-controller='ShopStoreController' ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
                             View desserts
                         </p>
                     </div>
