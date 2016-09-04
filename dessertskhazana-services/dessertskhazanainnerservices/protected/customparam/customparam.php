@@ -160,7 +160,13 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==5){
+        // check product type ka product category id is blank or not
+        if(array_key_exists('product_categoryids', $paramJsonData)){
+            if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount>=5){
             $retStatus = 'TRUE';
         }
         return $retStatus;
