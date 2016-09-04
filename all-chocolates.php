@@ -79,7 +79,7 @@
                         </a>
                     </li>
                     <li class='vap_userBreadcrumbProductTypeLIClasss'>
-                        |&nbsp; Chocolates
+                        | &nbsp;&nbsp;<a href="#">Chocolates</a>
                     </li>
                 </ul>
             </div>
@@ -140,50 +140,50 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
+            <!-- product filter operation main container div -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
+                    
+                <!-- info / tips about product filtering operation -->
+                <p class='vap_tipAbtFilterProductPClass'>
+                    Tip *: Use filter to find products more easy & quickly !
+                    <button ng-click="toggleViewAllProductFilterContainer()" class="btn vap_toggleProductFilterBtnClass" title="Click to show/hide product filter">
+                        <i class="fa fa-filter"></i> {{toggleViewAllProductFilterBtnLabel}}
+                    </button>
+                </p>
+                    
+                <div ng-show="isShowViewAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{productViewAllFilterPopDivClass}}">
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productFilterPopupBodyDivClass'>
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
+                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
+                        </div>
+                        <!-- by store -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_shopStoreFilterOperationDivClass'>
+                            <p class='vap_labelStoreFilterPClass'>By seller</p>
+                            <select id='allShopStoresFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Store" data-selected-text-format="count>1"></select>
+                        </div>
+                        <!-- by price -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_priceFilterOperationDivClass'>
+                            <p class='vap_labelPriceFilterPClass'>By price</p>
+                            <select id='allProductPriceFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Price" multiple data-selected-text-format="count>1"></select>
+                        </div>
+                        <!-- by size -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_sizeFilterOperationDivClass'>
+                            <p class='vap_labelSizeFilterPClass'>By size</p>
+                            <select id='allProductSizeFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Size" multiple data-selected-text-format="count>1"></select>
+                        </div>
+                        <!-- by discount -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_discountFilterOperationDivClass'>
+                            <p class='vap_labelDiscountFilterPClass'>By discount</p>
+                            <select id='allProductDiscountFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Discount" multiple data-selected-text-format="count>1"></select>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            
             <!-- all product list will be loaded here -->
             <div id='vapWrapperDivId' ng-controller="ProductController" ng-show="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
                 
-                <!-- product filter operation main container div -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
-                    
-                    <!-- info / tips about product filtering operation -->
-                    <p class='vap_tipAbtFilterProductPClass'>
-                        Tip *: Use filter to find products more easy & quickly !
-                        <button ng-click="toggleViewAllProductFilterContainer()" class="btn vap_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                            <i class="fa fa-filter"></i> {{toggleViewAllProductFilterBtnLabel}}
-                        </button>
-                    </p>
-                    
-                    <div ng-show="isShowViewAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{productViewAllFilterPopDivClass}}">
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productFilterPopupBodyDivClass'>
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                                <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
-                            </div>
-                            <!-- by store -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_shopStoreFilterOperationDivClass'>
-                                <p class='vap_labelStoreFilterPClass'>By seller</p>
-                                <select id='allShopStoresFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Store" data-selected-text-format="count>1"></select>
-                            </div>
-                            <!-- by price -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_priceFilterOperationDivClass'>
-                                <p class='vap_labelPriceFilterPClass'>By price</p>
-                                <select id='allProductPriceFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Price" multiple data-selected-text-format="count>1"></select>
-                            </div>
-                            <!-- by size -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_sizeFilterOperationDivClass'>
-                                <p class='vap_labelSizeFilterPClass'>By size</p>
-                                <select id='allProductSizeFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Size" multiple data-selected-text-format="count>1"></select>
-                            </div>
-                            <!-- by discount -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_discountFilterOperationDivClass'>
-                                <p class='vap_labelDiscountFilterPClass'>By discount</p>
-                                <select id='allProductDiscountFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Discount" multiple data-selected-text-format="count>1"></select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-
                 <!-- summary info display -->
                 <div ng-show="allProductDetailsList.length" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass'>
                     <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
