@@ -70,13 +70,9 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['shopstoreInfo'] = array();
-            $rsltJsonArr['totalCountDeliveryArea'] = '';
-            $rsltJsonArr['totalCountDessertsType'] = '';
             $rsltJsonArr['customersReviewedRatingMsgStr'] = 'No any customer(s) reviewed yet !';
             $rsltJsonArr['isRatingReviewBasedInfoFound'] = false;
             $rsltJsonArr['ratingReviewBasedInfo'] = '';
-            $rsltJsonArr['totalCountAllDessertsTypeProduct'] = 0;
-            $rsltJsonArr['allDessertsSummaryInfo'] = false;
             // initial variable declare here
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
             $isShopStoreMenuSummaryInfoFound = 'N';
