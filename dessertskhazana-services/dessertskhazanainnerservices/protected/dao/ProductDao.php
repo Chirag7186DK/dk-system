@@ -115,7 +115,7 @@ class ProductDao{
                 if(array_key_exists('product_listids', $paramJson)){
                     if($paramJson['product_listids']!=false && $paramJson['product_listids']!='' 
                         && $paramJson['product_listids']!=null){
-                        $sql.=" AND spl.id IN (".$paramJson['product_listids'].") AND splld.product_listid IN (".$paramJson['product_listids'].") ";
+                        $sql.=" AND spl.id IN (".$paramJson['product_listids'].") AND splld.productlist_id IN (".$paramJson['product_listids'].") ";
                     }
                 }
                 
