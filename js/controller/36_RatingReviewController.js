@@ -66,17 +66,10 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 // console.log("loadRatingReviewQuestionsAboutProductByShopStores preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
                     $rootScope.isRatingReviewQuestionDetailsFound = false;
-                    
                     // calling RatingReviewServices 
                     RatingReviewServices.getShopStoreRatingReviewQuestionsAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
@@ -84,7 +77,6 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("loadRatingReviewQuestionsAboutProductByShopStores retObj=>"+JSON.stringify(retObj));
                                     $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = retObj.ratingReviewQuestionAboutProductByShopStoresDetails;
                                     $rootScope.isRatingReviewQuestionDetailsFound = retObj.isRatingReviewQuestionDetailsFound;
                                 }
@@ -93,7 +85,6 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
                 console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
             }
@@ -106,25 +97,15 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 // console.log("loadAllUserRatingReviewAboutProductDetails preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.allUserRatingReviewAboutProductDetailsArr = false;
-                    
                     // calling RatingReviewServices 
                     RatingReviewServices.getAllUserRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("loadAllUserRatingReviewAboutProductDetails retObj=>"+JSON.stringify(retObj));
                                     $rootScope.allUserRatingReviewAboutProductDetailsArr = retObj.allUserRatingReviewAbtProductDetails;
                                 }
                             }
@@ -132,9 +113,8 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 $rootScope.allUserRatingReviewAboutProductDetailsArr = false;
-                console.log("loadAllUserRatingReviewAboutProductDetails ex=>"+ex);
+                console.log("problem in loadAllUserRatingReviewAboutProductDetails ex=>"+ex);
             }
         };
         
