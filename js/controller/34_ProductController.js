@@ -425,7 +425,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };   
            
-           
         // view-product-details
         $rootScope.viewProductDetails = function(paramObj){
             try{
@@ -442,6 +441,33 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
+        // loadProductTypeProductCategoryProductDetails 
+        $rootScope.loadProductTypeProductCategoryProductDetails = function(){
+            try{
+                // get param obj
+                var preparedParamJsonObj = getParamObjFromSessionForProductTypeProductCategoryProductDetails();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.vPDetails = false;
+                    // calling ProductServices to get product details
+                    ProductServices.getProductTypeProductCategoryProductDetails(fetchedParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(retObj!==false && retObj!==undefined && retObj!==''){
+                                    $rootScope.vPDetails = retObj.viewProductDetails;
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                $rootScope.vPDetails = false;
+                console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
+            }
+        };
+        
         // collectDataToLoadDeliveryAreabasedProductTypeAllProductList, delivery area based on
         $rootScope.collectDataToViewDeliveryAreabasedProductTypeAllProductList = function(preparedParamObj){
             try{
@@ -454,43 +480,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
-        // loadProductTypeProductCategoryProductDetails 
-        $rootScope.loadProductTypeProductCategoryProductDetails = function(){
-            try{
-                // get param obj
-                var preparedParamJsonObj = getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetails();
-                // console.log("loadProductTypeProductCategoryProductDetails preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
-                    $rootScope.vPDetails = false;
-                    
-                    // calling ProductServices to get product details
-                    ProductServices.getProductTypeProductCategoryProductDetails(fetchedParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
-                            showHideLoaderBox('hide');
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    //console.log("loadProductTypeProductCategoryProductDetails retObj=>"+JSON.stringify(retObj));
-                                    $rootScope.vPDetails = retObj.viewProductDetails;
-                                }
-                            }
-                        });
-                    });
-                }
-            }catch(ex){
-                $rootScope.vPDetails = false;
-                console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
-                showHideLoaderBox('hide');
-            }
-        };
+        
         
         // loadProductDescriptionDetails 
         $rootScope.loadProductDescriptionDetails = function(){
