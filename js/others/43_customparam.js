@@ -919,6 +919,41 @@ function getParamObjFromSessionAtDeliveryAreaBasedCStoreServeDessertsTypeList(){
     }
 }
 
+// CJ defined this function 2016-09-04
+function storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(paramObj){
+    try{
+        var storedDataStatus = false;
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
+                if(paramObj.hasOwnProperty('dessertsTypeId')===true && paramObj.hasOwnProperty('dessertsTypeTitle')===true){
+                    existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproduct'] = paramObj['dessertsTypeId'];
+                    existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproducttitle'] = paramObj['dessertsTypeTitle'];
+                    existingDkParamObj['userProduct'] = {};
+                    existingDkParamObj['userProduct']['all_shopstorevalue'] = '';
+                    existingDkParamObj['userProduct']['shopstore_value'] = paramObj['shopStoreId'];
+                    existingDkParamObj['userProduct']['shopstore_name'] = paramObj['shopStoreTitle'];
+                    existingDkParamObj['userProduct']['producttype_value'] = paramObj['dessertsTypeId'];
+                    existingDkParamObj['userProduct']['producttype_name'] = paramObj['dessertsTypeTitle'];
+                    existingDkParamObj['userProduct']['producttype_categoryvalue'] = '';
+                    existingDkParamObj['userProduct']['producttype_categoryname'] = '';
+                    existingDkParamObj['userProduct']['producttype_listvalue'] = '';
+                    existingDkParamObj['userProduct']['producttype_listname'] = '';
+                    existingDkParamObj['userProduct']['producttype_featurevalue'] = '';
+                    existingDkParamObj['userProduct']['productviewed_bystatus'] = 'productwise';
+                }
+            } 
+            sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+            storedDataStatus = true;
+        }
+        return storedDataStatus;
+    }catch(ex){
+        return false;
+    }
+}
+
 
 
 // CJ defined this function 2016-07-10
