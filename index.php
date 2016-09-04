@@ -117,7 +117,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
                 <div class='dkCustomizeDessertsOrderWrapperDivClass'>
-                    <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass' title='Click to request for customize orders'>
+                    <p class='customizeOrderPClass' title='Click to request for customize orders'>
                         <span>WE SERVED AT LOCATION</span>
                     </p>
                 </div>
