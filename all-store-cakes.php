@@ -67,7 +67,7 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
 
-        <!-- view shop store details like menu, information, rating/review from customer side -->
+        <!-- view store details like menu, information, rating/review from customer side -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreDetailsBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
