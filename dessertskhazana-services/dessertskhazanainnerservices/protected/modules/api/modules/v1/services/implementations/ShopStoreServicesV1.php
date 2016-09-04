@@ -126,23 +126,4 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         return $rspDetails;
     }
 
-    // CJ defined this action 2016-07-18
-    public function getCshopstoreProductdeliveryAreaInfo($dkParamDataArr){
-        $rspDetails = array();
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            // prepare param obj to get shopstore delivery location details
-            $shopStoreProductDeliveryAreaParamObj = array();
-            $shopStoreProductDeliveryAreaParamObj['shop_storesids'] = $dkParamDataArr['shopstoreids'];
-            // fetch product delivery area details
-            $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryAreaParamObj);
-            if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
-                $rspDetails['cShopstoreProductDeliveryAreaDetails'] = $retShopStoreDeliveryLocationDetailsArr;
-                $rspDetails['cShopstoreProductDeliveryAreaNames'] = implode(", ", array_keys(utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("areaName"))));
-            }
-        }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
-    }
-
-    
-
 }
