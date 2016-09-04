@@ -262,7 +262,7 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 }catch(ex){
                     console.log("problem in applyChangeEventOnPriceFilterSelectCtrlElement=>"+ex);
                 }    
@@ -314,7 +314,7 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnSizeFilterSelectCtrlElement=>"+ex);
@@ -380,7 +380,7 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnDiscountFilterSelectCtrlElement=>"+ex);
@@ -397,19 +397,21 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.allProductDetailsList = false;
                     $rootScope.defaultSelectProductCategoryTitle = '';
-                    $rootScope.notFoundProductMsgStr = '';
+                    $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                    $rootScope.totalProductCount = 0;
                     // calling ProductServices 
                     ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.requestedProductCategoryTitle;
-                                    if(retObj.productTypeDetails.allProductDetailsList!==false 
-                                        && retObj.productTypeDetails.allProductDetailsList!==undefined){
-                                        $rootScope.allProductDetailsList = retObj.productTypeDetails.allProductDetailsList;
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.defaultSelectProductCategoryTitle = arrJsonObj.productTypeDetails.requestedProductCategoryTitle;
+                                    if(arrJsonObj.productTypeDetails.allProductDetailsList!==false 
+                                        && arrJsonObj.productTypeDetails.allProductDetailsList!==undefined){
+                                        $rootScope.allProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
+                                        $rootScope.totalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
                                     }else{
-                                        $rootScope.notFoundProductMsgStr = 'No products found or used proper filter';
+                                        $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
                                     }
                                 }
                             }
@@ -418,7 +420,8 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 }
             }catch(ex){
                 $rootScope.allProductDetailsList = false;
-                $rootScope.notFoundProductMsgStr = 'No products found or used proper filter';
+                $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                $rootScope.totalProductCount = 0;
                 console.log("problem in loadProductTypeProductCategoryAllProductList ex=>"+ex);
             }
         };   
