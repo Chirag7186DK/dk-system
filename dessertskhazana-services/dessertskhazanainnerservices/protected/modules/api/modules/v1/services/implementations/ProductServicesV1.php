@@ -249,10 +249,10 @@ class ProductServicesV1 implements IProductServicesV1{
             }
             
             // prepare param obj to get all product list
-            $paramObj2 = array();
-            $paramObj2['shop_storesids'] = $gShopstoreId;
-            $paramObj2['product_typeids'] = $gproductTypeId;
-            $paramObj2['product_categoryids'] = $gproductTypeProductCategoryId;
+            $paramObj1 = array();
+            $paramObj1['shop_storesids'] = $gShopstoreId;
+            $paramObj1['product_typeids'] = $gproductTypeId;
+            $paramObj1['product_categoryids'] = $gproductTypeProductCategoryId;
             if(count($gProductPriceFilterArr)>0 && $gProductPriceFilterArr!=false){
                 $paramObj1['product_price_filter'] = $gProductPriceFilterArr;
             }
@@ -268,7 +268,7 @@ class ProductServicesV1 implements IProductServicesV1{
             if($gProductDiscountSortOn!='' && $gProductDiscountSortOn!=false){
                 $paramObj1["discount_".$gProductDiscountSortOn] = 'Y';
             }
-            $dataArr2 = ProductDao :: getProductTypeProductCategoryProductList($paramObj2);
+            $dataArr2 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($dataArr2)>0 && $dataArr2!=false){
                 // prepare array to remove unused key value details from all product list
                 $removeUnusedKeyValueDataArr = array(
