@@ -320,8 +320,8 @@ class ProductServicesV1 implements IProductServicesV1{
                     }
                     $dataArr1[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
                 }
+                $rspDetails['allProductDetails'] = $allProductDetailsArr;
             }
-            $rspDetails['allProductDetails'] = $allProductDetailsArr;
         }
         return $rspDetails;
     }
