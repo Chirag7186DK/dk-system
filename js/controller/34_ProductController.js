@@ -77,7 +77,15 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 console.log("problem in storeProductTypeProductCategoryDataInSession ex=>"+ex);
             }
         };
-           
+        
+        // toggleProductTypeProductCategoryElementClass
+        $rootScope.toggleProductTypeProductCategoryElementClass = function(currentElementClickedId, clickedElementParentClass){
+            // toggle backgroun class also
+            if(currentElementClickedId!==undefined && currentElementClickedId!==undefined){
+                $('.'+clickedElementParentClass).find('li').removeClass('vap_eachRequestedProductCategoryLabelLIClass');
+                $('#'+currentElementClickedId).addClass('vap_eachRequestedProductCategoryLabelLIClass');
+            }
+        };
            
         // loadProductTypeProductCategoryAllProductList 
         $rootScope.loadProductTypeProductCategoryAllProductList = function(){
