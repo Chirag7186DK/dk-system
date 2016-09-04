@@ -306,15 +306,7 @@
                                 Displaying {{(allUserRatingReviewAboutProductDetailsArr).length}} customer(s) posted reviewed and ratings about product
                             </span>
                             <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewAboutProductDetailsArr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayEachUserReviewAboutProductContainerDivClass">
-                                <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 vpd_eachUserReviewedRatingLeftSideDivClass">
-                                    <span class="badge vpd_userNameIntialLetterRatedReviewedAbtProductSClass">
-                                        {{eachUserReviewedRatingDetails.userNameIntialLetter}}
-                                    </span> 
-                                    <p class="vpd_eachUserAvgRatedContainerPClass">
-                                        <span class='vpd_userAvgRatedAboutProductSClass'>{{eachUserReviewedRatingDetails.avgRated}} OUT OF 5 </span>
-                                    </p>
-                                </div>
-                                 <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 vpd_eachUserReviewedRatingRightSideDivClass">
+                                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 vpd_eachUserReviewedRatingRightSideDivClass">
                                     <p class="vpd_eachUserNameRatedReviewAbtProductPClass">
                                         reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
                                     </p>
@@ -324,6 +316,9 @@
                                     </p>
                                     <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserReviewedCommentAbtProductPClass'>
                                         {{eachReviewedRatingTypeDetails.answerText}}
+                                    </p>
+                                    <p class="vpd_eachUserAvgRatedReviewAbtProductPClass">
+                                        Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5 
                                     </p>
                                 </div>
                             </div>
