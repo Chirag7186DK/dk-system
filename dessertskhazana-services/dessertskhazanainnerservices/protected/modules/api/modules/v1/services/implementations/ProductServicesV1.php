@@ -217,6 +217,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $gProductPriceSortOn = '';
             $gProductDiscountFilterArr = array();
             $gProductDiscountSortOn = '';
+            $garea_ids = $dkParamDataArr['area_ids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
             $gproductTypeProductCategoryId = $dkParamDataArr['product_categoryids'];
             $gShopstoreId = $dkParamDataArr['shopstoreids'];
@@ -253,6 +254,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['shop_storesids'] = $gShopstoreId;
             $paramObj1['product_typeids'] = $gproductTypeId;
             $paramObj1['product_categoryids'] = $gproductTypeProductCategoryId;
+            $paramObj1['sort_storeareas'] = " FIELD(area.id, $garea_ids) DESC ";
             if(count($gProductPriceFilterArr)>0 && $gProductPriceFilterArr!=false){
                 $paramObj1['product_price_filter'] = $gProductPriceFilterArr;
             }
