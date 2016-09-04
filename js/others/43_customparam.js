@@ -639,33 +639,33 @@ function getParamObjFromSessionForProductTypeProductCategoryProductDetails(){
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['shopstore_value'])>0 
-                        && dkSelectedDeliveryCityAreaDessertsProductObj['shopstore_value']!==''){
-                        paramObj['shopstoreids'] = dkSelectedDeliveryCityAreaDessertsProductObj['shopstore_value'];
+                    if(parseInt(userProductObj['shopstore_value'])>0 
+                        && userProductObj['shopstore_value']!==''){
+                        paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                     }
                 }
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['producttype_value'])>0 
-                        && dkSelectedDeliveryCityAreaDessertsProductObj['producttype_value']!==''){
-                        paramObj['product_typesids'] = dkSelectedDeliveryCityAreaDessertsProductObj['producttype_value'];
+                    if(parseInt(userProductObj['producttype_value'])>0 
+                        && userProductObj['producttype_value']!==''){
+                        paramObj['product_typesids'] = userProductObj['producttype_value'];
                     }
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['producttype_categoryvalue'])>0 
-                        && dkSelectedDeliveryCityAreaDessertsProductObj['producttype_categoryvalue']!==''){
-                        paramObj['product_categoryids'] = dkSelectedDeliveryCityAreaDessertsProductObj['producttype_categoryvalue'];
+                    if(parseInt(userProductObj['producttype_categoryvalue'])>0 
+                        && userProductObj['producttype_categoryvalue']!==''){
+                        paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                     }
                 }
                 if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['producttype_listvalue'])>0 
-                        && dkSelectedDeliveryCityAreaDessertsProductObj['producttype_listvalue']!==''){
-                        paramObj['productlist_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['producttype_listvalue'];
+                    if(parseInt(userProductObj['producttype_listvalue'])>0 
+                        && userProductObj['producttype_listvalue']!==''){
+                        paramObj['productlist_ids'] = userProductObj['producttype_listvalue'];
                     }
                 }
                 if(userProductObj.hasOwnProperty('producttype_featurevalue')===true){
-                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['producttype_featurevalue'])>0 
-                        && dkSelectedDeliveryCityAreaDessertsProductObj['producttype_featurevalue']!==''){
-                        paramObj['product_featureids'] = dkSelectedDeliveryCityAreaDessertsProductObj['producttype_featurevalue'];
+                    if(parseInt(userProductObj['producttype_featurevalue'])>0 
+                        && userProductObj['producttype_featurevalue']!==''){
+                        paramObj['product_featureids'] = userProductObj['producttype_featurevalue'];
                     }
                 }
             }
