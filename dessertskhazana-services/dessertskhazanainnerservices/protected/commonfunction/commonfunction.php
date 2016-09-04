@@ -57,32 +57,35 @@ class commonfunction{
     
     
     // CJ defined this function 2016-07-12
-    public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedShopstores=''){
-        $allShopStoreWiseFilterDetailsArr = array();
+    public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedStoreId=''){
+        $allStoreWiseFilterDetailsArr = array();
         try{
             if(count($shopstoreJsonData)>0 && $shopstoreJsonData!=false){
                 // iterate each shopsstores
-                foreach($shopstoreJsonData as $eachShopStoresId=>$shopStoreProductDetailsArr){
-                    $isRequestedShopstoresMatched = 'N';
-                    if($eachShopStoresId==$requestedShopstores){
-                        $isRequestedShopstoresMatched = 'Y';
+                foreach($shopstoreJsonData as $eachStoresId=>$storeDetailsArr){
+                    $isRequestedStoreMatched = 'N';
+                    if($eachStoresId==$requestedStoreId){
+                        $isRequestedStoreMatched = 'Y';
                     }
-                    array_push($allShopStoreWiseFilterDetailsArr, 
+                    array_push($allStoreWiseFilterDetailsArr, 
                         array(
-                            "productTypeId"=>$shopStoreProductDetailsArr[0]['productTypeId'],
-                            "shopStoresId"=>$eachShopStoresId,
-                            "shopStoresTitle"=>$shopStoreProductDetailsArr[0]['shopStoreTitle'],
-                            "isRequestedShopstoresMatched"=>$isRequestedShopstoresMatched,
-                            "totalProducts"=>count($shopStoreProductDetailsArr)
+                            "shopStoresId"=>$eachStoresId,
+                            "shopStoresTitle"=>$storeDetailsArr[0]['shopStoreTitle'],
+                            "productTypeId"=>$storeDetailsArr[0]['productTypeId'],
+                            "productTypeTitle"=>$storeDetailsArr[0]['productTypeTitle'],
+                            "productTypeProductCategoryId"=>$storeDetailsArr[0]['productTypeProductCategoryId'],
+                            "productTypeProductCategoryTitle"=>$storeDetailsArr[0]['productTypeProductCategoryTitle'],
+                            "isRequestedStoreMatched"=>$isRequestedStoreMatched,
+                            "totalProducts"=>count($storeDetailsArr)
                         )
                     );
                 }
             }
         }catch(Exception $ex){
-            $allShopStoreWiseFilterDetailsArr = false;
+            $allStoreWiseFilterDetailsArr = false;
         }    
-        if(count($allShopStoreWiseFilterDetailsArr)>0 && $allShopStoreWiseFilterDetailsArr!=false){
-            return $allShopStoreWiseFilterDetailsArr;
+        if(count($allStoreWiseFilterDetailsArr)>0 && $allStoreWiseFilterDetailsArr!=false){
+            return $allStoreWiseFilterDetailsArr;
         }else{
             return false;
         }
