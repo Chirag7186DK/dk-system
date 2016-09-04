@@ -209,6 +209,13 @@ class ProductDao{
                     }
                 }
                 
+                // sort by sort_storeareas
+                if(array_key_exists('sort_storeareas', $paramJson)){
+                    if($paramJson['sort_storeareas']!='' && $paramJson['sort_storeareas']!=false){
+                        $sqlOrderByStmt.= $paramJson['sort_storeareas'].",";
+                    }
+                }
+                
                 // sort by price
                 if(array_key_exists('price_lowtohigh', $paramJson)){
                     if($paramJson['price_lowtohigh']=='Y'){
