@@ -79,17 +79,9 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
             try{
                 // get param obj
                 var preparedParamJsonObj = getParamObjForLoadingCShopStoreSummaryInfo();
-                // console.log("loadCShopStoreSummaryInfo preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.shopstoreInfo = false;
                     $rootScope.totalCountDeliveryArea = '';
                     $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
@@ -101,7 +93,6 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
                     // calling ShopStoreServices to get summary info
                     ShopStoreServices.getCShopStoreSummaryInfo(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
@@ -127,7 +118,6 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
                 $rootScope.totalCountAllDessertsTypeProduct = 0;
                 $rootScope.allDessertsSummaryInfo = false;
                 console.log("problem in loadCShopStoreMenuSummaryInfo ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
