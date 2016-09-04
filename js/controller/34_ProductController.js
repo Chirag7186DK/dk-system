@@ -129,25 +129,27 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         // buildStoresFilterListHtmlSelectControl
         $rootScope.buildStoresFilterListHtmlSelectControl = function(allShopStoreList){
             try{
-                var storeFilterListSelectControlElementObj = document.getElementById("allShopStoresFilterListSelectCtrlId");
-                // all options remove and destroy bootstrap select feature
-                $(storeFilterListSelectControlElementObj).find('option').remove();
-                $(storeFilterListSelectControlElementObj).selectpicker('destroy');
-                if(allShopStoreList.length>0 && allShopStoreList!==false){
-                    // iterate each shopstore details
-                    for(var eachStoreIndex = 0; eachStoreIndex<allShopStoreList.length; eachStoreIndex++){
-                        var dataIconstr = 'fa fa-user';
-                        var shopStoreValue = allShopStoreList[eachStoreIndex]['shopStoresId'];
-                        var shopStoreTitle = allShopStoreList[eachStoreIndex]['shopStoresTitle'];
-                        var eachOptionStr = "<option class='shopstoreFilterOperationOptionClass' data-icon='"+dataIconstr+"' value='"+shopStoreValue+"'>"+shopStoreTitle+"</option>";
-                        $(storeFilterListSelectControlElementObj).append(eachOptionStr);
+                if($('#allShopStoresFilterListSelectCtrlId').length===1){
+                    var storeFilterListSelectControlElementObj = document.getElementById("allShopStoresFilterListSelectCtrlId");
+                    // all options remove and destroy bootstrap select feature
+                    $(storeFilterListSelectControlElementObj).find('option').remove();
+                    $(storeFilterListSelectControlElementObj).selectpicker('destroy');
+                    if(allShopStoreList.length>0 && allShopStoreList!==false){
+                        // iterate each shopstore details
+                        for(var eachStoreIndex = 0; eachStoreIndex<allShopStoreList.length; eachStoreIndex++){
+                            var dataIconstr = 'fa fa-user';
+                            var shopStoreValue = allShopStoreList[eachStoreIndex]['shopStoresId'];
+                            var shopStoreTitle = allShopStoreList[eachStoreIndex]['shopStoresTitle'];
+                            var eachOptionStr = "<option class='shopstoreFilterOperationOptionClass' data-icon='"+dataIconstr+"' value='"+shopStoreValue+"'>"+shopStoreTitle+"</option>";
+                            $(storeFilterListSelectControlElementObj).append(eachOptionStr);
+                        }
                     }
-                }
-                // refresh shopstore list select control element 
-                $(storeFilterListSelectControlElementObj).selectpicker('refresh');
-                // apply change function event
-                if($(storeFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.applyChangeEventOnStoreFilterSelectCtrlElement(storeFilterListSelectControlElementObj);
+                    // refresh shopstore list select control element 
+                    $(storeFilterListSelectControlElementObj).selectpicker('refresh');
+                    // apply change function event
+                    if($(storeFilterListSelectControlElementObj).find('option').length>0){
+                        $rootScope.applyChangeEventOnStoreFilterSelectCtrlElement(storeFilterListSelectControlElementObj);
+                    }
                 }
             }catch(ex){
                 console.log("problem in buildStoresFilterListHtmlSelectControl=>"+ex);
@@ -177,56 +179,58 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         // buildPriceFilterListHtmlSelectControl
         $rootScope.buildPriceFilterListHtmlSelectControl = function(allProductPriceDetails){
             try{    
-                var defaultSelectedAllProductPriceFilterArr = new Array();
-                var productPriceFilterListSelectControlElementObj = document.getElementById("allProductPriceFilterListSelectCtrlId");
-                // all options remove and destroy bootstrap select feature
-                $(productPriceFilterListSelectControlElementObj).find('option').remove();
-                $(productPriceFilterListSelectControlElementObj).selectpicker('destroy');
-                if(jQuery.isEmptyObject(allProductPriceDetails)===false && allProductPriceDetails!=='' 
-                    && allProductPriceDetails!==undefined && allProductPriceDetails!==false){
-                    // price sorting data prepared
-                    var allPriceSortingListArr = allProductPriceDetails['sortingList'];
-                    if(allPriceSortingListArr.length>0 && allPriceSortingListArr!==false){
-                        // iterate each price sorting details
-                        var optionGroupStr = "<optgroup label='Sort On (Single selection)' data-max-options='1'>";
-                        for(var eachPriceSortingDetailsArrIndex = 0; eachPriceSortingDetailsArrIndex<allPriceSortingListArr.length; eachPriceSortingDetailsArrIndex++){
-                            var dataIconStr = 'fa fa-sort-amount-asc';
-                            var priceSortingValue = allPriceSortingListArr[eachPriceSortingDetailsArrIndex]['priceSortValue'];
-                            var priceSortingTitle = allPriceSortingListArr[eachPriceSortingDetailsArrIndex]['priceSortTitle'];
-                            if(priceSortingValue==='hightolow'){
-                                dataIconStr = 'fa fa-sort-amount-desc';
+                if($('#allProductPriceFilterListSelectCtrlId').length===1){
+                    var defaultSelectedAllProductPriceFilterArr = new Array();
+                    var productPriceFilterListSelectControlElementObj = document.getElementById("allProductPriceFilterListSelectCtrlId");
+                    // all options remove and destroy bootstrap select feature
+                    $(productPriceFilterListSelectControlElementObj).find('option').remove();
+                    $(productPriceFilterListSelectControlElementObj).selectpicker('destroy');
+                    if(jQuery.isEmptyObject(allProductPriceDetails)===false && allProductPriceDetails!=='' 
+                        && allProductPriceDetails!==undefined && allProductPriceDetails!==false){
+                        // price sorting data prepared
+                        var allPriceSortingListArr = allProductPriceDetails['sortingList'];
+                        if(allPriceSortingListArr.length>0 && allPriceSortingListArr!==false){
+                            // iterate each price sorting details
+                            var optionGroupStr = "<optgroup label='Sort On (Single selection)' data-max-options='1'>";
+                            for(var eachPriceSortingDetailsArrIndex = 0; eachPriceSortingDetailsArrIndex<allPriceSortingListArr.length; eachPriceSortingDetailsArrIndex++){
+                                var dataIconStr = 'fa fa-sort-amount-asc';
+                                var priceSortingValue = allPriceSortingListArr[eachPriceSortingDetailsArrIndex]['priceSortValue'];
+                                var priceSortingTitle = allPriceSortingListArr[eachPriceSortingDetailsArrIndex]['priceSortTitle'];
+                                if(priceSortingValue==='hightolow'){
+                                    dataIconStr = 'fa fa-sort-amount-desc';
+                                }
+                                var eachOptionStr = "<option class='priceFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+priceSortingValue+"'>"+priceSortingTitle+"</option>";
+                                optionGroupStr+= eachOptionStr;
+                                if(allPriceSortingListArr[eachPriceSortingDetailsArrIndex]['isRequestedPriceSortedMatched']==='Y'){
+                                    defaultSelectedAllProductPriceFilterArr.push(priceSortingValue);
+                                }
                             }
-                            var eachOptionStr = "<option class='priceFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+priceSortingValue+"'>"+priceSortingTitle+"</option>";
-                            optionGroupStr+= eachOptionStr;
-                            if(allPriceSortingListArr[eachPriceSortingDetailsArrIndex]['isRequestedPriceSortedMatched']==='Y'){
-                                defaultSelectedAllProductPriceFilterArr.push(priceSortingValue);
-                            }
+                            $(productPriceFilterListSelectControlElementObj).append(optionGroupStr);
                         }
-                        $(productPriceFilterListSelectControlElementObj).append(optionGroupStr);
-                    }
-                    // price range data prepared
-                    var allPriceRangeList = allProductPriceDetails['rangeList'];
-                    if(allPriceRangeList.length>0 && allPriceRangeList!==false){
-                        var optionGroupStr = "<optgroup label='Price Range (Multiple selection)'>";
-                        // iterate each price range details
-                        for(var eachPriceRangeDetailsArrIndex = 0; eachPriceRangeDetailsArrIndex<allPriceRangeList.length; eachPriceRangeDetailsArrIndex++){
-                            var dataIconStr = 'fa fa-inr';
-                            var priceRangeValue = allPriceRangeList[eachPriceRangeDetailsArrIndex]['priceRangeValue'];
-                            var priceRangeTitle = allPriceRangeList[eachPriceRangeDetailsArrIndex]['priceRangeTitle'];
-                            var eachOptionStr = "<option class='priceFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+priceRangeValue+"'>"+priceRangeTitle+"</option>";
-                            optionGroupStr+= eachOptionStr;
-                            if(allPriceRangeList[eachPriceRangeDetailsArrIndex]['isRequestedPriceRangeMatched']==='Y'){
-                                defaultSelectedAllProductPriceFilterArr.push(priceRangeValue);
+                        // price range data prepared
+                        var allPriceRangeList = allProductPriceDetails['rangeList'];
+                        if(allPriceRangeList.length>0 && allPriceRangeList!==false){
+                            var optionGroupStr = "<optgroup label='Price Range (Multiple selection)'>";
+                            // iterate each price range details
+                            for(var eachPriceRangeDetailsArrIndex = 0; eachPriceRangeDetailsArrIndex<allPriceRangeList.length; eachPriceRangeDetailsArrIndex++){
+                                var dataIconStr = 'fa fa-inr';
+                                var priceRangeValue = allPriceRangeList[eachPriceRangeDetailsArrIndex]['priceRangeValue'];
+                                var priceRangeTitle = allPriceRangeList[eachPriceRangeDetailsArrIndex]['priceRangeTitle'];
+                                var eachOptionStr = "<option class='priceFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+priceRangeValue+"'>"+priceRangeTitle+"</option>";
+                                optionGroupStr+= eachOptionStr;
+                                if(allPriceRangeList[eachPriceRangeDetailsArrIndex]['isRequestedPriceRangeMatched']==='Y'){
+                                    defaultSelectedAllProductPriceFilterArr.push(priceRangeValue);
+                                }
                             }
+                            $(productPriceFilterListSelectControlElementObj).append(optionGroupStr);
                         }
-                        $(productPriceFilterListSelectControlElementObj).append(optionGroupStr);
                     }
-                }
-                // refresh product price range list select control element 
-                $(productPriceFilterListSelectControlElementObj).selectpicker('refresh');
-                // apply change function event
-                if($(productPriceFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.applyChangeEventOnPriceFilterSelectCtrlElement(productPriceFilterListSelectControlElementObj);
+                    // refresh product price range list select control element 
+                    $(productPriceFilterListSelectControlElementObj).selectpicker('refresh');
+                    // apply change function event
+                    if($(productPriceFilterListSelectControlElementObj).find('option').length>0){
+                        $rootScope.applyChangeEventOnPriceFilterSelectCtrlElement(productPriceFilterListSelectControlElementObj);
+                    }
                 }
             }catch(ex){
                 console.log("problem in buildPriceFilterListHtmlSelectControl=>"+ex);
@@ -256,34 +260,32 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         // buildSizeFilterListHtmlSelectControl
         $rootScope.buildSizeFilterListHtmlSelectControl = function(allProductSizeDetails){
             try{
-                var defaultedSelectedProductSize = '';
-                var productSizeFilterListSelectControlElementObj = document.getElementById("allProductSizeFilterListSelectCtrlId");
-                // all options remove and destroy bootstrap select feature
-                $(productSizeFilterListSelectControlElementObj).find('option').remove();
-                $(productSizeFilterListSelectControlElementObj).selectpicker('destroy');
-                if(jQuery.isEmptyObject(allProductSizeDetails)===false && allProductSizeDetails!=='' 
-                    && allProductSizeDetails!==undefined && allProductSizeDetails!==false){
-                    var allProductSizeList = allProductSizeDetails['rangeList'];
-                    // iterate each product size details
-                    var optionGroupStr = "<optgroup label='Size Range (Multiple selection)'>";
-                    for(var eachProductSizeArrIndex = 0; eachProductSizeArrIndex<allProductSizeList.length; eachProductSizeArrIndex++){
-                        var productSizeValue = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
-                        var optionStr = "<option class='productSizeFilterOperationOptionClass' value='"+productSizeValue+"'>"+productSizeValue+"</option>";
-                        optionGroupStr+= optionStr;
-                        if(allProductSizeList[eachProductSizeArrIndex]['isRequestedSizeRangeMatched']==='Y'){
-                            defaultedSelectedProductSize = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
+                if($('#allProductSizeFilterListSelectCtrlId').length===1){
+                    var productSizeFilterListSelectControlElementObj = document.getElementById("allProductSizeFilterListSelectCtrlId");
+                    // all options remove and destroy bootstrap select feature
+                    $(productSizeFilterListSelectControlElementObj).find('option').remove();
+                    $(productSizeFilterListSelectControlElementObj).selectpicker('destroy');
+                    if(jQuery.isEmptyObject(allProductSizeDetails)===false && allProductSizeDetails!=='' 
+                        && allProductSizeDetails!==undefined && allProductSizeDetails!==false){
+                        var allProductSizeList = allProductSizeDetails['rangeList'];
+                        // iterate each product size details
+                        var optionGroupStr = "<optgroup label='Size Range (Multiple selection)'>";
+                        for(var eachProductSizeArrIndex = 0; eachProductSizeArrIndex<allProductSizeList.length; eachProductSizeArrIndex++){
+                            var productSizeValue = allProductSizeList[eachProductSizeArrIndex]['sizeRangeValue'];
+                            var optionStr = "<option class='productSizeFilterOperationOptionClass' value='"+productSizeValue+"'>"+productSizeValue+"</option>";
+                            optionGroupStr+= optionStr;
                         }
+                        $(productSizeFilterListSelectControlElementObj).append(optionGroupStr);
                     }
-                    $(productSizeFilterListSelectControlElementObj).append(optionGroupStr);
-                }
-                // refresh product size list select control element 
-                $(productSizeFilterListSelectControlElementObj).selectpicker('refresh');
-                // apply change function event
-                if($(productSizeFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productSizeFilterListSelectControlElementObj);
+                    // refresh product size list select control element 
+                    $(productSizeFilterListSelectControlElementObj).selectpicker('refresh');
+                    // apply change function event
+                    if($(productSizeFilterListSelectControlElementObj).find('option').length>0){
+                        $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productSizeFilterListSelectControlElementObj);
+                    }
                 }
             }catch(ex){
-                console.log("problem in buildAllProductSizeFilterListHtmlSelectControl=>"+ex);
+                console.log("problem in buildSizeFilterListHtmlSelectControl=>"+ex);
             } 
         };
         
@@ -309,52 +311,47 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
        
         // buildSizeDiscountFilterListHtmlSelectControl
         $rootScope.buildSizeDiscountFilterListHtmlSelectControl = function(allProductDiscountDetails){
-            var defaultSelectedAllProductDiscountFilterArr = new Array();
-            var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
-            // all options remove and destroy bootstrap select feature
-            $(productDiscountFilterListSelectControlElementObj).find('option').remove();
-            $(productDiscountFilterListSelectControlElementObj).selectpicker('destroy');
-            if(jQuery.isEmptyObject(allProductDiscountDetails)===false && allProductDiscountDetails!=='' 
-                && allProductDiscountDetails!==undefined && allProductDiscountDetails!==false){
-                var allDiscountSortingListArr = allProductDiscountDetails['sortingList'];
-                if(allDiscountSortingListArr.length>0 && allDiscountSortingListArr!==false){
-                    // iterate each price sorting details
-                    var optionGroupStr = "<optgroup label='Sort On (Single selection)' data-max-options='1'>";
-                    for(var eachDiscountSortingDetailsArrIndex = 0; eachDiscountSortingDetailsArrIndex<allDiscountSortingListArr.length; eachDiscountSortingDetailsArrIndex++){
-                        var dataIconStr = 'fa fa-sort-amount-asc';
-                        var discountSortingValue = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortValue'];
-                        var discountSortingTitle = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortTitle'];
-                        if(discountSortingValue==='hightolow'){
-                            dataIconStr = 'fa fa-sort-amount-desc';
+            if($('#allProductDiscountFilterListSelectCtrlId').length===1){ 
+                var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
+                // all options remove and destroy bootstrap select feature
+                $(productDiscountFilterListSelectControlElementObj).find('option').remove();
+                $(productDiscountFilterListSelectControlElementObj).selectpicker('destroy');
+                if(jQuery.isEmptyObject(allProductDiscountDetails)===false && allProductDiscountDetails!=='' 
+                    && allProductDiscountDetails!==undefined && allProductDiscountDetails!==false){
+                    var allDiscountSortingListArr = allProductDiscountDetails['sortingList'];
+                    if(allDiscountSortingListArr.length>0 && allDiscountSortingListArr!==false){
+                        // iterate each price sorting details
+                        var optionGroupStr = "<optgroup label='Sort On (Single selection)' data-max-options='1'>";
+                        for(var eachDiscountSortingDetailsArrIndex = 0; eachDiscountSortingDetailsArrIndex<allDiscountSortingListArr.length; eachDiscountSortingDetailsArrIndex++){
+                            var dataIconStr = 'fa fa-sort-amount-asc';
+                            var discountSortingValue = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortValue'];
+                            var discountSortingTitle = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortTitle'];
+                            if(discountSortingValue==='hightolow'){
+                                dataIconStr = 'fa fa-sort-amount-desc';
+                            }
+                            var eachOptionStr = "<option class='discountFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+discountSortingValue+"'>"+discountSortingTitle+"</option>";
+                            optionGroupStr+= eachOptionStr;
                         }
-                        var eachOptionStr = "<option class='discountFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+discountSortingValue+"'>"+discountSortingTitle+"</option>";
-                        optionGroupStr+= eachOptionStr;
-                        if(allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['isRequestedDiscountSortedMatched']==='Y'){
-                            defaultSelectedAllProductDiscountFilterArr.push(discountSortingValue);
-                        }
+                        $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
                     }
-                    $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
-                }
-                var allDiscountRangeList = allProductDiscountDetails['rangeList'];
-                if(allDiscountRangeList.length>0 && allDiscountRangeList!==false){
-                    var optionGroupStr = "<optgroup label='Discount Range (Multiple selection)'>";
-                    // iterate each price range details
-                    for(var eachDiscountRangeDetailsArrIndex = 0; eachDiscountRangeDetailsArrIndex<allDiscountRangeList.length; eachDiscountRangeDetailsArrIndex++){
-                        var discountRangeValue = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeValue'];
-                        var discountRangeTitle = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeTitle'];
-                        var eachOptionStr = "<option class='discountFilterOperationOptionClass' value='"+discountRangeValue+"'>"+discountRangeTitle+"</option>";
-                        optionGroupStr+= eachOptionStr;
-                        if(allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['isRequestedDiscountRangeMatched']==='Y'){
-                            defaultSelectedAllProductDiscountFilterArr.push(discountRangeValue);
+                    var allDiscountRangeList = allProductDiscountDetails['rangeList'];
+                    if(allDiscountRangeList.length>0 && allDiscountRangeList!==false){
+                        var optionGroupStr = "<optgroup label='Discount Range (Multiple selection)'>";
+                        // iterate each price range details
+                        for(var eachDiscountRangeDetailsArrIndex = 0; eachDiscountRangeDetailsArrIndex<allDiscountRangeList.length; eachDiscountRangeDetailsArrIndex++){
+                            var discountRangeValue = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeValue'];
+                            var discountRangeTitle = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeTitle'];
+                            var eachOptionStr = "<option class='discountFilterOperationOptionClass' value='"+discountRangeValue+"'>"+discountRangeTitle+"</option>";
+                            optionGroupStr+= eachOptionStr;
                         }
+                        $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
                     }
-                    $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
                 }
-            }
-            // refresh product discount filter list select control element 
-            $(productDiscountFilterListSelectControlElementObj).selectpicker('refresh');
-            if($(productDiscountFilterListSelectControlElementObj).find('option').length>0){
-                $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productDiscountFilterListSelectControlElementObj);
+                // refresh product discount filter list select control element 
+                $(productDiscountFilterListSelectControlElementObj).selectpicker('refresh');
+                if($(productDiscountFilterListSelectControlElementObj).find('option').length>0){
+                    $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productDiscountFilterListSelectControlElementObj);
+                }
             }
         };
         
