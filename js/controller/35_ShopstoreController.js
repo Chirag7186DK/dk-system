@@ -55,9 +55,9 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
             var storedDataStatus = storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(paramObj, 'Y');
             if(storedDataStatus===true){  
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
-                    window.location.href =  globalBaseSitePath+"all-store-cakes.php";
+                    window.location.href =  globalBaseSitePath+"store-all-cakes.php";
                 }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
-                    window.location.href =  globalBaseSitePath+"all-store-chocolates.php";
+                    window.location.href =  globalBaseSitePath+"store-all-chocolates.php";
                 }
             }
         };
