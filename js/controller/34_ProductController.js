@@ -44,14 +44,15 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.productTypeAllCategoryList = false;
+                    $rootScope.productTypeAllProductCategoryList = false;
                     // calling ProductServices
                     ProductServices.getProductTypeAllProductCategoryList(fetchParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeAllCategoryList', retResponseJson);
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.productTypeAllCategoryList = arrJsonObj;
+                                    storeProductTypeProductCategoryDataInSession(arrJsonObj.defaultSelectedProductCategoryDetails);
+                                    $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
                                 }
                             }
                         });
@@ -59,7 +60,21 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 }
             }catch(ex){
                 console.log("problem in loadProductTypeAllProductCategoryList ex=>"+ex);
-                $rootScope.productTypeAllCategoryList = false;
+                $rootScope.productTypeAllProductCategoryList = false;
+            }
+        };
+        
+        
+        // storeProductTypeProductCategoryDataInSession 
+        $rootScope.storeProductTypeProductCategoryDataInSession = function(productCategoryParamObj){
+            try{
+                // storing product type product cateogory data in session
+                var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj);
+                if(dataStoredInSessionStatus===true){
+                    // $rootScope.loadProductTypeProductCategoryAllProductList();
+                }
+            }catch(ex){
+                console.log("problem in storeProductTypeProductCategoryDataInSession ex=>"+ex);
             }
         };
            
