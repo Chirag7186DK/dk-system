@@ -129,20 +129,19 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         // buildStoresFilterListHtmlSelectControl
         $rootScope.buildStoresFilterListHtmlSelectControl = function(allShopStoreList){
             try{
-                if($('#allShopStoresFilterListSelectCtrlId').length===1){
+                if($('#allShopStoresFilterListSelectCtrlId').length===1
+                    && allShopStoreList.length>0 && allShopStoreList!==false){
                     var storeFilterListSelectControlElementObj = document.getElementById("allShopStoresFilterListSelectCtrlId");
                     // all options remove and destroy bootstrap select feature
                     $(storeFilterListSelectControlElementObj).find('option').remove();
                     $(storeFilterListSelectControlElementObj).selectpicker('destroy');
-                    if(allShopStoreList.length>0 && allShopStoreList!==false){
-                        // iterate each shopstore details
-                        for(var eachStoreIndex = 0; eachStoreIndex<allShopStoreList.length; eachStoreIndex++){
-                            var dataIconstr = 'fa fa-user';
-                            var shopStoreValue = allShopStoreList[eachStoreIndex]['shopStoresId'];
-                            var shopStoreTitle = allShopStoreList[eachStoreIndex]['shopStoresTitle'];
-                            var eachOptionStr = "<option class='shopstoreFilterOperationOptionClass' data-icon='"+dataIconstr+"' value='"+shopStoreValue+"'>"+shopStoreTitle+"</option>";
-                            $(storeFilterListSelectControlElementObj).append(eachOptionStr);
-                        }
+                    // iterate each shopstore details
+                    for(var eachStoreIndex = 0; eachStoreIndex<allShopStoreList.length; eachStoreIndex++){
+                        var dataIconstr = 'fa fa-user';
+                        var shopStoreValue = allShopStoreList[eachStoreIndex]['shopStoresId'];
+                        var shopStoreTitle = allShopStoreList[eachStoreIndex]['shopStoresTitle'];
+                        var eachOptionStr = "<option class='shopstoreFilterOperationOptionClass' data-icon='"+dataIconstr+"' value='"+shopStoreValue+"'>"+shopStoreTitle+"</option>";
+                        $(storeFilterListSelectControlElementObj).append(eachOptionStr);
                     }
                     // refresh shopstore list select control element 
                     $(storeFilterListSelectControlElementObj).selectpicker('refresh');
