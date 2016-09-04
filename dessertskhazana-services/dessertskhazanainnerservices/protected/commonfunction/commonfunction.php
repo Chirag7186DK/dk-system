@@ -196,7 +196,8 @@ class commonfunction{
     }    
     
     // CJ defined this function 2016-07-12
-    public static function preparedProductDiscountFilterationData($minDiscountValue, $maxDiscountValue, $requestedProductDiscountFilterArr, $requestedProductDiscountSortOn){
+    public static function preparedProductDiscountFilterationData($minDiscountValue, $maxDiscountValue, 
+        $requestedProductDiscountFilterArr = array(), $requestedProductDiscountSortOn=''){
         $productAllDiscountRangeArr = array();
         if($minDiscountValue!='' && $maxDiscountValue!='' && $minDiscountValue!=$maxDiscountValue){
             $discountGapValue = 15;
