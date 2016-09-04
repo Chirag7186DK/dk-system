@@ -70,8 +70,9 @@ class ProductServicesV1 implements IProductServicesV1{
             $gccaIds = $dkParamDataArr['ccaId'];
             $gproducttype_ids = $dkParamDataArr['product_typesids'];
             $product_categoryids = $dkParamDataArr['product_categoryids'];
+            $gStoreIds = $dkParamDataArr['shopstoreids'];
             // fetch store details who do given desserts type business in ccaIds
-            $allStoreDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
+            $allStoreDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', $gStoreIds, '');
             if(count($allStoreDetailsArr)>0 && $allStoreDetailsArr!=false){
                 $allStoreIdsStr = implode(",", array_keys(utils :: arraySort($allStoreDetailsArr, array("shopStoreId"))));
                 $paramDataArr1 = array();
