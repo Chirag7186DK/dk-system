@@ -4,10 +4,6 @@ angular.module('DKAPP').controller('ProductController', ProductController);
 function ProductController($scope, $rootScope, $http, ProductServices, LocationServices){
     try{
         
-        $rootScope.productViewAllFilterPopDivClass = '';
-        $rootScope.isShowViewAllProductFilter = false;
-        $rootScope.toggleViewAllProductFilterBtnLabel = "SHOW FILTER";
-        
         // loadDKDeliveryAreaBasedDessertsTypeList 
         $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
             try{
@@ -93,8 +89,14 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 // get param obj to load product type product category filter type list
                 var preparedParamJsonObj = getParamObjForProductTypeProductCategoryFilterTypeList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    
+                    $rootScope.productViewAllFilterPopDivClass = '';
+                    $rootScope.isShowViewAllProductFilter = false;
+                    $rootScope.toggleViewAllProductFilterBtnLabel = "SHOW FILTER";
+        
                     // calling ProductServices
                     ProductServices.getProductTypeProductCategoryFilterTypeList(fetchParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
