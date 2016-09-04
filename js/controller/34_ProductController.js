@@ -18,7 +18,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
                     // calling LocationServices
-                    LocationServices.getDKDeliveryAreaBasedProductTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                    LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
