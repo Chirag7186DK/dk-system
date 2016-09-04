@@ -266,10 +266,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             // desserts type details change by user 
             $(elementObj).on('changed.bs.select', function(e){
                 var paramObj = {};
-                paramObj['matchedProductTypeId'] = ($(elementObj).selectpicker('val'));
-                paramObj['matchedProductTypeTitle'] = ($(elementObj).find('option:selected').text());
+                paramObj['dessertsTypeId'] = ($(elementObj).selectpicker('val'));
+                paramObj['dessertsTypeTitle'] = ($(elementObj).find('option:selected').text());
                 storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
-                if((paramObj['matchedProductTypeTitle']).toLowerCase()==='cakes'){
+                if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
                     window.location.href =  globalBaseSitePath+"all-cakes.php";
                 }else if((paramObj['matchedProductTypeTitle']).toLowerCase()==='chocolates'){
                     window.location.href =  globalBaseSitePath+"all-chocolates.php";
