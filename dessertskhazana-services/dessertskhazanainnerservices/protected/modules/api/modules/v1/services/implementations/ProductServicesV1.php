@@ -308,11 +308,18 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['product_typeids'] = $gproductTypeId;
             $paramObj1['product_categoryids'] = $gproductCategoryId;
             $paramObj1['product_listids'] = $gproductListId;
+            $paramObj1['sort_productfeaturesid'] = " FIELD(splld.id, $gproductFeatureId) DESC ";
             $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($dataArr1)>0 && $dataArr1!=false){
-                $allProductDetailsArr = utils::array_merge_common_elements(
-                    $dataArr1, array(array("productFeatureId"=>$gproductFeatureId)), array("productFeatureId"), array(), array("isRequestedProductFeaturesDetailsMatched" => "Y"), array("isRequestedProductFeaturesDetailsMatched" => "N")
-                );
+                // iterate each product features details
+                $allProductDetailsArr = array();
+                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                    $isRequestedProductDetailsMatched = 'N';
+                    if($dataArr1[$eachIndex]['productFeatureId']==$gproductFeatureId){
+                        $isRequestedProductDetailsMatched = 'Y';
+                    }
+                    $dataArr1[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
+                }
             }
             $rspDetails['allProductDetails'] = $allProductDetailsArr;
         }
