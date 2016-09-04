@@ -141,7 +141,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- all product list will be loaded here -->
-            <div id='vapWrapperDivId' ng-controller="ProductController" ng-if="allProductDetailsList>0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
+            <div id='vapWrapperDivId' ng-controller="ProductController" ng-show="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
                 
                 <!-- product filter operation main container div -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
@@ -196,6 +196,9 @@
                     <p class='vap_productStoreNameContainerPClass'>
                         <span class="vap_productStoreLabelNameSpanClass">Seller : </span>
                         <span class="vap_productStoreNameSpanClass">{{eachProductDetails.shopStoreTitle}}</span>
+                    </p>
+                    <p class='vap_storeNearByPClass'>
+                        {{eachProductDetails.areaTitle}}
                     </p>
                     <p class='vap_productNamePClass'>
                         {{eachProductDetails.productListTitle}}
