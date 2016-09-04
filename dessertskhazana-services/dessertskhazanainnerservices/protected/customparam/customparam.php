@@ -413,31 +413,13 @@ class customparam{
     public static function checkParamDataFetchingCShopstoresummaryInfo($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
-        // check product delivery country
-        if(array_key_exists('country_ids', $paramJsonData)){
-            if($paramJsonData['country_ids']=='1'){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check city_ids key present or not
-        if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check area_ids key present or not
-        if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
         // check shopStore id is blank or not
         if(array_key_exists('shopstoreids', $paramJsonData)){
             if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==4){
+        if($givenParamDataCorrectCount==1){
             $retStatus = 'TRUE';
         }
         return $retStatus;
