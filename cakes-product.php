@@ -94,12 +94,32 @@
             </div>
             
             <!-- store serve other desserts type listed -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
+            <div ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
+                
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' to deliver product at 
                     '{{userSelectedDeliveryAreaTextHeader}}' area !!!
                 </li>
+                
+                <!-- display all desserts type can served by store in selected delivery area -->
+                <div id="vpd_shopStoreServedAllDessertsProductScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass'>
+                    
+                    <!-- iterate each desserts type info display as horizontally scrolling -->
+                    <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-viewproductlevel>
+                        <p class="dessertsProductIconPClass">
+                            <i class="{{eachDessertsTypeDetails.dessertsIcon}} dessertsProductIconClass"></i>
+                        </p>
+                        <h2 class="dessertsProductTitleHClass">
+                            {{eachDessertsTypeDetails.dessertsTypeTitle}}
+                        </h2>
+                        <p ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
+                            View desserts
+                        </p>
+                    </div>
+                    
+                </div>
+                
             </div>
             
             <!-- create horizontally space div between -->
