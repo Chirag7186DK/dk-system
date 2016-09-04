@@ -106,7 +106,7 @@ function resetDKSessionData(){
 // CJ defined this function 2016-07-24
 function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     try{
-        var retParamObj = {};
+        var paramObj = {};
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -115,15 +115,15 @@ function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPa
             if(dkParamObj.hasOwnProperty('userSession')===true){
                 if(dkParamObj['userSession']['user_sessionid']!=='' 
                     && (dkParamObj['userSession']['user_sessionid']).length>=20){
-                    retParamObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
-                    retParamObj['usersession_startimestamp'] = dkParamObj['userSession']['usersession_starttimestamp'];
+                    paramObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    paramObj['usersession_startimestamp'] = dkParamObj['userSession']['usersession_starttimestamp'];
                     // update user session data obj 
                     dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
                 }
             }
         }
-        return retParamObj;
+        return paramObj;
     }catch(ex){
         return false;
     }
@@ -372,7 +372,7 @@ function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isRes
 
 
 // CJ defined this function 2016-09-03
-function getParamObjForLoadingProductTypeAllProductCategoryList(){
+function getParamObjForProductTypeAllProductCategoryList(){
     try{
         var paramObj = {};
         // checking session param
@@ -465,18 +465,13 @@ function storeProductTypeProductCategoryDataInSession(productTypeProductCategory
 
 
 // CJ defined this function 2016-06-17
-function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
+function getParamObjForProductTypeProductCategoryAllProductList(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
-        retParamObj['product_typesids'] = '';
-        retParamObj['product_categoryids'] = '';
-        retParamObj['shopstoreids'] = '';
-        retParamObj['product_price_filter'] = '';
-        retParamObj['product_size_filter'] = '';
-        retParamObj['product_discount_filter'] = '';
+        var paramObj = {};
+        paramObj['shopstoreids'] = '';
+        paramObj['product_price_filter'] = '';
+        paramObj['product_size_filter'] = '';
+        paramObj['product_discount_filter'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -486,13 +481,19 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                }
+                if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('ccaId')===true){
+                    if(parseInt(dkSelectedDeliveryCityAreaDessertsProductObj['ccaId'])>0
+                        && dkSelectedDeliveryCityAreaDessertsProductObj['ccaId']!==''){
+                        paramObj['ccaId'] = dkSelectedDeliveryCityAreaDessertsProductObj['ccaId'];
+                    }
                 }
             }
             // extract data from user product
@@ -500,29 +501,28 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    retParamObj['product_typesids'] = userProductObj['producttype_value'];
+                    paramObj['product_typesids'] = userProductObj['producttype_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
                 if(userProductObj.hasOwnProperty('product_price_filter')===true){
-                    retParamObj['product_price_filter'] = userProductObj['product_price_filter'];
+                    paramObj['product_price_filter'] = userProductObj['product_price_filter'];
                 }
                 if(userProductObj.hasOwnProperty('product_size_filter')===true){
-                    retParamObj['product_size_filter'] = userProductObj['product_size_filter'];
+                    paramObj['product_size_filter'] = userProductObj['product_size_filter'];
                 }
                 if(userProductObj.hasOwnProperty('product_discount_filter')===true){
-                    retParamObj['product_discount_filter'] = userProductObj['product_discount_filter'];
+                    paramObj['product_discount_filter'] = userProductObj['product_discount_filter'];
                 }
 
             }
         }
-        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0){
-            return retParamObj;
+        if(Object.keys(paramObj).length>=6){
+            return paramObj;
         }else{
             return false;
         }
@@ -821,11 +821,11 @@ function checkParamDataToRedirectForRequestCorporateTieup(){
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDashboardLevelProduct(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
-        retParamObj['product_typesids'] = '';
+        var paramObj = {};
+        paramObj['country_ids'] = '';
+        paramObj['city_ids'] = '';
+        paramObj['area_ids'] = '';
+        paramObj['product_typesids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -835,22 +835,22 @@ function getParamObjFromSessionForLoadingDashboardLevelProduct(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('dessertsproduct')===true){
-                    retParamObj['product_typesids'] = dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproduct'];
+                    paramObj['product_typesids'] = dkSelectedDeliveryCityAreaDessertsProductObj['dessertsproduct'];
                 }
             }
         }
-        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0){
-            return retParamObj;
+        if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
+            && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['product_typesids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -862,15 +862,15 @@ function getParamObjFromSessionForLoadingDashboardLevelProduct(){
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetails(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
-        retParamObj['store_ids'] = '';
-        retParamObj['product_typesids'] = '';
-        retParamObj['product_categoryids'] = '';
-        retParamObj['product_ids'] = '';
-        retParamObj['product_featureids'] = '';
+        var paramObj = {};
+        paramObj['country_ids'] = '';
+        paramObj['city_ids'] = '';
+        paramObj['area_ids'] = '';
+        paramObj['store_ids'] = '';
+        paramObj['product_typesids'] = '';
+        paramObj['product_categoryids'] = '';
+        paramObj['product_ids'] = '';
+        paramObj['product_featureids'] = '';
 
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -881,40 +881,40 @@ function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetail
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['store_ids'] = userProductObj['shopstore_value'];
+                    paramObj['store_ids'] = userProductObj['shopstore_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    retParamObj['product_typesids'] = userProductObj['producttype_value'];
+                    paramObj['product_typesids'] = userProductObj['producttype_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    retParamObj['product_ids'] = userProductObj['producttype_listvalue'];
+                    paramObj['product_ids'] = userProductObj['producttype_listvalue'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_featurevalue')===true){
-                    retParamObj['product_featureids'] = userProductObj['producttype_featurevalue'];
+                    paramObj['product_featureids'] = userProductObj['producttype_featurevalue'];
                 }
             }
         }
-        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0
-            && parseInt(retParamObj['store_ids'])>0 && parseInt(retParamObj['product_categoryids'])>0
-            && parseInt(retParamObj['product_ids'])>0 && parseInt(retParamObj['product_featureids'])>0){
-            return retParamObj;
+        if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
+            && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['product_typesids'])>0
+            && parseInt(paramObj['store_ids'])>0 && parseInt(paramObj['product_categoryids'])>0
+            && parseInt(paramObj['product_ids'])>0 && parseInt(paramObj['product_featureids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -927,8 +927,8 @@ function getParamObjFromSessionForLoadingProductTypeProductCategoryProductDetail
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForLoadingProductDescriptionDetails(){
     try{
-        var retParamObj = {};
-        retParamObj['product_ids'] = '';
+        var paramObj = {};
+        paramObj['product_ids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -938,12 +938,12 @@ function getParamObjFromSessionForLoadingProductDescriptionDetails(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    retParamObj['product_ids'] = userProductObj['producttype_listvalue'];
+                    paramObj['product_ids'] = userProductObj['producttype_listvalue'];
                 }
             }
         }
-        if(parseInt(retParamObj['product_ids'])>0){
-            return retParamObj;
+        if(parseInt(paramObj['product_ids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -955,16 +955,16 @@ function getParamObjFromSessionForLoadingProductDescriptionDetails(){
 // CJ defined this function 2016-06-17
 function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
-        retParamObj['product_typesids'] = '';
-        retParamObj['product_categoryids'] = '';
-        retParamObj['shopstoreids'] = '';
-        retParamObj['product_price_filter'] = '';
-        retParamObj['product_size_filter'] = '';
-        retParamObj['product_discount_filter'] = '';
+        var paramObj = {};
+        paramObj['country_ids'] = '';
+        paramObj['city_ids'] = '';
+        paramObj['area_ids'] = '';
+        paramObj['product_typesids'] = '';
+        paramObj['product_categoryids'] = '';
+        paramObj['shopstoreids'] = '';
+        paramObj['product_price_filter'] = '';
+        paramObj['product_size_filter'] = '';
+        paramObj['product_discount_filter'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -974,13 +974,13 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             // extract data from user product
@@ -988,29 +988,29 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    retParamObj['product_typesids'] = userProductObj['producttype_value'];
+                    paramObj['product_typesids'] = userProductObj['producttype_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
                 if(userProductObj.hasOwnProperty('product_price_filter')===true){
-                    retParamObj['product_price_filter'] = userProductObj['product_price_filter'];
+                    paramObj['product_price_filter'] = userProductObj['product_price_filter'];
                 }
                 if(userProductObj.hasOwnProperty('product_size_filter')===true){
-                    retParamObj['product_size_filter'] = userProductObj['product_size_filter'];
+                    paramObj['product_size_filter'] = userProductObj['product_size_filter'];
                 }
                 if(userProductObj.hasOwnProperty('product_discount_filter')===true){
-                    retParamObj['product_discount_filter'] = userProductObj['product_discount_filter'];
+                    paramObj['product_discount_filter'] = userProductObj['product_discount_filter'];
                 }
 
             }
         }
-        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['product_typesids'])>0){
-            return retParamObj;
+        if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
+            && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['product_typesids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -1023,11 +1023,11 @@ function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
 // CJ defined this function 2016-06-24
 function getParamObjForLoadingCShopStoreSummaryInfo(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
-        retParamObj['shopstoreids'] = '';
+        var paramObj = {};
+        paramObj['country_ids'] = '';
+        paramObj['city_ids'] = '';
+        paramObj['area_ids'] = '';
+        paramObj['shopstoreids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1037,13 +1037,13 @@ function getParamObjForLoadingCShopStoreSummaryInfo(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             // extract data from user product
@@ -1051,13 +1051,13 @@ function getParamObjForLoadingCShopStoreSummaryInfo(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
             }
         }
-        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['shopstoreids'])>0){
-            return retParamObj;
+        if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
+            && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['shopstoreids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -1070,8 +1070,8 @@ function getParamObjForLoadingCShopStoreSummaryInfo(){
 // CJ defined this function 2016-07-18
 function getParamObjForLoadingCShopStoreWorkingStyleDetails(){
     try{
-        var retParamObj = {};
-        retParamObj['shopstoreids'] = '';
+        var paramObj = {};
+        paramObj['shopstoreids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1082,12 +1082,12 @@ function getParamObjForLoadingCShopStoreWorkingStyleDetails(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
             }
         }
-        if(parseInt(retParamObj['shopstoreids'])>0){
-            return retParamObj;
+        if(parseInt(paramObj['shopstoreids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -1099,8 +1099,8 @@ function getParamObjForLoadingCShopStoreWorkingStyleDetails(){
 // CJ defined this function 2016-07-18
 function getParamObjForLoadingCShopStoreProductDeliveryAreaDetails(){
     try{
-        var retParamObj = {};
-        retParamObj['shopstoreids'] = '';
+        var paramObj = {};
+        paramObj['shopstoreids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1111,12 +1111,12 @@ function getParamObjForLoadingCShopStoreProductDeliveryAreaDetails(){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                 }
             }
         }
-        if(parseInt(retParamObj['shopstoreids'])>0){
-            return retParamObj;
+        if(parseInt(paramObj['shopstoreids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -1204,7 +1204,7 @@ function getParamDataObjForCustomizeOrderRequest(){
 
 // CJ defined this function 2016-07-24
 function getParamDataObjForCorporateTieupRequest(){
-    var retParamObj = {};
+    var paramObj = {};
     // checking session param
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1214,12 +1214,12 @@ function getParamDataObjForCorporateTieupRequest(){
             // extract corporateTieup param obj
             var partyOrderParamObj = dkParamObj['corporateTieup'];
             if(partyOrderParamObj.hasOwnProperty('corporateTieupTitle')!==''){
-                retParamObj['is_LoggedInUser'] = 'N';
-                retParamObj['profile_id'] = '2';
+                paramObj['is_LoggedInUser'] = 'N';
+                paramObj['profile_id'] = '2';
             }
         }
     }
-    return retParamObj;
+    return paramObj;
 }
 
 
@@ -1315,7 +1315,7 @@ function storeUserSessionIdInSession(user_sessionid){
 
 // CJ defined this function 2016-08-01
 function getParamDataAuthenticatedUserDetailsFromSession(){
-    var retParamObj = {};
+    var paramObj = {};
     try{
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -1330,15 +1330,15 @@ function getParamDataAuthenticatedUserDetailsFromSession(){
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
                     if((userSessionParamObj['user_sessionid']).length>=20
                         && (userSessionParamObj['udblogId']).length>=20){
-                        retParamObj['udblogId'] = userSessionParamObj['udblogId'];
-                        retParamObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
-                        retParamObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
+                        paramObj['udblogId'] = userSessionParamObj['udblogId'];
+                        paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                        paramObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
                     }
                 }
             }
         }
-        if(Object.keys(retParamObj).length===3){
-            return retParamObj;
+        if(Object.keys(paramObj).length===3){
+            return paramObj;
         }else{
             return false;
         }
@@ -1435,7 +1435,7 @@ function getPageDetailsUserAccessedFrom(){
 
 // CJ defined this function 2016-08-01
 function getParamDataForUserSignInAuthentication(){
-    var retParamObj = {};
+    var paramObj = {};
     try{
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -1450,20 +1450,20 @@ function getParamDataForUserSignInAuthentication(){
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
                     if((userSessionParamObj['user_sessionid']).length>=20 
                         && (userSessionParamObj['udblogId']).length===0){
-                        retParamObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
-                        retParamObj['user_sessionstarttime'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionstarttime']);
-                        retParamObj['encoded_mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignInMobileInputId').val());
-                        retParamObj['encoded_password'] = removeHtmlStripTagsOfContent($('#ma_userSignInPasswordInputId').val());
+                        paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
+                        paramObj['user_sessionstarttime'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionstarttime']);
+                        paramObj['encoded_mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignInMobileInputId').val());
+                        paramObj['encoded_password'] = removeHtmlStripTagsOfContent($('#ma_userSignInPasswordInputId').val());
                     }
                 }
             }
         }
     }catch(ex){
         console.log("problem in getParamDataForUserSignInAuthentication=>"+ex);
-        retParamObj = {};
+        paramObj = {};
     }
-    if(Object.keys(retParamObj).length===4){
-        return retParamObj;
+    if(Object.keys(paramObj).length===4){
+        return paramObj;
     }else{
         return false;
     }
@@ -1517,7 +1517,7 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
 
 // CJ defined this function 2016-08-15
 function getStoredRequestedSectionNameToAccessInUserAccount(){
-    var retParamObj = {};
+    var paramObj = {};
     try{
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -1526,16 +1526,16 @@ function getStoredRequestedSectionNameToAccessInUserAccount(){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('requestedSectionUserAccountObj')===true){
                 if(jQuery.isEmptyObject(dkParamObj['requestedSectionUserAccountObj'])===false){
-                    retParamObj = dkParamObj['requestedSectionUserAccountObj'];
+                    paramObj = dkParamObj['requestedSectionUserAccountObj'];
                 }
             }
         }
     }catch(ex){
         console.log("problem in getStoredRequestedSectionNameToAccessInUserAccount=>"+ex);
-        retParamObj = {};
+        paramObj = {};
     } 
-    if(Object.keys(retParamObj).length===2){
-        return retParamObj;
+    if(Object.keys(paramObj).length===2){
+        return paramObj;
     }else{
         return false;
     }
@@ -1544,31 +1544,31 @@ function getStoredRequestedSectionNameToAccessInUserAccount(){
 
 // CJ defined this function 2016-08-21
 function getParamDataToUpdateUserpersonalInfo(){
-    var retParamObj = {};
+    var paramObj = {};
     try{
         if($('.editUsernameInputClass').length===1){
-            retParamObj['name'] = removeHtmlStripTagsOfContent($('.editUsernameInputClass').val());
+            paramObj['name'] = removeHtmlStripTagsOfContent($('.editUsernameInputClass').val());
         }
         if($('.editUseremailInputClass').length===1){
-            retParamObj['email'] = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
+            paramObj['email'] = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
         }
         if($('.editUsermobileInputClass').length===1){
-            retParamObj['mobile'] = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
+            paramObj['mobile'] = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
         }
         if($('.editUserbirthdateInputClass').length===1){
-            retParamObj['birthdate'] = removeHtmlStripTagsOfContent($('.editUserbirthdateInputClass').val());
+            paramObj['birthdate'] = removeHtmlStripTagsOfContent($('.editUserbirthdateInputClass').val());
         }
         if($('.editUserGenderSelectClass').length===1){
-            retParamObj['gender'] = removeHtmlStripTagsOfContent($('.editUserGenderSelectClass').find('option:selected').val());
+            paramObj['gender'] = removeHtmlStripTagsOfContent($('.editUserGenderSelectClass').find('option:selected').val());
         }
         // fetch user session data
         var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userSessionDataObj!==false && userSessionDataObj!==undefined 
             && jQuery.isEmptyObject(userSessionDataObj)===false){
-            retParamObj = $.extend(retParamObj, userSessionDataObj);
+            paramObj = $.extend(paramObj, userSessionDataObj);
         }
-        if(Object.keys(retParamObj).length===8){
-            return retParamObj;
+        if(Object.keys(paramObj).length===8){
+            return paramObj;
         }else{
             return false;
         }
@@ -1580,25 +1580,25 @@ function getParamDataToUpdateUserpersonalInfo(){
 
 // CJ defined this function 2016-08-21
 function getParamDataToUpdateUserpasswordInfo(){
-    var retParamObj = {};
+    var paramObj = {};
     try{
         if($('.editOldPasswordInputClass').length===1){
-            retParamObj['old_password'] = removeHtmlStripTagsOfContent($('.editOldPasswordInputClass').val());
+            paramObj['old_password'] = removeHtmlStripTagsOfContent($('.editOldPasswordInputClass').val());
         }
         if($('.editNewPasswordInputClass').length===1){
-            retParamObj['new_password'] = removeHtmlStripTagsOfContent($('.editNewPasswordInputClass').val());
+            paramObj['new_password'] = removeHtmlStripTagsOfContent($('.editNewPasswordInputClass').val());
         }
         if($('.editNewConfirmPasswordInputClass').length===1){
-            retParamObj['newc_password'] = removeHtmlStripTagsOfContent($('.editNewConfirmPasswordInputClass').val());
+            paramObj['newc_password'] = removeHtmlStripTagsOfContent($('.editNewConfirmPasswordInputClass').val());
         }
         // fetch user session data
         var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userSessionDataObj!==false && userSessionDataObj!==undefined 
             && jQuery.isEmptyObject(userSessionDataObj)===false){
-            retParamObj = $.extend(retParamObj, userSessionDataObj);
+            paramObj = $.extend(paramObj, userSessionDataObj);
         }
-        if(Object.keys(retParamObj).length===6){
-            return retParamObj;
+        if(Object.keys(paramObj).length===6){
+            return paramObj;
         }else{
             return false;
         }
@@ -1686,11 +1686,11 @@ function storeUserOrderItemInSession(productDetailsObj, fcontentClass){
 // CJ defined this function 2016-08-06
 function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, fromSession){
     try{
-        var retParamObj = {};
+        var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
-            retParamObj = $.extend(retParamObj, userLoggedDataObj);
+            paramObj = $.extend(paramObj, userLoggedDataObj);
             
             // through dashboard/store/all products page
             if(productDetailsObj!==false && productDetailsObj!==undefined 
@@ -1705,16 +1705,16 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
                         && parseInt(productDetailsObj['productTypeProductCategoryId'])>0
                         && parseInt(productDetailsObj['productListId'])>0
                         && parseInt(productDetailsObj['productFeatureId'])>0){
-                        retParamObj['shopstore_id'] = productDetailsObj['shopStoreId'];
-                        retParamObj['product_typeid'] = productDetailsObj['productTypeId'];
-                        retParamObj['product_categoryid'] = productDetailsObj['productTypeProductCategoryId'];
-                        retParamObj['product_listid'] = productDetailsObj['productListId'];
-                        retParamObj['product_featureid'] = productDetailsObj['productFeatureId'];
-                        retParamObj['product_featuresize'] = productDetailsObj['productFeatureDisplayMeasurementType'];
-                        retParamObj['product_featuresprice'] = productDetailsObj['productFeatureOnlineSellingPrice'];
-                        retParamObj['product_featuresqty'] = '1';
-                        retParamObj['product_features_totalamount'] = productDetailsObj['productFeatureOnlineSellingPrice'];
-                        retParamObj['product_description'] = '';
+                        paramObj['shopstore_id'] = productDetailsObj['shopStoreId'];
+                        paramObj['product_typeid'] = productDetailsObj['productTypeId'];
+                        paramObj['product_categoryid'] = productDetailsObj['productTypeProductCategoryId'];
+                        paramObj['product_listid'] = productDetailsObj['productListId'];
+                        paramObj['product_featureid'] = productDetailsObj['productFeatureId'];
+                        paramObj['product_featuresize'] = productDetailsObj['productFeatureDisplayMeasurementType'];
+                        paramObj['product_featuresprice'] = productDetailsObj['productFeatureOnlineSellingPrice'];
+                        paramObj['product_featuresqty'] = '1';
+                        paramObj['product_features_totalamount'] = productDetailsObj['productFeatureOnlineSellingPrice'];
+                        paramObj['product_description'] = '';
                     }
                 }
             }
@@ -1724,26 +1724,26 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
                 if($('.'+fcontentClass).length===1){
                     var productPrice = 0;
                     if($('.'+fcontentClass).find('textarea').length===1){
-                        retParamObj['product_description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
+                        paramObj['product_description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
                     }
                     if($('.'+fcontentClass).find('select').length===1){
                         var productMeasurementSelectInputObj = $('.'+fcontentClass).find('option:selected');
                         if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
                             productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
-                            retParamObj['shopstore_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
-                            retParamObj['product_typeid'] = $(productMeasurementSelectInputObj).attr("data-product_typeid");
-                            retParamObj['product_categoryid'] = $(productMeasurementSelectInputObj).attr("data-product_categoryid");
-                            retParamObj['product_listid'] = $(productMeasurementSelectInputObj).attr("data-product_listid");
-                            retParamObj['product_featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
-                            retParamObj['product_featuresize'] = $(productMeasurementSelectInputObj).val();
+                            paramObj['shopstore_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
+                            paramObj['product_typeid'] = $(productMeasurementSelectInputObj).attr("data-product_typeid");
+                            paramObj['product_categoryid'] = $(productMeasurementSelectInputObj).attr("data-product_categoryid");
+                            paramObj['product_listid'] = $(productMeasurementSelectInputObj).attr("data-product_listid");
+                            paramObj['product_featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
+                            paramObj['product_featuresize'] = $(productMeasurementSelectInputObj).val();
                         }
                     }
                     if($('.'+fcontentClass).find("input[type='text']").length===1 && productPrice>0){
                         var userProductQty = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
                         var productTotalAmt = (userProductQty * productPrice);
-                        retParamObj['product_featuresqty'] = userProductQty;
-                        retParamObj['product_featuresprice'] = productPrice;
-                        retParamObj['product_features_totalamount'] = productTotalAmt;
+                        paramObj['product_featuresqty'] = userProductQty;
+                        paramObj['product_featuresprice'] = productPrice;
+                        paramObj['product_features_totalamount'] = productTotalAmt;
                     }
                 }
             }
@@ -1753,12 +1753,12 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
                 var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 if(existingDkParamObj.hasOwnProperty('userOrderItemObj')===true){
                     var userOrderItemObj = existingDkParamObj['userOrderItemObj'];
-                    retParamObj = $.extend(retParamObj, userOrderItemObj);
+                    paramObj = $.extend(paramObj, userOrderItemObj);
                 }
             }
         }
-        if(Object.keys(retParamObj).length===13){
-            return retParamObj;
+        if(Object.keys(paramObj).length===13){
+            return paramObj;
         }else{
             return false;
         }
@@ -1772,11 +1772,11 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
 // CJ defined this function 2016-08-26
 function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
     try{
-        var retParamObj = {};
+        var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
-            retParamObj = $.extend(retParamObj, userLoggedDataObj);
+            paramObj = $.extend(paramObj, userLoggedDataObj);
             if($('.'+fcontentClass).find("input[type='text']").length===1){
                 var userProductQty = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
                 var productPrice = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").attr('data-itemprice')));
@@ -1787,16 +1787,16 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                     if(productDetailsObj.hasOwnProperty('ordercartItemId')===true){
                         if(parseInt(productDetailsObj['ordercartItemId'])>0){
                             var productTotalAmt = (userProductQty * productPrice);
-                            retParamObj['product_featuresqty'] = userProductQty;
-                            retParamObj['product_features_totalamount'] = productTotalAmt;
-                            retParamObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
+                            paramObj['product_featuresqty'] = userProductQty;
+                            paramObj['product_features_totalamount'] = productTotalAmt;
+                            paramObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
                         }
                     }
                 }
             }
         }
-        if(Object.keys(retParamObj).length>=5){
-            return retParamObj;
+        if(Object.keys(paramObj).length>=5){
+            return paramObj;
         }else{
             return false;
         }
@@ -1810,7 +1810,7 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
 // CJ defined this function 2016-08-26
 function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
     try{
-        var retParamObj = {};
+        var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
@@ -1818,22 +1818,22 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
                 && jQuery.isEmptyObject(productDetailsObj)===false){
                 if(productDetailsObj.hasOwnProperty('ordercartItemId')===true){
                     if(parseInt(productDetailsObj['ordercartItemId'])>0){
-                        retParamObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
-                        retParamObj['reason'] = 'Item removed by customer';
-                        retParamObj['status'] = 'ZC';
-                        retParamObj = $.extend(retParamObj, userLoggedDataObj);
+                        paramObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
+                        paramObj['reason'] = 'Item removed by customer';
+                        paramObj['status'] = 'ZC';
+                        paramObj = $.extend(paramObj, userLoggedDataObj);
                     }
                 }
             }
         }
-        if(Object.keys(retParamObj).length===6){
-            return retParamObj;
+        if(Object.keys(paramObj).length===6){
+            return paramObj;
         }else{
             return false;
         }
     }catch(ex){
         // console.log("problem in getParamDataToRemoveItemFromOrdercart ex=>"+ex);
-        retParamObj = {};
+        paramObj = {};
     }
 }
 
@@ -1844,15 +1844,15 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
 // CJ defined this function 2016-06-06
 function getParamObjFromSessionForRatingReviewDetails(){
     try{
-        var retParamObj = {};
-        retParamObj['country_ids'] = '';
-        retParamObj['city_ids'] = '';
-        retParamObj['area_ids'] = '';
-        retParamObj['store_ids'] = '';
-        retParamObj['product_typesids'] = '';
-        retParamObj['product_categoryids'] = '';
-        retParamObj['product_ids'] = '';
-        retParamObj['product_featureids'] = '';
+        var paramObj = {};
+        paramObj['country_ids'] = '';
+        paramObj['city_ids'] = '';
+        paramObj['area_ids'] = '';
+        paramObj['store_ids'] = '';
+        paramObj['product_typesids'] = '';
+        paramObj['product_categoryids'] = '';
+        paramObj['product_ids'] = '';
+        paramObj['product_featureids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1862,40 +1862,40 @@ function getParamObjFromSessionForRatingReviewDetails(){
                 // extract user suggested city area session data
                 var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
                 }
                 if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
                 }
             }
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    retParamObj['store_ids'] = userProductObj['shopstore_value'];
+                    paramObj['store_ids'] = userProductObj['shopstore_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    retParamObj['product_typesids'] = userProductObj['producttype_value'];
+                    paramObj['product_typesids'] = userProductObj['producttype_value'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    retParamObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
+                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    retParamObj['product_ids'] = userProductObj['producttype_listvalue'];
+                    paramObj['product_ids'] = userProductObj['producttype_listvalue'];
                 }
                 if(userProductObj.hasOwnProperty('producttype_featurevalue')===true){
-                    retParamObj['product_featureids'] = userProductObj['producttype_featurevalue'];
+                    paramObj['product_featureids'] = userProductObj['producttype_featurevalue'];
                 }
             }
         }
-        if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-            && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['store_ids'])>0
-            && parseInt(retParamObj['product_typesids'])>0 && parseInt(retParamObj['product_categoryids'])>0
-            && parseInt(retParamObj['product_ids'])>0 && parseInt(retParamObj['product_featureids'])>0){
-            return retParamObj;
+        if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
+            && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['store_ids'])>0
+            && parseInt(paramObj['product_typesids'])>0 && parseInt(paramObj['product_categoryids'])>0
+            && parseInt(paramObj['product_ids'])>0 && parseInt(paramObj['product_featureids'])>0){
+            return paramObj;
         }else{
             return false;
         }
@@ -1907,11 +1907,11 @@ function getParamObjFromSessionForRatingReviewDetails(){
 
 // CJ defined this function 2016-06-26
 function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
-    var retParamObj = {};
-    retParamObj['country_ids'] = '';
-    retParamObj['city_ids'] = '';
-    retParamObj['area_ids'] = '';
-    retParamObj['store_ids'] = '';
+    var paramObj = {};
+    paramObj['country_ids'] = '';
+    paramObj['city_ids'] = '';
+    paramObj['area_ids'] = '';
+    paramObj['store_ids'] = '';
     
     // checking session param
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -1922,27 +1922,27 @@ function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
             // extract user suggested city area session data
             var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
             if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                retParamObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
+                paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
             }
             if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                retParamObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
+                paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
             }
             if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                retParamObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
+                paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
             }
         }
         if(dkParamObj.hasOwnProperty('userProduct')===true){
             // extract user userProduct session data
             var userProductObj = dkParamObj['userProduct'];
             if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                retParamObj['store_ids'] = userProductObj['shopstore_value'];
+                paramObj['store_ids'] = userProductObj['shopstore_value'];
             }
         }
     }
     
-    if(retParamObj['country_ids']==='1' && parseInt(retParamObj['city_ids'])>0
-        && parseInt(retParamObj['area_ids'])>0 && parseInt(retParamObj['store_ids'])>0){
-        return retParamObj;
+    if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
+        && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['store_ids'])>0){
+        return paramObj;
     }else{
         return false;
     }
@@ -2029,11 +2029,11 @@ function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
 // CJ defined this function 2016-08-28
 function getParamDataToSharingOffersFromOneUserToOtherUsers(sharingOffersDataObj, fcontentClass){
     try{
-        var retParamObj = {};
+        var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
-            retParamObj = $.extend(retParamObj, userLoggedDataObj);
+            paramObj = $.extend(paramObj, userLoggedDataObj);
             if($('.'+fcontentClass).find("input[type='text']").length===1){
                 var userMobileVal = removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val());
                 if(userMobileVal!=='' && userMobileVal!==false
@@ -2041,15 +2041,15 @@ function getParamDataToSharingOffersFromOneUserToOtherUsers(sharingOffersDataObj
                     && jQuery.isEmptyObject(sharingOffersDataObj)===false){
                     if(sharingOffersDataObj.hasOwnProperty('dcgId')===true){
                         if(parseInt(sharingOffersDataObj['dcgId'])>0){
-                            retParamObj['discount_couponid'] = sharingOffersDataObj['dcgId'];
-                            retParamObj['shared_onmobile'] = userMobileVal;
+                            paramObj['discount_couponid'] = sharingOffersDataObj['dcgId'];
+                            paramObj['shared_onmobile'] = userMobileVal;
                         }
                     }
                 }
             }
         }
-        if(Object.keys(retParamObj).length===5){
-            return retParamObj;
+        if(Object.keys(paramObj).length===5){
+            return paramObj;
         }else{
             return false;
         }
