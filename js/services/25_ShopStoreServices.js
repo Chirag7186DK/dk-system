@@ -19,7 +19,13 @@ function ShopStoreServices($http, $q){
         };
         
         shopstoreDetails.getCShopStoreSummaryInfo = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/CShopStoreSummaryInfo", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/CShopStoreSummaryInfo", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
             return promiseObject;
         };
         
