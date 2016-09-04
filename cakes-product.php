@@ -97,7 +97,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreKey}}' to deliver product at 
+                    Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' to deliver product at 
                     '{{userSelectedDeliveryAreaTextHeader}}' area
                 </li>
             </div>
