@@ -19,7 +19,8 @@ class LocationController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryCityListServingDessertsProductType($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $LocationServicesV1 = new LocationServicesV1();
-                    $LocationServicesV1->getDeliveryCityDetails($dkParamDataArr);
+                    $rspDetails = $LocationServicesV1->getDeliveryCityDetails($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
@@ -41,7 +42,8 @@ class LocationController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreaListServingDessertsProductType($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $LocationServicesV1 = new LocationServicesV1();
-                    $LocationServicesV1->getDeliveryAreaDetails($dkParamDataArr);
+                    $rspDetails = $LocationServicesV1->getDeliveryAreaDetails($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
