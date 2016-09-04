@@ -455,7 +455,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
-                                alert(arrJsonObj);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.vAllPDetails = arrJsonObj;
                                 }
