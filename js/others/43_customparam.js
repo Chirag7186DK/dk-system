@@ -418,6 +418,13 @@ function getParamObjForProductTypeAllProductCategoryList(){
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('shopstore_value')===true){
+                    paramObj['shopstoreids'] = '';
+                    if(parseInt(userProductObj['shopstore_value'])>0 
+                        && userProductObj['shopstore_value']!==''){
+                        paramObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    }
+                }
                 if(userProductObj.hasOwnProperty('producttype_value')===true){
                     if(parseInt(userProductObj['producttype_value'])>0
                         && userProductObj['producttype_value']!==''){
