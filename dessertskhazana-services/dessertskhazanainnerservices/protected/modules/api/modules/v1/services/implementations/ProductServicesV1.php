@@ -161,6 +161,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1 = array();
             $paramObj1['product_typeids'] = $gproductTypeId;
             $paramObj1['product_categoryids'] = $gproductTypeProductCategoryId;
+            $paramObj1['shop_storesids'] = $gAllShopstoreIds;
             $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($dataArr1)>0 && $dataArr1!=false){
                 // prepare shopstore data  filtering list
