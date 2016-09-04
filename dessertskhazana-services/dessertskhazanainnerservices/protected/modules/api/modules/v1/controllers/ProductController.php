@@ -52,7 +52,7 @@ class ProductController extends V1Controller{
     }
     
     // CJ defined this action 2016-09-03
-    public function actionProductTypeProductCategoryFilterOperation(){
+    public function actionProductTypeProductCategoryFilterTypeList(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
             $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
@@ -63,7 +63,7 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductTypeProductCategoryFilterOperationDetails($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getProductTypeProductCategoryFilterOperationList($dkParamDataArr);
+                    $ProductServicesV1->getProductTypeProductCategoryFilterTypeList($dkParamDataArr);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
