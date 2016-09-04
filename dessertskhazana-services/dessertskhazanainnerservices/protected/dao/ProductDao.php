@@ -296,16 +296,16 @@ class ProductDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = "SELECT 
-                COALESCE(spld.productlist_id, '') productListId,
-                COALESCE(spld.id, '') productDescriptionId,
-                COALESCE(spld.description_title, '') productDescriptionTitle,
-                COALESCE(spld.description_content, '') productDescription,
-                COALESCE(spld.content_file, '') productContentFile,
-                COALESCE(spld.content_filepath, '') productContentFilePath
-                FROM DK_SHOPSTORE_PRODUCTLIST_DESCRIPTIONDETAILS spld
+                COALESCE(spldd.productlist_id, '') productListId,
+                COALESCE(spldd.id, '') productDescriptionId,
+                COALESCE(spldd.description_title, '') productDescriptionTitle,
+                COALESCE(spldd.description_content, '') productDescription,
+                COALESCE(spldd.content_file, '') productContentFile,
+                COALESCE(spldd.content_filepath, '') productContentFilePath
+                FROM DK_SHOPSTORE_PRODUCTLIST_DESCRIPTIONDETAILS spldd
                 WHERE 1
-                AND ppd.productlist_id='$productListId'
-                AND ppd.status='A' ";
+                AND spldd.productlist_id='$productListId'
+                AND spldd.status='A' ";
             $command = $connection->createCommand($sqlFetchQuery);
             $productDescriptionDetailsArr = $command->queryAll();
             if(count($productDescriptionDetailsArr)>0 
