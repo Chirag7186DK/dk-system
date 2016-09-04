@@ -366,7 +366,7 @@ function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isRes
                 }
             } 
             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-            storedDataStatus = false;
+            storedDataStatus = true;
         }
         return storedDataStatus;
     }catch(ex){
