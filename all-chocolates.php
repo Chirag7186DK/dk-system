@@ -38,7 +38,7 @@
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
-                    <li ng-if="isShowUserSelectedDeliveryAreaTextHeader==true" class="showUserSelectedDeliveryAreaTextHeader" title="Click here to change delivery location">
+                    <li show-userselecteddeliveryareatextheader-directive class="showUserSelectedDeliveryAreaTextHeader" title="Click here to change delivery location">
                         <i class="fa fa-map-marker"></i> At: {{userSelectedDeliveryAreaTextHeader}}
                     </li>
                     <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
@@ -96,7 +96,7 @@
                     Hey you are viewing 'Chocolates' and also we can serve other 
                     <span class="badge vap_dessertsTypeCountSClass">
                         {{dkDeliveryAreaBasedDessertsTypeList.length}}
-                    </span> desserts in your delivery {{userSelectedDeliveryAreaTextHeader}} area !!!
+                    </span> desserts in your '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
                 
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
