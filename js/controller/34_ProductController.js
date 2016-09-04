@@ -491,22 +491,23 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDescriptionDetailsArr = false;
-                    $rootScope.isProductDescriptionDetailsFound = false;
+                    $rootScope.isProductDescriptionDetailsFound = 'FALSE';
                     // calling ProductServices 
                     ProductServices.getProductDescriptionDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.isProductDescriptionDetailsFound = retObj.isProductDescriptionDetailsFound;
-                                    $rootScope.productDescriptionDetailsArr = retObj.descriptionDetailsArr;
+                                var productDescriptionDetailsArr = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'descriptionDetailsArr', retResponseJson);
+                                if(productDescriptionDetailsArr!==false 
+                                    && productDescriptionDetailsArr!==undefined && productDescriptionDetailsArr!==''){
+                                    $rootScope.isProductDescriptionDetailsFound = 'TRUE';
+                                    $rootScope.productDescriptionDetailsArr = productDescriptionDetailsArr;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                $rootScope.isProductDescriptionDetailsFound = false;
+                $rootScope.isProductDescriptionDetailsFound = 'FALSE';
                 $rootScope.productDescriptionDetailsArr = false;
                 console.log("problem in loadProductDescriptionDetails ex=>"+ex);
             }
