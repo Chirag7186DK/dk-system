@@ -974,6 +974,7 @@ function getParamObjForCShopStoreSummaryInfo(){
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
+                console.log("userProductObj=>"+JSON.stringify(userProductObj));
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
                     if(parseInt(userProductObj['shopstore_value'])>0 
                         && userProductObj['shopstore_value']!==''){
