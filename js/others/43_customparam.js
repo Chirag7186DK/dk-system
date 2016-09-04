@@ -515,7 +515,8 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
                     }
                 }
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    if(userProductObj['shopstore_value']!==''){
+                    if(parseInt(userProductObj['shopstore_value'])>0 
+                        && userProductObj['shopstore_value']!==''){
                         paramObj['shopstoreids'] = userProductObj['shopstore_value'];
                     }
                 }
