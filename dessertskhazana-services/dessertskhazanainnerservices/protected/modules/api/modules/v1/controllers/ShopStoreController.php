@@ -7,17 +7,40 @@
 
 class ShopStoreController extends V1Controller{
     
+    // CJ defined this action 2016-09-04
+    public function actionDeliveryAreaBasedCStoreConductDessertType(){
+        if(ComponentsHttp::httpMethod()=="GET"){
+            // checking requested param key name 
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                // checking param key value data & return status
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreabasedCStoreConductDessertType($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                    $ShopStoreServicesV1 = new ShopStoreServicesV1();
+                    $rspDetails = $ShopStoreServicesV1->getDeliveryAreaBasedCStoreConductDessertType($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     // CJ defined this action 2016-06-24
     public function actionCShopStoreSummaryInfo(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCShopstoresummaryInfo($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCShopstoresummaryInfo($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCShopStoreSummaryInfo($dkParamDataArr);
                 }else{
@@ -33,13 +56,13 @@ class ShopStoreController extends V1Controller{
     public function actionCShopStoreProductTypeProductCategoryAllProductDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCshopstoreAllProductDetails($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCshopstoreAllProductDetails($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCShopStoreProductTypeProductCategoryAllProductDetails($dkParamDataArr);
                 }else{
@@ -55,13 +78,13 @@ class ShopStoreController extends V1Controller{
     public function actionCshopstoreWorkingstyle(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCshopstoreWorkingstyle($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCshopstoreWorkingstyle($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCshopstoreWorkingstyleDetails($dkParamDataArr);
                 }else{
@@ -77,13 +100,13 @@ class ShopStoreController extends V1Controller{
     public function actionCshopstoreProductdeliveryAreaInfo(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCshopstoreProductDeliveryAreaInfo($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCshopstoreProductDeliveryAreaInfo($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
                     $ShopStoreServicesV1->getCshopstoreProductdeliveryAreaInfo($dkParamDataArr);
                 }else{
