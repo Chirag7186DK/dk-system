@@ -270,7 +270,7 @@ angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypeProductc
 function scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel(){
     return function(scope, element, attrs){
         if(scope.$first){
-            $(element).addClass('vap_eachRequestedProductCategoryLabelDivClass');
+            $(element).addClass('vap_eachRequestedProductCategoryLabelLIClass');
         }
         if(scope.$last){
             setTimeout(function(){
