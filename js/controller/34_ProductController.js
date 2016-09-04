@@ -113,7 +113,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                         $rootScope.buildSizeFilterListHtmlSelectControl(arrJsonObj.allProductSizeDetailsArr);
                                     }
                                     if(arrJsonObj.allProductDiscountDetailsArr!==false && arrJsonObj.allProductDiscountDetailsArr!==undefined){
-                                        $rootScope.buildSizeDiscountFilterListHtmlSelectControl(arrJsonObj.allProductDiscountDetailsArr);
+                                        $rootScope.buildDiscountFilterListHtmlSelectControl(arrJsonObj.allProductDiscountDetailsArr);
                                     }
                                 }
                             }
@@ -308,8 +308,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
        
-        // buildSizeDiscountFilterListHtmlSelectControl
-        $rootScope.buildSizeDiscountFilterListHtmlSelectControl = function(allProductDiscountDetails){
+        // buildDiscountFilterListHtmlSelectControl
+        $rootScope.buildDiscountFilterListHtmlSelectControl = function(allProductDiscountDetails){
             if($('#allProductDiscountFilterListSelectCtrlId').length===1){ 
                 var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
@@ -349,13 +349,13 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 // refresh product discount filter list select control element 
                 $(productDiscountFilterListSelectControlElementObj).selectpicker('refresh');
                 if($(productDiscountFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productDiscountFilterListSelectControlElementObj);
+                    $rootScope.applyChangeEventOnDiscountFilterSelectCtrlElement(productDiscountFilterListSelectControlElementObj);
                 }
             }
         };
         
-        // applyChangeEventOnSizeFilterSelectCtrlElement
-        $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement = function(elementObj){
+        // applyChangeEventOnDiscountFilterSelectCtrlElement
+        $rootScope.applyChangeEventOnDiscountFilterSelectCtrlElement = function(elementObj){
             try{
                 $(elementObj).on('changed.bs.select', function(e){
                     var selectedDiscountFilterValues = $(elementObj).selectpicker('val');
@@ -370,7 +370,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
                 });
             }catch(ex){
-                console.log("problem in applyChangeEventOnSizeFilterSelectCtrlElement=>"+ex);
+                console.log("problem in applyChangeEventOnDiscountFilterSelectCtrlElement=>"+ex);
             }
         };
         
