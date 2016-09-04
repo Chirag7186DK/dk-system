@@ -314,9 +314,14 @@ class ProductServicesV1 implements IProductServicesV1{
                 // iterate each product features details
                 for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
                     $isRequestedProductDetailsMatched = 'N';
+                    $isShowProductCommentBox = 'N';
                     if($dataArr1[$eachIndex]['productFeatureId']==$gproductFeatureId){
                         $isRequestedProductDetailsMatched = 'Y';
                     }
+                    if(strtolower($dataArr1[$eachIndex]['productTypeTitle'])=='cakes'){
+                        $isShowProductCommentBox = 'Y';
+                    }
+                    $dataArr1[$eachIndex]['isShowProductCommentBox'] = $isShowProductCommentBox;
                     $dataArr1[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
                 }
                 $rspDetails['allProductDetails'] = $dataArr1;
