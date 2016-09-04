@@ -486,7 +486,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         $rootScope.loadProductDescriptionDetails = function(){
             try{
                 // get param obj to get product description details
-                var preparedParamJsonObj = getParamObjFromSessionForLoadingProductDescriptionDetails();
+                var preparedParamJsonObj = getParamObjFromSessionForProductDescriptionDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
@@ -508,7 +508,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }catch(ex){
                 $rootScope.isProductDescriptionDetailsFound = false;
                 $rootScope.productDescriptionDetailsArr = false;
-                console.log("loadProductTypeProductCategoryProductDetails ex=>"+ex);
+                console.log("problem in loadProductDescriptionDetails ex=>"+ex);
             }
         };
         
