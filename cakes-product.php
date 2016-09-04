@@ -212,7 +212,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
             <!-- product description details -->
-            <div ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_featuresContainerDivClass" ng-show="isProductDescriptionDetailsFound">
+            <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_featuresContainerDivClass">
                 <div class="panel vpd_productDescriptionPanelContainerDivClass">
                     <div class="panel-heading vpd_productDescriptionPanelHeadingDivClass">
                         <h5 class='vpd_productDescriptionLabelHClass'>
