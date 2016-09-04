@@ -576,8 +576,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.isShowCShopStoreProductDeliveryAreaDetails = true;
-                $rootScope.loadCShopStoresProductDeliveryArea();
                 $rootScope.isShowCShopStoreWorkingStyleDetails = true;
                 $rootScope.loadCShopStoresWorkingStyle();
             }else{
@@ -591,7 +589,7 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
-                $rootScope.loadCShopStoreProductTypeProductCategoryAllProductList();
+                $rootScope.loadProductTypeProductCategoryAllProductListCStore();
             }
         };
         
@@ -620,7 +618,7 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowCShopStoreWorkingStyleDetails = false;
                 $rootScope.cShopstoreWorkingstyleDetails = false;
-                $rootScope.loadCShopStoreProductTypeProductCategoryAllProductList();
+                $rootScope.loadProductTypeProductCategoryAllProductListCStore();
             }
         };
         
