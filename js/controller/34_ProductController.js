@@ -64,7 +64,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
-        
         // storeProductTypeProductCategoryDataInSession 
         $rootScope.storeProductTypeProductCategoryDataInSession = function(productCategoryParamObj){
             try{
@@ -86,6 +85,35 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 $('#'+currentElementClickedId).addClass('vap_eachRequestedProductCategoryLabelLIClass');
             }
         };
+        
+        // loadProductTypeProductCategoryFilterTypeList 
+        $rootScope.loadProductTypeProductCategoryFilterTypeList = function(){
+            try{
+                // get param obj to load product type product category filter type list
+                var preparedParamJsonObj = getParamObjForProductTypeAllProductCategoryList();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchParamJsonObj = {};
+                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.productTypeAllProductCategoryList = false;
+                    // calling ProductServices
+                    ProductServices.getProductTypeProductCategoryFilterTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
+                                    $rootScope.storeProductTypeProductCategoryDataInSession(arrJsonObj.defaultSelectedProductCategoryDetails);
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                $rootScope.loadProductTypeProductCategoryFilterTypeList = false;
+                console.log("problem in loadProductTypeProductCategoryFilterTypeList ex=>"+ex);
+            }
+        };
+        
            
         // loadProductTypeProductCategoryAllProductList 
         $rootScope.loadProductTypeProductCategoryAllProductList = function(){
