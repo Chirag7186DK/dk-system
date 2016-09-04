@@ -164,11 +164,44 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['shop_storesids'] = $gAllShopstoreIds;
             $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
             if(count($dataArr1)>0 && $dataArr1!=false){
+                
                 // prepare shopstore data  filtering list
                 // sort on shopstore ids
                 $sortedOnShopStoresArr = utils::arraySort($dataArr1, array("shopStoreId"));
-                $rsltJsonArr['allShopStoresDetailsArr'] = commonfunction :: preparedShopstoreFilterationData($sortedOnShopStoresArr, $gShopstoreId);
+                $rsltJsonArr['allShopStoresDetailsArr'] = commonfunction :: preparedShopstoreFilterationData($sortedOnShopStoresArr);
+                
+                // prepare data for price range, sorting etc filerting
+                // sorted on online product price 
+                $sortedPriceRangeListArr = utils::arraySort($dataArr1, array('productFeatureOnlineSellingPrice'));
+                if(count($sortedPriceRangeListArr)>0 && $sortedPriceRangeListArr!=false){
+                    $minPriceValue = min(array_keys($sortedPriceRangeListArr));
+                    $maxPriceValue = max(array_keys($sortedPriceRangeListArr));
+                    $resultArr = commonfunction :: preparedProductPriceFilterationData($minPriceValue, $maxPriceValue);
+                    $rsltJsonArr['allProductPriceDetailsArr']['sortingList'] = $resultArr['sortingList'];
+                    $rsltJsonArr['allProductPriceDetailsArr']['rangeList'] = $resultArr['rangeList'];
+                }
+                
+                // prepare data for size range
+                $sortedOnProductSizeArr = array_keys(utils::arraySort($dataArr1, array("productFeatureDisplayMeasurementType")));
+                $isProductSizeArrSorted = sort($sortedOnProductSizeArr);
+                if($isProductSizeArrSorted==true && count($sortedOnProductSizeArr)>0 && $sortedOnProductSizeArr!=false){
+                    $rsltJsonArr['allProductSizeDetailsArr']['rangeList'] = commonfunction :: preparedProductSizeFilterationData($sortedOnProductSizeArr);
+                }
+                
+                // prepare data for discount range, sorting etc filerting
+                // sorted on product discount 
+                $sortedProductDiscountListArr = array_values(array_filter(array_keys(utils::arraySort($dataArr1, array('productFeatureDiscount')))));
+                if(count($sortedProductDiscountListArr)>0 && $sortedProductDiscountListArr!=false){
+                    $minDiscountValue = min($sortedProductDiscountListArr);
+                    $maxDiscountValue = max($sortedProductDiscountListArr);
+                    $resultArr = commonfunction :: preparedProductDiscountFilterationData($minDiscountValue, $maxDiscountValue);
+                    // final dumping
+                    $rsltJsonArr['allProductDiscountDetailsArr']['sortingList'] = $resultArr['sortingList'];
+                    $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = $resultArr['rangeList'];
+                }
+                
             }
+            
             $rspDetails["filterOperationTypeList"] = $rsltJsonArr;
         }
         ComponentsJson::GenerateJsonAndSend($rspDetails);
