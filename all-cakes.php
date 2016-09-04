@@ -145,7 +145,7 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
-            <!-- product filter operation main container div -->
+            <!-- product filter operation -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
                     
                 <!-- info / tips about product filtering operation -->
