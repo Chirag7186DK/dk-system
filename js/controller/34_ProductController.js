@@ -481,7 +481,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         };
         
         
-        
         // loadProductDescriptionDetails 
         $rootScope.loadProductDescriptionDetails = function(){
             try{
@@ -521,12 +520,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 $('.onlineProductSellingPriceTextClass').empty().append(productPrice);
             }
         });
-        
-        
-        
-         
-        
-         
         
         // toggleViewAllProductFilterContainer
         $rootScope.toggleViewAllProductFilterContainer = function(){
