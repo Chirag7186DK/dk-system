@@ -294,123 +294,29 @@ class ProductServicesV1 implements IProductServicesV1{
         $rspDetails = array();
         // checking requested param data
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            
             // initial variable declare
-            $gShopStoreId = $dkParamDataArr['store_ids'];
+            $gShopStoreId = $dkParamDataArr['shopstoreids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
-            $gproductTypeProductCategoryId = $dkParamDataArr['product_categoryids'];
-            $gproductTypeProductCategoryProductId = $dkParamDataArr['product_ids'];
-            $gproductTypeProductCategoryProductFeatureId = $dkParamDataArr['product_featureids'];
-            // checking given shopstore id exists or not 
-            $retShopStoreDetailsArr = ShopStoreDao::getShopStoresList($gShopStoreId, '');
-            if(count($retShopStoreDetailsArr)>0 && $retShopStoreDetailsArr!=false){
-                $isShopStoreServedOtherProducts = true;
-                $storeServedOtherProductsNames = '';
-                $storeServedOtherProductsDetails = array();
-                $storeDeliveryAreaNamesStr = '';
-                $storeDeliveryLocationDetailsArr = array();
-                $productImagesDetailsArr = false;
-                $productTypeIconStr = '';
-                $isShowProductCommentBox = false;
-                // fetching requested product details
-                $allProductDetailsArr = array();
-                $applyWhereConditionArr = array();
-                $applyWhereConditionArr['shop_storesids'] = $gShopStoreId;
-                $applyWhereConditionArr['product_typeids'] = $gproductTypeId;
-                $applyWhereConditionArr['product_categoryids'] = $gproductTypeProductCategoryId;
-                $applyWhereConditionArr['product_listids'] = $gproductTypeProductCategoryProductId;
-                $retProductDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($applyWhereConditionArr);
-                if(count($retProductDetailsArr) > 0 && $retProductDetailsArr != false) {
-                    // detect product type is cake, icecream, chips, drinks etc, bcoz to show product icon at ui screen
-                    $productTypeTitle = strtolower($retProductDetailsArr[0]['productTypeTitle']);
-                    if($productTypeTitle=='cakes'){
-                        $productTypeIconStr = "fa fa-birthday-cake";
-                        $isShowProductCommentBox = true;
-                    }else if($productTypeTitle=='ice cream'){
-                        $productTypeIconStr = "fa fa-birthday-cake";
-                        $isShowProductCommentBox = false;
-                    }
-                    array_push($storeServedOtherProductsDetails, 
-                        array(
-                            "productTypeId" => $retProductDetailsArr[0]['productTypeId'],
-                            "productTypeTitle" => ucwords($productTypeTitle),
-                            "productIcon" => $productTypeIconStr,
-                            "shopStoreId" => $gShopStoreId
-                        )
-                    );
-                    // final merging product details 
-                    $allProductDetailsArr = utils::array_merge_common_elements(
-                        $retProductDetailsArr, array(array("productFeatureId" => $gproductTypeProductCategoryProductFeatureId)), array("productFeatureId"), array(), array("isRequestedProductFeaturesDetailsMatched" => "Y"), array("isRequestedProductFeaturesDetailsMatched" => "N")
-                    );
-
-                    // fetch product images details of requested product list id ka
-                    $retProductImagesDetailsArr = ProductDao::getProductImagesDetails($gproductTypeProductCategoryProductId);
-                    if (count($retProductImagesDetailsArr) > 0 && $retProductImagesDetailsArr != false) {
-                        $productImagesDetailsArr = $retProductImagesDetailsArr;
-                    }
-
-                    // fetch given shopStores delivery location facility details using, store_id
-                    $shopStoresProductDeliveryFacilityParam = array();
-                    $shopStoresProductDeliveryFacilityParam['shop_storesids'] = $gShopStoreId;
-                    $shopStoresProductDeliveryFacilityParam['groupby_area_ids'] = 'Y';
-                    $retShopStoresDeliveryLocationFacilityDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoresProductDeliveryFacilityParam);
-                    if(count($retShopStoresDeliveryLocationFacilityDetailsArr) > 0 && $retShopStoresDeliveryLocationFacilityDetailsArr != false) {
-                        // prepare array to remove unused key details from delivery locations
-                        $removeJsonKeyFromEachInputJsonArr = array(
-                            "shopStoreId" => "0", "countryId" => "0", "countryName" => "0", "cityId" => "0",
-                            "cityName" => "0", "isPreorderAccept" => "0", "takeAwayOrderAccept" => "0", "cashOnDeliveryAccept" => "0",
-                            "isOnlinePaymentAccept" => "0", "isHomeDeliveryAccept" => "0", "orderDeliveryOpenTime" => "0", "orderDeliveryCloseTime" => "0"
-                        );
-                        $storeDeliveryLocationDetailsArr = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($retShopStoresDeliveryLocationFacilityDetailsArr, $removeJsonKeyFromEachInputJsonArr, 'keyname');
-                        if (count($storeDeliveryLocationDetailsArr) > 0 && $storeDeliveryLocationDetailsArr != false) {
-                            $storeDeliveryAreaNamesStr = implode(", ", array_keys(utils::arraySort($storeDeliveryLocationDetailsArr, array("areaName"))));
-                        }
-                        // fetch other product type details of given shoptStores affilatted
-                        // sorted on country city area affiliaton ids
-                        $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys(utils::arraySort($retShopStoresDeliveryLocationFacilityDetailsArr, array("countryCityAreaAffiliationId"))));
-                        $retShopStoresAffiliatedToOthersProductTypeDetailsArrr = LocationDao :: getAreaBasedConductProductTypeShopStoreDetails($allCountryCityAreaAffiliatonIdsStr, '', $gproductTypeId, $gShopStoreId);
-                        if($retShopStoresAffiliatedToOthersProductTypeDetailsArrr != false && count($retShopStoresAffiliatedToOthersProductTypeDetailsArrr) > 0) {
-                            $sortedOnProductTypeDetailsShopStoresAffiliatedArr = utils::arraySort($retShopStoresAffiliatedToOthersProductTypeDetailsArrr, array("productTypeTitle"));
-                            if(count($sortedOnProductTypeDetailsShopStoresAffiliatedArr) > 0 && $sortedOnProductTypeDetailsShopStoresAffiliatedArr != false) {
-                                $storeServedOtherProductsNames = implode(",", array_keys($sortedOnProductTypeDetailsShopStoresAffiliatedArr));
-                                // iterate each product type details
-                                foreach ($sortedOnProductTypeDetailsShopStoresAffiliatedArr as $eachServedOtherProductTypeTitle => $servedOtherProductTypeDetailsArr) {
-                                    $productIcon = 'fa fa-birthday-cake';
-                                    if(strtolower($eachServedOtherProductTypeTitle)=="cakes"){
-                                        $productIcon = 'fa fa-birthday-cake';
-                                    }
-                                    if(strtolower($eachServedOtherProductTypeTitle)=="ice cream"){
-                                        $productIcon = 'fa fa-birthday-cake';
-                                    }
-                                    array_push($storeServedOtherProductsDetails, 
-                                        array(
-                                            "productTypeId" => $servedOtherProductTypeDetailsArr[0]['productTypeId'],
-                                            "productTypeTitle" => $eachServedOtherProductTypeTitle,
-                                            "productIcon" => $productIcon,
-                                            "shopStoreId" => $servedOtherProductTypeDetailsArr[0]['shopStoreId'],
-                                            "shopStoreTitle" => $servedOtherProductTypeDetailsArr[0]['shopStoreTitle']
-                                        )
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-                // finally checking
-                if(count($allProductDetailsArr)>0 && $allProductDetailsArr!=false && $storeDeliveryAreaNamesStr!=''){
-                    $rsltJsonArr = array();
-                    $rsltJsonArr['isShopStoreServedOtherProducts'] = $isShopStoreServedOtherProducts;
-                    $rsltJsonArr['storeServedOtherProductsNames'] = $storeServedOtherProductsNames;
-                    $rsltJsonArr['storeServedOtherProductsDetails'] = $storeServedOtherProductsDetails;
-                    $rsltJsonArr['storeDeliveryArea'] = $storeDeliveryAreaNamesStr;
-                    $rsltJsonArr['isShowProductCommentBox'] = $isShowProductCommentBox;
-                    $rsltJsonArr['productTypeIconStr'] = $productTypeIconStr;
-                    $rsltJsonArr['productDetails'] = $allProductDetailsArr;
-                    $rsltJsonArr['productImagesDetails'] = $productImagesDetailsArr;
-                    $rspDetails["viewProductDetails"] = $rsltJsonArr;
-                }
+            $gproductCategoryId = $dkParamDataArr['product_categoryids'];
+            $gproductListId = $dkParamDataArr['productlist_ids'];
+            $gproductFeatureId = $dkParamDataArr['product_featureids'];
+            
+            // prepare param obj to get product details
+            $paramObj1 = array();
+            $paramObj1['shop_storesids'] = $gShopStoreId;
+            $paramObj1['product_typeids'] = $gproductTypeId;
+            $paramObj1['product_categoryids'] = $gproductCategoryId;
+            $paramObj1['product_listids'] = $gproductListId;
+            $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                $allProductDetailsArr = utils::array_merge_common_elements(
+                    $dataArr1, array(array("productFeatureId"=>$gproductFeatureId)), array("productFeatureId"), array(), array("isRequestedProductFeaturesDetailsMatched" => "Y"), array("isRequestedProductFeaturesDetailsMatched" => "N")
+                );
             }
+            $rspDetails['allProductDetails'] = $allProductDetailsArr;
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
 
     // CJ defined this action 2016-06-06
