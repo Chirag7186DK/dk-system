@@ -67,16 +67,27 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
         
-        <!-- what is desserts khazana -->
+        <!-- create horizontally space div between -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
+        <!-- offers/promotion -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkAllCompleteOffersContainerDivClass">
-                <h5>Desserts Khazana Complete Offers Will Come Image/Slider</h5>
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
+                <div class='dkPartyOrderWrapperDivClass'>
+                    <p class='partyOrderPClass' title='Click to request for party orders'>
+                        <span>CAKES BANNER</span>
+                    </p>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkAllSpecialOffersContainerDivClass">
-                <h5>Shopstore related Will Come Image/Slider</h5>
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
+                <div class='dkCustomizeDessertsOrderWrapperDivClass'>
+                    <p class='customizeOrderPClass' title='Click to request for customize orders'>
+                        <span>OFFERS / PROMOTION</span>
+                    </p>
+                </div>
             </div>
         </div>
-
+        
         <!-- view specific desserts type all products list with category wise -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_containerDivClass">
             
@@ -88,7 +99,7 @@
                             Home
                         </a>
                     </li>
-                    <li class='vap_userBreadcrumbProductTypeLIClass'>
+                    <li class='vap_userBreadcrumbProductTypeLIClasss'>
                         |&nbsp; Cakes
                     </li>
                 </ul>
