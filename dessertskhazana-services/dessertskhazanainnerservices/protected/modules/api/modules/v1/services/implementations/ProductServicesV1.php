@@ -149,6 +149,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $rsltJsonArr['allProductSizeDetailsArr']['rangeList'] = false;
             $rsltJsonArr['allProductDiscountDetailsArr']['sortingList'] = false;
             $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = false;
+            $rsltJsonArr['defaultSelectProductCategoryTitle'] = false;
             $rsltJsonArr['allProductDetailsList'] = false;
             
             // initial varaible declare
@@ -222,6 +223,7 @@ class ProductServicesV1 implements IProductServicesV1{
                 );
                 $allProductDetailsList = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($dataArr1, $removeUnusedKeyValueDataArr, 'keyname');
                 if(count($allProductDetailsList)>0 && $allProductDetailsList!=false){
+                    $rsltJsonArr['defaultSelectProductCategoryTitle'] = $allProductDetailsList[0]['productTypeProductCategoryTitle'];
                     $rsltJsonArr['allProductDetailsList'] = $allProductDetailsList;
                 }
             }
