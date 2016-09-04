@@ -98,7 +98,7 @@
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' to deliver product at 
-                    '{{userSelectedDeliveryAreaTextHeader}}' area
+                    '{{userSelectedDeliveryAreaTextHeader}}' area !!!
                 </li>
             </div>
             
@@ -122,7 +122,7 @@
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_productStoreNameContainerPClass'>
                     <span class="vpd_productStoreLabelNameSpanClass">Seller: </span> 
-                    <span class="vpd_productStoreNameSpanClass">{{customerBreadCrumbOnWebApp.shopStoreKey}}</span>
+                    <span class="vpd_productStoreNameSpanClass">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</span>
                 </p>
                 <p class='vpd_productNamePClass'>
                     {{vAllPDetails[0]['productListTitle']}}
@@ -192,7 +192,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
             <!-- product description details -->
-            <div ng-controller='ProductTypeProductCategoryProductDetailsController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_featuresContainerDivClass" ng-show="isProductDescriptionDetailsFound">
+            <div ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_featuresContainerDivClass" ng-show="isProductDescriptionDetailsFound">
                 <div class="panel vpd_productDescriptionPanelContainerDivClass">
                     <div class="panel-heading vpd_productDescriptionPanelHeadingDivClass">
                         <h5 class='vpd_productDescriptionLabelHClass'>
