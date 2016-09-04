@@ -96,7 +96,7 @@
                     Hey you are viewing 'Chocolates' and also we can serve other 
                     <span class="badge vap_dessertsTypeCountSClass">
                         {{dkDeliveryAreaBasedDessertsTypeList.length}}
-                    </span> desserts in your selected delivery area !!!
+                    </span> desserts in your delivery {{userSelectedDeliveryAreaTextHeader}} area !!!
                 </li> 
                 
                 <div id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
