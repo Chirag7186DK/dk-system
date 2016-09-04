@@ -13,7 +13,7 @@ function RatingReviewServices($http, $q){
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/UserRatingReviewProduct", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){
-                showHideLoaderBox('show');
+                showHideLoaderBox('hide');
             });
             return promiseObject;
         };
@@ -35,7 +35,7 @@ function RatingReviewServices($http, $q){
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/ShopStoreAllUserRating", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                showHideLoaderBox('show');
+                showHideLoaderBox('hide');
             });
             return promiseObject;
         };
@@ -46,7 +46,7 @@ function RatingReviewServices($http, $q){
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AllUserRatingReviewAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                showHideLoaderBox('show');
+                showHideLoaderBox('hide');
             });
             return promiseObject;
         };
@@ -57,7 +57,7 @@ function RatingReviewServices($http, $q){
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/MaxRatingReviewAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                showHideLoaderBox('show');
+                showHideLoaderBox('hide');
             });
             return promiseObject;
         };
@@ -68,7 +68,7 @@ function RatingReviewServices($http, $q){
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
             var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AverageRatingReviewAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                showHideLoaderBox('show');
+                showHideLoaderBox('hide');
             });
             return promiseObject;
         };
