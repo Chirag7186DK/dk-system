@@ -92,7 +92,9 @@ class commonfunction{
     }
     
     // CJ defined this function 2016-07-12
-    public static function preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, $requestedProductPriceFilterArr=array(), $requestedProductPriceSortOn=''){
+    public static function preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, 
+        $requestedProductPriceFilterArr = array(), $requestedProductPriceSortOn=''){
+        
         $priceRangeArr = array();
         $priceGapValue = 399;
         if($minPriceValue!='' && $maxPriceValue!='' && $minPriceValue!=$maxPriceValue){
@@ -153,10 +155,12 @@ class commonfunction{
                 "isRequestedPriceSortedMatched"=>(($requestedProductPriceSortOn=='hightolow')?'Y':'N')
             )
         );
+        
         $retArr = array();
         $retArr['sortingList'] = $priceSortingOnListArr;
         $retArr['rangeList'] = $priceRangeArr;
         return $retArr;
+        
     }    
     
     // CJ defined this function 2016-07-12
