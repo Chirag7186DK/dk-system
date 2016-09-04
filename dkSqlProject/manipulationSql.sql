@@ -1,11 +1,5 @@
 
 
-SELECT pt.id, pt.sort_order
-FROM DK_PRODUCTTYPE pt
-WHERE 1
-ORDER BY FIELD(pt.sort_order, 3) DESC;
-
-
 EXPLAIN
 SELECT 
 COALESCE(ccr.country_id, '') countryId, 
@@ -25,7 +19,7 @@ COALESCE(splld.baseprice, '') productFeatureBasePrice, COALESCE(splld.product_di
 COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
 COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
 COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
-COALESCE(splImg.file_path, 'images/') productImageFilePath
+COALESCE(splImg.file_path, 'images/') productImageFilePath 
 FROM DK_PRODUCTTYPE pt
 JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
 JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
@@ -39,7 +33,52 @@ JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='
 JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
 JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
 LEFT JOIN DK_SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
-    ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y'
+    ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y'  
+    AND splImg.product_listid IN (2)   
+WHERE 1  AND ss.id IN (1) AND spa.shopstore_id IN (1)  
+AND pt.id IN (1) AND ppc.product_typeid IN (1)  
+AND spa.product_typeid IN (1)  AND ppc.id IN (1) 
+AND spac.producttype_categoryid IN (1)  AND spl.id IN (2) 
+AND splld.productlist_id IN (2)  
+ORDER BY pt.id, ppc.id, spa.product_typeid, spac.producttype_categoryid, FIELD(splld.id, 2) DESC ,
+splld.online_sellprice ASC, splld.product_discount ASC
+
+
+
+-- EXPLAIN
+-- SELECT 
+-- COALESCE(ccr.country_id, '') countryId, 
+-- COALESCE(ccr.city_id, '') cityId, COALESCE(country.name, '') cityName, 
+-- COALESCE(ccr.area_id, '') areaId, COALESCE(area.name, '') areaTitle,
+-- COALESCE(spa.shopstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+-- COALESCE(ss.shop_storelabel, '') shopStoreLabel, COALESCE(ss.shopstore_logofile, '') shopstore_logofile,
+-- COALESCE(ss.shopstore_mobile, '') shopstore_mobile,
+-- COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
+-- COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
+-- COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '') productTypeProductCategoryTitle,
+-- COALESCE(spl.id, '') productListId, COALESCE(spl.name, '') productListTitle,
+-- COALESCE(splld.id, '') productFeatureId, COALESCE(splld.food_type, '') productFeatureFoodType, 
+-- COALESCE(splld.taste_type, '') productFeatureTasteType, COALESCE(splld.pattern_type, '') productFeaturePatternType, 
+-- COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
+-- COALESCE(splld.baseprice, '') productFeatureBasePrice, COALESCE(splld.product_discount, '') productFeatureDiscount,
+-- COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
+-- COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
+-- COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
+-- COALESCE(splImg.file_path, 'images/') productImageFilePath
+-- FROM DK_PRODUCTTYPE pt
+-- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+--     AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+-- JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+-- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
+-- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
+-- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
+-- JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
+-- LEFT JOIN DK_SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+--     ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y'
 
 
 
