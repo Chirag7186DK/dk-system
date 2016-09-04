@@ -540,7 +540,7 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
             try{
                 if($rootScope.isShowCShopStoreWorkingStyleDetails===true){
                     // get param obj to load store working style details
-                    var preparedParamJsonObj = getParamObjForLoadingCShopStoreWorkingStyleDetails();
+                    var preparedParamJsonObj = getParamObjForCShopStoreWorkingStyleDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var fetchedParamJsonObj = {};
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
