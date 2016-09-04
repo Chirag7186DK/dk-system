@@ -42,7 +42,8 @@ class ShopStoreController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingCShopstoresummaryInfo($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
-                    $ShopStoreServicesV1->getCShopStoreSummaryInfo($dkParamDataArr);
+                    $rspDetails = $ShopStoreServicesV1->getCShopStoreSummaryInfo($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
