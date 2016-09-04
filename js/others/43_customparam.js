@@ -573,7 +573,7 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
                     if(parseInt(userProductObj['shopstore_value'])>0 
                         && userProductObj['shopstore_value']!==''){
                         paramObj['shopstoreids'] = userProductObj['shopstore_value'];
-                    }else if((userProductObj['shopstore_value']).length>0 
+                    }else if((userProductObj['all_shopstorevalue']).length>0 
                         && userProductObj['all_shopstorevalue']!==''){
                         paramObj['shopstoreids'] = userProductObj['all_shopstorevalue'];
                     }
