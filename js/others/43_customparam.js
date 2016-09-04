@@ -418,10 +418,7 @@ function getParamObjForLoadingProductTypeAllProductCategoryList(){
                     }
                 }
                 if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    if(parseInt(userProductObj['producttype_categoryvalue'])>0
-                        && userProductObj['producttype_categoryvalue']!==''){
-                        paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
-                    }
+                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
                 }
             }
         }
