@@ -122,7 +122,7 @@ class ProductController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-05-25, API Completed
+    // CJ defined this action 2016-05-25
     public function actionProductDescriptionDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
@@ -134,7 +134,8 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductDescriptionDetails($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getProductTypeProductCategoryProductDescriptionDetails($dkParamDataArr);
+                    $rspDetails = $ProductServicesV1->getProductTypeProductCategoryProductDescriptionDetails($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
