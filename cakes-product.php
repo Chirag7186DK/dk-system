@@ -160,7 +160,7 @@
                 <p class='vpd_productQtyPClass'> 
                     <input view-productqtyinput-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" title="Type Qty" value='1'>
                 </p>
-                <p class='vpd_productCommentBoxPClass' ng-show="true" title="Type 40 characters only & not allowed any special characters"> 
+                <p class='vpd_productCommentBoxPClass' ng-if="vAllPDetails[0]['isShowProductCommentBox']=='Y'" title="Type 40 characters only & not allowed any special characters"> 
                     Message On Cake
                     <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
