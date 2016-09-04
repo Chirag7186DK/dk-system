@@ -189,169 +189,48 @@ class ProductServicesV1 implements IProductServicesV1{
                 }
                 $gProductDiscountFilterArr = array_values($tempProductDiscountFilterArr);
             }
-
-            // prepare param obj to get shopstore delivery location details
-            $shopStoreProductDeliveryParamObj = array();
-            $shopStoreProductDeliveryParamObj['country_ids'] = $gcountry_id;
-            $shopStoreProductDeliveryParamObj['city_ids'] = $gcity_id;
-            $shopStoreProductDeliveryParamObj['area_ids'] = $garea_id;
-            $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
-            if(count($retShopStoreDeliveryLocationDetailsArr) > 0 && $retShopStoreDeliveryLocationDetailsArr != false) {
-                // sorted on shops store ids bhai
-                $sortedOnAllShopStoreDeliveyLocationFacilityDetailsArr = utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("shopStoreId"));
-                // sorted on country city area affiliaton ids of shopstores bhai
-                $sortedOnCountryCityAreaAffiliationDetailsArr = utils::arraySort($retShopStoreDeliveryLocationDetailsArr, array("countryCityAreaAffiliationId"));
-                if($sortedOnCountryCityAreaAffiliationDetailsArr != false && count($sortedOnCountryCityAreaAffiliationDetailsArr) > 0) {
-                    // extract all shopstore countrycityareaids keys in arr and converted into string format
-                    $allCountryCityAreaAffiliatonIdsStr = implode(",", array_keys($sortedOnCountryCityAreaAffiliationDetailsArr));
-                    // all shopstores ids
-                    $allShopStoresIdsStr = implode(",", array_keys($sortedOnAllShopStoreDeliveyLocationFacilityDetailsArr));
-                    // prepare param obj to get product type details
-                    $paramObj1 = array();
-                    $paramObj1['shop_storesids'] = $allShopStoresIdsStr;
-                    $paramObj1['country_city_area_affiliationids'] = $allCountryCityAreaAffiliatonIdsStr;
-                    $paramObj1['product_typeids'] = $gproductTypeId;
-                    // fetch product type details
-                    $retProductTypeDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
-                    if(count($retProductTypeDetailsArr)>0 && $retProductTypeDetailsArr!=false){
-                            // sort on product category ids
-                            $sortedOnProductCategoryArr = utils::arraySort($retProductTypeDetailsArr, array("productTypeProductCategoryId"));
-                            if (count($sortedOnProductCategoryArr) > 0 && $sortedOnProductCategoryArr != false) {
-                                $productTypeAllProductCategoryWiseFilterDetailsArr = array();
-                                // iterate each product category 
-                                foreach ($sortedOnProductCategoryArr as $eachProductCategoryId => $productCategoryDetailsArr){
-                                    $isRequestedProductCategoryMatched = 'N';
-                                    if($gproductTypeProductCategoryId==false || $gproductTypeProductCategoryId==''
-                                        || $gproductTypeProductCategoryId==null){
-                                        $gproductTypeProductCategoryId = $eachProductCategoryId;
-                                    }
-                                    if($eachProductCategoryId==$gproductTypeProductCategoryId){
-                                        $isRequestedProductCategoryMatched = 'Y';
-                                        $rsltJsonArr['defaultedSelectedProductTypeTitle'] = $productCategoryDetailsArr[0]['productTypeTitle'];
-                                        $rsltJsonArr['defaultedSelectedProductTypeValue'] = $productCategoryDetailsArr[0]['productTypeId'];
-                                        $rsltJsonArr['defaultSelectProductCategoryTitle'] = strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']);
-                                        $rsltJsonArr['defaultSelectProductCategoryValue'] = $gproductTypeProductCategoryId;
-                                    }
-                                    // prepare data for product category wise filtering 
-                                    array_push($productTypeAllProductCategoryWiseFilterDetailsArr, 
-                                        array(
-                                            "productTypeId" => $gproductTypeId,
-                                            "productTypeTitle" => $productCategoryDetailsArr[0]['productTypeProductCategoryTitle'],
-                                            "productCategoryId" => $eachProductCategoryId,
-                                            "productCategoryTitle" => strtoupper($productCategoryDetailsArr[0]['productTypeProductCategoryTitle']),
-                                            "isRequestedProductCategoryMatched" => $isRequestedProductCategoryMatched,
-                                            "totalProductCount" => count($productCategoryDetailsArr)
-                                        )
-                                    );
-
-                                    if($isRequestedProductCategoryMatched=='Y'){
-                                        // prepare data shopstore filering 
-                                        // sort on shopstore ids
-                                        $sortedOnShopStoresArr = utils::arraySort($productCategoryDetailsArr, array("shopStoreId"));
-                                        $rsltJsonArr['allShopStoresDetailsArr'] = commonfunction :: preparedShopstoreFilterationData($sortedOnShopStoresArr, $gShopstoreId);
-
-                                        // prepare data for price range, sorting etc filerting
-                                        // sorted on online product price 
-                                        $retSortedPriceRangeListArr = utils::arraySort($productCategoryDetailsArr, array('productFeatureOnlineSellingPrice'));
-                                        if(count($retSortedPriceRangeListArr) > 0 && $retSortedPriceRangeListArr != false) {
-                                            $minPriceValue = min(array_keys($retSortedPriceRangeListArr));
-                                            $maxPriceValue = max(array_keys($retSortedPriceRangeListArr));
-                                            $resultArr = commonfunction :: preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, $gProductPriceFilterArr, $gProductPriceSortOn);
-                                            $rsltJsonArr['allProductPriceDetailsArr']['sortingList'] = $resultArr['sortingList'];
-                                            $rsltJsonArr['allProductPriceDetailsArr']['rangeList'] = $resultArr['rangeList'];
-                                        }
-
-                                        // prepare data for size range
-                                        $retSortedOnProductSizeArr = array_keys(utils::arraySort($productCategoryDetailsArr, array("productFeatureDisplayMeasurementType")));
-                                        $isProductSizeArrSorted = sort($retSortedOnProductSizeArr);
-                                        if($isProductSizeArrSorted == true && count($retSortedOnProductSizeArr) > 0 && $retSortedOnProductSizeArr != false) {
-                                            $rsltJsonArr['allProductSizeDetailsArr']['rangeList'] = commonfunction :: preparedProductSizeFilterationData($retSortedOnProductSizeArr, $gProductSizeFilterArr);
-                                        }
-
-                                        // prepare data for discount range, sorting etc filerting
-                                        // sorted on product discount 
-                                        $sortedProductDiscountListArr = array_values(array_filter(array_keys(utils::arraySort($productCategoryDetailsArr, array('productFeatureDiscount')))));
-                                        if(count($sortedProductDiscountListArr)>0 && $sortedProductDiscountListArr != false) {
-                                            $minDiscountValue = min($sortedProductDiscountListArr);
-                                            $maxDiscountValue = max($sortedProductDiscountListArr);
-                                            $resultArr = commonfunction :: preparedProductDiscountFilterationData($minDiscountValue, $maxDiscountValue, $gProductDiscountFilterArr, $gProductDiscountSortOn);
-                                            // final dumping
-                                            $rsltJsonArr['allProductDiscountDetailsArr']['sortingList'] = $resultArr['sortingList'];
-                                            $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = $resultArr['rangeList'];
-                                        }
-                                    }
-                                }
-                                $rsltJsonArr['productCategoryList'] = $productTypeAllProductCategoryWiseFilterDetailsArr;
-                            }
-                        }
-
-                    // prepare param obj to get product list
-                    $paramObj2 = array();
-                    $paramObj2['shop_storesids'] = $allShopStoresIdsStr;
-                    $paramObj2['country_city_area_affiliationids'] = $allCountryCityAreaAffiliatonIdsStr;
-                    $paramObj2['product_typeids'] = $gproductTypeId;
-                    if($gShopstoreId!='' && $gShopstoreId!=false && $gShopstoreId!=null){
-                        $paramObj2['shop_storesids'] = $gShopstoreId;
-                    }
-                    if($gproductTypeProductCategoryId!='' && $gproductTypeProductCategoryId!=false 
-                        && $gproductTypeProductCategoryId!=null){
-                        $paramObj2['product_categoryids'] = $gproductTypeProductCategoryId;
-                    }
-                    if (count($gProductPriceFilterArr) > 0 && $gProductPriceFilterArr != false) {
-                        $paramObj2['product_price_filter'] = $gProductPriceFilterArr;
-                    }
-                    if (count($gProductSizeFilterArr) > 0 && $gProductSizeFilterArr != false) {
-                        $paramObj2['product_size_filter'] = $gProductSizeFilterArr;
-                    }
-                    if (count($gProductDiscountFilterArr) > 0 && $gProductDiscountFilterArr != false) {
-                        $paramObj2['product_discount_filter'] = $gProductDiscountFilterArr;
-                    }
-                    if ($gProductPriceSortOn != '' && $gProductPriceSortOn != false) {
-                        $paramObj2["price_" . $gProductPriceSortOn] = 'Y';
-                    }
-                    if ($gProductDiscountSortOn != '' && $gProductDiscountSortOn != false) {
-                        $paramObj2["discount_" . $gProductDiscountSortOn] = 'Y';
-                    }
-
-                    // fetch product list
-                    $productTypeProductCategoryAllProductList = false;
-                    $retAllShopStoresProductTypeProductCategoryProductListArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj2);
-                    if(count($retAllShopStoresProductTypeProductCategoryProductListArr)>0 && $retAllShopStoresProductTypeProductCategoryProductListArr != false) {
-                        // sort on product type id, product c$applyWhereConditionArrategory id
-                        // preparing product list
-                        $sortedOnProductTypeProductCategoryDetailsArr = utils::arraySort($retAllShopStoresProductTypeProductCategoryProductListArr, array("productTypeId", "productTypeProductCategoryId"));
-                        if(count($sortedOnProductTypeProductCategoryDetailsArr) > 0 && $sortedOnProductTypeProductCategoryDetailsArr != false) {
-                            // iterate each product type ids
-                            foreach($sortedOnProductTypeProductCategoryDetailsArr as $eachProductTypeId => $productCategoryDetailsArr) {
-                                // iterate each product type ka product category 
-                                foreach($productCategoryDetailsArr as $eachProductCategoryId=>$productDetailsArr){
-                                    if($gproductTypeProductCategoryId=='' || $gproductTypeProductCategoryId==null
-                                        || $gproductTypeProductCategoryId==false){
-                                        $gproductTypeProductCategoryId = $eachProductCategoryId;
-                                    }
-                                    if($eachProductCategoryId==$gproductTypeProductCategoryId){
-                                        // prepare array to remove unused key details from all product list
-                                        $removeJsonKeyFromEachInputJsonArr = array(
-                                            "productTypeTitleInCaps" => "0", "shopStoreLabel" => "0", "shopstore_mobile" => "0", "shopstore_logofile" => "0",
-                                            "shopstore_mobile" => "0", "productListId1" => "0", "shopStoreId1" => "0", "productFeatureMeasurementOnlyNos" => "0",
-                                            "isProductImageFileShowCase" => "0", "countryId" => "0", "cityId" => "0", "areaId" => "0", "areaTitle" => "0"
-                                        );
-                                        $productTypeProductCategoryAllProductList = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($productDetailsArr, $removeJsonKeyFromEachInputJsonArr, 'keyname');
-                                        break;
-                                    }
-                                }
-                                if(count($productTypeProductCategoryAllProductList)>0 && $productTypeProductCategoryAllProductList!=false){
-                                    $rsltJsonArr['allProductDetailsList'] = $productTypeProductCategoryAllProductList;
-                                    break;
-                                }
-                            }
-                        }
-                    }
+            
+            // prepare param obj to get all product list
+            $paramObj1 = array();
+            $paramObj1['shop_storesids'] = $gShopstoreId;
+            $paramObj1['product_typeids'] = $gproductTypeId;
+            $paramObj1['product_categoryids'] = $gproductTypeProductCategoryId;
+            if(count($gProductPriceFilterArr)>0 && $gProductPriceFilterArr!=false){
+                $paramObj1['product_price_filter'] = $gProductPriceFilterArr;
+            }
+            if(count($gProductSizeFilterArr)>0 && $gProductSizeFilterArr!=false){
+                $paramObj1['product_size_filter'] = $gProductSizeFilterArr;
+            }
+            if(count($gProductDiscountFilterArr)>0 && $gProductDiscountFilterArr!=false){
+                $paramObj1['product_discount_filter'] = $gProductDiscountFilterArr;
+            }
+            if($gProductPriceSortOn!='' && $gProductPriceSortOn!=false){
+                $paramObj1["price_".$gProductPriceSortOn] = 'Y';
+            }
+            if($gProductDiscountSortOn!='' && $gProductDiscountSortOn!=false){
+                $paramObj1["discount_".$gProductDiscountSortOn] = 'Y';
+            }
+            
+            // fetch all product list
+            $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // prepare array to remove unused key value details from all product list
+                $removeUnusedKeyValueDataArr = array(
+                    "productTypeTitleInCaps"=>"0", "shopStoreLabel"=>"0", "shopstore_mobile"=>"0", 
+                    "shopstore_logofile"=>"0", "shopstore_mobile"=>"0", "isProductImageFileShowCase"=>"0", 
+                    "countryId"=>"0", "cityId"=>"0", "cityName"=>"0", "areaId"=>"0"
+                );
+                $allProductDetailsList = utils :: removeJsonKeyAndValuesFromArrayOfJsonArray($dataArr1, $removeUnusedKeyValueDataArr, 'keyname');
+                if(count($allProductDetailsList)>0 && $allProductDetailsList!=false){
+                    $rsltJsonArr['allProductDetailsList'] = $allProductDetailsList;
                 }
             }
+            
         }
+        
         $rspDetails["productTypeDetails"] = $rsltJsonArr;
         ComponentsJson::GenerateJsonAndSend($rspDetails);
+        
     }
 
     // CJ defined this function 2016-06-06
