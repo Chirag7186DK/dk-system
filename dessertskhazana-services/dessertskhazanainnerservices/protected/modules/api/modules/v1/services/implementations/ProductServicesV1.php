@@ -66,7 +66,7 @@ class ProductServicesV1 implements IProductServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $rsltJsonArr = array();
             $rsltJsonArr['defaultSelectedProductCategoryDetails'] = false;
-            $rsltJsonArr['productTypeAllCategoryList'] = false;
+            $rsltJsonArr['productTypeAllProductCategoryList'] = false;
             // initial variable declare
             $gccaIds = $dkParamDataArr['ccaId'];
             $gproducttype_ids = $dkParamDataArr['product_typesids'];
@@ -87,8 +87,8 @@ class ProductServicesV1 implements IProductServicesV1{
                     // iterate each product type all product category list
                     for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
                         $isRequestedProductCategoryMatched  = 'N';
-                        $iteratedProductTypeId = $dataArr1[$eachIndex]['productTypeProductCategoryId'];
-                        $iteratedProductTypeTitle = $dataArr1[$eachIndex]['productTypeProductCategoryTitle'];
+                        $iteratedProductTypeId = $dataArr1[$eachIndex]['productTypeId'];
+                        $iteratedProductTypeTitle = $dataArr1[$eachIndex]['productTypeTitle'];
                         $iteratedProductCategoryId = $dataArr1[$eachIndex]['productTypeProductCategoryId'];
                         $iteratedProductCategoryTitle = $dataArr1[$eachIndex]['productTypeProductCategoryTitle'];
                         if($product_categoryids==$iteratedProductCategoryId){
