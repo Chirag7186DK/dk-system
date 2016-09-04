@@ -682,6 +682,37 @@ function getParamObjFromSessionForProductTypeProductCategoryProductDetails(){
 }
 
 
+// CJ defined this function 2016-06-06
+function getParamObjFromSessionForProductDescriptionDetails(){
+    try{
+        var paramObj = {};
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                // extract user userProduct session data
+                var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
+                    if(parseInt(userProductObj['producttype_listvalue'])>0 
+                        && userProductObj['producttype_listvalue']!==''){
+                        paramObj['productlist_ids'] = userProductObj['producttype_listvalue'];
+                    }
+                }
+            }
+        }
+        if(Object.keys(paramObj).length===1){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
+
 // CJ defined this function 2016-07-11
 function checkAllParamToViewAllProducts(paramObj){
     var retStatus = false;
@@ -1041,33 +1072,6 @@ function checkParamDataToRedirectForRequestCorporateTieup(){
 }
 
 
-// CJ defined this function 2016-06-06
-function getParamObjFromSessionForLoadingProductDescriptionDetails(){
-    try{
-        var paramObj = {};
-        paramObj['product_ids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userProduct')===true){
-                // extract user userProduct session data
-                var userProductObj = dkParamObj['userProduct'];
-                if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
-                    paramObj['product_ids'] = userProductObj['producttype_listvalue'];
-                }
-            }
-        }
-        if(parseInt(paramObj['product_ids'])>0){
-            return paramObj;
-        }else{
-            return false;
-        }
-    }catch(ex){
-        return false;
-    }
-}
 
 // CJ defined this function 2016-06-17
 function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
