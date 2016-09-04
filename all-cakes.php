@@ -125,7 +125,7 @@
                 <p class='vap_productInfoAbtProductCategoryMsgPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
-                        {{productTypeAllCategoryList.length}}
+                        {{productTypeAllProductCategoryList.length}}
                     </span> categories !
                 </p>
                 
