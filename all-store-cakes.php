@@ -214,9 +214,7 @@
             </div>
             
             <!-- all product list will be loaded here -->
-            <div id='cShopStoreViewAllProductDetailsBodyWrapperDivId' ng-show="isLoadCShopStoreProductTypeProductCategoryAllProductList" ng-controller="ShopStoreController" ng-init="loadCShopStoreProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
-                
-                
+            <div ng-controller="ShopStoreController" ng-show="allProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
                 
                 <!-- summary info display -->
                 <div ng-show='allProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
@@ -228,8 +226,11 @@
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
                     <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productBoxWidgetDividerLineDivClass'></div>
                     <p class='cshopstore_productStoreNameContainerPClass'>
-                        <span class="cshopstore_productStoreLabelNameSpanClass">From store : </span>
+                        <span class="cshopstore_productStoreLabelNameSpanClass">Seller :</span>
                         <span class="cshopstore_productStoreNameSpanClass">{{eachProductDetails.shopStoreTitle}}</span>
+                    </p>
+                    <p class='cshopstore_nearByPClass'>
+                        Nearest by: {{eachProductDetails.areaTitle}}
                     </p>
                     <p class='cshopstore_productNamePClass'>
                         {{eachProductDetails.productListTitle}}
@@ -247,6 +248,12 @@
                     </p>
                     <p class='cshopstore_productWeightPClass'>
                         Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right vap_productVegIconClass">
+                            <i class="fa fa-square"></i>
+                        </span>
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
+                            <i class="fa fa-square"></i>
+                        </span>
                     </p>
                     <p class='cshopstore_productBtnWrapperPClass'> 
                         <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'viewstoreproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="cshopstore_specificProductAddBtnClass btn">
