@@ -178,41 +178,45 @@
                 </div>
             </div>
             
-            <!-- all product list will be loaded here -->
-            <div id='cShopStoreViewAllProductDetailsBodyWrapperDivId' ng-show="isLoadCShopStoreProductTypeProductCategoryAllProductList" ng-controller="ShopStoreController" ng-init="loadCShopStoreProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
+            <!-- product filter operation -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
                 
-                <!-- product filter operation main container div -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
-                    <!-- info / tips about product filtering operation -->
-                    <p class='cshopstore_tipAbtFilterProductPClass'>
-                        Tip *: Use filter given below to find products more easy & quickly !
-                        <button ng-click="toggleCShopStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                            <i class="fa fa-filter"></i> {{toggleCShopstoreProductFilterBtnLabel}}
-                        </button>
-                    </p>
-                    <div ng-show="isShowCShopstoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cShopstoreProductFilterPopupDivClass}}">
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                                <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
-                            </div>
-                            <!-- by price -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_priceFilterOperationDivClass'>
-                                <p class='cshopstore_labelPriceFilterPClass'>By price</p>
-                                <select id='allProductPriceFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Price" multiple data-selected-text-format="count>1"></select>
-                            </div>
-                            <!-- by size -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_sizeFilterOperationDivClass'>
-                                <p class='cshopstore_labelSizeFilterPClass'>By size</p>
-                                <select id='allProductSizeFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Size" multiple data-selected-text-format="count>1"></select>
-                            </div>
-                            <!-- by discount -->
-                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_discountFilterOperationDivClass'>
-                                <p class='cshopstore_labelDiscountFilterPClass'>By discount</p>
-                                <select id='allProductDiscountFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Discount" multiple data-selected-text-format="count>1"></select>
-                            </div>
+                <!-- info / tips about product filtering operation -->
+                <p class='cshopstore_tipAbtFilterProductPClass'>
+                    Tip *: Use filter given below to find products more easy & quickly !
+                    <button ng-click="toggleCShopStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
+                        <i class="fa fa-filter"></i> {{toggleCShopstoreProductFilterBtnLabel}}
+                    </button>
+                </p>
+                
+                <div ng-show="isShowCShopstoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cShopstoreProductFilterPopupDivClass}}">
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
+                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
+                        </div>
+                        <!-- by price -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_priceFilterOperationDivClass'>
+                            <p class='cshopstore_labelPriceFilterPClass'>By price</p>
+                            <select id='allProductPriceFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Price" multiple data-selected-text-format="count>1"></select>
+                        </div>
+                        <!-- by size -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_sizeFilterOperationDivClass'>
+                            <p class='cshopstore_labelSizeFilterPClass'>By size</p>
+                            <select id='allProductSizeFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Size" multiple data-selected-text-format="count>1"></select>
+                        </div>
+                        <!-- by discount -->
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_discountFilterOperationDivClass'>
+                            <p class='cshopstore_labelDiscountFilterPClass'>By discount</p>
+                            <select id='allProductDiscountFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Discount" multiple data-selected-text-format="count>1"></select>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- all product list will be loaded here -->
+            <div id='cShopStoreViewAllProductDetailsBodyWrapperDivId' ng-show="isLoadCShopStoreProductTypeProductCategoryAllProductList" ng-controller="ShopStoreController" ng-init="loadCShopStoreProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
+                
+                
                 
                 <!-- summary info display -->
                 <div ng-show='allProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
