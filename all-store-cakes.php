@@ -86,7 +86,7 @@
                 </ul>
             </div>
             
-            <!-- shop store summary(self, rating/review/desserts menu) info -->
+            <!-- store summary(self,rating/review/desserts menu) info -->
             <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCShopStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
                 
                 <!-- shop store self info -->
@@ -99,15 +99,12 @@
                     <p class='cShopStoreLocatedInfoLblPClass'>
                         Located : {{shopstoreInfo.shopStoreAddress}}
                     </p>
-                    <p class='cShopStoreDeliveryInfoLblPClass'>
-                        Delivery : {{totalCountDeliveryArea}} areas
-                    </p>
                     <p ng-click="toggleShopStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
                         {{toggleShopStoreSelfSummaryInfoLblText}}
                     </p>
                 </div>
                 
-                <!-- cshopstore summary rating & review info -->
+                <!-- store summary rating & review info -->
                 <div class='cshopsstoreSummaryReviewRatingDivClass' title="Click to show more detailed reviewed / rating about this seller">
                     <p class='cShopStoreReviewRatingTextLblPClass'>
                         REVIEW & RATINGS
