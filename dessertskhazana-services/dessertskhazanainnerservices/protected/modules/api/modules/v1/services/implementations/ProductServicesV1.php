@@ -157,7 +157,6 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductTypeProductCategoryId = $dkParamDataArr['product_categoryids'];
             $gAllShopstoreIds = $dkParamDataArr['allShopstoreids'];
             $gShopstoreId = $dkParamDataArr['shopstoreids'];
-            $gProductSizeFilterArr = explode(",", $dkParamDataArr['product_size_filter']);
             
             // prepare param obj to get all product list
             $paramObj1 = array();
