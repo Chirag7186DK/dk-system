@@ -166,7 +166,7 @@
             <div id='cShopStoreViewAllProductDetailsBodyWrapperDivId' ng-show="isLoadCShopStoreProductTypeProductCategoryAllProductList" ng-controller="ShopStoreController" ng-init="loadCShopStoreProductTypeProductCategoryAllProductList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
                 
                 <!-- all product category list will be loaded here -->
-                <div ng-controller="ProductTypeProductCategoryProductDetailsController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
+                <div ng-controller="ProductController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
                     <p class='infoAbtProductCategoriesPClass'>
                         Info *: <i class="fa fa-smile-o"></i> Hey you are viewing '{{defaultSelectProductCategoryTitle}}' products from <span class="badge totalCountProductCategorySClass">{{productCategoryList.length}}</span> categories !
                     </p>
