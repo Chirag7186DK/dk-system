@@ -192,7 +192,7 @@
                 <div ng-show="isShowCShopstoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cShopstoreProductFilterPopupDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
+                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{totalProductCount}} Items)
                         </div>
                         <!-- by price -->
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_priceFilterOperationDivClass'>
@@ -265,11 +265,11 @@
                     </p>
                 </div>
                 
-                <!-- not found product show message div -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
-                    {{notFoundProductMsgStr}}
-                </div>
-                
+            </div>
+            
+            <!-- not found product show message div -->
+            <div ng-hide="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
+                {{notFoundProductMsgStr}}
             </div>
 
             <!-- create horizontally space div between -->
