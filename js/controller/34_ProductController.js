@@ -426,13 +426,16 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         };   
            
            
-        // viewProductDetails
+        // view-product-details
         $rootScope.viewProductDetails = function(paramObj){
             try{
                 var rtStatus = checkAllParamToViewProductDetails(paramObj);
                 if(rtStatus===true){
-                    // redirect to view product details
-                    window.location.href = globalBaseSitePath+"product.php";
+                    if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
+                        window.location.href =  globalBaseSitePath+"cakes-product.php";
+                    }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
+                        window.location.href =  globalBaseSitePath+"chocolates-product.php";
+                    }
                 }
             }catch(ex){
                 console.log("problem in viewProductDetails ex=>"+ex);
