@@ -74,15 +74,14 @@
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
                 <ul class="cshopstore_userBreadcrumbULClass list-inline">
                     <li class='userBreadcrumbHomeLIClass'>
-                        <a href="<?php echo $BaseSitePath; ?>">
-                            {{customerBreadCrumbOnWebApp.homeKey}}
+                        <a href="<?php echo $BaseSitePath;?>">
+                            Home
                         </a>
                     </li>
                     <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeKey}}</a>
-                    </li>
-                    <li class='cshopstore_userBreadcrumbProductTypeCategoryTypeLIClass'>
-                        |&nbsp; <a href="#">{{defaultSelectProductCategoryTitle}}</a>
+                        |&nbsp; <a href="#">
+                            Cakes
+                        </a>
                     </li>
                 </ul>
             </div>
