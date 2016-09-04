@@ -29,6 +29,7 @@ function initializeDkSessionData(){
 
         var userProductObj = {};
         userProductObj['shopstore_value'] = '';
+        userProductObj['all_shopstorevalue'] = '';
         userProductObj['shopstore_name'] = '';
         userProductObj['producttype_value'] = '';
         userProductObj['producttype_name'] = '';
@@ -443,7 +444,8 @@ function storeProductTypeProductCategoryDataInSession(productTypeProductCategory
             // extract dk param session data
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
-            userProductObj['shopstore_value'] = productTypeProductCategoryDataObj['shopStoreIds'];
+            userProductObj['shopstore_value'] = '';
+            userProductObj['all_shopstorevalue'] = productTypeProductCategoryDataObj['shopStoreIds'];
             userProductObj['shopstore_name'] = '';
             userProductObj['producttype_value'] = productTypeProductCategoryDataObj['productTypeId'];
             userProductObj['producttype_name'] = productTypeProductCategoryDataObj['productTypeTitle'];
