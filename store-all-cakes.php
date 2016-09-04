@@ -218,7 +218,7 @@
                 
                 <!-- summary info display -->
                 <div ng-show='allProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
-                    <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
+                    <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{totalProductCount}} Items)
                 </div>
                 
                 <!-- each product details iterate for displaying purpose -->
