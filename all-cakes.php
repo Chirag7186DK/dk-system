@@ -79,7 +79,7 @@
                         </a>
                     </li>
                     <li class='vap_userBreadcrumbProductTypeLIClasss'>
-                        |&nbsp; Cakes
+                        | &nbsp;&nbsp;<a href="#">Cakes</a>
                     </li>
                 </ul>
             </div>
