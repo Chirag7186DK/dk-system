@@ -51,8 +51,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    storeProductTypeProductCategoryDataInSession(arrJsonObj.defaultSelectedProductCategoryDetails);
                                     $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
+                                    $rootScope.storeProductTypeProductCategoryDataInSession(arrJsonObj.defaultSelectedProductCategoryDetails);
                                 }
                             }
                         });
@@ -71,7 +71,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 // storing product type product cateogory data in session
                 var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj);
                 if(dataStoredInSessionStatus===true){
-                    // $rootScope.loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 }
             }catch(ex){
                 console.log("problem in storeProductTypeProductCategoryDataInSession ex=>"+ex);
@@ -106,34 +106,27 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    if(retObj.productTypeDetails.productCategoryList!==false){
-                                        $rootScope.productCategoryList = retObj.productTypeDetails.productCategoryList;
+                                    if(retObj.productTypeDetails.allShopStoresDetailsArr!==false 
+                                        && retObj.productTypeDetails.allShopStoresDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl(retObj.productTypeDetails.allShopStoresDetailsArr);
                                     }
-                                    $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
-                                    if(retObj.productTypeDetails.defaultSelectProductCategoryValue!==''){
-                                        var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                                        existingDkParamObj['userProduct']['producttype_name'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
-                                        existingDkParamObj['userProduct']['producttype_value'] = retObj.productTypeDetails.defaultedSelectedProductTypeValue;
-                                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = retObj.productTypeDetails.defaultSelectProductCategoryValue;
-                                        existingDkParamObj['userProduct']['producttype_categoryname'] = retObj.productTypeDetails.defaultSelectProductCategoryTitle;
-                                        sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+                                    if(retObj.productTypeDetails.allProductPriceDetailsArr!==false 
+                                        && retObj.productTypeDetails.allProductPriceDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductPriceFilterListHtmlSelectControl(retObj.productTypeDetails.allProductPriceDetailsArr);
                                     }
-                                    if(retObj.productTypeDetails.allShopStoresDetailsArr!==false && retObj.productTypeDetails.allShopStoresDetailsArr!==undefined){
-                                        $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl(retObj.productTypeDetails.allShopStoresDetailsArr);
+                                    if(retObj.productTypeDetails.allProductSizeDetailsArr!==false 
+                                        && retObj.productTypeDetails.allProductSizeDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
                                     }
-                                    if(retObj.productTypeDetails.allProductPriceDetailsArr!==false && retObj.productTypeDetails.allProductPriceDetailsArr!==undefined){
-                                        $rootScope.buildAllProductPriceFilterListHtmlSelectControl(retObj.productTypeDetails.allProductPriceDetailsArr);
+                                    if(retObj.productTypeDetails.allProductDiscountDetailsArr!==false 
+                                        && retObj.productTypeDetails.allProductDiscountDetailsArr!==undefined){
+                                        // $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
                                     }
-                                    if(retObj.productTypeDetails.allProductSizeDetailsArr!==false && retObj.productTypeDetails.allProductSizeDetailsArr!==undefined){
-                                        $rootScope.buildAllProductSizeFilterListHtmlSelectControl(retObj.productTypeDetails.allProductSizeDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductDiscountDetailsArr!==false && retObj.productTypeDetails.allProductDiscountDetailsArr!==undefined){
-                                        $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
-                                    }
-                                    if(retObj.productTypeDetails.allProductDetailsList!==false && retObj.productTypeDetails.allProductDetailsList!==undefined){
+                                    if(retObj.productTypeDetails.allProductDetailsList!==false 
+                                        && retObj.productTypeDetails.allProductDetailsList!==undefined){
                                         $rootScope.allProductDetailsList = retObj.productTypeDetails.allProductDetailsList;
                                     }else{
-                                        $rootScope.notFoundProductMsgStr = 'No products found used proper filter';
+                                        $rootScope.notFoundProductMsgStr = 'No products found or used proper filter';
                                     }
                                 }
                             }
@@ -142,9 +135,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 }
             }catch(ex){
                 $rootScope.allProductDetailsList = false;
-                $rootScope.notFoundProductMsgStr = 'No products found used proper filter';
+                $rootScope.notFoundProductMsgStr = 'No products found or used proper filter';
                 console.log("problem in loadProductTypeProductCategoryAllProductList ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };   
            
