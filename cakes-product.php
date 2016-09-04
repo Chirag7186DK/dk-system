@@ -134,7 +134,7 @@
                     <i class="fa fa-star faa-tada animated vpd_productAvgRatedIconClass"></i> average rated based on (Quality/Taste, Delivery Services, Price)
                 </p>
                 <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
-                    No rating & review from customer yet
+                    No rating & review from customer yet !!!
                 </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
