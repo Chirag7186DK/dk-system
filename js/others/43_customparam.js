@@ -974,7 +974,6 @@ function getParamObjForCShopStoreSummaryInfo(){
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
-                console.log("userProductObj=>"+JSON.stringify(userProductObj));
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
                     if(parseInt(userProductObj['shopstore_value'])>0 
                         && userProductObj['shopstore_value']!==''){
@@ -993,63 +992,27 @@ function getParamObjForCShopStoreSummaryInfo(){
     }
 }
 
-// CJ defined this function 2016-06-17
-function getParamObjForLoadingProductTypeProductCategoryAllProductList(){
+// CJ defined this function 2016-07-18
+function getParamObjForCShopStoreWorkingStyleDetails(){
     try{
         var paramObj = {};
-        paramObj['country_ids'] = '';
-        paramObj['city_ids'] = '';
-        paramObj['area_ids'] = '';
-        paramObj['product_typesids'] = '';
-        paramObj['product_categoryids'] = '';
-        paramObj['shopstoreids'] = '';
-        paramObj['product_price_filter'] = '';
-        paramObj['product_size_filter'] = '';
-        paramObj['product_discount_filter'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('dkSelectedDeliveryCityAreaDessertsProduct')===true){
-                // extract user suggested city area session data
-                var dkSelectedDeliveryCityAreaDessertsProductObj = dkParamObj['dkSelectedDeliveryCityAreaDessertsProduct'];
-                if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('countryvalue')===true){
-                    paramObj['country_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['countryvalue'];
-                }
-                if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('cityvalue')===true){
-                    paramObj['city_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['cityvalue'];
-                }
-                if(dkSelectedDeliveryCityAreaDessertsProductObj.hasOwnProperty('areavalue')===true){
-                    paramObj['area_ids'] = dkSelectedDeliveryCityAreaDessertsProductObj['areavalue'];
-                }
-            }
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
-                // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
-                if(userProductObj.hasOwnProperty('producttype_value')===true){
-                    paramObj['product_typesids'] = userProductObj['producttype_value'];
-                }
-                if(userProductObj.hasOwnProperty('producttype_categoryvalue')===true){
-                    paramObj['product_categoryids'] = userProductObj['producttype_categoryvalue'];
-                }
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
-                }
-                if(userProductObj.hasOwnProperty('product_price_filter')===true){
-                    paramObj['product_price_filter'] = userProductObj['product_price_filter'];
-                }
-                if(userProductObj.hasOwnProperty('product_size_filter')===true){
-                    paramObj['product_size_filter'] = userProductObj['product_size_filter'];
-                }
-                if(userProductObj.hasOwnProperty('product_discount_filter')===true){
-                    paramObj['product_discount_filter'] = userProductObj['product_discount_filter'];
+                    if(parseInt(userProductObj['shopstore_value'])>0 
+                        && userProductObj['shopstore_value']!==''){
+                        paramObj['shopstoreids'] = userProductObj['shopstore_value'];
+                    }
                 }
             }
         }
-        if(paramObj['country_ids']==='1' && parseInt(paramObj['city_ids'])>0
-            && parseInt(paramObj['area_ids'])>0 && parseInt(paramObj['product_typesids'])>0){
+        if(Object.keys(paramObj).length===1){
             return paramObj;
         }else{
             return false;
@@ -1210,64 +1173,6 @@ function checkParamDataToRedirectForRequestCorporateTieup(){
     return retStatus;
 }
 
-
-// CJ defined this function 2016-07-18
-function getParamObjForLoadingCShopStoreWorkingStyleDetails(){
-    try{
-        var paramObj = {};
-        paramObj['shopstoreids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // extract data from user product
-            if(dkParamObj.hasOwnProperty('userProduct')===true){
-                // extract user userProduct session data
-                var userProductObj = dkParamObj['userProduct'];
-                if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
-                }
-            }
-        }
-        if(parseInt(paramObj['shopstoreids'])>0){
-            return paramObj;
-        }else{
-            return false;
-        }
-    }catch(ex){
-        return false;
-    }
-}
-
-// CJ defined this function 2016-07-18
-function getParamObjForLoadingCShopStoreProductDeliveryAreaDetails(){
-    try{
-        var paramObj = {};
-        paramObj['shopstoreids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // extract data from user product
-            if(dkParamObj.hasOwnProperty('userProduct')===true){
-                // extract user userProduct session data
-                var userProductObj = dkParamObj['userProduct'];
-                if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    paramObj['shopstoreids'] = userProductObj['shopstore_value'];
-                }
-            }
-        }
-        if(parseInt(paramObj['shopstoreids'])>0){
-            return paramObj;
-        }else{
-            return false;
-        }
-    }catch(ex){
-        return false;
-    }
-}
 
 
 //////////////////////// party order related code ////////////////////////////
