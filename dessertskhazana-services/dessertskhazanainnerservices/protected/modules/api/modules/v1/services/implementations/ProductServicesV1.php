@@ -80,7 +80,8 @@ class ProductServicesV1 implements IProductServicesV1{
                 $paramDataArr1['shop_storesids'] = $allStoreIdsStr;
                 $paramDataArr1['groupby_product_typeids'] = 'Y';
                 $paramDataArr1['groupby_product_categoryids'] = 'Y';
-                $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramDataArr1);
+                $selectStatementForGroupBy = " COUNT(DISTINCT splld.id) totalProductCount, GROUP_CONCAT(DISTINCT ss.id) shopStoreIds,";
+                $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramDataArr1, $selectStatementForGroupBy);
                 if(count($dataArr1)>0 && $dataArr1!=false){
                     $productTypeAllCategoryList = array();
                     $counterRequestedProductCategoryFound = 0;
@@ -91,6 +92,8 @@ class ProductServicesV1 implements IProductServicesV1{
                         $iteratedProductTypeTitle = $dataArr1[$eachIndex]['productTypeTitle'];
                         $iteratedProductCategoryId = $dataArr1[$eachIndex]['productTypeProductCategoryId'];
                         $iteratedProductCategoryTitle = $dataArr1[$eachIndex]['productTypeProductCategoryTitle'];
+                        $totalProductCount = $dataArr1[$eachIndex]['totalProductCount'];
+                        $shopStoreIds = $dataArr1[$eachIndex]['shopStoreIds'];
                         if($product_categoryids==$iteratedProductCategoryId){
                             $isRequestedProductCategoryMatched  = 'Y';
                             $rsltJsonArr['defaultSelectedProductCategoryDetails'] = array();
@@ -98,6 +101,8 @@ class ProductServicesV1 implements IProductServicesV1{
                             $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeTitle'] = $iteratedProductTypeTitle;
                             $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryId'] = $iteratedProductCategoryId;
                             $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryTitle'] = $iteratedProductCategoryTitle;
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails']['totalProductCount'] = $totalProductCount;
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails']['shopStoreIds'] = $shopStoreIds;
                             $counterRequestedProductCategoryFound++;
                         }
                         array_push($productTypeAllCategoryList, 
@@ -106,7 +111,8 @@ class ProductServicesV1 implements IProductServicesV1{
                                 "productTypeTitle"=>$iteratedProductTypeTitle,
                                 "productTypeProductCategoryId"=>$iteratedProductCategoryId,
                                 "productTypeProductCategoryTitle"=>$iteratedProductCategoryTitle,
-                                "totalProductCount"=>'10',
+                                "totalProductCount"=>$totalProductCount,
+                                "shopStoreIds"=>$shopStoreIds,
                                 "isRequestedProductCategoryMatched"=>$isRequestedProductCategoryMatched
                             )
                         );
@@ -117,6 +123,8 @@ class ProductServicesV1 implements IProductServicesV1{
                         $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeTitle'] = $dataArr1[0]['productTypeTitle'];
                         $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryId'] = $dataArr1[0]['productTypeProductCategoryId'];
                         $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryTitle'] = $dataArr1[0]['productTypeProductCategoryTitle'];
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails']['totalProductCount'] = $dataArr1[0]['totalProductCount'];
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails']['shopStoreIds'] = $dataArr1[0]['shopStoreIds'];
                     }
                     $rsltJsonArr['productTypeAllProductCategoryList'] = $productTypeAllCategoryList;
                     $rspDetails["productTypeProductCategoryDetails"] = $rsltJsonArr;
@@ -132,10 +140,8 @@ class ProductServicesV1 implements IProductServicesV1{
         $rspDetails = array();
         // checking requested param data
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            
             $rsltJsonArr = array();
-            $rsltJsonArr['defaultSelectProductCategoryTitle'] = '';
-            $rsltJsonArr['defaultSelectProductCategoryValue'] = '';
-            $rsltJsonArr['productCategoryList'] = false;
             $rsltJsonArr['allShopStoresDetailsArr'] = false;
             $rsltJsonArr['allProductPriceDetailsArr']['sortingList'] = false;
             $rsltJsonArr['allProductPriceDetailsArr']['rangeList'] = false;
@@ -144,6 +150,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $rsltJsonArr['allProductDiscountDetailsArr']['sortingList'] = false;
             $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = false;
             $rsltJsonArr['allProductDetailsList'] = false;
+            
             // initial varaible declare
             $gProductPriceFilterArr = array();
             $gProductPriceSortOn = '';
