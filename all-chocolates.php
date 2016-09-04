@@ -102,6 +102,7 @@
                     <i class='fa fa-smile-o smileIconClass'></i> 
                     Hey you are viewing 'Chocolates' desserts at '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
+                 
                 
                 <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
@@ -124,16 +125,16 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- requested desserts type all product category list will be display here -->
-            <div ng-controller="ProductController" ng-init="loadProductTypeAllProductCategoryList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
+            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="ProductController" ng-init="loadProductTypeAllProductCategoryList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 
-                <p class='vap_productInfoAbtProductCategoryMsgPClass'>
+                <p ng-if="productTypeAllProductCategoryList.length>1" class='vap_productInfoAbtProductCategoryMsgPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
                         {{productTypeAllProductCategoryList.length}}
                     </span> categories !
                 </p>
                 
-                <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
+                <div ng-if="productTypeAllProductCategoryList.length>1" id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
                     <li id="vap_eachProductCategoryContainerLIId_{{$index}}" ng-click="toggleProductTypeProductCategoryElementClass('vap_eachProductCategoryContainerLIId_'+$index, 'vap_productAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSession(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerLIClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
                         {{eachProductCategoryDetails.productTypeProductCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
                     </li>
