@@ -339,6 +339,7 @@ function getParamObjFromSessionForLoadingDKDeliveryAreaBasedDessertsTypeList(){
 // CJ defined this function 2016-07-10
 function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isResetAllSessionData){
     try{
+        var storedDataStatus = false;
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -365,8 +366,12 @@ function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isRes
                 }
             } 
             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+            storedDataStatus = false;
         }
-    }catch(ex){}
+        return storedDataStatus;
+    }catch(ex){
+        return false;
+    }
 }
 
 
