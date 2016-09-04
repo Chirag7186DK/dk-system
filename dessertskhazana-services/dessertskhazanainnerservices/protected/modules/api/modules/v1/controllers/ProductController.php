@@ -19,7 +19,8 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsTypeListServingInCountryCityArea($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getDeliveryAreaBasedDessertsTypeList($dkParamDataArr);
+                    $rspDetails = $ProductServicesV1->getDeliveryAreaBasedDessertsTypeList($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
@@ -41,7 +42,8 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductTypeAllProductCategoryDetails($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getProductTypeAllProductCategoryDetails($dkParamDataArr);
+                    $rspDetails = $ProductServicesV1->getProductTypeAllProductCategoryDetails($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
@@ -63,7 +65,8 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductTypeProductCategoryFilterOperationDetails($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getProductTypeProductCategoryFilterTypeList($dkParamDataArr);
+                    $rspDetails = $ProductServicesV1->getProductTypeProductCategoryFilterTypeList($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
@@ -85,7 +88,8 @@ class ProductController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingAllProductDetails($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
-                    $ProductServicesV1->getProductTypeProductCategoryAllProductDetails($dkParamDataArr);
+                    $rspDetails = $ProductServicesV1->getProductTypeProductCategoryAllProductDetails($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
