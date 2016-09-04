@@ -268,7 +268,7 @@
             </div>
             
             <!-- not found product show message div -->
-            <div ng-hide="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
                 {{notFoundProductMsgStr}}
             </div>
 
@@ -307,21 +307,6 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
-            <!-- store product delivery area -->
-            <div ng-show='isShowCShopStoreProductDeliveryAreaDetails' ng-controller='ShopStoreController' ng-init="loadCShopStoresProductDeliveryArea()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productDeliveryAreaWrapperDivClass">
-                <div ng-show='cShopstoreProductDeliveryAreaNames' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productDeliveryAreaWrapperContainerDivClass">
-                    <p class='cShopstoreProductDeliveryAreaHeaderPClass'>
-                        Our Delivery Area <i class="fa fa-map-marker faa-tada animated cShopstoreProductDeliveryAreaIconClass"></i>
-                    </p>
-                    <p class='cShopstoreProductDeliveryAreaBodyPClass'>
-                        {{cShopstoreProductDeliveryAreaNames}}
-                    </p>
-                </div>
-                <div ng-hide='cShopstoreProductDeliveryAreaNames' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productDeliveryAreaNotFoundMsgDivClass">
-                    No product delivery area defined by '{{shopstoreInfo.shopStoreNameInCaps}}' store !
-                </div>
-            </div>
-            
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
