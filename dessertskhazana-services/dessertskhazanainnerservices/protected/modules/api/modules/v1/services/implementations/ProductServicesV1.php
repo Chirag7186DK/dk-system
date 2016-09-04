@@ -64,6 +64,9 @@ class ProductServicesV1 implements IProductServicesV1{
         $rspDetails = array();
         // checking requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $rsltJsonArr = array();
+            $rsltJsonArr['defaultSelectedProductCategoryDetails'] = false;
+            $rsltJsonArr['productTypeAllCategoryList'] = false;
             // initial variable declare
             $gccaIds = $dkParamDataArr['ccaId'];
             $gproducttype_ids = $dkParamDataArr['product_typesids'];
@@ -80,16 +83,27 @@ class ProductServicesV1 implements IProductServicesV1{
                 $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramDataArr1);
                 if(count($dataArr1)>0 && $dataArr1!=false){
                     $productTypeAllCategoryList = array();
+                    $counterRequestedProductCategoryFound = 0;
                     // iterate each product type all product category list
                     for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
                         $isRequestedProductCategoryMatched  = 'N';
+                        $iteratedProductTypeId = $dataArr1[$eachIndex]['productTypeProductCategoryId'];
+                        $iteratedProductTypeTitle = $dataArr1[$eachIndex]['productTypeProductCategoryTitle'];
                         $iteratedProductCategoryId = $dataArr1[$eachIndex]['productTypeProductCategoryId'];
                         $iteratedProductCategoryTitle = $dataArr1[$eachIndex]['productTypeProductCategoryTitle'];
                         if($product_categoryids==$iteratedProductCategoryId){
                             $isRequestedProductCategoryMatched  = 'Y';
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails'] = array();
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeId'] = $iteratedProductTypeId;
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeTitle'] = $iteratedProductTypeTitle;
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryId'] = $iteratedProductCategoryId;
+                            $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryTitle'] = $iteratedProductCategoryTitle;
+                            $counterRequestedProductCategoryFound++;
                         }
                         array_push($productTypeAllCategoryList, 
                             array(
+                                "productTypeId"=>$iteratedProductTypeId,
+                                "productTypeTitle"=>$iteratedProductTypeTitle,
                                 "productTypeProductCategoryId"=>$iteratedProductCategoryId,
                                 "productTypeProductCategoryTitle"=>$iteratedProductCategoryTitle,
                                 "totalProductCount"=>'10',
@@ -97,7 +111,15 @@ class ProductServicesV1 implements IProductServicesV1{
                             )
                         );
                     }
-                    $rspDetails['productTypeAllCategoryList'] = $productTypeAllCategoryList;
+                    if($counterRequestedProductCategoryFound==0){
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails'] = array();
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeId'] = $dataArr1[0]['productTypeId'];
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeTitle'] = $dataArr1[0]['productTypeTitle'];
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryId'] = $dataArr1[0]['productTypeProductCategoryId'];
+                        $rsltJsonArr['defaultSelectedProductCategoryDetails']['productTypeProductCategoryTitle'] = $dataArr1[0]['productTypeProductCategoryTitle'];
+                    }
+                    $rsltJsonArr['productTypeAllProductCategoryList'] = $productTypeAllCategoryList;
+                    $rspDetails["productTypeProductCategoryDetails"] = $rsltJsonArr;
                 }
             }
         }
