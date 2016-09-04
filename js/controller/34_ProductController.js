@@ -31,6 +31,17 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
+        // storeDessertsTypeDetailsInSessionStorageToViewAllProductList
+        $rootScope.storeDessertsTypeDetailsInSessionStorageToViewAllProductList = function(paramObj){
+            var storedDataStatus = storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
+            if(storedDataStatus===true){  
+                if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
+                    window.location.href =  globalBaseSitePath+"all-cakes.php";
+                }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
+                    window.location.href =  globalBaseSitePath+"all-chocolates.php";
+                }
+            }
+        };
         
         // loadProductTypeAllProductCategoryList 
         $rootScope.loadProductTypeAllProductCategoryList = function(){
