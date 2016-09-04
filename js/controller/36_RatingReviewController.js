@@ -37,26 +37,16 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
             try{
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                // console.log("loadMaxAverageRatingReviewedAboutProduct preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.maxRatingAndReviewedTypeDetailsArr = false;
-                    
                     // calling RatingReviewServices 
                     RatingReviewServices.getMaxRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("loadMaxAverageRatingReviewedAboutProduct retObj=>"+JSON.stringify(retObj));
                                     $rootScope.maxRatingAndReviewedTypeDetailsArr = retObj.maxRatingAndReviewedTypeDetails;
                                 }
                             }
@@ -64,7 +54,6 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 $rootScope.maxRatingAndReviewedTypeDetailsArr = false;
                 console.log("problem in loadMaxAverageRatingReviewedAboutProduct ex=>"+ex);
             }
