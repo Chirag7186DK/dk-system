@@ -9,26 +9,16 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
             try{
                 // get param obj
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                // console.log("loadAverageRatingReviewedAboutProduct preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.avgRatingReviewedAboutProductDetails = false;
-                    
                     // calling RatingReviewServices 
                     RatingReviewServices.getAverageRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("loadAverageRatingReviewedAboutProduct retObj=>"+JSON.stringify(retObj));
                                     $rootScope.avgRatingReviewedAboutProductDetails = retObj.avgRatingReviewedAboutProductDetails;
                                 }
                             }
@@ -37,7 +27,6 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 $rootScope.avgRatingReviewedAboutProductDetails = false;
                 console.log("problem in loadAverageRatingReviewedAboutProduct ex=>"+ex);
             }
