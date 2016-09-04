@@ -22,7 +22,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getRatingReviewQuestionsAboutProductByShopStores($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['store_ids'];
+            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch product review question details
             $retProductReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsAboutProductByShopStores($gShopStoreId);
             if(count($retProductReviewQuestionDetailsArr)>0 && $retProductReviewQuestionDetailsArr!=false){
@@ -37,7 +38,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getShopStoreAllUserRating($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['store_ids'];
+            $gShopStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = '';
             // fetch avg rating about product by userwise
             $retAllUserAvgRatedAbtProductDetailsArr = RatingReviewDao :: getUserAvgRatingAboutProductDetails($gShopStoreId, $gproductListId);
@@ -81,8 +82,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getAllUserRatingReviewAboutProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['store_ids'];
-            $gproductListId = $dkParamDataArr['product_ids'];
+            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch avg rating about product by userwise
             $retAllUserAvgRatedAbtProductDetailsArr = RatingReviewDao :: getUserAvgRatingAboutProductDetails($gShopStoreId, $gproductListId);
             if(count($retAllUserAvgRatedAbtProductDetailsArr)>0 && $retAllUserAvgRatedAbtProductDetailsArr!=false){
@@ -145,8 +146,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getMaxRatingReviewAboutProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['store_ids'];
-            $gproductListId = $dkParamDataArr['product_ids'];
+            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gproductListId = $dkParamDataArr['productlist_ids'];
             $maxRatingAndReviewedTypeDetailsArr = array();
             // fetch max rating & reviewed about product details
             $retRatingReviewDetailsArr = RatingReviewDao :: getMaxRatingAboutProductDetails($gShopStoreId, $gproductListId);
