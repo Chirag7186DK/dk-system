@@ -67,68 +67,26 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     // CJ defined this action 2016-06-24
     public function getCShopStoreSummaryInfo($dkParamDataArr){
         $rspDetails = array();
+        $rspDetails['shopstoreInfo'] = array();
+        $rspDetails['customersReviewedRatingMsgStr'] = 'No any customer(s) reviewed yet !';
+        $rspDetails['isRatingReviewBasedInfoFound'] = false;
+        $rspDetails['ratingReviewBasedInfo'] = '';
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $rsltJsonArr = array();
-            $rsltJsonArr['shopstoreInfo'] = array();
-            $rsltJsonArr['customersReviewedRatingMsgStr'] = 'No any customer(s) reviewed yet !';
-            $rsltJsonArr['isRatingReviewBasedInfoFound'] = false;
-            $rsltJsonArr['ratingReviewBasedInfo'] = '';
+            
             // initial variable declare here
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
-            $isShopStoreMenuSummaryInfoFound = 'N';
-            // prepare param obj to get shopstore menu summary info
-            $paramObj1 = array();
-            $paramObj1['shop_storesids'] = $gshopstore_id;
-            // fetch all product type details
-            $retAllProductTypeDetailsArr = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
-            if(count($retAllProductTypeDetailsArr)>0 && $retAllProductTypeDetailsArr!=false){
-                // sorted on product type
-                $sortedOnProductTypeDetailsArr = utils::arraySort($retAllProductTypeDetailsArr, array("productTypeId"));
-                if(count($sortedOnProductTypeDetailsArr)>0 && $sortedOnProductTypeDetailsArr!=false){
-                    $isShopStoreMenuSummaryInfoFound = 'Y'; 
-                    $rsltJsonArr['totalCountDessertsType'] = count($sortedOnProductTypeDetailsArr);
-                    $rsltJsonArr['allDessertsSummaryInfo'] = array();
-                    // iterate each product type
-                    foreach($sortedOnProductTypeDetailsArr as $eachProductTypeId=>$allProductDetailsAr){
-                        $eachProductTypeDetailsArr =  array();
-                        $eachProductTypeDetailsArr['productTypeId'] = $eachProductTypeId;
-                        $eachProductTypeDetailsArr['productTypeTitle'] = $allProductDetailsAr[0]['productTypeTitleInCaps'];
-                        $eachProductTypeDetailsArr['shopStoreId'] = $gshopstore_id;
-                        $eachProductTypeDetailsArr['shopStoreTitle'] = $allProductDetailsAr[0]['shopStoreTitle'];
-                        $eachProductTypeDetailsArr['allProductCount'] = count($allProductDetailsAr);
-                        $productIcon = 'fa fa-birthday-cake';
-                        if(strtolower($eachProductTypeDetailsArr['productTypeTitle'])=='cakes'){
-                            $productIcon = 'fa fa-birthday-cake';
-                        }
-                        if(strtolower($eachProductTypeDetailsArr['productTypeTitle'])=='ice cream'){
-                            $productIcon = 'fa fa-birthday-cake';
-                        }
-                        $eachProductTypeDetailsArr['productIcon'] = $productIcon;
-                        array_push($rsltJsonArr['allDessertsSummaryInfo'], $eachProductTypeDetailsArr);
-                        $rsltJsonArr['totalCountAllDessertsTypeProduct'] = $rsltJsonArr['totalCountAllDessertsTypeProduct'] + count($allProductDetailsAr);
-                    }
-                }
+            
+            // fetch store basic info
+            $dataArr1 = ShopStoreDao::getShopStoresList($gshopstore_id, '');
+            if(count($dataArr1)==1 && $dataArr1!=false){
+                $rspDetails['shopstoreInfo'] = $dataArr1[0];
             }
 
-            // prepare param obj shopstore info
-            $retShopStoreInfoDetailsArr = ShopStoreDao::getShopStoresList($gshopstore_id, '');
-            if(count($retShopStoreInfoDetailsArr)>0 && $retShopStoreInfoDetailsArr!=false){
-                $rsltJsonArr['shopstoreInfo'] = $retShopStoreInfoDetailsArr[0];
-            }
-
-            // prepare param obj to get shopstore delivery location details
-            $shopStoreProductDeliveryParamObj = array();
-            $shopStoreProductDeliveryParamObj['shop_storesids'] = $gshopstore_id;
-            $retShopStoreDeliveryLocationDetailsArr = ShopStoreDao::getShopStoreDeliveryLocationFacilityDetails($shopStoreProductDeliveryParamObj);
-            if(count($retShopStoreDeliveryLocationDetailsArr)>0 && $retShopStoreDeliveryLocationDetailsArr!=false){
-                $rsltJsonArr['totalCountDeliveryArea'] = count($retShopStoreDeliveryLocationDetailsArr);
-            }
-
-            // prepare data to get total rating by user(s) about shopstores
-            $retRatingShopStoresDetailsArr = RatingReviewDao::getTotalRatingAboutShopStores($gshopstore_id);
-            if(count($retRatingShopStoresDetailsArr)>0 && $retRatingShopStoresDetailsArr!=false){
-                $rsltJsonArr['isRatingReviewBasedInfoFound'] = true;
-                $rsltJsonArr['customersReviewedRatingMsgStr'] = $retRatingShopStoresDetailsArr[0]['totalUserRatingAbtProduct'].' customer(s) reviewed & ratings';
+            // prepare data to get total rating & reviewed  by user(s) about store
+            $dataArr2 = RatingReviewDao::getTotalRatingAboutShopStores($gshopstore_id);
+            if(count($dataArr2)==1 && $dataArr2!=false){
+                $rspDetails['isRatingReviewBasedInfoFound'] = true;
+                $rspDetails['customersReviewedRatingMsgStr'] = $dataArr2[0]['totalUserRatingAbtProduct'].' customer(s) reviewed & ratings';
             }
 
             // prepare data to get max avg rating about shopstores based 
@@ -137,11 +95,11 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             if(count($retMaxAvgRatingShopStoresDetailsArr)>0 && $retMaxAvgRatingShopStoresDetailsArr!=false){
                 $sortedOnRQuestionAnswMaxPointsArr = utils::arraySort($retMaxAvgRatingShopStoresDetailsArr, array("questionId", "givenMaxAnswerPoints"));
                 if(count($sortedOnRQuestionAnswMaxPointsArr)>0 && $sortedOnRQuestionAnswMaxPointsArr!=false){
-                    $rsltJsonArr['ratingReviewBasedInfo'] = array();
+                    $rspDetails['ratingReviewBasedInfo'] = array();
                     //iterate each question
                     foreach($sortedOnRQuestionAnswMaxPointsArr as $eachQuestionId=>$allGivenAnsweredMaxPointsDetilsArr){
                         $maxRating = max(array_keys($allGivenAnsweredMaxPointsDetilsArr));
-                        array_push($rsltJsonArr['ratingReviewBasedInfo'], 
+                        array_push($rspDetails['ratingReviewBasedInfo'], 
                             array(
                                 "ratingQuestionTitle"=>strtoupper($allGivenAnsweredMaxPointsDetilsArr[$maxRating][0]['questionTitle']),
                                 "maxRating"=>$maxRating
@@ -150,11 +108,8 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     }
                 }
             }
-            if($isShopStoreMenuSummaryInfoFound=='Y'){
-                $rspDetails = $rsltJsonArr;
-            }
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
 
     // CJ defined this action 2016-06-24
