@@ -5,9 +5,10 @@
 */
 
 interface IProductServicesV1{
-    public function getDeliveryAreaBasedDessertsTypeList($dessertsKhazanaInDtoArray);
-    public function getProductTypeAllProductCategoryDetails($dessertsKhazanaInDtoArray);
-    public function getProductTypeProductCategoryAllProductDetails($dessertsKhazanaInDtoArray);
-    public function getProductTypeProductCategoryProductDetails($dessertsKhazanaInDtoArray);
-    public function getProductTypeProductCategoryProductDescriptionDetails($dessertsKhazanaInDtoArray);
+    public function getDeliveryAreaBasedDessertsTypeList($dkInDtoArray);
+    public function getProductTypeAllProductCategoryDetails($dkInDtoArray);
+    public function getProductTypeProductCategoryFilterTypeList();
+    public function getProductTypeProductCategoryAllProductDetails($dkInDtoArray);
+    public function getProductTypeProductCategoryProductDetails($dkInDtoArray);
+    public function getProductTypeProductCategoryProductDescriptionDetails($dkInDtoArray);
 }
