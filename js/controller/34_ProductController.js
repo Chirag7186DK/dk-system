@@ -98,6 +98,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     
                     $rootScope.allProductDetailsList = false;
+                    $rootScope.defaultSelectProductCategoryTitle = '';
                     $rootScope.notFoundProductMsgStr = '';
                     
                     // calling ProductServices to get all product list
@@ -106,6 +107,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
+                                    $rootScope.defaultSelectProductCategoryTitle = retObj.productTypeDetails.requestedProductCategoryTitle;
                                     if(retObj.productTypeDetails.allShopStoresDetailsArr!==false 
                                         && retObj.productTypeDetails.allShopStoresDetailsArr!==undefined){
                                         // $rootScope.buildAllProductShopStoresFilterListHtmlSelectControl(retObj.productTypeDetails.allShopStoresDetailsArr);
