@@ -64,7 +64,6 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
             try{
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                // console.log("loadRatingReviewQuestionsAboutProductByShopStores preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
