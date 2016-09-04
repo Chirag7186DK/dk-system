@@ -430,9 +430,9 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             try{
                 var rtStatus = checkAllParamToViewProductDetails(paramObj);
                 if(rtStatus===true){
-                    if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
+                    if((paramObj['productTypeTitle']).toLowerCase()==='cakes'){
                         window.location.href =  globalBaseSitePath+"cakes-product.php";
-                    }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
+                    }else if((paramObj['productTypeTitle']).toLowerCase()==='chocolates'){
                         window.location.href =  globalBaseSitePath+"chocolates-product.php";
                     }
                 }
@@ -454,9 +454,11 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     ProductServices.getProductTypeProductCategoryProductDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.vAllPDetails = retObj.viewProductDetails;
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
+                                alert(arrJsonObj);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.vAllPDetails = arrJsonObj;
+                                    alert($rootScope.vAllPDetails);
                                 }
                             }
                         });
