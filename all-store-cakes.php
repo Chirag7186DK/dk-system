@@ -1,6 +1,6 @@
 
 <?php
-include "Site_config.inc.php";
+    include "Site_config.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +20,12 @@ include "Site_config.inc.php";
     </head>
 
     <!-- body start here -->
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('viewstore');">
-
-        <!-- common SCROLL TOP BUTTON -->
-        <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
-            <i class="fa fa-angle-up"></i>
-        </a>
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allstorecakes');">
 
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
             
-            <!-- web log  header --->
+            <!-- web log header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
@@ -42,6 +37,9 @@ include "Site_config.inc.php";
                 <ul class="topMenuBarULClass list-inline">
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
+                    </li>
+                    <li show-userselecteddeliveryareatextheader-directive class="showUserSelectedDeliveryAreaTextHeader" title="Click here to change delivery location">
+                        <i class="fa fa-map-marker"></i> At: {{userSelectedDeliveryAreaTextHeader}}
                     </li>
                     <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                         <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
@@ -64,29 +62,10 @@ include "Site_config.inc.php";
                 </ul>
             </div>
             
-            <!-- show customer delivery city area desserts product type on header as text -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
-                <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
-                    <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
-                </p>
-            </div>
-            
         </div>
 
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreBannerDivClass"></div>
-
-        <!-- about store images banner -->
-        <div style='display:none;' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkAllCompleteOffersContainerDivClass">
-                <h5>Desserts Khazana Complete Offers Will Come Image/Slider</h5>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkAllSpecialOffersContainerDivClass">
-                <h5>Shopstore related Will Come Image/Slider</h5>
-            </div>
-        </div>
 
         <!-- view shop store details like menu, information, rating/review from customer side -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreDetailsBodyWrapperDivClass">
