@@ -41,8 +41,8 @@ class ProductServicesV1 implements IProductServicesV1{
                     if($gproducttype_ids==$iteratedDessertsTypeListId){
                         $isRequestedDessertsTypeIdMatched = 'Y';
                         $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails'] = array();
-                        $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['matchedProductTypeId'] = $iteratedDessertsTypeListId;
-                        $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['matchedProductTypeTitle'] = $iteratedDessertsTypeTitle;
+                        $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['dessertsTypeId'] = $iteratedDessertsTypeListId;
+                        $rsltJsonArr['defaultSelectedAreaBasedDessertsTypeDetails']['dessertsTypeTitle'] = $iteratedDessertsTypeTitle;
                     }
                     array_push($allDessertsTypeListArr, array(
                         "dessertsTypeId"=>$iteratedDessertsTypeListId,
