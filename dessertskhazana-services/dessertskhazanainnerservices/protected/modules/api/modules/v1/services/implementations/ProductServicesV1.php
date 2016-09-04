@@ -210,7 +210,7 @@ class ProductServicesV1 implements IProductServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             
             $rsltJsonArr = array();
-            $rsltJsonArr['requestedProductCategoryTitle'] = false;
+            $rsltJsonArr['requestedProductCategoryTitle'] = '';
             $rsltJsonArr['allProductDetailsList'] = false;
             
             // initial varaible declare
