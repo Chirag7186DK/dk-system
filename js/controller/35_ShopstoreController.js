@@ -16,7 +16,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
         $rootScope.isShowShopStoreDessertsTypeMenuList = false;
         $rootScope.isShowShopStoreRatingReviewDetails = false;
         $rootScope.allUserRatingReviewDetails = false;
-        $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = true;
         $rootScope.isEnableRatingReviewSubmitButton = false;
         $rootScope.isShowCShopStoreProductDeliveryAreaDetails = false;
         $rootScope.cShopstoreProductDeliveryAreaNames = false;
@@ -186,6 +185,18 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
             }
         };
         
+        // toggleCShopStoreAllProductFilterContainer
+        $rootScope.toggleCShopStoreAllProductFilterContainer = function(){
+            if($rootScope.isShowCShopstoreAllProductFilter===false){
+                $rootScope.toggleCShopstoreProductFilterBtnLabel = "HIDE FILTER";
+                $rootScope.isShowCShopstoreAllProductFilter = true;
+                $rootScope.cShopstoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
+            }else{
+                $rootScope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
+                $rootScope.isShowCShopstoreAllProductFilter = false;
+                $rootScope.cShopstoreProductFilterPopupDivClass = "";
+            }
+        };
         
         // buildPriceFilterListHtmlSelectControl
         $rootScope.buildPriceFilterListHtmlSelectControlCStore = function(allProductPriceDetails){
@@ -613,7 +624,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isToggleShopStoreDessertsMenu = false;
                 $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowShopStoreDessertsTypeMenuList = false;
-                $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = false;
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -627,7 +637,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isToggleShopStoreDessertsMenu = false;
                 $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowShopStoreDessertsTypeMenuList = false;
-                $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = true;
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -647,7 +656,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isToggleShopStoreDessertsMenu = false;
                 $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowShopStoreDessertsTypeMenuList = false;
-                $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = false;
                 $rootScope.isShowShopStoreRatingReviewDetails = true;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Hide Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -662,7 +670,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isToggleShopStoreDessertsMenu = false;
                 $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowShopStoreDessertsTypeMenuList = false;
-                $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = false;
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -682,7 +689,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isToggleShopStoreDessertsMenu = true;
                 $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Hide Details";
                 $rootScope.isShowShopStoreDessertsTypeMenuList = true;
-                $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = false;
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -696,7 +702,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                 $rootScope.isToggleShopStoreDessertsMenu = false;
                 $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowShopStoreDessertsTypeMenuList = false;
-                $rootScope.isLoadCShopStoreProductTypeProductCategoryAllProductList = true;
                 $rootScope.isShowShopStoreRatingReviewDetails = false;
                 $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -707,18 +712,6 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
             }
         };
         
-        // toggleCShopStoreAllProductFilterContainer
-        $rootScope.toggleCShopStoreAllProductFilterContainer = function(){
-            if($rootScope.isShowCShopstoreAllProductFilter===false){
-                $rootScope.toggleCShopstoreProductFilterBtnLabel = "HIDE FILTER";
-                $rootScope.isShowCShopstoreAllProductFilter = true;
-                $rootScope.cShopstoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
-            }else{
-                $rootScope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
-                $rootScope.isShowCShopstoreAllProductFilter = false;
-                $rootScope.cShopstoreProductFilterPopupDivClass = "";
-            }
-        };
         
     }catch(ex){
         console.log("problem in ShopstoreDetailsController ex=>"+ex);
