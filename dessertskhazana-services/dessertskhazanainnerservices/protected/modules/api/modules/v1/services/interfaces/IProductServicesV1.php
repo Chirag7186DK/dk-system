@@ -7,7 +7,7 @@
 interface IProductServicesV1{
     public function getDeliveryAreaBasedDessertsTypeList($dkInDtoArray);
     public function getProductTypeAllProductCategoryDetails($dkInDtoArray);
-    public function getProductTypeProductCategoryFilterTypeList();
+    public function getProductTypeProductCategoryFilterTypeList($dkInDtoArray);
     public function getProductTypeProductCategoryAllProductDetails($dkInDtoArray);
     public function getProductTypeProductCategoryProductDetails($dkInDtoArray);
     public function getProductTypeProductCategoryProductDescriptionDetails($dkInDtoArray);
