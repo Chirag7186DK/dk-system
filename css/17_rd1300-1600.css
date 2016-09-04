@@ -827,6 +827,7 @@
 
     .vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass .owl-item{
         width:auto!important;
+        margin-right:2px!important;
     }
 
     .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass{
@@ -840,8 +841,8 @@
     }
 
     .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconPClass{
-        text-align: center;
-        margin: 0px!important;
+        text-align:center!important;
+        margin:0px!important;
     }
 
     .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconClass{
@@ -850,16 +851,16 @@
 
     .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductTitleHClass{
         text-align:center;
-        margin:3px!important;
         font-size:18px!important;
         font-family:serif;
         text-transform:uppercase;
         margin:0px!important;
+        padding-left:20px!important;
+        padding-right:20px!important;
     }
 
     .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .viewDessertsProductPClass{
         text-align:center;
-        margin:0px!important;
         margin-top:12px!important;
         font-size:14px!important;
         font-family: serif;
