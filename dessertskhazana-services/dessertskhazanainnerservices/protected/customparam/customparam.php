@@ -343,6 +343,62 @@ class customparam{
     }
     
     
+    ////////////////////// store level related code //////////////////////////
+    
+    
+    // CJ defined this function 2016-09-04
+    public static function checkParamDataFetchingDeliveryAreabasedCStoreConductDessertType($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check product delivery country
+        if(array_key_exists('country_ids', $paramJsonData)){
+            if($paramJsonData['country_ids']=='1'){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check city_ids key present or not
+        if(array_key_exists('city_ids', $paramJsonData)){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check area_ids key present or not
+        if(array_key_exists('area_ids', $paramJsonData)){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check area_ids key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check area_ids key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check shopStore id is blank or not
+        if(array_key_exists('shopstoreids', $paramJsonData)){
+            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product type id is blank or not
+        if(array_key_exists('product_typesids', $paramJsonData)){
+            if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==6){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
+    
     // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingCShopstoresummaryInfo($paramJsonData){
         $retStatus = 'FALSE';
@@ -376,7 +432,6 @@ class customparam{
         }
         return $retStatus;
     }
-    
     
     // CJ defined this function 2016-07-18
     public static function checkParamDataFetchingCshopstoreAllProductDetails($paramJsonData){
