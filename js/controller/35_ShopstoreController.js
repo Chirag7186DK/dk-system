@@ -126,11 +126,12 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
         // storeProductTypeProductCategoryDataInSession 
         $rootScope.storeProductTypeProductCategoryDataInSession = function(productCategoryParamObj){
             try{
+                console.log("productCategoryParamObj=>"+JSON.stringify(productCategoryParamObj));
                 // storing product type product cateogory data in session
                 var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj);
                 if(dataStoredInSessionStatus===true){
                     $rootScope.loadProductTypeProductCategoryFilterTypeList();
-                    // $rootScope.loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 }
             }catch(ex){
                 console.log("problem in storeProductTypeProductCategoryDataInSession ex=>"+ex);
@@ -141,8 +142,8 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
         $rootScope.toggleProductTypeProductCategoryElementClass = function(currentElementClickedId, clickedElementParentClass){
             // toggle backgroun class also
             if(currentElementClickedId!==undefined && currentElementClickedId!==undefined){
-                $('.'+clickedElementParentClass).find('li').removeClass('vap_eachRequestedProductCategoryLabelLIClass');
-                $('#'+currentElementClickedId).addClass('vap_eachRequestedProductCategoryLabelLIClass');
+                $('.'+clickedElementParentClass).find('li').removeClass('cshopstore_eachRequestedProductCategoryLIClass');
+                $('#'+currentElementClickedId).addClass('cshopstore_eachRequestedProductCategoryLIClass');
             }
         };
         
