@@ -729,11 +729,11 @@ function getCustomerBreadcrumb(){
                 var userProductParamObj = existingDkParamObj['userProduct'];
                 if(userProductParamObj!==false && userProductParamObj!==undefined 
                     && jQuery.isEmptyObject(userProductParamObj)===false){
-                    customerBreadcrumbObj['homeKey'] = 'Home';
-                    customerBreadcrumbObj['productTypeKey'] = userProductParamObj['producttype_name'];
-                    customerBreadcrumbObj['productTypeCategoryKey'] = userProductParamObj['producttype_categoryname'];
-                    customerBreadcrumbObj['shopStoreKey'] = userProductParamObj['shopstore_name']+" Store";
-                    customerBreadcrumbObj['productTypeCatgoryListKey'] = userProductParamObj['producttype_listname'];
+                    customerBreadcrumbObj['homeTitle'] = 'Home';
+                    customerBreadcrumbObj['productTypeTitle'] = userProductParamObj['producttype_name'];
+                    customerBreadcrumbObj['productCategoryTitle'] = userProductParamObj['producttype_categoryname'];
+                    customerBreadcrumbObj['shopStoreTitle'] = userProductParamObj['shopstore_name']+" Store";
+                    customerBreadcrumbObj['productListTitle'] = userProductParamObj['producttype_listname'];
                 }
             } 
             // extract dk partyOrder param obj
