@@ -342,6 +342,22 @@ class customparam{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-07-13
+    public static function checkParamDataFetchingProductDescriptionDetails($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check product type id is blank or not
+        if(array_key_exists('product_ids', $paramJsonData)){
+            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==1){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     ////////////////////// store level related code //////////////////////////
     
@@ -529,23 +545,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingProductDescriptionDetails($paramJsonData){
-        $retStatus = 'FALSE';
-        $givenParamDataCorrectCount = 0;
-        // check product type id is blank or not
-        if(array_key_exists('product_ids', $paramJsonData)){
-            if(($paramJsonData['product_ids'])>0 && $paramJsonData['product_ids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if($givenParamDataCorrectCount==1){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
-    
-
     
     // CJ defined this function 2016-07-24
     public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
