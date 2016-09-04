@@ -70,7 +70,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 // storing product type product cateogory data in session
                 var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj);
                 if(dataStoredInSessionStatus===true){
-                    $rootScope.loadProductTypeProductCategoryAllProductList();
+                    // $rootScope.loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryFilterTypeList();
                 }
             }catch(ex){
                 console.log("problem in storeProductTypeProductCategoryDataInSession ex=>"+ex);
