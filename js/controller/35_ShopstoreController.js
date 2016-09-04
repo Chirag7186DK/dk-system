@@ -78,32 +78,22 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
         $rootScope.loadCShopStoreSummaryInfo = function(){
             try{
                 // get param obj
-                var preparedParamJsonObj = getParamObjForLoadingCShopStoreSummaryInfo();
+                var preparedParamJsonObj = getParamObjForCShopStoreSummaryInfo();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.shopstoreInfo = false;
-                    $rootScope.totalCountDeliveryArea = '';
                     $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
                     $rootScope.isRatingReviewBasedInfoFound = false;
-                    $rootScope.totalCountDessertsType = '';
-                    $rootScope.totalCountAllDessertsTypeProduct = 0;
-                    $rootScope.allDessertsSummaryInfo = false;
-                    
-                    // calling ShopStoreServices to get summary info
+                    // calling ShopStoreServices
                     ShopStoreServices.getCShopStoreSummaryInfo(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    // console.log("getCShopStoreMenuSummaryInfo retObj=>"+JSON.stringify(retObj));
-                                    $rootScope.totalCountDessertsType = retObj.totalCountDessertsType;
-                                    $rootScope.totalCountAllDessertsTypeProduct = retObj.totalCountAllDessertsTypeProduct;
-                                    $rootScope.allDessertsSummaryInfo = retObj.allDessertsSummaryInfo;
-                                    $rootScope.shopstoreInfo = retObj.shopstoreInfo;
-                                    $rootScope.totalCountDeliveryArea = retObj.totalCountDeliveryArea;
-                                    $rootScope.customersReviewedRatingMsgStr = retObj.customersReviewedRatingMsgStr;
-                                    $rootScope.isRatingReviewBasedInfoFound = retObj.isRatingReviewBasedInfoFound;
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.shopstoreInfo = arrJsonObj.shopstoreInfo;
+                                    $rootScope.customersReviewedRatingMsgStr = arrJsonObj.customersReviewedRatingMsgStr;
+                                    $rootScope.isRatingReviewBasedInfoFound = arrJsonObj.isRatingReviewBasedInfoFound;
                                 }
                             }
                         });
@@ -111,12 +101,8 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
                 }
             }catch(ex){
                 $rootScope.shopstoreInfo = false;
-                $rootScope.totalCountDeliveryArea = '';
                 $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
                 $rootScope.isRatingReviewBasedInfoFound = false;
-                $rootScope.totalCountDessertsType = '';
-                $rootScope.totalCountAllDessertsTypeProduct = 0;
-                $rootScope.allDessertsSummaryInfo = false;
                 console.log("problem in loadCShopStoreMenuSummaryInfo ex=>"+ex);
             }
         };
