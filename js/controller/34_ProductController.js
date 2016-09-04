@@ -491,7 +491,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDescriptionDetailsArr = false;
-                    $rootScope.isProductDescriptionDetailsFound = 'FALSE';
+                    $rootScope.isProductDescriptionDetailsFound = false;
                     // calling ProductServices 
                     ProductServices.getProductDescriptionDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
@@ -499,7 +499,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                 var productDescriptionDetailsArr = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'descriptionDetailsArr', retResponseJson);
                                 if(productDescriptionDetailsArr!==false 
                                     && productDescriptionDetailsArr!==undefined && productDescriptionDetailsArr!==''){
-                                    $rootScope.isProductDescriptionDetailsFound = 'TRUE';
+                                    $rootScope.isProductDescriptionDetailsFound = true;
                                     $rootScope.productDescriptionDetailsArr = productDescriptionDetailsArr;
                                 }
                             }
@@ -507,7 +507,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     });
                 }
             }catch(ex){
-                $rootScope.isProductDescriptionDetailsFound = 'FALSE';
+                $rootScope.isProductDescriptionDetailsFound = false;
                 $rootScope.productDescriptionDetailsArr = false;
                 console.log("problem in loadProductDescriptionDetails ex=>"+ex);
             }
