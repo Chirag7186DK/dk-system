@@ -1,4 +1,15 @@
 
+angular.module('DKAPP').directive('showUserSelectedDeliveryAreaTextHeader', showUserSelectedDeliveryAreaTextHeader);
+
+function showUserSelectedDeliveryAreaTextHeader(LocationServices){
+    return {
+        link: function ($scope, $el, $attrs){
+            alert();
+            LocationServices.showUserSelectedDeliveryAreaTextHeader();
+        }
+    };
+}
+
 angular.module('DKAPP').directive('preloadProductImagesClass', preloadProductImagesClass);
 
 function preloadProductImagesClass($timeout){
