@@ -14,7 +14,7 @@ class LocationServicesV1 implements ILocationServicesV1{
             // fetching delivery city list
             $rspDetails = commonfunction :: getDeliveryCityListDetails($dkParamDataArr);
         } 
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
     
     
@@ -25,7 +25,7 @@ class LocationServicesV1 implements ILocationServicesV1{
             // fetching delivery area list
             $rspDetails = commonfunction :: getDeliveryAreaListDetails($dkParamDataArr);
         } 
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
     
 }
