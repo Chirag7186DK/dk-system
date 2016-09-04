@@ -67,6 +67,7 @@ class ProductServicesV1 implements IProductServicesV1{
             // initial variable declare
             $gccaIds = $dkParamDataArr['ccaId'];
             $gproducttype_ids = $dkParamDataArr['product_typesids'];
+            $product_categoryids = $dkParamDataArr['product_categoryids'];
             // fetch store details who do given desserts type business in ccaIds
             $allStoreDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
             if(count($allStoreDetailsArr)>0 && $allStoreDetailsArr!=false){
@@ -81,12 +82,18 @@ class ProductServicesV1 implements IProductServicesV1{
                     $productTypeAllCategoryList = array();
                     // iterate each product type all product category list
                     for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                        $isRequestedProductCategoryMatched  = 'N';
+                        $iteratedProductCategoryId = $dataArr1[$eachIndex]['productTypeProductCategoryId'];
+                        $iteratedProductCategoryTitle = $dataArr1[$eachIndex]['productTypeProductCategoryTitle'];
+                        if($product_categoryids==$iteratedProductCategoryId){
+                            $isRequestedProductCategoryMatched  = 'Y';
+                        }
                         array_push($productTypeAllCategoryList, 
                             array(
-                                "productTypeProductCategoryId"=>$dataArr1[$eachIndex]['productTypeProductCategoryId'],
-                                "productTypeProductCategoryTitle"=>$dataArr1[$eachIndex]['productTypeProductCategoryTitle'],
+                                "productTypeProductCategoryId"=>$iteratedProductCategoryId,
+                                "productTypeProductCategoryTitle"=>$iteratedProductCategoryTitle,
                                 "totalProductCount"=>'10',
-                                "isRequestedProductCategoryMatched"=>'N'
+                                "isRequestedProductCategoryMatched"=>$isRequestedProductCategoryMatched
                             )
                         );
                     }
