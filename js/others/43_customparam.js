@@ -29,15 +29,15 @@ function initializeDkSessionData(){
 
         var userProductObj = {};
         userProductObj['shopstore_value'] = '';
+        userProductObj['shopstore_name'] = '';
         userProductObj['producttype_value'] = '';
+        userProductObj['producttype_name'] = '';
         userProductObj['producttype_categoryvalue'] = '';
+        userProductObj['producttype_categoryname'] = '';
         userProductObj['producttype_listvalue'] = '';
+        userProductObj['producttype_listname'] = '';
         userProductObj['producttype_featurevalue'] = '';
         userProductObj['productviewed_bystatus'] = 'productwise';
-        userProductObj['shopstore_name'] = '';
-        userProductObj['producttype_name'] = '';
-        userProductObj['producttype_categoryname'] = '';
-        userProductObj['producttype_listname'] = '';
 
         var userPartyOrderObj = {};
         userPartyOrderObj['title'] = '';
@@ -417,6 +417,42 @@ function getParamObjForLoadingProductTypeAllProductCategoryList(){
                         paramObj['product_typesids'] = userProductObj['producttype_value'];
                     }
                 }
+            }
+        }
+        if(Object.keys(paramObj).length===5){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
+
+// CJ defined this function 2016-09-04
+function storeProductTypeProductCategoryDataInSession(){
+    try{
+        var paramObj = {};
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            // extract data from user product
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                // extract user userProduct session data
+                var userProductObj = {};
+                userProductObj['shopstore_value'] = '';
+                userProductObj['shopstore_name'] = '';
+                userProductObj['producttype_value'] = '';
+                userProductObj['producttype_name'] = '';
+                userProductObj['producttype_categoryvalue'] = '';
+                userProductObj['producttype_categoryname'] = '';
+                userProductObj['producttype_listvalue'] = '';
+                userProductObj['producttype_listname'] = '';
+                userProductObj['producttype_featurevalue'] = '';
+                userProductObj['productviewed_bystatus'] = 'productwise';
             }
         }
         if(Object.keys(paramObj).length===5){
