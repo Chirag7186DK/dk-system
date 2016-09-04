@@ -67,27 +67,6 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
         
-        <!-- create horizontally space div between -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-        
-        <!-- offers/promotion -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
-                <div class='dkPartyOrderWrapperDivClass'>
-                    <p class='partyOrderPClass' title='Click to request for party orders'>
-                        <span>CAKES BANNER</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
-                <div class='dkCustomizeDessertsOrderWrapperDivClass'>
-                    <p class='customizeOrderPClass' title='Click to request for customize orders'>
-                        <span>OFFERS / PROMOTION</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        
         <!-- view specific desserts type all products list with category wise -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_containerDivClass">
             
@@ -151,7 +130,7 @@
                 </p>
                 
                 <div id='vap_productAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryContainerDivClass">
-                    <li ng-click="collectDataToViewDeliveryAreabasedProductTypeAllProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
+                    <li ng-click="storeDataToLoadProductTypeProductCategoryProductList(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productTypeProductCategoryTitle}} desserts' class='vap_eachProductCategoryContainerDivClass' scroll-horizontally-dessertsproducttype-productcategorylist-allproductlevel>
                         {{eachProductCategoryDetails.productTypeProductCategoryTitle+'\n('+eachProductCategoryDetails.totalProductCount+')'}}
                     </li>
                 </div>
