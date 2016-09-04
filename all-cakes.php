@@ -125,11 +125,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- requested desserts type all product category list will be display here -->
-            <div ng-controller="ProductController" ng-init="loadProductTypeAllProductCategoryList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
+            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="ProductController" ng-init="loadProductTypeAllProductCategoryList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 
-                <p ng-if="productTypeAllProductCategoryList.length==1" class='vap_productInfoAbtProductCategoryMsgPClass'>
-                    Info *: <i class="fa fa-smile-o"></i> Hey now you will choose products !!!
-                </p>
                 <p ng-if="productTypeAllProductCategoryList.length>1" class='vap_productInfoAbtProductCategoryMsgPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
