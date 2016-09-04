@@ -548,11 +548,10 @@ function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopSto
                         // calling ShopStoreServices 
                         ShopStoreServices.getCShopStoreWorkingStyleDetails(fetchedParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
-                                showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                    if(retObj!==false && retObj!==undefined && retObj!==''){
-                                        $rootScope.cShopstoreWorkingstyleDetails = retObj.shopstoreWorkingStyleDetails;
+                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'shopstoreWorkingStyleDetails', retResponseJson);
+                                    if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                        $rootScope.cShopstoreWorkingstyleDetails = arrJsonObj;
                                     }
                                 }
                             });
