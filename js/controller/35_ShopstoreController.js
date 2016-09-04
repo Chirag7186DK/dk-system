@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('ShopStoreController', ShopStoreController);
 
-function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, RatingReviewServices){
+function ShopStoreController($scope, $rootScope, $http, ProductServices, ShopStoreServices, RatingReviewServices){
     try{
         
         $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
@@ -95,6 +95,33 @@ function ShopStoreController($scope, $rootScope, $http, ShopStoreServices, Ratin
             }
         };
         
+        // loadProductTypeAllProductCategoryList 
+        $rootScope.loadProductTypeAllProductCategoryList = function(){
+            try{
+                // get param obj to load product all product category list
+                var preparedParamJsonObj = getParamObjForProductTypeAllProductCategoryList();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchParamJsonObj = {};
+                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.productTypeAllProductCategoryList = false;
+                    // calling ProductServices
+                    ProductServices.getProductTypeAllProductCategoryList(fetchParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
+                                    $rootScope.storeProductTypeProductCategoryDataInSession(arrJsonObj.defaultSelectedProductCategoryDetails);
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in loadProductTypeAllProductCategoryList ex=>"+ex);
+                $rootScope.productTypeAllProductCategoryList = false;
+            }
+        };
         
         
         // loadCShopStoreProductTypeProductCategoryAllProductList 
