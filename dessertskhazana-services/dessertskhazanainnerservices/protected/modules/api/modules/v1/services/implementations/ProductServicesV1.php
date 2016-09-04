@@ -80,7 +80,7 @@ class ProductServicesV1 implements IProductServicesV1{
                 $paramDataArr1['shop_storesids'] = $allStoreIdsStr;
                 $paramDataArr1['groupby_product_typeids'] = 'Y';
                 $paramDataArr1['groupby_product_categoryids'] = 'Y';
-                $selectStatementForGroupBy = " COUNT(DISTINCT splld.id) totalProductCount, GROUP_CONCAT(DISTINCT ss.id) shopStoreIds,";
+                $selectStatementForGroupBy = ", COUNT(DISTINCT splld.id) totalProductCount, GROUP_CONCAT(DISTINCT ss.id) shopStoreIds ";
                 $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramDataArr1, $selectStatementForGroupBy);
                 if(count($dataArr1)>0 && $dataArr1!=false){
                     $productTypeAllCategoryList = array();
