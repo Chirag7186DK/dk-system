@@ -113,7 +113,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                         $rootScope.buildSizeFilterListHtmlSelectControl(arrJsonObj.allProductSizeDetailsArr);
                                     }
                                     if(arrJsonObj.allProductDiscountDetailsArr!==false && arrJsonObj.allProductDiscountDetailsArr!==undefined){
-                                        // $rootScope.buildAllProductDiscountFilterListHtmlSelectControl(retObj.productTypeDetails.allProductDiscountDetailsArr);
+                                        $rootScope.buildSizeDiscountFilterListHtmlSelectControl(arrJsonObj.allProductDiscountDetailsArr);
                                     }
                                 }
                             }
@@ -129,7 +129,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         // buildStoresFilterListHtmlSelectControl
         $rootScope.buildStoresFilterListHtmlSelectControl = function(allShopStoreList){
             try{
-                var defaultedSelectedShopStore = '';
                 var storeFilterListSelectControlElementObj = document.getElementById("allShopStoresFilterListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
                 $(storeFilterListSelectControlElementObj).find('option').remove();
@@ -137,9 +136,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 if(allShopStoreList.length>0 && allShopStoreList!==false){
                     // iterate each shopstore details
                     for(var eachStoreIndex = 0; eachStoreIndex<allShopStoreList.length; eachStoreIndex++){
-                        if(allShopStoreList[eachStoreIndex]['isRequestedStoreMatched']==='Y'){
-                            defaultedSelectedShopStore = allShopStoreList[eachStoreIndex]['shopStoresId'];
-                        }
                         var dataIconstr = 'fa fa-user';
                         var shopStoreValue = allShopStoreList[eachStoreIndex]['shopStoresId'];
                         var shopStoreTitle = allShopStoreList[eachStoreIndex]['shopStoresTitle'];
@@ -149,10 +145,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 }
                 // refresh shopstore list select control element 
                 $(storeFilterListSelectControlElementObj).selectpicker('refresh');
-                // default selected shopstore 
-                if(parseInt(defaultedSelectedShopStore)>0 && defaultedSelectedShopStore!==''){
-                    $(storeFilterListSelectControlElementObj).selectpicker('val', defaultedSelectedShopStore);
-                }
                 // apply change function event
                 if($(storeFilterListSelectControlElementObj).find('option').length>0){
                     $rootScope.applyChangeEventOnStoreFilterSelectCtrlElement(storeFilterListSelectControlElementObj);
@@ -232,11 +224,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 }
                 // refresh product price range list select control element 
                 $(productPriceFilterListSelectControlElementObj).selectpicker('refresh');
-                // default selected product price filter 
-                if(defaultSelectedAllProductPriceFilterArr.length>0){
-                    $(productPriceFilterListSelectControlElementObj).selectpicker('val', defaultSelectedAllProductPriceFilterArr);
-                }
-                // apply function event
+                // apply change function event
                 if($(productPriceFilterListSelectControlElementObj).find('option').length>0){
                     $rootScope.applyChangeEventOnPriceFilterSelectCtrlElement(productPriceFilterListSelectControlElementObj);
                 }
@@ -290,13 +278,9 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 }
                 // refresh product size list select control element 
                 $(productSizeFilterListSelectControlElementObj).selectpicker('refresh');
-                // default selected product size 
-                if(defaultedSelectedProductSize!=='' && defaultedSelectedProductSize!==false){
-                    $(productSizeFilterListSelectControlElementObj).selectpicker('val', defaultedSelectedProductSize);
-                }
-                // apply event
+                // apply change function event
                 if($(productSizeFilterListSelectControlElementObj).find('option').length>0){
-                    $rootScope.buildedProductSizeFilterListHtmlSelectControlOnChangeEvent(productSizeFilterListSelectControlElementObj);
+                    $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productSizeFilterListSelectControlElementObj);
                 }
             }catch(ex){
                 console.log("problem in buildAllProductSizeFilterListHtmlSelectControl=>"+ex);
@@ -323,6 +307,77 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
        
+        // buildSizeDiscountFilterListHtmlSelectControl
+        $rootScope.buildSizeDiscountFilterListHtmlSelectControl = function(allProductDiscountDetails){
+            var defaultSelectedAllProductDiscountFilterArr = new Array();
+            var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
+            // all options remove and destroy bootstrap select feature
+            $(productDiscountFilterListSelectControlElementObj).find('option').remove();
+            $(productDiscountFilterListSelectControlElementObj).selectpicker('destroy');
+            if(jQuery.isEmptyObject(allProductDiscountDetails)===false && allProductDiscountDetails!=='' 
+                && allProductDiscountDetails!==undefined && allProductDiscountDetails!==false){
+                var allDiscountSortingListArr = allProductDiscountDetails['sortingList'];
+                if(allDiscountSortingListArr.length>0 && allDiscountSortingListArr!==false){
+                    // iterate each price sorting details
+                    var optionGroupStr = "<optgroup label='Sort On (Single selection)' data-max-options='1'>";
+                    for(var eachDiscountSortingDetailsArrIndex = 0; eachDiscountSortingDetailsArrIndex<allDiscountSortingListArr.length; eachDiscountSortingDetailsArrIndex++){
+                        var dataIconStr = 'fa fa-sort-amount-asc';
+                        var discountSortingValue = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortValue'];
+                        var discountSortingTitle = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortTitle'];
+                        if(discountSortingValue==='hightolow'){
+                            dataIconStr = 'fa fa-sort-amount-desc';
+                        }
+                        var eachOptionStr = "<option class='discountFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+discountSortingValue+"'>"+discountSortingTitle+"</option>";
+                        optionGroupStr+= eachOptionStr;
+                        if(allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['isRequestedDiscountSortedMatched']==='Y'){
+                            defaultSelectedAllProductDiscountFilterArr.push(discountSortingValue);
+                        }
+                    }
+                    $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
+                }
+                var allDiscountRangeList = allProductDiscountDetails['rangeList'];
+                if(allDiscountRangeList.length>0 && allDiscountRangeList!==false){
+                    var optionGroupStr = "<optgroup label='Discount Range (Multiple selection)'>";
+                    // iterate each price range details
+                    for(var eachDiscountRangeDetailsArrIndex = 0; eachDiscountRangeDetailsArrIndex<allDiscountRangeList.length; eachDiscountRangeDetailsArrIndex++){
+                        var discountRangeValue = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeValue'];
+                        var discountRangeTitle = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeTitle'];
+                        var eachOptionStr = "<option class='discountFilterOperationOptionClass' value='"+discountRangeValue+"'>"+discountRangeTitle+"</option>";
+                        optionGroupStr+= eachOptionStr;
+                        if(allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['isRequestedDiscountRangeMatched']==='Y'){
+                            defaultSelectedAllProductDiscountFilterArr.push(discountRangeValue);
+                        }
+                    }
+                    $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
+                }
+            }
+            // refresh product discount filter list select control element 
+            $(productDiscountFilterListSelectControlElementObj).selectpicker('refresh');
+            if($(productDiscountFilterListSelectControlElementObj).find('option').length>0){
+                $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement(productDiscountFilterListSelectControlElementObj);
+            }
+        };
+        
+        // applyChangeEventOnSizeFilterSelectCtrlElement
+        $rootScope.applyChangeEventOnSizeFilterSelectCtrlElement = function(elementObj){
+            try{
+                $(elementObj).on('changed.bs.select', function(e){
+                    var selectedDiscountFilterValues = $(elementObj).selectpicker('val');
+                    // reset session storage about user product(discount filter value)
+                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    existingDkParamObj['userProduct']['product_discount_filter'] = '';
+                    if(selectedDiscountFilterValues!=='' && selectedDiscountFilterValues!==false && selectedDiscountFilterValues!==null){
+                        existingDkParamObj['userProduct']['product_discount_filter'] = (selectedDiscountFilterValues).toString();
+                    }
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+                    // refresh the screen
+                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                });
+            }catch(ex){
+                console.log("problem in applyChangeEventOnSizeFilterSelectCtrlElement=>"+ex);
+            }
+        };
+        
            
         // loadProductTypeProductCategoryAllProductList 
         $rootScope.loadProductTypeProductCategoryAllProductList = function(){
@@ -483,80 +538,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
          
         
          
-        // buildAllProductDiscountFilterListHtmlSelectControl
-        $rootScope.buildAllProductDiscountFilterListHtmlSelectControl = function(allProductDiscountDetails){
-            var defaultSelectedAllProductDiscountFilterArr = new Array();
-            var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
-            // all options remove and destroy bootstrap select feature
-            $(productDiscountFilterListSelectControlElementObj).find('option').remove();
-            $(productDiscountFilterListSelectControlElementObj).selectpicker('destroy');
-            if(jQuery.isEmptyObject(allProductDiscountDetails)===false && allProductDiscountDetails!=='' 
-                && allProductDiscountDetails!==undefined && allProductDiscountDetails!==false){
-                var allDiscountSortingListArr = allProductDiscountDetails['sortingList'];
-                if(allDiscountSortingListArr.length>0 && allDiscountSortingListArr!==false){
-                    // iterate each price sorting details
-                    var optionGroupStr = "<optgroup label='Sort On (Single selection)' data-max-options='1'>";
-                    for(var eachDiscountSortingDetailsArrIndex = 0; eachDiscountSortingDetailsArrIndex<allDiscountSortingListArr.length; eachDiscountSortingDetailsArrIndex++){
-                        var dataIconStr = 'fa fa-sort-amount-asc';
-                        var discountSortingValue = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortValue'];
-                        var discountSortingTitle = allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['discountSortTitle'];
-                        if(discountSortingValue==='hightolow'){
-                            dataIconStr = 'fa fa-sort-amount-desc';
-                        }
-                        var eachOptionStr = "<option class='discountFilterOperationOptionClass' data-icon='"+dataIconStr+"' value='"+discountSortingValue+"'>"+discountSortingTitle+"</option>";
-                        optionGroupStr+= eachOptionStr;
-                        if(allDiscountSortingListArr[eachDiscountSortingDetailsArrIndex]['isRequestedDiscountSortedMatched']==='Y'){
-                            defaultSelectedAllProductDiscountFilterArr.push(discountSortingValue);
-                        }
-                    }
-                    $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
-                }
-                var allDiscountRangeList = allProductDiscountDetails['rangeList'];
-                if(allDiscountRangeList.length>0 && allDiscountRangeList!==false){
-                    var optionGroupStr = "<optgroup label='Discount Range (Multiple selection)'>";
-                    // iterate each price range details
-                    for(var eachDiscountRangeDetailsArrIndex = 0; eachDiscountRangeDetailsArrIndex<allDiscountRangeList.length; eachDiscountRangeDetailsArrIndex++){
-                        var discountRangeValue = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeValue'];
-                        var discountRangeTitle = allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['discountRangeTitle'];
-                        var eachOptionStr = "<option class='discountFilterOperationOptionClass' value='"+discountRangeValue+"'>"+discountRangeTitle+"</option>";
-                        optionGroupStr+= eachOptionStr;
-                        if(allDiscountRangeList[eachDiscountRangeDetailsArrIndex]['isRequestedDiscountRangeMatched']==='Y'){
-                            defaultSelectedAllProductDiscountFilterArr.push(discountRangeValue);
-                        }
-                    }
-                    $(productDiscountFilterListSelectControlElementObj).append(optionGroupStr);
-                }
-            }
-            // refresh product discount filter list select control element 
-            $(productDiscountFilterListSelectControlElementObj).selectpicker('refresh');
-            // default selected product size 
-            if(defaultSelectedAllProductDiscountFilterArr.length>0){
-                $(productDiscountFilterListSelectControlElementObj).selectpicker('val', defaultSelectedAllProductDiscountFilterArr);
-            }
-            if($(productDiscountFilterListSelectControlElementObj).find('option').length>0){
-                $rootScope.buildedDiscountFilterListHtmlSelectControlOnChangeEvent(productDiscountFilterListSelectControlElementObj);
-            }
-        };
-        
-        // buildedDiscountFilterListHtmlSelectControlOnChangeEvent
-        $rootScope.buildedDiscountFilterListHtmlSelectControlOnChangeEvent = function(elementObj){
-            try{
-                $(elementObj).on('changed.bs.select', function(e){
-                    var selectedDiscountFilterValues = $(elementObj).selectpicker('val');
-                    // reset session storage about user product(discount filter value)
-                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                    existingDkParamObj['userProduct']['product_discount_filter'] = '';
-                    if(selectedDiscountFilterValues!=='' && selectedDiscountFilterValues!==false && selectedDiscountFilterValues!==null){
-                        existingDkParamObj['userProduct']['product_discount_filter'] = (selectedDiscountFilterValues).toString();
-                    }
-                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-                    // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
-                });
-            }catch(ex){
-                console.log("problem in buildedDiscountFilterListHtmlSelectControlOnChangeEvent=>"+ex);
-            }
-        };
         
         // toggleViewAllProductFilterContainer
         $rootScope.toggleViewAllProductFilterContainer = function(){
