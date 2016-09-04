@@ -55,7 +55,7 @@ class ProductServicesV1 implements IProductServicesV1{
                 $rspDetails["deliveryAreaBasedDessertsTypeDetails"] = $rsltJsonArr;
             }
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
     
     // CJ defined this action 2016-09-03
@@ -130,7 +130,7 @@ class ProductServicesV1 implements IProductServicesV1{
                 }
             }
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
     
     // CJ defined this action 2016-09-03
@@ -149,10 +149,6 @@ class ProductServicesV1 implements IProductServicesV1{
             $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = false;
             
             // initial varaible declare
-            $gProductPriceFilterArr = array();
-            $gProductPriceSortOn = '';
-            $gProductDiscountFilterArr = array();
-            $gProductDiscountSortOn = '';
             $gproductTypeId = $dkParamDataArr['product_typesids'];
             $gproductTypeProductCategoryId = $dkParamDataArr['product_categoryids'];
             $gAllShopstoreIds = $dkParamDataArr['allShopstoreids'];
@@ -199,12 +195,10 @@ class ProductServicesV1 implements IProductServicesV1{
                     $rsltJsonArr['allProductDiscountDetailsArr']['sortingList'] = $resultArr['sortingList'];
                     $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = $resultArr['rangeList'];
                 }
-                
             }
-            
             $rspDetails["filterOperationTypeList"] = $rsltJsonArr;
         }
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
 
     
@@ -215,13 +209,6 @@ class ProductServicesV1 implements IProductServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             
             $rsltJsonArr = array();
-            $rsltJsonArr['allShopStoresDetailsArr'] = false;
-            $rsltJsonArr['allProductPriceDetailsArr']['sortingList'] = false;
-            $rsltJsonArr['allProductPriceDetailsArr']['rangeList'] = false;
-            $rsltJsonArr['allProductSizeDetailsArr']['sortingList'] = false;
-            $rsltJsonArr['allProductSizeDetailsArr']['rangeList'] = false;
-            $rsltJsonArr['allProductDiscountDetailsArr']['sortingList'] = false;
-            $rsltJsonArr['allProductDiscountDetailsArr']['rangeList'] = false;
             $rsltJsonArr['requestedProductCategoryTitle'] = false;
             $rsltJsonArr['allProductDetailsList'] = false;
             
@@ -230,21 +217,18 @@ class ProductServicesV1 implements IProductServicesV1{
             $gProductPriceSortOn = '';
             $gProductDiscountFilterArr = array();
             $gProductDiscountSortOn = '';
-            $gcountry_id = $dkParamDataArr['country_ids'];
-            $gcity_id = $dkParamDataArr['city_ids'];
-            $garea_id = $dkParamDataArr['area_ids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
             $gproductTypeProductCategoryId = $dkParamDataArr['product_categoryids'];
             $gShopstoreId = $dkParamDataArr['shopstoreids'];
             $gProductSizeFilterArr = explode(",", $dkParamDataArr['product_size_filter']);
 
             // price filter
-            if($dkParamDataArr['product_price_filter']!= '' && $dkParamDataArr['product_price_filter']!= false){
+            if($dkParamDataArr['product_price_filter']!='' && $dkParamDataArr['product_price_filter']!= false){
                 $tempPriceFilterArr = explode(",", $dkParamDataArr['product_price_filter']);
-                if (($removedValue = array_search('lowtohigh', $tempPriceFilterArr)) !== false) {
+                if(($removedValue = array_search('lowtohigh', $tempPriceFilterArr))!==false){
                     $gProductPriceSortOn = "lowtohigh";
                     unset($tempPriceFilterArr[$removedValue]);
-                } else if (($removedValue = array_search('hightolow', $tempPriceFilterArr)) !== false) {
+                }else if(($removedValue = array_search('hightolow', $tempPriceFilterArr))!==false){
                     $gProductPriceSortOn = "hightolow";
                     unset($tempPriceFilterArr[$removedValue]);
                 }
@@ -298,12 +282,9 @@ class ProductServicesV1 implements IProductServicesV1{
                     $rsltJsonArr['allProductDetailsList'] = $allProductDetailsList;
                 }
             }
-            
         }
-        
         $rspDetails["productTypeDetails"] = $rsltJsonArr;
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
-        
+        return $rspDetails;
     }
 
     // CJ defined this function 2016-06-06
