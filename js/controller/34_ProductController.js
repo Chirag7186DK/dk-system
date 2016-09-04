@@ -458,7 +458,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                 alert(arrJsonObj);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.vAllPDetails = arrJsonObj;
-                                    alert($rootScope.vAllPDetails);
                                 }
                             }
                         });
