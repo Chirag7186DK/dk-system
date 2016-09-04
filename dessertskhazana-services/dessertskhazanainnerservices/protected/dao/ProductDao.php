@@ -291,30 +291,26 @@ class ProductDao{
     }
     
     // CJ defined this function 2016-06-06
-    public static function getProductDescriptionDetails($productListId, $productFeatureId=''){
+    public static function getProductDescriptionDetails($productListId){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = "SELECT 
-                COALESCE(ppd.id, '') productDescriptionId,
-                COALESCE(ppd.product_listid, '') productListId,
-                COALESCE(ppd.product_feature_id, '') productFeatureId,
-                COALESCE(ppd.description_title, '') productDescriptionTitle,
-                COALESCE(ppd.description_content, '') productDescription,
-                COALESCE(ppd.content_file, '') productContentFile,
-                COALESCE(ppd.content_filepath, '') productContentFilePath
-                FROM DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_DESCRIPTIONDETAILS ppd
-                WHERE 
-                ppd.product_listid='$productListId'
+                COALESCE(spld.productlist_id, '') productListId,
+                COALESCE(spld.id, '') productDescriptionId,
+                COALESCE(spld.description_title, '') productDescriptionTitle,
+                COALESCE(spld.description_content, '') productDescription,
+                COALESCE(spld.content_file, '') productContentFile,
+                COALESCE(spld.content_filepath, '') productContentFilePath
+                FROM DK_SHOPSTORE_PRODUCTLIST_DESCRIPTIONDETAILS spld
+                WHERE 1
+                AND ppd.productlist_id='$productListId'
                 AND ppd.status='A' ";
-                if($productFeatureId!=''){
-                    $sqlFetchQuery.=" AND ppd.product_feature_id='$productFeatureId' ";
-                }
             $command = $connection->createCommand($sqlFetchQuery);
-            $retProductDescriptionDetailsArr = $command->queryAll();
-            if(count($retProductDescriptionDetailsArr)>0 
-                && $retProductDescriptionDetailsArr!=false){
-                $retResult =  $retProductDescriptionDetailsArr;
+            $productDescriptionDetailsArr = $command->queryAll();
+            if(count($productDescriptionDetailsArr)>0 
+                && $productDescriptionDetailsArr!=false){
+                $retResult =  $productDescriptionDetailsArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
