@@ -215,6 +215,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var fetchParamJsonObj = {};
                         fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
                         // calling LocationServices to get dk delivery area based desserts type list
                         LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
@@ -223,8 +224,8 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(false, 'Y');
                                         $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
-                                        $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.dkDeliveryAreaBasedDessertsTypeList, loadDessertTypeListOnPage);
                                     }
+                                    $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.dkDeliveryAreaBasedDessertsTypeList, loadDessertTypeListOnPage);
                                 }
                             });
                         });
