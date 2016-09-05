@@ -173,7 +173,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // applyChangeEventDkDeliveryAreaListSelectCtrlElement
         $rootScope.applyChangeEventDkDeliveryAreaListSelectCtrlElement = function(elementObj, loadAreaListOnPage){
-            $(elementObj).on('changed.bs.select', function(e){
+            $(elementObj).on('changed.bs.select', function(e, clickedIndex, newValue, oldValue){
                 var areaNamesStr = '';
                 var selectedAreaSplittedArr = ($(elementObj).find('option:selected').text()).split(" ");
                 for(var eachIndx = 1; eachIndx<selectedAreaSplittedArr.length; eachIndx++){
