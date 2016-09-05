@@ -125,7 +125,7 @@
                     <p class='cShopStoreDessertsMenuInfoLblPClass'>
                         {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
                     </p>
-                    <p ng-click="toggleShopStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
+                    <p ng-click="toggleCStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
                         {{toggleCStoreDessertsMenuSummaryInfoLblText}}
                     </p>
                 </div>
