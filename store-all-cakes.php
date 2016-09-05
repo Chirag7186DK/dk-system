@@ -272,7 +272,7 @@
             
             <!-- not found product show message div -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
-<!--                {{storeNotFoundProductMsgStr}}-->
+                {{storeNotFoundProductMsgStr}}
             </div>
             
             <!-- displaying all user reviewed rating details -->
