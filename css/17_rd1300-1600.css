@@ -876,7 +876,7 @@
     }
 
     .vpd_horizontalLineClass{
-        border-top:1px solid #fb366e!important;
+        border-top:1px solid rgba(39,171,92,0.9)!important;
         margin-top:0px!important;
     }
 
@@ -892,10 +892,8 @@
     
     .vpd_productNamePClass{
         margin-top:10px;
-        color:#fb366e!important;
-        font-size:15px!important;
-        font-family:serif;
-        font-weight:700!important;
+        color:rgb(70, 75, 80)!important;
+        font-size:18px!important;
     }
     
     .vpd_productStoreNameContainerPClass{
@@ -977,7 +975,7 @@
 
     .vpd_orderSummaryLabelPClass{
         margin-top:10px;
-        color:#fb366e!important;
+        color:rgba(39,171,92,0.9)!important;
         font-size:15px!important;
         font-family:serif;
         font-weight:700!important;
