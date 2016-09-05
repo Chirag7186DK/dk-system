@@ -1058,6 +1058,91 @@
         font-weight:normal!important;
     }
     
+    .vpd_ratingReviewProductContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        border-radius:0px!important;
+        border:1px solid #eee!important;
+    }
+    
+    .vpd_ratingReviewProductHeaderPClass{
+        padding-left:10px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        color:rgba(39,171,92,0.9)!important;
+        font-size:15px!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        border-bottom:1px solid rgba(196, 249, 217, 0.9)!important;
+    }
+    
+    .vpd_summaryReviewRatingLblSClass{
+        color:#800080!important;
+        font-size:16px!important;
+    }
+    
+    .vpd_eachQuestionMaxRatingReviewDetailsDivClass{
+        background:rgba(62, 177, 231, 0.14)!important;
+        margin-right:2%!important;
+        padding-top:5px!important;
+        padding-bottom:10px!important;
+    }
+
+    .vpd_maxRatingAboutQuestionTitleHClass{
+        font-weight: bold;
+        color:#5C63D6!important;
+        font-size:15px!important;
+    }
+
+    .vpd_maxRatingAboutQuestionAnswerDetailsHClass{
+        color:#5C63D6!important;
+        font-size:13px!important;
+    }
+    
+    .vpd_allUserReviewRatingDetailsLabelSpanClass{
+        color:#800080!important;
+        font-size:16px!important;
+    }
+
+    .vpd_displayEachUserReviewAboutProductContainerDivClass{
+        padding-top:12px!important;
+        padding-bottom:10px!important;
+        border-bottom:1px solid #eee!important;
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_displayEachUserReviewAboutProductContainerDivClass:last-child{
+        border-bottom:none!important;
+    }
+
+    .vpd_eachUserNameRatedReviewAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+        font-weight:bold!important;
+    }
+
+    .vpd_userAvgRatedAboutProductSClass{
+        padding:2px!important;
+        color:rgba(205, 46, 216, 0.73)!important;
+        font-size:10px!important;
+        font-weight:bold!important;
+    }
+
+    .vpd_eachUserRatedAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:13px!important;
+    }
+
+    .vpd_ratedQuestionAboutProductSClass{
+        padding:2px!important;
+        color:rgba(205, 46, 216, 0.44)!important;
+    }
+    
+    .vpd_eachUserAvgRatedReviewAbtProductPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:13px!important;
+    }
+
     
     
 
