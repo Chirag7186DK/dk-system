@@ -569,6 +569,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowCStoreWorkingStyleDetails = false;
                 $rootScope.cStoreWorkingstyleDetails = false;
+                $rootScope.loadProductTypeAllProductCategoryListCStore();
             }
         };
         
