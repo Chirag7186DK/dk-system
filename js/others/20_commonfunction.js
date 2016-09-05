@@ -38,35 +38,23 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
 
 
 // CJ define this funcion 2016-09-05
-function checkUserCanChangeDeliveryLocation(deliveryAreaElementObj){
-    var rtStatus = true;
+function getUserSelectedPrevDeliveryAreaName(){
+    var userSelectedPrevDeliveryAreaName = '';
     try{
-        var selectedCountryCityAreaAffiliationStr = $(deliveryAreaElementObj).selectpicker('val');
-        if(selectedCountryCityAreaAffiliationStr!=='' 
-            && selectedCountryCityAreaAffiliationStr!==null && selectedCountryCityAreaAffiliationStr!==undefined){
-            var currentSelectedDeliveryAreaId = (selectedCountryCityAreaAffiliationStr).split("|")[0];
-            var prevSelectedDeliveryAreaId = '';
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
-                // extract user suggested city area session data
-                var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
-                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('cityvalue')===true){
-                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue'])>0 
-                        && userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue']!==''){
-                        prevSelectedDeliveryAreaId+= userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue'];
-                    }
+        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+        if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
+            // extract user suggested city area session data
+            var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
+            if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('areaname')===true){
+                if(userSelectedDeliveryCityAreaDessertsTypeObj['areaname']!==''){
+                    userSelectedPrevDeliveryAreaName = userSelectedDeliveryCityAreaDessertsTypeObj['areaname'];
                 }
-            }
-            if(prevSelectedDeliveryAreaId!=='' && parseInt(prevSelectedDeliveryAreaId)>0
-                && currentSelectedDeliveryAreaId!=='' && parseInt(currentSelectedDeliveryAreaId)>0
-                && prevSelectedDeliveryAreaId!==currentSelectedDeliveryAreaId){
-                rtStatus = false;
             }
         }
     }catch(ex){
-        rtStatus = false;
+        userSelectedPrevDeliveryAreaName = false;
     }
-    return rtStatus;
+    return userSelectedPrevDeliveryAreaName;
 }
 
 
