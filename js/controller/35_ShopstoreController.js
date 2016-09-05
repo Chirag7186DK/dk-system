@@ -183,7 +183,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.isShowCStoreAllProductFilter = true;
                 $rootScope.cStoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
             }else{
-                $rootScope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
+                $rootScope.toggleCStoreProductFilterBtnLabel = "SHOW FILTER";
                 $rootScope.isShowCStoreAllProductFilter = false;
                 $rootScope.cStoreProductFilterPopupDivClass = "";
             }
