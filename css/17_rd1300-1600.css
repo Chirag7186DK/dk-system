@@ -1271,7 +1271,10 @@
 
     .cshopsstoreSelfSummaryInfoDivClass{
         text-align:center;
-        padding:20px;
+        padding-left:10px!important;
+        padding-right:10px!important;
+        padding-top:4px!important;
+        padding-bottom:4px!important;
         background-color:whitesmoke!important;
         border-bottom:2px solid #8DA0E2!important;
     }
@@ -1303,13 +1306,14 @@
         cursor:pointer!important;
     }
 
-
     .cshopsstoreSummaryReviewRatingDivClass{
         text-align:center;
-        padding:20px;
+        padding-left:10px!important;
+        padding-right:10px!important;
+        padding-top:4px!important;
+        padding-bottom:4px!important;
         background-color:whitesmoke!important;
-        border-bottom: 2px solid #8DA0E2!important;
-        min-height:130px!important;
+        border-bottom:2px solid #8DA0E2!important;
     }
 
     .cShopStoreReviewRatingTextLblPClass{
@@ -1340,11 +1344,13 @@
     }
 
     .cshopsstoreMenuSummaryInfoDivClass{
-        text-align:center;
-        padding:20px!important;
+        text-align:center!important;
+        padding-left:40px!important;
+        padding-right:40px!important;
+        padding-top:4px!important;
+        padding-bottom:4px!important;
         background-color:whitesmoke!important;
         border-bottom:2px solid #8DA0E2!important;
-        min-height:130px!important;
     }
 
     .cShopStoreMenuTextLblPClass{
