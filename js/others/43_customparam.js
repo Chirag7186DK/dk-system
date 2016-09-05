@@ -558,7 +558,6 @@ function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
 function getParamObjForProductTypeProductCategoryAllProductList(){
     try{
         var paramObj = {};
-        paramObj['shopstoreids'] = '';
         paramObj['product_price_filter'] = '';
         paramObj['product_size_filter'] = '';
         paramObj['product_discount_filter'] = '';
