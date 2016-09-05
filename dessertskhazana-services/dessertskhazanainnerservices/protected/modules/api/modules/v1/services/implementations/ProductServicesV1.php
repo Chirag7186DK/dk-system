@@ -258,7 +258,9 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['product_typeids'] = $gproductTypeId;
             $paramObj1['product_categoryids'] = $gproductTypeProductCategoryId;
             $paramObj1['sort_storeareas'] = " FIELD(area.id, $garea_ids) DESC ";
-            $paramObj1['sort_productfeaturesid'] = " FIELD(splld.id, $gproductFeatureId) DESC ";
+            if($gproductFeatureId!='' && ($gproductFeatureId)>0){
+                $paramObj1['sort_productfeaturesid'] = " FIELD(splld.id, $gproductFeatureId) DESC ";
+            }
             if(count($gProductPriceFilterArr)>0 && $gProductPriceFilterArr!=false){
                 $paramObj1['product_price_filter'] = $gProductPriceFilterArr;
             }
