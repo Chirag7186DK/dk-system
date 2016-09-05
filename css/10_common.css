@@ -36,3 +36,16 @@ input, textarea, select, .form-control{
     margin-top:12px;
     margin-bottom:12px;
 }
+
+.deliveryAreaNotifyBoxClass{
+    min-height:50px!important;
+    margin:0px!important;
+    background-color:rgba(39,171,92,0.9)!important;
+    border:1px solid rgba(39,171,92,0.9)!important;
+    font-weight:bold!important;
+    font-size:13px!important;
+}
+
+.deliveryAreaNotifyBoxClass .lobibox-delay-indicator{
+    height:0px!important;
+}
