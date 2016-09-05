@@ -138,7 +138,7 @@
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" class="cshopstoreServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you are viewing '{{shopstoreInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
+                    Hey you are viewing '{{storeInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
                         <span class="badge cshopstore_dessertsProductTypeCountSClass">
                             {{dkDeliveryAreaBasedDessertsTypeList.length}}
                         </span>
