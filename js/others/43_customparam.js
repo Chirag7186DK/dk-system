@@ -447,7 +447,6 @@ function getParamObjForProductTypeAllProductCategoryList(){
     }
 }
 
-
 // CJ defined this function 2016-09-04
 function storeProductTypeProductCategoryDataInSession(paramDataObj){
     try{
@@ -456,7 +455,6 @@ function storeProductTypeProductCategoryDataInSession(paramDataObj){
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
-            console.log("paramDataObj=>"+JSON.stringify(paramDataObj));
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
             userProductObj['shopstore_value'] = paramDataObj['shopStoreIds'];
@@ -479,6 +477,7 @@ function storeProductTypeProductCategoryDataInSession(paramDataObj){
         return false;
     }
 }
+
 
 // CJ defined this function 2016-09-03
 function getParamObjForProductTypeProductCategoryFilterTypeList(){
@@ -517,6 +516,38 @@ function getParamObjForProductTypeProductCategoryFilterTypeList(){
         }else{
             return false;
         }
+    }catch(ex){
+        return false;
+    }
+}
+
+
+// CJ defined this function 2016-09-04
+function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
+    try{
+        var storeDataStatus = false;
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            var userProductObj = {};
+            userProductObj['shopstore_value'] = paramDataObj['shopStoreIds'];
+            userProductObj['all_shopstorevalue'] = paramDataObj['shopStoreIds'];
+            userProductObj['shopstore_name'] = '';
+            userProductObj['producttype_value'] = paramDataObj['productTypeId'];
+            userProductObj['producttype_name'] = paramDataObj['productTypeTitle'];
+            userProductObj['producttype_categoryvalue'] = paramDataObj['productTypeProductCategoryId'];
+            userProductObj['producttype_categoryname'] = paramDataObj['productTypeProductCategoryTitle'];
+            userProductObj['producttype_listvalue'] = '';
+            userProductObj['producttype_listname'] = '';
+            userProductObj['producttype_featurevalue'] = '';
+            userProductObj['productviewed_bystatus'] = 'productwise';
+            existingDkParamObj['userProduct'] = userProductObj;
+            sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
+            storeDataStatus = true;
+        }
+        return storeDataStatus;
     }catch(ex){
         return false;
     }
