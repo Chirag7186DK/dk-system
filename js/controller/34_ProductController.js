@@ -75,7 +75,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         $rootScope.storeProductTypeProductCategoryDataInSession = function(productCategoryParamObj){
             try{
                 // storing product type product cateogory data in session
-                var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj);
+                var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj, 'Y');
                 if(dataStoredInSessionStatus===true){
                     $rootScope.loadProductTypeProductCategoryFilterTypeList();
                     $rootScope.loadProductTypeProductCategoryAllProductList();
