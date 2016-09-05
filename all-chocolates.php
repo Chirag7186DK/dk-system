@@ -20,7 +20,7 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allproducts');">
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allcakes');">
         
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
@@ -71,7 +71,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_containerDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_userBreadcrumbDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_userBreadcrumbDivClass">
                 <ul class="vap_userBreadcrumbULClass list-inline">
                     <li class='vap_userBreadcrumbHomeLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
@@ -89,7 +89,6 @@
         
             <!-- view desserts khazana served all desserts type in your selected delivery area -->
             <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
-                
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
@@ -102,9 +101,7 @@
                     <i class='fa fa-smile-o smileIconClass'></i> 
                     Hey you are viewing 'Chocolates' desserts at '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
-                 
-                
-                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
+                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
                         <p class="vap_dessertsProductIconPClass">
@@ -118,7 +115,6 @@
                         </p>
                     </div>
                 </div>
-                
             </div>
             
             <!-- create horizontally space div between -->
@@ -145,9 +141,8 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
-            <!-- product filter operation main container div -->
+            <!-- product filter operation -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
-                    
                 <!-- info / tips about product filtering operation -->
                 <p class='vap_tipAbtFilterProductPClass'>
                     Tip *: Use filter to find products more easy & quickly !
@@ -155,11 +150,10 @@
                         <i class="fa fa-filter"></i> {{toggleViewAllProductFilterBtnLabel}}
                     </button>
                 </p>
-                    
                 <div ng-show="isShowViewAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{productViewAllFilterPopDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productFilterPopupBodyDivClass'>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
+                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{totalProductCount}} Items)
                         </div>
                         <!-- by store -->
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_shopStoreFilterOperationDivClass'>
@@ -183,17 +177,14 @@
                         </div>
                     </div>
                 </div>
-                    
             </div>
             
             <!-- all product list will be loaded here -->
             <div id='vapWrapperDivId' ng-controller="ProductController" ng-show="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
-                
                 <!-- summary info display -->
                 <div ng-show="allProductDetailsList.length" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass'>
                     <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
                 </div>
-
                 <!-- each product details iterate for displaying -->
                 <div maxheight-productboxwidget-allproductslevel ng-repeat="eachProductDetails in allProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 vap_productBoxWidgetDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
@@ -240,12 +231,11 @@
                         </button>
                     </p>
                 </div>
-
-                <!-- not found show msg div -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_notFoundProductMsgDivClass">
-                    {{notFoundProductMsgStr}}
-                </div>
-                
+            </div>
+            
+            <!-- not found show message div -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_notFoundProductMsgDivClass">
+                {{notFoundProductMsgStr}}
             </div>
             
         </div>
