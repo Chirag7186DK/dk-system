@@ -236,99 +236,71 @@
                 </div>
             </div>
             
-            <!-- product rating & reviews details -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productRatingReviewDetailsContainerDivClass">
-                <div class="panel vpd_productRatingReviewPanelContainerDivClass">
-                    <div class="panel-heading vpd_productRatingReviewPanelHeadingDivClass">
-                        <h5 class='vpd_productRatingReviewLabelHClass'>
-                            <i class='fa fa-comment-o'></i> RATINGS & REVIEW
-                        </h5>
-                    </div>
-                    <div id="vpd_productRatingReviewPanelBodyContainerDivId" class="vpd_productRatingReviewPanelBodyContainerDivClass">
-                        <!-- rating and review summary about product -->
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_summaryReviewRatingDetailsContainerDivClass" ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
-                            <span class='vpd_summaryReviewRatingDetailsLabelSpanClass'>
-                                {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} customer(s) reviewed,  
-                                {{avgRatingReviewedAboutProductDetails.totalAvgRatingAbtProduct}} 
-                                <i class="fa fa-star vpd_productAvgRatedIconClass"></i> average rated about product based on 
-                            </span>
-                            <div ng-controller='RatingReviewController' ng-init="loadMaxAverageRatingReviewedAboutProduct()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_allMaxRatingQuestionSummaryReviewRatingDetailsDivClass'>
-                                <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_eachMaxRatingQuestionSummaryReviewRatingDetailsDivClass' ng-repeat="eachMaxRatingAndReviewedTypeDetails in maxRatingAndReviewedTypeDetailsArr">
-                                    <h5 class='vpd_maxRatingAboutQuestionTitleHClass'>
-                                        {{eachMaxRatingAndReviewedTypeDetails.ratingQuestionTitle}}
-                                    </h5>
-                                    <span class='vpd_maxRatingAboutQuestionAnswerDetailsHClass'>
-                                        Highest {{eachMaxRatingAndReviewedTypeDetails.maxRating}} 
-                                        <i class="fa fa-star"></i> rated from {{eachMaxRatingAndReviewedTypeDetails.userCount}} user(s)
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- write review form details about product -->
-                        <div ng-show="ratingReviewQuestionAboutProductByShopStoresDetails" ng-controller='RatingReviewController' ng-init="loadRatingReviewQuestionsAboutProductByShopStores()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_takeUserReviewRatingAboutProductContainerDivClass">
-                            <p class='vpd_takeUserReviewRatingAboutProductLabelPClass'>
-                                Write a review and rating about product ?
-                            </p>
-                            <div ng-repeat="eachReviewRatingTypeAboutProductDetails in ratingReviewQuestionAboutProductByShopStoresDetails" ng-if="'SELECT'===eachReviewRatingTypeAboutProductDetails.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeAboutProductContainerDivClass'>
-                                <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
-                                    {{eachReviewRatingTypeAboutProductDetails.questionTitle}}
-                                </div>
-                                <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
-                                    <select class='form-control vpd_ratingAboutProductSelectCtrlClass'>
-                                        <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}"  data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='1'>1 Star</option>
-                                        <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='2'>2 Star</option>
-                                        <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='3'>3 Star</option>
-                                        <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='4'>4 Star</option>
-                                        <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='5'>5 Star</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div ng-repeat="eachReviewRatingTypeAboutProductDetails in ratingReviewQuestionAboutProductByShopStoresDetails" ng-if="'TEXTAREA'===eachReviewRatingTypeAboutProductDetails.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeAboutProductContainerDivClass'>
-                                <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
-                                    {{eachReviewRatingTypeAboutProductDetails.questionTitle}}
-                                </div>
-                                <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
-                                    <TEXTAREA data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
-                                </div>
-                            </div>
-                            <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isRatingReviewQuestionDetailsFound'>
-                                <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2'></div>
-                                <div ng-controller='RatingReviewController' class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
-                                    <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddRatingReviewAboutProduct('vpd_takeUserReviewRatingAboutProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn' title='Click to submit rating & review about product'>
-                                        SUBMIT A REVIEW
-                                    </button> 
-                                    <span class='vpd_infoAbtToEnableSubmitRatingReviewBtnSClass' ng-hide='isEnableRatingReviewSubmitButton'>
-                                        You can't post a review because you are not logged as a customer
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- displaying all user reviewed and rating details -->
-                        <div ng-controller='RatingReviewController' ng-init="loadAllUserRatingReviewAboutProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayAllUserReviewAboutProductContainerDivClass" ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
-                            <span class="vpd_allUserReviewRatingDetailsLabelSpanClass">
-                                Displaying {{(allUserRatingReviewAboutProductDetailsArr).length}} customer(s) posted reviewed and ratings about product
-                            </span>
-                            <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewAboutProductDetailsArr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayEachUserReviewAboutProductContainerDivClass">
-                                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 vpd_eachUserReviewedRatingRightSideDivClass">
-                                    <p class="vpd_eachUserNameRatedReviewAbtProductPClass">
-                                        reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
-                                    </p>
-                                    <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserRatedAbtProductPClass'>
-                                        {{eachReviewedRatingTypeDetails.questionTitle}} : 
-                                        <span class="vpd_ratedQuestionAboutProductSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
-                                    </p>
-                                    <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserReviewedCommentAbtProductPClass'>
-                                        {{eachReviewedRatingTypeDetails.answerText}}
-                                    </p>
-                                    <p class="vpd_eachUserAvgRatedReviewAbtProductPClass">
-                                        Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5 
-                                    </p>
-                                </div>
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
+            <!-- product rating/review details -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass">
+                <p class="vpd_ratingReviewProductHeaderPClass">
+                    <i class='fa fa-comment-o'></i> RATINGS & REVIEW
+                    <span class="fa fa-chevron-circle-up moreLessRatingReviewProductIconClass"></span>
+                </p>
+                <div id="vpd_ratingReviewProductBodyDivId" class="vpd_ratingReviewProductBodyDivClass">
+                    
+                    <!-- rating and review summary about product -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_summaryReviewRatingContainerDivClass" ng-if="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
+                        <span class='vpd_summaryReviewRatingLblSClass'>
+                            {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} customer(s) reviewed,  
+                            {{avgRatingReviewedAboutProductDetails.totalAvgRatingAbtProduct}} 
+                            <i class="fa fa-star vpd_productAvgRatedIconClass"></i> average rated about product based on 
+                        </span>
+                        <div ng-controller='RatingReviewController' ng-init="loadMaxAverageRatingReviewedAboutProduct()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_allMaxReviewRatingDetailsDivClass'>
+                            <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_eachQuestionMaxRatingReviewDetailsDivClass' ng-repeat="eachMaxRatingAndReviewedTypeDetails in maxRatingAndReviewedTypeDetailsArr">
+                                <h5 class='vpd_maxRatingAboutQuestionTitleHClass'>
+                                    {{eachMaxRatingAndReviewedTypeDetails.ratingQuestionTitle}}
+                                </h5>
+                                <span class='vpd_maxRatingAboutQuestionAnswerDetailsHClass'>
+                                    Highest {{eachMaxRatingAndReviewedTypeDetails.maxRating}} 
+                                    <i class="fa fa-star"></i> rated from {{eachMaxRatingAndReviewedTypeDetails.userCount}} user(s)
+                                </span>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- create horizontally space div between -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+                    
+                    <!-- displaying all user reviewed and rating details -->
+                    <div ng-controller='RatingReviewController' ng-init="loadAllUserRatingReviewAboutProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayAllUserReviewAboutProductContainerDivClass" ng-if="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
+                        <span class="vpd_allUserReviewRatingDetailsLabelSpanClass">
+                            Displaying {{(allUserRatingReviewAboutProductDetailsArr).length}} customer(s) posted reviewed and ratings about product
+                        </span>
+                        <!-- iterate each user rating/review details -->
+                        <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewAboutProductDetailsArr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayEachUserReviewAboutProductContainerDivClass">
+                            <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 vpd_eachUserReviewedRatingRightSideDivClass">
+                                <p class="vpd_eachUserNameRatedReviewAbtProductPClass">
+                                    reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
+                                </p>
+                                <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserRatedAbtProductPClass'>
+                                    {{eachReviewedRatingTypeDetails.questionTitle}} : 
+                                    <span class="vpd_ratedQuestionAboutProductSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
+                                </p>
+                                <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserReviewedCommentAbtProductPClass'>
+                                    {{eachReviewedRatingTypeDetails.answerText}}
+                                </p>
+                                <p class="vpd_eachUserAvgRatedReviewAbtProductPClass">
+                                    Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+                
+                
+                
             </div>
+            
         
         </div>
         
