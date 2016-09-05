@@ -18,15 +18,12 @@ function LocationServices($http, $q, $rootScope){
             }  
         };
         
-        locationDetails.notificationToUserForDeliveryLocationSelected = function(){
-            $rootScope.userSelectedDeliveryAreaTextHeader = '';
-            $rootScope.isShowUserSelectedDeliveryAreaTextHeader = false;
+        locationDetails.notifyToUserForSelectedDeliveryarea = function(){
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!=='' && infoObj!==undefined 
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
-                $rootScope.isShowUserSelectedDeliveryAreaTextHeader = true;
-                $rootScope.userSelectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
-                var msgStr = "You are at : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
+                $rootScope.selectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
+                var msgStr = "Your selected delivery location is selected at : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
                 var notifyInfoConfigObj = {
                     icon:false,
                     title:false,
@@ -35,7 +32,7 @@ function LocationServices($http, $q, $rootScope){
                     msg:"<p style='text-align:center;'>"+msgStr+"</p>",
                     delay:2000,
                     position:"top left" ,
-                    showClass:"zoomIn deliveryAreaNotifyBoxClass"
+                    showClass:"zoomIn notifyToUserOnlyForSelectedDeliveryArea"
                 }; 
                 showNotificationBoxMsg('', notifyInfoConfigObj);
             }  
