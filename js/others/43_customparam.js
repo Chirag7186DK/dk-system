@@ -378,6 +378,34 @@ function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isRes
 
 ///////////// all products level related code ////////////////
 
+// CJ defined this function 2016-09-05
+function resetUserproductSessionData(){
+    try{
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            var userProductObj = {};
+            userProductObj['shopstore_value'] = '';
+            userProductObj['all_shopstorevalue'] = '';
+            userProductObj['shopstore_name'] = '';
+            userProductObj['producttype_value'] = '';
+            userProductObj['producttype_name'] = '';
+            userProductObj['producttype_categoryvalue'] = '';
+            userProductObj['producttype_categoryname'] = '';
+            userProductObj['producttype_listvalue'] = '';
+            userProductObj['producttype_listname'] = '';
+            userProductObj['producttype_featurevalue'] = '';
+            userProductObj['productviewed_bystatus'] = 'productwise';
+            dkParamObj['userProduct'] = userProductObj;
+            sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+        }
+    }catch(ex){
+        console.log("Problem in resetUserproductSessionData=>"+ex);
+    }
+}
+
 // CJ defined this function 2016-09-03
 function getParamObjForProductTypeAllProductCategoryList(){
     try{
