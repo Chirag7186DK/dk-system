@@ -186,15 +186,30 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     "ccaId":($(elementObj).selectpicker('val')).split("|")[1]
                 };
                 
-                var ordercartRequestedItemCount = getOrdercartRequestItemCountFromSession(elementObj);
-                var userSelectedPrevDeliveryAreaName = getUserSelectedPrevDeliveryAreaName();
+                var ordercartRequestedItemCount = getOrdercartRequestItemCountFromSession();
+                var userSelectedPrevDeliveryAreaDataObj = getUserSelectedPrevDeliveryAreaDetails();
                 if(ordercartRequestedItemCount===0){
                     storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                     $rootScope.userSelectedDeliveryArea =  ($(elementObj).selectpicker('val'));
                     // refresh desserts type list based on deilvery area
                     $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
                     LocationServices.showSelectedDeliveryAreaTextHeader();
-                }else if(userSelectedPrevDeliveryAreaName!=='' && areaNamesStr!=='' && ordercartRequestedItemCount>0){
+                }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>0){
+                    
+                    // show alert popup to user for notify him/her order cart all requested item will be clear from cart 
+                    var msgStr = '';
+                    Lobibox.alert("info", {
+                        msg:msgStr, 
+                        draggable:true,
+                        closeOnEsc:false,
+                        buttons:{
+                            Yes:{'class': 'btn btn-default',text: 'YES', closeOnClick: true},
+                            No: {'class': 'btn btn-default',text: 'NO', closeOnClick: true}
+                        },
+                        callback: function(lobibox, type){
+                        }
+                    });  
+                    
                     
                 }
                 
