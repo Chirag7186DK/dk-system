@@ -114,7 +114,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
-                                    console.log("arrJsonObj=>"+JSON.stringify(arrJsonObj.defaultSelectedDeliveryAreaDetails));
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryAreaDetailsInSessionStorage(arrJsonObj.defaultSelectedDeliveryAreaDetails, 'N');
                                         if(arrJsonObj.defaultSelectedDeliveryAreaDetails!==false){
@@ -175,7 +174,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             $(elementObj).on('changed.bs.select', function(e){
                 var areaNamesStr = '';
                 var selectedAreaSplittedArr = ($(elementObj).find('option:selected').text()).split(" ");
-                alert(selectedAreaSplittedArr);
                 for(var eachIndx = 1; eachIndx<selectedAreaSplittedArr.length; eachIndx++){
                     areaNamesStr+=selectedAreaSplittedArr[eachIndx]+" ";
                 }
