@@ -248,7 +248,7 @@ class RatingReviewDao{
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND qrd.question_answerpattern='SELECT'
-                AND urd.shopstore_id='$shopStoreId' ";
+                AND urd.shopstore_id='$shopStoreId' AND qrd.shopstore_id='$shopStoreId' ";
                 if($productListId!=''){
                     $sqlFetchQuery.= " AND urd.product_listid='$productListId' ";
                 }    
