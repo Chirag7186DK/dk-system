@@ -38,10 +38,10 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
 
 
 // CJ define this funcion 2016-09-05
-function checkUserCanChangeDeliveryLocation(){
+function checkUserCanChangeDeliveryLocation(deliveryAreaElementObj){
     var rtStatus = true;
     try{
-        var selectedCountryCityAreaAffiliationStr = $('#dkDeliveryCityListSelectCtrlId').selectpicker('val');
+        var selectedCountryCityAreaAffiliationStr = $(deliveryAreaElementObj).selectpicker('val');
         if(selectedCountryCityAreaAffiliationStr!=='' 
             && selectedCountryCityAreaAffiliationStr!==null && selectedCountryCityAreaAffiliationStr!==undefined){
             var currentSelectedDeliveryAreaId = (selectedCountryCityAreaAffiliationStr).split("|")[0];
