@@ -1082,6 +1082,48 @@
         cursor:pointer!important;
     }
     
+    .vpd_takeUserReviewRatingProductContainerDivClass{
+        color:rgb(70, 75, 80)!important;
+    }
+
+    .vpd_takeUserReviewRatingProductLblPClass{
+        color:#800080!important;
+        font-size:16px!important;
+    }
+
+    .vpd_eachTakeUserReviewRatingTypeProductContainerDivClass{
+        padding-top:8px!important;
+        padding-bottom:8px!important;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:30%!important;
+    }
+
+    .vpd_submitReviewBtnWrapperDivClass{
+        padding-top:8px!important;
+        padding-bottom:8px!important;
+    }
+
+    .vpd_submitRatingReviewAboutProductBtnClass{
+        border-radius:0px!important;
+        background-color:#fdee00!important;
+        color:#000!important;
+        font-weight:bold!important;
+        margin-right:2%!important;
+    }
+
+    .vp_disableSubmitRatingReviewBtnClass{
+        opacity:0.2!important;
+    }
+
+    .vpd_infoAbtToEnableSubmitRatingReviewBtnSClass{
+        color:rgba(240, 99, 122, 0.85)!important;
+        font-size:12px!important;
+        font-family:serif!important;
+    }
+    
+    
     .vpd_summaryReviewRatingLblSClass{
         color:#800080!important;
         font-size:16px!important;
