@@ -3,7 +3,7 @@ angular.module('DKAPP').directive('showUserselecteddeliveryareatextheaderDirecti
 
 function showUserselecteddeliveryareatextheaderDirective(LocationServices){
     return function(scope, element, attrs){
-        LocationServices.showUserSelectedDeliveryAreaTextHeader();
+        LocationServices.notificationToUserForDeliveryLocationSelected();
     };
 }
 
@@ -175,51 +175,6 @@ function customerBreadcrumbDirective(){
     return function(scope, element, attrs){
         // customer product breadcrumb fetch
         scope.customerBreadCrumbOnWebApp = getCustomerBreadcrumb();
-    };
-}
-
-angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistDashboardlevel', scrollHorizontallyDessertsproducttypelistDashboardlevel);
-
-function scrollHorizontallyDessertsproducttypelistDashboardlevel(){
-    return {
-        link:function(scope, element, attrs){
-            if(scope.$last){
-                setTimeout(function(){
-                    // apply horizontal scrolling features
-                    if($('#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').length>0){
-                        var existingOwlOptions = {
-                            navigation:false,
-                            paginationSpeed:1000,
-                            goToFirstSpeed:2000,
-                            transitionStyle:"fade",
-                            itemsScaleUp:true
-                        };
-                        var owlObj = $("#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId").data('owlCarousel');
-                        if(owlObj!==false && owlObj!==undefined && owlObj!==''){
-                            owlObj.reinit(existingOwlOptions);
-                        }else{
-                            $("#dl_DeliveryAreabasedDkServedAllDessertsScrollerWrapperDivId").owlCarousel(existingOwlOptions);
-                        }
-                    }
-                }, 1);
-            }
-        }
-    };
-}
-
-angular.module('DKAPP').directive('maxheightProductboxwidgetDashboardlevel', maxheightProductboxwidgetDashboardlevel);
-
-function maxheightProductboxwidgetDashboardlevel(){
-    return function(scope, element, attrs){
-        if(scope.$last){
-            // apply max height css on element
-            setTimeout(function(){
-                applyMaxHeightCssOnAllProductBoxWidget('dl_productBoxWidgetDivClass');
-            }, 1);
-            scope.$on('resize::resize', function() {
-                applyMaxHeightCssOnAllProductBoxWidget('dl_productBoxWidgetDivClass');
-            });
-        }
     };
 }
 
