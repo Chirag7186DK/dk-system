@@ -531,8 +531,8 @@ function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
             // extract dk param session data
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
-            userProductObj['shopstore_value'] = paramDataObj['shopStoreIds'];
-            userProductObj['all_shopstorevalue'] = paramDataObj['shopStoreIds'];
+            userProductObj['shopstore_value'] = paramDataObj['shopStoreId'];
+            userProductObj['all_shopstorevalue'] = paramDataObj['shopStoreId'];
             userProductObj['shopstore_name'] = paramDataObj['shopStoreTitle'];
             userProductObj['producttype_value'] = paramDataObj['productTypeId'];
             userProductObj['producttype_name'] = paramDataObj['productTypeTitle'];
