@@ -211,7 +211,8 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                         },
                         callback: function(lobibox, type){
                             if(type==='Yes'){
-                                var rtStatus = OrderCartServices.resetAllItemOrdercart();
+                                alert("Reset all item in order cart Yes");
+                                // var rtStatus = OrderCartServices.resetAllItemOrdercart();
                             }
                         }
                     });  
