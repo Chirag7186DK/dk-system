@@ -24,9 +24,7 @@ function dkSessionController($scope, $rootScope){
                 }
             }else if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
                 && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false) && pageLoad==='home'){
-                // generate new user session id
-                // generateDkUserSessionId();
-                // addTrackingUserInfoAccessingWebsitesDetails(pageLoad);
+                // reset user product data in session
                 resetUserproductSessionData();
             }else if((sessionStorage.getItem('DKPARAMOBJ')===null || sessionStorage.getItem('DKPARAMOBJ')===undefined 
                 || sessionStorage.getItem('DKPARAMOBJ')==='' || sessionStorage.getItem('DKPARAMOBJ')===false) && pageLoad!=='home'){
