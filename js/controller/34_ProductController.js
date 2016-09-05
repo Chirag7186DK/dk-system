@@ -478,6 +478,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDescriptionDetailsArr = false;
                     $rootScope.isProductDescriptionDetailsFound = false;
+                    $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
+                    $rootScope.isToggleProductDescriptionContent = false;
                     // calling ProductServices 
                     ProductServices.getProductDescriptionDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
@@ -487,6 +489,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                                     && productDescriptionDetailsArr!==undefined && productDescriptionDetailsArr!==''){
                                     $rootScope.isProductDescriptionDetailsFound = true;
                                     $rootScope.productDescriptionDetailsArr = productDescriptionDetailsArr;
+                                    $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
+                                    $rootScope.isToggleProductDescriptionContent = false;
                                 }
                             }
                         });
@@ -495,6 +499,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }catch(ex){
                 $rootScope.isProductDescriptionDetailsFound = false;
                 $rootScope.productDescriptionDetailsArr = false;
+                $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
+                $rootScope.isToggleProductDescriptionContent = false;
                 console.log("problem in loadProductDescriptionDetails ex=>"+ex);
             }
         };
@@ -525,8 +531,10 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         $rootScope.toggleProductDescriptionContent = function(){
             if($rootScope.isToggleProductDescriptionContent===false){
                 $rootScope.isToggleProductDescriptionContent = true;
+                $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-down";
             }else{
                 $rootScope.isToggleProductDescriptionContent = false;
+                $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
             }
         };
         
