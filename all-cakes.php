@@ -143,7 +143,6 @@
             
             <!-- product filter operation -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductFilterOperationWrapperDivClass">
-                    
                 <!-- info / tips about product filtering operation -->
                 <p class='vap_tipAbtFilterProductPClass'>
                     Tip *: Use filter to find products more easy & quickly !
@@ -151,7 +150,6 @@
                         <i class="fa fa-filter"></i> {{toggleViewAllProductFilterBtnLabel}}
                     </button>
                 </p>
-                    
                 <div ng-show="isShowViewAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{productViewAllFilterPopDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productFilterPopupBodyDivClass'>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
@@ -179,7 +177,6 @@
                         </div>
                     </div>
                 </div>
-                    
             </div>
             
             <!-- all product list will be loaded here -->
