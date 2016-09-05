@@ -1076,6 +1076,12 @@
         border-bottom:1px solid rgba(196, 249, 217, 0.9)!important;
     }
     
+    .moreLessRatingReviewProductIconClass{
+        margin-left:10px!important;
+        font-size:20px!important;
+        cursor:pointer!important;
+    }
+    
     .vpd_summaryReviewRatingLblSClass{
         color:#800080!important;
         font-size:16px!important;
