@@ -389,7 +389,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         
         // storeProductTypeProductCategoryProductDataInSession
         $rootScope.storeProductTypeProductCategoryProductDataInSession = function(productParamDataObj){
-            var storedDataStatus = storeProductTypeProductCategoryProductDataInSession(productParamDataObj);
+            var storedDataStatus = storeProductTypeProductCategoryProductDataInSession(productParamDataObj, "N");
             if(storedDataStatus===true){  
                 if((productParamDataObj['productTypeTitle']).toLowerCase()==='cakes'){
                     window.location.href =  globalBaseSitePath+"store-all-cakes.php";
