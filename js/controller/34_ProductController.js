@@ -179,7 +179,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnStoreFilterSelectCtrlElement=>"+ex);
@@ -260,7 +260,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 }catch(ex){
                     console.log("problem in applyChangeEventOnPriceFilterSelectCtrlElement=>"+ex);
                 }    
@@ -312,7 +312,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnSizeFilterSelectCtrlElement=>"+ex);
@@ -378,7 +378,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    angular.element('#vapWrapperDivId').scope().loadProductTypeProductCategoryAllProductList();
+                    $rootScope.loadProductTypeProductCategoryAllProductList();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnDiscountFilterSelectCtrlElement=>"+ex);
