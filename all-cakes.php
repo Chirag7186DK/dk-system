@@ -71,7 +71,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_containerDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_userBreadcrumbDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_userBreadcrumbDivClass">
                 <ul class="vap_userBreadcrumbULClass list-inline">
                     <li class='vap_userBreadcrumbHomeLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
