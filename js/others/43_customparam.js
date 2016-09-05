@@ -5,6 +5,7 @@
 
 function initializeDkSessionData(){
     try{
+        
         var userSessionObj = {};
         userSessionObj['usersession_starttimestamp'] = (new Date()).getTime();
         userSessionObj['lastupdated_sessiontimestamp'] = '';
@@ -55,6 +56,8 @@ function initializeDkSessionData(){
         var userAccessLastPageFromObj = {"page":""};
 
         var userOrderItemObj = {};
+        
+        var userOrdercartSummaryObj = {"totalItems":0};
 
         var requestedSectionUserAccountObj = {};
 
@@ -68,6 +71,7 @@ function initializeDkSessionData(){
         dkParamObj['userRecentlyProduct'] = userRecentlyViewedProductObj;
         dkParamObj['userAccessLastPageFromObj'] = userAccessLastPageFromObj;
         dkParamObj['userOrderItemObj'] = userOrderItemObj;
+        dkParamObj['userOrdercartSummaryObj'] = userOrdercartSummaryObj;
         dkParamObj['requestedSectionUserAccountObj'] = requestedSectionUserAccountObj;
 
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
@@ -110,8 +114,11 @@ function resetDKSessionData(){
             userProductObj['producttype_featurevalue'] = '';
             userProductObj['productviewed_bystatus'] = 'productwise';
             
+            var userOrdercartSummaryObj = {"totalItems":0};
+            
             dkParamObj['userSession'] = userSessionObj;
             dkParamObj['userProduct'] = userProductObj;
+            dkParamObj['userOrdercartSummaryObj'] = userOrdercartSummaryObj;
             dkParamObj['userAccessLastPageFromObj'] = {"page":""};
             dkParamObj['userOrderItemObj'] = {};
             dkParamObj['requestedSectionUserAccountObj'] = {};
