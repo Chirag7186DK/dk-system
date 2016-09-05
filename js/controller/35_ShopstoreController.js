@@ -501,6 +501,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.isShowCStoreWorkingStyleDetails = true;
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
+                $rootScope.storeNotFoundProductMsgStr = '';
                 $rootScope.loadCStoresWorkingStyle();
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
@@ -530,6 +531,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.cStoreWorkingstyleDetails = false;
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
+                $rootScope.storeNotFoundProductMsgStr = '';
                 $rootScope.loadCStoreAllUserRatingReviewed();
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
@@ -559,6 +561,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.cStoreWorkingstyleDetails = false;
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
+                $rootScope.storeNotFoundProductMsgStr = '';
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
