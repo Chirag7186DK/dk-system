@@ -58,8 +58,8 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }
         };
         
-        // loadCShopStoreSummaryInfo 
-        $rootScope.loadCShopStoreSummaryInfo = function(){
+        // loadCStoreSummaryInfo 
+        $rootScope.loadCStoreSummaryInfo = function(){
             try{
                 // get param obj
                 var preparedParamJsonObj = getParamObjForCShopStoreSummaryInfo();
@@ -87,7 +87,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.storeInfo = false;
                 $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !!!';
                 $rootScope.isRatingReviewBasedInfoFound = false;
-                console.log("problem in loadCShopStoreMenuSummaryInfo ex=>"+ex);
+                console.log("problem in loadCStoreSummaryInfo ex=>"+ex);
             }
         };
         
@@ -429,8 +429,8 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         };   
           
         
-        // loadShopStoreAllUserRatingReviewed 
-        $rootScope.loadShopStoreAllUserRatingReviewed = function(){
+        // loadCStoreAllUserRatingReviewed 
+        $rootScope.loadCStoreAllUserRatingReviewed = function(){
             try{
                 if($rootScope.isShowCStoreRatingReviewDetails===true){
                     // get param obj to load all user rating about product 
@@ -498,8 +498,8 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }
         };
         
-        // toggleShopStoreSelfSummaryInfoDetails
-        $rootScope.toggleShopStoreSelfSummaryInfoDetails = function(){
+        // toggleCStoreSelfSummaryInfoDetails
+        $rootScope.toggleCStoreSelfSummaryInfoDetails = function(){
             if($rootScope.isToggleCStoreSelfSummaryInfo===false){
                 $rootScope.isToggleCStoreSelfSummaryInfo = true;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Hide Details";
@@ -526,8 +526,8 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }
         };
         
-        // toggleShopStoreRatingReviewDetails
-        $rootScope.toggleShopStoreRatingReviewDetails = function(){
+        // toggleCStoreRatingReviewDetails
+        $rootScope.toggleCStoreRatingReviewDetails = function(){
             if($rootScope.isShowCStoreRatingReviewDetails===false){
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
