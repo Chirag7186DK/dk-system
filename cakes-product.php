@@ -24,14 +24,12 @@
         
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
-            
             <!-- web log header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
-            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
@@ -61,7 +59,6 @@
                     </li>
                 </ul>
             </div>
-            
         </div>
         
         <!-- header row border div class -->
@@ -69,7 +66,6 @@
 
         <!-- view specific requested product details -->
         <div ng-controller="ProductController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass activateHeaderOnwindowScroll">
-            
             <!-- customer bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_userBreadcrumbDivClass">
                 <ul class="vpd_userBreadcrumbULClass list-inline">
@@ -123,7 +119,7 @@
             </div>
             
             <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass" style="margin-bottom:0px!important;"></div>
             
             <!-- show product images -->
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_productImagesContainerDivClass">
@@ -207,23 +203,20 @@
             
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
+            
             <!-- product description details -->
-            <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_featuresContainerDivClass">
-                <div class="panel vpd_productDescriptionPanelContainerDivClass">
-                    <div class="panel-heading vpd_productDescriptionPanelHeadingDivClass">
-                        <h5 class='vpd_productDescriptionLabelHClass'>
-                            <i class='fa fa-file-text-o'></i> DESCRIPTION
-                        </h5>
-                    </div>
-                    <div id="vpd_productDescriptionPanelBodyContainerDivId" class="vpd_productDescriptionPanelBodyContainerDivClass">
-                        <ul ng-repeat="eachDescriptionTitleAndPoints in productDescriptionDetailsArr" class="vpd_productDescriptionTitleULClass">
-                            <li class='vpd_productDescriptionTitleLIClass'>{{eachDescriptionTitleAndPoints.descriptionTitle}}</li>
-                            <ul class="vpd_productDescriptionULClass">
-                                <li ng-repeat="eachPoints in eachDescriptionTitleAndPoints.descriptionPointsArr">{{eachPoints}}</li>
-                            </ul>
+            <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productFeaturesContainerDivClass">
+                <p class="vpd_productDescriptionLabelHeaderPClass">
+                    <i class='fa fa-file-text-o'></i> INFORMATION
+                    <span class="fa fa-chevron-circle-up moreLessProductDescriptionIconClass"></span>
+                </p>
+                <div id="vpd_productFeaturesBodyContainerDivId" class="vpd_productFeaturesBodyContainerDivClass">
+                    <ul ng-repeat="eachDescriptionTitleAndPoints in productDescriptionDetailsArr" class="vpd_productDescriptionTitleULClass">
+                        <li class='vpd_productDescriptionTitleLIClass'>{{eachDescriptionTitleAndPoints.descriptionTitle}}</li>
+                        <ul class="vpd_productDescriptionULClass">
+                            <li ng-repeat="eachPoints in eachDescriptionTitleAndPoints.descriptionPointsArr">{{eachPoints}}</li>
                         </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
             
