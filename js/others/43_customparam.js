@@ -539,9 +539,9 @@ function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
             userProductObj['producttype_name'] = paramDataObj['productTypeTitle'];
             userProductObj['producttype_categoryvalue'] = paramDataObj['productTypeProductCategoryId'];
             userProductObj['producttype_categoryname'] = paramDataObj['productTypeProductCategoryTitle'];
-            userProductObj['producttype_listvalue'] = '';
-            userProductObj['producttype_listname'] = '';
-            userProductObj['producttype_featurevalue'] = '';
+            userProductObj['producttype_listvalue'] = paramDataObj['productListId'];
+            userProductObj['producttype_listname'] = paramDataObj['productListTitle'];
+            userProductObj['producttype_featurevalue'] = paramDataObj['productFeatureId'];
             userProductObj['productviewed_bystatus'] = 'productwise';
             existingDkParamObj['userProduct'] = userProductObj;
             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
