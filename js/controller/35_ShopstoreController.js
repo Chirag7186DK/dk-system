@@ -397,7 +397,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeAllProductDetailsList = false;
                     $rootScope.storeDefaultSelectProductCategoryTitle = '';
-                    $rootScope.storeNotFoundProductMsgStr = 'No products found or used proper filter !!!';
+                    $rootScope.storeNotFoundProductMsgStr = '';
                     $rootScope.storeTotalProductCount = 0;
                     // calling ProductServices 
                     ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
