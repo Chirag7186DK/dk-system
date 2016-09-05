@@ -302,7 +302,6 @@ function storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSes
                     }
                 }
             } 
-            console.log("existingDkParamObj=>"+JSON.stringify(existingDkParamObj));
             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
         }
     }catch(ex){}
