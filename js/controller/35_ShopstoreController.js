@@ -435,17 +435,10 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 if($rootScope.isShowCStoreRatingReviewDetails===true){
                     // get param obj to load all user rating about product 
                     var preparedParamJsonObj = getParamObjFromSessionForShopStoreRatingReviewedDetails();
-                    // console.log("loadShopStoreAllUserRatingReviewed preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-
                         var fetchedParamJsonObj = {};
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.allUserRatingReviewDetails = false;
-
                         // calling RatingReviewServices 
                         RatingReviewServices.getShopStoreAllUserRatingReviewed(fetchedParamJsonObj).done(function(retResponseJson){
                             $rootScope.$apply(function(){
@@ -453,7 +446,6 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                     if(retObj!==false && retObj!==undefined && retObj!==''){
-                                        // console.log("loadShopStoreAllUserRatingReviewed retObj=>"+JSON.stringify(retObj));
                                         $rootScope.allUserRatingReviewDetails = retObj.allUserRatingReviewAbtProductDetails;
                                     }
                                 }
@@ -464,7 +456,6 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }catch(ex){
                 $rootScope.allUserRatingReviewDetails = false;
                 console.log("problem in loadShopStoreAllUserRatingReviewed ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
