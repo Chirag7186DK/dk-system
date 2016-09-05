@@ -330,7 +330,7 @@ function scrollHorizontallyCshopstoresummaryinfo(){
                     paginationSpeed:1000,
                     goToFirstSpeed:2000,
                     transitionStyle:"fade",
-                    autoHeight:true
+                    autoHeight:false
                 };
                 var owlObj = $("#cshopStoreSummaryInfoWrapperDivId").data('owlCarousel');
                 if(owlObj!==false && owlObj!==undefined && owlObj!==''){
