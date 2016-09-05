@@ -389,11 +389,11 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         
         // storeProductTypeProductCategoryProductDataInSession
         $rootScope.storeProductTypeProductCategoryProductDataInSession = function(productParamDataObj){
-            var storedDataStatus = storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(productParamDataObj);
+            var storedDataStatus = storeProductTypeProductCategoryProductDataInSession(productParamDataObj);
             if(storedDataStatus===true){  
-                if((paramObj['productTypeTitle']).toLowerCase()==='cakes'){
+                if((productParamDataObj['productTypeTitle']).toLowerCase()==='cakes'){
                     window.location.href =  globalBaseSitePath+"store-all-cakes.php";
-                }else if((paramObj['productTypeTitle']).toLowerCase()==='chocolates'){
+                }else if((productParamDataObj['productTypeTitle']).toLowerCase()==='chocolates'){
                     window.location.href =  globalBaseSitePath+"store-all-chocolates.php";
                 }
             }
