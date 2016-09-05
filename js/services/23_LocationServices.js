@@ -23,7 +23,7 @@ function LocationServices($http, $q, $rootScope){
             if(infoObj!=='' && infoObj!==undefined 
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
                 $rootScope.selectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
-                var msgStr = "Your selected delivery location is selected at : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
+                var msgStr = "Your delivery location is selected : "+infoObj['userSelectedArea']+" - "+infoObj['userSelectedAreaPincode'];
                 var notifyInfoConfigObj = {
                     icon:false,
                     title:false,
