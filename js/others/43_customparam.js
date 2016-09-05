@@ -378,7 +378,6 @@ function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isRes
 
 ///////////// all products level related code ////////////////
 
-
 // CJ defined this function 2016-09-03
 function getParamObjForProductTypeAllProductCategoryList(){
     try{
@@ -419,8 +418,8 @@ function getParamObjForProductTypeAllProductCategoryList(){
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
+                paramObj['shopstoreids'] = '';
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
-                    paramObj['shopstoreids'] = '';
                     if(parseInt(userProductObj['shopstore_value'])>0 
                         && userProductObj['shopstore_value']!==''){
                         paramObj['shopstoreids'] = userProductObj['shopstore_value'];
