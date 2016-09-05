@@ -716,11 +716,12 @@
     }
 
     .vap_notFoundProductMsgDivClass{
-        text-align:center;
-        font-size:15px!important;
+        text-align:center!important;
+        font-size:20px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        color:#f54264!important;
     }
-
-
 
     /*  view product css code  */
 
