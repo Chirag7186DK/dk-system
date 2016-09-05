@@ -100,7 +100,7 @@
                         Near By : {{storeInfo.shopStoreAddress}}
                     </p>
                     <p ng-click="toggleCStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
-                        {{toggleCSelfSummaryInfoLblText}}
+                        {{toggleCStoreSelfSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -248,11 +248,11 @@
                     </p>
                     <p class='cshopstore_productWeightPClass'>
                         Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
-                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right vap_productVegIconClass">
-                            <i class="fa fa-square"></i>
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
+                            <i class="fa fa-square vap_productVegIconClass"></i>
                         </span>
                         <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
-                            <i class="fa fa-square"></i>
+                            <i class="fa fa-square vap_productVegIconClass"></i>
                         </span>
                     </p>
                     <p class='cshopstore_productBtnWrapperPClass'> 
