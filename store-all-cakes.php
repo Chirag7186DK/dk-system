@@ -184,7 +184,7 @@
                 <!-- info / tips about product filtering operation -->
                 <p class='cshopstore_tipAbtFilterProductPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
-                    <button ng-click="toggleCShopStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
+                    <button ng-click="toggleCStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
                         <i class="fa fa-filter"></i> {{toggleCstoreProductFilterBtnLabel}}
                     </button>
                 </p>
