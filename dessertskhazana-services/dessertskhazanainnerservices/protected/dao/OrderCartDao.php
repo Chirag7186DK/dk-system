@@ -509,4 +509,19 @@ class OrderCartDao{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-09-05
+    public static function resetAllItemOrdercart(){
+        $retStatus = 'FALSE';
+        try{
+            $connection = Yii::App()->db;
+            $sql= "";
+            $command = $connection->createCommand($sql);
+            $result = $command->execute();
+            if($result>=0){
+                $retStatus = 'TRUE';
+            }
+        }catch(Exception $ex){}
+        return $retStatus;
+    }
+    
 }
