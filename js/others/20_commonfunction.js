@@ -38,23 +38,28 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
 
 
 // CJ define this funcion 2016-09-05
-function getUserSelectedPrevDeliveryAreaName(){
-    var userSelectedPrevDeliveryAreaName = '';
+function getUserSelectedPrevDeliveryAreaDetails(){
+    var userSelectedPrevDeliveryAreaDataObj = {};
+    userSelectedPrevDeliveryAreaDataObj['areavalue'] = '';
+    userSelectedPrevDeliveryAreaDataObj['areaname'] = '';
+    userSelectedPrevDeliveryAreaDataObj['ccaId'] = '';
     try{
         var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
             // extract user suggested city area session data
-            var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
-            if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('areaname')===true){
-                if(userSelectedDeliveryCityAreaDessertsTypeObj['areaname']!==''){
-                    userSelectedPrevDeliveryAreaName = userSelectedDeliveryCityAreaDessertsTypeObj['areaname'];
+            var paramDataObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
+            if(paramDataObj.hasOwnProperty('areaname')===true){
+                if(paramDataObj['areaname']!==''){
+                    userSelectedPrevDeliveryAreaDataObj['areavalue'] = paramDataObj['areavalue'];
+                    userSelectedPrevDeliveryAreaDataObj['areaname'] = paramDataObj['areaname'];
+                    userSelectedPrevDeliveryAreaDataObj['ccaId'] = paramDataObj['ccaId'];
                 }
             }
         }
     }catch(ex){
-        userSelectedPrevDeliveryAreaName = false;
+        userSelectedPrevDeliveryAreaDataObj = false;
     }
-    return userSelectedPrevDeliveryAreaName;
+    return userSelectedPrevDeliveryAreaDataObj;
 }
 
 
@@ -134,7 +139,7 @@ function getOrdercartRequestItemCountFromSession(){
     }catch(ex){
         ordercartRequestedItemCount = 0;
     }
-    return ordercartRequestedItemCount;
+    return 12;
 }
 
 // CJ define this funcion 2016-08-06
