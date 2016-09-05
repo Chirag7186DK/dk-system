@@ -213,7 +213,7 @@
                 </div>
             </div>
             
-            <!-- all product list will be loaded here -->
+            <!-- store all product list will be loaded here -->
             <div ng-controller="ShopStoreController" ng-show="storeAllProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
                 
                 <!-- summary info display -->
