@@ -1201,26 +1201,6 @@
 
     /*  customer point view shopstore css code */
 
-
-    .dkAllCompleteOffersContainerDivClass{
-        background:whitesmoke;
-        height:250px!important;
-        text-align:center;
-        padding:20px!important;
-        margin-right:1%;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold;
-    }
-
-    .dkAllSpecialOffersContainerDivClass{
-        background:whitesmoke;
-        height:250px!important;
-        text-align:center;
-        padding:20px!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold;
-    }
-
     .cshopstore_userBreadcrumbDivClass{
         margin-top:20px;
         border:1px solid #DCE0EF!important;
@@ -1242,11 +1222,6 @@
         border-bottom:2px dotted #CDCEE8!important;
         text-decoration:none!important;
         font-weight:100!important;
-        color:#828282!important;
-        font-size:12px!important;
-    }
-
-    .cshopstore_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
         color:#828282!important;
         font-size:12px!important;
     }
@@ -1395,7 +1370,6 @@
         font-family:serif;
     }
 
-
     .cshopStoreServedAllDessertsProductScrollerWrapperDivClass{
         padding-right:0px!important;
         height:147px!important;
@@ -1520,7 +1494,6 @@
         list-style:none!important;
         font-size:14px!important;
     }
-
 
     .cShopStoreProductFilterOperationWrapperDivClass{
         padding-top:10px;
@@ -1724,19 +1697,6 @@
         font-size:14px!important;
     }
 
-    .cshopstore_productDeliveryLocationPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-    }
-
-    .cshopstore_specificProductAddWishListBtnClass{
-        border-radius:0px!important;
-        background-color:#ED143D!important;
-        color:#fff!important;
-        margin-right:2%!important;
-        font-weight:bold!important;
-    }
-
     .cshopstore_specificProductAddBtnClass{
         border-radius:0px!important;
         background-color:rgba(154, 205, 50, 0.88)!important;
@@ -1788,20 +1748,6 @@
         border-bottom:none!important;
     }
 
-    
-    .cshopstore_userNameIntialLetterRatedReviewedAbtProductSClass{
-        background-color:#5fcbef!important;
-        font-size:25px!important;
-        line-height:35px!important;
-        color:#fff!important;
-        text-align:center!important;
-        width:40px!important;
-        height:40px!important;
-        border-radius:50%!important;
-        font-family:serif!important;
-        font-weight:bold!important;
-    }
-
     .cshopstore_eachUserNameRatedReviewAbtProductPClass{
         color:rgb(70, 75, 80)!important;
         font-size:22px!important;
@@ -1836,43 +1782,6 @@
         font-size:16px!important;
         font-family:serif!important;
         font-weight:normal!important;
-    }
-
-    .cshopstore_productDeliveryAreaWrapperDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        background:whitesmoke!important;
-        border:1px solid #DCE0EF!important;
-    }
-
-    .cShopstoreProductDeliveryAreaHeaderPClass{
-        text-align:center!important;
-        font-weight:bold!important;
-        font-family:serif!important;
-        font-size:20px!important;
-        color:#8c7de6!important;
-    }
-
-    .cShopstoreProductDeliveryAreaIconClass{
-        color:rgba(154, 205, 50, 0.88)!important;
-    }
-
-    .cShopstoreProductDeliveryAreaBodyPClass{
-        text-align:center!important;
-        font-weight:bold!important;
-        font-family:serif!important;
-        font-size:15px!important;
-        color:#7c838a!important;
-    }
-
-    .cshopstore_productDeliveryAreaNotFoundMsgDivClass{
-        text-align:left!important;
-        font-weight:bold!important;
-        font-family:serif!important;
-        font-size:17px!important;
-        color:#fb366e!important;
     }
 
     .cshopstore_workingStyleWrapperDivClass{
@@ -1916,7 +1825,6 @@
         font-size:17px!important;
         color:#fb366e!important;
     }
-
 
     
     /* corporate tieup order css code */
