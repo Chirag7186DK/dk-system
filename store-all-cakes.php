@@ -87,7 +87,7 @@
             </div>
             
             <!-- store summary(self,rating/review/desserts menu) info -->
-            <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCShopStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
+            <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
                 
                 <!-- store basic info -->
                 <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
@@ -99,8 +99,8 @@
                     <p class='cShopStoreLocatedInfoLblPClass'>
                         Near By : {{storeInfo.shopStoreAddress}}
                     </p>
-                    <p ng-click="toggleShopStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
-                        {{toggleCStoreSelfSummaryInfoLblText}}
+                    <p ng-click="toggleCStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
+                        {{toggleCSelfSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -133,10 +133,10 @@
             </div>
 
             <!-- store served all desserts type info -->
-            <div ng-show="isToggleShopStoreDessertsMenu" ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
+            <div ng-show="isToggleCStoreDessertsMenu" ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
                 
                 <!-- display selected desserts type title ordering by customer -->
-                <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" class="cshopstoreServedDessertsProductNoteLIClass">
+                <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" class="cshopstoreServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you are viewing '{{shopstoreInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
                         <span class="badge cshopstore_dessertsProductTypeCountSClass">
@@ -146,7 +146,7 @@
                 </li>
                 
                 <!-- display all desserts type can served by store in your selected delivery area -->
-                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
+                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='cshopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-cshopstorelevel>
                         <p class="dessertsProductIconPClass">
