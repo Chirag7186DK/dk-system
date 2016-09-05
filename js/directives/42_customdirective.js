@@ -1,9 +1,10 @@
 
-angular.module('DKAPP').directive('showUserselecteddeliveryareatextheaderDirective', showUserselecteddeliveryareatextheaderDirective);
 
-function showUserselecteddeliveryareatextheaderDirective(LocationServices){
+angular.module('DKAPP').directive('notifyuserSelectedDeliveryareaTextheaderDirective', notifyuserSelectedDeliveryareaTextheaderDirective);
+
+function notifyuserSelectedDeliveryareaTextheaderDirective(LocationServices){
     return function(scope, element, attrs){
-        LocationServices.notificationToUserForDeliveryLocationSelected();
+        LocationServices.notifyToUserForSelectedDeliveryarea();
     };
 }
 
