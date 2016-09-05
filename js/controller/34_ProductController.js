@@ -385,7 +385,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
-           
         // loadProductTypeProductCategoryAllProductList 
         $rootScope.loadProductTypeProductCategoryAllProductList = function(){
             try{
