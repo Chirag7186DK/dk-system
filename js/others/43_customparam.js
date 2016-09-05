@@ -1628,6 +1628,23 @@ function getParamDataToUpdateUserpasswordInfo(){
 ///////////////// order cart related code here ///////////////////////////
 
 
+// CJ defined this function 2016-09-05
+function resetOrdercartSummaryDataObjInSession(){
+    try{
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            var userOrdercartSummaryObj = {"totalItems":0};
+            dkParamObj['userOrdercartSummaryObj'] = userOrdercartSummaryObj;
+            sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+        }
+    }catch(ex){
+        console.log("Problem in resetOrdercartSummaryDataObjInSession=>"+ex);
+    }
+}
+
 // CJ defined this function 2016-08-13
 function storeUserOrderItemInSession(productDetailsObj, fcontentClass){
     var userOrderItemObj = {};
