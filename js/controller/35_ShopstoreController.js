@@ -13,7 +13,6 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         $rootScope.cStoreProductFilterPopupDivClass = "";
         $rootScope.isToggleCStoreSelfSummaryInfo = false;
         $rootScope.isToggleCStoreDessertsMenu = false;
-        $rootScope.isShowCStoreDessertsTypeMenuList = false;
         $rootScope.isShowCStoreRatingReviewDetails = false;
         $rootScope.allUserRatingReviewDetails = false;
         $rootScope.isShowCStoreWorkingStyleDetails = false;
@@ -496,7 +495,6 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Hide Details";
                 $rootScope.isToggleCStoreDessertsMenu = false;
                 $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreDessertsTypeMenuList = false;
                 $rootScope.isShowCStoreRatingReviewDetails = false;
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -509,7 +507,6 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleCStoreDessertsMenu = false;
                 $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreDessertsTypeMenuList = false;
                 $rootScope.isShowCStoreRatingReviewDetails = false;
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
@@ -526,25 +523,25 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleCStoreDessertsMenu = false;
                 $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreDessertsTypeMenuList = false;
                 $rootScope.isShowCStoreRatingReviewDetails = true;
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Hide Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.loadShopStoreAllUserRatingReviewed();
                 $rootScope.isShowCStoreWorkingStyleDetails = false;
                 $rootScope.cStoreWorkingstyleDetails = false;
+                $rootScope.productTypeAllProductCategoryList = false;
+                $rootScope.storeAllProductDetailsList = false;
+                $rootScope.loadCStoreAllUserRatingReviewed();
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleCStoreDessertsMenu = false;
                 $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreDessertsTypeMenuList = false;
                 $rootScope.isShowCStoreRatingReviewDetails = false;
                 $rootScope.toggleCRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowCStoreWorkingStyleDetails = false;
                 $rootScope.cStoreWorkingstyleDetails = false;
-                $rootScope.loadProductTypeProductCategoryAllProductListCStore();
+                $rootScope.loadProductTypeAllProductCategoryListCStore();
             }
         };
         
@@ -555,18 +552,18 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleCStoreDessertsMenu = true;
                 $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Hide Details";
-                $rootScope.isShowCStoreDessertsTypeMenuList = true;
                 $rootScope.isShowCStoreRatingReviewDetails = false;
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowCStoreWorkingStyleDetails = false;
                 $rootScope.cStoreWorkingstyleDetails = false;
+                $rootScope.productTypeAllProductCategoryList = false;
+                $rootScope.storeAllProductDetailsList = false;
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleCStoreDessertsMenu = false;
                 $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreDessertsTypeMenuList = false;
                 $rootScope.isShowCStoreRatingReviewDetails = false;
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
