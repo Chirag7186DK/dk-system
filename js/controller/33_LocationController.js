@@ -185,16 +185,17 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     "areaName":(areaNamesStr.trim()),
                     "ccaId":($(elementObj).selectpicker('val')).split("|")[1]
                 };
-                // checking user can changed delivery location
-                var isUserCanChangedDeliveryLocationStatus = checkUserCanChangeDeliveryLocation();
-                if(isUserCanChangedDeliveryLocationStatus===true){
+                
+                var ordercartRequestedItemCount = getOrdercartRequestItemCountFromSession(elementObj);
+                var userSelectedPrevDeliveryAreaName = getUserSelectedPrevDeliveryAreaName();
+                if(ordercartRequestedItemCount===0){
                     storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                     $rootScope.userSelectedDeliveryArea =  ($(elementObj).selectpicker('val'));
                     // refresh desserts type list based on city, area
                     $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
                     LocationServices.showSelectedDeliveryAreaTextHeader();
-                }else{
-                    alert(isUserCanChangedDeliveryLocationStatus);
+                }else if(userSelectedPrevDeliveryAreaName!=='' && ordercartRequestedItemCount>0){
+                    
                 }
                 
             });
