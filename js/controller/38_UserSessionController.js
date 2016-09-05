@@ -12,10 +12,6 @@ function dkSessionController($scope, $rootScope){
     $rootScope.defaultedSelectedDKDeliveryCity = '';
     $rootScope.dkDeliveryAreaList = false;
     $rootScope.defaultedSelectedDKDeliveryArea = '';
-    $rootScope.dkDeliveryAreaBasedProductTypeList = false;
-    $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeValue = '';
-    $rootScope.defaultedSelectedDKDeliveryAreaBasedProductTypeTitle = '';
-    $rootScope.isDessertsProductTypeProductListLoaded = false;
     
     // loadDefaultDataInDkSession
     $rootScope.loadDefaultDataInDkSession = function(pageLoad){
