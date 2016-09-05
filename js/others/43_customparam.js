@@ -447,7 +447,7 @@ function getParamObjForProductTypeAllProductCategoryList(){
 }
 
 // CJ defined this function 2016-09-04
-function storeProductTypeProductCategoryDataInSession(paramDataObj){
+function storeProductTypeProductCategoryDataInSession(paramDataObj, isResetAllData){
     try{
         var storeDataStatus = false;
         // checking session param
@@ -455,7 +455,7 @@ function storeProductTypeProductCategoryDataInSession(paramDataObj){
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            var userProductObj = {};
+            var userProductObj = existingDkParamObj['userProduct'];
             userProductObj['shopstore_value'] = paramDataObj['shopStoreIds'];
             userProductObj['all_shopstorevalue'] = paramDataObj['shopStoreIds'];
             userProductObj['shopstore_name'] = '';
@@ -463,11 +463,14 @@ function storeProductTypeProductCategoryDataInSession(paramDataObj){
             userProductObj['producttype_name'] = paramDataObj['productTypeTitle'];
             userProductObj['producttype_categoryvalue'] = paramDataObj['productTypeProductCategoryId'];
             userProductObj['producttype_categoryname'] = paramDataObj['productTypeProductCategoryTitle'];
-            userProductObj['producttype_listvalue'] = '';
-            userProductObj['producttype_listname'] = '';
-            userProductObj['producttype_featurevalue'] = '';
+            if(isResetAllData==='Y'){
+                userProductObj['producttype_listvalue'] = '';
+                userProductObj['producttype_listname'] = '';
+                userProductObj['producttype_featurevalue'] = '';
+            }
             userProductObj['productviewed_bystatus'] = 'productwise';
             existingDkParamObj['userProduct'] = userProductObj;
+            console.log("userProductObj=>"+JSON.stringify(userProductObj));
             sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
             storeDataStatus = true;
         }
