@@ -92,11 +92,11 @@
                     Hey you are viewing 'Cakes' and also we can serve other 
                     <span class="badge vap_dessertsTypeCountSClass">
                         {{dkDeliveryAreaBasedDessertsTypeList.length}}
-                    </span> desserts in your '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
+                    </span> desserts in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
-                    Hey you are viewing 'Cakes' desserts at '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
+                    Hey you are viewing 'Cakes' desserts at '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
                 <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
