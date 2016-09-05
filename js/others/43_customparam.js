@@ -24,9 +24,6 @@ function initializeDkSessionData(){
         userSelectedDeliveryCityAreaDessertsTypeObj['areavalue'] = '';
         userSelectedDeliveryCityAreaDessertsTypeObj['areapincode'] = '';
         userSelectedDeliveryCityAreaDessertsTypeObj['areaname'] = '';
-        userSelectedDeliveryCityAreaDessertsTypeObj['prevareavalue'] = '';
-        userSelectedDeliveryCityAreaDessertsTypeObj['prevareapincode'] = '';
-        userSelectedDeliveryCityAreaDessertsTypeObj['prevareaname'] = '';
         userSelectedDeliveryCityAreaDessertsTypeObj['dessertsproduct'] = '';
         userSelectedDeliveryCityAreaDessertsTypeObj['dessertsproducttitle'] = '';
         userSelectedDeliveryCityAreaDessertsTypeObj['ccaId'] = '';
