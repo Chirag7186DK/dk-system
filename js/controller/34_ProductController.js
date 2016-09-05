@@ -468,19 +468,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
-        // collectDataToLoadDeliveryAreabasedProductTypeAllProductList, delivery area based on
-        $rootScope.collectDataToViewDeliveryAreabasedProductTypeAllProductList = function(preparedParamObj){
-            try{
-                var retStatus = checkAllParamToViewAllProducts(preparedParamObj);
-                if(retStatus===true){
-                    window.location.href = globalBaseSitePath+"allproducts.php";
-                }
-            }catch(ex){
-                console.log("problem in collectDataToLoadDeliveryAreabasedProductTypeAllProductList=>"+ex);
-            }
-        };
-        
-        
         // loadProductDescriptionDetails 
         $rootScope.loadProductDescriptionDetails = function(){
             try{
