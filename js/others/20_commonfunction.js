@@ -128,6 +128,27 @@ function clearRatingReviewAbtProductFormContent(fcClass){
 
 ////////////////// order cart form content /////////////////
 
+function getOrdercartRequestItemCountFromSession(){
+    var ordercartRequestedItemCount = 0;
+    try{
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userOrdercartSummaryObj')===true){
+                if(dkParamObj['userOrdercartSummaryObj']['totalRequestedItems']!=='' 
+                    && parseInt(dkParamObj['userOrdercartSummaryObj']['totalRequestedItems'])>0){
+                    ordercartRequestedItemCount = parseInt(dkParamObj['userOrdercartSummaryObj']['totalRequestedItems']);
+                }
+            }
+        }
+    }catch(ex){
+        ordercartRequestedItemCount = 0;
+    }
+    return ordercartRequestedItemCount;
+}
+
 // CJ define this funcion 2016-08-06
 function clearProductContentAfterAddedProductInOrdercart(fcClass){
     if($('.'+fcClass).length===1){
