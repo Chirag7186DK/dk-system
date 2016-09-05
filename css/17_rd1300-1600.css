@@ -911,7 +911,7 @@
         font-size:15px!important;
     }
     
-    .vpd_estimatedProductDeliveryTimePClass span{
+    .estimatedProductShippingDeliveryTimeSClass{
         background-color:rgba(39,171,92,0.9)!important;
         color:#fff!important;
         padding:3px!important;
@@ -1011,6 +1011,7 @@
     .moreLessProductDescriptionIconClass{
         margin-left:10px!important;
         font-size:20px!important;
+        cursor:pointer!important;
     }
     
     .vpd_productFeaturesBodyContainerDivClass{
@@ -1023,187 +1024,42 @@
         font-weight:normal!important;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*  permanent code */
-
-    
-    .vpd_productRatingReviewDetailsContainerDivClass{
+    .vpd_shippingProductContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-    }
-
-    .vpd_productRatingReviewDetailsContainerDivClass .panel{
-        margin-bottom:0px!important;
-    }
-
-    .vpd_productRatingReviewPanelHeadingDivClass{
-        border-bottom:1px solid #fb366e!important;
-    }
-
-    .vpd_productRatingReviewLabelHClass{
-        color:#fb366e!important;
-        font-family:serif!important;
-        font-size:20px!important;
-        margin:0px!important;
-        font-weight:normal!important;
-    }
-
-    .vpd_productRatingReviewPanelContainerDivClass{
         border-radius:0px!important;
         border:1px solid #eee!important;
-    }
-
-    .vpd_summaryReviewRatingDetailsContainerDivClass{
-        padding-top:12px!important;
-        padding-bottom:10px!important;
-        border:1px solid #eee!important;
-    }
-
-    .vpd_summaryReviewRatingDetailsLabelSpanClass{
-        color:#800080!important;
-        font-size:16px!important;
-    }
-
-    .vpd_allMaxRatingQuestionSummaryReviewRatingDetailsDivClass{
-        margin-top:10px!important;
-        margin-bottom:10px!important;
-    }
-
-    .vpd_eachMaxRatingQuestionSummaryReviewRatingDetailsDivClass{
-        background:rgba(62, 177, 231, 0.14)!important;
-        margin-right:2%!important;
-        padding-top:5px!important;
-        padding-bottom:10px!important;
-    }
-
-    .vpd_maxRatingAboutQuestionTitleHClass{
-        font-weight: bold;
-        color:#5C63D6!important;
-        font-size:15px!important;
-    }
-
-    .vpd_maxRatingAboutQuestionAnswerDetailsHClass{
-        color:#5C63D6!important;
-        font-size:13px!important;
-    }
-
-    .vpd_takeUserReviewRatingAboutProductContainerDivClass{
-        padding-top:12px!important;
-        padding-bottom:10px!important;
-        border:1px solid #eee!important;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .vpd_takeUserReviewRatingAboutProductLabelPClass{
-        color:#800080!important;
-        font-size:16px!important;
-    }
-
-    .vpd_eachTakeUserReviewRatingTypeAboutProductContainerDivClass{
-        padding-top:8px!important;
-        padding-bottom:8px!important;
-    }
-
-    .vpd_ratingAboutProductSelectCtrlClass{
-        width:30%!important;
-    }
-
-    .vpd_submitReviewBtnWrapperDivClass{
-        padding-top:8px!important;
-        padding-bottom:8px!important;
-    }
-
-    .vpd_submitRatingReviewAboutProductBtnClass{
-        border-radius:0px!important;
-        background-color:#fdee00!important;
-        color:#000!important;
-        font-weight:bold!important;
-        margin-right:2%!important;
-    }
-
-    .vp_disableSubmitRatingReviewBtnClass{
-        opacity:0.2!important;
-    }
-
-    .vpd_infoAbtToEnableSubmitRatingReviewBtnSClass{
-        color:rgba(240, 99, 122, 0.85)!important;
-        font-size:12px!important;
-        font-family:serif!important;
-    }
-
-    .vpd_displayAllUserReviewAboutProductContainerDivClass{
-        padding-top:12px!important;
-        padding-bottom:10px!important;
-        border:1px solid #eee!important
-    }
-
-    .vpd_allUserReviewRatingDetailsLabelSpanClass{
-        color:#800080!important;
-        font-size:16px!important;
-    }
-
-    .vpd_displayEachUserReviewAboutProductContainerDivClass{
-        padding-top:12px!important;
-        padding-bottom:10px!important;
-        border-bottom:1px solid #eee!important;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .vpd_displayEachUserReviewAboutProductContainerDivClass:last-child{
-        border-bottom:none!important;
-    }
-
-    .vpd_userNameIntialLetterRatedReviewedAbtProductSClass{
-        background-color:#5fcbef!important;
-        font-size:25px!important;
-        line-height:35px!important;
-        color:#fff!important;
-        text-align:center!important;
-        width:40px!important;
-        height:40px!important;
-        border-radius:50%!important;
-    }
-
-    .vpd_eachUserNameRatedReviewAbtProductPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-        font-weight:bold!important;
-    }
-
-    .vpd_userAvgRatedAboutProductSClass{
-        padding:2px!important;
-        color:rgba(205, 46, 216, 0.73)!important;
-        font-size:10px!important;
-        font-weight:bold!important;
-    }
-
-    .vpd_eachUserRatedAbtProductPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:13px!important;
-    }
-
-    .vpd_ratedQuestionAboutProductSClass{
-        padding:2px!important;
-        color:rgba(205, 46, 216, 0.44)!important;
     }
     
-    .vpd_eachUserAvgRatedReviewAbtProductPClass{
+    .vpd_shippingProductLabelHeaderPClass{
+        padding-left:10px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        color:rgba(39,171,92,0.9)!important;
+        font-size:15px!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        border-bottom:1px solid rgba(196, 249, 217, 0.9)!important;
+    }
+    
+    .moreLessShippingProductIconClass{
+        margin-left:10px!important;
+        font-size:20px!important;
+        cursor:pointer!important;
+    }
+    
+    .vpd_shippingProductBodyContainerDivClass{
         color:rgb(70, 75, 80)!important;
-        font-size:13px!important;
     }
 
+    .vpd_shippingTitleULClass{
+        color:rgba(0, 0, 0, 0.73)!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+    }
+    
+    
+    
 
     /*  customer point view shopstore css code */
 
