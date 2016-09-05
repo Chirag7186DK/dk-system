@@ -6,12 +6,12 @@ function dkSessionController($scope, $rootScope){
     
     // global variable declare 
     // this variable will be reflect on ui screen
-    $rootScope.isDkDeliveryCityChanged = false;
-    $rootScope.isDkDeliveryAreaChanged = false;
+    $rootScope.isUserChangedDeliveryCity = false;
+    $rootScope.isUserChangedDeliveryArea = false;
     $rootScope.dkDeliveryCityList = false;
-    $rootScope.defaultedSelectedDKDeliveryCity = '';
+    $rootScope.userSelectedDeliveryCity = '';
     $rootScope.dkDeliveryAreaList = false;
-    $rootScope.defaultedSelectedDKDeliveryArea = '';
+    $rootScope.userSelectedDeliveryArea = '';
     
     // loadDefaultDataInDkSession
     $rootScope.loadDefaultDataInDkSession = function(pageLoad){
