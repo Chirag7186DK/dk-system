@@ -191,10 +191,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 if(ordercartRequestedItemCount===0){
                     storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                     $rootScope.userSelectedDeliveryArea =  ($(elementObj).selectpicker('val'));
-                    // refresh desserts type list based on city, area
+                    // refresh desserts type list based on deilvery area
                     $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
                     LocationServices.showSelectedDeliveryAreaTextHeader();
-                }else if(userSelectedPrevDeliveryAreaName!=='' && ordercartRequestedItemCount>0){
+                }else if(userSelectedPrevDeliveryAreaName!=='' && areaNamesStr!=='' && ordercartRequestedItemCount>0){
                     
                 }
                 
