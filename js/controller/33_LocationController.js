@@ -295,7 +295,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                         $(dessertsTypeListSelectControlElementObj).prop('disabled', false);
                     }
                 }else{
-                    var dessertsTypeTitle = "Sorry, we don't serve any desserts in your delivery location !!!";
+                    var dessertsTypeTitle = "Sorry, we don't serve any desserts in your delivery area !!!";
                     var eachOptionStr = "<option value='NO'>"+dessertsTypeTitle+"</option>";
                     $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
                 }
