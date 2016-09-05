@@ -254,10 +254,10 @@ class RatingReviewDao{
                 }    
             $sqlFetchQuery.= " GROUP BY urd.group_no ORDER BY urd.updated_datedtime DESC ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retUserAvgRatingAboutProductDetailsArr = $command->queryAll();
-            if(count($retUserAvgRatingAboutProductDetailsArr)>0 
-                && $retUserAvgRatingAboutProductDetailsArr!=false){
-                $retResult =  $retUserAvgRatingAboutProductDetailsArr;
+            $userAvgRatingAboutProductDetailsArr = $command->queryAll();
+            if(count($userAvgRatingAboutProductDetailsArr)>0 
+                && $userAvgRatingAboutProductDetailsArr!=false){
+                $retResult =  $userAvgRatingAboutProductDetailsArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
