@@ -188,7 +188,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                 var userSelectedPrevDeliveryAreaDataObj = getUserSelectedPrevDeliveryAreaDetails();
                 if(ordercartRequestedItemCount===0){
                     $rootScope.enableForUserToChangeDeliveryAreaSelectCtrlElement(deliveryAreaElementObj, paramObj, loadAreaListOnPage);
-                }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>=0){
+                }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>0){
                     // show alert popup to user for notify him/her order cart all requested added item will be clear 
                     var msgStr = "<p style='font-weight:normal;font-size:15px!important;'>If you change delivery location from '"+userSelectedPrevDeliveryAreaDataObj['areaname']+"'";
                     msgStr+= " to '"+areaNamesStr+"' then all added <span class='badge'>"+ ordercartRequestedItemCount +"</span> items in your cart will be removed ?</p>";
