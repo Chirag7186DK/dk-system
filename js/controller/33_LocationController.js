@@ -114,6 +114,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
+                                    console.log("arrJsonObj=>"+JSON.stringify(arrJsonObj.defaultSelectedDeliveryAreaDetails));
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryAreaDetailsInSessionStorage(arrJsonObj.defaultSelectedDeliveryAreaDetails, 'N');
                                         if(arrJsonObj.defaultSelectedDeliveryAreaDetails!==false){
@@ -158,6 +159,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 // refresh dk delivery area list select control element 
                 $(areaListSelectControlElementObj).selectpicker('refresh');
                 // showing default selected delivery area list
+                alert($rootScope.defaultedSelectedDKDeliveryArea);
                 $(areaListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryArea);
                 // apply change event of area list
                 if($(areaListSelectControlElementObj).find('option').length>0){
