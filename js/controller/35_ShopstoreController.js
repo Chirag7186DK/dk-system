@@ -2,40 +2,40 @@
 
 angular.module('DKAPP').controller('ShopStoreController', ShopStoreController);
 
-function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreServices, RatingReviewServices){
+function ShopStoreController($rootScope, $rootScope, $http, ProductServices, ShopStoreServices, RatingReviewServices){
     try{
         
-        $scope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
-        $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
-        $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
-        $scope.isShowCShopstoreAllProductFilter = false;
-        $scope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
-        $scope.cShopstoreProductFilterPopupDivClass = "";
-        $scope.isToggleCShopStoreSelfSummaryInfo = false;
-        $scope.isToggleShopStoreDessertsMenu = false;
-        $scope.isShowShopStoreDessertsTypeMenuList = false;
-        $scope.isShowShopStoreRatingReviewDetails = false;
-        $scope.allUserRatingReviewDetails = false;
-        $scope.isEnableRatingReviewSubmitButton = false;
-        $scope.isShowCShopStoreWorkingStyleDetails = false;
-        $scope.cShopstoreWorkingstyleDetails = false;
+        $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
+        $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
+        $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
+        $rootScope.isShowCShopstoreAllProductFilter = false;
+        $rootScope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
+        $rootScope.cShopstoreProductFilterPopupDivClass = "";
+        $rootScope.isToggleCShopStoreSelfSummaryInfo = false;
+        $rootScope.isToggleShopStoreDessertsMenu = false;
+        $rootScope.isShowShopStoreDessertsTypeMenuList = false;
+        $rootScope.isShowShopStoreRatingReviewDetails = false;
+        $rootScope.allUserRatingReviewDetails = false;
+        $rootScope.isEnableRatingReviewSubmitButton = false;
+        $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+        $rootScope.cShopstoreWorkingstyleDetails = false;
         
         // loadDKDeliveryAreaBasedDessertsTypeList 
-        $scope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
+        $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
             try{
                 // get param obj to desserts type list
                 var preparedParamJsonObj = getParamObjFromSessionAtDeliveryAreaBasedCStoreServeDessertsTypeList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $scope.dkDeliveryAreaBasedDessertsTypeList = false;
+                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
                     // calling ShopStoreServices
                     ShopStoreServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
+                        $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $scope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
+                                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
                                 }
                             }
                         });
@@ -43,12 +43,12 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                 }
             }catch(ex){
                 console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
-                $scope.dkDeliveryAreaBasedDessertsTypeList = false;
+                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
             }
         };
         
         // storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList
-        $scope.storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList = function(paramObj){
+        $rootScope.storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList = function(paramObj){
             var storedDataStatus = storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(paramObj, 'Y');
             if(storedDataStatus===true){  
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
@@ -60,55 +60,55 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // loadCShopStoreSummaryInfo 
-        $scope.loadCShopStoreSummaryInfo = function(){
+        $rootScope.loadCShopStoreSummaryInfo = function(){
             try{
                 // get param obj
                 var preparedParamJsonObj = getParamObjForCShopStoreSummaryInfo();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $scope.shopstoreInfo = false;
-                    $scope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
-                    $scope.isRatingReviewBasedInfoFound = false;
+                    $rootScope.shopstoreInfo = false;
+                    $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
+                    $rootScope.isRatingReviewBasedInfoFound = false;
                     // calling ShopStoreServices
                     ShopStoreServices.getCShopStoreSummaryInfo(fetchedParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
+                        $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $scope.shopstoreInfo = arrJsonObj.shopstoreInfo;
-                                    $scope.customersReviewedRatingMsgStr = arrJsonObj.customersReviewedRatingMsgStr;
-                                    $scope.isRatingReviewBasedInfoFound = arrJsonObj.isRatingReviewBasedInfoFound;
+                                    $rootScope.shopstoreInfo = arrJsonObj.shopstoreInfo;
+                                    $rootScope.customersReviewedRatingMsgStr = arrJsonObj.customersReviewedRatingMsgStr;
+                                    $rootScope.isRatingReviewBasedInfoFound = arrJsonObj.isRatingReviewBasedInfoFound;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                $scope.shopstoreInfo = false;
-                $scope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
-                $scope.isRatingReviewBasedInfoFound = false;
+                $rootScope.shopstoreInfo = false;
+                $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !';
+                $rootScope.isRatingReviewBasedInfoFound = false;
                 console.log("problem in loadCShopStoreMenuSummaryInfo ex=>"+ex);
             }
         };
         
         // loadProductTypeAllProductCategoryList 
-        $scope.loadProductTypeAllProductCategoryListCStore = function(){
+        $rootScope.loadProductTypeAllProductCategoryListCStore = function(){
             try{
                 // get param obj to load product all product category list
                 var preparedParamJsonObj = getParamObjForProductTypeAllProductCategoryList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $scope.productTypeAllProductCategoryList = false;
+                    $rootScope.productTypeAllProductCategoryList = false;
                     // calling ProductServices
                     ProductServices.getProductTypeAllProductCategoryList(fetchParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
+                        $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $scope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
-                                    $scope.storeProductTypeProductCategoryDataInSessionCStore(arrJsonObj.defaultSelectedProductCategoryDetails);
+                                    $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
+                                    $rootScope.storeProductTypeProductCategoryDataInSessionCStore(arrJsonObj.defaultSelectedProductCategoryDetails);
                                 }
                             }
                         });
@@ -116,18 +116,18 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                 }
             }catch(ex){
                 console.log("problem in loadProductTypeAllProductCategoryList ex=>"+ex);
-                $scope.productTypeAllProductCategoryList = false;
+                $rootScope.productTypeAllProductCategoryList = false;
             }
         };
         
         // storeProductTypeProductCategoryDataInSession 
-        $scope.storeProductTypeProductCategoryDataInSessionCStore = function(productCategoryParamObj){
+        $rootScope.storeProductTypeProductCategoryDataInSessionCStore = function(productCategoryParamObj){
             try{
                 // storing product type product cateogory data in session
                 var dataStoredInSessionStatus = storeProductTypeProductCategoryDataInSession(productCategoryParamObj);
                 if(dataStoredInSessionStatus===true){
-                    $scope.loadProductTypeProductCategoryFilterTypeListCStore();
-                    $scope.loadProductTypeProductCategoryAllProductListCStore();
+                    $rootScope.loadProductTypeProductCategoryFilterTypeListCStore();
+                    $rootScope.loadProductTypeProductCategoryAllProductListCStore();
                 }
             }catch(ex){
                 console.log("problem in storeProductTypeProductCategoryDataInSession ex=>"+ex);
@@ -135,7 +135,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // toggleProductTypeProductCategoryElementClass
-        $scope.toggleProductTypeProductCategoryElementClass = function(currentElementClickedId, clickedElementParentClass){
+        $rootScope.toggleProductTypeProductCategoryElementClass = function(currentElementClickedId, clickedElementParentClass){
             // toggle backgroun class also
             if(currentElementClickedId!==undefined && currentElementClickedId!==undefined){
                 $('.'+clickedElementParentClass).find('li').removeClass('cshopstore_eachRequestedProductCategoryLIClass');
@@ -144,7 +144,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // loadProductTypeProductCategoryFilterTypeList 
-        $scope.loadProductTypeProductCategoryFilterTypeListCStore = function(){
+        $rootScope.loadProductTypeProductCategoryFilterTypeListCStore = function(){
             try{
                 // get param obj to load product type product category filter type list
                 var preparedParamJsonObj = getParamObjForProductTypeProductCategoryFilterTypeList();
@@ -153,24 +153,24 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     
-                    $scope.productViewAllFilterPopDivClass = '';
-                    $scope.isShowViewAllProductFilter = false;
-                    $scope.toggleViewAllProductFilterBtnLabel = "SHOW FILTER";
+                    $rootScope.productViewAllFilterPopDivClass = '';
+                    $rootScope.isShowViewAllProductFilter = false;
+                    $rootScope.toggleViewAllProductFilterBtnLabel = "SHOW FILTER";
         
                     // calling ProductServices
                     ProductServices.getProductTypeProductCategoryFilterTypeList(fetchParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
+                        $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'filterOperationTypeList', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     if(arrJsonObj.allProductPriceDetailsArr!==false && arrJsonObj.allProductPriceDetailsArr!==undefined){
-                                        $scope.buildPriceFilterListHtmlSelectControlCStore(arrJsonObj.allProductPriceDetailsArr);
+                                        $rootScope.buildPriceFilterListHtmlSelectControlCStore(arrJsonObj.allProductPriceDetailsArr);
                                     }
                                     if(arrJsonObj.allProductSizeDetailsArr!==false && arrJsonObj.allProductSizeDetailsArr!==undefined){
-                                        $scope.buildSizeFilterListHtmlSelectControlCStore(arrJsonObj.allProductSizeDetailsArr);
+                                        $rootScope.buildSizeFilterListHtmlSelectControlCStore(arrJsonObj.allProductSizeDetailsArr);
                                     }
                                     if(arrJsonObj.allProductDiscountDetailsArr!==false && arrJsonObj.allProductDiscountDetailsArr!==undefined){
-                                        $scope.buildDiscountFilterListHtmlSelectControlCStore(arrJsonObj.allProductDiscountDetailsArr);
+                                        $rootScope.buildDiscountFilterListHtmlSelectControlCStore(arrJsonObj.allProductDiscountDetailsArr);
                                     }
                                 }
                             }
@@ -178,26 +178,26 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     });
                 }
             }catch(ex){
-                $scope.loadProductTypeProductCategoryFilterTypeList = false;
+                $rootScope.loadProductTypeProductCategoryFilterTypeList = false;
                 console.log("problem in loadProductTypeProductCategoryFilterTypeList ex=>"+ex);
             }
         };
         
         // toggleCShopStoreAllProductFilterContainer
-        $scope.toggleCShopStoreAllProductFilterContainer = function(){
-            if($scope.isShowCShopstoreAllProductFilter===false){
-                $scope.toggleCShopstoreProductFilterBtnLabel = "HIDE FILTER";
-                $scope.isShowCShopstoreAllProductFilter = true;
-                $scope.cShopstoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
+        $rootScope.toggleCShopStoreAllProductFilterContainer = function(){
+            if($rootScope.isShowCShopstoreAllProductFilter===false){
+                $rootScope.toggleCShopstoreProductFilterBtnLabel = "HIDE FILTER";
+                $rootScope.isShowCShopstoreAllProductFilter = true;
+                $rootScope.cShopstoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
             }else{
-                $scope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
-                $scope.isShowCShopstoreAllProductFilter = false;
-                $scope.cShopstoreProductFilterPopupDivClass = "";
+                $rootScope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
+                $rootScope.isShowCShopstoreAllProductFilter = false;
+                $rootScope.cShopstoreProductFilterPopupDivClass = "";
             }
         };
         
         // buildPriceFilterListHtmlSelectControl
-        $scope.buildPriceFilterListHtmlSelectControlCStore = function(allProductPriceDetails){
+        $rootScope.buildPriceFilterListHtmlSelectControlCStore = function(allProductPriceDetails){
             try{    
                 if($('#allProductPriceFilterListSelectCtrlId').length===1){
                     var defaultSelectedAllProductPriceFilterArr = new Array();
@@ -249,7 +249,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     $(productPriceFilterListSelectControlElementObj).selectpicker('refresh');
                     // apply change function event
                     if($(productPriceFilterListSelectControlElementObj).find('option').length>0){
-                        $scope.applyChangeEventOnPriceFilterSelectCtrlElementCStore(productPriceFilterListSelectControlElementObj);
+                        $rootScope.applyChangeEventOnPriceFilterSelectCtrlElementCStore(productPriceFilterListSelectControlElementObj);
                     }
                 }
             }catch(ex){
@@ -258,7 +258,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // applyChangeEventOnPriceFilterSelectCtrlElement
-        $scope.applyChangeEventOnPriceFilterSelectCtrlElementCStore = function(elementObj){
+        $rootScope.applyChangeEventOnPriceFilterSelectCtrlElementCStore = function(elementObj){
             $(elementObj).on('changed.bs.select', function(e){
                 try{
                     var selectedPriceFilterValues = $(elementObj).selectpicker('val');
@@ -270,7 +270,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    $scope.loadProductTypeProductCategoryAllProductListCStore();
+                    $rootScope.loadProductTypeProductCategoryAllProductListCStore();
                 }catch(ex){
                     console.log("problem in applyChangeEventOnPriceFilterSelectCtrlElementCStore=>"+ex);
                 }    
@@ -278,7 +278,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // buildSizeFilterListHtmlSelectControl
-        $scope.buildSizeFilterListHtmlSelectControlCStore = function(allProductSizeDetails){
+        $rootScope.buildSizeFilterListHtmlSelectControlCStore = function(allProductSizeDetails){
             try{
                 if($('#allProductSizeFilterListSelectCtrlId').length===1){
                     var productSizeFilterListSelectControlElementObj = document.getElementById("allProductSizeFilterListSelectCtrlId");
@@ -301,7 +301,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     $(productSizeFilterListSelectControlElementObj).selectpicker('refresh');
                     // apply change function event
                     if($(productSizeFilterListSelectControlElementObj).find('option').length>0){
-                        $scope.applyChangeEventOnSizeFilterSelectCtrlElementCStore(productSizeFilterListSelectControlElementObj);
+                        $rootScope.applyChangeEventOnSizeFilterSelectCtrlElementCStore(productSizeFilterListSelectControlElementObj);
                     }
                 }
             }catch(ex){
@@ -310,7 +310,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // applyChangeEventOnSizeFilterSelectCtrlElement
-        $scope.applyChangeEventOnSizeFilterSelectCtrlElementCStore = function(elementObj){
+        $rootScope.applyChangeEventOnSizeFilterSelectCtrlElementCStore = function(elementObj){
             try{
                 $(elementObj).on('changed.bs.select', function(e){
                     var selectedSizeFilterValues = $(elementObj).selectpicker('val');
@@ -322,7 +322,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    $scope.loadProductTypeProductCategoryAllProductListCStore();
+                    $rootScope.loadProductTypeProductCategoryAllProductListCStore();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnSizeFilterSelectCtrlElementCStore=>"+ex);
@@ -330,7 +330,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
        
         // buildDiscountFilterListHtmlSelectControl
-        $scope.buildDiscountFilterListHtmlSelectControlCStore = function(allProductDiscountDetails){
+        $rootScope.buildDiscountFilterListHtmlSelectControlCStore = function(allProductDiscountDetails){
             if($('#allProductDiscountFilterListSelectCtrlId').length===1){ 
                 var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
@@ -370,13 +370,13 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                 // refresh product discount filter list select control element 
                 $(productDiscountFilterListSelectControlElementObj).selectpicker('refresh');
                 if($(productDiscountFilterListSelectControlElementObj).find('option').length>0){
-                    $scope.applyChangeEventOnDiscountFilterSelectCtrlElementCStore(productDiscountFilterListSelectControlElementObj);
+                    $rootScope.applyChangeEventOnDiscountFilterSelectCtrlElementCStore(productDiscountFilterListSelectControlElementObj);
                 }
             }
         };
         
         // applyChangeEventOnDiscountFilterSelectCtrlElement
-        $scope.applyChangeEventOnDiscountFilterSelectCtrlElementCStore = function(elementObj){
+        $rootScope.applyChangeEventOnDiscountFilterSelectCtrlElementCStore = function(elementObj){
             try{
                 $(elementObj).on('changed.bs.select', function(e){
                     var selectedDiscountFilterValues = $(elementObj).selectpicker('val');
@@ -388,7 +388,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     }
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
                     // refresh the screen
-                    $scope.loadProductTypeProductCategoryAllProductListCStore();
+                    $rootScope.loadProductTypeProductCategoryAllProductListCStore();
                 });
             }catch(ex){
                 console.log("problem in applyChangeEventOnDiscountFilterSelectCtrlElementCStore=>"+ex);
@@ -396,30 +396,30 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // loadProductTypeProductCategoryAllProductList 
-        $scope.loadProductTypeProductCategoryAllProductListCStore = function(){
+        $rootScope.loadProductTypeProductCategoryAllProductListCStore = function(){
             try{
                 // get param obj
                 var preparedParamJsonObj = getParamObjForProductTypeProductCategoryAllProductList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $scope.allProductDetailsList = false;
-                    $scope.defaultSelectProductCategoryTitle = '';
-                    $scope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
-                    $scope.totalProductCount = 0;
+                    $rootScope.allProductDetailsList = false;
+                    $rootScope.defaultSelectProductCategoryTitle = '';
+                    $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                    $rootScope.totalProductCount = 0;
                     // calling ProductServices 
                     ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
+                        $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $scope.defaultSelectProductCategoryTitle = arrJsonObj.productTypeDetails.requestedProductCategoryTitle;
+                                    $rootScope.defaultSelectProductCategoryTitle = arrJsonObj.productTypeDetails.requestedProductCategoryTitle;
                                     if(arrJsonObj.productTypeDetails.allProductDetailsList!==false 
                                         && arrJsonObj.productTypeDetails.allProductDetailsList!==undefined){
-                                        $scope.allProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
-                                        $scope.totalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
+                                        $rootScope.allProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
+                                        $rootScope.totalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
                                     }else{
-                                        $scope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                                        $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
                                     }
                                 }
                             }
@@ -427,18 +427,18 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     });
                 }
             }catch(ex){
-                $scope.allProductDetailsList = false;
-                $scope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
-                $scope.totalProductCount = 0;
+                $rootScope.allProductDetailsList = false;
+                $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                $rootScope.totalProductCount = 0;
                 console.log("problem in loadProductTypeProductCategoryAllProductListCStore ex=>"+ex);
             }
         };   
           
         
         // loadShopStoreAllUserRatingReviewed 
-        $scope.loadShopStoreAllUserRatingReviewed = function(){
+        $rootScope.loadShopStoreAllUserRatingReviewed = function(){
             try{
-                if($scope.isShowShopStoreRatingReviewDetails===true){
+                if($rootScope.isShowShopStoreRatingReviewDetails===true){
                     // get param obj to load all user rating about product 
                     var preparedParamJsonObj = getParamObjFromSessionForShopStoreRatingReviewedDetails();
                     // console.log("loadShopStoreAllUserRatingReviewed preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
@@ -450,17 +450,17 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
 
                         var fetchedParamJsonObj = {};
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                        $scope.allUserRatingReviewDetails = false;
+                        $rootScope.allUserRatingReviewDetails = false;
 
                         // calling RatingReviewServices 
                         RatingReviewServices.getShopStoreAllUserRatingReviewed(fetchedParamJsonObj).done(function(retResponseJson){
-                            $scope.$apply(function(){
+                            $rootScope.$apply(function(){
                                 showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                     if(retObj!==false && retObj!==undefined && retObj!==''){
                                         // console.log("loadShopStoreAllUserRatingReviewed retObj=>"+JSON.stringify(retObj));
-                                        $scope.allUserRatingReviewDetails = retObj.allUserRatingReviewAbtProductDetails;
+                                        $rootScope.allUserRatingReviewDetails = retObj.allUserRatingReviewAbtProductDetails;
                                     }
                                 }
                             });
@@ -468,7 +468,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     }
                 }
             }catch(ex){
-                $scope.allUserRatingReviewDetails = false;
+                $rootScope.allUserRatingReviewDetails = false;
                 console.log("problem in loadShopStoreAllUserRatingReviewed ex=>"+ex);
                 showHideLoaderBox('hide');
             }
@@ -476,7 +476,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         
         
         // loadShopStoresRatingReviewQuestions 
-        $scope.loadShopStoresRatingReviewQuestions = function(){
+        $rootScope.loadShopStoresRatingReviewQuestions = function(){
             try{
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForShopStoreRatingReviewedDetails();
@@ -491,17 +491,17 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     
-                    $scope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
+                    $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
                     
                     // calling RatingReviewServices 
                     RatingReviewServices.getShopStoreRatingReviewQuestionsAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
-                        $scope.$apply(function(){
+                        $rootScope.$apply(function(){
                             showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
                                     // console.log("loadRatingReviewQuestionsAboutProductByShopStores retObj=>"+JSON.stringify(retObj));
-                                    $scope.ratingReviewQuestionAboutProductByShopStoresDetails = retObj.ratingReviewQuestionAboutProductByShopStoresDetails;
+                                    $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = retObj.ratingReviewQuestionAboutProductByShopStoresDetails;
                                 }
                             }
                         });
@@ -509,14 +509,14 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                 }
             }catch(ex){
                 showHideLoaderBox('hide');
-                $scope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
+                $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
                 console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
             }
         };
         
         // checkUserLoggedInForSubmitingRatingReviewAbtProduct
-        $scope.checkUserLoggedInForSubmitingRatingReviewAbtProduct = function(){
-            $scope.isEnableRatingReviewSubmitButton = false;
+        $rootScope.checkUserLoggedInForSubmitingRatingReviewAbtProduct = function(){
+            $rootScope.isEnableRatingReviewSubmitButton = false;
             // check in session 
             if(sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined){
                 // extract dk param obj from session
@@ -527,7 +527,7 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                         var userSessionObj = existingDkParamObj['userSession'];
                         if(userSessionObj.hasOwnProperty('isUserLoggedIn')===true){
                             if(userSessionObj['isUserLoggedIn']==='Y'){
-                                $scope.isEnableRatingReviewSubmitButton = true;
+                                $rootScope.isEnableRatingReviewSubmitButton = true;
                             }
                         }
                     }
@@ -536,22 +536,22 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
         };
         
         // loadCShopStoresWorkingStyle 
-        $scope.loadCShopStoresWorkingStyle = function(){
+        $rootScope.loadCShopStoresWorkingStyle = function(){
             try{
-                if($scope.isShowCShopStoreWorkingStyleDetails===true){
+                if($rootScope.isShowCShopStoreWorkingStyleDetails===true){
                     // get param obj to load store working style details
                     var preparedParamJsonObj = getParamObjForCShopStoreWorkingStyleDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var fetchedParamJsonObj = {};
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                        $scope.cShopstoreWorkingstyleDetails = false;
+                        $rootScope.cShopstoreWorkingstyleDetails = false;
                         // calling ShopStoreServices 
                         ShopStoreServices.getCShopStoreWorkingStyleDetails(fetchedParamJsonObj).done(function(retResponseJson){
-                            $scope.$apply(function(){
+                            $rootScope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'shopstoreWorkingStyleDetails', retResponseJson);
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                        $scope.cShopstoreWorkingstyleDetails = arrJsonObj;
+                                        $rootScope.cShopstoreWorkingstyleDetails = arrJsonObj;
                                     }
                                 }
                             });
@@ -559,92 +559,92 @@ function ShopStoreController($scope, $scope, $http, ProductServices, ShopStoreSe
                     }
                 }
             }catch(ex){
-                $scope.cShopstoreWorkingstyleDetails = false;
+                $rootScope.cShopstoreWorkingstyleDetails = false;
                 console.log("problem in loadCShopStoresWorkingStyle ex=>"+ex);
             }
         };
         
         // toggleShopStoreSelfSummaryInfoDetails
-        $scope.toggleShopStoreSelfSummaryInfoDetails = function(){
-            if($scope.isToggleCShopStoreSelfSummaryInfo===false){
-                $scope.isToggleCShopStoreSelfSummaryInfo = true;
-                $scope.toggleShopStoreSelfSummaryInfoLblText = "Hide Details";
-                $scope.isToggleShopStoreDessertsMenu = false;
-                $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $scope.isShowShopStoreDessertsTypeMenuList = false;
-                $scope.isShowShopStoreRatingReviewDetails = false;
-                $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
-                $scope.allUserRatingReviewDetails = false;
-                $scope.isShowCShopStoreWorkingStyleDetails = true;
-                $scope.loadCShopStoresWorkingStyle();
+        $rootScope.toggleShopStoreSelfSummaryInfoDetails = function(){
+            if($rootScope.isToggleCShopStoreSelfSummaryInfo===false){
+                $rootScope.isToggleCShopStoreSelfSummaryInfo = true;
+                $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Hide Details";
+                $rootScope.isToggleShopStoreDessertsMenu = false;
+                $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
+                $rootScope.isShowShopStoreDessertsTypeMenuList = false;
+                $rootScope.isShowShopStoreRatingReviewDetails = false;
+                $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
+                $rootScope.allUserRatingReviewDetails = false;
+                $rootScope.isShowCShopStoreWorkingStyleDetails = true;
+                $rootScope.loadCShopStoresWorkingStyle();
             }else{
-                $scope.isToggleCShopStoreSelfSummaryInfo = false;
-                $scope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
-                $scope.isToggleShopStoreDessertsMenu = false;
-                $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $scope.isShowShopStoreDessertsTypeMenuList = false;
-                $scope.isShowShopStoreRatingReviewDetails = false;
-                $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
-                $scope.allUserRatingReviewDetails = false;
-                $scope.isShowCShopStoreWorkingStyleDetails = false;
-                $scope.cShopstoreWorkingstyleDetails = false;
-                $scope.loadProductTypeProductCategoryAllProductListCStore();
+                $rootScope.isToggleCShopStoreSelfSummaryInfo = false;
+                $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
+                $rootScope.isToggleShopStoreDessertsMenu = false;
+                $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
+                $rootScope.isShowShopStoreDessertsTypeMenuList = false;
+                $rootScope.isShowShopStoreRatingReviewDetails = false;
+                $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
+                $rootScope.allUserRatingReviewDetails = false;
+                $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+                $rootScope.cShopstoreWorkingstyleDetails = false;
+                $rootScope.loadProductTypeProductCategoryAllProductListCStore();
             }
         };
         
         // toggleShopStoreRatingReviewDetails
-        $scope.toggleShopStoreRatingReviewDetails = function(){
-            if($scope.isShowShopStoreRatingReviewDetails===false){
-                $scope.isToggleCShopStoreSelfSummaryInfo = false;
-                $scope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
-                $scope.isToggleShopStoreDessertsMenu = false;
-                $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $scope.isShowShopStoreDessertsTypeMenuList = false;
-                $scope.isShowShopStoreRatingReviewDetails = true;
-                $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Hide Details";
-                $scope.allUserRatingReviewDetails = false;
-                $scope.loadShopStoreAllUserRatingReviewed();
-                $scope.isShowCShopStoreWorkingStyleDetails = false;
-                $scope.cShopstoreWorkingstyleDetails = false;
+        $rootScope.toggleShopStoreRatingReviewDetails = function(){
+            if($rootScope.isShowShopStoreRatingReviewDetails===false){
+                $rootScope.isToggleCShopStoreSelfSummaryInfo = false;
+                $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
+                $rootScope.isToggleShopStoreDessertsMenu = false;
+                $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
+                $rootScope.isShowShopStoreDessertsTypeMenuList = false;
+                $rootScope.isShowShopStoreRatingReviewDetails = true;
+                $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Hide Details";
+                $rootScope.allUserRatingReviewDetails = false;
+                $rootScope.loadShopStoreAllUserRatingReviewed();
+                $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+                $rootScope.cShopstoreWorkingstyleDetails = false;
             }else{
-                $scope.isToggleCShopStoreSelfSummaryInfo = false;
-                $scope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
-                $scope.isToggleShopStoreDessertsMenu = false;
-                $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $scope.isShowShopStoreDessertsTypeMenuList = false;
-                $scope.isShowShopStoreRatingReviewDetails = false;
-                $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
-                $scope.allUserRatingReviewDetails = false;
-                $scope.isShowCShopStoreWorkingStyleDetails = false;
-                $scope.cShopstoreWorkingstyleDetails = false;
-                $scope.loadProductTypeProductCategoryAllProductListCStore();
+                $rootScope.isToggleCShopStoreSelfSummaryInfo = false;
+                $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
+                $rootScope.isToggleShopStoreDessertsMenu = false;
+                $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
+                $rootScope.isShowShopStoreDessertsTypeMenuList = false;
+                $rootScope.isShowShopStoreRatingReviewDetails = false;
+                $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
+                $rootScope.allUserRatingReviewDetails = false;
+                $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+                $rootScope.cShopstoreWorkingstyleDetails = false;
+                $rootScope.loadProductTypeProductCategoryAllProductListCStore();
             }
         };
         
         // toggleShopStoreDessertsMenu
-        $scope.toggleShopStoreDessertsMenu = function(){
-            if($scope.isToggleShopStoreDessertsMenu===false){
-                $scope.isToggleCShopStoreSelfSummaryInfo = false;
-                $scope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
-                $scope.isToggleShopStoreDessertsMenu = true;
-                $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Hide Details";
-                $scope.isShowShopStoreDessertsTypeMenuList = true;
-                $scope.isShowShopStoreRatingReviewDetails = false;
-                $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
-                $scope.allUserRatingReviewDetails = false;
-                $scope.isShowCShopStoreWorkingStyleDetails = false;
-                $scope.cShopstoreWorkingstyleDetails = false;
+        $rootScope.toggleShopStoreDessertsMenu = function(){
+            if($rootScope.isToggleShopStoreDessertsMenu===false){
+                $rootScope.isToggleCShopStoreSelfSummaryInfo = false;
+                $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
+                $rootScope.isToggleShopStoreDessertsMenu = true;
+                $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Hide Details";
+                $rootScope.isShowShopStoreDessertsTypeMenuList = true;
+                $rootScope.isShowShopStoreRatingReviewDetails = false;
+                $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
+                $rootScope.allUserRatingReviewDetails = false;
+                $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+                $rootScope.cShopstoreWorkingstyleDetails = false;
             }else{
-                $scope.isToggleCShopStoreSelfSummaryInfo = false;
-                $scope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
-                $scope.isToggleShopStoreDessertsMenu = false;
-                $scope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $scope.isShowShopStoreDessertsTypeMenuList = false;
-                $scope.isShowShopStoreRatingReviewDetails = false;
-                $scope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
-                $scope.allUserRatingReviewDetails = false;
-                $scope.isShowCShopStoreWorkingStyleDetails = false;
-                $scope.cShopstoreWorkingstyleDetails = false;
+                $rootScope.isToggleCShopStoreSelfSummaryInfo = false;
+                $rootScope.toggleShopStoreSelfSummaryInfoLblText = "Show Details";
+                $rootScope.isToggleShopStoreDessertsMenu = false;
+                $rootScope.toggleShopStoreDessertsMenuSummaryInfoLblText = "Show Details";
+                $rootScope.isShowShopStoreDessertsTypeMenuList = false;
+                $rootScope.isShowShopStoreRatingReviewDetails = false;
+                $rootScope.toggleShopStoreRatingReviewSummaryInfoLblText = "Show Details";
+                $rootScope.allUserRatingReviewDetails = false;
+                $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+                $rootScope.cShopstoreWorkingstyleDetails = false;
             }
         };
         
