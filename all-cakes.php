@@ -155,7 +155,7 @@
                 <div ng-show="isShowViewAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{productViewAllFilterPopDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productFilterPopupBodyDivClass'>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{allProductDetailsList.length}} Items)
+                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{totalProductCount}} Items)
                         </div>
                         <!-- by store -->
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 vap_shopStoreFilterOperationDivClass'>
@@ -184,12 +184,10 @@
             
             <!-- all product list will be loaded here -->
             <div id='vapWrapperDivId' ng-controller="ProductController" ng-show="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
-                
                 <!-- summary info display -->
                 <div ng-show="allProductDetailsList.length" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass'>
                     <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
                 </div>
-
                 <!-- each product details iterate for displaying -->
                 <div maxheight-productboxwidget-allproductslevel ng-repeat="eachProductDetails in allProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 vap_productBoxWidgetDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
@@ -236,12 +234,11 @@
                         </button>
                     </p>
                 </div>
-
-                <!-- not found show msg div -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_notFoundProductMsgDivClass">
-                    {{notFoundProductMsgStr}}
-                </div>
-                
+            </div>
+            
+            <!-- not found show message div -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_notFoundProductMsgDivClass">
+                {{notFoundProductMsgStr}}
             </div>
             
         </div>
