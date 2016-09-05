@@ -428,8 +428,8 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         // view-product-details
         $rootScope.viewProductDetails = function(paramObj){
             try{
-                var rtStatus = checkAllParamToViewProductDetails(paramObj);
-                if(rtStatus===true){
+                var storeDataStatus = storeProductTypeProductCategoryProductDataInSession(paramObj);
+                if(storeDataStatus===true){
                     if((paramObj['productTypeTitle']).toLowerCase()==='cakes'){
                         window.location.href =  globalBaseSitePath+"cakes-product.php";
                     }else if((paramObj['productTypeTitle']).toLowerCase()==='chocolates'){
