@@ -48,6 +48,7 @@ function getUserSelectedPrevDeliveryAreaDetails(){
         if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
             // extract user suggested city area session data
             var paramDataObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
+            console.log("paramDataObj=>"+JSON.stringify(paramDataObj));
             if(paramDataObj.hasOwnProperty('areaname')===true){
                 if(paramDataObj['areaname']!==''){
                     userSelectedPrevDeliveryAreaDataObj['areavalue'] = paramDataObj['areavalue'];
