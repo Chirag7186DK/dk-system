@@ -222,6 +222,8 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductTypeId = $dkParamDataArr['product_typesids'];
             $gproductTypeProductCategoryId = $dkParamDataArr['product_categoryids'];
             $gShopstoreId = $dkParamDataArr['shopstoreids'];
+            $gproductListId = $dkParamDataArr['productlist_ids'];
+            $gproductFeatureId = $dkParamDataArr['product_featureids'];
             $gProductSizeFilterArr = explode(",", $dkParamDataArr['product_size_filter']);
 
             // price filter
@@ -256,6 +258,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['product_typeids'] = $gproductTypeId;
             $paramObj1['product_categoryids'] = $gproductTypeProductCategoryId;
             $paramObj1['sort_storeareas'] = " FIELD(area.id, $garea_ids) DESC ";
+            $paramObj1['sort_productfeaturesid'] = " FIELD(splld.id, $gproductFeatureId) DESC ";
             if(count($gProductPriceFilterArr)>0 && $gProductPriceFilterArr!=false){
                 $paramObj1['product_price_filter'] = $gProductPriceFilterArr;
             }
