@@ -139,7 +139,7 @@ function getOrdercartRequestItemCountFromSession(){
     }catch(ex){
         ordercartRequestedItemCount = 0;
     }
-    return 12;
+    return ordercartRequestedItemCount;
 }
 
 // CJ define this funcion 2016-08-06
