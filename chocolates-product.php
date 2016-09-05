@@ -38,7 +38,7 @@
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
-                    <li show-userselecteddeliveryareatextheader-directive class="showUserSelectedDeliveryAreaTextHeader" title="Click here to change delivery location">
+                    <li show-userselecteddeliveryareatextheader-directive class="showUserSelectedDeliveryAreaTextHeaderLIClass" title="Click here to change delivery location">
                         <i class="fa fa-map-marker"></i> At: {{userSelectedDeliveryAreaTextHeader}}
                     </li>
                     <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
