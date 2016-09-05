@@ -39,8 +39,8 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
 
 // CJ define this funcion 2016-09-05
 function checkUserCanChangeDeliveryLocation(){
+    var rtStatus = true;
     try{
-        var rtStatus = true;
         var selectedCountryCityAreaAffiliationStr = $('#dkDeliveryCityListSelectCtrlId').selectpicker('val');
         if(selectedCountryCityAreaAffiliationStr!=='' 
             && selectedCountryCityAreaAffiliationStr!==null && selectedCountryCityAreaAffiliationStr!==undefined){
