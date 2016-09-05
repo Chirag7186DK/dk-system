@@ -147,7 +147,7 @@
                         <span class="badge cshopstore_dessertsProductTypeCountSClass">
                             {{dkDeliveryAreaBasedDessertsTypeList.length}}
                         </span>
-                    desserts in your '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
+                    desserts in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li>
                 
                 <!-- display all desserts type can served by store in your selected delivery area -->
