@@ -179,7 +179,7 @@
             </div>
             
             <!-- product filter operation -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
+            <div ng-show="productTypeAllProductCategoryList.length>=1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
                 <!-- info / tips about product filtering operation -->
                 <p class='cshopstore_tipAbtFilterProductPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
@@ -267,7 +267,7 @@
             
             <!-- not found product show message div -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
-                {{storeNotFoundProductMsgStr}}
+<!--                {{storeNotFoundProductMsgStr}}-->
             </div>
             
             <!-- displaying all user reviewed rating details -->
@@ -312,8 +312,12 @@
                     No working hours defined by '{{storeInfo.shopStoreNameInCaps}}' store !
                 </div>
             </div>
-
+            
         </div>
+        
+        <!-- create horizontally space div between -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
         
         <!-- refresh web application data -->
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
