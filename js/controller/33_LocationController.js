@@ -252,9 +252,17 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                         var eachOptionStr = "<option data-icon='"+dessertsIcon+"' value='"+dessertstypeValue+"'>"+dessertsTypeTitle+"</option>";
                         $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
                     }
+                }else{
+                    var dessertsTypeTitle = "Sorry, we don't serve any desserts in your delivery location !!!";
+                    var eachOptionStr = "<option value='NO'>"+dessertsTypeTitle+"</option>";
+                    $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
                 }
                 // refresh desserts type list select control element 
                 $(dessertsTypeListSelectControlElementObj).selectpicker('refresh');
+                if(allDessertsTypeList.length===0 || allDessertsTypeList===false){
+                    // show default message on screen
+                    $(dessertsTypeListSelectControlElementObj).selectpicker('val', 'NO');
+                }
                 // applying change event function
                 if($(dessertsTypeListSelectControlElementObj).find('option').length>0){
                     $rootScope.applyChangeEventDkDeliveryAreaBasedDessertsTypeListSelectCtrlElement(dessertsTypeListSelectControlElementObj);
