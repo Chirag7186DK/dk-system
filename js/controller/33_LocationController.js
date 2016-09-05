@@ -292,6 +292,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                         var dessertsTypeTitle = allDessertsTypeList[eachDessertsIndex]['dessertsTypeTitle'];
                         var eachOptionStr = "<option data-icon='"+dessertsIcon+"' value='"+dessertstypeValue+"'>"+dessertsTypeTitle+"</option>";
                         $(dessertsTypeListSelectControlElementObj).append(eachOptionStr);
+                        $(dessertsTypeListSelectControlElementObj).prop('disabled', false);
                     }
                 }else{
                     var dessertsTypeTitle = "Sorry, we don't serve any desserts in your delivery location !!!";
@@ -303,6 +304,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                 if(allDessertsTypeList.length===0 || allDessertsTypeList===false){
                     // show default message on screen
                     $(dessertsTypeListSelectControlElementObj).selectpicker('val', 'NO');
+                    $(dessertsTypeListSelectControlElementObj).prop('disabled', true);
                 }
                 // applying change event function
                 if($(dessertsTypeListSelectControlElementObj).find('option').length>0){
