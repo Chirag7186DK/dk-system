@@ -173,9 +173,9 @@ class commonfunction{
         return $rspDetails;
     }
     
-    ////////////////./////////////// delivery city related code ////////////////////////////////
     
-  
+    ////////////////./////////////// delivery area related code ////////////////////////////////
+    
     // CJ defined this function 2016-09-02
     public static function getDeliveryAreaListDetails($paramJsonData){
         $rspDetails = array();
@@ -225,7 +225,7 @@ class commonfunction{
     }
  
     
-    ////////////// product filter type list related code /////////////////////
+    ///////////////// product filter type list related code /////////////////////
     
     // CJ defined this function 2016-07-12
     public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedStoreId=''){
