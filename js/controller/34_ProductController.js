@@ -549,6 +549,16 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
+        // toggleRatingReviewProductContent
+        $rootScope.toggleRatingReviewProductContent = function(){
+            if($rootScope.isToggleRatingReviewProductContent===false){
+                $rootScope.isToggleRatingReviewProductContent = true;
+                $rootScope.toggleRatingReviewProductIconClass = "fa fa-chevron-circle-down";
+            }else{
+                $rootScope.isToggleRatingReviewProductContent = false;
+                $rootScope.toggleRatingReviewProductIconClass = "fa fa-chevron-circle-up";
+            }
+        };
         
     }catch(ex){
         console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
