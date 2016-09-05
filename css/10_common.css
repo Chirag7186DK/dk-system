@@ -37,7 +37,7 @@ input, textarea, select, .form-control{
     margin-bottom:12px;
 }
 
-.deliveryAreaNotifyBoxClass{
+.notifyToUserOnlyForSelectedDeliveryArea{
     min-height:50px!important;
     margin:0px!important;
     background-color:rgba(39,171,92,0.9)!important;
@@ -46,6 +46,6 @@ input, textarea, select, .form-control{
     font-size:13px!important;
 }
 
-.deliveryAreaNotifyBoxClass .lobibox-delay-indicator{
+.notifyToUserOnlyForSelectedDeliveryArea .lobibox-delay-indicator{
     height:0px!important;
 }
