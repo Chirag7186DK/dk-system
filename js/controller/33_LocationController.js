@@ -154,8 +154,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                         var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValueStr+"'>"+areaStr+"</option>";
                         $(areaListSelectControlElementObj).append(eachOptionStr);
                     }
-                    var eachOptionStr = "<option value='15|15'>Custom</option>";
-                    $(areaListSelectControlElementObj).append(eachOptionStr);
                 }
                 // refresh dk delivery area list select control element 
                 $(areaListSelectControlElementObj).selectpicker('refresh');
