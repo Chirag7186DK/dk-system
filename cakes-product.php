@@ -156,6 +156,9 @@
                 <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
                     No rating & review from customer yet !!!
                 </p>
+                <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
+                    Estimated Delivery Time: 80 MIN
+                </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
