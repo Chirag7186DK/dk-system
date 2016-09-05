@@ -84,20 +84,39 @@ function resetDKSessionData(){
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // check userSession key present or not 
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                dkParamObj['userSession']['usersession_starttimestamp'] = (new Date()).getTime();
-                dkParamObj['userSession']['lastupdated_sessiontime'] = '';
-                dkParamObj['userSession']['user_sessionid'] = '';
-                dkParamObj['userSession']['udblogId'] = '';
-                dkParamObj['userSession']['userProfileTypeId'] = '';
-                dkParamObj['userAccessLastPageFromObj'] = {"page":""};
-                dkParamObj['userOrderItemObj'] = {};
-                dkParamObj['requestedSectionUserAccountObj'] = {};
-                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
-            }
+            
+            // user session data obj will reset
+            var userSessionObj = {};
+            userSessionObj['usersession_starttimestamp'] = (new Date()).getTime();
+            userSessionObj['lastupdated_sessiontime'] = '';
+            userSessionObj['user_sessionid'] = '';
+            userSessionObj['udblogId'] = '';
+            userSessionObj['userProfileTypeId'] = '';
+            
+            // user product data obj will reset
+            var userProductObj = {};
+            userProductObj['shopstore_value'] = '';
+            userProductObj['all_shopstorevalue'] = '';
+            userProductObj['shopstore_name'] = '';
+            userProductObj['producttype_value'] = '';
+            userProductObj['producttype_name'] = '';
+            userProductObj['producttype_categoryvalue'] = '';
+            userProductObj['producttype_categoryname'] = '';
+            userProductObj['producttype_listvalue'] = '';
+            userProductObj['producttype_listname'] = '';
+            userProductObj['producttype_featurevalue'] = '';
+            userProductObj['productviewed_bystatus'] = 'productwise';
+            
+            dkParamObj['userSession'] = userSessionObj;
+            dkParamObj['userProduct'] = userProductObj;
+            dkParamObj['userAccessLastPageFromObj'] = {"page":""};
+            dkParamObj['userOrderItemObj'] = {};
+            dkParamObj['requestedSectionUserAccountObj'] = {};
+            
+            sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
         }
     }catch(ex){
         console.log("Problem in resetDKSessionData=>"+ex);
