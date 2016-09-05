@@ -199,7 +199,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     var msgStr = "<p style='font-weight:bold;'>If you change delivery location from: "+userSelectedPrevDeliveryAreaDataObj['areaname'];
                     msgStr+= " To: "+areaNamesStr+", then all added "+ ordercartRequestedItemCount +"items in your cart will be removed ?</p>";
                     Lobibox.alert("info", {
-                        // title:"Order cart Information",
+                        title:"Order cart Information",
                         msg:msgStr, 
                         draggable:true,
                         closeOnEsc:false,
