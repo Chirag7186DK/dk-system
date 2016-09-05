@@ -149,7 +149,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                         var areaName = dkDeliveryAreaList[eachAreaIndex]['areaName'];
                         var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
                         var ccaIdVaue = dkDeliveryAreaList[eachAreaIndex]['ccaId'];
-                        var areaStr = areaPincode + " - " +areaName+"</span>";
+                        var areaStr = areaPincode + " " +areaName+"</span>";
                         var areaValueStr = areaValue+"|"+ccaIdVaue;
                         var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValueStr+"'>"+areaStr+"</option>";
                         $(areaListSelectControlElementObj).append(eachOptionStr);
@@ -170,28 +170,24 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
         };
         
         // applyChangeEventDkDeliveryAreaListSelectCtrlElement
-        $rootScope.applyChangeEventDkDeliveryAreaListSelectCtrlElement = function(elementObj, loadAreaListOnPage){
-            $(elementObj).on('changed.bs.select', function(e, clickedIndex, newValue, oldValue){
+        $rootScope.applyChangeEventDkDeliveryAreaListSelectCtrlElement = function(deliveryAreaElementObj, loadAreaListOnPage){
+            $(deliveryAreaElementObj).on('changed.bs.select', function(e, clickedIndex, newValue, oldValue){
                 var areaNamesStr = '';
-                var selectedAreaSplittedArr = ($(elementObj).find('option:selected').text()).split(" ");
+                var selectedAreaSplittedArr = ($(deliveryAreaElementObj).find('option:selected').text()).split(" ");
                 for(var eachIndx = 1; eachIndx<selectedAreaSplittedArr.length; eachIndx++){
                     areaNamesStr+=selectedAreaSplittedArr[eachIndx]+" ";
                 }
                 areaNamesStr = (areaNamesStr).trim();
                 var paramObj = {
-                    "areaId":($(elementObj).selectpicker('val')).split("|")[0], 
+                    "areaId":($(deliveryAreaElementObj).selectpicker('val')).split("|")[0], 
                     "areaPincode":selectedAreaSplittedArr[0],
                     "areaName":(areaNamesStr.trim()),
-                    "ccaId":($(elementObj).selectpicker('val')).split("|")[1]
+                    "ccaId":($(deliveryAreaElementObj).selectpicker('val')).split("|")[1]
                 };
                 var ordercartRequestedItemCount = getOrdercartRequestItemCountFromSession();
                 var userSelectedPrevDeliveryAreaDataObj = getUserSelectedPrevDeliveryAreaDetails();
-                if(ordercartRequestedItemCount==='111111'){
-                    storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
-                    $rootScope.userSelectedDeliveryArea =  ($(elementObj).selectpicker('val'));
-                    // refresh desserts type list based on deilvery area
-                    $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-                    LocationServices.showSelectedDeliveryAreaTextHeader();
+                if(ordercartRequestedItemCount===0){
+                    $rootScope.enableForUserToChangeDeliveryAreaSelectCtrlElement(deliveryAreaElementObj, paramObj, loadAreaListOnPage);
                 }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>=0){
                     // show alert popup to user for notify him/her order cart all requested added item will be clear 
                     var msgStr = "<p style='font-weight:normal;font-size:15px!important;'>If you change delivery location from '"+userSelectedPrevDeliveryAreaDataObj['areaname']+"'";
@@ -212,6 +208,13 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                                 alert("Reset all item in order cart Yes");
                                 // var rtStatus = OrderCartServices.resetAllItemOrdercart();
                                 // resetOrdercartSummaryDataObjInSession();
+                                // $rootScope.enableForUserToChangeDeliveryAreaSelectCtrlElement(elementObj, paramObj, loadAreaListOnPage);
+                            }else{
+                                // refresh dk delivery area list select control element 
+                                $(deliveryAreaElementObj).selectpicker('refresh');
+                                // showing default selected delivery area list
+                                $rootScope.userSelectedDeliveryArea = userSelectedPrevDeliveryAreaDataObj['areavalue']+"|"+userSelectedPrevDeliveryAreaDataObj['ccaId'];
+                                $(deliveryAreaElementObj).selectpicker('val', $rootScope.userSelectedDeliveryArea);
                             }
                         }
                     });  
@@ -221,8 +224,12 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
         };
         
         // enableForUserToChangeDeliveryAreaSelectCtrlElement
-        $rootScope.enableForUserToChangeDeliveryAreaSelectCtrlElement = function(deliveryAreaElementObj){
-            
+        $rootScope.enableForUserToChangeDeliveryAreaSelectCtrlElement = function(deliveryAreaElementObj, selectedDeliveryDataObj, loadAreaListOnPage){
+            storeDefaultDeliveryAreaDetailsInSessionStorage(selectedDeliveryDataObj, 'Y');
+            $rootScope.userSelectedDeliveryArea =  ($(deliveryAreaElementObj).selectpicker('val'));
+            // refresh desserts type list based on deilvery area
+            $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
+            LocationServices.showSelectedDeliveryAreaTextHeader();
         };
         
         // refreshDependencyElementOfDeliveryAreaList
