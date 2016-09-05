@@ -84,7 +84,6 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
         return $rspDetails;
     }
     
-    
     // CJ defined this action 2016-08-14
     public function removeItemDetailsFromOrdercart($dkParamDataArr){
         $rspDetails = array();
@@ -98,6 +97,24 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                 if($retRemovedDataStatus==true){
                     $rspDetails['isItemRemovedFromOrdercart'] = 'TRUE';
                 }
+            }
+        } 
+        return $rspDetails;
+    }
+    
+    // CJ defined this action 2016-09-05
+    public function resetAllItemOrdercart($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isResetAllItemFromOrdercart'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+//                $retResetDataStatus = OrderCartDao:: resetAllItemOrdercart($dkParamDataArr);
+//                if($retResetDataStatus==true){
+//                    $rspDetails['isResetAllItemFromOrdercart'] = 'TRUE';
+//                }
             }
         } 
         return $rspDetails;
