@@ -448,22 +448,23 @@ function getParamObjForProductTypeAllProductCategoryList(){
 
 
 // CJ defined this function 2016-09-04
-function storeProductTypeProductCategoryDataInSession(productTypeProductCategoryDataObj){
+function storeProductTypeProductCategoryDataInSession(paramDataObj){
     try{
         var storeDataStatus = false;
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
+            console.log("paramDataObj=>"+JSON.stringify(paramDataObj));
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
-            userProductObj['shopstore_value'] = '';
-            userProductObj['all_shopstorevalue'] = productTypeProductCategoryDataObj['shopStoreIds'];
+            userProductObj['shopstore_value'] = paramDataObj['shopStoreIds'];
+            userProductObj['all_shopstorevalue'] = paramDataObj['shopStoreIds'];
             userProductObj['shopstore_name'] = '';
-            userProductObj['producttype_value'] = productTypeProductCategoryDataObj['productTypeId'];
-            userProductObj['producttype_name'] = productTypeProductCategoryDataObj['productTypeTitle'];
-            userProductObj['producttype_categoryvalue'] = productTypeProductCategoryDataObj['productTypeProductCategoryId'];
-            userProductObj['producttype_categoryname'] = productTypeProductCategoryDataObj['productTypeProductCategoryTitle'];
+            userProductObj['producttype_value'] = paramDataObj['productTypeId'];
+            userProductObj['producttype_name'] = paramDataObj['productTypeTitle'];
+            userProductObj['producttype_categoryvalue'] = paramDataObj['productTypeProductCategoryId'];
+            userProductObj['producttype_categoryname'] = paramDataObj['productTypeProductCategoryTitle'];
             userProductObj['producttype_listvalue'] = '';
             userProductObj['producttype_listname'] = '';
             userProductObj['producttype_featurevalue'] = '';
@@ -510,7 +511,7 @@ function getParamObjForProductTypeProductCategoryFilterTypeList(){
                 }
             }
         }
-        if(Object.keys(paramObj).length==3){
+        if(Object.keys(paramObj).length===3){
             return paramObj;
         }else{
             return false;
@@ -812,7 +813,6 @@ function checkAllParamToViewProductDetails(paramObj){
 
 // CJ defined this function 2016-07-10
 function checkAllParamToViewCShopStore(paramObj){
-    // alert(JSON.stringify(paramObj));
     var retStatus = false;
     try{
         if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
@@ -929,6 +929,7 @@ function getParamObjFromSessionAtDeliveryAreaBasedCStoreServeDessertsTypeList(){
 // CJ defined this function 2016-09-04
 function storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(paramObj){
     try{
+        console.log("storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList paramObj=>"+JSON.stringify(paramObj));
         var storedDataStatus = false;
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -939,7 +940,7 @@ function storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproduct'] = paramObj['dessertsTypeId'];
                     existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproducttitle'] = paramObj['dessertsTypeTitle'];
                     existingDkParamObj['userProduct'] = {};
-                    existingDkParamObj['userProduct']['all_shopstorevalue'] = '';
+                    existingDkParamObj['userProduct']['all_shopstorevalue'] = paramObj['shopStoreId'];
                     existingDkParamObj['userProduct']['shopstore_value'] = paramObj['shopStoreId'];
                     existingDkParamObj['userProduct']['shopstore_name'] = paramObj['shopStoreTitle'];
                     existingDkParamObj['userProduct']['producttype_value'] = paramObj['dessertsTypeId'];
@@ -974,6 +975,7 @@ function getParamObjForCShopStoreSummaryInfo(){
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
+                console.log("getParamObjForCShopStoreSummaryInfo=>"+JSON.stringify(userProductObj));
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
                     if(parseInt(userProductObj['shopstore_value'])>0 
                         && userProductObj['shopstore_value']!==''){
