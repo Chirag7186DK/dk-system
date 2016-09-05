@@ -112,7 +112,7 @@
                     <p class='cShopStoreReviewdRatingUsercountInfoLblPClass'>
                         {{customersReviewedRatingMsgStr}}
                     </p>
-                    <p ng-click="toggleShopStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass' ng-show="isRatingReviewBasedInfoFound">
+                    <p ng-click="toggleCStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass' ng-show="isRatingReviewBasedInfoFound">
                         {{toggleCStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
@@ -294,9 +294,6 @@
                 </div>
             </div>
 
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-        
             <!-- store working style -->
             <div ng-show='isShowCStoreWorkingStyleDetails' ng-controller='ShopStoreController' ng-init="loadCStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
                 <div ng-show='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
