@@ -154,6 +154,8 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                         var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValueStr+"'>"+areaStr+"</option>";
                         $(areaListSelectControlElementObj).append(eachOptionStr);
                     }
+                    var eachOptionStr = "<option value='15|15'>Custom</option>";
+                    $(areaListSelectControlElementObj).append(eachOptionStr);
                 }
                 // refresh dk delivery area list select control element 
                 $(areaListSelectControlElementObj).selectpicker('refresh');
@@ -183,11 +185,18 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     "areaName":(areaNamesStr.trim()),
                     "ccaId":($(elementObj).selectpicker('val')).split("|")[1]
                 };
-                storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
-                $rootScope.userSelectedDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
-                // refresh desserts type list based on city, area
-                $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-                LocationServices.showSelectedDeliveryAreaTextHeader();
+                // checking user can changed delivery location
+                var isUserCanChangedDeliveryLocationStatus = checkUserCanChangeDeliveryLocation();
+                if(isUserCanChangedDeliveryLocationStatus===true){
+                    storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
+                    $rootScope.userSelectedDeliveryArea =  ($(elementObj).selectpicker('val'));
+                    // refresh desserts type list based on city, area
+                    $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
+                    LocationServices.showSelectedDeliveryAreaTextHeader();
+                }else{
+                    alert(isUserCanChangedDeliveryLocationStatus);
+                }
+                
             });
         };
         
