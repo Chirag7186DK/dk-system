@@ -7,7 +7,18 @@ function LocationServices($http, $q, $rootScope){
         
         var locationDetails = {};
         
-        locationDetails.showUserSelectedDeliveryAreaTextHeader = function(){
+        locationDetails.showSelectedDeliveryAreaTextHeader = function(){
+            $rootScope.selectedDeliveryAreaTextHeader = '';
+            $rootScope.isShowSelectedDeliveryAreaTextHeader = false;
+            var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
+            if(infoObj!=='' && infoObj!==undefined 
+                && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
+                $rootScope.isShowSelectedDeliveryAreaTextHeader = true;
+                $rootScope.selectedDeliveryAreaTextHeader = infoObj['userSelectedArea'];
+            }  
+        };
+        
+        locationDetails.notificationToUserForDeliveryLocationSelected = function(){
             $rootScope.userSelectedDeliveryAreaTextHeader = '';
             $rootScope.isShowUserSelectedDeliveryAreaTextHeader = false;
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
