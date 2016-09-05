@@ -10,7 +10,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         $rootScope.toggleCStoreDessertsMenuSummaryInfoLblText = "Show Details";
         $rootScope.isShowCStoreAllProductFilter = false;
         $rootScope.toggleCStoreProductFilterBtnLabel = "SHOW FILTER";
-        $rootScope.cstoreProductFilterPopupDivClass = "";
+        $rootScope.cStoreProductFilterPopupDivClass = "";
         $rootScope.isToggleCStoreSelfSummaryInfo = false;
         $rootScope.isToggleCStoreDessertsMenu = false;
         $rootScope.isShowCStoreDessertsTypeMenuList = false;
