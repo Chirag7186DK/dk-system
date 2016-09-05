@@ -538,6 +538,17 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
+        // toggleShippingProductContent
+        $rootScope.toggleShippingProductContent = function(){
+            if($rootScope.isToggleShippingProductContent===false){
+                $rootScope.isToggleShippingProductContent = true;
+                $rootScope.toggleShippingProductIconClass = "fa fa-chevron-circle-down";
+            }else{
+                $rootScope.isToggleShippingProductContent = false;
+                $rootScope.toggleShippingProductIconClass = "fa fa-chevron-circle-up";
+            }
+        };
+        
         
     }catch(ex){
         console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
