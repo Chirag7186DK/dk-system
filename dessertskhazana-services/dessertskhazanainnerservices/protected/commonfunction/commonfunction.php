@@ -199,7 +199,7 @@ class commonfunction{
                         $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'Y';
                         // default selected delivery area to show
                         $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
-                            "areaId"=>$gcity_ids,
+                            "areaId"=>$deliveryAreaListDetailsArr[$eachIndex]['areaId'],
                             "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
                             "areaIcon"=>"fa fa-map-marker",
                             "ccaId"=>$deliveryAreaListDetailsArr[$eachIndex]['ccaId'],
