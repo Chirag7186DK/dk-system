@@ -1458,12 +1458,13 @@
     }
 
     .cShopStoreProductAllCategoryWrapperDivClass{
-        margin-top:20px;
-        padding-top:10px;
-        padding-bottom:20px;
-        border:1px solid #DCE0EF!important;
-        margin-bottom:20px;
+        padding-top:5px;
+        border-top:1px solid #DCE0EF!important;
+        border-right:1px solid #DCE0EF!important;
+        border-left:1px solid #DCE0EF!important;
         background-color:whitesmoke!important;
+        margin-top:12px!important;
+        margin-bottom:12px!important;
     }
 
     .infoAbtProductCategoriesPClass{
@@ -1529,7 +1530,8 @@
         padding-top:10px;
         padding-bottom:20px;
         border:1px solid #DCE0EF!important;
-        margin-bottom:20px;
+        margin-top:12px;
+        margin-bottom:12px;
         padding-left:0px!important;
         background-color:whitesmoke!important;
     }
