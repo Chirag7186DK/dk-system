@@ -172,7 +172,7 @@
                     </span> categories !
                 </p>
                 <div ng-if="productTypeAllProductCategoryList.length>1" id='cShopStoreProductAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryContainerDivClass">
-                    <li id="cshopstore_eachProductCategoryContainerLIId_{{$index}}" ng-click="toggleProductTypeProductCategoryElementClass('cshopstore_eachProductCategoryContainerLIId_'+$index, 'cShopStoreProductAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSessionCStore(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='cshopstore_eachProductCategoryContainerLIClass' scroll-horizontally-dessertsproducttype-productcategorylist-cshopstorelevel>
+                    <li id="cshopstore_eachProductCategoryContainerLIId_{{$index}}" ng-click="toggleProductTypeProductCategoryElementClassCStore('cshopstore_eachProductCategoryContainerLIId_'+$index, 'cShopStoreProductAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSessionCStore(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='cshopstore_eachProductCategoryContainerLIClass' scroll-horizontally-dessertsproducttype-productcategorylist-cshopstorelevel>
                         {{eachProductCategoryDetails.productTypeProductCategoryTitle + '\n(' + eachProductCategoryDetails.totalProductCount + ')'}}
                     </li>
                 </div>
@@ -185,11 +185,11 @@
                 <p class='cshopstore_tipAbtFilterProductPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
                     <button ng-click="toggleCShopStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                        <i class="fa fa-filter"></i> {{toggleCShopstoreProductFilterBtnLabel}}
+                        <i class="fa fa-filter"></i> {{toggleCstoreProductFilterBtnLabel}}
                     </button>
                 </p>
                 
-                <div ng-show="isShowCShopstoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cShopstoreProductFilterPopupDivClass}}">
+                <div ng-show="isShowCstoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cShopstoreProductFilterPopupDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
                             <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{totalProductCount}} Items)
