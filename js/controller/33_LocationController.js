@@ -159,7 +159,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 // refresh dk delivery area list select control element 
                 $(areaListSelectControlElementObj).selectpicker('refresh');
                 // showing default selected delivery area list
-                alert($rootScope.defaultedSelectedDKDeliveryArea);
                 $(areaListSelectControlElementObj).selectpicker('val', $rootScope.defaultedSelectedDKDeliveryArea);
                 // apply change event of area list
                 if($(areaListSelectControlElementObj).find('option').length>0){
