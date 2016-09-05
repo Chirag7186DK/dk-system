@@ -202,7 +202,8 @@ class commonfunction{
                             "areaId"=>$gcity_ids,
                             "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
                             "areaIcon"=>"fa fa-map-marker",
-                            "ccaId"=>$deliveryAreaListDetailsArr[$eachIndex]['ccaId']
+                            "ccaId"=>$deliveryAreaListDetailsArr[$eachIndex]['ccaId'],
+                            "areaPincode"=>$deliveryAreaListDetailsArr[$eachIndex]['areaPincode']
                         );
                     }
                 }
@@ -212,7 +213,8 @@ class commonfunction{
                         "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
                         "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
                         "areaIcon"=>"fa fa-map-marker",
-                        "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId']
+                        "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId'],
+                        "areaPincode"=>$deliveryAreaListDetailsArr[0]['areaPincode']
                     );
                 }
                 $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
