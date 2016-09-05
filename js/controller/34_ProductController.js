@@ -529,6 +529,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         
         // toggleProductDescriptionContent
         $rootScope.toggleProductDescriptionContent = function(toggleElementId){
+            $("#"+toggleElementId).slideToggle("slow");
             if($rootScope.isToggleProductDescriptionContent===false){
                 $rootScope.isToggleProductDescriptionContent = true;
                 $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-down";
@@ -536,7 +537,6 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 $rootScope.isToggleProductDescriptionContent = false;
                 $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
             }
-            $("#"+toggleElementId).slideToggle("slow");
         };
         
         // toggleShippingProductContent
