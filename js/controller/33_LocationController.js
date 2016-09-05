@@ -196,7 +196,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                     
                     // show alert popup to user for notify him/her order cart all requested item will be clear from cart 
                     var msgStr = "<p style='font-weight:normal;font-size:15px!important;'>If you change delivery location from '"+userSelectedPrevDeliveryAreaDataObj['areaname']+"'";
-                    msgStr+= " to '"+areaNamesStr+"' then all added <span class='badge'>"+ 100 +"</span> items in your cart will be removed ?</p>";
+                    msgStr+= " to '"+areaNamesStr+"' then all added <span class='badge'>"+ ordercartRequestedItemCount +"</span> items in your cart will be removed ?</p>";
                     Lobibox.alert("info", {
                         title:"Warning Information",
                         iconClass: '',
@@ -212,6 +212,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                             if(type==='Yes'){
                                 alert("Reset all item in order cart Yes");
                                 // var rtStatus = OrderCartServices.resetAllItemOrdercart();
+                                resetOrdercartSummaryDataObjInSession();
                             }
                         }
                     });  
