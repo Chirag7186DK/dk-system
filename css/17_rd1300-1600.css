@@ -28,6 +28,11 @@
         color:#FAB005!important;
     }
     
+    .showUserSelectedDeliveryAreaTextHeaderLIClass{
+        color:#6c6cb9!important;
+        font-weight:bold!important;
+    }
+    
     .userAccountAllSectionListDropdownDivClass{
         display:none;
         background:#fff!important;
