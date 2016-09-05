@@ -247,6 +247,46 @@
                 </p>
                 <div ng-show="isToggleRatingReviewProductContent" id="vpd_ratingReviewProductBodyDivId" class="vpd_ratingReviewProductBodyDivClass">
                     
+                    <!-- write review form details about product -->
+                    <div ng-show="ratingReviewQuestionAboutProductByShopStoresDetails" ng-controller='RatingReviewController' ng-init="loadRatingReviewQuestionsAboutProductByShopStores()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_takeUserReviewRatingProductContainerDivClass">
+                        <p class='vpd_takeUserReviewRatingProductLblPClass'>
+                            Write a review and rating about product ?
+                        </p>
+                        <div ng-repeat="eachReviewRatingTypeAboutProductDetails in ratingReviewQuestionAboutProductByShopStoresDetails" ng-if="'SELECT'===eachReviewRatingTypeAboutProductDetails.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeProductContainerDivClass'>
+                            <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
+                                {{eachReviewRatingTypeAboutProductDetails.questionTitle}}
+                            </div>
+                            <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                                <select class='form-control vpd_ratingProductSelectCtrlClass'>
+                                    <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}"  data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='1'>1 Star</option>
+                                    <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='2'>2 Star</option>
+                                    <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='3'>3 Star</option>
+                                    <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='4'>4 Star</option>
+                                    <option data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' value='5'>5 Star</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div ng-repeat="eachReviewRatingTypeAboutProductDetails in ratingReviewQuestionAboutProductByShopStoresDetails" ng-if="'TEXTAREA'===eachReviewRatingTypeAboutProductDetails.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeProductContainerDivClass'>
+                            <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
+                                {{eachReviewRatingTypeAboutProductDetails.questionTitle}}
+                            </div>
+                            <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                                <TEXTAREA data-productlistid="{{vPDetails.productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeAboutProductDetails.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeAboutProductDetails.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeAboutProductDetails.shopStoreId}}' data-questionid='{{eachReviewRatingTypeAboutProductDetails.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
+                            </div>
+                        </div>
+                        <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isRatingReviewQuestionDetailsFound'>
+                            <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2'></div>
+                            <div ng-controller='RatingReviewController' class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                                <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddRatingReviewAboutProduct('vpd_takeUserReviewRatingAboutProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn' title='Click to submit rating & review about product'>
+                                    SUBMIT A REVIEW
+                                </button> 
+                                <span class='vpd_infoAbtToEnableSubmitRatingReviewBtnSClass' ng-hide='isEnableRatingReviewSubmitButton'>
+                                    You can't post a review because you are not logged as a customer
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- create horizontally space div between -->
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
                     
