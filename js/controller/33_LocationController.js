@@ -184,7 +184,6 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                     "areaName":(areaNamesStr.trim()),
                     "ccaId":($(elementObj).selectpicker('val')).split("|")[1]
                 };
-                
                 var ordercartRequestedItemCount = getOrdercartRequestItemCountFromSession();
                 var userSelectedPrevDeliveryAreaDataObj = getUserSelectedPrevDeliveryAreaDetails();
                 if(ordercartRequestedItemCount==='111111'){
