@@ -165,7 +165,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 }
                 // refresh dependency element on ui screen
                 $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-                LocationServices.showUserSelectedDeliveryAreaTextHeader();
+                LocationServices.showSelectedDeliveryAreaTextHeader();
             }     
         };
         
@@ -187,7 +187,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 $rootScope.defaultedSelectedDKDeliveryArea =  ($('#dkDeliveryCityListSelectCtrlId').selectpicker('val'));
                 // refresh desserts type list based on city, area
                 $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-                LocationServices.showUserSelectedDeliveryAreaTextHeader();
+                LocationServices.showSelectedDeliveryAreaTextHeader();
             });
         };
         
