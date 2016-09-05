@@ -441,22 +441,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingCshopstoreProductDeliveryAreaInfo($paramJsonData){
-        $retStatus = 'FALSE';
-        $givenParamDataCorrectCount = 0;
-        // check shopStore id is blank or not
-        if(array_key_exists('shopstoreids', $paramJsonData)){
-            if(($paramJsonData['shopstoreids'])>0 && $paramJsonData['shopstoreids']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if($givenParamDataCorrectCount==1){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
-    
     
     // CJ defined this function 2016-07-24
     public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
