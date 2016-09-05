@@ -766,50 +766,6 @@ function getParamObjFromSessionForProductDescriptionDetails(){
     }
 }
 
-// CJ defined this function 2016-07-10
-function checkAllParamToViewCShopStore(paramObj){
-    var retStatus = false;
-    try{
-        if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
-            if(paramObj.hasOwnProperty('productTypeId')===true 
-                && paramObj.hasOwnProperty('productTypeTitle')===true
-                && paramObj.hasOwnProperty('shopStoreTitle')===true){
-                if(parseInt(paramObj['shopStoreId'])>0 && parseInt(paramObj['productTypeId'])>0
-                    && paramObj['shopStoreTitle']!=='' && paramObj['productTypeTitle']!==''){
-                    // extract dk param obj && reset user product & dkSelectedDeliveryCityAreaDessertsProduct data
-                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                    existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproduct'] = paramObj['productTypeId'];
-                    existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['dessertsproducttitle'] = paramObj['productTypeTitle'];
-                    existingDkParamObj['userProduct']['shopstore_value'] = paramObj['shopStoreId'];
-                    existingDkParamObj['userProduct']['producttype_value'] = paramObj['productTypeId'];
-                    existingDkParamObj['userProduct']['producttype_categoryvalue'] = '';
-                    if(paramObj.hasOwnProperty('productTypeProductCategoryId')===true){
-                        existingDkParamObj['userProduct']['producttype_categoryvalue'] = paramObj['productTypeProductCategoryId'];
-                    }
-                    existingDkParamObj['userProduct']['producttype_listvalue'] = '';
-                    if(paramObj.hasOwnProperty('productListId')===true){
-                        existingDkParamObj['userProduct']['producttype_listvalue'] = paramObj['productListId'];
-                    }
-                    existingDkParamObj['userProduct']['producttype_featurevalue'] = '';
-                    existingDkParamObj['userProduct']['productviewed_bystatus'] = 'productwise';
-                    existingDkParamObj['userProduct']['shopstore_name'] = paramObj['shopStoreTitle'];
-                    existingDkParamObj['userProduct']['producttype_name'] =  paramObj['productTypeTitle'];
-                    existingDkParamObj['userProduct']['producttype_categoryname'] = '';
-                    if(paramObj.hasOwnProperty('productTypeProductCategoryTitle')===true){
-                        existingDkParamObj['userProduct']['producttype_categoryname'] = paramObj['productTypeProductCategoryTitle'];
-                    }    
-                    existingDkParamObj['userProduct']['producttype_listname'] = '';
-                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-                    retStatus = true;
-                }
-            }
-        }
-    }catch(ex){
-        retStatus = false;
-    }
-    return retStatus;
-}
-
 
 /////////////////// store level related code ////////////////////////////////
 
