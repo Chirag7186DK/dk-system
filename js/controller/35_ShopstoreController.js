@@ -387,6 +387,11 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }
         };
         
+        // storeProductTypeProductCategoryProductDataInSession
+        $rootScope.storeProductTypeProductCategoryProductDataInSession = function(productParamDataObj){
+            
+        };
+        
         // loadProductTypeProductCategoryAllProductList 
         $rootScope.loadProductTypeProductCategoryAllProductListCStore = function(){
             try{
