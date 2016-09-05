@@ -20,35 +20,33 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allcakes');">
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allchocolates');">
         
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
-            
             <!-- web log header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
-            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
                     <li title="Click here to contact us">
-                        <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
+                        <i class="fa fa-comment-o fa-flip-horizontal" aria-hidden="true"></i> Care
                     </li>
                     <li notifyuser-selected-deliveryarea-textheader-directive class="selectedDeliveryAreaTextHeaderLIClass" title="Click here to change delivery location">
-                        <i class="fa fa-map-marker"></i> At: {{selectedDeliveryAreaTextHeader}}
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> At: {{selectedDeliveryAreaTextHeader}}
                     </li>
                     <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
-                        <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                     </li>
                     <li ng-if='isUserLoggedInSession==false' ng-click="redirectToAccountSignUpSignIn('home')" ng-controller="UsersController" title="Click here to Log In / Sign Up with desserts khazana account">
-                        <i class="fa fa-user accountSignUpSignInIconClass"></i> Log In / Sign Up
+                        <i class="fa fa-user accountSignUpSignInIconClass" aria-hidden="true"></i> Log In / Sign Up
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
-                        <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
+                        <i class="fa fa-user accountSignUpSignInIconClass" aria-hidden="true"></i> {{loggedUserName}}
                         <!-- user account showing different section label to access -->
                         <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
                             <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="{{userInfoEachSectionListArrObj.hoverTitle}}" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
@@ -57,11 +55,10 @@
                         </div>
                     </li>
                     <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController" title="Click here to log out from desserts khazana account">
-                        <i class="fa fa-sign-out"></i> Log Out
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Log Out
                     </li>
                 </ul>
             </div>
-            
         </div>
         
         <!-- header row border div class -->
@@ -91,14 +88,14 @@
             <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" class='vap_dkServedDessertsProductNoteLIClass'>
-                    <i class='fa fa-smile-o smileIconClass'></i> 
+                    <i class='fa fa-smile-o smileIconClass' aria-hidden="true"></i> 
                     Hey you are viewing 'Chocolates' and also we can serve other 
                     <span class="badge vap_dessertsTypeCountSClass">
                         {{dkDeliveryAreaBasedDessertsTypeList.length}}
                     </span> desserts in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length==1" class='vap_dkServedDessertsProductNoteLIClass'>
-                    <i class='fa fa-smile-o smileIconClass'></i> 
+                    <i class='fa fa-smile-o smileIconClass' aria-hidden="true"></i> 
                     Hey you are viewing 'Chocolates' desserts at '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
                 <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
@@ -124,7 +121,7 @@
             <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="ProductController" ng-init="loadProductTypeAllProductCategoryList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_productAllCategoryWrapperDivClass">
                 
                 <p ng-if="productTypeAllProductCategoryList.length>1" class='vap_productInfoAbtProductCategoryMsgPClass'>
-                    Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
+                    Info *: <i class="fa fa-smile-o" aria-hidden="true"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
                         {{productTypeAllProductCategoryList.length}}
                     </span> categories !
@@ -147,7 +144,7 @@
                 <p class='vap_tipAbtFilterProductPClass'>
                     Tip *: Use filter to find products more easy & quickly !
                     <button ng-click="toggleViewAllProductFilterContainer()" class="btn vap_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                        <i class="fa fa-filter"></i> {{toggleViewAllProductFilterBtnLabel}}
+                        <i class="fa fa-filter" aria-hidden="true"></i> {{toggleViewAllProductFilterBtnLabel}}
                     </button>
                 </p>
                 <div ng-show="isShowViewAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{productViewAllFilterPopDivClass}}">
@@ -183,7 +180,7 @@
             <div id='vapWrapperDivId' ng-controller="ProductController" ng-show="allProductDetailsList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vapWrapperDivClass">
                 <!-- summary info display -->
                 <div ng-show="allProductDetailsList.length" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_allProductInfoAbtProductCategoryProductFoundMsgDivClass'>
-                    <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{defaultSelectProductCategoryTitle}} (Showing {{allProductDetailsList.length}} Items)
                 </div>
                 <!-- each product details iterate for displaying -->
                 <div maxheight-productboxwidget-allproductslevel ng-repeat="eachProductDetails in allProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 vap_productBoxWidgetDivClass">
@@ -201,10 +198,10 @@
                     </p>
                     <p class='vap_productPricePClass'> 
                         <span class='vap_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
-                            <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
+                            <i class="fa fa-rupee" aria-hidden="true"></i> {{eachProductDetails.productFeatureBasePrice}}
                         </span>
                         <span class='vap_productPayBlgPriceTextSClass'>
-                            <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
+                            <i class="fa fa-rupee" aria-hidden="true"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
                         </span>
                         <span class='vap_productDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount!==''">
                             ({{eachProductDetails.productFeatureDiscount}}% Off)
@@ -213,18 +210,18 @@
                     <p class='vap_productWeightPClass'>
                         Size : {{eachProductDetails.productFeatureDisplayMeasurementType}} 
                         <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right vap_productVegIconClass">
-                            <i class="fa fa-square"></i>
+                            <i class="fa fa-square" aria-hidden="true"></i>
                         </span>
                         <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
-                            <i class="fa fa-square"></i>
+                            <i class="fa fa-square" aria-hidden="true"></i>
                         </span>
                     </p>
                     <p class='vap_productBtnWrapperPClass'> 
                         <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'allproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="vap_specificProductAddBtnClass btn">
-                            <i class="fa fa-plus"></i>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
                         </button>
                         <button title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="vap_specificProductViewDetailsBtnClass btn" ng-click='viewProductDetails(eachProductDetails)'>
-                            <i class="fa fa-list"></i>
+                            <i class="fa fa-list" aria-hidden="true"></i>
                         </button>
                         <button ng-controller='ShopStoreController' ng-click='storeProductTypeProductCategoryProductDataInSession(eachProductDetails)' title='Click to view this seller store desserts(menu), information, review/rating' class="vap_specificViewStoreDetailsBtnClass btn">
                             STORE
