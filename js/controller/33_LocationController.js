@@ -172,7 +172,6 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         // applyChangeEventDkDeliveryAreaListSelectCtrlElement
         $rootScope.applyChangeEventDkDeliveryAreaListSelectCtrlElement = function(elementObj, loadAreaListOnPage){
             $(elementObj).on('changed.bs.select', function(e, clickedIndex, newValue, oldValue){
-                alert();
                 var areaNamesStr = '';
                 var selectedAreaSplittedArr = ($(elementObj).find('option:selected').text()).split(" ");
                 for(var eachIndx = 1; eachIndx<selectedAreaSplittedArr.length; eachIndx++){
@@ -194,7 +193,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                     // refresh desserts type list based on deilvery area
                     $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
                     LocationServices.showSelectedDeliveryAreaTextHeader();
-                }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>0){
+                }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>=0){
                     
                     // show alert popup to user for notify him/her order cart all requested item will be clear from cart 
                     var msgStr = "<p style='font-weight:bold;'>If you change delivery location from: "+userSelectedPrevDeliveryAreaDataObj['areaname'];
