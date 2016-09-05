@@ -146,7 +146,7 @@
                     No rating & review from customer yet !!!
                 </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
-                    Estimated Delivery Time: <span>80 MIN</span>
+                    Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
                 </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
@@ -206,11 +206,11 @@
             
             <!-- product description details -->
             <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productFeaturesContainerDivClass">
-                <p class="vpd_productDescriptionLabelHeaderPClass">
+                <p class="vpd_productDescriptionLabelHeaderPClass" ng-click="toggleProductDescriptionContent();">
                     <i class='fa fa-file-text-o'></i> INFORMATION
-                    <span class="fa fa-chevron-circle-up moreLessProductDescriptionIconClass"></span>
+                    <span class="{{toggleProductDescriptionIconClass}} moreLessProductDescriptionIconClass"></span>
                 </p>
-                <div id="vpd_productFeaturesBodyContainerDivId" class="vpd_productFeaturesBodyContainerDivClass">
+                <div ng-show="isToggleProductDescriptionContent" id="vpd_productFeaturesBodyContainerDivId" class="vpd_productFeaturesBodyContainerDivClass">
                     <ul ng-repeat="eachDescriptionTitleAndPoints in productDescriptionDetailsArr" class="vpd_productDescriptionTitleULClass">
                         <li class='vpd_productDescriptionTitleLIClass'>{{eachDescriptionTitleAndPoints.descriptionTitle}}</li>
                         <ul class="vpd_productDescriptionULClass">
@@ -222,6 +222,19 @@
             
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
+            <!-- product shipping details -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shippingProductContainerDivClass" ng-init="toggleShippingProductContent();">
+                <p class="vpd_shippingProductLabelHeaderPClass" ng-click="toggleShippingProductContent();">
+                    <i class='fa fa-bus'></i> SHIPPING
+                    <span class="{{toggleShippingProductIconClass}} moreLessShippingProductIconClass"></span>
+                </p>
+                <div ng-show="isToggleShippingProductContent" id="vpd_shippingProductBodyContainerDivId" class="vpd_shippingProductBodyContainerDivClass">
+                    <ul class="vpd_shippingTitleULClass">
+                        <li class='vpd_shippingTitleLIClass'>Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
+                    </ul>
+                </div>
+            </div>
             
             <!-- product rating & reviews details -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productRatingReviewDetailsContainerDivClass">
