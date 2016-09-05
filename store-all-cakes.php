@@ -185,14 +185,14 @@
                 <p class='cshopstore_tipAbtFilterProductPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
                     <button ng-click="toggleCStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                        <i class="fa fa-filter"></i> {{toggleCstoreProductFilterBtnLabel}}
+                        <i class="fa fa-filter"></i> {{toggleCStoreProductFilterBtnLabel}}
                     </button>
                 </p>
                 
-                <div ng-show="isShowCstoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cStoreProductFilterPopupDivClass}}">
+                <div ng-show="isShowCStoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cStoreProductFilterPopupDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                            <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Found {{totalProductCount}} Items)
+                            <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Found {{storeTotalProductCount}} Items)
                         </div>
                         <!-- by price -->
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_priceFilterOperationDivClass'>
@@ -214,15 +214,15 @@
             </div>
             
             <!-- all product list will be loaded here -->
-            <div ng-controller="ShopStoreController" ng-show="allProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
+            <div ng-controller="ShopStoreController" ng-show="storeAllProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
                 
                 <!-- summary info display -->
-                <div ng-show='allProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
-                    <i class="fa fa-birthday-cake"></i> {{defaultSelectProductCategoryTitle}} (Showing {{totalProductCount}} Items)
+                <div ng-show='storeAllProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
+                    <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Showing {{storeTotalProductCount}} Items)
                 </div>
                 
                 <!-- each product details iterate for displaying purpose -->
-                <div maxheight-productboxwidget-cshopstorelevel ng-repeat="eachProductDetails in allProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
+                <div maxheight-productboxwidget-cshopstorelevel ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
                     <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productBoxWidgetDividerLineDivClass'></div>
                     <p class='cshopstore_productStoreNameContainerPClass'>
@@ -276,19 +276,11 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- displaying all user reviewed rating details -->
-            <div ng-show="isShowShopStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadShopStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
+            <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
                 <span class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
                     Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
                 </span>
                 <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_displayEachUserReviewAboutProductContainerDivClass">
-                    <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 cshopstore_eachUserReviewedRatingLeftSideDivClass">
-                        <span class="badge cshopstore_userNameIntialLetterRatedReviewedAbtProductSClass">
-                            {{eachUserReviewedRatingDetails.userNameIntialLetter}}
-                        </span> 
-                        <p class="cshopstore_eachUserAvgRatedContainerPClass">
-                            <span class='cshopstore_userAvgRatedAboutProductSClass'>{{eachUserReviewedRatingDetails.avgRated}} OUT OF 5 </span>
-                        </p>
-                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 cshopstore_eachUserReviewedRatingRightSideDivClass">
                         <p class="cshopstore_eachUserNameRatedReviewAbtProductPClass">
                             reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
@@ -300,6 +292,9 @@
                         <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA' === eachReviewedRatingTypeDetails.answerPattern" class='cshopstore_eachUserReviewedCommentAbtProductPClass'>
                             {{eachReviewedRatingTypeDetails.answerText}}
                         </p>
+                        <p class="vpd_eachUserAvgRatedReviewAbtProductPClass">
+                            Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5
+                        </p>
                     </div>
                 </div>
             </div>
@@ -307,12 +302,9 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-            
             <!-- store working style -->
-            <div ng-show='isShowCShopStoreWorkingStyleDetails' ng-controller='ShopStoreController' ng-init="loadCShopStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
-                <div ng-show='cShopstoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
+            <div ng-show='isShowCStoreWorkingStyleDetails' ng-controller='ShopStoreController' ng-init="loadCStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
+                <div ng-show='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
                     <p class='cShopstoreWorkingStyleHeaderPClass'>
                         Our Working Hours <i class="fa fa-clock-o faa-tada animated cShopstoreWorkingStyleIconClass"></i>
                     </p>
@@ -324,8 +316,8 @@
                         </p>
                     </p>
                 </div>
-                <div ng-hide='cShopstoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleNotFoundMsgDivClass">
-                    No working hours defined by '{{shopstoreInfo.shopStoreNameInCaps}}' store !
+                <div ng-hide='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleNotFoundMsgDivClass">
+                    No working hours defined by '{{storeInfo.shopStoreNameInCaps}}' store !
                 </div>
             </div>
 
