@@ -193,7 +193,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                     $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
                     LocationServices.showSelectedDeliveryAreaTextHeader();
                 }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>=0){
-                    // show alert popup to user for notify him/her order cart all requested item will be clear from cart 
+                    // show alert popup to user for notify him/her order cart all requested added item will be clear 
                     var msgStr = "<p style='font-weight:normal;font-size:15px!important;'>If you change delivery location from '"+userSelectedPrevDeliveryAreaDataObj['areaname']+"'";
                     msgStr+= " to '"+areaNamesStr+"' then all added <span class='badge'>"+ ordercartRequestedItemCount +"</span> items in your cart will be removed ?</p>";
                     Lobibox.alert("info", {
