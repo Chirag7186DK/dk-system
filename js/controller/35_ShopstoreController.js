@@ -398,7 +398,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeAllProductDetailsList = false;
                     $rootScope.storeDefaultSelectProductCategoryTitle = '';
-                    $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                    $rootScope.storeNotFoundProductMsgStr = 'No products found or used proper filter !!!';
                     $rootScope.storeTotalProductCount = 0;
                     // calling ProductServices 
                     ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
@@ -412,7 +412,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                                         $rootScope.storeAllProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
                                         $rootScope.storeTotalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
                                     }else{
-                                        $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                                        $rootScope.storeNotFoundProductMsgStr = 'No products found or used proper filter !!!';
                                     }
                                 }
                             }
@@ -422,7 +422,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }catch(ex){
                 $rootScope.storeAllProductDetailsList = false;
                 $rootScope.storeDefaultSelectProductCategoryTitle = '';
-                $rootScope.notFoundProductMsgStr = 'No products found or used proper filter !!!';
+                $rootScope.storeNotFoundProductMsgStr = 'No products found or used proper filter !!!';
                 $rootScope.storeTotalProductCount = 0;
                 console.log("problem in loadProductTypeProductCategoryAllProductListCStore ex=>"+ex);
             }
@@ -512,7 +512,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.isShowCStoreRatingReviewDetails = false;
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
-                $rootScope.isShowCShopStoreWorkingStyleDetails = false;
+                $rootScope.isShowCStoreWorkingStyleDetails = false;
                 $rootScope.cStoreWorkingstyleDetails = false;
                 $rootScope.loadProductTypeProductCategoryAllProductListCStore();
             }
