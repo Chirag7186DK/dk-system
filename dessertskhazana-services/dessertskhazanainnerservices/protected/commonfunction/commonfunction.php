@@ -209,7 +209,7 @@ class commonfunction{
                 }
                 if($isRequestedDeliveryAreaMatched==false){
                     // default selected delivery area to show
-                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                    $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
                         "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
                         "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
                         "areaIcon"=>"fa fa-map-marker",
