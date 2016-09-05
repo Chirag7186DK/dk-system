@@ -534,7 +534,7 @@ function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
             var userProductObj = {};
             userProductObj['shopstore_value'] = paramDataObj['shopStoreIds'];
             userProductObj['all_shopstorevalue'] = paramDataObj['shopStoreIds'];
-            userProductObj['shopstore_name'] = '';
+            userProductObj['shopstore_name'] = paramDataObj['shopStoreTitle'];
             userProductObj['producttype_value'] = paramDataObj['productTypeId'];
             userProductObj['producttype_name'] = paramDataObj['productTypeTitle'];
             userProductObj['producttype_categoryvalue'] = paramDataObj['productTypeProductCategoryId'];
