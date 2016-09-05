@@ -49,3 +49,15 @@ input, textarea, select, .form-control{
 .notifyToUserOnlyForSelectedDeliveryArea .lobibox-delay-indicator{
     height:0px!important;
 }
+
+.customNotifyPopupClass1 .lobibox-title{
+    font-size:15px!important;
+}
+
+.customNotifyPopupClass1 .btn, 
+.customNotifyPopupClass1 .btn:hover{
+    font-weight:normal!important;
+    background-color:#fff!important;
+    border:none!important;
+    border-radius:0px!important;
+}
