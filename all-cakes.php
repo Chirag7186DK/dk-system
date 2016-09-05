@@ -89,7 +89,6 @@
         
             <!-- view desserts khazana served all desserts type in your selected delivery area -->
             <div id='vap_deliveryAreabasedDkServedAllDessertsContainerDivId' ng-controller="ProductController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsContainerDivClass'>
-                
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" class='vap_dkServedDessertsProductNoteLIClass'>
                     <i class='fa fa-smile-o smileIconClass'></i> 
@@ -102,9 +101,7 @@
                     <i class='fa fa-smile-o smileIconClass'></i> 
                     Hey you are viewing 'Cakes' desserts at '{{userSelectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li> 
-                 
-                
-                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
+                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" id="vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vap_deliveryAreabasedDkServedEachDessertsProductDivClass' scroll-horizontally-dessertsproducttypelist-allproductlevel>
                         <p class="vap_dessertsProductIconPClass">
@@ -118,7 +115,6 @@
                         </p>
                     </div>
                 </div>
-                
             </div>
             
             <!-- create horizontally space div between -->
