@@ -127,25 +127,18 @@
             
             <!-- show product images -->
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_productImagesContainerDivClass">
-                <p class='vpd_productImagesDetailsLabelPClass'>
-                    IMAGES
-                </p>
-                <hr class="vpd_horizontalLineClass">
                 <img style='width:100%;' class='preloadProductImagesClass' data-original="{{vAllPDetails[0]['productImageFilePath']+vAllPDetails[0]['productImageFileName']}}" ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
             </div>
             
             <!-- show product details -->
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_productDetailsContainerDivClass">
-                <p class='vpd_productDetailsLabelPClass'>
-                    <i class='fa fa-birthday-cake'></i> PRODUCT
+                <p class='vpd_productNamePClass'>
+                    <i class='fa fa-birthday-cake'></i> {{vAllPDetails[0]['productListTitle']}}
                 </p>
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_productStoreNameContainerPClass'>
                     <span class="vpd_productStoreLabelNameSpanClass">Seller: </span> 
                     <span class="vpd_productStoreNameSpanClass">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</span>
-                </p>
-                <p class='vpd_productNamePClass'>
-                    {{vAllPDetails[0]['productListTitle']}}
                 </p>
                 <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedAboutProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct" title="To see detailed reviewed / rating about this item please scroll down page to rating / review section">
                     {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} reviewed,
@@ -156,8 +149,8 @@
                 <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
                     No rating & review from customer yet !!!
                 </p>
-                <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
-                    Estimated Delivery Time: 80 MIN
+                <p class="vpd_estimatedProductDeliveryTimePClass">
+                    Estimated Delivery Time: <span>80 MIN</span>
                 </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
@@ -169,7 +162,7 @@
                     </select>
                 </p>
                 <p class='viewProductPricePClass' title="Item price varies based on size/weight"> 
-                    <span class='viewProductCutPriceTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']">
+                    <span class='vpd_productCutPriceTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']">
                         <i class="fa fa-rupee"></i> {{vAllPDetails[0]['productFeatureBasePrice']}}
                     </span>
                     <span class='vpd_productPayBlgPriceTextSClass'>
@@ -180,7 +173,8 @@
                         ({{vAllPDetails[0]['productFeatureDiscount']}}% Off)
                     </span>
                 </p>
-                <p class='vpd_productQtyPClass'> 
+                <p class='vpd_productQtyPClass'>
+                    Qty
                     <input view-productqtyinput-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" title="Type Qty" value='1'>
                 </p>
                 <p class='vpd_productCommentBoxPClass' ng-if="vAllPDetails[0]['isShowProductCommentBox']=='Y'" title="Type 40 characters only & not allowed any special characters"> 
@@ -204,7 +198,7 @@
                     Total Item(s) : {{ordercartItemRequestedCount}}
                 </p>
                 <p class='vpd_orderSummaryTotalProductAmtPClass'>
-                    <i class="fa fa-rupee"></i> Subtotal Amount : {{subtotalOrderAmt}}
+                    <i class="fa fa-rupee"></i> Subtotal : {{subtotalOrderAmt}}
                 </p>
                 <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
                     <button class="vpd_orderSummaryCheckoutBtnClass btn">Checkout to Pay Rs: {{subtotalOrderAmt}}</button>
