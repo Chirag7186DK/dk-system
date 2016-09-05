@@ -546,8 +546,8 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
             }
         };
         
-        // toggleShopStoreDessertsMenu
-        $rootScope.toggleShopStoreDessertsMenu = function(){
+        // toggleCStoreDessertsMenu
+        $rootScope.toggleCStoreDessertsMenu = function(){
             if($rootScope.isToggleCStoreDessertsMenu===false){
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
