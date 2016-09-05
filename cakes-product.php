@@ -241,7 +241,7 @@
             
             <!-- product rating/review details -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass" ng-init="toggleRatingReviewProductContent();">
-                <p class="vpd_ratingReviewProductHeaderPClass">
+                <p class="vpd_ratingReviewProductHeaderPClass" ng-click="toggleRatingReviewProductContent();">
                     <i class='fa fa-comment-o'></i> RATINGS & REVIEW
                     <span class="{{toggleRatingReviewProductIconClass}} moreLessRatingReviewProductIconClass"></span>
                 </p>
