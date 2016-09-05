@@ -122,6 +122,12 @@ function OrderCartServices($http, $q, $rootScope){
             return promiseObject;
         };
         
+        // resetAllItemOrdercart
+        orderDetails.resetAllItemOrdercart = function(preparedParamJsonObj){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'DELETE', '', preparedParamJsonObj).done(function(retResponseJson){});
+            return promiseObject;
+        };
+        
         return orderDetails;
         
     }catch(ex){
