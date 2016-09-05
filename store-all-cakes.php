@@ -287,7 +287,7 @@
                         <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA' === eachReviewedRatingTypeDetails.answerPattern" class='cshopstore_eachUserReviewedCommentAbtProductPClass'>
                             {{eachReviewedRatingTypeDetails.answerText}}
                         </p>
-                        <p class="vpd_eachUserAvgRatedReviewAbtProductPClass">
+                        <p class="cshopstore_eachUserAvgRatedReviewAbtProductPClass">
                             Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5
                         </p>
                     </div>
