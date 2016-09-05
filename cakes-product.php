@@ -205,7 +205,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- product description details -->
-            <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productFeaturesContainerDivClass">
+            <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails();toggleProductDescriptionContent('vpd_productFeaturesBodyContainerDivId');" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productFeaturesContainerDivClass">
                 <p class="vpd_productDescriptionLabelHeaderPClass" ng-click="toggleProductDescriptionContent('vpd_productFeaturesBodyContainerDivId');">
                     <i class='fa fa-file-text-o'></i> INFORMATION
                     <span class="{{toggleProductDescriptionIconClass}} moreLessProductDescriptionIconClass"></span>
