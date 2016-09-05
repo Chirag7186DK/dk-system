@@ -149,7 +149,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                         var areaName = dkDeliveryAreaList[eachAreaIndex]['areaName'];
                         var areaPincode = dkDeliveryAreaList[eachAreaIndex]['areaPincode'];
                         var ccaIdVaue = dkDeliveryAreaList[eachAreaIndex]['ccaId'];
-                        var areaStr = areaPincode + " " +areaName;
+                        var areaStr = areaPincode + " - " +areaName+"</span>";
                         var areaValueStr = areaValue+"|"+ccaIdVaue;
                         var eachOptionStr = "<option data-icon='"+areaIcon+"' value='"+areaValueStr+"'>"+areaStr+"</option>";
                         $(areaListSelectControlElementObj).append(eachOptionStr);
@@ -211,13 +211,18 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                             if(type==='Yes'){
                                 alert("Reset all item in order cart Yes");
                                 // var rtStatus = OrderCartServices.resetAllItemOrdercart();
-                                resetOrdercartSummaryDataObjInSession();
+                                // resetOrdercartSummaryDataObjInSession();
                             }
                         }
                     });  
                 }
                 
             });
+        };
+        
+        // enableForUserToChangeDeliveryAreaSelectCtrlElement
+        $rootScope.enableForUserToChangeDeliveryAreaSelectCtrlElement = function(deliveryAreaElementObj){
+            
         };
         
         // refreshDependencyElementOfDeliveryAreaList
