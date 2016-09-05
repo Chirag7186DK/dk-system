@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('LocationController', LocationController);
 
-function LocationController($scope, $rootScope, $http, LocationServices){
+function LocationController($scope, $rootScope, $http, LocationServices, OrderCartServices){
     try{
         
         // loadDkDeliveryCityList 
@@ -196,19 +196,23 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>=0){
                     
                     // show alert popup to user for notify him/her order cart all requested item will be clear from cart 
-                    var msgStr = "<p style='font-weight:bold;'>If you change delivery location from: "+userSelectedPrevDeliveryAreaDataObj['areaname'];
-                    msgStr+= " To: "+areaNamesStr+", then all added "+ ordercartRequestedItemCount +"items in your cart will be removed ?</p>";
+                    var msgStr = "<p style='font-weight:normal;font-size:15px!important;'>If you change delivery location from '"+userSelectedPrevDeliveryAreaDataObj['areaname']+"'";
+                    msgStr+= " to '"+areaNamesStr+"' then all added <span class='badge'>"+ 100 +"</span> items in your cart will be removed ?</p>";
                     Lobibox.alert("info", {
-                        title:"Order cart Information",
+                        title:"Warning Information",
+                        iconClass: '',
                         msg:msgStr, 
                         draggable:true,
                         closeOnEsc:false,
+                        showClass:"customNotifyPopupClass1",
                         buttons:{
                             Yes:{'class': 'btn btn-default',text: 'YES', closeOnClick: true},
                             No: {'class': 'btn btn-default',text: 'NO', closeOnClick: true}
                         },
                         callback: function(lobibox, type){
-                            
+                            if(type==='Yes'){
+                                var rtStatus = OrderCartServices.resetAllItemOrdercart();
+                            }
                         }
                     });  
                     
