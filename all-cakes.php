@@ -223,7 +223,7 @@
                         <button title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="vap_specificProductViewDetailsBtnClass btn" ng-click='viewProductDetails(eachProductDetails)'>
                             <i class="fa fa-list"></i>
                         </button>
-                        <button ng-controller='ShopStoreController' ng-click='collectDataToViewCShopstore(eachProductDetails)' title='Click to view this seller store desserts(menu), information, review/rating' class="vap_specificViewStoreDetailsBtnClass btn">
+                        <button ng-controller='ShopStoreController' ng-click='storeProductTypeProductCategoryProductDataInSession(eachProductDetails)' title='Click to view this seller store desserts(menu), information, review/rating' class="vap_specificViewStoreDetailsBtnClass btn">
                             STORE
                         </button>
                     </p>
