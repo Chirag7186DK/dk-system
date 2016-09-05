@@ -240,12 +240,15 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- product rating/review details -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass" ng-init="toggleRatingReviewProductContent();">
                 <p class="vpd_ratingReviewProductHeaderPClass">
                     <i class='fa fa-comment-o'></i> RATINGS & REVIEW
-                    <span class="fa fa-chevron-circle-up moreLessRatingReviewProductIconClass"></span>
+                    <span class="{{toggleRatingReviewProductIconClass}} moreLessRatingReviewProductIconClass"></span>
                 </p>
-                <div id="vpd_ratingReviewProductBodyDivId" class="vpd_ratingReviewProductBodyDivClass">
+                <div ng-show="isToggleRatingReviewProductContent" id="vpd_ratingReviewProductBodyDivId" class="vpd_ratingReviewProductBodyDivClass">
+                    
+                    <!-- create horizontally space div between -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
                     
                     <!-- rating and review summary about product -->
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_summaryReviewRatingContainerDivClass" ng-if="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
