@@ -180,7 +180,6 @@
             
             <!-- product filter operation -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
-                
                 <!-- info / tips about product filtering operation -->
                 <p class='cshopstore_tipAbtFilterProductPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
@@ -188,7 +187,6 @@
                         <i class="fa fa-filter"></i> {{toggleCStoreProductFilterBtnLabel}}
                     </button>
                 </p>
-                
                 <div ng-show="isShowCStoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cStoreProductFilterPopupDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
@@ -269,7 +267,7 @@
             
             <!-- not found product show message div -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
-                {{notFoundProductMsgStr}}
+                <!--{{notFoundProductMsgStr}}-->
             </div>
             
             <!-- displaying all user reviewed rating details -->
