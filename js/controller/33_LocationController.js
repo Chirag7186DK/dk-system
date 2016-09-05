@@ -179,6 +179,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 for(var eachIndx = 1; eachIndx<selectedAreaSplittedArr.length; eachIndx++){
                     areaNamesStr+=selectedAreaSplittedArr[eachIndx]+" ";
                 }
+                areaNamesStr = (areaNamesStr).trim();
                 var paramObj = {
                     "areaId":($(elementObj).selectpicker('val')).split("|")[0], 
                     "areaPincode":selectedAreaSplittedArr[0],
@@ -188,7 +189,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 
                 var ordercartRequestedItemCount = getOrdercartRequestItemCountFromSession();
                 var userSelectedPrevDeliveryAreaDataObj = getUserSelectedPrevDeliveryAreaDetails();
-                if(ordercartRequestedItemCount===0){
+                if(ordercartRequestedItemCount==='111111'){
                     storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, 'Y');
                     $rootScope.userSelectedDeliveryArea =  ($(elementObj).selectpicker('val'));
                     // refresh desserts type list based on deilvery area
@@ -197,8 +198,10 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 }else if(userSelectedPrevDeliveryAreaDataObj!==false && areaNamesStr!=='' && ordercartRequestedItemCount>0){
                     
                     // show alert popup to user for notify him/her order cart all requested item will be clear from cart 
-                    var msgStr = '';
+                    var msgStr = "<p style='font-weight:bold;'>If you change delivery location from: "+userSelectedPrevDeliveryAreaDataObj['areaname'];
+                    msgStr+= " To: "+areaNamesStr+", then all added "+ ordercartRequestedItemCount +"items in your cart will be removed ?</p>";
                     Lobibox.alert("info", {
+                        title:"Order cart Information",
                         msg:msgStr, 
                         draggable:true,
                         closeOnEsc:false,
@@ -207,6 +210,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                             No: {'class': 'btn btn-default',text: 'NO', closeOnClick: true}
                         },
                         callback: function(lobibox, type){
+                            
                         }
                     });  
                     
