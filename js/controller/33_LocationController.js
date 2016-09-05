@@ -91,7 +91,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 // remove existing delivery area list
                 if($('#dkDeliveryAreaListWrapperDivId').length===1){
                     $('#dkDeliveryAreaListSelectCtrlId').find('option').remove();
-                    angular.element('#dkDeliveryAreaListWrapperDivId').scope().loadDKDeliveryAreaList(cityListLoadedOnPage);
+                    $rootScope.loadDKDeliveryAreaList(cityListLoadedOnPage);
                 }
                 // remove existing delivery area desserts type list
                 if($('#dkDeliveryAreaDessertsProductListWrapperDivId').length===1){
@@ -174,6 +174,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
             $(elementObj).on('changed.bs.select', function(e){
                 var areaNamesStr = '';
                 var selectedAreaSplittedArr = ($(elementObj).find('option:selected').text()).split(" ");
+                alert(selectedAreaSplittedArr);
                 for(var eachIndx = 1; eachIndx<selectedAreaSplittedArr.length; eachIndx++){
                     areaNamesStr+=selectedAreaSplittedArr[eachIndx]+" ";
                 }
@@ -200,7 +201,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
                 // remove existing desserts type list
                 if($('#dkDeliveryAreaDessertsProductListWrapperDivId').length===1){
                     $('#dkDeliveryAreaDessertsProductListSelectCtrlId').find('option').remove();
-                    angular.element('#dkDeliveryAreaDessertsProductListWrapperDivId').scope().loadDKDeliveryAreaBasedDessertsTypeList($rootScope.isDkDeliveryAreaChanged, loadAreaListOnPage);
+                    $rootScope.loadDKDeliveryAreaBasedDessertsTypeList($rootScope.isDkDeliveryAreaChanged, loadAreaListOnPage);
                 }
             }
         };
