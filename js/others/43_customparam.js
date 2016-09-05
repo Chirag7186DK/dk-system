@@ -558,9 +558,11 @@ function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
 function getParamObjForProductTypeProductCategoryAllProductList(){
     try{
         var paramObj = {};
+        paramObj['productlist_ids'] = '';
         paramObj['product_price_filter'] = '';
         paramObj['product_size_filter'] = '';
         paramObj['product_discount_filter'] = '';
+        paramObj['product_featureids'] = '';
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -609,6 +611,18 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
                     }else if((userProductObj['all_shopstorevalue']).length>0 
                         && userProductObj['all_shopstorevalue']!==''){
                         paramObj['shopstoreids'] = userProductObj['all_shopstorevalue'];
+                    }
+                }
+                if(userProductObj.hasOwnProperty('producttype_listvalue')===true){
+                    if(parseInt(userProductObj['producttype_listvalue'])>0 
+                        && userProductObj['producttype_listvalue']!==''){
+                        paramObj['productlist_ids'] = userProductObj['producttype_listvalue'];
+                    }
+                }
+                if(userProductObj.hasOwnProperty('producttype_featurevalue')===true){
+                    if(parseInt(userProductObj['producttype_featurevalue'])>0 
+                        && userProductObj['producttype_featurevalue']!==''){
+                        paramObj['product_featureids'] = userProductObj['producttype_featurevalue'];
                     }
                 }
                 if(userProductObj.hasOwnProperty('product_price_filter')===true){
