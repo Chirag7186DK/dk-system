@@ -99,7 +99,7 @@
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' to deliver product at 
-                    '{{userSelectedDeliveryAreaTextHeader}}' area !!!
+                    '{{selectedDeliveryAreaTextHeader}}' area !!!
                 </li>
                 
                 <!-- display all desserts type can served by store in selected delivery area -->
