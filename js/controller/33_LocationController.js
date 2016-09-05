@@ -238,7 +238,7 @@ function LocationController($scope, $rootScope, $http, LocationServices){
         
         // buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl
         $rootScope.buildDKDeliveryAreaBasedDessertsTypeListHtmlSelectControl = function(allDessertsTypeList, loadDessertTypeListOnPage){
-            if($('#dkDeliveryAreaDessertsTypeListSelectCtrlId').length===1){       
+            if($('#dkDeliveryAreaDessertsTypeListSelectCtrlId').length===1){    
                 var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsTypeListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
                 $(dessertsTypeListSelectControlElementObj).find('option').remove();
