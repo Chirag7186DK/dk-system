@@ -271,9 +271,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
                 {{notFoundProductMsgStr}}
             </div>
-
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- displaying all user reviewed rating details -->
             <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
