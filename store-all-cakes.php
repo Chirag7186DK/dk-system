@@ -93,14 +93,14 @@
                 <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
                     <p class='cShopStoreNameTextLblPClass'>
                         <span class="cshopstoreNameSClass">
-                            {{shopstoreInfo.shopStoreNameInCaps}} STORE
+                            {{storeInfo.shopStoreNameInCaps}} STORE
                         </span>
                     </p>
                     <p class='cShopStoreLocatedInfoLblPClass'>
-                        Near By : {{shopstoreInfo.shopStoreAddress}}
+                        Near By : {{storeInfo.shopStoreAddress}}
                     </p>
                     <p ng-click="toggleShopStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
-                        {{toggleShopStoreSelfSummaryInfoLblText}}
+                        {{toggleCStoreSelfSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -113,7 +113,7 @@
                         {{customersReviewedRatingMsgStr}}
                     </p>
                     <p ng-click="toggleShopStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass' ng-show="isRatingReviewBasedInfoFound">
-                        {{toggleShopStoreRatingReviewSummaryInfoLblText}}
+                        {{toggleCStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -126,7 +126,7 @@
                         {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
                     </p>
                     <p ng-click="toggleShopStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
-                        {{toggleShopStoreDessertsMenuSummaryInfoLblText}}
+                        {{toggleCStoreDessertsMenuSummaryInfoLblText}}
                     </p>
                 </div>
                 
