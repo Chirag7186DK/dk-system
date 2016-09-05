@@ -123,9 +123,29 @@ function OrderCartServices($http, $q, $rootScope){
         };
         
         // resetAllItemOrdercart
-        orderDetails.resetAllItemOrdercart = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'DELETE', '', preparedParamJsonObj).done(function(retResponseJson){});
-            return promiseObject;
+        orderDetails.resetAllItemOrdercart = function(){
+            try{
+                // fetch param data from session
+                var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    
+                    var jsonParamBlockUIObject = {};
+                    jsonParamBlockUIObject['css'] = {"padding":10};
+                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', jsonParamBlockUIObject);
+
+                    var fetchedParamJsonObj = {};
+                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ResetAllItemOrdercart", 'apiFile', 'DELETE', '', fetchedParamJsonObj).done(function(retResponseJson){
+                        showHideLoaderBox('hide');
+                        // orderDetails.refreshUserOrdercartDashboardSummaryDataDetails();
+                    });
+                }
+            }catch(ex){
+                showHideLoaderBox('hide');
+                console.log("Problem in refreshUserOrdercartDashboardSummaryDataDetails=>"+ex);
+            }
         };
         
         return orderDetails;
