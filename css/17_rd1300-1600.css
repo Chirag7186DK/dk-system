@@ -875,16 +875,9 @@
         padding-bottom:10px;
     }
 
-    .vpd_productImagesDetailsLabelPClass{
-        margin-top:10px;
-        color:#fb366e!important;
-        font-size:20px!important;
-        font-family:serif!important;
-        font-weight:700!important;
-    }
-
     .vpd_horizontalLineClass{
         border-top:1px solid #fb366e!important;
+        margin-top:0px!important;
     }
 
     .vpd_productDetailsContainerDivClass{
@@ -894,23 +887,18 @@
     }
 
     .vpd_productDetailsContainerDivClass p{
-        margin-bottom:15px;
+        margin-bottom:15px!important;
     }
-
-    .vpd_productDetailsLabelPClass{
+    
+    .vpd_productNamePClass{
         margin-top:10px;
         color:#fb366e!important;
-        font-size:20px!important;
+        font-size:15px!important;
         font-family:serif;
         font-weight:700!important;
     }
-
+    
     .vpd_productStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
-    .vpd_productNamePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
     }
@@ -923,6 +911,12 @@
     .vpd_estimatedProductDeliveryTimePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass span{
+        background-color:rgba(39,171,92,0.9)!important;
+        color:#fff!important;
+        padding:3px!important;
     }
 
     .vpd_productSelectMeasurementLabelPClass{
@@ -974,13 +968,6 @@
         font-weight:bold!important;
     }
 
-    .vpd_specificProductAddToWishlistbtnClass{
-        border-radius:0px!important;
-        background-color:#ED143D!important;
-        color:#fff!important;
-        font-weight:bold!important;
-    }
-
     .vpd_orderSummaryContainerDivClass{
         background-color:#fff!important;
         border:1px solid #CDCEE8!important;
@@ -991,7 +978,7 @@
     .vpd_orderSummaryLabelPClass{
         margin-top:10px;
         color:#fb366e!important;
-        font-size:20px!important;
+        font-size:15px!important;
         font-family:serif;
         font-weight:700!important;
     }
@@ -1003,10 +990,6 @@
         margin-right:2%!important;
         // opacity:0.2;
         font-weight:bold!important;
-    }
-
-    .vpd_orderSummaryContainerDivClass p{
-        margin-bottom:20px;
     }
 
     .vpd_featuresContainerDivClass{
