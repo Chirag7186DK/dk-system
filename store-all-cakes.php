@@ -268,7 +268,7 @@
             </div>
             
             <!-- not found product show message div -->
-            <div ng-show='totalProductCount==0' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
                 {{notFoundProductMsgStr}}
             </div>
 
@@ -309,7 +309,7 @@
                         Our Working Hours <i class="fa fa-clock-o faa-tada animated cShopstoreWorkingStyleIconClass"></i>
                     </p>
                     <p class='cShopstoreWorkingStyleBodyPClass'>
-                        <p ng-repeat="eachWorkingScheduleDetails in cShopstoreWorkingstyleDetails" class="cShopStoreWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'cShopStoreWorkingTodayDaySchedulePClass':''}}">
+                        <p ng-repeat="eachWorkingScheduleDetails in cStoreWorkingstyleDetails" class="cShopStoreWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'cShopStoreWorkingTodayDaySchedulePClass':''}}">
                             <span>
                                 {{eachWorkingScheduleDetails.dayName}} ({{eachWorkingScheduleDetails.openTime + "-" + eachWorkingScheduleDetails.closeTime}})
                             </span>
