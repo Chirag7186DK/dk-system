@@ -157,13 +157,13 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'filterOperationTypeList', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     if(arrJsonObj.allProductPriceDetailsArr!==false && arrJsonObj.allProductPriceDetailsArr!==undefined){
-                                        $rootScope.buildPriceFilterListHtmlSelectControlCStore(arrJsonObj.allProductPriceDetailsArr);
+                                        $rootScope.buildPriceFilterListHtmlSelectCtrlCStore(arrJsonObj.allProductPriceDetailsArr);
                                     }
                                     if(arrJsonObj.allProductSizeDetailsArr!==false && arrJsonObj.allProductSizeDetailsArr!==undefined){
-                                        $rootScope.buildSizeFilterListHtmlSelectControlCStore(arrJsonObj.allProductSizeDetailsArr);
+                                        $rootScope.buildSizeFilterListHtmlSelectCtrlCStore(arrJsonObj.allProductSizeDetailsArr);
                                     }
                                     if(arrJsonObj.allProductDiscountDetailsArr!==false && arrJsonObj.allProductDiscountDetailsArr!==undefined){
-                                        $rootScope.buildDiscountFilterListHtmlSelectControlCStore(arrJsonObj.allProductDiscountDetailsArr);
+                                        $rootScope.buildDiscountFilterListHtmlSelectCtrlCStore(arrJsonObj.allProductDiscountDetailsArr);
                                     }
                                 }
                             }
@@ -178,19 +178,19 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         
         // toggleCStoreAllProductFilterContainer
         $rootScope.toggleCStoreAllProductFilterContainer = function(){
-            if($rootScope.isShowCShopstoreAllProductFilter===false){
+            if($rootScope.isShowCstoreAllProductFilter===false){
                 $rootScope.toggleCstoreProductFilterBtnLabel = "HIDE FILTER";
                 $rootScope.isShowCstoreAllProductFilter = true;
-                $rootScope.cShopstoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
+                $rootScope.cStoreProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
             }else{
                 $rootScope.toggleCShopstoreProductFilterBtnLabel = "SHOW FILTER";
-                $rootScope.isShowCShopstoreAllProductFilter = false;
-                $rootScope.cShopstoreProductFilterPopupDivClass = "";
+                $rootScope.isShowCstoreAllProductFilter = false;
+                $rootScope.cStoreProductFilterPopupDivClass = "";
             }
         };
         
         // buildPriceFilterListHtmlSelectControl
-        $rootScope.buildPriceFilterListHtmlSelectControlCStore = function(allProductPriceDetails){
+        $rootScope.buildPriceFilterListHtmlSelectCtrlCStore = function(allProductPriceDetails){
             try{    
                 if($('#allProductPriceFilterListSelectCtrlId').length===1){
                     var defaultSelectedAllProductPriceFilterArr = new Array();
@@ -246,7 +246,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                     }
                 }
             }catch(ex){
-                console.log("problem in buildPriceFilterListHtmlSelectControlCStore=>"+ex);
+                console.log("problem in buildPriceFilterListHtmlSelectCtrlCStore=>"+ex);
             }    
         };
         
@@ -271,7 +271,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         };
         
         // buildSizeFilterListHtmlSelectControl
-        $rootScope.buildSizeFilterListHtmlSelectControlCStore = function(allProductSizeDetails){
+        $rootScope.buildSizeFilterListHtmlSelectCtrlCStore = function(allProductSizeDetails){
             try{
                 if($('#allProductSizeFilterListSelectCtrlId').length===1){
                     var productSizeFilterListSelectControlElementObj = document.getElementById("allProductSizeFilterListSelectCtrlId");
@@ -323,7 +323,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         };
        
         // buildDiscountFilterListHtmlSelectControl
-        $rootScope.buildDiscountFilterListHtmlSelectControlCStore = function(allProductDiscountDetails){
+        $rootScope.buildDiscountFilterListHtmlSelectCtrlCStore = function(allProductDiscountDetails){
             if($('#allProductDiscountFilterListSelectCtrlId').length===1){ 
                 var productDiscountFilterListSelectControlElementObj = document.getElementById("allProductDiscountFilterListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
