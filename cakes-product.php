@@ -206,11 +206,11 @@
             
             <!-- product description details -->
             <div ng-show="isProductDescriptionDetailsFound" ng-controller='ProductController' ng-init="loadProductDescriptionDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_productFeaturesContainerDivClass">
-                <p class="vpd_productDescriptionLabelHeaderPClass" ng-click="toggleProductDescriptionContent();">
+                <p class="vpd_productDescriptionLabelHeaderPClass" ng-click="toggleProductDescriptionContent('vpd_productFeaturesBodyContainerDivId');">
                     <i class='fa fa-file-text-o'></i> INFORMATION
                     <span class="{{toggleProductDescriptionIconClass}} moreLessProductDescriptionIconClass"></span>
                 </p>
-                <div ng-show="isToggleProductDescriptionContent" id="vpd_productFeaturesBodyContainerDivId" class="vpd_productFeaturesBodyContainerDivClass">
+                <div id="vpd_productFeaturesBodyContainerDivId" class="vpd_productFeaturesBodyContainerDivClass">
                     <ul ng-repeat="eachDescriptionTitleAndPoints in productDescriptionDetailsArr" class="vpd_productDescriptionTitleULClass">
                         <li class='vpd_productDescriptionTitleLIClass'>{{eachDescriptionTitleAndPoints.descriptionTitle}}</li>
                         <ul class="vpd_productDescriptionULClass">
@@ -224,12 +224,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- product shipping details -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shippingProductContainerDivClass" ng-init="toggleShippingProductContent();">
-                <p class="vpd_shippingProductLabelHeaderPClass" ng-click="toggleShippingProductContent();">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shippingProductContainerDivClass" ng-init="toggleShippingProductContent('vpd_shippingProductBodyContainerDivId');">
+                <p class="vpd_shippingProductLabelHeaderPClass" ng-click="toggleShippingProductContent('vpd_shippingProductBodyContainerDivId');">
                     <i class='fa fa-bus'></i> SHIPPING
                     <span class="{{toggleShippingProductIconClass}} moreLessShippingProductIconClass"></span>
                 </p>
-                <div ng-show="isToggleShippingProductContent" id="vpd_shippingProductBodyContainerDivId" class="vpd_shippingProductBodyContainerDivClass">
+                <div id="vpd_shippingProductBodyContainerDivId" class="vpd_shippingProductBodyContainerDivClass">
                     <ul class="vpd_shippingTitleULClass">
                         <li class='vpd_shippingTitleLIClass'>Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
                     </ul>
@@ -240,12 +240,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- product rating/review details -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass" ng-init="toggleRatingReviewProductContent();">
-                <p class="vpd_ratingReviewProductHeaderPClass" ng-click="toggleRatingReviewProductContent();">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass" ng-init="toggleRatingReviewProductContent('vpd_ratingReviewProductBodyDivId');">
+                <p class="vpd_ratingReviewProductHeaderPClass" ng-click="toggleRatingReviewProductContent('vpd_ratingReviewProductBodyDivId');">
                     <i class='fa fa-comment-o'></i> RATINGS & REVIEW
                     <span class="{{toggleRatingReviewProductIconClass}} moreLessRatingReviewProductIconClass"></span>
                 </p>
-                <div ng-show="isToggleRatingReviewProductContent" id="vpd_ratingReviewProductBodyDivId" class="vpd_ratingReviewProductBodyDivClass">
+                <div id="vpd_ratingReviewProductBodyDivId" class="vpd_ratingReviewProductBodyDivClass">
                     
                     <!-- write review form details about product -->
                     <div ng-show="ratingReviewQuestionAboutProductByShopStoresDetails" ng-controller='RatingReviewController' ng-init="loadRatingReviewQuestionsAboutProductByShopStores()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_takeUserReviewRatingProductContainerDivClass">
