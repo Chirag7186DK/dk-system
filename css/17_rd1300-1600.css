@@ -683,22 +683,10 @@
     }
     
     .vap_productVegIconClass{
-        color:#00923f!important;
+        color:#01fb43!important;
         border-radius:0px!important;
         font-size:12px!important;
         margin-right:30px!important;
-    }
-
-    .vap_productDeliveryLocationPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-    }
-
-    .vap_specificProductAddWishListBtnClass{
-        border-radius:0px!important;
-        background-color:#ED143D!important;
-        color:#fff!important;
-        margin-right:4%!important;
         font-weight:bold!important;
     }
 
