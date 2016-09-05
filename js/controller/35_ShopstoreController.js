@@ -501,6 +501,7 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
                 $rootScope.toggleCStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowCStoreWorkingStyleDetails = true;
+                $rootScope.storeAllProductDetailsList = false;
                 $rootScope.loadCStoresWorkingStyle();
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
