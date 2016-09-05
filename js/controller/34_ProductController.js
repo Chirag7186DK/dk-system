@@ -528,7 +528,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         };
         
         // toggleProductDescriptionContent
-        $rootScope.toggleProductDescriptionContent = function(){
+        $rootScope.toggleProductDescriptionContent = function(toggleElementId){
             if($rootScope.isToggleProductDescriptionContent===false){
                 $rootScope.isToggleProductDescriptionContent = true;
                 $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-down";
@@ -536,10 +536,11 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 $rootScope.isToggleProductDescriptionContent = false;
                 $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
             }
+            $("#"+toggleElementId).slideToggle("slow");
         };
         
         // toggleShippingProductContent
-        $rootScope.toggleShippingProductContent = function(){
+        $rootScope.toggleShippingProductContent = function(toggleElementId){
             if($rootScope.isToggleShippingProductContent===false){
                 $rootScope.isToggleShippingProductContent = true;
                 $rootScope.toggleShippingProductIconClass = "fa fa-chevron-circle-down";
@@ -547,10 +548,11 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 $rootScope.isToggleShippingProductContent = false;
                 $rootScope.toggleShippingProductIconClass = "fa fa-chevron-circle-up";
             }
+            $("#"+toggleElementId).slideToggle("slow");
         };
         
         // toggleRatingReviewProductContent
-        $rootScope.toggleRatingReviewProductContent = function(){
+        $rootScope.toggleRatingReviewProductContent = function(toggleElementId){
             if($rootScope.isToggleRatingReviewProductContent===false){
                 $rootScope.isToggleRatingReviewProductContent = true;
                 $rootScope.toggleRatingReviewProductIconClass = "fa fa-chevron-circle-down";
@@ -558,6 +560,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
                 $rootScope.isToggleRatingReviewProductContent = false;
                 $rootScope.toggleRatingReviewProductIconClass = "fa fa-chevron-circle-up";
             }
+            $("#"+toggleElementId).slideToggle("slow");
         };
         
     }catch(ex){
