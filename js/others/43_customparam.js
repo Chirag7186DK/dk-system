@@ -252,6 +252,7 @@ function storeDefaultDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSes
             var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areavalue'] = '';
             existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areaname'] = '';
+            existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['areapincode'] = '';
             existingDkParamObj['dkSelectedDeliveryCityAreaDessertsProduct']['ccaId'] = '';
             if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
                 if(paramObj.hasOwnProperty('areaId')===true && paramObj.hasOwnProperty('areaName')===true){
