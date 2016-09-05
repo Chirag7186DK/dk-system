@@ -55,7 +55,7 @@
     .dkDeliveryCityAreaDessertsContainerDivClass{
         background-image:url(../images/dk/homebanner/landing_pagebg-1500|500.png);
         background-size:cover!important;
-        height:320px!important;
+        height:310px!important;
         border-bottom:1px solid #e6e0e0!important;
     }
 
@@ -108,7 +108,7 @@
     }
 
     .dkDeliveryAreaListContainerDivClass{
-        margin-top:26px!important;
+        margin-top:20px!important;
     }
 
     .dkDeliveryAreaListWrapperDivClass{
@@ -143,7 +143,7 @@
     }
 
     .dkDeliveryAreaDessertsProductListContainerDivClass{
-        margin-top:26px!important;
+        margin-top:20px!important;
     }
 
     .dkDeliveryAreaDessertsProductListWrapperDivClass{
