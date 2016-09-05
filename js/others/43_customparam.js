@@ -57,7 +57,7 @@ function initializeDkSessionData(){
 
         var userOrderItemObj = {};
         
-        var userOrdercartSummaryObj = {"totalItems":0};
+        var userOrdercartSummaryObj = {"totalRequestedItems":0};
 
         var requestedSectionUserAccountObj = {};
 
