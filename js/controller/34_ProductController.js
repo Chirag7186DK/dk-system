@@ -521,6 +521,16 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }
         };
         
+        // toggleProductDescriptionContent
+        $rootScope.toggleProductDescriptionContent = function(){
+            if($rootScope.isToggleProductDescriptionContent===false){
+                $rootScope.isToggleProductDescriptionContent = true;
+            }else{
+                $rootScope.isToggleProductDescriptionContent = false;
+            }
+        };
+        
+        
     }catch(ex){
         console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
     }
