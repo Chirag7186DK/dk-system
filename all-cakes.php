@@ -197,11 +197,11 @@
                         {{eachProductDetails.productListTitle}}
                     </p>
                     <p class='vap_productPricePClass'> 
-                        <span class='vap_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
-                            <i class="fa fa-rupee" aria-hidden="true"></i> {{eachProductDetails.productFeatureBasePrice}}
-                        </span>
                         <span class='vap_productPayBlgPriceTextSClass'>
                             <i class="fa fa-rupee" aria-hidden="true"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
+                        </span>
+                        <span class='vap_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
+                            <i class="fa fa-rupee" aria-hidden="true"></i> {{eachProductDetails.productFeatureBasePrice}}
                         </span>
                         <span class='vap_productDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount!==''">
                             ({{eachProductDetails.productFeatureDiscount}}% Off)
@@ -217,11 +217,8 @@
                         </span>
                     </p>
                     <p class='vap_productBtnWrapperPClass'> 
-                        <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'allproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="vap_specificProductAddBtnClass btn">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </button>
                         <button title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="vap_specificProductViewDetailsBtnClass btn" ng-click='viewProductDetails(eachProductDetails)'>
-                            <i class="fa fa-list" aria-hidden="true"></i>
+                            VIEW
                         </button>
                         <button ng-controller='ShopStoreController' ng-click='storeProductTypeProductCategoryProductDataInSession(eachProductDetails)' title='Click to view this seller store desserts(menu), information, review/rating' class="vap_specificViewStoreDetailsBtnClass btn">
                             STORE
