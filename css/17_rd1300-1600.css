@@ -699,27 +699,21 @@
         font-weight:bold!important;
     }
 
-    .vap_specificProductAddBtnClass{
-        border-radius:0px!important;
-        background-color:rgba(154, 205, 50, 0.88)!important;
-        color:#fff!important;
-        margin-right:4%!important;
-        font-weight:bold!important;
-    }
-
     .vap_specificProductViewDetailsBtnClass{
         border-radius:0px!important;
         background:#3eb1e7!important;
         color:#fff!important;
         margin-right:4%!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        padding:5px 5px!important;
     }
 
     .vap_specificViewStoreDetailsBtnClass{
         border-radius:0px!important;
         background-color:#fdee00!important;
         color:rgb(70, 75, 80)!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        padding:5px 5px!important;
     }
 
     .vap_notFoundProductMsgDivClass{
