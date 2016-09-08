@@ -131,7 +131,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                                     var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
                                     if(arrObj!==false && arrObj!==undefined && arrObj!==''){
                                         if(arrObj.selectedDeliveryAreaDetails!==false){
-                                            $rootScope.userSelectedDeliveryAreaId = arrObj.selectedDeliveryAreaDetails['areaId'];
+                                            $rootScope.userSelectedDeliveryAreaId = arrObj.selectedDeliveryAreaDetails['areaId']+"|"+arrObj.selectedDeliveryAreaDetails['ccaId'];
                                             $rootScope.userSelectedDeliveryAreaDataObj = arrObj.selectedDeliveryAreaDetails;
                                             $rootScope.isResetAllDeliveryAreaDependencySessionData = 'N';
                                         }
