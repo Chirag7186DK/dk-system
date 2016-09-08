@@ -229,7 +229,7 @@ function storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSe
 //////////////////////// Delivery area list related data ////////////////////////////////////
 
 // CJ defined this function 2016-06-05
-function getParamObjFromSessionForLoadingDKDeliveryAreaList(){
+function getParamObjFromSessionForLoadingDeliveryAreaList(){
     try{
         var paramObj = {};
         paramObj['country_ids'] = '1';
