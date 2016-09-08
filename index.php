@@ -86,8 +86,8 @@
             </div>
             
             <!-- delivery area list -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaListContainerDivClass">
-                <div id="dkDeliveryAreaListWrapperDivId" ng-controller="LocationController" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaListContainerDivClass" ng-show="isUserChangedDeliveryCity">
+                <div id="dkDeliveryAreaListWrapperDivId" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
                     <span class="dkDeliveryAreaLblSClass">Choose delivery area</span>
                     <select id="dkDeliveryAreaListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Choose delivery area"></select>
                 </div>
@@ -95,7 +95,7 @@
             
             <!-- desserts type list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaDessertsProductListContainerDivClass" ng-show="isUserChangedDeliveryArea">
-                <div id="dkDeliveryAreaDessertsProductListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaBasedProductTypeList(isUserChangedDeliveryArea)" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaDessertsProductListWrapperDivClass">
+                <div id="dkDeliveryAreaDessertsProductListWrapperDivId" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaDessertsProductListWrapperDivClass">
                     <span class="dkDeliveryAreaDessertsProductLblSClass">Choose desserts</span>
                     <select id="dkDeliveryAreaDessertsTypeListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Choose desserts"></select>
                 </div>
