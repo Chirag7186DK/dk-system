@@ -183,7 +183,7 @@ class commonfunction{
         $rspDetails = array();
         if(count($paramJsonData)>0 && $paramJsonData!=false){
             $rsltJsonArr = array();
-            $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = false;
+            $rsltJsonArr['selectedDeliveryAreaDetails'] = false;
             $rsltJsonArr['allAreaList'] = false;
             // initial variable declare here
             $gcountry_ids = $paramJsonData['country_ids'];
@@ -200,7 +200,7 @@ class commonfunction{
                         $isRequestedDeliveryAreaMatched = true;
                         $deliveryAreaListDetailsArr[$eachIndex]['isRequestedDeliveryAreaMatched'] = 'Y';
                         // default selected delivery area to show
-                        $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
+                        $rsltJsonArr['selectedDeliveryAreaDetails'] = array(
                             "areaId"=>$deliveryAreaListDetailsArr[$eachIndex]['areaId'],
                             "areaName"=>$deliveryAreaListDetailsArr[$eachIndex]['areaName'],
                             "areaIcon"=>"fa fa-map-marker",
@@ -211,13 +211,15 @@ class commonfunction{
                 }
                 if($isRequestedDeliveryAreaMatched==false){
                     // default selected delivery area to show
-                    $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
-                        "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
-                        "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
-                        "areaIcon"=>"fa fa-map-marker",
-                        "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId'],
-                        "areaPincode"=>$deliveryAreaListDetailsArr[0]['areaPincode']
-                    );
+                    /*
+                        $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
+                            "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
+                            "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
+                            "areaIcon"=>"fa fa-map-marker",
+                            "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId'],
+                            "areaPincode"=>$deliveryAreaListDetailsArr[0]['areaPincode']
+                        );
+                    */
                 }
                 $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
                 $rspDetails["deliveryAreaDetails"] =  $rsltJsonArr;
