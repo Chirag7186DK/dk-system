@@ -87,7 +87,7 @@
             
             <!-- delivery area list -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dkDeliveryAreaListContainerDivClass">
-                <div id="dkDeliveryAreaListWrapperDivId" ng-controller="LocationController" ng-init="loadDKDeliveryAreaList('home')" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
+                <div id="dkDeliveryAreaListWrapperDivId" ng-controller="LocationController" class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkDeliveryAreaListWrapperDivClass">
                     <span class="dkDeliveryAreaLblSClass">Choose delivery area</span>
                     <select id="dkDeliveryAreaListSelectCtrlId" class="selectpicker show-menu-arrow show-tick" data-size="5" data-show-subtext='true' data-width="100%" data-live-search="true" title="Choose delivery area"></select>
                 </div>
