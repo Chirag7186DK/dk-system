@@ -130,9 +130,9 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
                                     if(arrObj!==false && arrObj!==undefined && arrObj!==''){
-                                        if(arrObj.selectedDeliveryCityDetails!==false){
-                                            $rootScope.userSelectedDeliveryAreaId = arrObj.userSelectedDeliveryAreaId['areaId'];
-                                            $rootScope.userSelectedDeliveryAreaDataObj = arrObj.selectedDeliveryCityDetails;
+                                        if(arrObj.selectedDeliveryAreaDetails!==false){
+                                            $rootScope.userSelectedDeliveryAreaId = arrObj.selectedDeliveryAreaDetails['areaId'];
+                                            $rootScope.userSelectedDeliveryAreaDataObj = arrObj.selectedDeliveryAreaDetails;
                                             $rootScope.isResetAllDeliveryAreaDependencySessionData = 'N';
                                         }
                                         $rootScope.deliveryAreaList = arrObj.allAreaList;
@@ -203,7 +203,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                     "areaName":(areaNamesStr.trim()),
                     "ccaId":($(deliveryAreaElementObj).selectpicker('val')).split("|")[1]
                 };
-                storeDefaultDeliveryAreaDetailsInSessionStorage(selectedDeliveryDataObj, 'Y');
+                storeSelectedDeliveryAreaDetailsInSessionStorage(selectedDeliveryDataObj, 'Y');
                 $rootScope.userSelectedDeliveryAreaId =  ($(deliveryAreaElementObj).selectpicker('val'));
                 // refresh desserts type list based on deilvery area
                 $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
@@ -244,7 +244,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                                         storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(false, 'Y');
                                         $rootScope.deliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
                                     }
-                                    $rootScope.buildDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.dkDeliveryAreaBasedDessertsTypeList, loadDessertTypeListOnPage);
+                                    $rootScope.buildDeliveryAreaBasedDessertsTypeListHtmlSelectControl($rootScope.deliveryAreaBasedDessertsTypeList, loadDessertTypeListOnPage);
                                 }
                             });
                         });
