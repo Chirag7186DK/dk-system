@@ -4,15 +4,6 @@ angular.module('DKAPP').controller('dkSessionController', dkSessionController);
 // dkSessionController using
 function dkSessionController($scope, $rootScope){
     
-    // global variable declare 
-    // this variable will be reflect on ui screen
-    $rootScope.isUserChangedDeliveryCity = false;
-    $rootScope.isUserChangedDeliveryArea = false;
-    $rootScope.dkDeliveryCityList = false;
-    $rootScope.userSelectedDeliveryCity = '';
-    $rootScope.dkDeliveryAreaList = false;
-    $rootScope.userSelectedDeliveryArea = '';
-    
     // loadDefaultDataInDkSession
     $rootScope.loadDefaultDataInDkSession = function(pageLoad){
         try{
