@@ -13,18 +13,23 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchCityParamJsonObj = {};
                     fetchCityParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.deliveryCityList = false;
+                    $rootScope.userSelectedDeliveryCityId = '';
                     // calling LocationServices to get dk delivery city list
                     LocationServices.getDKDeliveryCityList(fetchCityParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', retResponseJson);
                                 if(arrObj!==false && arrObj!==undefined && arrObj!==''){
-                                    storeDefaultDeliveryCityDetailsInSessionStorage(arrObj.defaultSelectedDeliveryCityDetails, 'N');
-                                    $rootScope.userSelectedDeliveryCity = arrObj.defaultSelectedDeliveryCityDetails['cityId'];
+                                    if(arrObj.defaultSelectedDeliveryCityDetails!==false){
+                                        $rootScope.userSelectedDeliveryCity = arrObj.defaultSelectedDeliveryCityDetails['cityId'];
+                                    }
                                     $rootScope.dkDeliveryCityList = arrObj.allCityList;
-                                    $rootScope.buildDKDeliveryCityListHtmlSelectControl($rootScope.dkDeliveryCityList, cityListLoadedOnPage);
                                 }
                             }
+                            storeDefaultDeliveryCityDetailsInSessionStorage(arrObj.defaultSelectedDeliveryCityDetails, 'Y');
+                            
+                            $rootScope.buildDKDeliveryCityListHtmlSelectControl($rootScope.dkDeliveryCityList, cityListLoadedOnPage);
                         });
                     });
                 }
