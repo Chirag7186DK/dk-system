@@ -159,12 +159,14 @@ class commonfunction{
                     }
                 }
                 if($isRequestedDeliveryCityMatched==false){
-                    // default selected delivery city to show
-                    $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                        "cityId"=>$deliveryCityListDetailsArr[0]['cityId'],
-                        "cityName"=>$deliveryCityListDetailsArr[0]['cityName'],
-                        "cityIcon"=>"fa fa-map-marker"
-                    );
+                    /*
+                        // default selected delivery city to show
+                        $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                            "cityId"=>$deliveryCityListDetailsArr[0]['cityId'],
+                            "cityName"=>$deliveryCityListDetailsArr[0]['cityName'],
+                            "cityIcon"=>"fa fa-map-marker"
+                        );
+                    */
                 }
                 $rsltJsonArr['allCityList'] = $deliveryCityListDetailsArr;
                 $rspDetails["deliveryCityDetails"] =  $rsltJsonArr;
