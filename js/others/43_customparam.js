@@ -311,7 +311,7 @@ function storeSelectedDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSe
 //////////////////////// Delivery area served dessert type list related data /////////////////////////
 
 // CJ defined this function 2016-06-05
-function getParamObjFromSessionForLoadingDKDeliveryAreaBasedDessertsTypeList(){
+function getParamObjFromSessionForLoadingDeliveryAreaBasedDessertsTypeList(){
     try{
         var paramObj = {};
         paramObj['country_ids'] = '1';
