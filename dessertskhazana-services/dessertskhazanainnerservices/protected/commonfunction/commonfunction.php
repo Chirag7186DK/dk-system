@@ -136,7 +136,7 @@ class commonfunction{
         $rspDetails = array();
         if(count($paramJsonData)>0 && $paramJsonData!=false){
             $rsltJsonArr = array();
-            $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = false;
+            $rsltJsonArr['selectedDeliveryCityDetails'] = false;
             $rsltJsonArr['allCityList'] = false;
             // initial variable declare here
             $gcity_ids = $paramJsonData['city_ids'];
@@ -151,7 +151,7 @@ class commonfunction{
                         $isRequestedDeliveryCityMatched = true;
                         $deliveryCityListDetailsArr[$eachIndex]['isRequestedDeliveryCityMatched'] = 'Y';
                         // default selected delivery city to show
-                        $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
+                        $rsltJsonArr['selectedDeliveryCityDetails'] = array(
                             "cityId"=>$gcity_ids,
                             "cityName"=>$deliveryCityListDetailsArr[$eachIndex]['cityName'],
                             "cityIcon"=>"fa fa-map-marker"
