@@ -31,21 +31,24 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     if(count($storeBasicInfoDetailsArr)==1 && $storeBasicInfoDetailsArr!=false){
                         $eachStoreInfoData = array();
                         $eachStoreInfoData['shopStoreId'] = $storeId;
-                        $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreTitle'];
+                        $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreName'];
                         $eachStoreInfoData['shopStoreOrgLocation'] = $storeBasicInfoDetailsArr[0]['areaName'];
                         $eachStoreInfoData['shopStoreLogoFile'] = '';
-                        $eachStoreInfoData['lessOrderAmt'] = '';
-                        $eachStoreInfoData['deliveryFee'] = '';
+                        $eachStoreInfoData['deliveryFeeStr'] = 'Free delivery at your doorstep !!!';
                         $eachStoreInfoData['deliveryTime'] = '';
                         $eachStoreInfoData['discountUpto'] = '';
-                        $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes';
+                        $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes, Chocolates';
                         $eachStoreInfoData['totalProduct'] = '';
-                        $eachStoreInfoData['reviewedRatingStr'] = '';
+                        $eachStoreInfoData['reviewedRatingStr'] = 'No review & rating from customer yet !!!';
+                        $eachStoreInfoData['isReviewedRatingFound'] = 'FALSE';
                         $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
                         // rating & review summary fetching of given storeid
                         $dataArr1 = RatingReviewDao::getTotalRatingAboutShopStores($storeId);
                         if(count($dataArr1)==1 && $dataArr1!=false){
-                            $eachStoreInfoData['reviewedRatingStr'] = $dataArr1[0]['totalUserRatingAbtProduct'];
+                            $eachStoreInfoData['isReviewedRatingFound'] = 'TRUE';
+                            $eachStoreInfoData['reviewedRatingStr'] = $dataArr1[0]['totalAvgRatingAbtProduct']." star from ".$dataArr1[0]['totalUserRatingAbtProduct']." customers !!!";
+                            $eachStoreInfoData['avgRatingReviewed'] = $dataArr1[0]['totalAvgRatingAbtProduct'];
+                            $eachStoreInfoData['totalUserRatingReviewed'] = $dataArr1[0]['totalUserRatingAbtProduct'];
                         }
                         // fetching store delivery facility given location
                         $paramJson1 = array();
