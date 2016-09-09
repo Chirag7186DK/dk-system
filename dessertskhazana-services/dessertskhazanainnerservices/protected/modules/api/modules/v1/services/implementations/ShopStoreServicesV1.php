@@ -34,8 +34,8 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreName'];
                         $eachStoreInfoData['shopStoreOrgLocation'] = $storeBasicInfoDetailsArr[0]['areaName'];
                         $eachStoreInfoData['shopStoreLogoFile'] = '';
-                        $eachStoreInfoData['deliveryFeeStr'] = 'Free delivery at your doorstep !!!';
-                        $eachStoreInfoData['deliveryTime'] = '';
+                        $eachStoreInfoData['deliveryFeeMsgStr'] = 'Free delivery at your doorstep !!!';
+                        $eachStoreInfoData['deliveryTime'] = '60 MIN';
                         $eachStoreInfoData['discountUpto'] = '';
                         $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes, Chocolates';
                         $eachStoreInfoData['totalProduct'] = '';
@@ -58,9 +58,15 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $paramJson1['area_ids'] = $garea_ids;
                         $storeDeliveryFacilityDataArr = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
                         if($storeDeliveryFacilityDataArr!=false && count($storeDeliveryFacilityDataArr)==1){
-                            $eachStoreInfoData['lessOrderAmt'] = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
-                            $eachStoreInfoData['deliveryFee'] = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
-                            $eachStoreInfoData['deliveryTime'] = $storeDeliveryFacilityDataArr[0]['delivery_time'];
+                            $deliveryTime = $storeDeliveryFacilityDataArr[0]['delivery_time'];
+                            if($deliveryTime!='' && $deliveryTime!=false){
+                                $eachStoreInfoData['deliveryTime'] = $deliveryTime;
+                            }
+                            $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
+                            $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
+                            if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0){
+                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, order amount less than Rs $minOrderAmt !!!";
+                            }
                         }
                         if($storeLocatedAreaId==$garea_ids){
                             array_unshift($allStoreInfoListArr, $eachStoreInfoData);
