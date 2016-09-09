@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('LocationController', LocationController);
 
-function LocationController($scope, $rootScope, $http, LocationServices, OrderCartServices){
+function LocationController($scope, $rootScope, LocationServices){
     try{
         
         // loadDeliveryCityList 
@@ -16,7 +16,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                     $rootScope.deliveryCityList = false;
                     $rootScope.userSelectedDeliveryCityId = false;
                     $rootScope.userSelectedDeliveryCityDataObj = false;
-                    $rootScope.isResetAllDeliveryCityDependencySessionData = 'Y';
+                    $rootScope.isResetDeliveryCityDependencySessionData = 'Y';
                     // calling LocationServices to get delivery city list
                     LocationServices.getDeliveryCityList(fetchCityParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
@@ -26,12 +26,12 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                                     if(arrObj.selectedDeliveryCityDetails!==false){
                                         $rootScope.userSelectedDeliveryCityId = arrObj.selectedDeliveryCityDetails['cityId'];
                                         $rootScope.userSelectedDeliveryCityDataObj = arrObj.selectedDeliveryCityDetails;
-                                        $rootScope.isResetAllDeliveryCityDependencySessionData = 'N';
+                                        $rootScope.isResetDeliveryCityDependencySessionData = 'N';
                                     }
                                     $rootScope.deliveryCityList = arrObj.allCityList;
                                 }
                             }
-                            storeSelectedDeliveryCityDetailsInSessionStorage($rootScope.userSelectedDeliveryCityDataObj, $rootScope.isResetAllDeliveryCityDependencySessionData);
+                            storeSelectedDeliveryCityDetailsInSessionStorage($rootScope.userSelectedDeliveryCityDataObj, $rootScope.isResetDeliveryCityDependencySessionData);
                             $rootScope.buildDeliveryCityListHtmlSelectControl($rootScope.deliveryCityList, cityListLoadedOnPage);
                         });
                     });
@@ -41,7 +41,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                 $rootScope.deliveryCityList = false;
                 $rootScope.userSelectedDeliveryCityId = false;
                 $rootScope.userSelectedDeliveryCityDataObj = false;
-                $rootScope.isResetAllDeliveryCityDependencySessionData = 'Y';
+                $rootScope.isResetDeliveryCityDependencySessionData = 'Y';
             }
         };
         
@@ -123,7 +123,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                         $rootScope.deliveryAreaList = false;
                         $rootScope.userSelectedDeliveryAreaId = false;
                         $rootScope.userSelectedDeliveryAreaDataObj = false;
-                        $rootScope.isResetAllDeliveryAreaDependencySessionData = 'Y';
+                        $rootScope.isResetDeliveryAreaDependencySessionData = 'Y';
                         // calling LocationServices to get delivery area list
                         LocationServices.getDKDeliveryAreaList(fetchParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
@@ -133,12 +133,12 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                                         if(arrObj.selectedDeliveryAreaDetails!==false){
                                             $rootScope.userSelectedDeliveryAreaId = arrObj.selectedDeliveryAreaDetails['areaId']+"|"+arrObj.selectedDeliveryAreaDetails['ccaId'];
                                             $rootScope.userSelectedDeliveryAreaDataObj = arrObj.selectedDeliveryAreaDetails;
-                                            $rootScope.isResetAllDeliveryAreaDependencySessionData = 'N';
+                                            $rootScope.isResetDeliveryAreaDependencySessionData = 'N';
                                         }
                                         $rootScope.deliveryAreaList = arrObj.allAreaList;
                                     }
                                 }
-                                storeSelectedDeliveryAreaDetailsInSessionStorage($rootScope.userSelectedDeliveryAreaDataObj, $rootScope.isResetAllDeliveryAreaDependencySessionData);
+                                storeSelectedDeliveryAreaDetailsInSessionStorage($rootScope.userSelectedDeliveryAreaDataObj, $rootScope.isResetDeliveryAreaDependencySessionData);
                                 $rootScope.buildDeliveryAreaListHtmlSelectControl($rootScope.deliveryAreaList, loadAreaListOnPage);
                             });
                         });
@@ -149,7 +149,7 @@ function LocationController($scope, $rootScope, $http, LocationServices, OrderCa
                 $rootScope.deliveryAreaList = false;
                 $rootScope.userSelectedDeliveryAreaId = false;
                 $rootScope.userSelectedDeliveryAreaDataObj = false;
-                $rootScope.isResetAllDeliveryAreaDependencySessionData = 'Y';
+                $rootScope.isResetDeliveryAreaDependencySessionData = 'Y';
             }
         };
         
