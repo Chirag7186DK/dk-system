@@ -67,8 +67,8 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
 
-        <!-- view store details like menu, information, rating/review from customer side -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreDetailsBodyWrapperDivClass">
+        <!-- all store wise info body  -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
@@ -80,243 +80,17 @@
                     </li>
                     <li class='userBreadcrumbProductTypeLIClass'>
                         |&nbsp; <a href="#">
-                            {{storeInfo.shopStoreName}}
-                        </a>
-                    </li>
-                    <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">
                             Cakes
                         </a>
                     </li>
                 </ul>
             </div>
             
-            <!-- store summary(self,rating/review/desserts menu) info -->
-            <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
-                
-                <!-- store basic info -->
-                <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
-                    <p class='cShopStoreNameTextLblPClass'>
-                        <span class="cshopstoreNameSClass">
-                            {{storeInfo.shopStoreNameInCaps}} STORE
-                        </span>
-                    </p>
-                    <p class='cShopStoreLocatedInfoLblPClass'>
-                        Near By : {{storeInfo.shopStoreAddress}}
-                    </p>
-                    <p ng-click="toggleCStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
-                        {{toggleCStoreSelfSummaryInfoLblText}}
-                    </p>
-                </div>
-                
-                <!-- store summary rating & review info -->
-                <div class='cshopsstoreSummaryReviewRatingDivClass' title="Click to show more detailed reviewed / rating about this seller">
-                    <p class='cShopStoreReviewRatingTextLblPClass'>
-                        REVIEW & RATINGS
-                    </p>
-                    <p class='cShopStoreReviewdRatingUsercountInfoLblPClass'>
-                        {{customersReviewedRatingMsgStr}}
-                    </p>
-                    <p ng-click="toggleCStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass' ng-show="isRatingReviewBasedInfoFound">
-                        {{toggleCStoreRatingReviewSummaryInfoLblText}}
-                    </p>
-                </div>
-                
-                <!-- desserts type summary info -->
-                <div class='cshopsstoreMenuSummaryInfoDivClass' title="Click to show all desserts(menu) about this seller">
-                    <p class='cShopStoreMenuTextLblPClass'>
-                        OUR MENU
-                    </p>
-                    <p class='cShopStoreDessertsMenuInfoLblPClass'>
-                        {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
-                    </p>
-                    <p ng-click="toggleCStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
-                        {{toggleCStoreDessertsMenuSummaryInfoLblText}}
-                    </p>
-                </div>
-                
-            </div>
-
-            <!-- store served all desserts type info -->
-            <div ng-show="isToggleCStoreDessertsMenu" ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
-                
-                <!-- display selected desserts type title ordering by customer -->
-                <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" class="cshopstoreServedDessertsProductNoteLIClass">
-                    <i class='fa fa-smile-o'></i> 
-                    Hey you are viewing '{{storeInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
-                        <span class="badge cshopstore_dessertsProductTypeCountSClass">
-                            {{dkDeliveryAreaBasedDessertsTypeList.length}}
-                        </span>
-                    desserts in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
-                </li>
-                
-                <!-- display all desserts type can served by store in your selected delivery area -->
-                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" id='cshopStoreServedAllDessertsProductScrollerWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductScrollerWrapperDivClass'>
-                    <!-- iterate each desserts type info display as horizontally scrolling -->
-                    <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='cshopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-cshopstorelevel>
-                        <p class="dessertsProductIconPClass">
-                            <i class="{{eachDessertsTypeDetails.dessertsIcon}} dessertsProductIconClass"></i>
-                        </p>
-                        <h2 class="dessertsProductTitleHClass">
-                            {{eachDessertsTypeDetails.dessertsTypeTitle}}
-                        </h2>
-                        <p ng-controller='ShopStoreController' ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
-                            View desserts
-                        </p>
-                    </div>
-                </div>
+            <!-- all store wise info container -->
+            <div ng-controller="ShopStoreController" ng-init="loadDeliveryAreaBasedDessertsTypeCStoreList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoContainerDivClass">
                 
             </div>
             
-            <!-- all product category list will be loaded here -->
-            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="ShopStoreController" ng-init="loadProductTypeAllProductCategoryListCStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
-                <p ng-if="productTypeAllProductCategoryList.length>1" class='infoAbtProductCategoriesPClass'>
-                    Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
-                    <span class="badge totalCountProductCategorySClass">
-                        {{productTypeAllProductCategoryList.length}}
-                    </span> categories !
-                </p>
-                <div ng-if="productTypeAllProductCategoryList.length>1" id='cShopStoreProductAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryContainerDivClass">
-                    <li id="cshopstore_eachProductCategoryContainerLIId_{{$index}}" ng-click="toggleProductTypeProductCategoryElementClassCStore('cshopstore_eachProductCategoryContainerLIId_'+$index, 'cShopStoreProductAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSessionCStore(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" title='Click here to view all product about {{eachProductCategoryDetails.productCategoryTitle}} desserts' class='cshopstore_eachProductCategoryContainerLIClass' scroll-horizontally-dessertsproducttype-productcategorylist-cshopstorelevel>
-                        {{eachProductCategoryDetails.productTypeProductCategoryTitle + '\n(' + eachProductCategoryDetails.totalProductCount + ')'}}
-                    </li>
-                </div>
-            </div>
-            
-            <!-- product filter operation -->
-            <div ng-show="productTypeAllProductCategoryList.length>=1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
-                <!-- info / tips about product filtering operation -->
-                <p class='cshopstore_tipAbtFilterProductPClass'>
-                    Tip *: Use filter given below to find products more easy & quickly !
-                    <button ng-click="toggleCStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                        <i class="fa fa-filter"></i> {{toggleCStoreProductFilterBtnLabel}}
-                    </button>
-                </p>
-                <div ng-show="isShowCStoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cStoreProductFilterPopupDivClass}}">
-                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
-                            <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Found {{storeTotalProductCount}} Items)
-                        </div>
-                        <!-- by price -->
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_priceFilterOperationDivClass'>
-                            <p class='cshopstore_labelPriceFilterPClass'>By price</p>
-                            <select id='allProductPriceFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Price" multiple data-selected-text-format="count>1"></select>
-                        </div>
-                        <!-- by size -->
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_sizeFilterOperationDivClass'>
-                            <p class='cshopstore_labelSizeFilterPClass'>By size</p>
-                            <select id='allProductSizeFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Size" multiple data-selected-text-format="count>1"></select>
-                        </div>
-                        <!-- by discount -->
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_discountFilterOperationDivClass'>
-                            <p class='cshopstore_labelDiscountFilterPClass'>By discount</p>
-                            <select id='allProductDiscountFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Discount" multiple data-selected-text-format="count>1"></select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- store all product list will be loaded here -->
-            <div ng-controller="ShopStoreController" ng-show="storeAllProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
-                
-                <!-- summary info display -->
-                <div ng-show='storeAllProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
-                    <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Showing {{storeTotalProductCount}} Items)
-                </div>
-                
-                <!-- each product details iterate for displaying purpose -->
-                <div maxheight-productboxwidget-cshopstorelevel ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
-                    <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
-                    <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productBoxWidgetDividerLineDivClass'></div>
-                    <p class='cshopstore_productStoreNameContainerPClass'>
-                        <span class="cshopstore_productStoreLabelNameSpanClass">Seller :</span>
-                        <span class="cshopstore_productStoreNameSpanClass">{{eachProductDetails.shopStoreTitle}}</span>
-                    </p>
-                    <p class='cshopstore_nearByPClass'>
-                        Nearest by: {{eachProductDetails.areaTitle}}
-                    </p>
-                    <p class='cshopstore_productNamePClass'>
-                        {{eachProductDetails.productListTitle}}
-                    </p>
-                    <p class='cshopstore_productPricePClass'> 
-                        <span class='cshopstore_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
-                            <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
-                        </span>
-                        <span class='cshopstore_productPayBlgPriceTextSClass'>
-                            <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
-                        </span>
-                        <span class='cshopstore_productDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
-                            ({{eachProductDetails.productFeatureDiscount}}% Off)
-                        </span>
-                    </p>
-                    <p class='cshopstore_productWeightPClass'>
-                        Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
-                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
-                            <i class="fa fa-square vap_productVegIconClass"></i>
-                        </span>
-                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
-                            <i class="fa fa-square vap_productVegIconClass"></i>
-                        </span>
-                    </p>
-                    <p class='cshopstore_productBtnWrapperPClass'> 
-                        <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'viewstoreproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="cshopstore_specificProductAddBtnClass btn">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                        <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="vap_specificProductViewDetailsBtnClass btn">
-                            <i class="fa fa-list"></i>
-                        </button>
-                    </p>
-                </div>
-                
-            </div>
-            
-            <!-- not found product show message div -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
-                {{storeNotFoundProductMsgStr}}
-            </div>
-            
-            <!-- displaying all user reviewed rating details -->
-            <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
-                <span class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
-                    Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
-                </span>
-                <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_displayEachUserReviewAboutProductContainerDivClass">
-                    <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 cshopstore_eachUserReviewedRatingRightSideDivClass">
-                        <p class="cshopstore_eachUserNameRatedReviewAbtProductPClass">
-                            reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
-                        </p>
-                        <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT' === eachReviewedRatingTypeDetails.answerPattern" class='cshopstore_eachUserRatedAbtProductPClass'>
-                            {{eachReviewedRatingTypeDetails.questionTitle}} : 
-                            <span class="cshopstore_ratedQuestionAboutProductSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
-                        </p>
-                        <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA' === eachReviewedRatingTypeDetails.answerPattern" class='cshopstore_eachUserReviewedCommentAbtProductPClass'>
-                            {{eachReviewedRatingTypeDetails.answerText}}
-                        </p>
-                        <p class="cshopstore_eachUserAvgRatedReviewAbtProductPClass">
-                            Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- store working style -->
-            <div ng-show='isShowCStoreWorkingStyleDetails' ng-controller='ShopStoreController' ng-init="loadCStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
-                <div ng-show='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
-                    <p class='cShopstoreWorkingStyleHeaderPClass'>
-                        Our Working Hours <i class="fa fa-clock-o faa-tada animated cShopstoreWorkingStyleIconClass"></i>
-                    </p>
-                    <p class='cShopstoreWorkingStyleBodyPClass'>
-                        <p ng-repeat="eachWorkingScheduleDetails in cStoreWorkingstyleDetails" class="cShopStoreWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'cShopStoreWorkingTodayDaySchedulePClass':''}}">
-                            <span>
-                                {{eachWorkingScheduleDetails.dayName}} ({{eachWorkingScheduleDetails.openTime + "-" + eachWorkingScheduleDetails.closeTime}})
-                            </span>
-                        </p>
-                    </p>
-                </div>
-                <div ng-hide='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleNotFoundMsgDivClass">
-                    No working hours defined by '{{storeInfo.shopStoreNameInCaps}}' store !
-                </div>
-            </div>
             
         </div>
         
