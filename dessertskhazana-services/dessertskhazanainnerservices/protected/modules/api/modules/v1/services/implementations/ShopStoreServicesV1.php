@@ -14,11 +14,12 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             // initial variable declare
             $gccaIds = $dkParamDataArr['ccaId'];
-            $gcountry_ids = $paramJsonData['country_ids'];
-            $gcity_ids = $paramJsonData['city_ids'];
-            $garea_ids = $paramJsonData['area_ids'];
+            $gcountry_ids = $dkParamDataArr['country_ids'];
+            $gcity_ids = $dkParamDataArr['city_ids'];
+            $garea_ids = $dkParamDataArr['area_ids'];
             $gproducttype_ids = $dkParamDataArr['product_typesids'];
             $allStoreInfoListArr = array();
+            
             // fetch all store ids details who serving given desserts type in given delivery area
             $storesIdDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
             if(count($storesIdDetailsArr)>0 && $storesIdDetailsArr!=false){
@@ -31,7 +32,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData = array();
                         $eachStoreInfoData['shopStoreId'] = $storeId;
                         $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreTitle'];
-                        $eachStoreInfoData['shopStoreOrgLocation'] = 'Chinchwad';
+                        $eachStoreInfoData['shopStoreOrgLocation'] = $storeBasicInfoDetailsArr[0]['areaName'];
                         $eachStoreInfoData['shopStoreLogoFile'] = '';
                         $eachStoreInfoData['lessOrderAmt'] = '';
                         $eachStoreInfoData['deliveryFee'] = '';
@@ -40,6 +41,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['otherDessertsTypeServedStr'] = '';
                         $eachStoreInfoData['totalProduct'] = '';
                         $eachStoreInfoData['reviewedRatingStr'] = '';
+                        $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
                         // rating & review summary fetching of given storeid
                         $dataArr1 = RatingReviewDao::getTotalRatingAboutShopStores($storeId);
                         if(count($dataArr1)==1 && $dataArr1!=false){
@@ -57,9 +59,18 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                             $eachStoreInfoData['deliveryFee'] = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
                             $eachStoreInfoData['deliveryTime'] = $storeDeliveryFacilityDataArr[0]['delivery_time'];
                         }
-                        array_push($allStoreInfoListArr, $eachStoreInfoData);
+                        if($storeLocatedAreaId==$garea_ids){
+                            array_unshift($allStoreInfoListArr, $eachStoreInfoData);
+                        }else{
+                            array_push($allStoreInfoListArr, $eachStoreInfoData);
+                        }
                     }
                 }
+            }
+            
+            // final checking
+            if(count($allStoreInfoListArr)>0 && $allStoreInfoListArr!=false){
+                $rspDetails['allStoreInfoList'] = $allStoreInfoListArr;
             }
         }
         return $rspDetails;
