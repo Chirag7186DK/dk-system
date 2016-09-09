@@ -7,6 +7,17 @@ function ShopStoreServices($http, $q){
         
         var shopstoreDetails = {};
         
+        shopstoreDetails.getDeliveryAreaBasedDessertsTypeCStoreList = function(preparedParamJsonObj){
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/DeliveryAreaBasedDessertTypeCStoreList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
+            return promiseObject;
+        };
+        
         shopstoreDetails.getDKDeliveryAreaBasedDessertsTypeList = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
