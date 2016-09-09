@@ -295,7 +295,7 @@ function LocationController($scope, $rootScope, LocationServices){
         
         // applyChangeEventDeliveryAreaBasedDessertsTypeListSelectCtrlElement
         $rootScope.applyChangeEventDeliveryAreaBasedDessertsTypeListSelectCtrlElement = function(elementObj){
-            // desserts type details change by user 
+            // desserts type list change by user 
             $(elementObj).on('changed.bs.select', function(e){
                 var paramObj = {};
                 paramObj['dessertsTypeId'] = ($(elementObj).selectpicker('val'));
