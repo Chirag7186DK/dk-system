@@ -93,35 +93,72 @@
             <div ng-controller="ShopStoreController" ng-init="loadDeliveryAreaBasedDessertsTypeCStoreList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoContainerDivClass">
                 
                 <!-- iterate each store info container -->
-                <div ng-repeat="eachStoreInfoDataObj in allStoreInfoList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachStoreInfoContainerDivClass">
-                    <p class="eachStoreNamePClass">
-                        {{eachStoreInfoDataObj.shopStoreTitle}}
-                    </p>
-                    <p class="eachStoreLocationPClass">
-                        <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{eachStoreInfoDataObj.shopStoreOrgLocation}}
-                    </p>
-                    <p class="eachStoreServedDessertsTypePClass">
-                        Served In: {{eachStoreInfoDataObj.dessertsTypeServedStr}}
-                    </p>
-                    <p class="eachStoreNoReviewedRatingPClass" ng-if="eachStoreInfoDataObj.isReviewedRatingFound==='FALSE'">
-                        {{eachStoreInfoDataObj.reviewedRatingStr}}
-                    </p>
-                    <p class="eachStoreReviewedRatingPClass" ng-if="eachStoreInfoDataObj.isReviewedRatingFound==='TRUE'">
-                        <span class="eachStoreReviewedRatingBoxSClass">
-                            {{eachStoreInfoDataObj.avgRatingReviewed}} <i class="fa fa-star"></i> ({{eachStoreInfoDataObj.totalUserRatingReviewed}})
-                        </span>
-                    </p>
-                    <p class="eachStoreDeliveryTimePClass">
-                        Upto {{eachStoreInfoDataObj.deliveryTime}}
-                    </p>
-                    <p class="eachStoreDeliveryFeePClass">
-                        Shipping Charges {{eachStoreInfoDataObj.deliveryFee}}
-                    </p>
-                    <p class="eachStoreOnlineOrderBtnPClass">
-                        <button class="btn eachStoreOnlineOrderBtnClass">
-                            ORDER ONLINE
-                        </button>
-                    </p>
+                <div ng-repeat="eachStoreInfoDataObj in allStoreInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
+                    <div class="eachStoreInfoInnerContainerDivClass">    
+                        <p class="eachStoreNamePClass">
+                            {{eachStoreInfoDataObj.shopStoreTitle}}
+                        </p>
+                        <p class="eachStoreLocationPClass">
+                            <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{eachStoreInfoDataObj.shopStoreOrgLocation}}
+                        </p>
+                        <hr class="eachStoreHrClass">
+                        <p class="eachStoreReviewedRatingPClass" ng-if="eachStoreInfoDataObj.isReviewedRatingFound==='TRUE'">
+                            <span class="eachStoreReviewedRatingBoxSClass">
+                                {{eachStoreInfoDataObj.avgRatingReviewed}} <i class="fa fa-star"></i> ({{eachStoreInfoDataObj.totalUserRatingReviewed}})
+                            </span>
+                        </p>
+                        <p class="eachStoreNoReviewedRatingPClass" ng-if="eachStoreInfoDataObj.isReviewedRatingFound==='FALSE'">
+                            {{eachStoreInfoDataObj.reviewedRatingStr}}
+                        </p>
+                        <p class="eachStoreServedDessertsTypePClass">
+                            Served In: {{eachStoreInfoDataObj.dessertsTypeServedStr}}
+                        </p>
+                        <p class="eachStoreDeliveryTimePClass">
+                            Upto {{eachStoreInfoDataObj.deliveryTime}}
+                        </p>
+                        <p class="eachStoreDeliveryFeeMsgPClass">
+                            {{eachStoreInfoDataObj.deliveryFeeMsgStr}}
+                        </p>
+                        <p class="eachStoreOnlineOrderBtnPClass">
+                            <button class="btn eachStoreOnlineOrderBtnClass">
+                                ORDER ONLINE
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                
+                <div ng-repeat="eachStoreInfoDataObj in allStoreInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
+                    <div class="eachStoreInfoInnerContainerDivClass">    
+                        <p class="eachStoreNamePClass">
+                            {{eachStoreInfoDataObj.shopStoreTitle}}
+                        </p>
+                        <p class="eachStoreLocationPClass">
+                            <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{eachStoreInfoDataObj.shopStoreOrgLocation}}
+                        </p>
+                        <hr class="eachStoreHrClass">
+                        <p class="eachStoreReviewedRatingPClass" ng-if="eachStoreInfoDataObj.isReviewedRatingFound==='TRUE'">
+                            <span class="eachStoreReviewedRatingBoxSClass">
+                                {{eachStoreInfoDataObj.avgRatingReviewed}} <i class="fa fa-star"></i> ({{eachStoreInfoDataObj.totalUserRatingReviewed}})
+                            </span>
+                        </p>
+                        <p class="eachStoreNoReviewedRatingPClass" ng-if="eachStoreInfoDataObj.isReviewedRatingFound==='FALSE'">
+                            {{eachStoreInfoDataObj.reviewedRatingStr}}
+                        </p>
+                        <p class="eachStoreServedDessertsTypePClass">
+                            Served In: {{eachStoreInfoDataObj.dessertsTypeServedStr}}
+                        </p>
+                        <p class="eachStoreDeliveryTimePClass">
+                            Upto {{eachStoreInfoDataObj.deliveryTime}}
+                        </p>
+                        <p class="eachStoreDeliveryFeeMsgPClass">
+                            {{eachStoreInfoDataObj.deliveryFeeMsgStr}}
+                        </p>
+                        <p class="eachStoreOnlineOrderBtnPClass">
+                            <button class="btn eachStoreOnlineOrderBtnClass">
+                                ORDER ONLINE
+                            </button>
+                        </p>
+                    </div>
                 </div>
                 
             </div>
