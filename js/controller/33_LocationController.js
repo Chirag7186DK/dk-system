@@ -302,9 +302,9 @@ function LocationController($scope, $rootScope, LocationServices){
                 paramObj['dessertsTypeTitle'] = ($(elementObj).find('option:selected').text());
                 storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
-                    window.location.href =  globalBaseSitePath+"all-cakes.php";
+                    window.location.href =  globalBaseSitePath+"all-stores-cakes.php";
                 }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
-                    window.location.href =  globalBaseSitePath+"all-chocolates.php";
+                    window.location.href =  globalBaseSitePath+"all-stores-chocolates.php";
                 }
             });
         };
