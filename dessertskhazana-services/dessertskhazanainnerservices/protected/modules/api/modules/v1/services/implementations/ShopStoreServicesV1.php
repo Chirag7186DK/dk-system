@@ -7,6 +7,65 @@
 
 class ShopStoreServicesV1 implements IShopStoreServicesV1{
     
+    // CJ defined this action 2016-09-09
+    public function getDeliveryAreaBasedDessertTypeCStoreList($dkParamDataArr){
+        $rspDetails = array();
+        // checking requested param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // initial variable declare
+            $gccaIds = $dkParamDataArr['ccaId'];
+            $gcountry_ids = $paramJsonData['country_ids'];
+            $gcity_ids = $paramJsonData['city_ids'];
+            $garea_ids = $paramJsonData['area_ids'];
+            $gproducttype_ids = $dkParamDataArr['product_typesids'];
+            $allStoreInfoListArr = array();
+            // fetch all store ids details who serving given desserts type in given delivery area
+            $storesIdDetailsArr = LocationDao::getCCABasedConductDessertsTypeDetails($gccaIds, $gproducttype_ids, '', '', '');
+            if(count($storesIdDetailsArr)>0 && $storesIdDetailsArr!=false){
+                // iterate each stores id details 
+                for($eachStoreIndx = 0; $eachStoreIndx<count($storesIdDetailsArr); $eachStoreIndx++){
+                    $storeId = $storesIdDetailsArr[$eachStoreIndx]['shopStoreId'];
+                    // fetching basic store info details
+                    $storeBasicInfoDetailsArr = ShopStoreDao :: getShopStoresList($storeId, '');
+                    if(count($storeBasicInfoDetailsArr)==1 && $storeBasicInfoDetailsArr!=false){
+                        $eachStoreInfoData = array();
+                        $eachStoreInfoData['shopStoreId'] = $storeId;
+                        $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreTitle'];
+                        $eachStoreInfoData['shopStoreOrgLocation'] = 'Chinchwad';
+                        $eachStoreInfoData['shopStoreLogoFile'] = '';
+                        $eachStoreInfoData['lessOrderAmt'] = '';
+                        $eachStoreInfoData['deliveryFee'] = '';
+                        $eachStoreInfoData['deliveryTime'] = '';
+                        $eachStoreInfoData['discountUpto'] = '';
+                        $eachStoreInfoData['otherDessertsTypeServedStr'] = '';
+                        $eachStoreInfoData['totalProduct'] = '';
+                        $eachStoreInfoData['reviewedRatingStr'] = '';
+                        
+                        // rating & review summary fetching of given storeid
+                        $dataArr1 = RatingReviewDao::getTotalRatingAboutShopStores($storeId);
+                        if(count($dataArr1)==1 && $dataArr1!=false){
+                            $eachStoreInfoData['reviewedRatingStr'] = $dataArr1[0]['totalUserRatingAbtProduct'];
+                        }
+                        
+                        // fetching store delivery facility given location
+                        $paramJson1 = array();
+                        $paramJson1['shop_storesids'] = $storeId;
+                        $paramJson1['country_ids'] = $gcountry_ids;
+                        $paramJson1['city_ids'] = $gcity_ids;
+                        $paramJson1['area_ids'] = $garea_ids;
+                        $storeDeliveryFacilityDataArr = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
+                        if($storeDeliveryFacilityDataArr!=false && count($storeDeliveryFacilityDataArr)==1){
+                            $eachStoreInfoData['lessOrderAmt'] = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
+                            $eachStoreInfoData['deliveryFee'] = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
+                            $eachStoreInfoData['deliveryTime'] = $storeDeliveryFacilityDataArr[0]['delivery_time'];
+                        }
+                    }
+                }
+            }
+        }
+        return $rspDetails;
+    }
+    
     // CJ defined this action 2016-09-04
     public function getDeliveryAreaBasedCStoreConductDessertType($dkParamDataArr){
         $rspDetails = array();
