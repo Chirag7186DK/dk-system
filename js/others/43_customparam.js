@@ -823,6 +823,66 @@ function getParamObjFromSessionForProductDescriptionDetails(){
 
 /////////////////// store level related code ////////////////////////////////
 
+// CJ defined this function 2016-09-09
+function getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeCStoreList(){
+    try{
+        var paramObj = {};
+
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            
+            // extract user suggested city area session data
+            if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
+                var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('countryvalue')===true){
+                    if(userSelectedDeliveryCityAreaDessertsTypeObj['countryvalue']==='1'){
+                        paramObj['country_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['countryvalue'];
+                    }
+                }
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('cityvalue')===true){
+                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue'])>0 
+                        && userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue']!==''){
+                        paramObj['city_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue'];
+                    }
+                }
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('areavalue')===true){
+                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['areavalue'])>0 
+                        && userSelectedDeliveryCityAreaDessertsTypeObj['areavalue']!==''){
+                        paramObj['area_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['areavalue'];
+                    }
+                }
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('ccaId')===true){
+                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['ccaId'])>0 
+                        && userSelectedDeliveryCityAreaDessertsTypeObj['ccaId']!==''){
+                        paramObj['ccaId'] = userSelectedDeliveryCityAreaDessertsTypeObj['ccaId'];
+                    }
+                }
+            }
+            // extract user userProduct session data
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('producttype_value')===true){
+                    if(parseInt(userProductObj['producttype_value'])>0 
+                        && userProductObj['producttype_value']!==''){
+                        paramObj['product_typesids'] = userProductObj['producttype_value'];
+                    }
+                }
+            }
+        }
+        if(Object.keys(paramObj).length===5){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
 
 // CJ defined this function 2016-09-04
 function getParamObjFromSessionAtDeliveryAreaBasedCStoreServeDessertsTypeList(){
