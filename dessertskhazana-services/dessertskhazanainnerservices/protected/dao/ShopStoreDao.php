@@ -23,7 +23,7 @@ class ShopStoreDao{
                 FROM DK_SHOPSTORES ss 
                 JOIN DK_COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
                 JOIN DK_CITYREACHED c ON c.id=cca.city_id 
-                JOIN DK_AREAREACHED a ON a.id=a.id
+                JOIN DK_AREAREACHED a ON a.id=cca.area_id
                 WHERE 1
                 AND ss.status='A' AND c.status='A' AND a.status='A' AND cca.status='A'";
                 if($shop_storeids!='' && $shop_storeids!=false && $shop_storeids!=null){
