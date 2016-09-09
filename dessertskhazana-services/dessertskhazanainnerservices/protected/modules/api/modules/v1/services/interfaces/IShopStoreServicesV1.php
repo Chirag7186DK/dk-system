@@ -5,6 +5,7 @@
 */
 
 interface IShopStoreServicesV1{
+    public function getDeliveryAreaBasedDessertTypeCStoreList($dkInDtoArray);
     public function getDeliveryAreaBasedCStoreConductDessertType($dkInDtoArray);
     public function getCShopStoreSummaryInfo($dkInDtoArray);
     public function getCshopstoreWorkingstyleDetails($dkInDtoArray);
