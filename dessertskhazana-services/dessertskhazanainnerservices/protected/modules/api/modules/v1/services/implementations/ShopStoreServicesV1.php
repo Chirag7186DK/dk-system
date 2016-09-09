@@ -40,13 +40,11 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['otherDessertsTypeServedStr'] = '';
                         $eachStoreInfoData['totalProduct'] = '';
                         $eachStoreInfoData['reviewedRatingStr'] = '';
-                        
                         // rating & review summary fetching of given storeid
                         $dataArr1 = RatingReviewDao::getTotalRatingAboutShopStores($storeId);
                         if(count($dataArr1)==1 && $dataArr1!=false){
                             $eachStoreInfoData['reviewedRatingStr'] = $dataArr1[0]['totalUserRatingAbtProduct'];
                         }
-                        
                         // fetching store delivery facility given location
                         $paramJson1 = array();
                         $paramJson1['shop_storesids'] = $storeId;
@@ -59,6 +57,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                             $eachStoreInfoData['deliveryFee'] = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
                             $eachStoreInfoData['deliveryTime'] = $storeDeliveryFacilityDataArr[0]['delivery_time'];
                         }
+                        array_push($allStoreInfoListArr, $eachStoreInfoData);
                     }
                 }
             }
