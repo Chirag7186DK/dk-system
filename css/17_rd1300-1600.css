@@ -261,6 +261,81 @@
         font-weight:bold!important;
     }
     
+    
+    /* all store list specific product type css code*/
+    
+    .allStoreInfoContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background-color:#fff!important;
+        box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
+        margin-bottom:25px!important;
+    }
+    
+    .eachStoreNamePClass,
+    .eachStoreLocationPClass,
+    .eachStoreServedDessertsTypePClass,
+    .eachStoreNoReviewedRatingPClass,
+    .eachStoreReviewedRatingPClass,
+    .eachStoreDeliveryTimePClass{
+        margin-bottom:2px!important;
+        padding-left:10px!important;
+    }
+    
+    .eachStoreNamePClass{
+        color:#ab0b38!important;
+        font-weight:bold!important;
+        text-transform:uppercase!important;
+        font-size:16px!important;
+    }
+    
+    .eachStoreLocationPClass{
+        color:#7d7a7a!important;
+        font-weight:normal!important;
+        font-size:12px!important;
+    }
+    
+    .storeLocationMapIconClass{
+        color:rgba(39,171,92,0.9)!important;
+    }
+    
+    .eachStoreServedDessertsTypePClass{
+        color:#7d7a7a!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+    }
+    
+    
+    .eachStoreReviewedRatingBoxSClass{
+        background-color:rgba(39,171,92,0.9)!important;
+        border:1px solid rgba(39,171,92,0.9)!important;
+        padding:2px!important;
+        color:#fff!important;
+        font-size:11px!important;
+    }
+    
+    .eachStoreOnlineOrderBtnPClass{
+        margin-bottom:2px!important;
+        padding-left:10px!important;
+        padding-top:20px!important;
+    }
+    
+    .eachStoreOnlineOrderBtnClass,
+    .eachStoreOnlineOrderBtnClass:hover{
+        border-radius:0px!important;
+        font-weight:bold!important;
+        background-color:rgba(39,171,92,0.9)!important;
+        color:#fff!important;
+    }
+    
+    
     /* all product list specific product type css code*/
 
     .dkAllCompleteOffersContainerDivClass{
