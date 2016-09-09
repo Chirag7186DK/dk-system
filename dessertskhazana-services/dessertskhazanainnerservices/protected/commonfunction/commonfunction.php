@@ -140,7 +140,7 @@ class commonfunction{
             $rsltJsonArr['allCityList'] = false;
             // initial variable declare here
             $gcity_ids = $paramJsonData['city_ids'];
-            $deliveryCityListDetailsArr = LocationDao::getCityList($gcity_ids, '');
+            $deliveryCityListDetailsArr = LocationDao::getCityList('', '');
             if(count($deliveryCityListDetailsArr)>0 && $deliveryCityListDetailsArr!=false){
                 // iterate each delivery city details
                 $isRequestedDeliveryCityMatched = false;
