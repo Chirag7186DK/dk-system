@@ -87,6 +87,7 @@ function LocationController($scope, $rootScope, LocationServices){
                 storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, 'Y');
                 $rootScope.userSelectedDeliveryCityId = ($(elementObj).selectpicker('val'));
                 // refresh delivery area list, delivery desserts type list
+                LocationServices.resetSelectedDeliveryAreaTextHeader();
                 $rootScope.refreshDependencyElementOfDeliveryCityList(cityListLoadedOnPage, 'Y');
             });
         };
