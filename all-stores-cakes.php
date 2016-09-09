@@ -89,6 +89,21 @@
             <!-- all store wise info container -->
             <div ng-controller="ShopStoreController" ng-init="loadDeliveryAreaBasedDessertsTypeCStoreList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoContainerDivClass">
                 
+                <!-- iterate each store info container -->
+                <div ng-repeat="eachStoreInfoDataObj in allStoreInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
+                    <div class="eachStoreInfoDivClass">
+                        <p>
+                            {{eachStoreInfoDataObj.shopStoreTitle}}
+                        </p>
+                        <p>
+                            {{eachStoreInfoDataObj.shopStoreOrgLocation}}
+                        </p>
+                        <p>
+                            {{eachStoreInfoDataObj.dessertsTypeServedStr}}
+                        </p>
+                    </div>
+                </div>
+                
             </div>
             
             
