@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('ShopStoreController', ShopStoreController);
 
-function ShopStoreController($rootScope, $rootScope, $http, ProductServices, ShopStoreServices, RatingReviewServices){
+function ShopStoreController($rootScope, $rootScope, ProductServices, ShopStoreServices, RatingReviewServices){
     try{
         
         $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
@@ -17,6 +17,34 @@ function ShopStoreController($rootScope, $rootScope, $http, ProductServices, Sho
         $rootScope.allUserRatingReviewDetails = false;
         $rootScope.isShowCStoreWorkingStyleDetails = false;
         $rootScope.cStoreWorkingstyleDetails = false;
+        
+        // loadDeliveryAreaBasedDessertsTypeCStoreList 
+        $rootScope.loadDeliveryAreaBasedDessertsTypeCStoreList = function(){
+            try{
+                // get param obj data
+                var preparedParamJsonObj = getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeCStoreList();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    var fetchParamJsonObj = {};
+                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    $rootScope.allStoreInfoList = false;
+                    // calling ShopStoreServices
+                    ShopStoreServices.getDeliveryAreaBasedDessertsTypeCStoreList(fetchParamJsonObj).done(function(retResponseJson){
+                        $rootScope.$apply(function(){
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', retResponseJson);
+                                if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
+                                    $rootScope.allStoreInfoList = false;
+                                }
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in loadDeliveryAreaBasedDessertsTypeCStoreList ex=>"+ex);
+                $rootScope.allStoreInfoList = false;
+            }
+        };
+        
         
         // loadDKDeliveryAreaBasedDessertsTypeList 
         $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
