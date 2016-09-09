@@ -38,7 +38,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['deliveryFee'] = '';
                         $eachStoreInfoData['deliveryTime'] = '';
                         $eachStoreInfoData['discountUpto'] = '';
-                        $eachStoreInfoData['otherDessertsTypeServedStr'] = '';
+                        $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes';
                         $eachStoreInfoData['totalProduct'] = '';
                         $eachStoreInfoData['reviewedRatingStr'] = '';
                         $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
