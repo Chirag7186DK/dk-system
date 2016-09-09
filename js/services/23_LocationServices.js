@@ -18,6 +18,11 @@ function LocationServices($http, $q, $rootScope){
             }  
         };
         
+        locationDetails.resetSelectedDeliveryAreaTextHeader = function(){
+            $rootScope.selectedDeliveryAreaTextHeader = '';
+            $rootScope.isShowSelectedDeliveryAreaTextHeader = false;
+        };
+        
         locationDetails.notifyToUserForSelectedDeliveryarea = function(){
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!=='' && infoObj!==undefined 
