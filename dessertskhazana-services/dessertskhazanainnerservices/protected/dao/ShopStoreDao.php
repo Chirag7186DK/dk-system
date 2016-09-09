@@ -18,9 +18,14 @@ class ShopStoreDao{
                 UPPER(COALESCE(ss.shopstore_name, '')) shopStoreNameInCaps,
                 COALESCE(ss.shopstore_logofile, '') shopStoreLogoFile,
                 COALESCE(ss.shopstore_mobile, '') shopStoreContact,
-                COALESCE(ss.address, '') shopStoreAddress
+                COALESCE(ss.address, '') shopStoreAddress,
+                COALESCE(a.id, '') areaId, COALESCE(a.name, '') areaName
                 FROM DK_SHOPSTORES ss 
-                WHERE ss.status='A'";
+                JOIN DK_COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
+                JOIN DK_CITYREACHED c ON c.id=cca.city_id 
+                JOIN DK_AREAREACHED a ON a.id=a.id
+                WHERE 1
+                AND ss.status='A' AND c.status='A' AND a.status='A' AND cca.status='A'";
                 if($shop_storeids!='' && $shop_storeids!=false && $shop_storeids!=null){
                     $sqlFetchQuery.=" AND ss.id IN ($shop_storeids)";
                 }
