@@ -269,6 +269,15 @@
         padding-right:0px!important;
     }
     
+    .allStoreInfoNoteHeaderPClass{
+        text-align:center;
+        list-style:none!important;
+        font-weight:normal!important;
+        font-size:25px!important;
+        color:#f17023!important;
+        font-family:serif;
+    }
+    
     .eachStoreInfoContainerDivClass{
         margin-bottom:30px!important;
         padding-left:0px!important;
@@ -382,6 +391,15 @@
         background-color:#ab0b38!important;
         color:#fff!important;
         padding:5px!important;
+    }
+    
+    .noStoreFoundInfoMsgContainerDivClass{
+        text-align:center;
+        list-style:none!important;
+        font-weight:normal!important;
+        font-size:20px!important;
+        color:#f17023!important;
+        font-family:serif;
     }
     
     
