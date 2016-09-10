@@ -126,7 +126,7 @@
                             Upto {{eachStoreInfoDataObj.discountUpto}} <i class="fa fa-percent eachStoreDiscountUptoIconClass"></i>
                         </p>
                         <p class="eachStoreDeliveryTimePClass">
-                            Upto {{eachStoreInfoDataObj.deliveryTime}}
+                            delivers in {{eachStoreInfoDataObj.deliveryTime}}
                         </p>
                         <p class="eachStoreDeliveryFeeMsgPClass">
                             {{eachStoreInfoDataObj.deliveryFeeMsgStr}}
