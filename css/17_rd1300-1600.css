@@ -966,22 +966,30 @@
         font-family:serif!important;
         font-weight:normal!important;
     }
+    
+    .cshopstore_reviewRatingNotFoundMsgDivClass{
+        text-align:left!important;
+        font-weight:bold!important;
+        font-family:serif!important;
+        font-size:17px!important;
+        color:#fb366e!important;
+    }
 
     .cshopstore_workingStyleWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        background:whitesmoke!important;
-        border:1px solid #DCE0EF!important;
+        background-color:#fff!important;
+        box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
     }
 
     .cShopstoreWorkingStyleHeaderPClass{
         text-align:center!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-family:serif!important;
         font-size:20px!important;
-        color:#8c7de6!important;
+        color:#ab0b38!important;
     }
 
     .cShopstoreWorkingStyleIconClass{
