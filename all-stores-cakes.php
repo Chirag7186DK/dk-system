@@ -132,7 +132,7 @@
                             {{eachStoreInfoDataObj.deliveryFeeMsgStr}}
                         </p>
                         <p class="eachStoreOnlineOrderBtnPClass">
-                            <button class="btn eachStoreOnlineOrderBtnClass">
+                            <button ng-controller='ShopStoreController' ng-click='storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachStoreInfoDataObj)' class="btn eachStoreOnlineOrderBtnClass">
                                 ORDER ONLINE
                             </button>
                         </p>
