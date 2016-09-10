@@ -535,7 +535,7 @@ class commonfunction{
             $userInfoLogDetails['user_id'] = $authenticatedUserJsonData['unmd5UserId'];
             $userInfoLogDetails['user_logno'] = $userLogNo;
             $userInfoLogDetails['user_sessionid'] = $dkParamDataArr['user_sessionid'];
-            $userInfoLogDetails['user_sessionstarttime'] = $dkParamDataArr['user_sessionstarttime'];
+            $userInfoLogDetails['user_sessionstarttime'] = $dkParamDataArr['usersession_starttimestamp'];
             $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
             $userInfoLogDetails['status'] = 'A';
             $lastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
