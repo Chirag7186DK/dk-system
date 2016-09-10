@@ -795,8 +795,8 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('product_featureid', $paramJsonData)){
-            if(($paramJsonData['product_featureid'])>0 && $paramJsonData['product_featureid']!=''){
+        if(array_key_exists('featureid', $paramJsonData)){
+            if(($paramJsonData['featureid'])>0 && $paramJsonData['featureid']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -820,7 +820,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('product_description', $paramJsonData)){
+        if(array_key_exists('description', $paramJsonData)){
             $givenParamDataCorrectCount++;
         }
         if($givenParamDataCorrectCount==10){
