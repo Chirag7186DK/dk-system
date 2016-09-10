@@ -785,23 +785,8 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('shopstore_id', $paramJsonData)){
-            if(($paramJsonData['shopstore_id'])>0 && $paramJsonData['shopstore_id']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if(array_key_exists('product_typeid', $paramJsonData)){
-            if(($paramJsonData['product_typeid'])>0 && $paramJsonData['product_typeid']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if(array_key_exists('product_categoryid', $paramJsonData)){
-            if(($paramJsonData['product_categoryid'])>0 && $paramJsonData['product_categoryid']!=''){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        if(array_key_exists('product_listid', $paramJsonData)){
-            if(($paramJsonData['product_listid'])>0 && $paramJsonData['product_listid']!=''){
+        if(array_key_exists('store_id', $paramJsonData)){
+            if(($paramJsonData['store_id'])>0 && $paramJsonData['store_id']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -810,30 +795,30 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('product_featuresize', $paramJsonData)){
-            if($paramJsonData['product_featuresize']!='' && $paramJsonData['product_featuresize']!=false){
+        if(array_key_exists('size', $paramJsonData)){
+            if($paramJsonData['size']!='' && $paramJsonData['size']!=false){
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('product_featuresprice', $paramJsonData)){
-            if(($paramJsonData['product_featuresprice'])>0 && $paramJsonData['product_featuresprice']!=''){
+        if(array_key_exists('price', $paramJsonData)){
+            if(($paramJsonData['price'])>0 && $paramJsonData['price']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('product_featuresqty', $paramJsonData)){
-            if(($paramJsonData['product_featuresqty'])>=1 && $paramJsonData['product_featuresqty']!=''){
+        if(array_key_exists('qty', $paramJsonData)){
+            if(($paramJsonData['qty'])>=1 && $paramJsonData['qty']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('product_features_totalamount', $paramJsonData)){
-            if(($paramJsonData['product_features_totalamount'])>0 && $paramJsonData['product_features_totalamount']!=''){
+        if(array_key_exists('totalamount', $paramJsonData)){
+            if(($paramJsonData['totalamount'])>0 && $paramJsonData['totalamount']!=''){
                 $givenParamDataCorrectCount++;
             }
         }
         if(array_key_exists('product_description', $paramJsonData)){
             $givenParamDataCorrectCount++;
         }
-        if($givenParamDataCorrectCount==12){
+        if($givenParamDataCorrectCount==9){
             $retStatus = 'TRUE';
         }
         return $retStatus;
