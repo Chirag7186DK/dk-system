@@ -436,66 +436,66 @@
     .cshopStoreSummaryInfoWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-top:20px!important;
+        margin-top:5px!important;
     }
 
     .cshopStoreSummaryInfoWrapperDivClass .owl-item{
         width:auto!important;
         margin-right:20px!important;
+        margin-top:20px!important;
+        height:100px!important;
+    }
+    
+    .cshopStoreSummaryInfoWrapperDivClass .owl-item:first-child{
+        margin-left:2px!important;
     }
 
     .cshopsstoreSelfSummaryInfoDivClass{
-        text-align:center;
-        padding-left:10px!important;
-        padding-right:10px!important;
-        padding-top:4px!important;
-        padding-bottom:4px!important;
-        background-color:whitesmoke!important;
-        border-bottom:2px solid #8DA0E2!important;
+        text-align:center!important;
+        padding:5px!important;
+        background-color:#fff!important;
+        box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
     }
 
     .cShopStoreNameTextLblPClass{
         margin:0px!important;
+        color: #ab0b38!important;
         font-family:serif!important;
         font-weight:bold!important;
-        color:#7B68F1!important;
+        text-transform:uppercase!important;
         font-size:16px!important;
+        text-align:center!important;
     }
 
     .cShopStoreLocatedInfoLblPClass{
         margin:0px!important;
         font-family:serif!important;
         font-size:14px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         color:#808A94!important;
-        padding-top:3px!important;
-        padding-bottom:3px!important;
     }
 
     .showMoreShopSummaryInfoPClass{
-        margin:5px!important;
-        font-family: serif!important;
+        font-family:serif!important;
         font-size:14px!important;
         font-weight:bold!important;
         color:darkorange!important;
         cursor:pointer!important;
+        margin-top:10px!important;
     }
 
     .cshopsstoreSummaryReviewRatingDivClass{
-        text-align:center;
-        padding-left:10px!important;
-        padding-right:10px!important;
-        padding-top:4px!important;
-        padding-bottom:4px!important;
-        background-color:whitesmoke!important;
-        border-bottom:2px solid #8DA0E2!important;
+        text-align:center!important;
+        padding:5px!important;
+        background-color:#fff!important;
+        box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
     }
 
     .cShopStoreReviewRatingTextLblPClass{
         margin:0px!important;
-        font-family:serif!important;
         font-weight:bold!important;
-        color:#7B68F1!important;
+        color: #ab0b38!important;
+        font-family:serif!important;
         font-size:16px!important;
     }
 
@@ -503,36 +503,31 @@
         margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
-        font-weight:600!important;
+        font-weight:normal!important;
         color:#808A94!important;
-        padding-top:3px!important;
-        padding-bottom:3px!important;
     }
 
     .showMoreShopReviewRatingInfoPClass{
-        margin:5px!important;
         font-family: serif!important;
         font-size:14px!important;
         font-weight:bold!important;
         color:darkorange!important;
         cursor:pointer!important;
+        margin-top:10px!important;
     }
 
     .cshopsstoreMenuSummaryInfoDivClass{
         text-align:center!important;
-        padding-left:40px!important;
-        padding-right:40px!important;
-        padding-top:4px!important;
-        padding-bottom:4px!important;
-        background-color:whitesmoke!important;
-        border-bottom:2px solid #8DA0E2!important;
+        background-color:#fff!important;
+        box-shadow: 0 0 3px 0 rgba(161,161,161,.5);
+        padding:5px!important;
     }
 
     .cShopStoreMenuTextLblPClass{
         margin:0px!important;
         font-family:serif!important;
         font-weight:bold!important;
-        color:#7B68F1!important;
+        color: #ab0b38!important;
         font-size:16px!important;
     }
 
@@ -540,19 +535,17 @@
         margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
-        font-weight:600!important;
+        font-weight:normal!important;
         color:#808A94!important;
-        padding-top:3px!important;
-        padding-bottom:3px!important;
     }
 
     .showMoreShopMenuSummaryInfoPClass{
-        margin:5px!important;
         font-family: serif!important;
         font-size:14px!important;
         font-weight:bold!important;
         color:darkorange!important;
         cursor:pointer!important;
+        margin-top:10px!important;
     }
 
     .cshopStoreServedAllDessertsProductContainerDivClass{
@@ -629,12 +622,11 @@
 
     .cShopStoreProductAllCategoryWrapperDivClass{
         padding-top:5px;
-        border-top:1px solid #DCE0EF!important;
-        border-right:1px solid #DCE0EF!important;
-        border-left:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
         margin-top:14px!important;
         margin-bottom:14px!important;
+        background-color:#fff!important;
+        box-shadow:0 0 3px 0 rgba(161,161,161,.5);
+        border-bottom:none!important;
     }
 
     .infoAbtProductCategoriesPClass{
@@ -696,13 +688,13 @@
     }
 
     .cShopStoreProductFilterOperationWrapperDivClass{
+        padding-left:0px!important;
         padding-top:10px;
         padding-bottom:20px;
-        border:1px solid #DCE0EF!important;
         margin-top:12px;
         margin-bottom:12px;
-        padding-left:0px!important;
-        background-color:whitesmoke!important;
+        background-color:#fff!important;
+        box-shadow:0 0 3px 0 rgba(161,161,161,.5);
     }
 
     .cshopstore_tipAbtFilterProductPClass{
@@ -859,16 +851,6 @@
         border:1px solid rgba(240, 99, 122, 0.85)!important;
     }
 
-    .cshopstore_productStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-    
-    .cshopstore_nearByPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-    }
-
     .cshopstore_productNamePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
@@ -896,12 +878,12 @@
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
     }
-
-    .cshopstore_specificProductAddBtnClass{
+    
+    .cshopstore_productVegIconClass{
+        color:#4b8211!important;
         border-radius:0px!important;
-        background-color:rgba(154, 205, 50, 0.88)!important;
-        color:#fff!important;
-        margin-right:2%!important;
+        font-size:12px!important;
+        margin-right:30px!important;
         font-weight:bold!important;
     }
 
@@ -909,8 +891,8 @@
         border-radius:0px!important;
         background:#3eb1e7!important;
         color:#fff!important;
-        margin-right:2%!important;
         font-weight:bold!important;
+        padding:5px!important;
     }
 
     .cshopstore_notFoundProductMsgDivClass{
