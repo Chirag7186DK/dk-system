@@ -1756,9 +1756,6 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
             paramObj = $.extend(paramObj, userLoggedDataObj);
             
-            var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            paramObj['ccaId'] = existingDkParamObj['userSelectedDeliveryCityAreaDessertsType']['ccaId'];
-            
             // through view product page
             if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
                 if($('.'+fcontentClass).length===1){
@@ -1771,6 +1768,7 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                         if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
                             productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
                             paramObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
+                            paramObj['ccaId'] = $(productMeasurementSelectInputObj).attr("data-ccaid");
                             paramObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
                             paramObj['size'] = $(productMeasurementSelectInputObj).val();
                         }
