@@ -1722,6 +1722,7 @@ function storeUserOrderItemInSession(fcontentClass){
                     if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
                         productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
                         userOrderItemObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
+                        userOrderItemObj['ccaId'] = $(productMeasurementSelectInputObj).attr("data-ccaid");
                         userOrderItemObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
                         userOrderItemObj['size'] = $(productMeasurementSelectInputObj).val();
                     }
@@ -1739,7 +1740,7 @@ function storeUserOrderItemInSession(fcontentClass){
         // console.log("problem in storeUserOrderItemInSession ex=>"+ex);
         userOrderItemObj = {};
     }
-    if(Object.keys(userOrderItemObj).length===10){
+    if(Object.keys(userOrderItemObj).length===11){
         var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         existingDkParamObj['userOrderItemObj'] = userOrderItemObj;
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
