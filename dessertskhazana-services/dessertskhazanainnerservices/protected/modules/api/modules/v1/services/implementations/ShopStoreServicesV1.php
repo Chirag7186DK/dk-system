@@ -159,7 +159,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     public function getCShopStoreSummaryInfo($dkParamDataArr){
         $rspDetails = array();
         $rspDetails['shopstoreInfo'] = array();
-        $rspDetails['customersReviewedRatingMsgStr'] = 'No any customer(s) reviewed yet !';
+        $rspDetails['customersReviewedRatingMsgStr'] = 'No any customer(s) reviewed yet !!!';
         $rspDetails['isRatingReviewBasedInfoFound'] = false;
         $rspDetails['ratingReviewBasedInfo'] = '';
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
