@@ -37,6 +37,8 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['shopStoreLogoFile'] = '';
                         $eachStoreInfoData['reviewedRatingStr'] = 'No review & rating from customer yet !!!';
                         $eachStoreInfoData['isReviewedRatingFound'] = 'FALSE';
+                        $eachStoreInfoData['dessertsTypeId'] = $gproducttype_ids;
+                        $eachStoreInfoData['dessertsTypeTitle'] = $storesIdDetailsArr[0]['productTypeTitle'];
                         $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes, Chocolates';
                         $eachStoreInfoData['totalProduct'] = '';
                         $eachStoreInfoData['deliveryFeeMsgStr'] = 'Free home delivery at your doorstep !!!';
