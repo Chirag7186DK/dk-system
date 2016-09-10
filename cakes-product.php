@@ -340,11 +340,8 @@
                     
                 </div>
                 
-                
-                
             </div>
             
-        
         </div>
         
         <!-- refresh web application data -->
