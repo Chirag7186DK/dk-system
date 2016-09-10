@@ -33,6 +33,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['shopStoreId'] = $storeId;
                         $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreName'];
                         $eachStoreInfoData['shopStoreOrgLocation'] = $storeBasicInfoDetailsArr[0]['areaName'];
+                        $eachStoreInfoData['shopStoreAddress'] = $storeBasicInfoDetailsArr[0]['shopStoreAddress'];
                         $eachStoreInfoData['shopStoreLogoFile'] = '';
                         $eachStoreInfoData['reviewedRatingStr'] = 'No review & rating from customer yet !!!';
                         $eachStoreInfoData['isReviewedRatingFound'] = 'FALSE';
@@ -65,11 +66,11 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                             $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
                             $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
                             if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0){
-                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, order amount less than Rs $minOrderAmt !!!";
+                                // $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, order amount less than Rs $minOrderAmt !!!";
                             }
                         }
                         // fetching store product type summary data
-                        $dataArr2 = ProductDao :: getStoreProductTypeProductCategoryProductSummary($storeId, $gproducttype_ids);
+                        $dataArr2 = ProductDao :: getStoreProductTypeProductCategoryProductSummary($storeId, $gproducttype_ids, '');
                         if($dataArr2!=false && count($dataArr2)==1){
                             $eachStoreInfoData['totalProduct'] = $dataArr2[0]['totalProduct'];
                             $eachStoreInfoData['discountUpto'] = $dataArr2[0]['maxProductDiscount'];
