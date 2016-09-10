@@ -1740,7 +1740,7 @@ function storeUserOrderItemInSession(fcontentClass){
         // console.log("problem in storeUserOrderItemInSession ex=>"+ex);
         userOrderItemObj = {};
     }
-    if(Object.keys(userOrderItemObj).length===11){
+    if(Object.keys(userOrderItemObj).length===8){
         var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         existingDkParamObj['userOrderItemObj'] = userOrderItemObj;
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
