@@ -770,7 +770,7 @@ class commonfunction{
         if(count($paramJsonData)>0 && $paramJsonData!=false){
             
             $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
-            $lastDbOrdercartId = 0;
+            $lastOrdercartId = 0;
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
@@ -787,9 +787,9 @@ class commonfunction{
                     $paramJsonData['order_cartid'] = $humanReadableNewOrdercartId;
                     $paramJsonData['user_id'] = $unmd5UserId;
                     $paramJsonData['user_sessionid'] = $requestedUserSessionId;
-                    $lastDbOrdercartId = OrderCartDao :: addEntryInOrdercart($paramJsonData);
+                    $lastOrdercartId = OrderCartDao :: addEntryInOrdercart($paramJsonData);
                 }else if(count($dbOrdercartIdDetails)>0 && $dbOrdercartIdDetails!=false){
-                    $lastDbOrdercartId = $dbOrdercartIdDetails['ordercartId'];
+                    $lastOrdercartId = $dbOrdercartIdDetails['ordercartId'];
                     // update order cart 
                     if($dbOrdercartIdDetails['userSessionId']!=$requestedUserSessionId){
                         $updateOrdercartIdDataObj = array(
@@ -800,20 +800,26 @@ class commonfunction{
                         $updatedStatusOrdercart = OrderCartDao :: updateEntryInOrdercart($updateOrdercartIdDataObj);
                     }
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                if($addItemWithOrdercartId>0 && $addItemWithOrdercartId!=false && $addItemWithOrdercartId!=''){
+                if($lastOrdercartId>0 && $lastOrdercartId!=false){
+                    $ccaId = $paramJsonData['ccaId'];
+                    $storeId = $paramJsonData['store_id'];
+                    // checking order cart store id is already requested or not
+                    $ordercartStoreId = getRequestedOrdercartStoreIdUsingOrdrcartIdStoreIdCCAId($lastOrdercartId, $storeId, $ccaId);
+                    if($ordercartStoreId>0 && $ordercartStoreId!=false){
+                        $paramJsonData['ordercart_storeid'] = $ordercartStoreId;
+                    }
+                    
+                    
+                    
+                    
                     $paramJsonData['order_cartid'] = $addItemWithOrdercartId;
                     $lastInsertedProductInOrdercartId = OrderCartDao :: addProductInOrdercart($paramJsonData);
                     if($lastInsertedProductInOrdercartId>0 && $lastInsertedProductInOrdercartId!=false){
                         $isProductAddedInOrdercart = 'TRUE';
                     }
+                    
+                    
+                    
                 } 
                 
                 
