@@ -1,18 +1,28 @@
 
+
 SELECT
-COALESCE(ss.id, '') shopStoreId, 
-COALESCE(ss.shopstore_name, '') shopStoreName,
-UPPER(COALESCE(ss.shopstore_name, '')) shopStoreNameInCaps,
-COALESCE(ss.shopstore_logofile, '') shopStoreLogoFile,
-COALESCE(ss.shopstore_mobile, '') shopStoreContact,
-COALESCE(ss.address, '') shopStoreAddress, 
-COALESCE(a.id, '') areaId, COALESCE(a.name, '') areaName
-FROM DK_SHOPSTORES ss 
-JOIN DK_COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
-JOIN DK_CITYREACHED c ON c.id=cca.city_id 
-JOIN DK_AREAREACHED a ON a.id=a.id
-WHERE 
-ss.status='A' AND c.status='A' AND a.status='A' AND cca.status='A';
+ss.id shopStoreId, ss.shopstore_name shopStoreTitle, 
+COUNT(*) totalProduct, COALESCE(MAX(splld.product_discount), '') maxProductDiscount,
+COALESCE(MAX(splld.online_sellprice), '') maxOnlineProductPrice,
+COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
+FROM DK_PRODUCTTYPE pt
+JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+    AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
+JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
+JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
+JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
+JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
+WHERE 1
+AND ss.id IN (1) AND spa.shopstore_id IN (1)
+AND pt.id IN (1) AND ppc.product_typeid IN (1)
+AND spa.product_typeid IN (1)
+GROUP BY ss.id, spa.product_typeid
+HAVING totalProduct>0
 
 
 -- EXPLAIN
