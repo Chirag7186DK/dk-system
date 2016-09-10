@@ -57,7 +57,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                     if($lastInsertedUserInfoLogNo!=false && $lastInsertedUserInfoLogNo!=''){
                         $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogNo;
                         $rspDetails['userDetails']['user_sessionid'] = $dkParamDataArr['user_sessionid'];
-                        $rspDetails['userDetails']['user_sessionstarttime'] = $dkParamDataArr['user_sessionstarttime'];
+                        $rspDetails['userDetails']['usersession_starttimestamp'] = $dkParamDataArr['usersession_starttimestamp'];
                         $rspDetails['userDetails']['userProfileTypeId'] = $userAuthenticationDetailsArr[0]['unmd5ProfileTypeId'];
                     }
                 }
