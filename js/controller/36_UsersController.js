@@ -98,12 +98,18 @@ function UsersController($scope, $rootScope, $http, UsersServices){
             var lastPageAccessedByUser = getPageDetailsUserAccessedFrom();
             if(lastPageAccessedByUser==='home'){
                 window.location.href = globalBaseSitePath;
-            }else if(lastPageAccessedByUser==='product'){
-                window.location.href = globalBaseSitePath+"product.php";
-            }else if(lastPageAccessedByUser==='allproducts'){
-                window.location.href = globalBaseSitePath+"allproducts.php";
-            }else if(lastPageAccessedByUser==='storeproduct'){
-                window.location.href = globalBaseSitePath+"storeproducts.php";
+            }else if(lastPageAccessedByUser==='all-stores-cakes'){
+                window.location.href = globalBaseSitePath+"all-stores-cakes.php";
+            }else if(lastPageAccessedByUser==='all-stores-chocolates'){
+                window.location.href = globalBaseSitePath+"all-stores-chocolates";
+            }else if(lastPageAccessedByUser==='store-all-cakes'){
+                window.location.href = globalBaseSitePath+"store-all-cakes.php";
+            }else if(lastPageAccessedByUser==='store-all-chocolates'){
+                window.location.href = globalBaseSitePath+"store-all-chocolates.php";
+            }else if(lastPageAccessedByUser==='cakes-product'){
+                window.location.href = globalBaseSitePath+"cakes-product.php";
+            }else if(lastPageAccessedByUser==='chocolates-product'){
+                window.location.href = globalBaseSitePath+"chocolates-product";
             }else if(lastPageAccessedByUser==='partyorder'){
                 $rootScope.storeRequestedSectionNameToAccessInUserAccount('partyorder');
             }else if(lastPageAccessedByUser==='customizeorder'){
