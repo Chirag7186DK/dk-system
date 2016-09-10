@@ -20,7 +20,7 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allstorechocolates');">
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allstorecakes');">
 
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
@@ -98,11 +98,11 @@
                 <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
                     <p class='cShopStoreNameTextLblPClass'>
                         <span class="cshopstoreNameSClass">
-                            {{storeInfo.shopStoreNameInCaps}} STORE
+                            {{storeInfo.shopStoreNameInCaps}}
                         </span>
                     </p>
                     <p class='cShopStoreLocatedInfoLblPClass'>
-                        Near By : {{storeInfo.shopStoreAddress}}
+                        <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{storeInfo.shopStoreAddress}}
                     </p>
                     <p ng-click="toggleCStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
                         {{toggleCStoreSelfSummaryInfoLblText}}
@@ -117,7 +117,7 @@
                     <p class='cShopStoreReviewdRatingUsercountInfoLblPClass'>
                         {{customersReviewedRatingMsgStr}}
                     </p>
-                    <p ng-click="toggleCStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass' ng-show="isRatingReviewBasedInfoFound">
+                    <p ng-click="toggleCStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass'>
                         {{toggleCStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
@@ -125,7 +125,7 @@
                 <!-- desserts type summary info -->
                 <div class='cshopsstoreMenuSummaryInfoDivClass' title="Click to show all desserts(menu) about this seller">
                     <p class='cShopStoreMenuTextLblPClass'>
-                        OUR MENU
+                        WE SERVED
                     </p>
                     <p class='cShopStoreDessertsMenuInfoLblPClass'>
                         {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
@@ -225,45 +225,35 @@
                 </div>
                 
                 <!-- each product details iterate for displaying purpose -->
-                <div maxheight-productboxwidget-cshopstorelevel ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
+                <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
                     <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productBoxWidgetDividerLineDivClass'></div>
-                    <p class='cshopstore_productStoreNameContainerPClass'>
-                        <span class="cshopstore_productStoreLabelNameSpanClass">Seller :</span>
-                        <span class="cshopstore_productStoreNameSpanClass">{{eachProductDetails.shopStoreTitle}}</span>
-                    </p>
-                    <p class='cshopstore_nearByPClass'>
-                        Nearest by: {{eachProductDetails.areaTitle}}
-                    </p>
                     <p class='cshopstore_productNamePClass'>
                         {{eachProductDetails.productListTitle}}
                     </p>
-                    <p class='cshopstore_productPricePClass'> 
-                        <span class='cshopstore_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
-                            <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
+                    <p class='cshopstore_productWeightPClass'>
+                        Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
+                            <i class="fa fa-square cshopstore_productVegIconClass"></i>
                         </span>
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
+                            <i class="fa fa-square cshopstore_productVegIconClass"></i>
+                        </span>
+                    </p>
+                    <p class='cshopstore_productPricePClass'> 
                         <span class='cshopstore_productPayBlgPriceTextSClass'>
                             <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
+                        </span>
+                        <span class='cshopstore_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
+                            <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
                         </span>
                         <span class='cshopstore_productDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
                             ({{eachProductDetails.productFeatureDiscount}}% Off)
                         </span>
                     </p>
-                    <p class='cshopstore_productWeightPClass'>
-                        Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
-                        <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
-                            <i class="fa fa-square vap_productVegIconClass"></i>
-                        </span>
-                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
-                            <i class="fa fa-square vap_productVegIconClass"></i>
-                        </span>
-                    </p>
                     <p class='cshopstore_productBtnWrapperPClass'> 
-                        <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(eachProductDetails, false, 'viewstoreproducts')" title='Click to add {{eachProductDetails.productListTitle}} item in order cart' class="cshopstore_specificProductAddBtnClass btn">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                        <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="vap_specificProductViewDetailsBtnClass btn">
-                            <i class="fa fa-list"></i>
+                        <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="cshopstore_specificProductViewDetailsBtnClass btn">
+                            <i class="fa fa-list"></i> VIEW
                         </button>
                     </p>
                 </div>
@@ -277,7 +267,7 @@
             
             <!-- displaying all user reviewed rating details -->
             <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
-                <span class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
+                <span ng-if="allUserRatingReviewDetails.length>0" class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
                     Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
                 </span>
                 <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_displayEachUserReviewAboutProductContainerDivClass">
@@ -296,6 +286,9 @@
                             Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5
                         </p>
                     </div>
+                </div>
+                <div ng-hide='allUserRatingReviewDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_reviewRatingNotFoundMsgDivClass">
+                    No any customer(s) reviewed & ratings yet !!!
                 </div>
             </div>
 
