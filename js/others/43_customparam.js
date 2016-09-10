@@ -1346,7 +1346,7 @@ function storeAuthenticatedUserDetailsInSession(paramObj){
                     if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                         && userSessionParamObj.hasOwnProperty('udblogId')===true){
                         userSessionParamObj['user_sessionid'] = paramObj['user_sessionid'];
-                        userSessionParamObj['user_sessionstarttime'] = paramObj['user_sessionstarttime'];
+                        userSessionParamObj['usersession_starttimestamp'] = paramObj['usersession_starttimestamp'];
                         userSessionParamObj['udblogId'] = paramObj['udblogId'];
                         userSessionParamObj['userProfileTypeId'] = paramObj['userProfileTypeId'];
                         dkParamObj['userSession'] = userSessionParamObj;
