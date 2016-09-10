@@ -287,7 +287,9 @@
     .eachStoreNoReviewedRatingPClass,
     .eachStoreReviewedRatingPClass,
     .eachStoreDeliveryTimePClass,
-    .eachStoreDeliveryFeeMsgPClass{
+    .eachStoreDeliveryFeeMsgPClass,
+    .eachStoreServedDessertsTypeTotalProductPClass,
+    .eachStoreDiscountUptoPClass{
         margin-bottom:2px!important;
         padding-left:10px!important;
     }
@@ -316,12 +318,6 @@
         margin-bottom:10px!important;
     }
     
-    .eachStoreServedDessertsTypePClass{
-        color:#8e969d!important;
-        font-weight:normal!important;
-        font-size:13px!important;
-    }
-    
     .eachStoreReviewedRatingBoxSClass{
         background-color:rgba(39,171,92,0.9)!important;
         border:1px solid rgba(39,171,92,0.9)!important;
@@ -336,8 +332,33 @@
         font-size:13px!important;
     }
     
-    .eachStoreDeliveryTimePClass{
+    .eachStoreServedDessertsTypePClass{
         color:#8e969d!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+    }
+    
+    .eachStoreServedDessertsTypeTotalProductPClass{
+        color:#8e969d!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+    }
+    
+    .eachStoreDiscountUptoPClass{
+        color:#ea5b31!important;
+        font-weight:bold!important;
+        font-size:13px!important;
+    }
+    
+    .eachStoreDiscountUptoIconClass{
+        border-radius:50%!important;
+        background:#ea5b31!important;
+        color: #fff!important;
+        padding:4px!important;
+    }
+    
+    .eachStoreDeliveryTimePClass{
+        color:#ab0b38!important;
         font-weight:bold!important;
         font-size:13px!important;
     }
