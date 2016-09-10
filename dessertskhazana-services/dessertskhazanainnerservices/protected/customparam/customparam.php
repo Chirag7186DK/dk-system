@@ -526,9 +526,9 @@ class customparam{
             }
         }
         // check user_sessionstarttime key present or not
-        if(array_key_exists('user_sessionstarttime', $paramJsonData)){
-            if($paramJsonData['user_sessionstarttime']!='' 
-                && $paramJsonData['user_sessionstarttime']!=false){
+        if(array_key_exists('usersession_starttimestamp', $paramJsonData)){
+            if($paramJsonData['usersession_starttimestamp']!='' 
+                && $paramJsonData['usersession_starttimestamp']!=false){
                 $givenParamDataCorrectCount++;
             }
         }
