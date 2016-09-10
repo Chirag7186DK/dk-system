@@ -33,7 +33,7 @@ function ShopStoreController($rootScope, $rootScope, ProductServices, ShopStoreS
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.allStoreInfoList = false;
+                                    $rootScope.allStoreInfoList = arrJsonObj;
                                 }
                             }
                         });
