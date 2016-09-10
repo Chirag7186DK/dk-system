@@ -13,7 +13,7 @@ class OrderCartDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT COALESCE(MAX(uoc.id), 0) orderCartId
-                FROM DK_USERORDERCART uoc
+                FROM DK_ORDERCART uoc
                 WHERE 1";
             $command = $connection->createCommand($sql);
             $ordercartDetailsArr = $command->queryAll();
@@ -34,7 +34,7 @@ class OrderCartDao{
                 COALESCE(uoc.order_cartid, '') humanReadableOrdercartId,
                 COALESCE(uoc.user_id, '') orderedUserId,
                 COALESCE(uoc.user_sessionid, '') userSessionId
-                FROM DK_USERORDERCART uoc
+                FROM DK_ORDERCART uoc
                 WHERE 1 AND uoc.status='R' 
                 AND uoc.order_cartid IS NOT NULL
                 AND uoc.user_sessionid IS NOT NULL
@@ -86,7 +86,7 @@ class OrderCartDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_USERORDERCART " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO DK_ORDERCART " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -112,7 +112,7 @@ class OrderCartDao{
             }
         }
         if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_USERORDERCART SET ".rtrim($dynamicSql, ',');
+            $sqlQuery = " UPDATE DK_ORDERCART SET ".rtrim($dynamicSql, ',');
             $sqlQuery.=" WHERE id='".$paramJson['id']."' AND order_cartid='".$paramJson['order_cartid']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
@@ -139,7 +139,7 @@ class OrderCartDao{
             }
         }
         if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_USERORDERCART SET ".rtrim($dynamicSql, ',');
+            $sqlQuery = " UPDATE DK_ORDERCART SET ".rtrim($dynamicSql, ',');
             $sqlQuery.=" WHERE id='".$paramJson['id']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
