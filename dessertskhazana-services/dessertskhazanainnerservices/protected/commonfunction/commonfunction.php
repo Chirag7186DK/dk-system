@@ -770,7 +770,8 @@ class commonfunction{
         if(count($paramJsonData)>0 && $paramJsonData!=false){
             
             $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
-            $lastOrdercartId = 0;
+            $lastRequestedOrdercartId = 0;
+            $lastRequestedOrdercartStoreId = 0;
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
@@ -779,7 +780,7 @@ class commonfunction{
                 $requestedUserSessionId = $userSessionDetailsData['user_sessionid'];
                 $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
                 
-                // one order cartId can have multiple items
+                // checking for order cart related
                 $dbOrdercartIdDetails = OrderCartDao :: getRequestedOrdercartIdUsingUserId($unmd5UserId);
                 if($dbOrdercartIdDetails==false || count($dbOrdercartIdDetails)==0){
                     // generate human readable order cart id
@@ -787,43 +788,49 @@ class commonfunction{
                     $paramJsonData['order_cartid'] = $humanReadableNewOrdercartId;
                     $paramJsonData['user_id'] = $unmd5UserId;
                     $paramJsonData['user_sessionid'] = $requestedUserSessionId;
-                    $lastOrdercartId = OrderCartDao :: addEntryInOrdercart($paramJsonData);
+                    $lastRequestedOrdercartId = OrderCartDao :: addEntryInOrdercart($paramJsonData);
                 }else if(count($dbOrdercartIdDetails)>0 && $dbOrdercartIdDetails!=false){
-                    $lastOrdercartId = $dbOrdercartIdDetails['ordercartId'];
+                    $lastRequestedOrdercartId = $dbOrdercartIdDetails['ordercartId'];
                     // update order cart 
                     if($dbOrdercartIdDetails['userSessionId']!=$requestedUserSessionId){
                         $updateOrdercartIdDataObj = array(
-                            "id"=>$lastDbOrdercartId, 
+                            "id"=>$lastRequestedOrdercartId, 
                             "user_sessionid"=>$requestedUserSessionId,
                             "updated_by"=>$unmd5UserId
                         );
                         $updatedStatusOrdercart = OrderCartDao :: updateEntryInOrdercart($updateOrdercartIdDataObj);
                     }
                 }
-                if($lastOrdercartId>0 && $lastOrdercartId!=false){
+                
+                // checking for order cart store related
+                if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false){
                     $ccaId = $paramJsonData['ccaId'];
                     $storeId = $paramJsonData['store_id'];
                     // checking order cart store id is already requested or not
-                    $ordercartStoreId = getRequestedOrdercartStoreIdUsingOrdrcartIdStoreIdCCAId($lastOrdercartId, $storeId, $ccaId);
+                    $ordercartStoreId = getRequestedOrdercartStoreIdUsingOrdrcartIdStoreIdCCAId($lastRequestedOrdercartId, $storeId, $ccaId);
                     if($ordercartStoreId>0 && $ordercartStoreId!=false){
+                        $lastRequestedOrdercartStoreId = $ordercartStoreId;
                         $paramJsonData['ordercart_storeid'] = $ordercartStoreId;
+                    }else{
+                        // add entry in order cart store
+                        $paramJsonData['ordercart_id'] = $lastRequestedOrdercartId;
+                        $paramJsonData['ccaId'] = $ccaId;
+                        $paramJsonData['store_id'] = $storeId;
+                        $paramJsonData['created_by'] = $unmd5UserId;
+                        $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($paramJsonData);
                     }
-                    
-                    
-                    
-                    
-                    $paramJsonData['order_cartid'] = $addItemWithOrdercartId;
-                    $lastInsertedProductInOrdercartId = OrderCartDao :: addProductInOrdercart($paramJsonData);
-                    if($lastInsertedProductInOrdercartId>0 && $lastInsertedProductInOrdercartId!=false){
-                        $isProductAddedInOrdercart = 'TRUE';
-                    }
-                    
-                    
-                    
                 } 
                 
-                
-                
+                // finally storing item details
+                if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false 
+                    && $lastRequestedOrdercartStoreId>0 && $lastRequestedOrdercartStoreId!=false){
+                    $paramJsonData['ordercart_storeid'] = $lastRequestedOrdercartStoreId;
+                    $lastInsertedProductInOrdercartStoreItemId = OrderCartDao :: addProductInOrdercartStoreItemDetails($paramJsonData);
+                    if($lastInsertedProductInOrdercartStoreItemId>0 
+                        && $lastInsertedProductInOrdercartStoreItemId!=false){
+                        $isProductAddedInOrdercart = 'TRUE';
+                    }
+                }
                 
             }
         }
