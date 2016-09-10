@@ -287,6 +287,9 @@
                         </p>
                     </div>
                 </div>
+                <div ng-hide='allUserRatingReviewDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_reviewRatingNotFoundMsgDivClass">
+                    No any customer(s) reviewed & ratings yet !!!
+                </div>
             </div>
 
             <!-- store working style -->
