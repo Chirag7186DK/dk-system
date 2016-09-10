@@ -1755,6 +1755,9 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
             paramObj = $.extend(paramObj, userLoggedDataObj);
             
+            var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            paramObj['ccaId'] = existingDkParamObj['userSelectedDeliveryCityAreaDessertsType']['ccaId'];
+            
             // through view product page
             if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
                 if($('.'+fcontentClass).length===1){
