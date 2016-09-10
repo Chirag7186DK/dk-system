@@ -173,76 +173,40 @@ class OrderCartDao{
         return $result;
     }
     
-    // CJ defined this function 2016-08-06
-    public static function addProductInOrdercart($paramJson){
+    // CJ defined this function 2016-09-9
+    public static function addEntryInOrdercartStore($paramJson){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('order_cartid', $paramJson)){
-            if($paramJson['order_cartid']!=''){
-                $sqlColumnNames.=" order_cartid,";
-                $sqlValues.="'".$paramJson['order_cartid']."',";
+        if(array_key_exists('ordercart_id', $paramJson)){
+            if($paramJson['ordercart_id']!=''){
+                $sqlColumnNames.=" ordercart_id,";
+                $sqlValues.="'".$paramJson['ordercart_id']."',";
             }
         }
-        if(array_key_exists('shopstore_id', $paramJson)){
-            if($paramJson['shopstore_id']!=''){
-                $sqlColumnNames.=" shopstore_id,";
-                $sqlValues.="'".$paramJson['shopstore_id']."',";
+        if(array_key_exists('store_id', $paramJson)){
+            if($paramJson['store_id']!=''){
+                $sqlColumnNames.=" store_id,";
+                $sqlValues.="'".$paramJson['store_id']."',";
             }
         }
-        if(array_key_exists('product_typeid', $paramJson)){
-            if($paramJson['product_typeid']!=''){
-                $sqlColumnNames.=" product_typeid,";
-                $sqlValues.="'".$paramJson['product_typeid']."',";
+        if(array_key_exists('ccaId', $paramJson)){
+            if($paramJson['ccaId']!=''){
+                $sqlColumnNames.=" deliveryCountryCityAreaId,";
+                $sqlValues.="'".$paramJson['ccaId']."',";
             }
         }
-        if(array_key_exists('product_categoryid', $paramJson)){
-            if($paramJson['product_categoryid']!=''){
-                $sqlColumnNames.=" product_categoryid,";
-                $sqlValues.="'".$paramJson['product_categoryid']."',";
+        if(array_key_exists('address', $paramJson)){
+            if($paramJson['address']!=''){
+                $sqlColumnNames.=" address,";
+                $sqlValues.="'".$paramJson['address']."',";
             }
         }
-        if(array_key_exists('product_listid', $paramJson)){
-            if($paramJson['product_listid']!=''){
-                $sqlColumnNames.=" product_listid,";
-                $sqlValues.="'".$paramJson['product_listid']."',";
-            }
-        }
-        if(array_key_exists('product_featureid', $paramJson)){
-            if($paramJson['product_featureid']!=''){
-                $sqlColumnNames.=" product_featureid,";
-                $sqlValues.="'".$paramJson['product_featureid']."',";
-            }
-        }
-        if(array_key_exists('product_featuresize', $paramJson)){
-            if($paramJson['product_featuresize']!=''){
-                $sqlColumnNames.=" product_featuresize,";
-                $sqlValues.="'".$paramJson['product_featuresize']."',";
-            }
-        }
-        if(array_key_exists('product_featuresprice', $paramJson)){
-            if($paramJson['product_featuresprice']!=''){
-                $sqlColumnNames.=" product_featuresprice,";
-                $sqlValues.="'".$paramJson['product_featuresprice']."',";
-            }
-        }
-        if(array_key_exists('product_featuresqty', $paramJson)){
-            if($paramJson['product_featuresqty']!=''){
-                $sqlColumnNames.=" product_featuresqty,";
-                $sqlValues.="'".$paramJson['product_featuresqty']."',";
-            }
-        }
-        if(array_key_exists('product_features_totalamount', $paramJson)){
-            if($paramJson['product_features_totalamount']!=''){
-                $sqlColumnNames.=" product_features_totalamount,";
-                $sqlValues.="'".$paramJson['product_features_totalamount']."',";
-            }
-        }
-        if(array_key_exists('product_description', $paramJson)){
-            if($paramJson['product_description']!=''){
-                $sqlColumnNames.=" product_description,";
-                $sqlValues.="'".$paramJson['product_description']."',";
+        if(array_key_exists('deliveryfee', $paramJson)){
+            if($paramJson['deliveryfee']!=''){
+                $sqlColumnNames.=" deliveryfee,";
+                $sqlValues.="'".$paramJson['deliveryfee']."',";
             }
         }
         if(array_key_exists('created_by', $paramJson)){
@@ -258,7 +222,78 @@ class OrderCartDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_USERORDERCART_ITEMDETAILS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO DK_ORDERCARTSTORE " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>=1){
+                $lastInsertedId = $connection->getLastInsertID();
+            }
+        }
+        return $lastInsertedId;
+    }
+    
+    // CJ defined this function 2016-08-06
+    public static function addProductInOrdercartStoreItemDetails($paramJson){
+        $connection = Yii::app()->db;
+        $sqlColumnNames = "";
+        $sqlValues = "";
+        $lastInsertedId = false;
+        if(array_key_exists('ordercart_storeid', $paramJson)){
+            if($paramJson['ordercart_storeid']!=''){
+                $sqlColumnNames.=" ordercart_storeid,";
+                $sqlValues.="'".$paramJson['ordercart_storeid']."',";
+            }
+        }
+        if(array_key_exists('featureid', $paramJson)){
+            if($paramJson['featureid']!=''){
+                $sqlColumnNames.=" featureid,";
+                $sqlValues.="'".$paramJson['featureid']."',";
+            }
+        }
+        if(array_key_exists('size', $paramJson)){
+            if($paramJson['size']!=''){
+                $sqlColumnNames.=" size,";
+                $sqlValues.="'".$paramJson['size']."',";
+            }
+        }
+        if(array_key_exists('price', $paramJson)){
+            if($paramJson['price']!=''){
+                $sqlColumnNames.=" price,";
+                $sqlValues.="'".$paramJson['price']."',";
+            }
+        }
+        if(array_key_exists('qty', $paramJson)){
+            if($paramJson['qty']!=''){
+                $sqlColumnNames.=" qty,";
+                $sqlValues.="'".$paramJson['qty']."',";
+            }
+        }
+        if(array_key_exists('totalamount', $paramJson)){
+            if($paramJson['totalamount']!=''){
+                $sqlColumnNames.=" totalamount,";
+                $sqlValues.="'".$paramJson['totalamount']."',";
+            }
+        }
+        if(array_key_exists('description', $paramJson)){
+            if($paramJson['description']!=''){
+                $sqlColumnNames.=" description,";
+                $sqlValues.="'".$paramJson['description']."',";
+            }
+        }
+        if(array_key_exists('created_by', $paramJson)){
+            if($paramJson['created_by']!=''){
+                $sqlColumnNames.=" created_by,";
+                $sqlValues.="'".$paramJson['created_by']."',";
+            }
+        }
+        if(array_key_exists('created_datedtime', $paramJson)){
+            if($paramJson['created_datedtime']!=''){
+                $sqlColumnNames.=" created_datedtime,";
+                $sqlValues.="'".$paramJson['created_datedtime']."',";
+            }
+        }
+        if($sqlValues!='' && $sqlColumnNames!=''){
+            $sqlQuery = " INSERT INTO DK_ORDERCARTSTORE_ITEMDETAILS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
