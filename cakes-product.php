@@ -178,7 +178,7 @@
                     <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
-                    <button title="Click to add {{customerBreadCrumbOnWebApp.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
+                    <button title="Click to add {{customerBreadCrumbOnWebApp.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_specificProductAddBtnClass btn">
                         <i class="fa fa-shopping-cart"></i> ADD
                     </button>
                 </p>
