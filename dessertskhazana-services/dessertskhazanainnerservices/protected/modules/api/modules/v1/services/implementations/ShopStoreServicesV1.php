@@ -34,13 +34,13 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                         $eachStoreInfoData['shopStoreTitle'] = $storeBasicInfoDetailsArr[0]['shopStoreName'];
                         $eachStoreInfoData['shopStoreOrgLocation'] = $storeBasicInfoDetailsArr[0]['areaName'];
                         $eachStoreInfoData['shopStoreLogoFile'] = '';
+                        $eachStoreInfoData['reviewedRatingStr'] = 'No review & rating from customer yet !!!';
+                        $eachStoreInfoData['isReviewedRatingFound'] = 'FALSE';
+                        $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes, Chocolates';
+                        $eachStoreInfoData['totalProduct'] = '';
                         $eachStoreInfoData['deliveryFeeMsgStr'] = 'Free delivery at your doorstep !!!';
                         $eachStoreInfoData['deliveryTime'] = '60 MIN';
                         $eachStoreInfoData['discountUpto'] = '';
-                        $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes, Chocolates';
-                        $eachStoreInfoData['totalProduct'] = '';
-                        $eachStoreInfoData['reviewedRatingStr'] = 'No review & rating from customer yet !!!';
-                        $eachStoreInfoData['isReviewedRatingFound'] = 'FALSE';
                         $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
                         // rating & review summary fetching of given storeid
                         $dataArr1 = RatingReviewDao::getTotalRatingAboutShopStores($storeId);
@@ -67,6 +67,12 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                             if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0){
                                 $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, order amount less than Rs $minOrderAmt !!!";
                             }
+                        }
+                        // fetching store product type summary data
+                        $dataArr2 = ProductDao :: getStoreProductTypeProductCategoryProductSummary($storeId, $gproducttype_ids);
+                        if($dataArr2!=false && count($dataArr2)==1){
+                            $eachStoreInfoData['totalProduct'] = $dataArr2[0]['totalProduct'];
+                            $eachStoreInfoData['discountUpto'] = $dataArr2[0]['maxProductDiscount'];
                         }
                         if($storeLocatedAreaId==$garea_ids){
                             array_unshift($allStoreInfoListArr, $eachStoreInfoData);
