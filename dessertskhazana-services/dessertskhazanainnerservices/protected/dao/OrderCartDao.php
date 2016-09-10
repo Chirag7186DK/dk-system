@@ -151,6 +151,28 @@ class OrderCartDao{
     }
     
     
+    // CJ defined this function 2016-09-09
+    public static function getRequestedOrdercartStoreIdUsingOrdrcartIdStoreIdCCAId($ordercartId, $storeId, $ccaId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT
+                odrs.id ordercartStoreId
+                FROM DK_ORDERCARTSTORE odrs
+                WHERE 
+                odrs.ordercart_id='$ordercartId'
+                AND odrs.store_id='$storeId'
+                AND odrs.deliveryCountryCityAreaId='$ccaId'
+                AND odrs.status='R'";
+            $command = $connection->createCommand($sql);
+            $ordercartStoreDetailsArr = $command->queryAll();
+            if(count($ordercartStoreDetailsArr)==1 && $ordercartStoreDetailsArr!=false){
+                $result =  $ordercartStoreDetailsArr[0]['ordercartStoreId'];    
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
     // CJ defined this function 2016-08-06
     public static function addProductInOrdercart($paramJson){
         $connection = Yii::app()->db;
