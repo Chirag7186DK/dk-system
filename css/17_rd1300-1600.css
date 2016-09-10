@@ -317,7 +317,7 @@
     }
     
     .eachStoreServedDessertsTypePClass{
-        color:#7d7a7a!important;
+        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
     }
@@ -331,19 +331,19 @@
     }
     
     .eachStoreNoReviewedRatingPClass{
-        color:#ab0b38!important;
+        color:#8e969d!important;
         font-weight:normal!important;
         font-size:12px!important;
     }
     
     .eachStoreDeliveryTimePClass{
-        color:rgba(39,171,92,0.9)!important;
+        color:#8e969d!important;
         font-weight:bold!important;
         font-size:13px!important;
     }
     
     .eachStoreDeliveryFeeMsgPClass{
-        color:#7d7a7a!important;
+        color:#8e969d!important;
         font-weight:normal!important;
         font-size:14px!important;
     }
