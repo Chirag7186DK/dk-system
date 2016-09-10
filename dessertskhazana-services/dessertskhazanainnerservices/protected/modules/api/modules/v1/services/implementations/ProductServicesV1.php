@@ -307,6 +307,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductCategoryId = $dkParamDataArr['product_categoryids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             $gproductFeatureId = $dkParamDataArr['product_featureids'];
+            $ccaId = $dkParamDataArr['ccaId'];
             
             // prepare param obj to get product details
             $paramObj1 = array();
@@ -329,6 +330,7 @@ class ProductServicesV1 implements IProductServicesV1{
                     }
                     $dataArr1[$eachIndex]['isShowProductCommentBox'] = $isShowProductCommentBox;
                     $dataArr1[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
+                    $dataArr1[$eachIndex]['ccaId'] = $ccaId;
                 }
                 $rspDetails['allProductDetails'] = $dataArr1;
             }
