@@ -1706,62 +1706,32 @@ function resetOrdercartSummaryDataObjInSession(){
 }
 
 // CJ defined this function 2016-08-13
-function storeUserOrderItemInSession(productDetailsObj, fcontentClass){
+function storeUserOrderItemInSession(fcontentClass){
     var userOrderItemObj = {};
     try{
         
-        // through dashboard/store/all products page
-        if(productDetailsObj!==false && productDetailsObj!==undefined 
-            && jQuery.isEmptyObject(productDetailsObj)===false){
-            if(productDetailsObj.hasOwnProperty('shopStoreId')===true
-                && productDetailsObj.hasOwnProperty('productTypeId')===true
-                && productDetailsObj.hasOwnProperty('productTypeProductCategoryId')===true
-                && productDetailsObj.hasOwnProperty('productListId')===true
-                && productDetailsObj.hasOwnProperty('productFeatureId')===true){
-                if(parseInt(productDetailsObj['shopStoreId'])>0
-                    && parseInt(productDetailsObj['productTypeId'])>0
-                    && parseInt(productDetailsObj['productTypeProductCategoryId'])>0
-                    && parseInt(productDetailsObj['productListId'])>0
-                    && parseInt(productDetailsObj['productFeatureId'])>0){
-                    userOrderItemObj['shopstore_id'] = productDetailsObj['shopStoreId'];
-                    userOrderItemObj['product_typeid'] = productDetailsObj['productTypeId'];
-                    userOrderItemObj['product_categoryid'] = productDetailsObj['productTypeProductCategoryId'];
-                    userOrderItemObj['product_listid'] = productDetailsObj['productListId'];
-                    userOrderItemObj['product_featureid'] = productDetailsObj['productFeatureId'];
-                    userOrderItemObj['product_featuresize'] = productDetailsObj['productFeatureDisplayMeasurementType'];
-                    userOrderItemObj['product_featuresprice'] = productDetailsObj['productFeatureOnlineSellingPrice'];
-                    userOrderItemObj['product_featuresqty'] = '1';
-                    userOrderItemObj['product_features_totalamount'] = productDetailsObj['productFeatureOnlineSellingPrice'];
-                    userOrderItemObj['product_description'] = '';
-                }
-            }
-        }
-        
-        // through view product page
+        // through view cakes/chocolates etc product page
         if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
             if($('.'+fcontentClass).length===1){
                 var productPrice = 0;
                 if($('.'+fcontentClass).find('textarea').length===1){
-                    userOrderItemObj['product_description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
+                    userOrderItemObj['description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
                 }
                 if($('.'+fcontentClass).find('select').length===1){
                     var productMeasurementSelectInputObj = $('.'+fcontentClass).find('option:selected');
                     if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
                         productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
-                        userOrderItemObj['shopstore_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
-                        userOrderItemObj['product_typeid'] = $(productMeasurementSelectInputObj).attr("data-product_typeid");
-                        userOrderItemObj['product_categoryid'] = $(productMeasurementSelectInputObj).attr("data-product_categoryid");
-                        userOrderItemObj['product_listid'] = $(productMeasurementSelectInputObj).attr("data-product_listid");
-                        userOrderItemObj['product_featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
-                        userOrderItemObj['product_featuresize'] = $(productMeasurementSelectInputObj).val();
+                        userOrderItemObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
+                        userOrderItemObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
+                        userOrderItemObj['size'] = $(productMeasurementSelectInputObj).val();
                     }
                 }
                 if($('.'+fcontentClass).find("input[type='text']").length===1 && productPrice>0){
                     var userProductQty = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
                     var productTotalAmt = (userProductQty * productPrice);
-                    userOrderItemObj['product_featuresqty'] = userProductQty;
-                    userOrderItemObj['product_featuresprice'] = productPrice;
-                    userOrderItemObj['product_features_totalamount'] = productTotalAmt;
+                    userOrderItemObj['qty'] = userProductQty;
+                    userOrderItemObj['price'] = productPrice;
+                    userOrderItemObj['totalamount'] = productTotalAmt;
                 }
             }
         }
@@ -1777,7 +1747,7 @@ function storeUserOrderItemInSession(productDetailsObj, fcontentClass){
 }
 
 // CJ defined this function 2016-08-06
-function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, fromSession){
+function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
     try{
         var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
@@ -1785,58 +1755,28 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
             && jQuery.isEmptyObject(userLoggedDataObj)===false){
             paramObj = $.extend(paramObj, userLoggedDataObj);
             
-            // through dashboard/store/all products page
-            if(productDetailsObj!==false && productDetailsObj!==undefined 
-                && jQuery.isEmptyObject(productDetailsObj)===false){
-                if(productDetailsObj.hasOwnProperty('shopStoreId')===true
-                    && productDetailsObj.hasOwnProperty('productTypeId')===true
-                    && productDetailsObj.hasOwnProperty('productTypeProductCategoryId')===true
-                    && productDetailsObj.hasOwnProperty('productListId')===true
-                    && productDetailsObj.hasOwnProperty('productFeatureId')===true){
-                    if(parseInt(productDetailsObj['shopStoreId'])>0
-                        && parseInt(productDetailsObj['productTypeId'])>0
-                        && parseInt(productDetailsObj['productTypeProductCategoryId'])>0
-                        && parseInt(productDetailsObj['productListId'])>0
-                        && parseInt(productDetailsObj['productFeatureId'])>0){
-                        paramObj['shopstore_id'] = productDetailsObj['shopStoreId'];
-                        paramObj['product_typeid'] = productDetailsObj['productTypeId'];
-                        paramObj['product_categoryid'] = productDetailsObj['productTypeProductCategoryId'];
-                        paramObj['product_listid'] = productDetailsObj['productListId'];
-                        paramObj['product_featureid'] = productDetailsObj['productFeatureId'];
-                        paramObj['product_featuresize'] = productDetailsObj['productFeatureDisplayMeasurementType'];
-                        paramObj['product_featuresprice'] = productDetailsObj['productFeatureOnlineSellingPrice'];
-                        paramObj['product_featuresqty'] = '1';
-                        paramObj['product_features_totalamount'] = productDetailsObj['productFeatureOnlineSellingPrice'];
-                        paramObj['product_description'] = '';
-                    }
-                }
-            }
-            
             // through view product page
             if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
                 if($('.'+fcontentClass).length===1){
                     var productPrice = 0;
                     if($('.'+fcontentClass).find('textarea').length===1){
-                        paramObj['product_description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
+                        paramObj['description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
                     }
                     if($('.'+fcontentClass).find('select').length===1){
                         var productMeasurementSelectInputObj = $('.'+fcontentClass).find('option:selected');
                         if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
                             productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
-                            paramObj['shopstore_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
-                            paramObj['product_typeid'] = $(productMeasurementSelectInputObj).attr("data-product_typeid");
-                            paramObj['product_categoryid'] = $(productMeasurementSelectInputObj).attr("data-product_categoryid");
-                            paramObj['product_listid'] = $(productMeasurementSelectInputObj).attr("data-product_listid");
-                            paramObj['product_featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
-                            paramObj['product_featuresize'] = $(productMeasurementSelectInputObj).val();
+                            paramObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
+                            paramObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
+                            paramObj['size'] = $(productMeasurementSelectInputObj).val();
                         }
                     }
                     if($('.'+fcontentClass).find("input[type='text']").length===1 && productPrice>0){
                         var userProductQty = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
                         var productTotalAmt = (userProductQty * productPrice);
-                        paramObj['product_featuresqty'] = userProductQty;
-                        paramObj['product_featuresprice'] = productPrice;
-                        paramObj['product_features_totalamount'] = productTotalAmt;
+                        paramObj['qty'] = userProductQty;
+                        paramObj['price'] = productPrice;
+                        paramObj['totalamount'] = productTotalAmt;
                     }
                 }
             }
@@ -1850,7 +1790,7 @@ function getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, f
                 }
             }
         }
-        if(Object.keys(paramObj).length===13){
+        if(Object.keys(paramObj).length===7){
             return paramObj;
         }else{
             return false;
