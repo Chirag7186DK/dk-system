@@ -892,8 +892,6 @@ class commonfunction{
                 if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
                     // iterating order store wise with delivery location data
                     foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
-                        $explodedArr = explode('##', $odrStoreIdDeliveryAreaId);
-                        $storeId = $explodedArr[0];
                         $eachOrdercartStoresDataArr = array();
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
@@ -911,7 +909,7 @@ class commonfunction{
                         for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
                             array_push($eachOrdercartStoresDataArr['allItemsData'], 
                                 array(
-                                    "store_id"=>$storeId,
+                                    "ordercartStoreId"=>$storeAllItemsDataArr[$eachIndx]['ordercartStoreId'],
                                     "minorderamt"=>$storeMinOrderAmt,
                                     "deliveryfee"=>$storeDeliveryFee,
                                     "storeSubtotalAmt"=>$eachOrdercartStoresDataArr['subtotalamount'],
