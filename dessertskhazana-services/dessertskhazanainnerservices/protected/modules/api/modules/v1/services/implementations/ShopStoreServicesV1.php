@@ -237,6 +237,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             $updateApplicableDeliveryFee = '0';
             $isOrdercartStoreSummaryFound = 'N';
             $userId = 0;
+            $userAddedNosItemInStorecart = 0;
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
@@ -262,6 +263,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             $dataArr2 = OrderCartDao::getRequestedOrdercartStoreSummary($userId, $gshopstore_id, $gccaId);
             if($dataArr2>0 && $dataArr2>0){
                 $subTotalOrderAmt = $dataArr2['subtotalOrderAmtNotIncludingDeliveryFee'];
+                $userAddedNosItemInStorecart = $dataArr2['ordercartItemRequestedCount'];
                 $isOrdercartStoreSummaryFound = 'Y';
             }
 
@@ -269,7 +271,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                 && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                 if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
                     $updateApplicableDeliveryFee = '0';
-                    $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step, bcoz you added no.s of item in cart of this seller !!!';
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Your eligible for free home delivery to your door step, bcoz you added $userAddedNosItemInStorecart of item in cart of this seller !!!";
                 }else if($subTotalOrderAmt>=0 && $subTotalOrderAmt<$minOrderAmt){
                     $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller !!!";
                 }
@@ -277,7 +279,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                 && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
                 if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
                     $updateApplicableDeliveryFee = '0';
-                    $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery by courier to your door step, bcoz you added no.s of item in cart of this seller !!!';
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Your eligible for free home delivery by courier to your door step, bcoz you added $userAddedNosItemInStorecart of item in cart of this seller !!!";
                 }else if($subTotalOrderAmt>=0 && $subTotalOrderAmt<$minOrderAmt){
                     $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller & product will be deliver by courier services !!!";
                 }
