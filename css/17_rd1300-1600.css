@@ -1896,16 +1896,16 @@
     }
 
     .uca_ordercartEachTabLabelSectionContainerLIClass{
-        text-align:center;
+        text-align:center!important;
         border-bottom:1px solid #00B9F5!important;
         color:#67717D!important;
-        font-weight: bold!important;
+        font-weight:bold!important;
         font-family: serif!important;
         float:left!important;
-        padding:12px!important;
+        padding:5px!important;
         font-size:15px!important;
         list-style-type:none!important;
-        cursor:pointer;
+        cursor:pointer!important;
     }
 
     .uca_ordercartSelectedTabLabelSectionContainerLIClass{
