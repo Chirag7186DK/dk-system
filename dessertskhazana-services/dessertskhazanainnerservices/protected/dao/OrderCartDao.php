@@ -197,15 +197,15 @@ class OrderCartDao{
                 $sqlValues.="'".$paramJson['ccaId']."',";
             }
         }
+        if(array_key_exists('deliveryfee', $paramJson)){
+            $sqlColumnNames.=" deliveryfee,";
+            $sqlValues.="'".$paramJson['deliveryfee']."',";
+        }
         if(array_key_exists('address', $paramJson)){
             if($paramJson['address']!=''){
                 $sqlColumnNames.=" address,";
                 $sqlValues.="'".$paramJson['address']."',";
             }
-        }
-        if(array_key_exists('deliveryfee', $paramJson)){
-            $sqlColumnNames.=" deliveryfee,";
-            $sqlValues.="'".$paramJson['deliveryfee']."',";
         }
         if(array_key_exists('created_by', $paramJson)){
             if($paramJson['created_by']!=''){
