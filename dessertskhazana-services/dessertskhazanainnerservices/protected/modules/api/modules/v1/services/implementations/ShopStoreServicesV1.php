@@ -282,17 +282,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
                 }
             }
-
-            // finally checking to update order cart store delivery fee applicable on user product
-            // at specific delivery location
-            if($isOrdercartStoreSummaryFound=='Y' && $userId>0 && $userId!=''
-                && $updateApplicableDeliveryFee>=0){
-                $paramJson2 = array();
-                $paramJson2['deliveryfee'] = $updateApplicableDeliveryFee;
-                $paramJson2['updated_by'] = $userId;
-                $paramJson2['id'] = $dataArr2[0]['ordercartStoreId'];
-                $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($paramJson2);
-            }
+            
         }
         return $rspDetails;
     }
