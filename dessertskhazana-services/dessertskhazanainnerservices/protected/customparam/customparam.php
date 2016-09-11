@@ -837,6 +837,12 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
+        if(array_key_exists('deliveryfee', $paramJsonData)){
+            $givenParamDataCorrectCount++;
+        }
+        if(array_key_exists('minorderamt', $paramJsonData)){
+            $givenParamDataCorrectCount++;
+        }
         if(array_key_exists('featureid', $paramJsonData)){
             if(($paramJsonData['featureid'])>0 && $paramJsonData['featureid']!=''){
                 $givenParamDataCorrectCount++;
@@ -865,7 +871,7 @@ class customparam{
         if(array_key_exists('description', $paramJsonData)){
             $givenParamDataCorrectCount++;
         }
-        if($givenParamDataCorrectCount==10){
+        if($givenParamDataCorrectCount==12){
             $retStatus = 'TRUE';
         }
         return $retStatus;
