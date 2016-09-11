@@ -902,7 +902,7 @@ class commonfunction{
                         $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
                         $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
                         $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
-                        $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryfee'];
+                        $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryFee'];
                         $eachOrdercartStoresDataArr['allItemsData'] = array();
                         // iterate each item details
                         for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
@@ -922,7 +922,7 @@ class commonfunction{
                             );
                         }
                         // checking for delivery fee msg 
-                        if($storeAppliedDeliveryFeeOnOdrAmt<=0){
+                        if($storeAppliedDeliveryFeeOnOdrAmt<=0 && $storeAppliedDeliveryFeeOnOdrAmt!=''){
                             $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
                             $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalamount'].")  of this seller !!!";
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
