@@ -9,5 +9,5 @@ interface IShopStoreServicesV1{
     public function getDeliveryAreaBasedCStoreConductDessertType($dkInDtoArray);
     public function getCShopStoreSummaryInfo($dkInDtoArray);
     public function getCshopstoreWorkingstyleDetails($dkInDtoArray);
-    public function checkStoreDeliveryFeeApplicableOnUserProduct($dkInDtoArray);
+    public function getStoreDeliveryFeeApplicableOnDeliveryArea($dkInDtoArray);
 }
