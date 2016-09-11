@@ -149,7 +149,7 @@
                     No rating & review from customer yet !!!
                 </p>
                 <hr>
-                <p ng-controller="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_estimatedProductDeliveryTimePClass">;
+                <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_estimatedProductDeliveryTimePClass">
                     {{storeDeliveryFeeApplicableMsg}}
                 </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
