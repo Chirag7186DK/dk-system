@@ -1786,6 +1786,8 @@ function storeUserOrderItemInSession(fcontentClass){
                         productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
                         userOrderItemObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
                         userOrderItemObj['ccaId'] = $(productMeasurementSelectInputObj).attr("data-ccaid");
+                        userOrderItemObj['deliveryfee'] = $(productMeasurementSelectInputObj).attr("data-deliveryfee");
+                        userOrderItemObj['minorderamt'] = $(productMeasurementSelectInputObj).attr("data-minorderamt");
                         userOrderItemObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
                         userOrderItemObj['size'] = $(productMeasurementSelectInputObj).val();
                     }
@@ -1803,7 +1805,7 @@ function storeUserOrderItemInSession(fcontentClass){
         // console.log("problem in storeUserOrderItemInSession ex=>"+ex);
         userOrderItemObj = {};
     }
-    if(Object.keys(userOrderItemObj).length===8){
+    if(Object.keys(userOrderItemObj).length===10){
         var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         existingDkParamObj['userOrderItemObj'] = userOrderItemObj;
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
