@@ -807,10 +807,10 @@ class commonfunction{
                     $ccaId = $paramJsonData['ccaId'];
                     $storeId = $paramJsonData['store_id'];
                     // checking order cart store id is already requested or not
-                    $ordercartStoreId = OrderCartDao :: getRequestedOrdercartStoreIdUsingOrdrcartIdStoreIdCCAId($lastRequestedOrdercartId, $storeId, $ccaId);
-                    if($ordercartStoreId>0 && $ordercartStoreId!=false){
-                        $lastRequestedOrdercartStoreId = $ordercartStoreId;
-                        $paramJsonData['ordercart_storeid'] = $ordercartStoreId;
+                    $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $lastRequestedOrdercartId);
+                    if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
+                        $lastRequestedOrdercartStoreId = $ordercartStoreDataArr['ordercartStoreId'];
+                        $paramJsonData['ordercart_storeid'] = $lastRequestedOrdercartStoreId;
                     }else{
                         // add entry in order cart store
                         $paramJsonData['ordercart_id'] = $lastRequestedOrdercartId;
