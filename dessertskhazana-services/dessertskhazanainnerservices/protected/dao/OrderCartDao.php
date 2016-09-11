@@ -365,7 +365,7 @@ class OrderCartDao{
                 COALESCE(odrs.id, '') ordercartStoreId,
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
                 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-                COALESCE(SUM(odrs.deliveryfee)) storeDeliveryFee,
+                COALESCE(SUM(odrs.deliveryfee), '0') storeDeliveryFee,
                 COALESCE(
                     COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
                 ) subtotalOrderAmtIncludingDeliveryFee,
@@ -379,7 +379,8 @@ class OrderCartDao{
                 AND odrs.deliveryCountryCityAreaId='$ccaId'
                 AND odr.status='R'
                 AND odrs.status='R'
-                AND odrsim.status='R'";
+                AND odrsim.status='R'
+                HAVING ordercartCount>0";
             $command = $connection->createCommand($sql);
             $ordercartStoreSummaryDataArr = $command->queryAll();
             if(count($ordercartStoreSummaryDataArr)==1 && $ordercartStoreSummaryDataArr!=false){
