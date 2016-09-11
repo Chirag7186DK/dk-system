@@ -277,7 +277,7 @@
                             <hr class='uca_ordercartRequestedEachStoreBasicInfoHrClass'>
                         </div>
                         <!-- each store all items will be display -->
-                        <div ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass'>
+                        <div ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass uca_ordercartRequestedEachStoreItemDivClass{{$index}}'>
                             <p class="uca_ordercartRequestedEachStoreItemNamePClass">
                                 {{eachItemDataObj.productListTitle}}
                             </p>
@@ -303,10 +303,10 @@
                                 Total Amt: {{eachItemDataObj.totalamount}}
                             </p>
                             <p class="uca_ordercartRequestedEachStoreItemOperationPClass">
-                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
+                                <button ng-click="checkProductDataToUdateInOrdercart(eachItemDataObj, 'uca_ordercartRequestedEachStoreItemDivClass'+$index);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
                                     UPDATE
                                 </button>
-                                <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>
+                                <button ng-click="removeItemOrdercart(eachItemDataObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>
                                     REMOVE
                                 </button>
                                 <button class='btn ordercartRequestedEachItemCheckoutBtnClass'>
