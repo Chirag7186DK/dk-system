@@ -217,33 +217,4 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         return $rspDetails;
     }
     
-    // CJ defined this action 2016-09-11
-    public function checkStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr){
-        $rspDetails = array();
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            // initial variable declar here
-            $gshopstore_id = $dkParamDataArr['store_id'];
-            $gcountry_ids = $dkParamDataArr['country_ids'];
-            $gcity_ids = $dkParamDataArr['city_ids'];
-            $garea_ids = $dkParamDataArr['area_ids'];
-            $deliveryFee = '0';
-            $minOrderAmt = '0';
-            // fetching store delivery facility given location
-            $paramJson1 = array();
-            $paramJson1['shop_storesids'] = $gshopstore_id;
-            $paramJson1['country_ids'] = $gcountry_ids;
-            $paramJson1['city_ids'] = $gcity_ids;
-            $paramJson1['area_ids'] = $garea_ids;
-            $storeDeliveryFacilityDataArr = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
-            if($storeDeliveryFacilityDataArr!=false && count($storeDeliveryFacilityDataArr)==1){
-                $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
-                $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
-            }
-            if($deliveryFee>0 && $minOrderAmt>0){
-            }
-            
-        }
-        return $rspDetails;
-    }
-
 }
