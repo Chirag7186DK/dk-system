@@ -302,6 +302,9 @@ class ProductServicesV1 implements IProductServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             
             // initial variable declare
+            $gcountry_ids = $dkParamDataArr['country_ids'];
+            $gcity_ids = $dkParamDataArr['city_ids'];
+            $garea_ids = $dkParamDataArr['area_ids'];
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
             $gproductTypeId = $dkParamDataArr['product_typesids'];
             $gproductCategoryId = $dkParamDataArr['product_categoryids'];
@@ -309,30 +312,41 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductFeatureId = $dkParamDataArr['product_featureids'];
             $ccaId = $dkParamDataArr['ccaId'];
             
-            // prepare param obj to get product details
+            // fetching store delivery facility given location
             $paramObj1 = array();
             $paramObj1['shop_storesids'] = $gShopStoreId;
-            $paramObj1['product_typeids'] = $gproductTypeId;
-            $paramObj1['product_categoryids'] = $gproductCategoryId;
-            $paramObj1['product_listids'] = $gproductListId;
-            $paramObj1['sort_productfeaturesid'] = " FIELD(splld.id, $gproductFeatureId) DESC ";
-            $dataArr1 = ProductDao :: getProductTypeProductCategoryProductList($paramObj1);
-            if(count($dataArr1)>0 && $dataArr1!=false){
+            $paramObj1['country_ids'] = $gcountry_ids;
+            $paramObj1['city_ids'] = $gcity_ids;
+            $paramObj1['area_ids'] = $garea_ids;
+            $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramObj1);
+            if($dataArr1!=false && count($dataArr1)==1){
+                // $deliveryFee = $dataArr1[0]['deliveryfee'];
+            }
+            
+            // prepare param obj to get product details
+            $paramObj2 = array();
+            $paramObj2['shop_storesids'] = $gShopStoreId;
+            $paramObj2['product_typeids'] = $gproductTypeId;
+            $paramObj2['product_categoryids'] = $gproductCategoryId;
+            $paramObj2['product_listids'] = $gproductListId;
+            $paramObj2['sort_productfeaturesid'] = " FIELD(splld.id, $gproductFeatureId) DESC ";
+            $dataArr2 = ProductDao :: getProductTypeProductCategoryProductList($paramObj2);
+            if(count($dataArr2)>0 && $dataArr2!=false){
                 // iterate each product features details
-                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                for($eachIndex = 0; $eachIndex<count($dataArr2); $eachIndex++){
                     $isRequestedProductDetailsMatched = 'N';
                     $isShowProductCommentBox = 'N';
-                    if($dataArr1[$eachIndex]['productFeatureId']==$gproductFeatureId){
+                    if($dataArr2[$eachIndex]['productFeatureId']==$gproductFeatureId){
                         $isRequestedProductDetailsMatched = 'Y';
                     }
-                    if(strtolower($dataArr1[$eachIndex]['productTypeTitle'])=='cakes'){
+                    if(strtolower($dataArr2[$eachIndex]['productTypeTitle'])=='cakes'){
                         $isShowProductCommentBox = 'Y';
                     }
-                    $dataArr1[$eachIndex]['isShowProductCommentBox'] = $isShowProductCommentBox;
-                    $dataArr1[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
-                    $dataArr1[$eachIndex]['ccaId'] = $ccaId;
+                    $dataArr2[$eachIndex]['isShowProductCommentBox'] = $isShowProductCommentBox;
+                    $dataArr2[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
+                    $dataArr2[$eachIndex]['ccaId'] = $ccaId;
                 }
-                $rspDetails['allProductDetails'] = $dataArr1;
+                $rspDetails['allProductDetails'] = $dataArr2;
             }
         }
         return $rspDetails;
