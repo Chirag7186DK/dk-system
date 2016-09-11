@@ -939,7 +939,11 @@ class commonfunction{
                 }
             }
         }
-        return $retDataArr;
+        if(count($retDataArr)>0 && $retDataArr!=false){
+            return $retDataArr;
+        }else{
+            return false;
+        }
     }
     
     // CJ defined this function 2016-08-15
