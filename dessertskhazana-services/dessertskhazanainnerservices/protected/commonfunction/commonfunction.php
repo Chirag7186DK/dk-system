@@ -914,6 +914,7 @@ class commonfunction{
                                     "store_id"=>$storeId,
                                     "minorderamt"=>$storeMinOrderAmt,
                                     "deliveryfee"=>$storeDeliveryFee,
+                                    "storeSubtotalAmt"=>$eachOrdercartStoresDataArr['subtotalamount'],
                                     "orderStoreItemId"=>$storeAllItemsDataArr[$eachIndx]['orderStoreItemId'],
                                     "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
                                     "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
