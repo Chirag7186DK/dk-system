@@ -174,6 +174,12 @@ class OrderCartDao{
                 $sqlValues.="'".$paramJson['ccaId']."',";
             }
         }
+        if(array_key_exists('delivery_areaname', $paramJson)){
+            if($paramJson['delivery_areaname']!=''){
+                $sqlColumnNames.=" delivery_areaname,";
+                $sqlValues.="'".$paramJson['delivery_areaname']."',";
+            }
+        }
         if(array_key_exists('min_orderamt', $paramJson)){
             $sqlColumnNames.=" min_orderamt,";
             $sqlValues.="'".$paramJson['min_orderamt']."',";
@@ -185,6 +191,18 @@ class OrderCartDao{
         if(array_key_exists('apply_deliveryfee', $paramJson)){
             $sqlColumnNames.=" apply_deliveryfee,";
             $sqlValues.="'".$paramJson['apply_deliveryfee']."',";
+        }
+        if(array_key_exists('discountamount', $paramJson)){
+            $sqlColumnNames.=" discountamount,";
+            $sqlValues.="'".$paramJson['discountamount']."',";
+        }
+        if(array_key_exists('subtotalamount', $paramJson)){
+            $sqlColumnNames.=" subtotalamount,";
+            $sqlValues.="'".$paramJson['subtotalamount']."',";
+        }
+        if(array_key_exists('totalamount', $paramJson)){
+            $sqlColumnNames.=" totalamount,";
+            $sqlValues.="'".$paramJson['totalamount']."',";
         }
         if(array_key_exists('address', $paramJson)){
             if($paramJson['address']!=''){
