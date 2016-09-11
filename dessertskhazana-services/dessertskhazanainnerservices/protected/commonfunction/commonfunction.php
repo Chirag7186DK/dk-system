@@ -909,7 +909,10 @@ class commonfunction{
                         for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
                             array_push($eachOrdercartStoresDataArr['allItemsData'], 
                                 array(
+                                    "ordercartId"=>$storeAllItemsDataArr[$eachIndx]['ordercartId'],
                                     "ordercartStoreId"=>$storeAllItemsDataArr[$eachIndx]['ordercartStoreId'],
+                                    "store_id"=>$storeAllItemsDataArr[$eachIndx]['storeId'],
+                                    "ccaId"=>$storeAllItemsDataArr[$eachIndx]['deliveryCountryCityAreaId'],
                                     "minorderamt"=>$storeMinOrderAmt,
                                     "deliveryfee"=>$storeDeliveryFee,
                                     "storeSubtotalAmt"=>$eachOrdercartStoresDataArr['subtotalamount'],
