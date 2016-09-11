@@ -338,7 +338,7 @@ class OrderCartDao{
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
                 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
                 COALESCE(
-                    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+                    COALESCE(SUM(odrsim.totalamount), 0) + COALESCE(SUM(odrs.deliveryfee), 0)
                 ) subtotalOrderAmt
                 FROM DK_ORDERCART odr
                 JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
