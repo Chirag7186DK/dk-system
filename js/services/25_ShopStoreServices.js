@@ -53,6 +53,7 @@ function ShopStoreServices($rootScope){
         
         // resetStoreDeliveryFeeApplicableMsgOnDeliveryArea
         shopstoreDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(storeDeliveryFeeApplicableMsg){
+            alert(storeDeliveryFeeApplicableMsg);
             $rootScope.storeDeliveryFeeApplicableMsg = storeDeliveryFeeApplicableMsg;
         };
         
