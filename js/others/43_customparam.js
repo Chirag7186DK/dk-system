@@ -1898,7 +1898,7 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                 if(parseInt(userProductQty)>0 && userProductQty!=='' 
                     && parseFloat(productPrice)>0 && productPrice!==''){
                     var productTotalAmt = removeHtmlStripTagsOfContent((userProductQty * productPrice));
-                    paramObj['store_id'] = productDetailsObj['store_id'];
+                    paramObj['ordercartStoreId'] = productDetailsObj['ordercartStoreId'];
                     paramObj['minorderamt'] = productDetailsObj['minorderamt'];
                     paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
                     paramObj['storeSubtotalAmt'] = productDetailsObj['storeSubtotalAmt'];
