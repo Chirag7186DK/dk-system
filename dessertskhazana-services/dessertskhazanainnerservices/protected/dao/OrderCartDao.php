@@ -385,17 +385,17 @@ class OrderCartDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    odr.id ordercartId, odr.order_cartid humanReadableOrdrcartId,
-                    odr.user_sessionid userSessionId, odr.user_id userId,
+                    odr.id ordercartId, odr.user_sessionid userSessionId, odr.user_id userId,
                     odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
                     COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
                     COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
-                    odrs.deliveryCountryCityAreaId, COALESCE(odrs.address, '') deliveryAddress,
-                    COALESCE(odrsim.id, '') orderStoreItemId,
-                    COALESCE(spl.name, '') productListTitle, COALESCE(odrsim.featureid, '') featureId,
-                    COALESCE(odrsim.size, '') productSize, COALESCE(odrsim.price, '') productPrice, 
-                    COALESCE(odrsim.qty, '0') productQty, COALESCE(odrsim.totalamount, '') productTotalAmt,
-                    COALESCE(odrsim.description, '') description
+                    odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '0') delivery_areaname,
+                    COALESCE(odrs.address, '') deliveryAddress, COALESCE(odrs.discountamount, '') discountamount,
+                    COALESCE(odrs.subtotalamount, '') subtotalamount, COALESCE(odrs.totalamount, '') totalamount,
+                    COALESCE(odrsim.id, '') orderStoreItemId, COALESCE(spl.name, '') productListTitle, 
+                    COALESCE(odrsim.featureid, '') featureId, COALESCE(odrsim.size, '') productSize, 
+                    COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
+                    COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description
                     FROM DK_ORDERCART odr
                     JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
                     JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
