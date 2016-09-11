@@ -357,7 +357,7 @@ class OrderCartDao{
     }
     
     // CJ defined this function 2016-09-11
-    public static function getRequestedOrdercartStoreSummary($userid, $store_id, $ccaId){
+    public static function getRequestedOrdercartStoreSummary($userid, $store_id, $ccaId, $ordercartId=''){
         $result = false;
         try{
             $connection = Yii::App()->db;
@@ -379,8 +379,11 @@ class OrderCartDao{
                 AND odrs.deliveryCountryCityAreaId='$ccaId'
                 AND odr.status='R'
                 AND odrs.status='R'
-                AND odrsim.status='R'
-                HAVING ordercartCount>0";
+                AND odrsim.status='R' ";
+                if($ordercartId!='' && $ordercartId>0){
+                    $sql.=" AND odr.id='$ordercartId'";
+                }
+            $sql.=" HAVING ordercartCount>0";
             $command = $connection->createCommand($sql);
             $ordercartStoreSummaryDataArr = $command->queryAll();
             if(count($ordercartStoreSummaryDataArr)==1 && $ordercartStoreSummaryDataArr!=false){
