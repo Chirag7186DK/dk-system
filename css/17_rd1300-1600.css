@@ -1863,12 +1863,12 @@
     }
 
     .uca_changePasswordBtnClass{
-        font-weight:bold;
-        font-size:15px!important;
-        border-radius:0px!important;
         color:#fff!important;
-        background:#00B9F5!important;
-        cursor:pointer;
+        background:#ab0b38!important;
+        font-weight:bold!important;
+        font-size:13px!important;
+        border-radius:0px!important;
+        cursor:pointer!important;
     }
     
 
