@@ -72,12 +72,46 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
         $rspDetails['isItemUpdatedFromOrdercart'] = 'FALSE';
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetching user session data
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
+                // updating order cart store item details like qty, price etc
+                $dkParamDataArr['updated_by'] = $unmd5UserId;
                 $retUpdatedDataStatus = OrderCartDao:: updateItemInOrdercart($dkParamDataArr);
                 if($retUpdatedDataStatus==true){
                     $rspDetails['isItemUpdatedFromOrdercart'] = 'TRUE';
+                    
+                    // extract data for order cart store data
+                    $ordercartId = $dkParamDataArr['ordercartId'];
+                    $ordercartStoreId = $dkParamDataArr['ordercartStoreId'];
+                    $storeId = $dkParamDataArr['store_id'];
+                    $ccaId = $dkParamDataArr['ccaId'];
+                    $storeMinOrderAmt = $dkParamDataArr['minorderamt'];
+                    $storeOrderDeliveryFee = $dkParamDataArr['deliveryfee'];
+                    
+                    // fetching order cart store summary data by giving some param
+                    $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $ordercartId, $ordercartStoreId);
+                    if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
+                        $storeOdrSubTotalAmt = $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
+                        $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
+                        if($storeOdrSubTotalAmt>0 && $storeMinOrderAmt>0 
+                            && $storeOdrSubTotalAmt>=$storeMinOrderAmt){
+                            $updateStoreOrderDeliveryFee = '0';
+                        }else if($storeOdrSubTotalAmt>0 && $storeMinOrderAmt>0 
+                            && $storeOdrSubTotalAmt<$storeMinOrderAmt){
+                            $storeOdrTotalAmt = $storeOdrSubTotalAmt + $updateStoreOrderDeliveryFee;
+                        }
+                        $updateOrdercartStoreDataObj = array(
+                            "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
+                            "subtotalamount"=>$storeOdrSubTotalAmt,
+                            "totalamount"=>$storeOdrTotalAmt, 
+                            "updated_by"=>$unmd5UserId,
+                            "id"=>$ordercartStoreId
+                        );
+                        // updating order cart store data
+                        $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
+                    }
                 }
             }
         } 
