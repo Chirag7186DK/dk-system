@@ -229,15 +229,14 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
             $gccaId = $dkParamDataArr['ccaId'];
-            $deliveryFee = '0';
-            $minOrderAmt = '0';
-            $subTotalOrderAmt = 0;
             $isHomeDeliveryAccept = 'Y';
             $is_courierdeliveryaccept = 'Y';
-            $updateApplicableDeliveryFee = '0';
-            $isOrdercartStoreSummaryFound = 'N';
+            $deliveryFee = '0';
+            $minOrderAmt = '0';
             $userId = 0;
+            $isOrdercartStoreSummaryFound = 'N';
             $userAddedNosItemInStorecart = 0;
+            $subTotalOrderAmt = 0;
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
@@ -270,16 +269,18 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                 && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                 if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
-                    $updateApplicableDeliveryFee = '0';
-                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Your eligible for free home delivery to your door step, bcoz you have added $userAddedNosItemInStorecart items in cart of this seller !!!";
+                    $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added $userAddedNosItemInStorecart items in cart";
+                    $msgStr.=" (Rs: $subTotalOrderAmt)  of this seller !!!";
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = $msgStr;
                 }else if($subTotalOrderAmt>=0 && $subTotalOrderAmt<$minOrderAmt){
                     $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller !!!";
                 }
             }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                 && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
                 if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
-                    $updateApplicableDeliveryFee = '0';
-                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Your eligible for free home delivery by courier to your door step, bcoz you have added $userAddedNosItemInStorecart items in cart of this seller !!!";
+                    $msgStr = "Your eligible for free home delivery by courier to your door step, bcoz you have added $userAddedNosItemInStorecart items in cart";
+                    $msgStr.=" (Rs: $subTotalOrderAmt)  of this seller !!!";
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = $msgStr;
                 }else if($subTotalOrderAmt>=0 && $subTotalOrderAmt<$minOrderAmt){
                     $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller & product will be deliver by courier services !!!";
                 }
