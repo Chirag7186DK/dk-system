@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('ProductController', ProductController);
 
-function ProductController($scope, $rootScope, $http, ProductServices, LocationServices){
+function ProductController($scope, $rootScope, $http, ProductServices, LocationServices, ShopStoreServices){
     try{
         
         // loadDKDeliveryAreaBasedDessertsTypeList 
@@ -465,6 +465,15 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
             }catch(ex){
                 $rootScope.vAllPDetails = false;
                 console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
+            }
+        };
+        
+        // loadStoreDeliveryFeeApplicableMsgOnDeliveryArea 
+        $rootScope.loadStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
+            try{
+                ShopStoreServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
+            }catch(ex){
+                console.log("problem in loadStoreDeliveryFeeApplicableMsgOnDeliveryArea ex=>"+ex);
             }
         };
         
