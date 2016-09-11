@@ -267,12 +267,17 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                     if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
                         $updateApplicableDeliveryFee = '0';
-                        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Free home delivery to your door step !!!';
+                        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step !!!';
+                    }else if($subTotalOrderAmt>0 && $subTotalOrderAmt<$minOrderAmt){
+                        $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt !!!";
                     }
                 }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                     && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
                     if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
                         $updateApplicableDeliveryFee = '0';
+                        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery by courier to your door step !!!';
+                    }else if($subTotalOrderAmt>0 && $subTotalOrderAmt<$minOrderAmt){
+                        $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
                     }
                 }
                 
@@ -285,13 +290,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     $paramJson2['id'] = $dataArr2[0]['ordercartStoreId'];
                     $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($paramJson2);
                 }
-                
-                
-                
             }
-            
-            
-            
         }
         return $rspDetails;
     }
