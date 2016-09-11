@@ -1101,7 +1101,7 @@ function getParamObjStoreDeliveryFeeApplicableMsgOnDeliveryArea(){
                 paramObj = $.extend(paramObj, userLoggedDataObj);
             }
         }
-        if(Object.keys(paramObj).length===8){
+        if(Object.keys(paramObj).length>=5){
             return paramObj;
         }else{
             return false;
