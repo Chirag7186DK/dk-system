@@ -772,6 +772,9 @@ class commonfunction{
             $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
             $lastRequestedOrdercartId = 0;
             $lastRequestedOrdercartStoreId = 0;
+            $storeOrderAmt = $paramJsonData['minorderamt'];
+            $storeOrderDeliveryFee = $paramJsonData['deliveryfee'];
+            $userTotalOrderAmt = $paramJsonData['totalamount'];
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
@@ -781,24 +784,28 @@ class commonfunction{
                 $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
                 
                 // checking for order cart related
-                $dbOrdercartIdDetails = OrderCartDao :: getRequestedOrdercartIdUsingUserId($unmd5UserId);
-                if($dbOrdercartIdDetails==false || count($dbOrdercartIdDetails)==0){
+                $ordercartDataArr = OrderCartDao :: getRequestedOrdercartIdUsingUserId($unmd5UserId);
+                if($ordercartDataArr==false || count($ordercartDataArr)==0){
                     // generate human readable order cart id
                     $humanReadableNewOrdercartId = commonfunction :: generateHumanReadableOrdercartId();
-                    $paramJsonData['order_cartid'] = $humanReadableNewOrdercartId;
-                    $paramJsonData['user_id'] = $unmd5UserId;
-                    $paramJsonData['user_sessionid'] = $requestedUserSessionId;
-                    $lastRequestedOrdercartId = OrderCartDao :: addEntryInOrdercart($paramJsonData);
-                }else if(count($dbOrdercartIdDetails)>0 && $dbOrdercartIdDetails!=false){
-                    $lastRequestedOrdercartId = $dbOrdercartIdDetails['ordercartId'];
-                    // update order cart 
-                    if($dbOrdercartIdDetails['userSessionId']!=$requestedUserSessionId){
-                        $updateOrdercartIdDataObj = array(
+                    // add entry in ordercart
+                    $addOrdercartData = array();
+                    $addOrdercartData['order_cartid'] = $humanReadableNewOrdercartId;
+                    $addOrdercartData['user_id'] = $unmd5UserId;
+                    $addOrdercartData['user_sessionid'] = $requestedUserSessionId;
+                    $addOrdercartData['created_by'] = $unmd5UserId;
+                    $addOrdercartData['created_datedtime'] = date('Y-m-d H:i:s');
+                    $lastRequestedOrdercartId = OrderCartDao :: addEntryInOrdercart($addOrdercartData);
+                }else if(count($ordercartDataArr)>0 && $ordercartDataArr!=false){
+                    $lastRequestedOrdercartId = $ordercartDataArr['ordercartId'];
+                    // update order cart data
+                    if($ordercartDataArr['userSessionId']!=$requestedUserSessionId){
+                        $updateOrdercartDataObj = array(
                             "id"=>$lastRequestedOrdercartId, 
                             "user_sessionid"=>$requestedUserSessionId,
                             "updated_by"=>$unmd5UserId
                         );
-                        $updatedStatusOrdercart = OrderCartDao :: updateEntryInOrdercart($updateOrdercartIdDataObj);
+                        $updatedStatusOrdercart = OrderCartDao :: updateEntryInOrdercart($updateOrdercartDataObj);
                     }
                 }
                 
@@ -810,13 +817,25 @@ class commonfunction{
                     $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $lastRequestedOrdercartId);
                     if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
                         $lastRequestedOrdercartStoreId = $ordercartStoreDataArr['ordercartStoreId'];
-                        $paramJsonData['ordercart_storeid'] = $lastRequestedOrdercartStoreId;
+                        $userTotalOrderAmt = $userTotalOrderAmt + $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
+                        $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
+                        if($userTotalOrderAmt>0 && $storeOrderAmt>0 && $userTotalOrderAmt>=$storeOrderAmt){
+                            $updateStoreOrderDeliveryFee = '0';
+                        }
+                        $updateOrdercartStoreDataObj = array(
+                            "deliveryfee"=>$updateStoreOrderDeliveryFee, 
+                            "updated_by"=>$unmd5UserId,
+                            "id"=>$lastRequestedOrdercartStoreId
+                        );
+                        $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
                     }else{
                         // add entry in order cart store
-                        $paramJsonData['ordercart_id'] = $lastRequestedOrdercartId;
-                        $paramJsonData['ccaId'] = $ccaId;
-                        $paramJsonData['store_id'] = $storeId;
-                        $paramJsonData['created_by'] = $unmd5UserId;
+                        $addOrdercartStoreData = array();
+                        $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
+                        $addOrdercartStoreData['ccaId'] = $ccaId;
+                        $addOrdercartStoreData['store_id'] = $storeId;
+                        $addOrdercartStoreData['created_by'] = $unmd5UserId;
+                        $addOrdercartStoreData['created_datedtime'] = date('Y-m-d H:i:s');
                         $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($paramJsonData);
                     }
                 } 
