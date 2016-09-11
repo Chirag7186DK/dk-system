@@ -217,4 +217,45 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         return $rspDetails;
     }
     
+    // CJ defined this action 2016-09-11
+    public function checkStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr){
+        $rspDetails = array();
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // initial variable declare here
+            $gshopstore_id = $dkParamDataArr['store_id'];
+            $gcountry_ids = $dkParamDataArr['country_ids'];
+            $gcity_ids = $dkParamDataArr['city_ids'];
+            $garea_ids = $dkParamDataArr['area_ids'];
+            $gccaId = $dkParamDataArr['ccaId'];
+            $deliveryFee = '0';
+            $minOrderAmt = '0';
+            $subTotalOrderAmt = 0;
+            // fetch user session data details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $userId = $userSessionDetailsData['unmd5UserId'];
+                // fetching store delivery facility given location
+                $paramJson1 = array();
+                $paramJson1['shop_storesids'] = $gshopstore_id;
+                $paramJson1['country_ids'] = $gcountry_ids;
+                $paramJson1['city_ids'] = $gcity_ids;
+                $paramJson1['area_ids'] = $garea_ids;
+                $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
+                if($dataArr1!=false && count($dataArr1)==1){
+                    $minOrderAmt = $dataArr1[0]['min_orderamount'];
+                    $deliveryFee = $dataArr1[0]['deliveryfee'];
+                }
+                // fetching order cart store summary data
+                $dataArr2 = OrderCartDao::getRequestedOrdercartStoreSummary($userId, $gshopstore_id, $gccaId);
+                if($dataArr2>0 && $dataArr2>0){
+                    $subTotalOrderAmt = $dataArr2[0]['subtotalOrderAmtNotIncludingDeliveryFee'];
+                }
+            }
+            
+            
+            
+        }
+        return $rspDetails;
+    }
+    
 }
