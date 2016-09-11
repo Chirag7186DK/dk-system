@@ -413,6 +413,7 @@ class OrderCartDao{
             $connection = Yii::App()->db;
             $sql= " SELECT 
                     odr.id ordercartId, odr.user_sessionid userSessionId, odr.user_id userId,
+                    odrs.id ordercartStoreId,
                     odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
                     COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
                     COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
