@@ -20,16 +20,18 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('chocolates-product');">
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('cakes-product');">
         
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
+            
             <!-- web log header --->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
                 <h1 class='webLogoHClass'>
                     <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
                 </h1>
             </div>
+            
             <!-- top menu bar -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
                 <ul class="topMenuBarULClass list-inline">
@@ -59,6 +61,7 @@
                     </li>
                 </ul>
             </div>
+            
         </div>
         
         <!-- header row border div class -->
@@ -134,7 +137,7 @@
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_productStoreNameContainerPClass'>
                     <span class="vpd_productStoreLabelNameSpanClass">Seller: </span> 
-                    <span class="vpd_productStoreNameSpanClass">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</span>
+                    <span class="vpd_productStoreNameSpanClass">{{vAllPDetails[0]['shopStoreTitle']}}</span>
                 </p>
                 <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedAboutProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct" title="To see detailed reviewed / rating about this item please scroll down page to rating / review section">
                     {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} reviewed,
@@ -145,14 +148,21 @@
                 <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
                     No rating & review from customer yet !!!
                 </p>
+                <hr>
+                <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_estimatedProductDeliveryTimePClass">
+                    {{storeDeliveryFeeApplicableMsg}}
+                </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
-                    Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
+                    Est. Delivery: 
+                    <span class="estimatedProductShippingDeliveryTimeSClass">
+                        {{vAllPDetails[0]['storeOrderDeliveryTime']}}
+                    </span>
                 </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId" title="This item is also available in another size">
-                        <option ng-repeat="eachProductMeasurementDetails in vAllPDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachProductMeasurementDetails.shopStoreId}}' data-product_typeid='{{eachProductMeasurementDetails.productTypeId}}' data-product_categoryid='{{eachProductMeasurementDetails.productTypeProductCategoryId}}' data-product_listid='{{eachProductMeasurementDetails.productListId}}' data-productfeatureid='{{eachProductMeasurementDetails.productFeatureId}}' data-productprice='{{eachProductMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}">
+                        <option ng-repeat="eachProductMeasurementDetails in vAllPDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachProductMeasurementDetails.shopStoreId}}' data-ccaid='{{eachProductMeasurementDetails.ccaId}}' data-deliveryfee='{{eachProductMeasurementDetails.storeOrderDeliveryFee}}' data-minorderamt='{{eachProductMeasurementDetails.storeMinOrderAmt}}' data-productfeatureid='{{eachProductMeasurementDetails.productFeatureId}}' data-productprice='{{eachProductMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}">
                             {{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}
                         </option>
                     </select>
@@ -178,7 +188,7 @@
                     <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
-                    <button title="Click to add {{customerBreadCrumbOnWebApp.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart(false, 'vpd_productDetailsContainerDivClass', 'viewproduct')" class="vpd_specificProductAddBtnClass btn">
+                    <button title="Click to add {{customerBreadCrumbOnWebApp.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_specificProductAddBtnClass btn">
                         <i class="fa fa-shopping-cart"></i> ADD
                     </button>
                 </p>
@@ -231,7 +241,7 @@
                 </p>
                 <div id="vpd_shippingProductBodyContainerDivId" class="vpd_shippingProductBodyContainerDivClass">
                     <ul class="vpd_shippingTitleULClass">
-                        <li class='vpd_shippingTitleLIClass'>Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
+                        <li class='vpd_shippingTitleLIClass'>Est Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
                     </ul>
                 </div>
             </div>
@@ -340,11 +350,8 @@
                     
                 </div>
                 
-                
-                
             </div>
             
-        
         </div>
         
         <!-- refresh web application data -->
