@@ -832,6 +832,11 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
+        if(array_key_exists('areaname', $paramJsonData)){
+            if(strlen($paramJsonData['areaname'])>0 && $paramJsonData['areaname']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
         if(array_key_exists('ccaId', $paramJsonData)){
             if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
                 $givenParamDataCorrectCount++;
@@ -871,7 +876,7 @@ class customparam{
         if(array_key_exists('description', $paramJsonData)){
             $givenParamDataCorrectCount++;
         }
-        if($givenParamDataCorrectCount==12){
+        if($givenParamDataCorrectCount==13){
             $retStatus = 'TRUE';
         }
         return $retStatus;
