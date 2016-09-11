@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInpasswordContainerDivClass">
                         <p class="ma_userSignInFormfieldLabelPClass">
-                            <i class="ma_userSignInFormfieldiconclass fa fa-key faa-tada animated"></i> Type password
+                            <i class="ma_userSigInFormfieldiconclass fa fa-key faa-tada animated"></i> Type password
                         </p>
                         <input autocomplete="on" type="password" id='ma_userSignInPasswordInputId' class="form-control ma_userSignInPasswordInputClass">
                         <p class="ma_userSignInFormfieldHintPClass">
