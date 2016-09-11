@@ -308,28 +308,19 @@ class OrderCartDao{
         $result = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " SELECT 
-                    COALESCE(COUNT(DISTINCT uoc.id), 0) ordercartCount,
-                    COALESCE(COUNT(DISTINCT uocim.id), 0) ordercartItemRequestedCount,
-                    COALESCE(SUM(uocim.product_features_totalamount), 0) subtotalOrderAmt
-                    FROM DK_USERORDERCART uoc
-                    JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
-                    JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid AND pt.status='A'
-                    JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                        AND ppc.status = 'A' AND pt.status = 'A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                        AND spa.status = 'A' 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
-                        AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                        AND sppc.status = 'A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
-                        AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                        AND sppl.status = 'A'
-                    JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
-                    WHERE 
-                    uoc.status='R'
-                    AND uocim.status='R'
-                    AND uoc.user_id='$userid'";
+            $sql= "SELECT
+                COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
+                COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
+                COALESCE(
+                    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+                ) subtotalOrderAmt
+                FROM DK_ORDERCART odr
+                JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                WHERE 
+                odr.status='R' AND odrs.status='R' AND odrsim.status='R'
+                AND odr.user_id='$userid'
+                HAVING ordercartCount>0";
             $command = $connection->createCommand($sql);
             $ordercartSummaryCountDetailsArr = $command->queryAll();
             if(count($ordercartSummaryCountDetailsArr)==1 && $ordercartSummaryCountDetailsArr!=false){
