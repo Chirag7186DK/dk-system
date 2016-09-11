@@ -311,7 +311,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductListId = $dkParamDataArr['productlist_ids'];
             $gproductFeatureId = $dkParamDataArr['product_featureids'];
             $ccaId = $dkParamDataArr['ccaId'];
-            $deliveryFeeMsgStr = 'Free home delivery to your door step !!!';
+            $storeOrderDeliveryTime = '60 MIN';
             
             // fetching store delivery facility given location
             $paramObj1 = array();
@@ -321,19 +321,9 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['area_ids'] = $garea_ids;
             $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramObj1);
             if($dataArr1!=false && count($dataArr1)==1){
-                $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
-                $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
                 $deliveryTime = $dataArr1[0]['delivery_time'];
                 if($deliveryTime!='' && $deliveryTime!=false){
-                }
-                $minOrderAmt = $dataArr1[0]['min_orderamount'];
-                $deliveryFee = $dataArr1[0]['deliveryfee'];
-                if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                    && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
-                    $deliveryFeeMsgStr = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt !!!";
-                }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                    && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
-                    $deliveryFeeMsgStr = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
+                    $storeOrderDeliveryTime = $deliveryTime;
                 }
             }
             
@@ -359,7 +349,7 @@ class ProductServicesV1 implements IProductServicesV1{
                     $dataArr2[$eachIndex]['isShowProductCommentBox'] = $isShowProductCommentBox;
                     $dataArr2[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
                     $dataArr2[$eachIndex]['ccaId'] = $ccaId;
-                    $dataArr2[$eachIndex]['deliveryFeeMsgStr'] = $deliveryFeeMsgStr;
+                    $dataArr2[$eachIndex]['storeOrderDeliveryTime'] = $storeOrderDeliveryTime;
                 }
                 $rspDetails['allProductDetails'] = $dataArr2;
             }
