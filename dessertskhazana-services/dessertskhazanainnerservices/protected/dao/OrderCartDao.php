@@ -374,40 +374,29 @@ class OrderCartDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                    uoc.id ordercartId,
-                    uocim.id ordercartItemId, 
-                    COALESCE(ss.shopstore_name, '') shopStoreName,
-                    COALESCE(pt.name, '') productType, COALESCE(sppl.name, '') productListTitle,
-                    COALESCE(uocim.product_featuresize, '') itemMeasurementType,
-                    COALESCE(uocim.product_featuresprice, 0) itemPerpriceIncart,
-                    COALESCE(uocim.product_featuresqty, 0) itemQty,
-                    COALESCE(uocim.product_features_totalamount, 0) itemTotalAmt,
-                    COALESCE(uocim.product_description,'') itemDescriptionIncart,
-                    COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
-                    COALESCE(sppfd.product_discount, '') productFeatureDiscount,
-                    COALESCE(sppfd.storeprice, '') productFeatureStorPrice,
-                    COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice
-                    FROM DK_USERORDERCART uoc 
-                    JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
-                    JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid AND pt.status='A'
-                    JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                        AND ppc.status = 'A' AND pt.status = 'A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                        AND spa.status = 'A' 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
-                        AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                        AND sppc.status = 'A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
-                        AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                        AND sppl.status = 'A'
-                    JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
-                        ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid AND sppfd.status = 'A'
-                    WHERE 
-                    uoc.status='R'
-                    AND uocim.status='R'
-                    AND uoc.user_id='$userid'
-                    ORDER BY uoc.updated_datedtime DESC";
+                    odr.id ordercartId, odr.order_cartid humanReadableOrdrcartId,
+                    odr.user_sessionid userSessionId, odr.user_id userId,
+                    odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+                    odrs.deliveryCountryCityAreaId, COALESCE(odrs.address, '') deliveryAddress,
+                    COALESCE(odrs.deliveryfee, '0') deliveryFee,
+                    COALESCE(spl.name, '') productListTitle, COALESCE(odrsim.featureid, '') featureId,
+                    COALESCE(odrsim.size, '') productSize, COALESCE(odrsim.price, '') productPrice, 
+                    COALESCE(odrsim.qty, '0') productQty, COALESCE(odrsim.totalamount, '') productTotalAmt
+                    FROM DK_ORDERCART odr
+                    JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                    JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                    JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
+                    JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
+                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
+                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+                        AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
+                    JOIN DK_SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+                    WHERE 1
+                    AND odr.user_id='$userid'
+                    AND odr.status='R'
+                    AND odrs.status='R'
+                    AND odrsim.status='R'
+                    ORDER BY odrsim.updated_by DESC, odrs.store_id ASC";
             $command = $connection->createCommand($sql);
             $ordercartAllItemDetailsArr = $command->queryAll();
             if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
