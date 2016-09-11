@@ -482,7 +482,7 @@ class customparam{
     }
     
     // CJ defined this function 2016-09-10
-    public static function checkParamDataStoreDeliveryFeeApplicableOnUserProduct($paramJsonData){
+    public static function checkParamDataStoreDeliveryFeeApplicableOnDeliveryArea($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         if(array_key_exists('user_sessionid', $paramJsonData)){
