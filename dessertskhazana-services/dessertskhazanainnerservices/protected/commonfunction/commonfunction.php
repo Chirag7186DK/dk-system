@@ -774,6 +774,7 @@ class commonfunction{
             $storeMinOrderAmt = $paramJsonData['minorderamt'];
             $storeOrderDeliveryFee = $paramJsonData['deliveryfee'];
             $userTotalOrderAmt = $paramJsonData['totalamount'];
+            $storeOdrTotalAmt = $paramJsonData['totalamount'];
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
@@ -817,12 +818,19 @@ class commonfunction{
                     if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
                         $lastRequestedOrdercartStoreId = $ordercartStoreDataArr['ordercartStoreId'];
                         $userTotalOrderAmt = $userTotalOrderAmt + $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
+                        $storeOdrTotalAmt = $userTotalOrderAmt;
                         $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
-                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 && $userTotalOrderAmt>=$storeMinOrderAmt){
+                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt>=$storeMinOrderAmt){
                             $updateStoreOrderDeliveryFee = '0';
+                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt<$storeMinOrderAmt){
+                            $storeOdrTotalAmt = $userTotalOrderAmt + $updateStoreOrderDeliveryFee;
                         }
                         $updateOrdercartStoreDataObj = array(
                             "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
+                            "subtotalamount"=>$userTotalOrderAmt,
+                            "totalamount"=>$storeOdrTotalAmt, 
                             "updated_by"=>$unmd5UserId,
                             "id"=>$lastRequestedOrdercartStoreId
                         );
@@ -830,16 +838,24 @@ class commonfunction{
                     }else{
                         // add entry in order cart store
                         $addStoreOrderDeliveryFee = $storeOrderDeliveryFee;
-                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 && $userTotalOrderAmt>=$storeMinOrderAmt){
+                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt>=$storeMinOrderAmt){
                             $addStoreOrderDeliveryFee = '0';
+                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt<$storeMinOrderAmt){
+                            $storeOdrTotalAmt = $storeOdrTotalAmt + $addStoreOrderDeliveryFee;
                         }
+                        
                         $addOrdercartStoreData = array();
                         $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
                         $addOrdercartStoreData['store_id'] = $storeId;
+                        $addOrdercartStoreData['ccaId'] = $ccaId;
+                        $addOrdercartStoreData['delivery_areaname'] = $paramJsonData['areaname'];
                         $addOrdercartStoreData['min_orderamt'] = $storeMinOrderAmt;
                         $addOrdercartStoreData['deliveryfee'] = $addStoreOrderDeliveryFee;
                         $addOrdercartStoreData['apply_deliveryfee'] = $addStoreOrderDeliveryFee;
-                        $addOrdercartStoreData['ccaId'] = $ccaId;
+                        $addOrdercartStoreData['subtotalamount'] = $userTotalOrderAmt;
+                        $addOrdercartStoreData['totalamount'] = $storeOdrTotalAmt;
                         $addOrdercartStoreData['created_by'] = $unmd5UserId;
                         $addOrdercartStoreData['created_datedtime'] = date('Y-m-d H:i:s');
                         $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($addOrdercartStoreData);
