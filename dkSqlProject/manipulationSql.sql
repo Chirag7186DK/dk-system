@@ -1,28 +1,64 @@
 
+-- SELECT
+COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
+COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
+COALESCE(
+    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+) subtotalOrderAmt
+-- FROM DK_ORDERCART odr
+-- JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+-- JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+-- WHERE 
+-- odr.status='R' AND odrs.status='R' AND odrsim.status='R'
+-- AND odr.user_id='1'
+-- HAVING ordercartCount>0
 
 SELECT
-ss.id shopStoreId, ss.shopstore_name shopStoreTitle, 
-COUNT(*) totalProduct, COALESCE(MAX(splld.product_discount), '') maxProductDiscount,
-COALESCE(MAX(splld.online_sellprice), '') maxOnlineProductPrice,
-COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
-FROM DK_PRODUCTTYPE pt
-JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
-JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
-JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
-    AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
-JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
-JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
-JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
-JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
-JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
-JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
-JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
-WHERE 1
-AND ss.id IN (1) AND spa.shopstore_id IN (1)
-AND pt.id IN (1) AND ppc.product_typeid IN (1)
-AND spa.product_typeid IN (1)
-GROUP BY ss.id, spa.product_typeid
-HAVING totalProduct>0
+COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
+COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
+COALESCE(SUM(odrs.deliveryfee)) storeDeliveryFee,
+COALESCE(
+    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+) subtotalOrderAmtIncludingDeliveryFee,
+COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
+FROM DK_ORDERCART odr
+JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+WHERE 
+odr.user_sessionid='1'
+AND odr.user_id='1'
+AND odrs.store_id='1'
+AND odrs.deliveryCountryCityAreaId='1'
+AND odr.status='R'
+AND odrs.status='R'
+AND odrsim.status='R'
+
+
+
+
+-- SELECT
+-- ss.id shopStoreId, ss.shopstore_name shopStoreTitle, 
+-- COUNT(*) totalProduct, COALESCE(MAX(splld.product_discount), '') maxProductDiscount,
+-- COALESCE(MAX(splld.online_sellprice), '') maxOnlineProductPrice,
+-- COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
+-- FROM DK_PRODUCTTYPE pt
+-- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+-- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+--     AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+-- JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+-- JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+-- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
+-- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
+-- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
+-- JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
+-- WHERE 1
+-- AND ss.id IN (1) AND spa.shopstore_id IN (1)
+-- AND pt.id IN (1) AND ppc.product_typeid IN (1)
+-- AND spa.product_typeid IN (1)
+-- GROUP BY ss.id, spa.product_typeid
+-- HAVING totalProduct>0
 
 
 -- EXPLAIN
