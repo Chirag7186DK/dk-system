@@ -330,6 +330,38 @@ class OrderCartDao{
         return $result;
     }
     
+    // CJ defined this function 2016-09-11
+    public static function getRequestedOrdercartStoreSummary($userid, $store_id, $ccaId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT
+                COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
+                COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
+                COALESCE(SUM(odrs.deliveryfee)) storeDeliveryFee,
+                COALESCE(
+                    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+                ) subtotalOrderAmtIncludingDeliveryFee,
+                COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
+                FROM DK_ORDERCART odr
+                JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                WHERE 1
+                AND odr.user_id='$userid'
+                AND odrs.store_id='$store_id'
+                AND odrs.deliveryCountryCityAreaId='$ccaId'
+                AND odr.status='R'
+                AND odrs.status='R'
+                AND odrsim.status='R'";
+            $command = $connection->createCommand($sql);
+            $ordercartStoreSummaryDataArr = $command->queryAll();
+            if(count($ordercartStoreSummaryDataArr)==1 && $ordercartStoreSummaryDataArr!=false){
+                $result =  $ordercartStoreSummaryDataArr[0];    
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
     // CJ defined this function 2016-08-14
     public static function getRequestedOrdercartItemDetails($userid){
         $result = false;
