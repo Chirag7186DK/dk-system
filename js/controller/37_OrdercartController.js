@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('OrderCartController', OrderCartController);
 
 // OrderCartController
-function OrderCartController($scope, $rootScope, $http, OrderCartServices){
+function OrderCartController($rootScope, OrderCartServices){
     try{
          
         // checkProductDataToAddInOrdercart 
