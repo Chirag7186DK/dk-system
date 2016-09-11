@@ -236,60 +236,62 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             $is_courierdeliveryaccept = 'Y';
             $updateApplicableDeliveryFee = '0';
             $isOrdercartStoreSummaryFound = 'N';
+            $userId = 0;
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $userId = $userSessionDetailsData['unmd5UserId'];
+            }
                 
-                // fetching store delivery facility given location
-                $paramJson1 = array();
-                $paramJson1['shop_storesids'] = $gshopstore_id;
-                $paramJson1['country_ids'] = $gcountry_ids;
-                $paramJson1['city_ids'] = $gcity_ids;
-                $paramJson1['area_ids'] = $garea_ids;
-                $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
-                if($dataArr1!=false && count($dataArr1)==1){
-                    $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
-                    $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
-                    $minOrderAmt = $dataArr1[0]['min_orderamount'];
-                    $deliveryFee = $dataArr1[0]['deliveryfee'];
-                }
+            // fetching store delivery facility given location
+            $paramJson1 = array();
+            $paramJson1['shop_storesids'] = $gshopstore_id;
+            $paramJson1['country_ids'] = $gcountry_ids;
+            $paramJson1['city_ids'] = $gcity_ids;
+            $paramJson1['area_ids'] = $garea_ids;
+            $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
+            if($dataArr1!=false && count($dataArr1)==1){
+                $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
+                $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
+                $minOrderAmt = $dataArr1[0]['min_orderamount'];
+                $deliveryFee = $dataArr1[0]['deliveryfee'];
+            }
                 
-                // fetching order cart store summary data
-                $dataArr2 = OrderCartDao::getRequestedOrdercartStoreSummary($userId, $gshopstore_id, $gccaId);
-                if($dataArr2>0 && $dataArr2>0){
-                    $subTotalOrderAmt = $dataArr2[0]['subtotalOrderAmtNotIncludingDeliveryFee'];
-                    $isOrdercartStoreSummaryFound = 'Y';
+            // fetching order cart store summary data
+            $dataArr2 = OrderCartDao::getRequestedOrdercartStoreSummary($userId, $gshopstore_id, $gccaId);
+            if($dataArr2>0 && $dataArr2>0){
+                $subTotalOrderAmt = $dataArr2[0]['subtotalOrderAmtNotIncludingDeliveryFee'];
+                $isOrdercartStoreSummaryFound = 'Y';
+            }
+
+            if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
+                && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
+                if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
+                    $updateApplicableDeliveryFee = '0';
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step !!!';
+                }else if($subTotalOrderAmt>0 && $subTotalOrderAmt<$minOrderAmt){
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt !!!";
                 }
-                
-                if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                    && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
-                    if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
-                        $updateApplicableDeliveryFee = '0';
-                        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step !!!';
-                    }else if($subTotalOrderAmt>0 && $subTotalOrderAmt<$minOrderAmt){
-                        $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt !!!";
-                    }
-                }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                    && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
-                    if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
-                        $updateApplicableDeliveryFee = '0';
-                        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery by courier to your door step !!!';
-                    }else if($subTotalOrderAmt>0 && $subTotalOrderAmt<$minOrderAmt){
-                        $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
-                    }
+            }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
+                && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
+                if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
+                    $updateApplicableDeliveryFee = '0';
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery by courier to your door step !!!';
+                }else if($subTotalOrderAmt>0 && $subTotalOrderAmt<$minOrderAmt){
+                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
                 }
-                
-                // finally checking to update order cart store delivery fee applicable on user product
-                // at specific delivery location
-                if($isOrdercartStoreSummaryFound=='Y' && $updateApplicableDeliveryFee>=0){
-                    $paramJson2 = array();
-                    $paramJson2['deliveryfee'] = $updateApplicableDeliveryFee;
-                    $paramJson2['updated_by'] = $userId;
-                    $paramJson2['id'] = $dataArr2[0]['ordercartStoreId'];
-                    $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($paramJson2);
-                }
+            }
+
+            // finally checking to update order cart store delivery fee applicable on user product
+            // at specific delivery location
+            if($isOrdercartStoreSummaryFound=='Y' && $userId>0 && $userId!=''
+                && $updateApplicableDeliveryFee>=0){
+                $paramJson2 = array();
+                $paramJson2['deliveryfee'] = $updateApplicableDeliveryFee;
+                $paramJson2['updated_by'] = $userId;
+                $paramJson2['id'] = $dataArr2[0]['ordercartStoreId'];
+                $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($paramJson2);
             }
         }
         return $rspDetails;
