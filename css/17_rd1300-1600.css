@@ -262,7 +262,7 @@
     }
     
     
-    /* all store list specific product type css code*/
+    /* all store list specific dessert type css code*/
     
     .allStoreInfoContainerDivClass{
         padding-left:0px!important;
@@ -1020,42 +1020,6 @@
 
     /*  view product css code  */
 
-    .dkVCompleteOffersContainerDivClass{
-        background-color:whitesmoke;
-        height:250px!important;
-        text-align:center;
-        padding:20px!important;
-        margin-right:1%;
-        width:51.4%!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold;
-    }
-
-    .dkVSpecialOffersContainerDivClass{
-        background-color:whitesmoke;
-        height:250px!important;
-        text-align:center;
-        padding:20px!important;
-        width:47.5%!important;
-        color:rgb(70, 75, 80)!important;
-        font-weight:bold;
-    }
-
-    .enableChangeDkDeliveryCityAreaDessertsProductBtnClass{
-        border-radius:0px!important;
-        background:#fb366e!important;
-        color:#fff!important;
-        margin-left:1%!important;
-        font-weight:bold!important;
-        padding:3px!important;
-        text-transform:uppercase;
-        border:#fb366e!important;
-    }
-
-    .vpd_containerDivClass{
-        background-color:rgba(245, 245, 245, 0.17)!important;
-    }
-
     .vpd_userBreadcrumbDivClass{
         margin-top:20px;
         border:1px solid #DCE0EF!important;
@@ -1435,7 +1399,6 @@
         font-family:serif!important;
     }
     
-    
     .vpd_summaryReviewRatingLblSClass{
         color:#800080!important;
         font-size:16px!important;
@@ -1656,110 +1619,7 @@
         background:#242424!important;
         color:#fff!important;
     }
-
     
-    /* myaccount signUp form css code */
-
-    .wl_userSignUpFormInfoWrapperDivClass{
-        margin-top:20px;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-
-    .wl_userSignUpformHeaderPClass{
-        color:#f74074!important;
-        font-weight:normal!important;
-        text-align:center;
-    }
-
-    .wl_userSignUpIconClass{
-        font-size:20px!important;
-        font-weight:normal!important;
-        color:#f74074!important;
-    }
-
-    .wl_userSignUpformContentWrappperContainerDivClass{
-        margin-top: 10px!important;
-        border:1px dashed #1740ef!important;
-        background:#fff!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-left:25%!important;
-    }
-
-    .wl_userSignUpformContentWrappperContainerDivClass div{
-        margin-bottom:15px;
-    }
-
-    .wl_userSignUpFormfieldLabelPClass{
-        color:#778ca0!important;
-        font-weight:bold!important;
-    }
-
-    .wl_userSignUpFormfieldHintPClass{
-        font-size:11px!important;
-        color:#708090!important;
-        font-weight:bold!important;
-    }
-
-    .wl_userSignUpFormfieldiconclass{
-        color:#fa8072!important;
-        font-size:15px!important;
-    }
-
-    .wl_userSignUpNameInputClass,
-    .wl_userSignUpMobileInputClass,
-    .wl_userSignUpEmailInputClass,
-    .wl_userSignUpPasswordInputClass{
-        height:40px!important;
-    }
-
-    .wl_userSignUpErrorMsgContainerDivClass{
-        color:#4747d0!important;
-    }
-
-    .wl_userSignUpBtnContainerDivClass{
-        text-align:center;
-    }
-
-    .wl_userSignUpSubmtBtnClass, 
-    .wl_userSignUpSubmtBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#fb366e!important;
-        color:#fff!important;
-    }
-
-    .wl_userSignUpBorderDivClass{
-        width:100%; 
-        text-align:center!important; 
-        border-bottom:1px solid #f10052!important;
-        line-height:0.1em; 
-        margin:10px 0 20px; 
-    }
-
-    .wl_userSignUpBorderDivClass span{ 
-        background:#fff!important; 
-        padding:0 10px!important; 
-        color:#7b8590!important;
-    }
-
-    .wl_redirectForUserSignInBtnContainerDivClass{
-        text-align:center;
-        margin-top:10px!important;
-    }
-
-    .wl_redirectForUserSignInBtnClass, 
-    .wl_redirectForUserSignInBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#5663ab!important;
-        color:#fff!important;
-    }
-
-
     /*  myaccount sigin form css code */
 
     .ma_userBreadcrumbDivClass{
@@ -1797,9 +1657,9 @@
     }
 
     .ma_userSignInformHeaderPClass{
-        color:#f74074!important;
+        color:#ab0b38!important;
         font-weight:normal!important;
-        text-align:center;
+        text-align:center!important;
     }
 
     .ma_userSignInIconClass{
@@ -1810,7 +1670,7 @@
 
     .ma_userSignInformContentWrappperContainerDivClass{
         margin-top: 10px!important;
-        border:1px dashed #FFDC00!important;
+        box-shadow:0 0 3px 0 rgba(161,161,161,.5);
         background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
@@ -1823,13 +1683,13 @@
 
     .ma_userSignInFormfieldLabelPClass{
         color:#778ca0!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
     }
 
     .ma_userSignInFormfieldHintPClass{
         font-size:11px!important;
         color:#708090!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
     }
 
     .ma_userSignInFormfieldiconclass{
