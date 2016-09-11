@@ -1886,7 +1886,6 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
     try{
         var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
-        
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
             && jQuery.isEmptyObject(userLoggedDataObj)===false
             && productDetailsObj!==false && productDetailsObj!==undefined 
@@ -1901,7 +1900,7 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                     paramObj['ordercartId'] = productDetailsObj['ordercartId'];
                     paramObj['ordercartStoreId'] = productDetailsObj['ordercartStoreId'];
                     paramObj['store_id'] = productDetailsObj['store_id'];
-                    paramObj['ccaId'] = productDetailsObj['deliveryCountryCityAreaId'];
+                    paramObj['ccaId'] = productDetailsObj['ccaId'];
                     paramObj['minorderamt'] = productDetailsObj['minorderamt'];
                     paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
                     paramObj['orderStoreItemId'] = productDetailsObj['orderStoreItemId'];
