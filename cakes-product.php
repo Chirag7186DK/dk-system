@@ -162,7 +162,7 @@
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId" title="This item is also available in another size">
-                        <option ng-repeat="eachProductMeasurementDetails in vAllPDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachProductMeasurementDetails.shopStoreId}}' data-ccaid='{{eachProductMeasurementDetails.ccaId}}' data-productfeatureid='{{eachProductMeasurementDetails.productFeatureId}}' data-productprice='{{eachProductMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}">
+                        <option ng-repeat="eachProductMeasurementDetails in vAllPDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachProductMeasurementDetails.shopStoreId}}' data-ccaid='{{eachProductMeasurementDetails.ccaId}}' data-deliveryfee='{{eachProductMeasurementDetails.storeOrderDeliveryFee}}' data-minorderamt='{{eachProductMeasurementDetails.storeMinOrderAmt}}' data-productfeatureid='{{eachProductMeasurementDetails.productFeatureId}}' data-productprice='{{eachProductMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}">
                             {{eachProductMeasurementDetails.productFeatureDisplayMeasurementType}}
                         </option>
                     </select>
