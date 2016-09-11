@@ -232,6 +232,32 @@ class OrderCartDao{
         return $lastInsertedId;
     }
     
+    // CJ defined this function 2016-09-11
+    public static function updateEntryInOrdercartStore($paramJson){
+        $connection = Yii::app()->db;
+        $dynamicSql = "";
+        $retStatus = false;
+        if(array_key_exists('deliveryfee', $paramJson)){
+            $dynamicSql.=" deliveryfee='".$paramJson['deliveryfee']."',";
+        }
+        if(array_key_exists('updated_by', $paramJson)){
+            if($paramJson['updated_by']!=''){
+                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
+            }
+        }
+        if($dynamicSql!=''){
+            $sqlQuery = " UPDATE DK_ORDERCARTSTORE SET ".rtrim($dynamicSql, ',');
+            $sqlQuery.=" WHERE id='".$paramJson['id']."'";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>0){
+                $retStatus = true;
+            }
+        }
+        return $retStatus;
+    }
+    
+    
     // CJ defined this function 2016-08-06
     public static function addProductInOrdercartStoreItemDetails($paramJson){
         $connection = Yii::app()->db;
@@ -336,6 +362,7 @@ class OrderCartDao{
         try{
             $connection = Yii::App()->db;
             $sql= "SELECT
+                COALESCE(odrs.id, '') ordercartStoreId,
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
                 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
                 COALESCE(SUM(odrs.deliveryfee)) storeDeliveryFee,
