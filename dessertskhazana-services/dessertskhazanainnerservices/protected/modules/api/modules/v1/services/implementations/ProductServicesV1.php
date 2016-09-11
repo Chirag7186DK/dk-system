@@ -323,6 +323,8 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['area_ids'] = $garea_ids;
             $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramObj1);
             if($dataArr1!=false && count($dataArr1)==1){
+                $storeOrderDeliveryFee = $dataArr1[0]['deliveryfee'];
+                $storeMinOrderAmt = $dataArr1[0]['min_orderamount'];
                 $deliveryTime = $dataArr1[0]['delivery_time'];
                 if($deliveryTime!='' && $deliveryTime!=false){
                     $storeOrderDeliveryTime = $deliveryTime;
