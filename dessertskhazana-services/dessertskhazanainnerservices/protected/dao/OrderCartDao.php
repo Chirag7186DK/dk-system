@@ -391,6 +391,7 @@ class OrderCartDao{
                     COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
                     COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
                     odrs.deliveryCountryCityAreaId, COALESCE(odrs.address, '') deliveryAddress,
+                    COALESCE(odrsim.id, '') orderStoreItemId,
                     COALESCE(spl.name, '') productListTitle, COALESCE(odrsim.featureid, '') featureId,
                     COALESCE(odrsim.size, '') productSize, COALESCE(odrsim.price, '') productPrice, 
                     COALESCE(odrsim.qty, '0') productQty, COALESCE(odrsim.totalamount, '') productTotalAmt
