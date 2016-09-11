@@ -361,6 +361,38 @@ class customparam{
     
     ////////////////////// store level related code //////////////////////////
     
+    // CJ defined this function 2016-09-10
+    public static function checkParamDataStoreDeliveryFeeApplicableOnUserProduct($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check ccaId key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product type id is blank or not
+        if(array_key_exists('store_id', $paramJsonData)){
+            if(($paramJsonData['store_id'])>0 && $paramJsonData['store_id']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==4){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
     
     // CJ defined this function 2016-09-09
     public static function checkParamDataFetchingDeliveryAreaBasedDessertTypeCStoreList($paramJsonData){
