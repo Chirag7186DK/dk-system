@@ -1216,6 +1216,7 @@
     }
 
     .vpd_productSelectMeasurementLabelPClass{
+        font-size:14px!important;
         color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
@@ -1246,6 +1247,8 @@
     }
     
     .vpd_productQtyPClass{
+        font-size:14px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
     
@@ -1258,6 +1261,7 @@
     }
 
     .vpd_productCommentBoxPClass{
+        font-size:14px!important;
         color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
