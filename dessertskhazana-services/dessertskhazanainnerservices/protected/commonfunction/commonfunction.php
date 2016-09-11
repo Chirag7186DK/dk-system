@@ -769,7 +769,6 @@ class commonfunction{
         $isProductAddedInOrdercart = 'FALSE';
         if(count($paramJsonData)>0 && $paramJsonData!=false){
             
-            $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
             $lastRequestedOrdercartId = 0;
             $lastRequestedOrdercartStoreId = 0;
             $storeOrderAmt = $paramJsonData['minorderamt'];
@@ -849,6 +848,8 @@ class commonfunction{
                 if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false 
                     && $lastRequestedOrdercartStoreId>0 && $lastRequestedOrdercartStoreId!=false){
                     $paramJsonData['ordercart_storeid'] = $lastRequestedOrdercartStoreId;
+                    $paramJsonData['created_by'] = $unmd5UserId;
+                    $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
                     $lastInsertedProductInOrdercartStoreItemId = OrderCartDao :: addProductInOrdercartStoreItemDetails($paramJsonData);
                     if($lastInsertedProductInOrdercartStoreItemId>0 
                         && $lastInsertedProductInOrdercartStoreItemId!=false){
