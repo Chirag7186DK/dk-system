@@ -481,6 +481,49 @@ class customparam{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-09-10
+    public static function checkParamDataStoreDeliveryFeeApplicableOnUserProduct($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if(array_key_exists('country_ids', $paramJsonData)){
+            if($paramJsonData['country_ids']=='1'){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check city_ids key present or not
+        if(array_key_exists('city_ids', $paramJsonData)){
+            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check area_ids key present or not
+        if(array_key_exists('area_ids', $paramJsonData)){
+            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check product type id is blank or not
+        if(array_key_exists('store_id', $paramJsonData)){
+            if(($paramJsonData['store_id'])>0 && $paramJsonData['store_id']!=''){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==6){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
     
     // CJ defined this function 2016-07-24
     public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
