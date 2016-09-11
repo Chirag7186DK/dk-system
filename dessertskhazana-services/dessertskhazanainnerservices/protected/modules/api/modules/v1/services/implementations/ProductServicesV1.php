@@ -312,6 +312,8 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductFeatureId = $dkParamDataArr['product_featureids'];
             $ccaId = $dkParamDataArr['ccaId'];
             $storeOrderDeliveryTime = '60 MIN';
+            $storeOrderDeliveryFee = '0';
+            $storeMinOrderAmt = '0';
             
             // fetching store delivery facility given location
             $paramObj1 = array();
@@ -350,6 +352,8 @@ class ProductServicesV1 implements IProductServicesV1{
                     $dataArr2[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
                     $dataArr2[$eachIndex]['ccaId'] = $ccaId;
                     $dataArr2[$eachIndex]['storeOrderDeliveryTime'] = $storeOrderDeliveryTime;
+                    $dataArr2[$eachIndex]['storeOrderDeliveryFee'] = $storeOrderDeliveryFee;
+                    $dataArr2[$eachIndex]['storeMinOrderAmt'] = $storeMinOrderAmt;
                 }
                 $rspDetails['allProductDetails'] = $dataArr2;
             }
