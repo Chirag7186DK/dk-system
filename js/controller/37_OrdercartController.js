@@ -51,6 +51,9 @@ function OrderCartController($scope, $rootScope, $http, OrderCartServices){
                                 clearProductContentAfterAddedProductInOrdercart(fcontentClass);
                                 // refresh user order cart dashboard summary data using services
                                 // OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+                                if(productDataFromSession==='session'){
+                                    
+                                }
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
