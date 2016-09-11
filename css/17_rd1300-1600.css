@@ -1874,10 +1874,6 @@
 
     /* order cart section css code */
 
-    .uca_ordercartSectionContainerDivClass{
-        background-color:#f6f4fb!important;
-    }
-
     .ordercartRequestedItemShoppingBagIconClass{
         color:#00B9F5!important;
     }
@@ -1889,7 +1885,7 @@
         color:#67717D!important;
         font-size:13px!important;
     }
-
+    
     .uca_ordercartAllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
         margin-right:15px!important;
@@ -1913,52 +1909,118 @@
         color:#fff!important;
         background:#00B9F5!important;
     }
+    
 
     /* order cart requested all item section css code */
-
-    .uca_ordercartRequestedAllItemListSectionDivClass{
+    
+    .uca_ordercartRequestedAllStoreWiseSectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
     }
-
-    .searchTextOrdercartItemRequestedLblClass{
-        color:#67717D!important;
-        font-size:12px!important;
-        font-weight:normal!important;
-    }
-
-    .inputSearchTextOrdercartRequestedItemDivClass{
+    
+    .uca_ordercartRequestedEachStoreWiseSectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        box-shadow:0 0 3px 0 rgba(161,161,161,.5);
+    }
+    
+    .uca_ordercartRequestedEachStoreBasicInfoDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreBasicInfoHrClass{
+        margin:0px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreNamePClass{
+        color:#ab0b38!important;
+        font-weight:bold!important;
+        text-transform:uppercase!important;
+        font-size:16px!important;
+        text-align:center!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass{
+        padding-left:12px!important;
+        color:rgb(70, 75, 80)!important;
+        font-size:13px!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreDeliveryFeePClass{
+        padding-left:12px!important;
+        color:rgb(70, 75, 80)!important;
+        font-size:13px!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreSubtotalAmtPClass{
+        padding-left:12px!important;
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreApplyDeliveryFeePClass{
+        padding-left:12px!important;
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreTotalAmtPClass{
+        padding-left:12px!important;
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+        margin-bottom:5px!important;
     }
 
-    .uca_ordercartRequestedEachItemSectionContainerDivClass{
-        padding-top:20px!important;
-        padding-bottom:20px!important;
-        padding-left:0px!important;
-        padding-right:0px!important;
+    .uca_ordercartRequestedEachStoreItemDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
         border-bottom:1px dashed #FAB005!important;
     }
 
-    .uca_ordercartRequestedEachItemSectionContainerDivClass:last-child{
+    .uca_ordercartRequestedEachStoreItemDivClass:last-child{
+        border-bottom:none!important;
     }
 
-    .ordercartRequestedEachItemSellerNamePClass{
+    .uca_ordercartRequestedEachStoreItemNamePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:20px!important;
+        font-weight:normal!important;
+        margin-bottom:3px!important;
+    }
+
+    .uca_ordercartRequestedEachStoreItemSizePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemPricePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        margin-bottom:5px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemPriceTextSClass{
         color:#67717D!important;
-        font-size:14px!important;
+        font-size:20px!important;
     }
-
-    .ordercartRequestedEachItemNamePClass{
+    
+    .uca_ordercartRequestedEachStoreItemCutPriceTextSClass{
         color:#67717D!important;
-        font-size:13px!important;
+        font-size:12px!important;
+        text-decoration:line-through;
+        margin-right:1%!important;
     }
 
-    .ordercartRequestedEachItemSizePClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .ordercartRequestedEachItemDiscountPercentTextSClass{
+    .uca_ordercartRequestedEachStoreItemDiscountPercentTextSClass{
         color:#fff!important;
         background:#F5A623!important;
         border-radius:0px!important;
@@ -1967,66 +2029,51 @@
         margin-right:1%!important;
     }
 
-    .ordercartRequestedEachItemCutPriceTextSClass{
-        color:#67717D!important;
-        font-size:12px!important;
-        text-decoration:line-through;
-        margin-right:1%!important;
-    }
-
-    .ordercartRequestedEachItemPriceTextSClass{
-        color:#67717D!important;
-        font-size:18px!important;
-    }
-
-    .ordercartRequestedEachItemQtyPClass{
-        color:#67717D!important;
-        font-size:13px!important;
+    .uca_ordercartRequestedEachStoreItemQtyPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        margin-bottom:5px!important;
     }
 
     .ordercartRequestedEachItemInputQtyClass{
         width:10%!important;
     }
 
-    .ordercartRequestedEachItemPriceDetailsPClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-    
-    .ordercartRequestedEachItemTotalAmtPClass{
+    .uca_ordercartRequestedEachStoreItemTotalAmtPClass{
         color:#67717D!important;
         font-size:13px!important;
     }
 
     .ordercartRequestedEachItemUpdateBtnClass,
     .ordercartRequestedEachItemUpdateBtnClass:hover{
-        font-weight:bold;
-        font-size:12px!important;
-        border-radius:0px!important;
         padding:2px!important;
+        border-radius:0px!important;
+        background:#ab0b38!important;
+        font-weight:bold!important;
+        font-size:12px!important;
         color:#fff!important;
-        background:#00B9F5!important;
         margin-right:1%!important;
     }
 
     .ordercartRequestedEachItemRemoveBtnClass,
     .ordercartRequestedEachItemRemoveBtnClass:hover{
-        font-weight:bold;
-        font-size:12px!important;
-        border-radius:0px!important;
         padding:2px!important;
+        border-radius:0px!important;
+        background:#ab0b38!important;
+        font-weight:bold!important;
+        font-size:12px!important;
         color:#fff!important;
-        background:#00B9F5!important;
     }
 
     .ordercartRequestedEachItemCheckoutBtnClass,
     .ordercartRequestedEachItemCheckoutBtnClass:hover{
-        font-weight:bold;
-        font-size:12px!important;
-        border-radius:0px!important;
         padding:2px!important;
-        color:#a8c9d4!important;
+        border-radius:0px!important;
         background:none!important;
+        font-weight:bold!important;
+        font-size:12px!important;
+        color:#ab0b38!important;
     }
 
     .uca_ordercartCheckoutBtnDivClass{
