@@ -1,34 +1,33 @@
 
--- SELECT
-COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
-COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-COALESCE(
-    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
-) subtotalOrderAmt
--- FROM DK_ORDERCART odr
--- JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
--- JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
--- WHERE 
--- odr.status='R' AND odrs.status='R' AND odrsim.status='R'
--- AND odr.user_id='1'
--- HAVING ordercartCount>0
 
-SELECT
-COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
-COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-COALESCE(SUM(odrs.deliveryfee)) storeDeliveryFee,
-COALESCE(
-    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
-) subtotalOrderAmtIncludingDeliveryFee,
-COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
+SELECT 
+odr.id ordercartId, 
+odr.order_cartid humanReadableOrdrcartId,
+odr.user_sessionid userSessionId, 
+odr.user_id userId,
+odrs.store_id storeId, 
+COALESCE(ss.shopstore_name, '') shopStoreTitle,
+odrs.deliveryCountryCityAreaId,
+COALESCE(odrs.address, '') deliveryAddress,
+COALESCE(odrs.deliveryfee, '0') deliveryFee,
+COALESCE(spl.name, '') productListTitle,
+COALESCE(odrsim.featureid, '') featureId,
+COALESCE(odrsim.size, '') productSize,
+COALESCE(odrsim.price, '') productPrice, 
+COALESCE(odrsim.qty, '0') productQty,
+COALESCE(odrsim.totalamount, '') productTotalAmt
 FROM DK_ORDERCART odr
 JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
 JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
-WHERE 
-odr.user_sessionid='1'
+JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
+JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
+JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+    AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
+JOIN DK_SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+WHERE 1
+-- AND odr.user_sessionid='1'
 AND odr.user_id='1'
-AND odrs.store_id='1'
-AND odrs.deliveryCountryCityAreaId='1'
 AND odr.status='R'
 AND odrs.status='R'
 AND odrsim.status='R'
