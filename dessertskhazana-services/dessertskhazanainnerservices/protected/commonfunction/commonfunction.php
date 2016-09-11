@@ -909,10 +909,10 @@ class commonfunction{
                                 && ($eachOrdercartStoresDataArr['subtotalAmt'])>=($eachOrdercartStoresDataArr['minOrderAmt'])){
                                 $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
                                 $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalAmt'].")  of this seller !!!";
-                                $rspDetails['applicableStoreDeliveryFeeMsg'] = $msgStr;
+                                $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
                             }else if(($eachOrdercartStoresDataArr['subtotalAmt'])>0 
                                 && ($eachOrdercartStoresDataArr['subtotalAmt'])<=($eachOrdercartStoresDataArr['minOrderAmt'])){
-                                $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller !!!";
+                                $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs ".$eachOrdercartStoresDataArr['deliveryfee']." will be apply, if order amount less than Rs ".$eachOrdercartStoresDataArr['minOrderAmt']." for this seller !!!";
                             }
                         }
                         
