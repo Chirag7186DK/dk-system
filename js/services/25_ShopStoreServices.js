@@ -51,8 +51,8 @@ function ShopStoreServices($rootScope){
             return promiseObject;
         };
         
-        // checkStoreDeliveryFeeApplicableOnDeliveryArea
-        shopstoreDetails.checkStoreDeliveryFeeApplicableOnDeliveryArea = function(){
+        // getStoreDeliveryFeeApplicableMsgOnDeliveryArea
+        shopstoreDetails.getStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
