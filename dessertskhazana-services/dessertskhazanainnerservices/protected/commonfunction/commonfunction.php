@@ -934,8 +934,8 @@ class commonfunction{
                         }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
                         }
+                        array_push($retDataArr, $eachOrdercartStoresDataArr);
                     }
-                    array_push($retDataArr, $eachOrdercartStoresDataArr);
                 }
             }
         }
