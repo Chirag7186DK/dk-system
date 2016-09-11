@@ -830,13 +830,18 @@ class commonfunction{
                         $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
                     }else{
                         // add entry in order cart store
+                        $addStoreOrderDeliveryFee = $storeOrderDeliveryFee;
+                        if($userTotalOrderAmt>0 && $storeOrderAmt>0 && $userTotalOrderAmt>=$storeOrderAmt){
+                            $addStoreOrderDeliveryFee = '0';
+                        }
                         $addOrdercartStoreData = array();
                         $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
-                        $addOrdercartStoreData['ccaId'] = $ccaId;
                         $addOrdercartStoreData['store_id'] = $storeId;
+                        $addOrdercartStoreData['deliveryfee'] = $addStoreOrderDeliveryFee;
+                        $addOrdercartStoreData['ccaId'] = $ccaId;
                         $addOrdercartStoreData['created_by'] = $unmd5UserId;
                         $addOrdercartStoreData['created_datedtime'] = date('Y-m-d H:i:s');
-                        $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($paramJsonData);
+                        $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($addOrdercartStoreData);
                     }
                 } 
                 
