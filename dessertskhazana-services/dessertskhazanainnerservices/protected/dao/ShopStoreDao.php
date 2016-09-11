@@ -65,7 +65,7 @@ class ShopStoreDao{
                     COALESCE(sdl.is_courierdeliveryaccept, 'N') is_courierdeliveryaccept, 
                     COALESCE(sdl.orderdelivery_opentime, '') orderDeliveryOpenTime, 
                     COALESCE(sdl.orderdelivery_closetime, '') orderDeliveryCloseTime,
-                    COALESCE(sdl.deliveryfee, '') deliveryfee, COALESCE(sdl.min_orderamount, '') min_orderamount,
+                    COALESCE(sdl.deliveryfee, '0') deliveryfee, COALESCE(sdl.min_orderamount, '0') min_orderamount,
                     COALESCE(sdl.delivery_time, '60 MIN') delivery_time
                     FROM DK_SHOPSTORES ss
                     JOIN DK_SHOPSTORE_DELIVERYLOCATIONDETAILS sdl ON sdl.shopstore_id=ss.id AND sdl.status='A'
