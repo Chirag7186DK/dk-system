@@ -942,18 +942,6 @@ class customparam{
         if(array_key_exists('deliveryfee', $paramJsonData)){
             $givenParamDataCorrectCount++;
         }
-        // check storeSubtotalAmt key present or not
-        if(array_key_exists('storeSubtotalAmt', $paramJsonData)){
-            if($paramJsonData['storeSubtotalAmt']!='' && ($paramJsonData['storeSubtotalAmt'])>0){
-                $givenParamDataCorrectCount++;
-            }
-        }
-        // check storeSubtotalAmt key present or not
-        if(array_key_exists('storeSubtotalAmt', $paramJsonData)){
-            if($paramJsonData['storeSubtotalAmt']!='' && ($paramJsonData['storeSubtotalAmt'])>0){
-                $givenParamDataCorrectCount++;
-            }
-        }
         // check orderStoreItemId key present or not
         if(array_key_exists('orderStoreItemId', $paramJsonData)){
             if($paramJsonData['orderStoreItemId']!='' && ($paramJsonData['orderStoreItemId'])>0){
@@ -972,7 +960,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==10){
+        if($givenParamDataCorrectCount==8){
             $retStatus = 'TRUE';
         }
         return $retStatus;
