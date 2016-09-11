@@ -216,5 +216,37 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
         }
         return $rspDetails;
     }
+    
+    // CJ defined this action 2016-09-11
+    public function checkStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr){
+        $rspDetails = array();
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $gshopstore_id = $dkParamDataArr['store_id'];
+            $ccaId = $dkParamDataArr['ccaId'];
+            // fetching store delivery facility given location
+            $paramJson1 = array();
+            $paramJson1['shop_storesids'] = $storeId;
+            $paramJson1['country_ids'] = $gcountry_ids;
+            $paramJson1['city_ids'] = $gcity_ids;
+            $paramJson1['area_ids'] = $garea_ids;
+            $storeDeliveryFacilityDataArr = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
+            if($storeDeliveryFacilityDataArr!=false && count($storeDeliveryFacilityDataArr)==1){
+                $isHomeDeliveryAccept = $storeDeliveryFacilityDataArr[0]['isHomeDeliveryAccept'];
+                $is_courierdeliveryaccept = $storeDeliveryFacilityDataArr[0]['is_courierdeliveryaccept'];
+                $deliveryTime = $storeDeliveryFacilityDataArr[0]['delivery_time'];
+                if($deliveryTime!='' && $deliveryTime!=false){
+                    $eachStoreInfoData['deliveryTime'] = $deliveryTime;
+                }
+                $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
+                $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
+                if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
+                    $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply for order amount less than Rs $minOrderAmt !!!";
+                }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
+                    $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply for order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
+                }
+            }
+        }
+        return $rspDetails;
+    }
 
 }
