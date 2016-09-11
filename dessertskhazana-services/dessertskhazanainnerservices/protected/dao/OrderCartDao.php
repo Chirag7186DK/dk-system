@@ -244,6 +244,15 @@ class OrderCartDao{
         if(array_key_exists('apply_deliveryfee', $paramJson)){
             $dynamicSql.=" apply_deliveryfee='".$paramJson['apply_deliveryfee']."',";
         }
+        if(array_key_exists('discountamount', $paramJson)){
+            $dynamicSql.=" discountamount='".$paramJson['discountamount']."',";
+        }
+        if(array_key_exists('subtotalamount', $paramJson)){
+            $dynamicSql.=" subtotalamount='".$paramJson['subtotalamount']."',";
+        }
+        if(array_key_exists('totalamount', $paramJson)){
+            $dynamicSql.=" totalamount='".$paramJson['totalamount']."',";
+        }
         if(array_key_exists('updated_by', $paramJson)){
             if($paramJson['updated_by']!=''){
                 $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
