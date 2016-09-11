@@ -771,7 +771,7 @@ class commonfunction{
             
             $lastRequestedOrdercartId = 0;
             $lastRequestedOrdercartStoreId = 0;
-            $storeOrderAmt = $paramJsonData['minorderamt'];
+            $storeMinOrderAmt = $paramJsonData['minorderamt'];
             $storeOrderDeliveryFee = $paramJsonData['deliveryfee'];
             $userTotalOrderAmt = $paramJsonData['totalamount'];
             
@@ -818,7 +818,7 @@ class commonfunction{
                         $lastRequestedOrdercartStoreId = $ordercartStoreDataArr['ordercartStoreId'];
                         $userTotalOrderAmt = $userTotalOrderAmt + $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
                         $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
-                        if($userTotalOrderAmt>0 && $storeOrderAmt>0 && $userTotalOrderAmt>=$storeOrderAmt){
+                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 && $userTotalOrderAmt>=$storeMinOrderAmt){
                             $updateStoreOrderDeliveryFee = '0';
                         }
                         $updateOrdercartStoreDataObj = array(
@@ -830,12 +830,13 @@ class commonfunction{
                     }else{
                         // add entry in order cart store
                         $addStoreOrderDeliveryFee = $storeOrderDeliveryFee;
-                        if($userTotalOrderAmt>0 && $storeOrderAmt>0 && $userTotalOrderAmt>=$storeOrderAmt){
+                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 && $userTotalOrderAmt>=$storeMinOrderAmt){
                             $addStoreOrderDeliveryFee = '0';
                         }
                         $addOrdercartStoreData = array();
                         $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
                         $addOrdercartStoreData['store_id'] = $storeId;
+                        $addOrdercartStoreData['min_orderamt'] = $storeMinOrderAmt;
                         $addOrdercartStoreData['deliveryfee'] = $addStoreOrderDeliveryFee;
                         $addOrdercartStoreData['apply_deliveryfee'] = $addStoreOrderDeliveryFee;
                         $addOrdercartStoreData['ccaId'] = $ccaId;
