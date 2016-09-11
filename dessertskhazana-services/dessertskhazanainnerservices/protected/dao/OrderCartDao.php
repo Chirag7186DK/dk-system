@@ -369,9 +369,9 @@ class OrderCartDao{
                 COALESCE(odrs.id, '') ordercartStoreId,
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
                 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-                COALESCE(SUM(odrs.deliveryfee), '0') storeDeliveryFee,
+                COALESCE(SUM(odrs.apply_deliveryfee), '0') storeDeliveryFee,
                 COALESCE(
-                    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+                    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.apply_deliveryfee), 0)
                 ) subtotalOrderAmtIncludingDeliveryFee,
                 COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
                 FROM DK_ORDERCART odr
