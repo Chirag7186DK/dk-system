@@ -1898,7 +1898,10 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                 if(parseInt(userProductQty)>0 && userProductQty!=='' 
                     && parseFloat(productPrice)>0 && productPrice!==''){
                     var productTotalAmt = removeHtmlStripTagsOfContent((userProductQty * productPrice));
+                    paramObj['ordercartId'] = productDetailsObj['ordercartId'];
                     paramObj['ordercartStoreId'] = productDetailsObj['ordercartStoreId'];
+                    paramObj['store_id'] = productDetailsObj['store_id'];
+                    paramObj['ccaId'] = productDetailsObj['deliveryCountryCityAreaId'];
                     paramObj['minorderamt'] = productDetailsObj['minorderamt'];
                     paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
                     paramObj['orderStoreItemId'] = productDetailsObj['orderStoreItemId'];
@@ -1907,7 +1910,7 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                 }
             }
         }
-        if(Object.keys(paramObj).length===9){
+        if(Object.keys(paramObj).length===11){
             return paramObj;
         }else{
             return false;
