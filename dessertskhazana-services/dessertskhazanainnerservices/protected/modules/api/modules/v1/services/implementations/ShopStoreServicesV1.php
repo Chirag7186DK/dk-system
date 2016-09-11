@@ -220,6 +220,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     // CJ defined this action 2016-09-11
     public function checkStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr){
         $rspDetails = array();
+        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step !!!';
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             
             // initial variable declare here
@@ -228,7 +229,6 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
             $gccaId = $dkParamDataArr['ccaId'];
-            $deliveryTime = '';
             $deliveryFee = '0';
             $minOrderAmt = '0';
             $subTotalOrderAmt = 0;
@@ -252,7 +252,6 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                 if($dataArr1!=false && count($dataArr1)==1){
                     $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
                     $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
-                    $deliveryTime = $dataArr1[0]['delivery_time'];
                     $minOrderAmt = $dataArr1[0]['min_orderamount'];
                     $deliveryFee = $dataArr1[0]['deliveryfee'];
                 }
@@ -268,6 +267,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                     && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                     if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
                         $updateApplicableDeliveryFee = '0';
+                        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Free home delivery to your door step !!!';
                     }
                 }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                     && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
