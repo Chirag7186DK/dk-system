@@ -822,7 +822,7 @@ class commonfunction{
                             $updateStoreOrderDeliveryFee = '0';
                         }
                         $updateOrdercartStoreDataObj = array(
-                            "deliveryfee"=>$updateStoreOrderDeliveryFee, 
+                            "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
                             "updated_by"=>$unmd5UserId,
                             "id"=>$lastRequestedOrdercartStoreId
                         );
@@ -837,6 +837,7 @@ class commonfunction{
                         $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
                         $addOrdercartStoreData['store_id'] = $storeId;
                         $addOrdercartStoreData['deliveryfee'] = $addStoreOrderDeliveryFee;
+                        $addOrdercartStoreData['apply_deliveryfee'] = $addStoreOrderDeliveryFee;
                         $addOrdercartStoreData['ccaId'] = $ccaId;
                         $addOrdercartStoreData['created_by'] = $unmd5UserId;
                         $addOrdercartStoreData['created_datedtime'] = date('Y-m-d H:i:s');
