@@ -928,21 +928,47 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check ordercart_itemid key present or not
-        if(array_key_exists('ordercart_itemid', $paramJsonData)){
-            if($paramJsonData['ordercart_itemid']!='' && ($paramJsonData['ordercart_itemid'])>0){
+        // check ordercartStoreId key present or not
+        if(array_key_exists('ordercartStoreId', $paramJsonData)){
+            if($paramJsonData['ordercartStoreId']!='' && ($paramJsonData['ordercartStoreId'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check minorderamt key present or not
+        if(array_key_exists('minorderamt', $paramJsonData)){
+            $givenParamDataCorrectCount++;
+        }
+        // check deliveryfee key present or not
+        if(array_key_exists('deliveryfee', $paramJsonData)){
+            $givenParamDataCorrectCount++;
+        }
+        // check storeSubtotalAmt key present or not
+        if(array_key_exists('storeSubtotalAmt', $paramJsonData)){
+            if($paramJsonData['storeSubtotalAmt']!='' && ($paramJsonData['storeSubtotalAmt'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check storeSubtotalAmt key present or not
+        if(array_key_exists('storeSubtotalAmt', $paramJsonData)){
+            if($paramJsonData['storeSubtotalAmt']!='' && ($paramJsonData['storeSubtotalAmt'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check orderStoreItemId key present or not
+        if(array_key_exists('orderStoreItemId', $paramJsonData)){
+            if($paramJsonData['orderStoreItemId']!='' && ($paramJsonData['orderStoreItemId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check qty key present or not
-        if(array_key_exists('product_featuresqty', $paramJsonData)){
-            if($paramJsonData['product_featuresqty']!='' && ($paramJsonData['product_featuresqty'])>0){
+        if(array_key_exists('qty', $paramJsonData)){
+            if($paramJsonData['qty']!='' && ($paramJsonData['qty'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
         // check totalamount key present or not
-        if(array_key_exists('product_features_totalamount', $paramJsonData)){
-            if($paramJsonData['product_features_totalamount']!='' && ($paramJsonData['product_features_totalamount'])>0){
+        if(array_key_exists('totalamount', $paramJsonData)){
+            if($paramJsonData['totalamount']!='' && ($paramJsonData['totalamount'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
