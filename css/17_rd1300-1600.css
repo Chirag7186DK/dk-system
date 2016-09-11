@@ -1763,9 +1763,9 @@
     
     .uca_editProfileLblPClass{
         font-size:15px!important;
-        color:#00B9F5!important;
+        color:#ab0b38!important;
         font-weight:bold!important;
-        cursor:pointer;
+        cursor:pointer!important;
     }
     
     .uca_personalInfoTextUserNameLblSClass,
@@ -1791,10 +1791,10 @@
     /* personal info as edit mode display section css code */
     
     .uca_closeProfileLblPClass{
+        color:#ab0b38!important;
         font-size:15px!important;
-        color:#00B9F5!important;
         font-weight:bold!important;
-        cursor:pointer;
+        cursor:pointer!important;
     }
     
     .uca_personalInfoTextUserNameLblSClass,
@@ -1822,12 +1822,13 @@
     }
     
     .uca_personalInfoUpdateBtnClass{
-        font-weight:bold;
-        font-size:15px!important;
-        border-radius:0px!important;
         color:#fff!important;
-        background:#00B9F5!important;
-        cursor:pointer;
+        font-weight:bold!important;
+        font-size:13px!important;
+        border-radius:0px!important;
+        background:#ab0b38!important;
+        cursor:pointer!important;
+        padding:5px!important;
     }
     
     
