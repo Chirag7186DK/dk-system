@@ -60,10 +60,10 @@ function OrderCartServices($http, $q, $rootScope){
         };
       
         // addProductDataInOrdercartFromSession & item directly added in DB
-        orderDetails.addProductDataInOrdercartFromSession = function(productDetailsObj, fcontentClass, productDataFromSession){
+        orderDetails.addProductDataInOrdercartFromSession = function(fcontentClass, productDataFromSession){
             try{
                 // collect product data
-                var preparedProductParamDataObj = getParamDataToAddProductInOrdercart(productDetailsObj, fcontentClass, productDataFromSession);
+                var preparedProductParamDataObj = getParamDataToAddProductInOrdercart(fcontentClass, productDataFromSession);
                 if(preparedProductParamDataObj!==false && jQuery.isEmptyObject(preparedProductParamDataObj)===false){
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
