@@ -881,9 +881,9 @@ class commonfunction{
                         $eachOrdercartStoresDataArr = array();
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = '';
-                        $eachOrdercartStoresDataArr['totalAmt'] = "0";
-                        $eachOrdercartStoresDataArr['discountAmt'] = "0";
-                        $eachOrdercartStoresDataArr['subtotalAmt'] = "0";
+                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
+                        $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
+                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
                         $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
                         $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
                         $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryfee'];
@@ -908,7 +908,7 @@ class commonfunction{
                         // checking for delivery fee msg 
                         if($storeAppliedDeliveryFeeOnOdrAmt<=0){
                             $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
-                            $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalAmt'].")  of this seller !!!";
+                            $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalamount'].")  of this seller !!!";
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
                         }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
