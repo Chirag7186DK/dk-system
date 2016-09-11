@@ -252,68 +252,71 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
                 <!-- requested order cart all items info will be displayed -->
-                <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllItemListSectionDivClass'>
-                    
-                    <!-- requesting order item will be filtering -->
-                    <div ng-if="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartRequestedItemDivClass">
-                        <label class="searchTextOrdercartItemRequestedLblClass">Use for filtering and access fast requesting shopping item !</label>
-                        <input ng-model="searchTextOrdercartItemRequested" type="text" class="form-control" placeholder="Find requested items across in current order cart !">
-                    </div>
-                    
-                    <!-- each order item will display -->
-                    <div ng-repeat="ordercartRequestedEachItemDetailsArrObj in ordercartRequestedAllItemDetailsArrObj| filter:searchTextOrdercartItemRequested:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachItemSectionContainerDivClass">
-                        <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartRequestedEachItemImageDivClass'>
-                            <img style='width:100%;' class='ordercartRequestedEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
+                <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreWiseSectionDivClass'>
+                    <div ng-repeat="eachStoreAllItemDataObj in ordercartRequestedAllItemDetailsArrObj" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreWiseSectionDivClass'>
+                        <!-- each store basic info display -->
+                        <div class="uca_ordercartRequestedEachStoreBasicInfoDivClass">
+                            <p class="uca_ordercartRequestedEachStoreNamePClass">
+                                {{eachStoreAllItemDataObj.shopStoreTitle}}
+                            </p>
+                            <p class="uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass">
+                                Order will be deliver from 'Dhange Chowk' to '{{eachStoreAllItemDataObj.deliveryAreaname}}'
+                            </p>
+                            <p class="uca_ordercartRequestedEachStoreDeliveryFeePClass">
+                                {{eachStoreAllItemDataObj.applicableStoreDeliveryFeeMsg}}
+                            </p>
+                            <p class="uca_ordercartRequestedEachStoreSubtotalAmtPClass">
+                                Subtotal Amt: {{eachStoreAllItemDataObj.subtotalamount}} ({{eachStoreAllItemDataObj.totalItems}} Items)
+                            </p>
+                            <p class="uca_ordercartRequestedEachStoreApplyDeliveryFeePClass">
+                                Delivery Fee: {{eachStoreAllItemDataObj.apply_deliveryFee}}
+                            </p>
+                            <p class="uca_ordercartRequestedEachStoreTotalAmtPClass">
+                                Total Amt: {{eachStoreAllItemDataObj.totalamount}}
+                            </p>
+                            <hr class='uca_ordercartRequestedEachStoreBasicInfoHrClass'>
                         </div>
-                        <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartRequestedEachItemDetailsDivClass ordercartRequestedEachItemDetailsDivClass{{$index}}'>
-                            <p class="ordercartRequestedEachItemSellerNamePClass">
-                                Seller: {{ordercartRequestedEachItemDetailsArrObj.shopStoreName}}
+                        <!-- each store all items will be display -->
+                        <div ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass'>
+                            <p class="uca_ordercartRequestedEachStoreItemNamePClass">
+                                {{eachItemDataObj.productListTitle}}
                             </p>
-                            <p class="ordercartRequestedEachItemNamePClass">
-                                {{ordercartRequestedEachItemDetailsArrObj.productListTitle}}
+                            <p class="uca_ordercartRequestedEachStoreItemSizePClass">
+                                Size: {{eachItemDataObj.size}}
                             </p>
-                            <p class="ordercartRequestedEachItemSizePClass">
-                                Size: {{ordercartRequestedEachItemDetailsArrObj.itemMeasurementType}}
-                            </p>
-                            <p class='ordercartRequestedEachItemPriceDetailsPClass'> 
-                                <span class='ordercartRequestedEachItemDiscountPercentTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount!==''">
-                                    {{ordercartRequestedEachItemDetailsArrObj.productFeatureDiscount}}%
+                            <p class='uca_ordercartRequestedEachStoreItemPricePClass'> 
+                                <span class='uca_ordercartRequestedEachStoreItemPriceTextSClass'>
+                                    <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
                                 </span>
-                                <span class='ordercartRequestedEachItemCutPriceTextSClass' ng-if="ordercartRequestedEachItemDetailsArrObj.productFeatureBasePrice!==''">
-                                    <i class="fa fa-rupee"></i> {{ordercartRequestedEachItemDetailsArrObj.productFeatureBasePrice}}
+                                <span class='uca_ordercartRequestedEachStoreItemCutPriceTextSClass' ng-if="eachItemDataObj.productFeatureBasePrice!==''">
+                                    <i class="fa fa-rupee"></i> {{eachItemDataObj.productFeatureBasePrice}}
                                 </span>
-                                <span class='ordercartRequestedEachItemPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> {{ordercartRequestedEachItemDetailsArrObj.itemPerpriceIncart}}
+                                <span class='uca_ordercartRequestedEachStoreItemDiscountPercentTextSClass' ng-if="eachItemDataObj.productFeatureDiscount!==''">
+                                    {{eachItemDataObj.productFeatureDiscount}}%
                                 </span>
                             </p>
-                            <p class="ordercartRequestedEachItemQtyPClass">
+                            <p class="uca_ordercartRequestedEachStoreItemQtyPClass">
                                 Qty
-                                <input order-productqtyinput-directive type='text' data-itemprice='{{ordercartRequestedEachItemDetailsArrObj.itemPerpriceIncart}}'  ng-value="{{ordercartRequestedEachItemDetailsArrObj.itemQty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
+                                <input order-productqtyinput-directive type='text' ng-value="{{eachItemDataObj.qty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
-                            <p class="ordercartRequestedEachItemTotalAmtPClass">
-                                Total Amount: {{ordercartRequestedEachItemDetailsArrObj.itemTotalAmt}}
+                            <p class="uca_ordercartRequestedEachStoreItemTotalAmtPClass">
+                                Total Amt: {{eachItemDataObj.totalamount}}
                             </p>
-                            <p class="ordercartRequestedEachItemOperationPClass">
-                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn ordercartRequestedEachItemUpdateBtnClass'>UPDATE</button>
-                                <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>REMOVE</button>
-                                <button class='btn ordercartRequestedEachItemCheckoutBtnClass'>CHECKOUT</button>
+                            <p class="uca_ordercartRequestedEachStoreItemOperationPClass">
+                                <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj, 'ordercartRequestedEachItemDetailsDivClass'+$index);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
+                                    UPDATE
+                                </button>
+                                <button ng-click="removeItemOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>
+                                    REMOVE
+                                </button>
+                                <button class='btn ordercartRequestedEachItemCheckoutBtnClass'>
+                                    CHECKOUT
+                                </button>
                             </p>
                         </div>
+                        
                     </div>
                     
-                    <!-- payment checkout button -->
-                    <div ng-if="ordercartRequestedAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCheckoutBtnDivClass">
-                        <button class='btn uca_ordercartCheckoutBtnClass'>Proceed to Checkout</button>
-                    </div>
-                    
-                    <!-- no order requested item  found message div -->
-                    <div ng-if="ordercartRequestedAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCheckoutBtnDivClass">
-                        <p class="shoppingBagsEmptyPClass">Your Shopping Bags is Empty !</p>
-                        <p>
-                            <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
-                        </p>
-                        <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
-                    </div>
                 </div>
                 
                 <!-- canceled order cart all items info will be displayed -->
