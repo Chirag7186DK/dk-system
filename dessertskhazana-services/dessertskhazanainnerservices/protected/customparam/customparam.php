@@ -928,9 +928,27 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
+        // check ordercartId key present or not
+        if(array_key_exists('ordercartId', $paramJsonData)){
+            if($paramJsonData['ordercartId']!='' && ($paramJsonData['ordercartId'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
         // check ordercartStoreId key present or not
         if(array_key_exists('ordercartStoreId', $paramJsonData)){
             if($paramJsonData['ordercartStoreId']!='' && ($paramJsonData['ordercartStoreId'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check store_id key present or not
+        if(array_key_exists('store_id', $paramJsonData)){
+            if($paramJsonData['store_id']!='' && ($paramJsonData['store_id'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check ccaId key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if($paramJsonData['ccaId']!='' && ($paramJsonData['ccaId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
@@ -960,7 +978,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==8){
+        if($givenParamDataCorrectCount==11){
             $retStatus = 'TRUE';
         }
         return $retStatus;
