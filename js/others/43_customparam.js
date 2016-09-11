@@ -1030,7 +1030,6 @@ function getParamObjForCShopStoreWorkingStyleDetails(){
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
-                console.log("getParamObjForCShopStoreWorkingStyleDetails userProductObj=>"+JSON.stringify(userProductObj));
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
                     if(parseInt(userProductObj['shopstore_value'])>0 
                         && userProductObj['shopstore_value']!==''){
@@ -1048,6 +1047,70 @@ function getParamObjForCShopStoreWorkingStyleDetails(){
         return false;
     }
 }
+
+
+// CJ defined this function 2016-09-11
+function getParamObjStoreDeliveryFeeApplicableMsgOnDeliveryArea(){
+    try{
+        var paramObj = {};
+        // checking session param
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            // extract user suggested city area session data
+            if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
+                var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('countryvalue')===true){
+                    if(userSelectedDeliveryCityAreaDessertsTypeObj['countryvalue']==='1'){
+                        paramObj['country_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['countryvalue'];
+                    }
+                }
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('cityvalue')===true){
+                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue'])>0 
+                        && userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue']!==''){
+                        paramObj['city_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['cityvalue'];
+                    }
+                }
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('areavalue')===true){
+                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['areavalue'])>0 
+                        && userSelectedDeliveryCityAreaDessertsTypeObj['areavalue']!==''){
+                        paramObj['area_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['areavalue'];
+                    }
+                }
+                if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('ccaId')===true){
+                    if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['ccaId'])>0 
+                        && userSelectedDeliveryCityAreaDessertsTypeObj['ccaId']!==''){
+                        paramObj['ccaId'] = userSelectedDeliveryCityAreaDessertsTypeObj['ccaId'];
+                    }
+                }
+            }
+            // extract data from user product
+            if(dkParamObj.hasOwnProperty('userProduct')===true){
+                var userProductObj = dkParamObj['userProduct'];
+                if(userProductObj.hasOwnProperty('shopstore_value')===true){
+                    if(parseInt(userProductObj['shopstore_value'])>0 
+                        && userProductObj['shopstore_value']!==''){
+                        paramObj['store_id'] = userProductObj['shopstore_value'];
+                    }
+                }
+            }
+            // get logged user details
+            var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+            if(userLoggedDataObj!==false && userLoggedDataObj!==undefined){
+                paramObj = $.extend(paramObj, userLoggedDataObj);
+            }
+        }
+        if(Object.keys(paramObj).length===8){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
 
 
 // CJ defined this function 2016-07-10
