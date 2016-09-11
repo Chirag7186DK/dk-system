@@ -136,8 +136,12 @@
                 </p>
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_productStoreNameContainerPClass'>
-                    <span class="vpd_productStoreLabelNameSpanClass">Seller: </span> 
-                    <span class="vpd_productStoreNameSpanClass">{{vAllPDetails[0]['shopStoreTitle']}}</span>
+                    <span class="vpd_productStoreLabelNameSpanClass">
+                        Seller: 
+                    </span> 
+                    <span class="vpd_productStoreNameSpanClass">
+                        {{vAllPDetails[0]['shopStoreTitle']}}
+                    </span>
                 </p>
                 <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedAboutProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct" title="To see detailed reviewed / rating about this item please scroll down page to rating / review section">
                     {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} reviewed,
@@ -149,7 +153,10 @@
                     No rating & review from customer yet !!!
                 </p>
                 <hr>
-                <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_estimatedProductDeliveryTimePClass">
+                <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_storeDeliveryFromAreaToAreaPClass">
+                    Order delivery from {{vAllPDetails[0]['areaTitle']}} to {{selectedDeliveryAreaTextHeader}}
+                </p>
+                <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_storeDeliveryFeeApplicableMsgPClass">
                     {{storeDeliveryFeeApplicableMsg}}
                 </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
