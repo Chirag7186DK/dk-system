@@ -221,19 +221,27 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     public function checkStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            
             // initial variable declare here
             $gshopstore_id = $dkParamDataArr['store_id'];
             $gcountry_ids = $dkParamDataArr['country_ids'];
             $gcity_ids = $dkParamDataArr['city_ids'];
             $garea_ids = $dkParamDataArr['area_ids'];
             $gccaId = $dkParamDataArr['ccaId'];
+            $deliveryTime = '';
             $deliveryFee = '0';
             $minOrderAmt = '0';
             $subTotalOrderAmt = 0;
+            $isHomeDeliveryAccept = 'Y';
+            $is_courierdeliveryaccept = 'Y';
+            $updateApplicableDeliveryFee = '0';
+            $isOrdercartStoreSummaryFound = 'N';
+            
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $userId = $userSessionDetailsData['unmd5UserId'];
+                
                 // fetching store delivery facility given location
                 $paramJson1 = array();
                 $paramJson1['shop_storesids'] = $gshopstore_id;
@@ -242,14 +250,44 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                 $paramJson1['area_ids'] = $garea_ids;
                 $dataArr1 = ShopStoreDao :: getShopStoreDeliveryLocationFacilityDetails($paramJson1);
                 if($dataArr1!=false && count($dataArr1)==1){
+                    $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
+                    $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
+                    $deliveryTime = $dataArr1[0]['delivery_time'];
                     $minOrderAmt = $dataArr1[0]['min_orderamount'];
                     $deliveryFee = $dataArr1[0]['deliveryfee'];
                 }
+                
                 // fetching order cart store summary data
                 $dataArr2 = OrderCartDao::getRequestedOrdercartStoreSummary($userId, $gshopstore_id, $gccaId);
                 if($dataArr2>0 && $dataArr2>0){
                     $subTotalOrderAmt = $dataArr2[0]['subtotalOrderAmtNotIncludingDeliveryFee'];
+                    $isOrdercartStoreSummaryFound = 'Y';
                 }
+                
+                if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
+                    && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
+                    if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
+                        $updateApplicableDeliveryFee = '0';
+                    }
+                }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
+                    && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
+                    if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
+                        $updateApplicableDeliveryFee = '0';
+                    }
+                }
+                
+                // finally checking to update order cart store delivery fee applicable on user product
+                // at specific delivery location
+                if($isOrdercartStoreSummaryFound=='Y' && $updateApplicableDeliveryFee>=0){
+                    $paramJson2 = array();
+                    $paramJson2['deliveryfee'] = $updateApplicableDeliveryFee;
+                    $paramJson2['updated_by'] = $userId;
+                    $paramJson2['id'] = $dataArr2[0]['ordercartStoreId'];
+                    $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($paramJson2);
+                }
+                
+                
+                
             }
             
             
