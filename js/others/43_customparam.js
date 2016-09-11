@@ -1800,13 +1800,17 @@ function storeUserOrderItemInSession(fcontentClass){
                     userOrderItemObj['price'] = productPrice;
                     userOrderItemObj['totalamount'] = productTotalAmt;
                 }
+                var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                if(existingDkParamObj!==false && existingDkParamObj!==undefined){
+                    userOrderItemObj['areaname'] = existingDkParamObj['userSelectedDeliveryCityAreaDessertsType']['areaname'];
+                }
             }
         }
     }catch(ex){
         // console.log("problem in storeUserOrderItemInSession ex=>"+ex);
         userOrderItemObj = {};
     }
-    if(Object.keys(userOrderItemObj).length===10){
+    if(Object.keys(userOrderItemObj).length===11){
         var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         existingDkParamObj['userOrderItemObj'] = userOrderItemObj;
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
