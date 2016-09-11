@@ -872,52 +872,49 @@ class commonfunction{
             $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
             if(count($dataArr1)>0 && $dataArr1!=false){
                 // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
-                $sortedDataArr1 = utils::arraySort($dataArr1, array("ordercartId", "storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
                 if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
-                    // iterating order wise data
-                    foreach($sortedDataArr1 as $ordercartIdKey=>$allStoresDataArr){
-                        $eachOrdrcartDataArr = array();
-                        $eachOrdrcartDataArr['ordercartId'] = $ordercartIdKey;
-                        // iterating order store wise with delivery location data
-                        foreach($allStoresDataArr as $ordercartStoreIdKey=>$storeAllItemsDataArr){
-                            $eachOrdercartStoresDataArr = array();
-                            $eachOrdercartStoresDataArr['deliveryAreaname'] = '';
-                            $eachOrdercartStoresDataArr['minOrderAmt'] = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
-                            $eachOrdercartStoresDataArr['deliveryfee'] = $storeAllItemsDataArr[0]['deliveryfee'];
-                            $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
-                            $eachOrdercartStoresDataArr['totalAmt'] = "0";
-                            $eachOrdercartStoresDataArr['discountAmt'] = "0";
-                            $eachOrdercartStoresDataArr['subtotalAmt'] = "0";
-                            $eachOrdercartStoresDataArr['allItemsData'] = array();
-                            // iterate each item details
-                            for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
-                                array_push($eachOrdercartStoresDataArr['allItemsData'], 
-                                    array(
-                                        "store_id"=>$ordercartStoreIdKey,
-                                        "minorderamt"=>$eachOrdercartStoresDataArr['minOrderAmt'],
-                                        "deliveryfee"=>$eachOrdercartStoresDataArr['deliveryfee'],
-                                        "orderStoreItemId"=>$storeAllItemsDataArr[$eachIndx]['orderStoreItemId'],
-                                        "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
-                                        "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
-                                        "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
-                                        "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
-                                        "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt']
-                                    )
-                                );
-                            }
-                            // checking for delivery fee msg 
-                            if(($eachOrdercartStoresDataArr['subtotalAmt'])>0 
-                                && ($eachOrdercartStoresDataArr['subtotalAmt'])>=($eachOrdercartStoresDataArr['minOrderAmt'])){
-                                $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
-                                $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalAmt'].")  of this seller !!!";
-                                $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
-                            }else if(($eachOrdercartStoresDataArr['subtotalAmt'])>0 
-                                && ($eachOrdercartStoresDataArr['subtotalAmt'])<=($eachOrdercartStoresDataArr['minOrderAmt'])){
-                                $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs ".$eachOrdercartStoresDataArr['deliveryfee']." will be apply, if order amount less than Rs ".$eachOrdercartStoresDataArr['minOrderAmt']." for this seller !!!";
-                            }
+                    // iterating order store wise with delivery location data
+                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                        $explodedArr = explode('##', $odrStoreIdDeliveryAreaId);
+                        $storeId = $explodedArr[0];
+                        $eachOrdercartStoresDataArr = array();
+                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
+                        $eachOrdercartStoresDataArr['deliveryAreaname'] = '';
+                        $eachOrdercartStoresDataArr['totalAmt'] = "0";
+                        $eachOrdercartStoresDataArr['discountAmt'] = "0";
+                        $eachOrdercartStoresDataArr['subtotalAmt'] = "0";
+                        $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
+                        $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
+                        $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryfee'];
+                        $eachOrdercartStoresDataArr['allItemsData'] = array();
+                        // iterate each item details
+                        for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
+                            array_push($eachOrdercartStoresDataArr['allItemsData'], 
+                                array(
+                                    "store_id"=>$storeId,
+                                    "minorderamt"=>$storeMinOrderAmt,
+                                    "deliveryfee"=>$storeDeliveryFee,
+                                    "orderStoreItemId"=>$storeAllItemsDataArr[$eachIndx]['orderStoreItemId'],
+                                    "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
+                                    "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
+                                    "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
+                                    "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
+                                    "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt'],
+                                    "description"=>$storeAllItemsDataArr[$eachIndx]['description']
+                                )
+                            );
                         }
-                        array_push($retDataArr, $eachOrdercartStoresDataArr);
+                        // checking for delivery fee msg 
+                        if($storeAppliedDeliveryFeeOnOdrAmt<=0){
+                            $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
+                            $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalAmt'].")  of this seller !!!";
+                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
+                        }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
+                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
+                        }
                     }
+                    array_push($retDataArr, $eachOrdercartStoresDataArr);
                 }
             }
         }
