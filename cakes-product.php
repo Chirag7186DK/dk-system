@@ -154,7 +154,7 @@
                 </p>
                 <hr>
                 <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_storeDeliveryFromAreaToAreaPClass">
-                    Order delivery from {{vAllPDetails[0]['areaTitle']}} to {{selectedDeliveryAreaTextHeader}}
+                    Order will be deliver from {{vAllPDetails[0]['areaTitle']}} to {{selectedDeliveryAreaTextHeader}}
                 </p>
                 <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_storeDeliveryFeeApplicableMsgPClass">
                     {{storeDeliveryFeeApplicableMsg}}
