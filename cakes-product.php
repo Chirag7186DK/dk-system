@@ -149,8 +149,8 @@
                     No rating & review from customer yet !!!
                 </p>
                 <hr>
-                <p class="vpd_estimatedProductDeliveryTimePClass">
-                    Est. Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
+                <p ng-controller="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_estimatedProductDeliveryTimePClass">;
+                    {{storeDeliveryFeeApplicableMsg}}
                 </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
                     Est. Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
