@@ -1921,6 +1921,8 @@
     .uca_ordercartRequestedEachStoreWiseSectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
         box-shadow:0 0 3px 0 rgba(161,161,161,.5);
     }
     
