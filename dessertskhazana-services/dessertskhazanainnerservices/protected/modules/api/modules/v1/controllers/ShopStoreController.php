@@ -111,7 +111,7 @@ class ShopStoreController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $ShopStoreServicesV1 = new ShopStoreServicesV1();
-                    $rspDetails = $ShopStoreServicesV1->checkParamDataStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr);
+                    $rspDetails = $ShopStoreServicesV1->getStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
