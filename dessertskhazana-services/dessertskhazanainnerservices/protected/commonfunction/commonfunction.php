@@ -896,10 +896,13 @@ class commonfunction{
                         $storeId = $explodedArr[0];
                         $eachOrdercartStoresDataArr = array();
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
-                        $eachOrdercartStoresDataArr['deliveryAreaname'] = '';
+                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
                         $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
                         $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
                         $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
+                        $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
+                        $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = '';
                         $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
                         $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
                         $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryFee'];
@@ -917,7 +920,9 @@ class commonfunction{
                                     "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
                                     "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
                                     "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt'],
-                                    "description"=>$storeAllItemsDataArr[$eachIndx]['description']
+                                    "description"=>$storeAllItemsDataArr[$eachIndx]['description'],
+                                    "productFeatureBasePrice"=>$storeAllItemsDataArr[$eachIndx]['productFeatureBasePrice'],
+                                    "productFeatureDiscount"=>$storeAllItemsDataArr[$eachIndx]['productFeatureDiscount']
                                 )
                             );
                         }
