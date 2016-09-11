@@ -7,7 +7,7 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
         $rootScope.refreshWebAppData = function(){
             var userDashboardSummaryDataObj = UsersServices.refreshUserDashboardSummaryDataDetails();
             // var userOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
-            var addItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, false, 'session');
+            var addItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, 'session');
         };
     }catch(ex){
         console.log("problem in RefreshWebAppDataController ex=>"+ex);
