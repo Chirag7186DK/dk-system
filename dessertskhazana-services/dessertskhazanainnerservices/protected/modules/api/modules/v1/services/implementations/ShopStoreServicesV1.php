@@ -70,9 +70,9 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
                             $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
                             $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
                             if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
-                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply for order amount less than Rs $minOrderAmt !!!";
+                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt !!!";
                             }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
-                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply for order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
+                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply on order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
                             }
                         }
                         // fetching store product type summary data
