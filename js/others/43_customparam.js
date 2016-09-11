@@ -1777,6 +1777,7 @@ function storeUserOrderItemInSession(fcontentClass){
         if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
             if($('.'+fcontentClass).length===1){
                 var productPrice = 0;
+                userOrderItemObj['description'] = '';
                 if($('.'+fcontentClass).find('textarea').length===1){
                     userOrderItemObj['description'] = removeHtmlStripTagsOfContent($('.'+fcontentClass).find('textarea').val());
                 }
