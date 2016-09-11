@@ -1901,14 +1901,13 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                     paramObj['ordercartStoreId'] = productDetailsObj['ordercartStoreId'];
                     paramObj['minorderamt'] = productDetailsObj['minorderamt'];
                     paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
-                    paramObj['storeSubtotalAmt'] = productDetailsObj['storeSubtotalAmt'];
                     paramObj['orderStoreItemId'] = productDetailsObj['orderStoreItemId'];
                     paramObj['qty'] = userProductQty;
                     paramObj['totalamount'] = productTotalAmt;
                 }
             }
         }
-        if(Object.keys(paramObj).length===11){
+        if(Object.keys(paramObj).length===9){
             return paramObj;
         }else{
             return false;
