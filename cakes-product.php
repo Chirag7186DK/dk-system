@@ -152,6 +152,9 @@
                 <p class="vpd_estimatedProductDeliveryTimePClass">
                     Est. Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
                 </p>
+                <p class="vpd_estimatedProductDeliveryTimePClass">
+                    Est. Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
+                </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
