@@ -67,7 +67,7 @@ function ShopStoreServices($rootScope){
                 showHideLoaderBox('show', jsonParamBlockUIObject);
                 var fetchedParamJsonObj = {};
                 fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/StoreDeliveryFeeApplicableDeliveryArea", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/StoreDeliveryFeeApplicableDeliveryArea", 'apiFile', 'GET', '', fetchedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                     $rootScope.$apply(function(){
                         var storeDeliveryFeeApplicableMsg = '';
