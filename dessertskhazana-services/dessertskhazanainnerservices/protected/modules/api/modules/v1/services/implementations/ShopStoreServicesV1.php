@@ -218,7 +218,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
     }
     
     // CJ defined this action 2016-09-11
-    public function checkStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr){
+    public function getStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr){
         $rspDetails = array();
         $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step !!!';
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
