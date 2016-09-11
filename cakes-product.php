@@ -153,7 +153,10 @@
                     {{storeDeliveryFeeApplicableMsg}}
                 </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
-                    Est. Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
+                    Est. Delivery: 
+                    <span class="estimatedProductShippingDeliveryTimeSClass">
+                        {{vAllPDetails[0]['storeOrderDeliveryTime']}}
+                    </span>
                 </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
