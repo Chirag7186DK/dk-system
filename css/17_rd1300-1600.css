@@ -1921,8 +1921,7 @@
     .uca_ordercartRequestedEachStoreWiseSectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
+        margin-bottom:30px!important;
         box-shadow:0 0 3px 0 rgba(161,161,161,.5);
     }
     
@@ -1933,6 +1932,7 @@
     
     .uca_ordercartRequestedEachStoreBasicInfoHrClass{
         margin:0px!important;
+        border-color:#ef7597!important;
     }
     
     .uca_ordercartRequestedEachStoreNamePClass{
@@ -1982,7 +1982,7 @@
     .uca_ordercartRequestedEachStoreItemDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border-bottom:1px dashed #FAB005!important;
+        border-bottom:1px dashed rgb(70, 75, 80)!important;
     }
 
     .uca_ordercartRequestedEachStoreItemDivClass:last-child{
