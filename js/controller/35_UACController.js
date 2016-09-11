@@ -380,15 +380,12 @@ function UCustomerController($scope, $rootScope, $http, UsersServices, OrderCart
                 // check is user logged in or not session
                 var paramDataObj = getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass);
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
-                
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
                     jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
                     showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    
                     // calling OrderCartServices 
                     OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
