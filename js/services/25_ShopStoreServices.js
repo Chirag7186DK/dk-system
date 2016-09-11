@@ -2,7 +2,7 @@
 angular.module('DKAPP').factory('ShopStoreServices', ShopStoreServices);
 
 // CJ defined this function 2016-06-22
-function ShopStoreServices($http, $q){
+function ShopStoreServices(){
     try{
         
         var shopstoreDetails = {};
