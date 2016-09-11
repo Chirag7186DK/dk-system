@@ -59,7 +59,7 @@ function ShopStoreServices($rootScope){
         // getStoreDeliveryFeeApplicableMsgOnDeliveryArea
         shopstoreDetails.getStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
             // fetch param data from session
-            var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
+            var preparedParamJsonObj = getParamObjStoreDeliveryFeeApplicableMsgOnDeliveryArea();
             if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                 var jsonParamBlockUIObject = {};
                 jsonParamBlockUIObject['css'] = {"padding":10};
