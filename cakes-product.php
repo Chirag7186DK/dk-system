@@ -134,7 +134,7 @@
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_productStoreNameContainerPClass'>
                     <span class="vpd_productStoreLabelNameSpanClass">Seller: </span> 
-                    <span class="vpd_productStoreNameSpanClass">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</span>
+                    <span class="vpd_productStoreNameSpanClass">{{vAllPDetails[0]['shopStoreTitle']}}</span>
                 </p>
                 <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedAboutProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct" title="To see detailed reviewed / rating about this item please scroll down page to rating / review section">
                     {{avgRatingReviewedAboutProductDetails.totalUserRatingAbtProduct}} reviewed,
@@ -145,8 +145,9 @@
                 <p ng-hide="avgRatingReviewedAboutProductDetails.isUserRatedAndReviewAbtProduct">
                     No rating & review from customer yet !!!
                 </p>
+                <hr>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
-                    Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
+                    Est. Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span>
                 </p>
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
@@ -231,7 +232,7 @@
                 </p>
                 <div id="vpd_shippingProductBodyContainerDivId" class="vpd_shippingProductBodyContainerDivClass">
                     <ul class="vpd_shippingTitleULClass">
-                        <li class='vpd_shippingTitleLIClass'>Estimated Delivery Time: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
+                        <li class='vpd_shippingTitleLIClass'>Est Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
                     </ul>
                 </div>
             </div>
