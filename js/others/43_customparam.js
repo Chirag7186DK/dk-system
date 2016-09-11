@@ -1853,6 +1853,10 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                         paramObj['price'] = productPrice;
                         paramObj['totalamount'] = productTotalAmt;
                     }
+                    var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    if(existingDkParamObj!==false && existingDkParamObj!==undefined){
+                        paramObj['areaname'] = existingDkParamObj['userSelectedDeliveryCityAreaDessertsType']['areaname'];
+                    }
                 }
             }
             
@@ -1865,7 +1869,7 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                 }
             }
         }
-        if(Object.keys(paramObj).length===13){
+        if(Object.keys(paramObj).length===14){
             return paramObj;
         }else{
             return false;
