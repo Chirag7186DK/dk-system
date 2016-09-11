@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('OrderCartController', OrderCartController);
 
 // OrderCartController
-function OrderCartController($rootScope, OrderCartServices){
+function OrderCartController($rootScope, OrderCartServices, ShopStoreServices){
     try{
          
         // checkProductDataToAddInOrdercart 
@@ -50,9 +50,9 @@ function OrderCartController($rootScope, OrderCartServices){
                                 notificationMsgStr = "Item added in your order cart successfully !";
                                 clearProductContentAfterAddedProductInOrdercart(fcontentClass);
                                 // refresh user order cart dashboard summary data using services
-                                // OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
-                                if(productDataFromSession==='session'){
-                                    
+                                OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+                                if(productDataFromSession!=='session'){
+                                    ShopStoreServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
                                 }
                             }
                             showNotificationBoxMsg(notificationMsgStr);
