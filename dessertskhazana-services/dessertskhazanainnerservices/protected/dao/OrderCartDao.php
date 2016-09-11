@@ -204,10 +204,8 @@ class OrderCartDao{
             }
         }
         if(array_key_exists('deliveryfee', $paramJson)){
-            if($paramJson['deliveryfee']!=''){
-                $sqlColumnNames.=" deliveryfee,";
-                $sqlValues.="'".$paramJson['deliveryfee']."',";
-            }
+            $sqlColumnNames.=" deliveryfee,";
+            $sqlValues.="'".$paramJson['deliveryfee']."',";
         }
         if(array_key_exists('created_by', $paramJson)){
             if($paramJson['created_by']!=''){
