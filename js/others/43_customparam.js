@@ -1834,6 +1834,8 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                             productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
                             paramObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
                             paramObj['ccaId'] = $(productMeasurementSelectInputObj).attr("data-ccaid");
+                            paramObj['deliveryfee'] = $(productMeasurementSelectInputObj).attr("data-deliveryfee");
+                            paramObj['minorderamt'] = $(productMeasurementSelectInputObj).attr("data-minorderamt");
                             paramObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
                             paramObj['size'] = $(productMeasurementSelectInputObj).val();
                         }
@@ -1857,7 +1859,7 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                 }
             }
         }
-        if(Object.keys(paramObj).length===11){
+        if(Object.keys(paramObj).length===13){
             return paramObj;
         }else{
             return false;
