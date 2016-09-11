@@ -261,7 +261,7 @@ class ShopStoreServicesV1 implements IShopStoreServicesV1{
             // fetching order cart store summary data
             $dataArr2 = OrderCartDao::getRequestedOrdercartStoreSummary($userId, $gshopstore_id, $gccaId);
             if($dataArr2>0 && $dataArr2>0){
-                $subTotalOrderAmt = $dataArr2[0]['subtotalOrderAmtNotIncludingDeliveryFee'];
+                $subTotalOrderAmt = $dataArr2['subtotalOrderAmtNotIncludingDeliveryFee'];
                 $isOrdercartStoreSummaryFound = 'Y';
             }
 
