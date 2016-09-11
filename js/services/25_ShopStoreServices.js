@@ -51,16 +51,33 @@ function ShopStoreServices($rootScope){
             return promiseObject;
         };
         
+        // resetStoreDeliveryFeeApplicableMsgOnDeliveryArea
+        shopstoreDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(storeDeliveryFeeApplicableMsg){
+            $rootScope.storeDeliveryFeeApplicableMsg = storeDeliveryFeeApplicableMsg;
+        };
+        
         // getStoreDeliveryFeeApplicableMsgOnDeliveryArea
         shopstoreDetails.getStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
-            var jsonParamBlockUIObject = {};
-            jsonParamBlockUIObject['css'] = {"padding":10};
-            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-            showHideLoaderBox('show', jsonParamBlockUIObject);
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/StoreDeliveryFeeApplicableDeliveryArea", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                showHideLoaderBox('hide');
-            });
-            return promiseObject;
+            // fetch param data from session
+            var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
+            if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                var jsonParamBlockUIObject = {};
+                jsonParamBlockUIObject['css'] = {"padding":10};
+                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', jsonParamBlockUIObject);
+                communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/ShopStore/StoreDeliveryFeeApplicableDeliveryArea", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                    showHideLoaderBox('hide');
+                    $rootScope.$apply(function(){
+                        var storeDeliveryFeeApplicableMsg = '';
+                        if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                            storeDeliveryFeeApplicableMsg = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'applicableStoreDeliveryFeeMsg', retResponseJson);
+                        }
+                        shopstoreDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea(storeDeliveryFeeApplicableMsg);
+                    });
+                });
+            }else{
+                shopstoreDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea('');
+            }
         };
         
         return shopstoreDetails;
