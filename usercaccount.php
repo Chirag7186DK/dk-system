@@ -314,9 +314,7 @@
                                 </button>
                             </p>
                         </div>
-                        
                     </div>
-                    
                 </div>
                 
                 <!-- canceled order cart all items info will be displayed -->
