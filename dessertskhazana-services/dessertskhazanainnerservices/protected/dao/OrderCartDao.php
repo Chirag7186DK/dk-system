@@ -589,14 +589,14 @@ class OrderCartDao{
         $connection = Yii::app()->db;
         $dynamicSql = "";
         $retStatus = false;
-        if(array_key_exists('product_featuresqty', $paramJson)){
-            if($paramJson['product_featuresqty']!='' && ($paramJson['product_featuresqty'])>0){
-                $dynamicSql.=" product_featuresqty='".$paramJson['product_featuresqty']."',";
+        if(array_key_exists('qty', $paramJson)){
+            if($paramJson['qty']!='' && ($paramJson['qty'])>0){
+                $dynamicSql.=" qty='".$paramJson['qty']."',";
             }
         }
-        if(array_key_exists('product_features_totalamount', $paramJson)){
-            if($paramJson['product_features_totalamount']!='' && ($paramJson['product_features_totalamount'])>0){
-                $dynamicSql.=" product_features_totalamount='".$paramJson['product_features_totalamount']."',";
+        if(array_key_exists('totalamount', $paramJson)){
+            if($paramJson['totalamount']!='' && ($paramJson['totalamount'])>0){
+                $dynamicSql.=" totalamount='".$paramJson['totalamount']."',";
             }
         }
         if(array_key_exists('status', $paramJson)){
@@ -614,10 +614,10 @@ class OrderCartDao{
                 $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
             }
         }
-        if($dynamicSql!='' && array_key_exists('ordercart_itemid', $paramJson)==true){
-            if($paramJson['ordercart_itemid']!='' && ($paramJson['ordercart_itemid'])>0){
-                $sqlQuery = " UPDATE DK_USERORDERCART_ITEMDETAILS SET ".rtrim($dynamicSql, ',');
-                $sqlQuery.=" WHERE id='".$paramJson['ordercart_itemid']."'";
+        if($dynamicSql!='' && array_key_exists('orderStoreItemId', $paramJson)==true){
+            if($paramJson['orderStoreItemId']!='' && ($paramJson['orderStoreItemId'])>0){
+                $sqlQuery = " UPDATE DK_ORDERCARTSTORE_ITEMDETAILS SET ".rtrim($dynamicSql, ',');
+                $sqlQuery.=" WHERE id='".$paramJson['orderStoreItemId']."'";
                 $command = $connection->createCommand($sqlQuery);
                 $result = $command->execute();
                 if($result>=0){
