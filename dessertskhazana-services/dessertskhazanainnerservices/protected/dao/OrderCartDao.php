@@ -422,7 +422,9 @@ class OrderCartDao{
                     COALESCE(odrsim.id, '') orderStoreItemId, COALESCE(spl.name, '') productListTitle, 
                     COALESCE(odrsim.featureid, '') featureId, COALESCE(odrsim.size, '') productSize, 
                     COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
-                    COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description
+                    COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
+                    COALESCE(splld.baseprice, '') productFeatureBasePrice, 
+                    COALESCE(splld.product_discount, '') productFeatureDiscount
                     FROM DK_ORDERCART odr
                     JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
                     JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
