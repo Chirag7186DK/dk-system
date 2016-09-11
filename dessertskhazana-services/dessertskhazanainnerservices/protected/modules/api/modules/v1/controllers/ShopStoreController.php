@@ -99,4 +99,27 @@ class ShopStoreController extends V1Controller{
         }
     }
     
+    // CJ defined this action 2016-07-18
+    public function actionStoreDeliveryFeeApplicableUserProduct(){
+        if(ComponentsHttp::httpMethod()=="GET"){
+            // checking requested param key name 
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                // checking param key value data & return status
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataStoreDeliveryFeeApplicableOnUserProduct($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                    $ShopStoreServicesV1 = new ShopStoreServicesV1();
+                    $rspDetails = $ShopStoreServicesV1->checkStoreDeliveryFeeApplicableOOnUserProduct($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
 }
