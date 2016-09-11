@@ -6,7 +6,7 @@ function RefreshWebAppDataController($scope, $rootScope, $http, UsersServices, O
         // refreshWebAppData
         $rootScope.refreshWebAppData = function(){
             var userDashboardSummaryDataObj = UsersServices.refreshUserDashboardSummaryDataDetails();
-            // var userOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+            var userOrdercartDashboardSummaryDataObj = OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
             var addItemOrdercartDataOBj = OrderCartServices.addProductDataInOrdercartFromSession(false, 'session');
         };
     }catch(ex){
