@@ -890,17 +890,17 @@
 
     .cshopstore_specificProductViewDetailsBtnClass{
         border-radius:0px!important;
-        background:#3eb1e7!important;
+        font-weight:normal!important;
+        background-color:#ab0b38!important;
         color:#fff!important;
-        font-weight:bold!important;
         padding:5px!important;
     }
 
     .cshopstore_notFoundProductMsgDivClass{
-        text-align: center;
+        text-align:center!important;
         font-size:20px!important;
-        padding-top: 10px!important;
-        padding-bottom: 10px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
         color: #f54264!important;
     }
 
