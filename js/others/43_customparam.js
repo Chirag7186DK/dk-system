@@ -1886,28 +1886,29 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
     try{
         var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+        
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
-            && jQuery.isEmptyObject(userLoggedDataObj)===false){
+            && jQuery.isEmptyObject(userLoggedDataObj)===false
+            && productDetailsObj!==false && productDetailsObj!==undefined 
+            && jQuery.isEmptyObject(productDetailsObj)===false){
             paramObj = $.extend(paramObj, userLoggedDataObj);
             if($('.'+fcontentClass).find("input[type='text']").length===1){
                 var userProductQty = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").val()));
-                var productPrice = parseInt(removeHtmlStripTagsOfContent($('.'+fcontentClass).find("input[type='text']").attr('data-itemprice')));
+                var productPrice = removeHtmlStripTagsOfContent(productDetailsObj['price']);
                 if(parseInt(userProductQty)>0 && userProductQty!=='' 
-                    && parseFloat(productPrice)>0 && productPrice!==''
-                    && productDetailsObj!==false && productDetailsObj!==undefined 
-                    && jQuery.isEmptyObject(productDetailsObj)===false){
-                    if(productDetailsObj.hasOwnProperty('ordercartItemId')===true){
-                        if(parseInt(productDetailsObj['ordercartItemId'])>0){
-                            var productTotalAmt = (userProductQty * productPrice);
-                            paramObj['product_featuresqty'] = userProductQty;
-                            paramObj['product_features_totalamount'] = productTotalAmt;
-                            paramObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
-                        }
-                    }
+                    && parseFloat(productPrice)>0 && productPrice!==''){
+                    var productTotalAmt = removeHtmlStripTagsOfContent((userProductQty * productPrice));
+                    paramObj['store_id'] = productDetailsObj['store_id'];
+                    paramObj['minorderamt'] = productDetailsObj['minorderamt'];
+                    paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
+                    paramObj['storeSubtotalAmt'] = productDetailsObj['storeSubtotalAmt'];
+                    paramObj['orderStoreItemId'] = productDetailsObj['orderStoreItemId'];
+                    paramObj['qty'] = userProductQty;
+                    paramObj['totalamount'] = productTotalAmt;
                 }
             }
         }
-        if(Object.keys(paramObj).length>=5){
+        if(Object.keys(paramObj).length===10){
             return paramObj;
         }else{
             return false;
