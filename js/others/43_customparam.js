@@ -1908,7 +1908,7 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
                 }
             }
         }
-        if(Object.keys(paramObj).length===10){
+        if(Object.keys(paramObj).length===11){
             return paramObj;
         }else{
             return false;
