@@ -267,7 +267,7 @@
             </div>
             
             <!-- displaying all user reviewed rating details -->
-            <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='StoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
+            <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='StoreController' ng-init="loadStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
                 <span ng-if="allUserRatingReviewDetails.length>0" class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
                     Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
                 </span>
