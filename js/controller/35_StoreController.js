@@ -12,8 +12,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.toggleStoreProductFilterBtnLabel = "SHOW FILTER";
         $rootScope.storeProductFilterPopupDivClass = "";
         $rootScope.isToggleStoreSummaryInfo = false;
-        $rootScope.isToggleCStoreDessertsMenu = false;
-        $rootScope.isShowCStoreRatingReviewDetails = false;
+        $rootScope.isToggleStoreDessertsMenu = false;
+        $rootScope.isShowStoreRatingReviewDetails = false;
         $rootScope.allUserRatingReviewDetails = false;
         $rootScope.isShowStoreWorkingStyleDetails = false;
         $rootScope.storeWorkingStyleDetails = false;
@@ -469,7 +469,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         // loadCStoreAllUserRatingReviewed 
         $rootScope.loadCStoreAllUserRatingReviewed = function(){
             try{
-                if($rootScope.isShowCStoreRatingReviewDetails===true){
+                if($rootScope.isShowStoreRatingReviewDetails===true){
                     // get param obj to load all user rating about product 
                     var preparedParamJsonObj = getParamObjFromSessionForShopStoreRatingReviewedDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -530,9 +530,9 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             if($rootScope.isToggleStoreSummaryInfo===false){
                 $rootScope.isToggleStoreSummaryInfo = true;
                 $rootScope.toggleStoreSummaryInfoLblText = "Hide Details";
-                $rootScope.isToggleCStoreDessertsMenu = false;
+                $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreRatingReviewDetails = false;
+                $rootScope.isShowStoreRatingReviewDetails = false;
                 $rootScope.toggleStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = true;
@@ -543,9 +543,9 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
-                $rootScope.isToggleCStoreDessertsMenu = false;
+                $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreRatingReviewDetails = false;
+                $rootScope.isShowStoreRatingReviewDetails = false;
                 $rootScope.toggleStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
@@ -556,12 +556,12 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         
         // toggleCStoreRatingReviewDetails
         $rootScope.toggleCStoreRatingReviewDetails = function(){
-            if($rootScope.isShowCStoreRatingReviewDetails===false){
+            if($rootScope.isShowStoreRatingReviewDetails===false){
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
-                $rootScope.isToggleCStoreDessertsMenu = false;
+                $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreRatingReviewDetails = true;
+                $rootScope.isShowStoreRatingReviewDetails = true;
                 $rootScope.toggleStoreRatingReviewSummaryInfoLblText = "Hide Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
@@ -573,9 +573,9 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
-                $rootScope.isToggleCStoreDessertsMenu = false;
+                $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreRatingReviewDetails = false;
+                $rootScope.isShowStoreRatingReviewDetails = false;
                 $rootScope.toggleCRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
@@ -586,12 +586,12 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         
         // toggleCStoreDessertsMenu
         $rootScope.toggleStoreDessertsMenu = function(){
-            if($rootScope.isToggleCStoreDessertsMenu===false){
+            if($rootScope.isToggleStoreDessertsMenu===false){
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
-                $rootScope.isToggleCStoreDessertsMenu = true;
+                $rootScope.isToggleStoreDessertsMenu = true;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Hide Details";
-                $rootScope.isShowCStoreRatingReviewDetails = false;
+                $rootScope.isShowStoreRatingReviewDetails = false;
                 $rootScope.toggleStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
@@ -602,9 +602,9 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
-                $rootScope.isToggleCStoreDessertsMenu = false;
+                $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
-                $rootScope.isShowCStoreRatingReviewDetails = false;
+                $rootScope.isShowStoreRatingReviewDetails = false;
                 $rootScope.toggleStoreRatingReviewSummaryInfoLblText = "Show Details";
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
