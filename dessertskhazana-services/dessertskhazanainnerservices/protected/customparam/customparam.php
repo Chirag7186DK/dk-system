@@ -729,7 +729,7 @@ class customparam{
     
     
     // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingRatingReviewAboutProduct($paramJsonData){
+    public static function checkParamDataFetchingRatingReviewProduct($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
@@ -751,7 +751,7 @@ class customparam{
     }
     
     // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingAllUserRatingsAbtShopstores($paramJsonData){
+    public static function checkParamDataFetchingAllUserRatingsStores($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
