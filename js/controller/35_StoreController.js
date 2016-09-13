@@ -19,29 +19,29 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.cStoreWorkingstyleDetails = false;
         
         // loadDeliveryAreaBasedDessertsTypeCStoreList 
-        $rootScope.loadDeliveryAreaBasedDessertsTypeCStoreList = function(){
+        $rootScope.loadDeliveryAreaBasedDessertsTypeStoresList = function(){
             try{
                 // get param obj data
                 var preparedParamJsonObj = getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeCStoreList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.allStoreInfoList = false;
+                    $rootScope.allStoresInfoList = false;
                     // calling StoreServices
-                    StoreServices.getDeliveryAreaBasedDessertsTypeCStoreList(fetchParamJsonObj).done(function(retResponseJson){
+                    StoreServices.getDeliveryAreaBasedDessertsTypeStoresList(fetchParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.allStoreInfoList = arrJsonObj;
+                                    $rootScope.allStoresInfoList = arrJsonObj;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                console.log("problem in loadDeliveryAreaBasedDessertsTypeCStoreList ex=>"+ex);
-                $rootScope.allStoreInfoList = false;
+                console.log("problem in loadDeliveryAreaBasedDessertsTypeStoresList ex=>"+ex);
+                $rootScope.allStoresInfoList = false;
             }
         };
         
