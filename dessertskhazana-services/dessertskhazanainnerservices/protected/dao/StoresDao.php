@@ -8,7 +8,7 @@
 class StoresDao{
    
     // CJ defined this function 2016-06-06
-    public static function getShopStoresList($shop_storeids='', $ccaId=''){
+    public static function getStoresList($shop_storeids='', $ccaId=''){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
@@ -42,7 +42,7 @@ class StoresDao{
     } 
    
     // CJ defined this function 2016-06-06
-    public static function getShopStoreDeliveryLocationFacilityDetails($paramJson=array()){
+    public static function getStoreDeliveryLocationFacilityDetails($paramJson=array()){
         $retResult = false;
         $sqlGroupByStatement = '';
         $sqlOrderByStmt = " ORDER BY country.name ASC,city.name ASC, area.name ASC,";
@@ -170,7 +170,7 @@ class StoresDao{
     }
     
     // CJ defined this function 2016-07-18
-    public static function getShopstoreWorkingstyleDetails($shop_storeids){
+    public static function getStoreWorkingstyleDetails($shop_storeids){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
