@@ -824,7 +824,7 @@ function getParamObjFromSessionForProductDescriptionDetails(){
 /////////////////// store level related code ////////////////////////////////
 
 // CJ defined this function 2016-09-09
-function getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeCStoreList(){
+function getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeStoresList(){
     try{
         var paramObj = {};
 
@@ -885,7 +885,7 @@ function getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeCStoreLi
 
 
 // CJ defined this function 2016-09-04
-function getParamObjFromSessionAtDeliveryAreaBasedCStoreServeDessertsTypeList(){
+function getParamObjFromSessionAtDeliveryAreaBasedStoreServeDessertsTypeList(){
     try{
         var paramObj = {};
 
