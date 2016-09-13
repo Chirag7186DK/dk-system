@@ -166,11 +166,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     RatingReviewServices.addRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             var notifyMsgStr = 'Please try again to post review & rating about product !';
-                            var isUserAddedReviewRatingProduct = 'FALSE';
+                            var isUserAddedRatingReviewProduct = 'FALSE';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isUserAddedReviewRatingProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isAddedReviewRatingAbouProduct', retResponseJson);
+                                isUserAddedRatingReviewProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isUserAddedRatingReviewProduct', retResponseJson);
                             }
-                            if(isUserAddedReviewRatingProduct==='TRUE'){
+                            if(isUserAddedRatingReviewProduct==='TRUE'){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
                                 $rootScope.loadMaxAverageRatingReviewedProduct();
