@@ -403,7 +403,7 @@ class customparam{
     
     
     // CJ defined this function 2016-09-04
-    public static function checkParamDataFetchingDeliveryAreabasedCStoreConductDessertType($paramJsonData){
+    public static function checkParamDataFetchingDeliveryAreabasedStoresConductDessertType($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check product delivery country
@@ -450,7 +450,7 @@ class customparam{
     
     
     // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingCShopstoresummaryInfo($paramJsonData){
+    public static function checkParamDataFetchingStoresummaryInfo($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check shopStore id is blank or not
