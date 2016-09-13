@@ -38,7 +38,6 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
-            $gproductListId = '';
             // fetch avg rating about product by userwise
             $retAllUserAvgRatedAbtProductDetailsArr = RatingReviewDao :: getUserAvgRatingAboutProductDetails($gShopStoreId, $gproductListId);
             if(count($retAllUserAvgRatedAbtProductDetailsArr)>0 && $retAllUserAvgRatedAbtProductDetailsArr!=false){
@@ -69,7 +68,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
                     }
                     // final checking 
                     if(count($allUserRatingReviewAbtProductDetailsArr)>0 && $allUserRatingReviewAbtProductDetailsArr!=false){
-                        $rspDetails["allUserRatingReviewAbtProductDetails"] = $allUserRatingReviewAbtProductDetailsArr;
+                        $rspDetails["allUserRatingReviewDetails"] = $allUserRatingReviewAbtProductDetailsArr;
                     }
                 }
             }
