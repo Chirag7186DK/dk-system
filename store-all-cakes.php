@@ -105,7 +105,7 @@
                         <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{storeInfo.shopStoreAddress}}
                     </p>
                     <p ng-click="toggleStoreSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
-                        {{toggleCStoreSelfSummaryInfoLblText}}
+                        {{toggleStoreSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -118,7 +118,7 @@
                         {{customersReviewedRatingMsgStr}}
                     </p>
                     <p ng-click="toggleCStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass'>
-                        {{toggleCStoreRatingReviewSummaryInfoLblText}}
+                        {{toggleStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -131,7 +131,7 @@
                         {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
                     </p>
                     <p ng-click="toggleStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
-                        {{toggleCStoreDessertsMenuSummaryInfoLblText}}
+                        {{toggleStoreDessertsMenuSummaryInfoLblText}}
                     </p>
                 </div>
                 
@@ -139,7 +139,7 @@
 
 
             <!-- store served all desserts type info -->
-            <div ng-show="isToggleCStoreDessertsMenu" ng-controller="StoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
+            <div ng-show="isToggleStoreDessertsMenu" ng-controller="StoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
                 
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" class="cshopstoreServedDessertsProductNoteLIClass">
@@ -190,10 +190,10 @@
                 <p class='cshopstore_tipAbtFilterProductPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
                     <button ng-click="toggleStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
-                        <i class="fa fa-filter"></i> {{toggleCStoreProductFilterBtnLabel}}
+                        <i class="fa fa-filter"></i> {{toggleStoreProductFilterBtnLabel}}
                     </button>
                 </p>
-                <div ng-show="isShowCStoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{cStoreProductFilterPopupDivClass}}">
+                <div ng-show="isShowStoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{storeProductFilterPopupDivClass}}">
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
                             <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Found {{storeTotalProductCount}} Items)
