@@ -40,7 +40,7 @@ function StoreServices($rootScope){
             return promiseObject;
         };
         
-        storeDetails.getCStoresWorkingStyleDetails = function(preparedParamJsonObj){
+        storeDetails.getStoreWorkingStyleDetails = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
@@ -85,7 +85,7 @@ function StoreServices($rootScope){
         return storeDetails;
         
     }catch(ex){
-        console.log("problem in Shopstore services ex=>"+ex);
+        console.log("problem in store services ex=>"+ex);
         return false;
     }
 }
