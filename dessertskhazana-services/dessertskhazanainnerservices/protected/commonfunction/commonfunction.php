@@ -158,16 +158,6 @@ class commonfunction{
                         );
                     }
                 }
-                if($isRequestedDeliveryCityMatched==false){
-                    /*
-                        // default selected delivery city to show
-                        $rsltJsonArr['defaultSelectedDeliveryCityDetails'] = array(
-                            "cityId"=>$deliveryCityListDetailsArr[0]['cityId'],
-                            "cityName"=>$deliveryCityListDetailsArr[0]['cityName'],
-                            "cityIcon"=>"fa fa-map-marker"
-                        );
-                    */
-                }
                 $rsltJsonArr['allCityList'] = $deliveryCityListDetailsArr;
                 $rspDetails["deliveryCityDetails"] =  $rsltJsonArr;
             }
@@ -208,18 +198,6 @@ class commonfunction{
                             "areaPincode"=>$deliveryAreaListDetailsArr[$eachIndex]['areaPincode']
                         );
                     }
-                }
-                if($isRequestedDeliveryAreaMatched==false){
-                    // default selected delivery area to show
-                    /*
-                        $rsltJsonArr['defaultSelectedDeliveryAreaDetails'] = array(
-                            "areaId"=>$deliveryAreaListDetailsArr[0]['areaId'],
-                            "areaName"=>$deliveryAreaListDetailsArr[0]['areaName'],
-                            "areaIcon"=>"fa fa-map-marker",
-                            "ccaId"=>$deliveryAreaListDetailsArr[0]['ccaId'],
-                            "areaPincode"=>$deliveryAreaListDetailsArr[0]['areaPincode']
-                        );
-                    */
                 }
                 $rsltJsonArr['allAreaList'] = $deliveryAreaListDetailsArr;
                 $rspDetails["deliveryAreaDetails"] =  $rsltJsonArr;
