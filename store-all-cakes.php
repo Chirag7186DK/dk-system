@@ -104,7 +104,7 @@
                     <p class='cShopStoreLocatedInfoLblPClass'>
                         <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{storeInfo.shopStoreAddress}}
                     </p>
-                    <p ng-click="toggleCStoreSelfSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
+                    <p ng-click="toggleStoreSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
                         {{toggleCStoreSelfSummaryInfoLblText}}
                     </p>
                 </div>
