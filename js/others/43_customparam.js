@@ -952,9 +952,8 @@ function getParamObjFromSessionAtDeliveryAreaBasedStoreServeDessertsTypeList(){
 }
 
 // CJ defined this function 2016-09-04
-function storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(paramObj){
+function storeDessertsTypeDataDetailsInSessionStorageToViewStoreAllProductList(paramObj){
     try{
-        console.log("storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList paramObj=>"+JSON.stringify(paramObj));
         var storedDataStatus = false;
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
@@ -989,7 +988,7 @@ function storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(
 
 
 // CJ defined this function 2016-06-24
-function getParamObjForCShopStoreSummaryInfo(){
+function getParamObjForStoreSummaryInfo(){
     try{
         var paramObj = {};
         // checking session param
