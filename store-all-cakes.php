@@ -170,7 +170,7 @@
             </div>
             
             <!-- all product category list will be loaded here -->
-            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListCStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
+            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
                 <p ng-if="productTypeAllProductCategoryList.length>1" class='infoAbtProductCategoriesPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
