@@ -10,10 +10,10 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     // CJ defined this action 2016-06-06
     public function addUserRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
-        $rspDetails['isAddedReviewRatingAbouProduct'] = 'FALSE';
+        $rspDetails['isUserAddedRatingReviewProduct'] = 'FALSE';
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $rspDetails['isAddedReviewRatingAbouProduct'] = commonfunction :: addUserRatingReviewProduct($dkParamDataArr);
+            $rspDetails['isUserAddedRatingReviewProduct'] = commonfunction :: addUserRatingReviewProduct($dkParamDataArr);
         }
         return $rspDetails;
     }
