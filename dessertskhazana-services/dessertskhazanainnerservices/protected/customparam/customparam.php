@@ -913,7 +913,7 @@ class customparam{
     
     
     // CJ defined this function 2016-08-26
-    public static function checkParamDataToUpdateItemFromOrdercart($paramJsonData){
+    public static function checkParamDataToUpdateItemInOrdercart($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check isUserLoggedIn key present or not
