@@ -62,10 +62,10 @@ class RatingReviewController extends V1Controller{
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingAllUserRatingsStores($dkParamDataArr);
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoreAllUserRating($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getShopStoreAllUserRating($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getStoreAllUserRating($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
