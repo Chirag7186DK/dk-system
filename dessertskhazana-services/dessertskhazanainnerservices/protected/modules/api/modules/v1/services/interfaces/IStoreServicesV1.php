@@ -8,6 +8,6 @@ interface IStoresServicesV1{
     public function getDeliveryAreaBasedDessertTypeStoresList($dkInDtoArray);
     public function getDeliveryAreaBasedStoresConductDessertType($dkInDtoArray);
     public function getStoreSummaryInfo($dkInDtoArray);
-    public function getCshopstoreWorkingstyleDetails($dkInDtoArray);
+    public function getStoreWorkingstyleDetails($dkInDtoArray);
     public function getStoreDeliveryFeeApplicableOnDeliveryArea($dkInDtoArray);
 }
