@@ -7,8 +7,8 @@
 interface IRatingReviewServicesV1{
     public function addUserRatingReviewProduct($dessertskhazanaInDtoArray);
     public function getStoreRatingReviewQuestions($dessertskhazanaInDtoArray);
-    public function getShopStoreAllUserRating($dessertskhazanaInDtoArray);
-    public function getAllUserRatingReviewAboutProduct($dessertskhazanaInDtoArray);
-    public function getAverageRatingReviewAboutProduct($dessertskhazanaInDtoArray);
-    public function getMaxRatingReviewAboutProduct($dessertskhazanaInDtoArray);
+    public function getStoreAllUserRating($dessertskhazanaInDtoArray);
+    public function getAllUserRatingReviewProduct($dessertskhazanaInDtoArray);
+    public function getAverageRatingReviewProduct($dessertskhazanaInDtoArray);
+    public function getMaxRatingReviewProduct($dessertskhazanaInDtoArray);
 }
