@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('ProductController', ProductController);
 
-function ProductController($scope, $rootScope, $http, ProductServices, LocationServices, ShopStoreServices){
+function ProductController($scope, $rootScope, ProductServices, ShopStoreServices){
     try{
                 
         // view-product-details
@@ -152,7 +152,7 @@ function ProductController($scope, $rootScope, $http, ProductServices, LocationS
         };
         
     }catch(ex){
-        console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
+        console.log("problem in ProductController ex=>"+ex);
     }
     
 }
