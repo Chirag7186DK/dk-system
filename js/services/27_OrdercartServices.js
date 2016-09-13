@@ -2,7 +2,7 @@
 angular.module('DKAPP').factory('OrderCartServices', OrderCartServices);
 
 // CJ defined this function 2016-06-16
-function OrderCartServices($http, $q, $rootScope){
+function OrderCartServices($rootScope){
     try{
         
         var orderDetails = {};
@@ -100,7 +100,13 @@ function OrderCartServices($http, $q, $rootScope){
         
         // ordercartItemList
         orderDetails.ordercartItemList = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
             return promiseObject;
         };
       
@@ -118,7 +124,13 @@ function OrderCartServices($http, $q, $rootScope){
         
         // updateItemOrdercart
         orderDetails.updateItemOrdercart = function(preparedParamJsonObj){
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){});
+            var jsonParamBlockUIObject = {};
+            jsonParamBlockUIObject['css'] = {"padding":10};
+            jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+            showHideLoaderBox('show', jsonParamBlockUIObject);
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
+                showHideLoaderBox('hide');
+            });
             return promiseObject;
         };
         
