@@ -74,10 +74,10 @@ class OrderCartController extends V1Controller{
             if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataToUpdateItemFromOrdercart($dkParamDataArr);
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataToUpdateItemInOrdercart($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $OrderCartServicesV1 = new OrderCartServicesV1();
-                    $rspDetails = $OrderCartServicesV1->updateItemDetailsFromOrdercart($dkParamDataArr);
+                    $rspDetails = $OrderCartServicesV1->updateItemDetailsInOrdercart($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
