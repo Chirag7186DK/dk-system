@@ -321,7 +321,7 @@ class ProductServicesV1 implements IProductServicesV1{
             $paramObj1['country_ids'] = $gcountry_ids;
             $paramObj1['city_ids'] = $gcity_ids;
             $paramObj1['area_ids'] = $garea_ids;
-            $dataArr1 = StoresDao :: getShopStoreDeliveryLocationFacilityDetails($paramObj1);
+            $dataArr1 = StoreDao :: getStoreDeliveryLocationFacilityDetails($paramObj1);
             if($dataArr1!=false && count($dataArr1)==1){
                 $storeOrderDeliveryFee = $dataArr1[0]['deliveryfee'];
                 $storeMinOrderAmt = $dataArr1[0]['min_orderamount'];
