@@ -132,8 +132,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
             if(count($retAvgRatedAndReviwedByUserAbtProductDetailsArr)>0 && $retAvgRatedAndReviwedByUserAbtProductDetailsArr!=false){
                 $rspDetails["avgRatingReviewedProductDetails"] = array(
                     "isUserRatedAndReviewProduct"=>"true",
-                    "totalAvgRatingProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalAvgRatingAbtProduct'],
-                    "totalUserRatingProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalUserRatingAbtProduct']
+                    "totalAvgRatingProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalAvgRatingProduct'],
+                    "totalUserRatingProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalUserRatingProduct']
                 );
             }
         }    
@@ -147,10 +147,10 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
             $gStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             $maxRatingAndReviewedTypeDetailsArr = array();
-            // fetch max rating & reviewed about product details
-            $retRatingReviewDetailsArr = RatingReviewDao :: getMaxRatingAboutProductDetails($gStoreId, $gproductListId);
-            if(count($retRatingReviewDetailsArr)>0 && $retRatingReviewDetailsArr!=false){
-                $sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr = utils::arraySort($retRatingReviewDetailsArr, array("questionId", "countUser"));
+            // fetch max rating & reviewed product details
+            $ratingReviewDetailsArr = RatingReviewDao :: getMaxRatingProductDetails($gStoreId, $gproductListId);
+            if(count($ratingReviewDetailsArr)>0 && $ratingReviewDetailsArr!=false){
+                $sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr = utils::arraySort($ratingReviewDetailsArr, array("questionId", "countUser"));
                 if(count($sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr)>0 && $sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr!=false){
                     //iterate to get max rating and count of user of each rating and reviewed type question ka
                     foreach($sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr as $eachQuestionId=>$userCountBasedOnGivenRatingDetailsArr){
