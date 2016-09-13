@@ -206,7 +206,7 @@ class StoresServicesV1 implements IStoresServicesV1{
     }
    
     // CJ defined this action 2016-07-18
-    public function getCshopstoreWorkingstyleDetails($dkParamDataArr){
+    public function getStoreWorkingstyleDetails($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
