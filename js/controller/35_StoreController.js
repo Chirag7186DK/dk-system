@@ -525,8 +525,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }
         };
         
-        // toggleCStoreSelfSummaryInfoDetails
-        $rootScope.toggleCStoreSelfSummaryInfoDetails = function(){
+        // toggleStoreSummaryInfoDetails
+        $rootScope.toggleStoreSummaryInfoDetails = function(){
             if($rootScope.isToggleCStoreSelfSummaryInfo===false){
                 $rootScope.isToggleCStoreSelfSummaryInfo = true;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Hide Details";
