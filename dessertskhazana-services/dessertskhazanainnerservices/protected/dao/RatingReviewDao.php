@@ -168,7 +168,7 @@ class RatingReviewDao{
     }
     
     // CJ defined this function 2016-05-25
-    public static function getMaxRatingAboutShopStore($shopStoreId){
+    public static function getMaxRatingStore($shopStoreId){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
