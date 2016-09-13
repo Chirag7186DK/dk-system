@@ -117,7 +117,7 @@
                     <p class='cShopStoreReviewdRatingUsercountInfoLblPClass'>
                         {{customersReviewedRatingMsgStr}}
                     </p>
-                    <p ng-click="toggleCStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass'>
+                    <p ng-click="toggleStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass'>
                         {{toggleStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
@@ -307,7 +307,7 @@
                         </p>
                     </p>
                 </div>
-                <div ng-hide='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleNotFoundMsgDivClass">
+                <div ng-hide='storeWorkingStyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleNotFoundMsgDivClass">
                     No working hours defined by '{{storeInfo.shopStoreNameInCaps}}' store !
                 </div>
             </div>
