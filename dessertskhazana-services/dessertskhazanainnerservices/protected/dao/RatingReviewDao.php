@@ -139,17 +139,17 @@ class RatingReviewDao{
     
     
     // CJ defined this function 2016-05-23
-    public static function getAvgRatingAboutProductDetails($shopStoreId, $productListId){
+    public static function getAvgRatingProductDetails($shopStoreId, $productListId){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COUNT(DISTINCT urd.group_no) totalUserRatingAbtProduct,
+                COUNT(DISTINCT urd.group_no) totalUserRatingProduct,
                 COALESCE(
                     ROUND(((CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 
                             THEN SUM(urd.given_answerpoints) ELSE 0 END
                         )/COUNT( DISTINCT urd.group_no)/5),1)
-                , '') totalAvgRatingAbtProduct
+                , '') totalAvgRatingProduct
                 FROM DK_USER_REVIEWANSWERDETAILS urd
                 JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
@@ -230,7 +230,7 @@ class RatingReviewDao{
     
     
     // CJ defined this function 2016-05-23
-    public static function getUserAvgRatingAboutProductDetails($shopStoreId, $productListId=''){
+    public static function getUserAvgRatingProductDetails($shopStoreId, $productListId=''){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
@@ -264,7 +264,7 @@ class RatingReviewDao{
     }
     
     // CJ defined this function 2016-05-23
-    public static function getUserReviewAndRatingAboutProductDetails($shopStoreId, $productListId, $userId, $groupNo){
+    public static function getUserReviewRatingProductDetails($shopStoreId, $productListId, $userId, $groupNo){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
