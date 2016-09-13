@@ -94,6 +94,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                     $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $ordercartId, $ordercartStoreId);
                     if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
                         $storeOdrSubTotalAmt = $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
+                        $storeOdrTotalAmt = $storeOdrSubTotalAmt;
                         $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
                         if($storeOdrSubTotalAmt>0 && $storeMinOrderAmt>0 
                             && $storeOdrSubTotalAmt>=$storeMinOrderAmt){
