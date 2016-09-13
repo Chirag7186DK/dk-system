@@ -341,15 +341,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 // check is user logged in or not session
                 var paramDataObj = getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass);
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling OrderCartServices 
                     OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isItemUpdatedFromOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to update item in order cart !";
@@ -367,7 +362,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in updateItemOrdercart ex=>"+ex);
             }
         };
