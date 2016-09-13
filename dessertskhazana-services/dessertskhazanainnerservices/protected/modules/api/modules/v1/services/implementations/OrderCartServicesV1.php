@@ -67,7 +67,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
     }
 
     // CJ defined this action 2016-08-14
-    public function updateItemDetailsFromOrdercart($dkParamDataArr){
+    public function updateItemDetailsInOrdercart($dkParamDataArr){
         $rspDetails = array();
         $rspDetails['isItemUpdatedFromOrdercart'] = 'FALSE';
         // checking param data length
