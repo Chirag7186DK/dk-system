@@ -554,8 +554,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }
         };
         
-        // toggleCStoreRatingReviewDetails
-        $rootScope.toggleCStoreRatingReviewDetails = function(){
+        // toggleStoreRatingReviewDetails
+        $rootScope.toggleStoreRatingReviewDetails = function(){
             if($rootScope.isShowStoreRatingReviewDetails===false){
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
