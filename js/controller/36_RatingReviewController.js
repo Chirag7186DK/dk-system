@@ -1,25 +1,25 @@
 
 angular.module('DKAPP').controller('RatingReviewController', RatingReviewController);
 
-function RatingReviewController($scope, $rootScope, $http, RatingReviewServices){
+function RatingReviewController($scope, $rootScope, RatingReviewServices){
     try{
         
-        // loadAverageRatingReviewedAboutProduct 
-        $rootScope.loadAverageRatingReviewedAboutProduct = function(){
+        // loadAverageRatingReviewedProduct 
+        $rootScope.loadAverageRatingReviewedProduct = function(){
             try{
                 // get param obj
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.avgRatingReviewedAboutProductDetails = false;
+                    $rootScope.avgRatingReviewedProductDetails = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getAverageRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getAverageRatingReviewProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.avgRatingReviewedAboutProductDetails = retObj.avgRatingReviewedAboutProductDetails;
+                                    $rootScope.avgRatingReviewedProductDetails = retObj.avgRatingReviewedAboutProductDetails;
                                 }
                             }
                         });
@@ -27,47 +27,47 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     
                 }
             }catch(ex){
-                $rootScope.avgRatingReviewedAboutProductDetails = false;
-                console.log("problem in loadAverageRatingReviewedAboutProduct ex=>"+ex);
+                $rootScope.avgRatingReviewedProductDetails = false;
+                console.log("problem in loadAverageRatingReviewedProduct ex=>"+ex);
             }
         };
         
-        // loadMaxAverageRatingReviewedAboutProduct 
-        $rootScope.loadMaxAverageRatingReviewedAboutProduct = function(){
+        // loadMaxAverageRatingReviewedProduct 
+        $rootScope.loadMaxAverageRatingReviewedProduct = function(){
             try{
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.maxRatingAndReviewedTypeDetailsArr = false;
+                    $rootScope.maxRatingReviewedTypeDetailsArr = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getMaxRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getMaxRatingReviewProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.maxRatingAndReviewedTypeDetailsArr = retObj.maxRatingAndReviewedTypeDetails;
+                                    $rootScope.maxRatingReviewedTypeDetailsArr = retObj.maxRatingAndReviewedTypeDetails;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                $rootScope.maxRatingAndReviewedTypeDetailsArr = false;
-                console.log("problem in loadMaxAverageRatingReviewedAboutProduct ex=>"+ex);
+                $rootScope.maxRatingReviewedTypeDetailsArr = false;
+                console.log("problem in loadMaxAverageRatingReviewedProduct ex=>"+ex);
             }
         };
         
-        // loadRatingReviewQuestionsAboutProductByShopStores 
-        $rootScope.loadRatingReviewQuestionsAboutProductByShopStores = function(){
+        // loadStoreRatingReviewQuestions 
+        $rootScope.loadStoreRatingReviewQuestions = function(){
             try{
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
+                    $rootScope.storeRatingReviewQuestionDetails = false;
                     $rootScope.isRatingReviewQuestionDetailsFound = false;
                     // calling RatingReviewServices 
                     RatingReviewServices.getShopStoreRatingReviewQuestionsAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
@@ -76,7 +76,7 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = retObj.ratingReviewQuestionAboutProductByShopStoresDetails;
+                                    $rootScope.storeRatingReviewQuestionDetails = retObj.ratingReviewQuestionAboutProductByShopStoresDetails;
                                     $rootScope.isRatingReviewQuestionDetailsFound = retObj.isRatingReviewQuestionDetailsFound;
                                 }
                             }
@@ -84,13 +84,13 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     });
                 }
             }catch(ex){
-                $rootScope.ratingReviewQuestionAboutProductByShopStoresDetails = false;
-                console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
+                $rootScope.storeRatingReviewQuestionDetails = false;
+                console.log("problem in loadStoreRatingReviewQuestions ex=>"+ex);
             }
         };
         
-        // loadAllUserRatingReviewAboutProductDetails 
-        $rootScope.loadAllUserRatingReviewAboutProductDetails = function(){
+        // loadAllUserRatingReviewProduct 
+        $rootScope.loadAllUserRatingReviewProduct = function(){
             try{
                 // get param obj to load all user rating about product 
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
@@ -98,9 +98,9 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.allUserRatingReviewAboutProductDetailsArr = false;
+                    $rootScope.allUserRatingReviewProductDetailsArr = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getAllUserRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getAllUserRatingReviewProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
@@ -112,8 +112,8 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                     });
                 }
             }catch(ex){
-                $rootScope.allUserRatingReviewAboutProductDetailsArr = false;
-                console.log("problem in loadAllUserRatingReviewAboutProductDetails ex=>"+ex);
+                $rootScope.allUserRatingReviewProductDetailsArr = false;
+                console.log("problem in loadAllUserRatingReviewProduct ex=>"+ex);
             }
         };
         
@@ -138,13 +138,13 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
             }
         };
         
-        // collectDataToAddRatingReviewAboutProduct
-        $rootScope.collectDataToAddRatingReviewAboutProduct = function(fcontentCass){
-            var validatedDataStatus = validateUserRatingReviewAbtProduct(fcontentCass);
+        // collectDataToAddUserRatingReviewAboutProduct
+        $rootScope.collectDataToAddUserRatingReviewAboutProduct = function(fcontentCass){
+            var validatedDataStatus = validateUserRatingReviewProduct(fcontentCass);
             if(validatedDataStatus===true){
-                var paramDataObj  = getParamDataForAddingUserRatingReviewAbtProduct(fcontentCass);
+                var paramDataObj  = getParamDataForAddingUserRatingReviewProduct(fcontentCass);
                 if(Object.keys(paramDataObj).length===3 && paramDataObj!==false){
-                    $rootScope.addRatingReviewAboutProduct(paramDataObj, fcontentCass);
+                    $rootScope.addUserRatingReviewProduct(paramDataObj, fcontentCass);
                 }else{
                     var notifyMsgStr = 'Please enter comment for rating & review about product !';
                     showNotificationBoxMsg(notifyMsgStr);
@@ -155,28 +155,21 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
             }
         };
         
-        // addRatingReviewAboutProduct
-        $rootScope.addRatingReviewAboutProduct = function(preparedParamJsonObj, fcontentCass){
+        // addUserRatingReviewProduct
+        $rootScope.addUserRatingReviewProduct = function(preparedParamJsonObj, fcontentCass){
             try{
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     // calling RatingReviewServices 
                     RatingReviewServices.addRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             var notifyMsgStr = 'Please try again to post review & rating about product !';
-                            var isAddedReviewRatingAbouProduct = 'FALSE';
+                            var isUserAddedReviewRatingProduct = 'FALSE';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isAddedReviewRatingAbouProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isAddedReviewRatingAbouProduct', retResponseJson);
+                                isUserAddedReviewRatingProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isAddedReviewRatingAbouProduct', retResponseJson);
                             }
-                            if(isAddedReviewRatingAbouProduct==='TRUE'){
+                            if(isUserAddedReviewRatingProduct==='TRUE'){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
                                 $rootScope.loadMaxAverageRatingReviewedAboutProduct();
@@ -186,18 +179,15 @@ function RatingReviewController($scope, $rootScope, $http, RatingReviewServices)
                             showNotificationBoxMsg(notifyMsgStr);
                         });
                     });
-                    
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
-                $rootScope.avgRatingReviewedAboutProductDetails = false;
                 console.log("problem in loadAverageRatingReviewedAboutProduct ex=>"+ex);
             }
         };
         
         
     }catch(ex){
-        console.log("problem in ProductTypeProductCategoryProductDetailsController ex=>"+ex);
+        console.log("problem in rating review controller ex=>"+ex);
     }
     
 }
