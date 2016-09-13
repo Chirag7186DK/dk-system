@@ -27,7 +27,7 @@ class StoreServicesV1 implements IStoreServicesV1{
                 for($eachStoreIndx = 0; $eachStoreIndx<count($storesIdDetailsArr); $eachStoreIndx++){
                     $storeId = $storesIdDetailsArr[$eachStoreIndx]['shopStoreId'];
                     // fetching basic store info details
-                    $storeBasicInfoDetailsArr = StoresDao::getStoresList($storeId, '');
+                    $storeBasicInfoDetailsArr = StoreDao::getStoresList($storeId, '');
                     if(count($storeBasicInfoDetailsArr)==1 && $storeBasicInfoDetailsArr!=false){
                         $eachStoreInfoData = array();
                         $eachStoreInfoData['shopStoreId'] = $storeId;
@@ -59,7 +59,7 @@ class StoreServicesV1 implements IStoreServicesV1{
                         $paramJson1['country_ids'] = $gcountry_ids;
                         $paramJson1['city_ids'] = $gcity_ids;
                         $paramJson1['area_ids'] = $garea_ids;
-                        $storeDeliveryFacilityDataArr = StoresDao :: getStoreDeliveryLocationFacilityDetails($paramJson1);
+                        $storeDeliveryFacilityDataArr = StoreDao :: getStoreDeliveryLocationFacilityDetails($paramJson1);
                         if($storeDeliveryFacilityDataArr!=false && count($storeDeliveryFacilityDataArr)==1){
                             $isHomeDeliveryAccept = $storeDeliveryFacilityDataArr[0]['isHomeDeliveryAccept'];
                             $is_courierdeliveryaccept = $storeDeliveryFacilityDataArr[0]['is_courierdeliveryaccept'];
@@ -170,7 +170,7 @@ class StoreServicesV1 implements IStoreServicesV1{
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
             
             // fetch store basic info
-            $dataArr1 = StoresDao::getShopStoresList($gshopstore_id, '');
+            $dataArr1 = StoreDao::getStoresList($gshopstore_id, '');
             if(count($dataArr1)==1 && $dataArr1!=false){
                 $rspDetails['shopstoreInfo'] = $dataArr1[0];
             }
@@ -211,7 +211,7 @@ class StoreServicesV1 implements IStoreServicesV1{
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gshopstore_id = $dkParamDataArr['shopstoreids'];
             // fetch store working style details
-            $dataArr1 = StoresDao :: getStoreWorkingstyleDetails($gshopstore_id);
+            $dataArr1 = StoreDao :: getStoreWorkingstyleDetails($gshopstore_id);
             if(count($dataArr1)>0 && $dataArr1!=false){
                 $rspDetails["shopstoreWorkingStyleDetails"] = $dataArr1;
             }
@@ -252,7 +252,7 @@ class StoreServicesV1 implements IStoreServicesV1{
             $paramJson1['country_ids'] = $gcountry_ids;
             $paramJson1['city_ids'] = $gcity_ids;
             $paramJson1['area_ids'] = $garea_ids;
-            $dataArr1 = StoresDao :: getStoreDeliveryLocationFacilityDetails($paramJson1);
+            $dataArr1 = StoreDao :: getStoreDeliveryLocationFacilityDetails($paramJson1);
             if($dataArr1!=false && count($dataArr1)==1){
                 $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
                 $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
