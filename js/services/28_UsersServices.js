@@ -2,7 +2,7 @@
 angular.module('DKAPP').factory('UsersServices', UsersServices);
 
 // CJ defined this function 2016-07-24
-function UsersServices($http, $q, $rootScope){
+function UsersServices($rootScope){
     try{
         
         var userDetails = {};
