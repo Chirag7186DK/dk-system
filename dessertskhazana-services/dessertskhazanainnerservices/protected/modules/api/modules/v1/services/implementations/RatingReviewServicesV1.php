@@ -26,8 +26,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
             // fetch product review question details
             $retProductReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsStore($gShopStoreId);
             if(count($retProductReviewQuestionDetailsArr)>0 && $retProductReviewQuestionDetailsArr!=false){
-                $rspDetails["isRatingReviewQuestionDetailsFound"] = true;
-                $rspDetails["ratingReviewQuestionAboutProductByShopStoresDetails"] = $retProductReviewQuestionDetailsArr;
+                $rspDetails["isStoreRatingReviewQuestionFound"] = true;
+                $rspDetails["storeRatingReviewQuestionDetails"] = $retProductReviewQuestionDetailsArr;
             }
         }
         return $rspDetails;
