@@ -4,7 +4,7 @@
 * @author CJ defined this function 2016-06-24
 */
 
-interface IStoresServicesV1{
+interface IStoreServicesV1{
     public function getDeliveryAreaBasedDessertTypeStoresList($dkInDtoArray);
     public function getDeliveryAreaBasedStoresConductDessertType($dkInDtoArray);
     public function getStoreSummaryInfo($dkInDtoArray);
