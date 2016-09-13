@@ -470,8 +470,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.loadStoreAllUserRatingReviewed = function(){
             try{
                 if($rootScope.isShowStoreRatingReviewDetails===true){
-                    // get param obj to load all user rating about product 
-                    var preparedParamJsonObj = getParamObjFromSessionForShopStoreRatingReviewedDetails();
+                    // get param obj to load all user rating review about store 
+                    var preparedParamJsonObj = getParamObjFromSessionForStoreAllUserRatingReviewedDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var fetchedParamJsonObj = {};
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
