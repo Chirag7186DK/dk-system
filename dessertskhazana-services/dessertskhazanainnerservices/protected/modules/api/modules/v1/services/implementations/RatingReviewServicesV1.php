@@ -35,7 +35,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     }
 
     // CJ defined this function 2016-06-26
-    public function getShopStoreAllUserRating($dkParamDataArr){
+    public function getStoreAllUserRating($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
@@ -79,7 +79,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     }
 
     // CJ defined this function 2016-06-06
-    public function getAllUserRatingReviewAboutProduct($dkParamDataArr){
+    public function getAllUserRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
@@ -124,7 +124,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     }
 
     // CJ defined this function 2016-06-06
-    public function getAverageRatingReviewAboutProduct($dkParamDataArr){
+    public function getAverageRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
@@ -143,7 +143,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     }
 
     // CJ defined this function 2016-06-06
-    public function getMaxRatingReviewAboutProduct($dkParamDataArr){
+    public function getMaxRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
