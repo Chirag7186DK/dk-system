@@ -2026,7 +2026,7 @@ function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
 
 
 // CJ defined this function 2016-08-06
-function getParamDataForAddingUserRatingReviewAbtProduct(fcClass){
+function getParamDataForAddingUserRatingReviewProduct(fcClass){
     var paramDataObj = {};
     try{
         var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
