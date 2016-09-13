@@ -69,6 +69,7 @@
 
         <!-- view specific requested product details -->
         <div ng-controller="ProductController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass">
+            
             <!-- customer bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_userBreadcrumbDivClass">
                 <ul class="vpd_userBreadcrumbULClass list-inline">
@@ -92,7 +93,7 @@
                 </ul>
             </div>
             
-            <!-- store serve other desserts type listed -->
+            <!-- store can serve other desserts type listed -->
             <div ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
                 
                 <li class="vpd_storeServedDessertsProductNoteLIClass">
@@ -101,8 +102,8 @@
                     '{{selectedDeliveryAreaTextHeader}}' area !!!
                 </li>
                 
-                <!-- display all desserts type can served by store in selected delivery area -->
-                <div id="vpd_shopStoreServedAllDessertsProductScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass'>
+                <!-- display all desserts type can served by store in selected delivery area, more than one -->
+                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" id="vpd_shopStoreServedAllDessertsProductScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass'>
                     
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-viewproductlevel>
@@ -124,12 +125,12 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass" style="margin-bottom:0px!important;"></div>
             
-            <!-- show product images -->
+            <!-- showing product images -->
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_productImagesContainerDivClass">
                 <img style='width:100%;' class='preloadProductImagesClass' data-original="{{vAllPDetails[0]['productImageFilePath']+vAllPDetails[0]['productImageFileName']}}" ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
             </div>
             
-            <!-- show product details -->
+            <!-- showing product details -->
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_productDetailsContainerDivClass">
                 <p class='vpd_productNamePClass'>
                     <i class='fa fa-birthday-cake'></i> {{vAllPDetails[0]['productListTitle']}}
@@ -174,13 +175,13 @@
                         </option>
                     </select>
                 </p>
-                <p class='viewProductPricePClass' title="Item price varies based on size/weight"> 
-                    <span class='vpd_productCutPriceTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']">
-                        <i class="fa fa-rupee"></i> {{vAllPDetails[0]['productFeatureBasePrice']}}
-                    </span>
+                <p class='viewProductPricePClass' title="Item price varies based on selected size/weight"> 
                     <span class='vpd_productPayBlgPriceTextSClass'>
                         <i class="fa fa-rupee faa-tada animated"></i> 
                         <i class='onlineProductSellingPriceTextClass'>{{vAllPDetails[0]['productFeatureOnlineSellingPrice']}}</i>
+                    </span>
+                    <span class='vpd_productCutPriceTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']">
+                        <i class="fa fa-rupee"></i> {{vAllPDetails[0]['productFeatureBasePrice']}}
                     </span>
                     <span class='vpd_productDiscountPercentTextSClass' ng-if="vAllPDetails[0]['productFeatureDiscount']!==''">
                         ({{vAllPDetails[0]['productFeatureDiscount']}}% Off)
@@ -204,7 +205,7 @@
             <!-- order summary details details -->
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_orderSummaryContainerDivClass">
                 <p class='vpd_orderSummaryLabelPClass'> 
-                    <i class='fa fa-credit-card'></i> ORDER SUMMARY
+                    <i class='fa fa-credit-card'></i> CART SUMMARY
                 </p>
                 <hr class="vpd_horizontalLineClass">
                 <p class='vpd_orderSummaryTotalProductPricePClass'> 
