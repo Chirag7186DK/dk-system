@@ -8,7 +8,7 @@ interface IOrderCartServicesV1{
     public function getUserOrdercartDashboardSummaryData($dkInDtoArray);
     public function addProductDataInOrdercart($dkInDtoArray);
     public function getOrdercartItemDetails($dkInDtoArray);
-    public function updateItemDetailsFromOrdercart($dkInDtoArray);
+    public function updateItemDetailsInOrdercart($dkInDtoArray);
     public function removeItemDetailsFromOrdercart($dkInDtoArray);
     public function resetAllItemOrdercart($dkInDtoArray);
 }
