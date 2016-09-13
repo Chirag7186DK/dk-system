@@ -691,7 +691,7 @@ class commonfunction{
     
     /////////////////// Rating/Review related code ////////////////////////////
     
-    public static function addUserRatingReviewAbtProduct($paramJsonData){
+    public static function addUserRatingReviewProduct($paramJsonData){
         $retStatus = 'FALSE';
         // checking param data length
         if(count($paramJsonData)>0 && $paramJsonData!=false){
