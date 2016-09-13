@@ -294,13 +294,13 @@
             </div>
 
             <!-- store working style -->
-            <div ng-show='isShowCStoreWorkingStyleDetails' ng-controller='StoreController' ng-init="loadStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
-                <div ng-show='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
+            <div ng-show='isShowStoreWorkingStyleDetails' ng-controller='StoreController' ng-init="loadStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
+                <div ng-show='storeWorkingStyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
                     <p class='cShopstoreWorkingStyleHeaderPClass'>
                         Our Working Hours <i class="fa fa-clock-o faa-tada animated cShopstoreWorkingStyleIconClass"></i>
                     </p>
                     <p class='cShopstoreWorkingStyleBodyPClass'>
-                        <p ng-repeat="eachWorkingScheduleDetails in cStoreWorkingstyleDetails" class="cShopStoreWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'cShopStoreWorkingTodayDaySchedulePClass':''}}">
+                        <p ng-repeat="eachWorkingScheduleDetails in storeWorkingStyleDetails" class="cShopStoreWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'cShopStoreWorkingTodayDaySchedulePClass':''}}">
                             <span>
                                 {{eachWorkingScheduleDetails.dayName}} ({{eachWorkingScheduleDetails.openTime + "-" + eachWorkingScheduleDetails.closeTime}})
                             </span>
