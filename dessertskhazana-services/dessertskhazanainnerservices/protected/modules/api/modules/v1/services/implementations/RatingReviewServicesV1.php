@@ -13,7 +13,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
         $rspDetails['isAddedReviewRatingAbouProduct'] = 'FALSE';
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $rspDetails['isAddedReviewRatingAbouProduct'] = commonfunction :: addUserRatingReviewAbtProduct($dkParamDataArr);
+            $rspDetails['isAddedReviewRatingAbouProduct'] = commonfunction :: addUserRatingReviewProduct($dkParamDataArr);
         }
         return $rspDetails;
     }
@@ -25,7 +25,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch product review question details
-            $retProductReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsAboutProductByShopStores($gShopStoreId);
+            $retProductReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsStore($gShopStoreId);
             if(count($retProductReviewQuestionDetailsArr)>0 && $retProductReviewQuestionDetailsArr!=false){
                 $rspDetails["isRatingReviewQuestionDetailsFound"] = true;
                 $rspDetails["ratingReviewQuestionAboutProductByShopStoresDetails"] = $retProductReviewQuestionDetailsArr;
