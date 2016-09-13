@@ -466,7 +466,7 @@ class customparam{
     }
      
     // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingCshopstoreWorkingstyle($paramJsonData){
+    public static function checkParamDataFetchingStoreWorkingstyle($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check shopStore id is blank or not
