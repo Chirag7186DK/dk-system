@@ -45,7 +45,6 @@ function ShopStoreController($rootScope, $rootScope, ProductServices, ShopStoreS
             }
         };
         
-        
         // loadDKDeliveryAreaBasedDessertsTypeList 
         $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
             try{
@@ -467,7 +466,6 @@ function ShopStoreController($rootScope, $rootScope, ProductServices, ShopStoreS
             }
         };   
           
-        
         // loadCStoreAllUserRatingReviewed 
         $rootScope.loadCStoreAllUserRatingReviewed = function(){
             try{
@@ -497,7 +495,6 @@ function ShopStoreController($rootScope, $rootScope, ProductServices, ShopStoreS
                 console.log("problem in loadShopStoreAllUserRatingReviewed ex=>"+ex);
             }
         };
-        
        
         // loadCStoresWorkingStyle 
         $rootScope.loadCStoresWorkingStyle = function(){
