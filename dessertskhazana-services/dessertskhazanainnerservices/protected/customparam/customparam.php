@@ -751,7 +751,7 @@ class customparam{
     }
     
     // CJ defined this function 2016-07-13
-    public static function checkParamDataFetchingAllUserRatingsStores($paramJsonData){
+    public static function checkParamDataFetchingStoreAllUserRating($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check store_ids  is blank or not
