@@ -359,10 +359,10 @@ class customparam{
     }
     
     
-    ////////////////////// store level related code //////////////////////////
+    ////////////////////// stores level related code //////////////////////////
     
     // CJ defined this function 2016-09-09
-    public static function checkParamDataFetchingDeliveryAreaBasedDessertTypeCStoreList($paramJsonData){
+    public static function checkParamDataFetchingDeliveryAreaBasedDessertTypeStoresList($paramJsonData){
         $retStatus = 'FALSE';
         $givenParamDataCorrectCount = 0;
         // check product delivery country
