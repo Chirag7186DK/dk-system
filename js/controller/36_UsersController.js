@@ -52,18 +52,11 @@ function UsersController($scope, $rootScope, $http, UsersServices){
         $rootScope.checkUserSignInAuthentication = function(paramDataObj){
             try{
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
-
                     // calling UsersServices 
                     UsersServices.checkUserAuthentication(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             var authenticatedUserDetailsObj = false;
                             var notificationMsgStr = '';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -89,7 +82,7 @@ function UsersController($scope, $rootScope, $http, UsersServices){
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
+                console.log("problem in checkUserSignInAuthentication=>"+ex);
             }
         };
         
