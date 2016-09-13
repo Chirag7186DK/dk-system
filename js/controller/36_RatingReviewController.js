@@ -19,7 +19,7 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.avgRatingReviewedProductDetails = retObj.avgRatingReviewedAboutProductDetails;
+                                    $rootScope.avgRatingReviewedProductDetails = retObj.avgRatingReviewedProductDetails;
                                 }
                             }
                         });
@@ -68,7 +68,7 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeRatingReviewQuestionDetails = false;
-                    $rootScope.isRatingReviewQuestionDetailsFound = false;
+                    $rootScope.isStoreRatingReviewQuestionFound = false;
                     // calling RatingReviewServices 
                     RatingReviewServices.getShopStoreRatingReviewQuestionsAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
@@ -76,8 +76,8 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.storeRatingReviewQuestionDetails = retObj.ratingReviewQuestionAboutProductByShopStoresDetails;
-                                    $rootScope.isRatingReviewQuestionDetailsFound = retObj.isRatingReviewQuestionDetailsFound;
+                                    $rootScope.storeRatingReviewQuestionDetails = retObj.storeRatingReviewQuestionDetails;
+                                    $rootScope.isStoreRatingReviewQuestionFound = retObj.isStoreRatingReviewQuestionFound;
                                 }
                             }
                         });
@@ -85,6 +85,7 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                 }
             }catch(ex){
                 $rootScope.storeRatingReviewQuestionDetails = false;
+                $rootScope.isStoreRatingReviewQuestionFound = false;
                 console.log("problem in loadStoreRatingReviewQuestions ex=>"+ex);
             }
         };
