@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').factory('LocationServices', LocationServices);
 
-function LocationServices($http, $q, $rootScope){
+function LocationServices($rootScope){
     try{
         
         var locationDetails = {};
