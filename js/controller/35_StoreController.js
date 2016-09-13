@@ -483,7 +483,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                     if(retObj!==false && retObj!==undefined && retObj!==''){
-                                        $rootScope.allUserRatingReviewDetails = retObj.allUserRatingReviewAbtProductDetails;
+                                        $rootScope.allUserRatingReviewDetails = retObj.allUserRatingReviewDetails;
                                     }
                                 }
                             });
