@@ -19,7 +19,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     }
     
     // CJ defined this function 2016-06-06
-    public function getRatingReviewQuestionsAboutProductByShopStores($dkParamDataArr){
+    public function getStoreRatingReviewQuestions($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
