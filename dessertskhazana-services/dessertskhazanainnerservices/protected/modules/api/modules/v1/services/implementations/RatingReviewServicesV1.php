@@ -23,7 +23,6 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             $gShopStoreId = $dkParamDataArr['shopstoreids'];
-            $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch product review question details
             $retProductReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsStore($gShopStoreId);
             if(count($retProductReviewQuestionDetailsArr)>0 && $retProductReviewQuestionDetailsArr!=false){
