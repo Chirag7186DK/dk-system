@@ -615,7 +615,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         
         
     }catch(ex){
-        console.log("problem in ShopstoreDetailsController ex=>"+ex);
+        console.log("problem in store controller ex=>"+ex);
     }
     
 }
