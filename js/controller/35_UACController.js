@@ -58,20 +58,11 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    
                     $rootScope.userPersonalDetails =  false;
-
                     // calling UsersServices 
                     UsersServices.getUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userPersonalDetailsArrObj =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -87,7 +78,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in populateUserPersonalInfo ex=>"+ex);
             }
         };
@@ -112,18 +102,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             try{
                 if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
                     && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = userPersonalInfoParamData;
-                    
                     // calling UsersServices 
                     UsersServices.updateUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isUserprofileInfoUpdated =  false;
                             var notificationMsgStr = 'User profile info not update, please try again !';
@@ -139,7 +121,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in populateUserPersonalInfo ex=>"+ex);
             }
         };
@@ -171,18 +152,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             try{
                 if(userChangedPasswordInfoParamData!==false && userChangedPasswordInfoParamData!==undefined
                     && jQuery.isEmptyObject(userChangedPasswordInfoParamData)===false){
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = userChangedPasswordInfoParamData;
-                    
                     // calling UsersServices 
                     UsersServices.updateUserPasswordInfo(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userpwdChangedStatusDetails =  false;
                             var notificationMsgStr = 'Your password is not change, please try again !';
@@ -200,7 +173,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in populateUserPersonalInfo ex=>"+ex);
             }
         };
@@ -235,22 +207,12 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    
                     $rootScope.ordercartRequestedAllItemDetailsArrObj =  false;
-
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var requestedOrdercartAllItemDetailsArrObj =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -266,7 +228,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in populateOrdercartRequestedItemList ex=>"+ex);
             }
         };
