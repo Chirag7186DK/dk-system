@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UCustomerController', UCustomerController);
 
-function UCustomerController($scope, $rootScope, $http, UsersServices, OrderCartServices, DiscountCouponServices){
+function UCustomerController($rootScope, UsersServices, OrderCartServices, DiscountCouponServices){
     
     try{
         
