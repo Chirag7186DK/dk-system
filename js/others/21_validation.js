@@ -504,7 +504,7 @@ function validateDataUWLUpdation(fcClass){
 
 
 // CJ defined this function 2016-08-06
-function validateUserRatingReviewAbtProduct(fcClass){
+function validateUserRatingReviewProduct(fcClass){
     var blankFieldValueCount = 0 ;
     if($('.'+fcClass).length===1){
         if($('.'+fcClass).find('textarea').length===1){
