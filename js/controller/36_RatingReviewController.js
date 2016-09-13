@@ -172,16 +172,16 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             if(isUserAddedReviewRatingProduct==='TRUE'){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
-                                $rootScope.loadMaxAverageRatingReviewedAboutProduct();
-                                $rootScope.loadAllUserRatingReviewAboutProductDetails();
-                                $rootScope.loadAverageRatingReviewedAboutProduct();
+                                $rootScope.loadMaxAverageRatingReviewedProduct();
+                                $rootScope.loadAllUserRatingReviewProduct();
+                                $rootScope.loadAverageRatingReviewedProduct();
                             }
                             showNotificationBoxMsg(notifyMsgStr);
                         });
                     });
                 }
             }catch(ex){
-                console.log("problem in loadAverageRatingReviewedAboutProduct ex=>"+ex);
+                console.log("problem in loadAverageRatingReviewedProduct ex=>"+ex);
             }
         };
         
