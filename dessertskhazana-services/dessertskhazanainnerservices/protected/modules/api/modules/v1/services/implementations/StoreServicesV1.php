@@ -46,7 +46,7 @@ class StoreServicesV1 implements IStoreServicesV1{
                         $eachStoreInfoData['discountUpto'] = '';
                         $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
                         // rating & review summary fetching of given storeid
-                        $dataArr1 = RatingReviewDao::getTotalRatingShopStores($storeId);
+                        $dataArr1 = RatingReviewDao::getTotalRatingStore($storeId);
                         if(count($dataArr1)==1 && $dataArr1!=false){
                             $eachStoreInfoData['isReviewedRatingFound'] = 'TRUE';
                             $eachStoreInfoData['reviewedRatingStr'] = $dataArr1[0]['totalAvgRatingAbtProduct']." star from ".$dataArr1[0]['totalUserRatingAbtProduct']." customers !!!";
@@ -176,7 +176,7 @@ class StoreServicesV1 implements IStoreServicesV1{
             }
 
             // prepare data to get total rating & reviewed  by user(s) about store
-            $dataArr2 = RatingReviewDao::getTotalRatingAboutShopStores($gshopstore_id);
+            $dataArr2 = RatingReviewDao::getTotalRatingStore($gshopstore_id);
             if(count($dataArr2)==1 && $dataArr2!=false){
                 $rspDetails['isRatingReviewBasedInfoFound'] = true;
                 $rspDetails['customersReviewedRatingMsgStr'] = $dataArr2[0]['totalUserRatingAbtProduct'].' customer(s) reviewed & ratings';
@@ -184,7 +184,7 @@ class StoreServicesV1 implements IStoreServicesV1{
 
             // prepare data to get max avg rating about shopstores based 
             // on product quality, taste, price,delivery etc
-            $retMaxAvgRatingShopStoresDetailsArr = RatingReviewDao::getMaxRatingAboutShopStore($gshopstore_id);
+            $retMaxAvgRatingShopStoresDetailsArr = RatingReviewDao::getMaxRatingStore($gshopstore_id);
             if(count($retMaxAvgRatingShopStoresDetailsArr)>0 && $retMaxAvgRatingShopStoresDetailsArr!=false){
                 $sortedOnRQuestionAnswMaxPointsArr = utils::arraySort($retMaxAvgRatingShopStoresDetailsArr, array("questionId", "givenMaxAnswerPoints"));
                 if(count($sortedOnRQuestionAnswMaxPointsArr)>0 && $sortedOnRQuestionAnswMaxPointsArr!=false){
