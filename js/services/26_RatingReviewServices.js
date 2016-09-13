@@ -7,7 +7,7 @@ function RatingReviewServices($http, $q){
         
         var ratingReviewDetails = {};
         
-        ratingReviewDetails.addRatingReviewAboutProduct = function(preparedParamJsonObj){
+        ratingReviewDetails.addUserRatingReviewProduct = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
@@ -18,56 +18,56 @@ function RatingReviewServices($http, $q){
             return promiseObject;
         };
         
-        ratingReviewDetails.getShopStoreRatingReviewQuestionsAboutProduct = function(preparedParamJsonObj){
+        ratingReviewDetails.getStoreRatingReviewQuestions = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/ManageShopStoreRatingReviewQuestionsAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/StoreRatingReviewQuestions", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                 showHideLoaderBox('show');
             });
             return promiseObject;
         };
         
-        ratingReviewDetails.getShopStoreAllUserRatingReviewed = function(preparedParamJsonObj){
+        ratingReviewDetails.getStoreAllUserRatingReviewed = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/ShopStoreAllUserRating", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/StoreAllUserRating", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                 showHideLoaderBox('hide');
             });
             return promiseObject;
         };
         
-        ratingReviewDetails.getAllUserRatingReviewAboutProduct = function(preparedParamJsonObj){
+        ratingReviewDetails.getAllUserRatingReviewProduct = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AllUserRatingReviewAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AllUserRatingReviewProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                 showHideLoaderBox('hide');
             });
             return promiseObject;
         };
         
-        ratingReviewDetails.getMaxRatingReviewAboutProduct = function(preparedParamJsonObj){
+        ratingReviewDetails.getMaxRatingReviewProduct = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/MaxRatingReviewAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/MaxRatingReviewProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                 showHideLoaderBox('hide');
             });
             return promiseObject;
         };
         
-        ratingReviewDetails.getAverageRatingReviewAboutProduct = function(preparedParamJsonObj){
+        ratingReviewDetails.getAverageRatingReviewProduct = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
             showHideLoaderBox('show', jsonParamBlockUIObject);
-            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AverageRatingReviewAboutProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AverageRatingReviewProduct", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                 showHideLoaderBox('hide');
             });
             return promiseObject;
