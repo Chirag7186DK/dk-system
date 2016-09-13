@@ -1,11 +1,11 @@
 <?php
 
 /**
-* Description of StoresDao
+* Description of StoreDao
 * @author chirag
 */
 
-class StoresDao{
+class StoreDao{
    
     // CJ defined this function 2016-06-06
     public static function getStoresList($shop_storeids='', $ccaId=''){
