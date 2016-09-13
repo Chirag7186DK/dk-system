@@ -539,7 +539,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
                 $rootScope.storeNotFoundProductMsgStr = '';
-                $rootScope.loadCStoresWorkingStyle();
+                $rootScope.loadStoresWorkingStyle();
             }else{
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
@@ -550,7 +550,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
                 $rootScope.storeWorkingStyleDetails = false;
-                $rootScope.loadProductTypeAllProductCategoryListCStore();
+                $rootScope.loadProductTypeAllProductCategoryListStore();
             }
         };
         
@@ -580,12 +580,12 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
                 $rootScope.storeWorkingStyleDetails = false;
-                $rootScope.loadProductTypeAllProductCategoryListCStore();
+                $rootScope.loadProductTypeAllProductCategoryListStore();
             }
         };
         
         // toggleCStoreDessertsMenu
-        $rootScope.toggleCStoreDessertsMenu = function(){
+        $rootScope.toggleStoreDessertsMenu = function(){
             if($rootScope.isToggleCStoreDessertsMenu===false){
                 $rootScope.isToggleCStoreSelfSummaryInfo = false;
                 $rootScope.toggleCStoreSelfSummaryInfoLblText = "Show Details";
@@ -609,7 +609,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.allUserRatingReviewDetails = false;
                 $rootScope.isShowStoreWorkingStyleDetails = false;
                 $rootScope.storeWorkingStyleDetails = false;
-                $rootScope.loadProductTypeAllProductCategoryListCStore();
+                $rootScope.loadProductTypeAllProductCategoryListStore();
             }
         };
         
