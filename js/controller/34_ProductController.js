@@ -93,7 +93,7 @@ function ProductController($scope, $rootScope, ProductServices, ShopStoreService
             }
         };
         
-        // changing product measurement  change code here
+        // changing product measurement/size  change code here
         $('#productMeasurementSelectCtrlId').on('change', function(){
             var productMeasurementValue = $(this).find('option:selected').val();
             if(productMeasurementValue!=='' && productMeasurementValue!==false){
