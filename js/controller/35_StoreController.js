@@ -466,8 +466,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }
         };   
           
-        // loadCStoreAllUserRatingReviewed 
-        $rootScope.loadCStoreAllUserRatingReviewed = function(){
+        // loadStoreAllUserRatingReviewed 
+        $rootScope.loadStoreAllUserRatingReviewed = function(){
             try{
                 if($rootScope.isShowStoreRatingReviewDetails===true){
                     // get param obj to load all user rating about product 
@@ -477,7 +477,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.allUserRatingReviewDetails = false;
                         // calling RatingReviewServices 
-                        RatingReviewServices.getShopStoreAllUserRatingReviewed(fetchedParamJsonObj).done(function(retResponseJson){
+                        RatingReviewServices.getStoreAllUserRatingReviewed(fetchedParamJsonObj).done(function(retResponseJson){
                             $rootScope.$apply(function(){
                                 showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -569,7 +569,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
                 $rootScope.storeNotFoundProductMsgStr = '';
-                $rootScope.loadCStoreAllUserRatingReviewed();
+                $rootScope.loadStoreAllUserRatingReviewed();
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
