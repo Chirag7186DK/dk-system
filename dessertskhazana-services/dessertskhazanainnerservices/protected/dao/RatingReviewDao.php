@@ -83,7 +83,7 @@ class RatingReviewDao{
     
     
     // CJ defined this function 2016-05-22
-    public static function getRatingReviewQuestionsAboutProductByShopStores($shop_storeid){
+    public static function getRatingReviewQuestionsStore($shop_storeid){
         $retResult = false;
         try{
             $connection = Yii::app()->db;
