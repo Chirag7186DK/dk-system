@@ -22,12 +22,12 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getStoreRatingReviewQuestions($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gStoreId = $dkParamDataArr['shopstoreids'];
             // fetch product review question details
-            $retProductReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsStore($gShopStoreId);
-            if(count($retProductReviewQuestionDetailsArr)>0 && $retProductReviewQuestionDetailsArr!=false){
+            $storeReviewQuestionDetailsArr = RatingReviewDao :: getRatingReviewQuestionsStore($gStoreId);
+            if(count($storeReviewQuestionDetailsArr)>0 && $storeReviewQuestionDetailsArr!=false){
                 $rspDetails["isStoreRatingReviewQuestionFound"] = true;
-                $rspDetails["storeRatingReviewQuestionDetails"] = $retProductReviewQuestionDetailsArr;
+                $rspDetails["storeRatingReviewQuestionDetails"] = $storeReviewQuestionDetailsArr;
             }
         }
         return $rspDetails;
@@ -37,14 +37,14 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getStoreAllUserRating($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gStoreId = $dkParamDataArr['shopstoreids'];
             // fetch avg rating about product by userwise
-            $retAllUserAvgRatedAbtProductDetailsArr = RatingReviewDao :: getUserAvgRatingAboutProductDetails($gShopStoreId, $gproductListId);
-            if(count($retAllUserAvgRatedAbtProductDetailsArr)>0 && $retAllUserAvgRatedAbtProductDetailsArr!=false){
+            $allUserAvgRatedProductDetailsArr = RatingReviewDao :: getUserAvgRatingProductDetails($gStoreId, '');
+            if(count($allUserAvgRatedProductDetailsArr)>0 && $allUserAvgRatedProductDetailsArr!=false){
                 // sorted on group no
-                $sortedOnGroupNoDetailsArr =  utils::arraySort($retAllUserAvgRatedAbtProductDetailsArr, array("groupNo"));
+                $sortedOnGroupNoDetailsArr =  utils::arraySort($allUserAvgRatedProductDetailsArr, array("groupNo"));
                 if(count($sortedOnGroupNoDetailsArr)>0 && $sortedOnGroupNoDetailsArr!=false){
-                    $allUserRatingReviewAbtProductDetailsArr = array();
+                    $allUserRatingReviewProductDetailsArr = array();
                     // iterate each group no
                     foreach($sortedOnGroupNoDetailsArr as $groupNo=>$groupDetailsArr){
                         if($groupNo!=''){
@@ -52,10 +52,10 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
                             $userId = $groupDetailsArr[0]['userId'];
                             $productListId = $groupDetailsArr[0]['productListId'];
                             // fetch user review details abt product 
-                            $retUserReviewedAndRatedAbtProduct = RatingReviewDao::getUserReviewAndRatingAboutProductDetails($shopStoreId, $productListId, $userId, $groupNo);
+                            $retUserReviewedAndRatedAbtProduct = RatingReviewDao::getUserReviewRatingProductDetails($shopStoreId, $productListId, $userId, $groupNo);
                             if(count($retUserReviewedAndRatedAbtProduct)>0 && $retUserReviewedAndRatedAbtProduct!=false){
                                 $userNameSplitedOnSpaceArr = str_split($retUserReviewedAndRatedAbtProduct[0]['userName']);
-                                array_push($allUserRatingReviewAbtProductDetailsArr, array(
+                                array_push($allUserRatingReviewProductDetailsArr, array(
                                        "userNameIntialLetter"=>$userNameSplitedOnSpaceArr[0],
                                        "userName"=>ucwords($retUserReviewedAndRatedAbtProduct[0]['userName']),
                                        "avgRated"=>$groupDetailsArr[0]['avgRatingByUser'],
@@ -67,8 +67,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
                         }
                     }
                     // final checking 
-                    if(count($allUserRatingReviewAbtProductDetailsArr)>0 && $allUserRatingReviewAbtProductDetailsArr!=false){
-                        $rspDetails["allUserRatingReviewDetails"] = $allUserRatingReviewAbtProductDetailsArr;
+                    if(count($allUserRatingReviewProductDetailsArr)>0 && $allUserRatingReviewProductDetailsArr!=false){
+                        $rspDetails["allUserRatingReviewDetails"] = $allUserRatingReviewProductDetailsArr;
                     }
                 }
             }
@@ -80,15 +80,15 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getAllUserRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch avg rating about product by userwise
-            $retAllUserAvgRatedAbtProductDetailsArr = RatingReviewDao :: getUserAvgRatingAboutProductDetails($gShopStoreId, $gproductListId);
-            if(count($retAllUserAvgRatedAbtProductDetailsArr)>0 && $retAllUserAvgRatedAbtProductDetailsArr!=false){
+            $allUserAvgRatedProductDetailsArr = RatingReviewDao :: getUserAvgRatingAboutProductDetails($gStoreId, $gproductListId);
+            if(count($allUserAvgRatedProductDetailsArr)>0 && $allUserAvgRatedProductDetailsArr!=false){
                 // sorted on group no
-                $sortedOnGroupNoDetailsArr =  utils::arraySort($retAllUserAvgRatedAbtProductDetailsArr, array("groupNo"));
+                $sortedOnGroupNoDetailsArr =  utils::arraySort($allUserAvgRatedProductDetailsArr, array("groupNo"));
                 if(count($sortedOnGroupNoDetailsArr)>0 && $sortedOnGroupNoDetailsArr!=false){
-                    $allUserRatingReviewAbtProductDetailsArr = array();
+                    $allUserRatingReviewProductDetailsArr = array();
                     // iterate each group no
                     foreach($sortedOnGroupNoDetailsArr as $groupNo=>$groupDetailsArr){
                         if($groupNo!=''){
@@ -99,7 +99,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
                             $retUserReviewedAndRatedAbtProduct = RatingReviewDao::getUserReviewAndRatingAboutProductDetails($shopStoreId, $productListId, $userId, $groupNo);
                             if(count($retUserReviewedAndRatedAbtProduct)>0 && $retUserReviewedAndRatedAbtProduct!=false){
                                 $userNameSplitedOnSpaceArr = str_split($retUserReviewedAndRatedAbtProduct[0]['userName']);
-                                array_push($allUserRatingReviewAbtProductDetailsArr, 
+                                array_push($allUserRatingReviewProductDetailsArr, 
                                     array(
                                        "userNameIntialLetter"=>$userNameSplitedOnSpaceArr[0],
                                        "userName"=>ucwords($retUserReviewedAndRatedAbtProduct[0]['userName']),
@@ -112,8 +112,8 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
                         }
                     }
                     // final checking 
-                    if(count($allUserRatingReviewAbtProductDetailsArr)>0 && $allUserRatingReviewAbtProductDetailsArr!=false){
-                        $rspDetails["allUserRatingReviewAbtProductDetails"] = $allUserRatingReviewAbtProductDetailsArr;
+                    if(count($allUserRatingReviewProductDetailsArr)>0 && $allUserRatingReviewProductDetailsArr!=false){
+                        $rspDetails["allUserRatingReviewProductDetails"] = $allUserRatingReviewProductDetailsArr;
                     }
                 }
             }
@@ -125,15 +125,15 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getAverageRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch avg rating about product details
-            $retAvgRatedAndReviwedByUserAbtProductDetailsArr = RatingReviewDao :: getAvgRatingAboutProductDetails($gShopStoreId, $gproductListId);
+            $retAvgRatedAndReviwedByUserAbtProductDetailsArr = RatingReviewDao :: getAvgRatingAboutProductDetails($gStoreId, $gproductListId);
             if(count($retAvgRatedAndReviwedByUserAbtProductDetailsArr)>0 && $retAvgRatedAndReviwedByUserAbtProductDetailsArr!=false){
-                $rspDetails["avgRatingReviewedAboutProductDetails"] = array(
-                    "isUserRatedAndReviewAbtProduct"=>"true",
-                    "totalAvgRatingAbtProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalAvgRatingAbtProduct'],
-                    "totalUserRatingAbtProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalUserRatingAbtProduct']
+                $rspDetails["avgRatingReviewedProductDetails"] = array(
+                    "isUserRatedAndReviewProduct"=>"true",
+                    "totalAvgRatingProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalAvgRatingAbtProduct'],
+                    "totalUserRatingProduct"=>$retAvgRatedAndReviwedByUserAbtProductDetailsArr[0]['totalUserRatingAbtProduct']
                 );
             }
         }    
@@ -144,11 +144,11 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
     public function getMaxRatingReviewProduct($dkParamDataArr){
         $rspDetails = array();
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $gShopStoreId = $dkParamDataArr['shopstoreids'];
+            $gStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             $maxRatingAndReviewedTypeDetailsArr = array();
             // fetch max rating & reviewed about product details
-            $retRatingReviewDetailsArr = RatingReviewDao :: getMaxRatingAboutProductDetails($gShopStoreId, $gproductListId);
+            $retRatingReviewDetailsArr = RatingReviewDao :: getMaxRatingAboutProductDetails($gStoreId, $gproductListId);
             if(count($retRatingReviewDetailsArr)>0 && $retRatingReviewDetailsArr!=false){
                 $sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr = utils::arraySort($retRatingReviewDetailsArr, array("questionId", "countUser"));
                 if(count($sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr)>0 && $sortedOnRatingReviewedTypeQuestionIdsAndUserCountArr!=false){
