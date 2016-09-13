@@ -92,7 +92,7 @@
             </div>
             
             <!-- store summary(self,rating/review/desserts menu) info -->
-            <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="ShopStoreController" ng-init="loadCStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
+            <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="StoreController" ng-init="loadStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
                 
                 <!-- store basic info -->
                 <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
@@ -139,7 +139,7 @@
 
 
             <!-- store served all desserts type info -->
-            <div ng-show="isToggleCStoreDessertsMenu" ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
+            <div ng-show="isToggleCStoreDessertsMenu" ng-controller="StoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
                 
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" class="cshopstoreServedDessertsProductNoteLIClass">
@@ -161,7 +161,7 @@
                         <h2 class="dessertsProductTitleHClass">
                             {{eachDessertsTypeDetails.dessertsTypeTitle}}
                         </h2>
-                        <p ng-controller='ShopStoreController' ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
+                        <p ng-controller='StoreController' ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
                             View desserts
                         </p>
                     </div>
@@ -170,7 +170,7 @@
             </div>
             
             <!-- all product category list will be loaded here -->
-            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="ShopStoreController" ng-init="loadProductTypeAllProductCategoryListCStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
+            <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListCStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductAllCategoryWrapperDivClass">
                 <p ng-if="productTypeAllProductCategoryList.length>1" class='infoAbtProductCategoriesPClass'>
                     Info *: <i class="fa fa-smile-o"></i> Hey you can choose products from 
                     <span class="badge totalCountProductCategorySClass">
@@ -218,7 +218,7 @@
             </div>
             
             <!-- store all product list will be loaded here -->
-            <div ng-controller="ShopStoreController" ng-show="storeAllProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
+            <div ng-controller="StoreController" ng-show="storeAllProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
                 
                 <!-- summary info display -->
                 <div ng-show='storeAllProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
@@ -267,7 +267,7 @@
             </div>
             
             <!-- displaying all user reviewed rating details -->
-            <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='ShopStoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
+            <div ng-show="isShowCStoreRatingReviewDetails" ng-controller='StoreController' ng-init="loadCStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
                 <span ng-if="allUserRatingReviewDetails.length>0" class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
                     Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
                 </span>
@@ -294,7 +294,7 @@
             </div>
 
             <!-- store working style -->
-            <div ng-show='isShowCStoreWorkingStyleDetails' ng-controller='ShopStoreController' ng-init="loadCStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
+            <div ng-show='isShowCStoreWorkingStyleDetails' ng-controller='StoreController' ng-init="loadCStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
                 <div ng-show='cStoreWorkingstyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
                     <p class='cShopstoreWorkingStyleHeaderPClass'>
                         Our Working Hours <i class="fa fa-clock-o faa-tada animated cShopstoreWorkingStyleIconClass"></i>
