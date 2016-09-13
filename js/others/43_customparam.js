@@ -1995,7 +1995,7 @@ function getParamObjFromSessionForRatingReviewDetails(){
 
 
 // CJ defined this function 2016-06-26
-function getParamObjFromSessionForShopStoreRatingReviewedDetails(){
+function getParamObjFromSessionForStoreAllUserRatingReviewedDetails(){
     try{
         var paramObj = {};
         // checking session param
