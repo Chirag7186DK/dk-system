@@ -28,21 +28,21 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.vAllPDetails = false;
+                    $rootScope.productDetails = false;
                     // calling ProductServices to get product details
                     ProductServices.getProductTypeProductCategoryProductDetails(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.vAllPDetails = arrJsonObj;
+                                    $rootScope.productDetails = arrJsonObj;
                                 }
                             }
                         });
                     });
                 }
             }catch(ex){
-                $rootScope.vAllPDetails = false;
+                $rootScope.productDetails = false;
                 console.log("problem in loadProductTypeProductCategoryProductDetails ex=>"+ex);
             }
         };
