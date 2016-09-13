@@ -135,7 +135,7 @@ function UsersController($scope, $rootScope, $http, UsersServices){
                 if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
                     // detected user account as customer profile
                     if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
-                        window.location.href = globalBaseSitePath+"usercaccount.php";
+                        window.location.href = globalBaseSitePath+"customer-account.php";
                     }
                 }
             }
