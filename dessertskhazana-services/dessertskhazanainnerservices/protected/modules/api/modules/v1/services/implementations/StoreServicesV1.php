@@ -46,7 +46,7 @@ class StoreServicesV1 implements IStoreServicesV1{
                         $eachStoreInfoData['discountUpto'] = '';
                         $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
                         // rating & review summary fetching of given storeid
-                        $dataArr1 = RatingReviewDao::getTotalRatingAboutShopStores($storeId);
+                        $dataArr1 = RatingReviewDao::getTotalRatingShopStores($storeId);
                         if(count($dataArr1)==1 && $dataArr1!=false){
                             $eachStoreInfoData['isReviewedRatingFound'] = 'TRUE';
                             $eachStoreInfoData['reviewedRatingStr'] = $dataArr1[0]['totalAvgRatingAbtProduct']." star from ".$dataArr1[0]['totalUserRatingAbtProduct']." customers !!!";
