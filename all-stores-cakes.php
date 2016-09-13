@@ -90,14 +90,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
             <!-- all store wise info container -->
-            <div ng-controller="ShopStoreController" ng-init="loadDeliveryAreaBasedDessertsTypeCStoreList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoContainerDivClass">
+            <div ng-controller="StoreController" ng-init="loadDeliveryAreaBasedDessertsTypeStoresList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoContainerDivClass">
                 
-                <p ng-if="allStoreInfoList.length>0" class="allStoreInfoNoteHeaderPClass">
-                    Order from {{allStoreInfoList.length}} stores delivering to your door
+                <p ng-if="allStoresInfoList.length>0" class="allStoreInfoNoteHeaderPClass">
+                    Order from {{allStoresInfoList.length}} stores delivering to your door
                 </p>
             
                 <!-- iterate each store info container -->
-                <div ng-repeat="eachStoreInfoDataObj in allStoreInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
+                <div ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
                     <div class="eachStoreInfoInnerContainerDivClass">    
                         <p class="eachStoreNamePClass">
                             {{eachStoreInfoDataObj.shopStoreTitle}}
@@ -132,14 +132,14 @@
                             {{eachStoreInfoDataObj.deliveryFeeMsgStr}}
                         </p>
                         <p class="eachStoreOnlineOrderBtnPClass">
-                            <button ng-controller='ShopStoreController' ng-click='storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachStoreInfoDataObj)' class="btn eachStoreOnlineOrderBtnClass">
+                            <button ng-controller='StoreController' ng-click='storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachStoreInfoDataObj)' class="btn eachStoreOnlineOrderBtnClass">
                                 ORDER ONLINE
                             </button>
                         </p>
                     </div>
                 </div>
                 
-                <div ng-if="allStoreInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoreFoundInfoMsgContainerDivClass">
+                <div ng-if="allStoresInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoreFoundInfoMsgContainerDivClass">
                     <i class="fa fa-frown-o"></i> Sorry, we don't served any desserts at '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </div>
                 
