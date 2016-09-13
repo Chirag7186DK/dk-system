@@ -507,7 +507,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                         fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.storeWorkingStyleDetails = false;
                         // calling StoreServices 
-                        StoreServices.getCShopStoreWorkingStyleDetails(fetchedParamJsonObj).done(function(retResponseJson){
+                        StoreServices.getStoreWorkingStyleDetails(fetchedParamJsonObj).done(function(retResponseJson){
                             $rootScope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'shopstoreWorkingStyleDetails', retResponseJson);
