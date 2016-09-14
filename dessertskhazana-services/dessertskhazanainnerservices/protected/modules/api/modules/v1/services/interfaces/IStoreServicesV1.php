@@ -5,7 +5,7 @@
 */
 
 interface IStoreServicesV1{
-    public function getDeliveryAreaBasedDessertTypeStoresList($dkInDtoArray);
+    public function getStoreListDeliveryAreaBasedDessertType($dkInDtoArray);
     public function getDeliveryAreaBasedStoresConductDessertType($dkInDtoArray);
     public function getStoreSummaryInfo($dkInDtoArray);
     public function getStoreWorkingstyleDetails($dkInDtoArray);
