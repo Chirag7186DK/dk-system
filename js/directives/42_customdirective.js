@@ -301,26 +301,25 @@ function horizontallyScrollableStoreinfo(){
     };
 }
 
+angular.module('DKAPP').directive('horizontallyScrollableDessertstypelistStorelevel', horizontallyScrollableDessertstypelistStorelevel);
 
-angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistCshopstorelevel', scrollHorizontallyDessertsproducttypelistCshopstorelevel);
-
-function scrollHorizontallyDessertsproducttypelistCshopstorelevel(){
+function horizontallyScrollableDessertstypelistStorelevel(){
     return function(scope, element, attrs){
         if(scope.$last){
             // apply horizontal scrolling features
             setTimeout(function(){
-                if($('#cshopStoreServedAllDessertsProductScrollerWrapperDivId').length>0){
+                if($('#storeCanServeDessertsTypeListScrollableWrapperDivId').length>0){
                     var existingOwlOptions = {
                         navigation:false,
                         paginationSpeed:1000,
                         goToFirstSpeed:2000,
                         transitionStyle:"fade"
                     };
-                    var owlObj = $("#cshopStoreServedAllDessertsProductScrollerWrapperDivId").data('owlCarousel');
+                    var owlObj = $("#storeCanServeDessertsTypeListScrollableWrapperDivId").data('owlCarousel');
                     if(owlObj!==false && owlObj!==undefined && owlObj!==''){
                         owlObj.reinit(existingOwlOptions);
                     }else{
-                        $("#cshopStoreServedAllDessertsProductScrollerWrapperDivId").owlCarousel(existingOwlOptions);
+                        $("#storeCanServeDessertsTypeListScrollableWrapperDivId").owlCarousel(existingOwlOptions);
                     }
                 }
             }, 1);
