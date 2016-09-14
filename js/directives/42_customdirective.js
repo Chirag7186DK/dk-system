@@ -25,9 +25,9 @@ function preloadProductImagesClass($timeout){
     };
 }
 
-angular.module('DKAPP').directive('viewProductqtyinputDirective', viewProductqtyinputDirective);
+angular.module('DKAPP').directive('productQtyInputDirective', productQtyInputDirective);
 
-function viewProductqtyinputDirective($timeout){
+function productQtyInputDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
             $el.numeric(
@@ -43,9 +43,9 @@ function viewProductqtyinputDirective($timeout){
     };
 }
 
-angular.module('DKAPP').directive('viewProductmsginputDirective', viewProductmsginputDirective);
+angular.module('DKAPP').directive('productMsgboxDirective', productMsgboxDirective);
 
-function viewProductmsginputDirective($timeout){
+function productMsgboxDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
             $el.alphanum(
