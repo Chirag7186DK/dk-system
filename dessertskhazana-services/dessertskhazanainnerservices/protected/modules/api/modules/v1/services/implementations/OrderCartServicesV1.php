@@ -146,9 +146,16 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                     // fetching order cart store summary data by giving some param
                     $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $ordercartId, $ordercartStoreId);
                     if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
+                        $ordercartItemRequestedCount = $ordercartStoreDataArr['ordercartItemRequestedCount'];
                         $storeOdrSubTotalAmt = $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
                         $storeOdrTotalAmt = $storeOdrSubTotalAmt;
                         $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
+                        $status = 'R';
+                        $reason = '';
+                        if($ordercartItemRequestedCount=='' || $ordercartItemRequestedCount<=0){
+                            $status = 'ZC';
+                            $reason = 'Removed/Deleted by customer';
+                        }
                         if($storeOdrSubTotalAmt>0 && $storeMinOrderAmt>0 
                             && $storeOdrSubTotalAmt>=$storeMinOrderAmt){
                             $updateStoreOrderDeliveryFee = '0';
@@ -160,6 +167,8 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                             "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
                             "subtotalamount"=>$storeOdrSubTotalAmt,
                             "totalamount"=>$storeOdrTotalAmt, 
+                            "status"=>$status,
+                            "reason"=>$reason,
                             "updated_by"=>$unmd5UserId,
                             "id"=>$ordercartStoreId
                         );
