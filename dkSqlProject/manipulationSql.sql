@@ -3,24 +3,22 @@ SELECT
 COALESCE(odrs.id, '') ordercartStoreId,
 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-COALESCE(SUM(odrs.apply_deliveryfee), '0') storeTotalDeliveryFee,
+COALESCE(SUM(odrs.apply_deliveryfee), 0) storeDeliveryFee,
 COALESCE(
-    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.deliveryfee), 0)
+    COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.apply_deliveryfee), 0)
 ) subtotalOrderAmtIncludingDeliveryFee,
 COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
 FROM DK_ORDERCART odr
 JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+LEFT JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id AND odrsim.status='R'
 WHERE 1
-AND odr.user_id='$userid'
-AND odrs.store_id='$store_id'
-AND odrs.deliveryCountryCityAreaId='$ccaId'
+AND odr.user_id='1'
+AND odrs.store_id='1'
+AND odrs.deliveryCountryCityAreaId='1'
 AND odr.status='R'
 AND odrs.status='R'
-AND odrsim.status='R'
 
 
--- 
 -- SELECT 
 -- odr.id ordercartId, 
 -- odr.order_cartid humanReadableOrdrcartId,
