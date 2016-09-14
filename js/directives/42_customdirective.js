@@ -274,13 +274,13 @@ function maxheightProductboxwidgetAllproductslevel(){
 }
 
 
-angular.module('DKAPP').directive('scrollHorizontallyCshopstoresummaryinfo', scrollHorizontallyCshopstoresummaryinfo);
+angular.module('DKAPP').directive('horizontallyScrollableStoreinfo', horizontallyScrollableStoreinfo);
 
-function scrollHorizontallyCshopstoresummaryinfo(){
+function horizontallyScrollableStoreinfo(){
     return function(scope, element, attrs){
         // apply horizontal scrolling features
         setTimeout(function(){
-            if($('#cshopStoreSummaryInfoWrapperDivId').length>0){
+            if($('#horizontallyScrollableStoreInfoDivId').length>0){
                 var existingOwlOptions = {
                     navigation:false,
                     paginationSpeed:1000,
@@ -288,11 +288,11 @@ function scrollHorizontallyCshopstoresummaryinfo(){
                     transitionStyle:"fade",
                     autoHeight:false
                 };
-                var owlObj = $("#cshopStoreSummaryInfoWrapperDivId").data('owlCarousel');
+                var owlObj = $("#horizontallyScrollableStoreInfoDivId").data('owlCarousel');
                 if(owlObj!==false && owlObj!==undefined && owlObj!==''){
                     owlObj.reinit(existingOwlOptions);
                 }else{
-                    $("#cshopStoreSummaryInfoWrapperDivId").owlCarousel(existingOwlOptions);
+                    $("#horizontallyScrollableStoreInfoDivId").owlCarousel(existingOwlOptions);
                 }
             }
         }, 1);
