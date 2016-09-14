@@ -24,6 +24,7 @@ function LocationServices($rootScope){
         };
         
         locationDetails.notifyToUserForSelectedDeliveryarea = function(){
+            $rootScope.selectedDeliveryAreaTextHeader = '';
             var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
             if(infoObj!=='' && infoObj!==undefined 
                 && infoObj!==false && jQuery.isEmptyObject(infoObj)===false){
