@@ -71,23 +71,23 @@
         <div ng-controller="ProductController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_userBreadcrumbDivClass">
-                <ul class="vpd_userBreadcrumbULClass list-inline">
-                    <li class='userBreadcrumbHomeLIClass'>
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
                             {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
-                    <li class='userBreadcrumbProductTypeCategoryTypeLIClass'>
+                    <li class='customerBreadcrumbLIClass'>
                         |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</a>
                     </li>
-                    <li class='userBreadcrumbProductTypeLIClass'>
+                    <li class='customerBreadcrumbLIClass'>
                         |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeTitle}}</a>
                     </li>
-                    <li class='userBreadcrumbProductTypeCategoryTypeLIClass'>
+                    <li class='customerBreadcrumbLIClass'>
                         |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productCategoryTitle}}</a>
                     </li>
-                    <li class='vpd_userBreadcrumbProductTypeCategoryTypeProductListLIClass'>
+                    <li class='customerBreadcrumbLIClass'>
                         |&nbsp; {{customerBreadCrumbOnWebApp.productListTitle}}
                     </li>
                 </ul>
