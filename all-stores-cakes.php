@@ -71,11 +71,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
                 <ul class="customerBreadcrumbULClass list-inline">
                     <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
-                            Home
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
                     <li class='customerBreadcrumbLIClass'>
