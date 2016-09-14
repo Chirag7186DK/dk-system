@@ -68,7 +68,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
 
         <!-- view store details like menu, information, rating/review from customer side -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstoreDetailsBodyWrapperDivClass">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeDetailsBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
