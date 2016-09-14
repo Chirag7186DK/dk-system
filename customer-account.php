@@ -242,7 +242,7 @@
                 </p>
 
                 <!-- order cart all section header title -->
-                <div scroll-horizontally-ordercart-allsectionheader-directive id='uca_ordercartAllSectionHeaderContainerDivId' class='uca_ordercartAllSectionHeaderContainerDivClass'>
+                <div horizontally-scrollable-ordercart-allsectionheader-directive id='uca_ordercartAllSectionHeaderContainerDivId' class='uca_ordercartAllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_toggleOrdercartSectionList('requestitem', 'uca_ordercartEachTabLabelSectionContainerLIId1', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all shopping item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId1' class='uca_ordercartEachTabLabelSectionContainerLIClass uca_ordercartSelectedTabLabelSectionContainerLIClass'>
                         Shopping Items
                     </li>
@@ -303,7 +303,7 @@
                             </p>
                             <p class="uca_ordercartRequestedEachStoreItemQtyPClass">
                                 Qty
-                                <input order-productqtyinput-directive type='text' ng-value="{{eachItemDataObj.qty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
+                                <input product-qty-input-directive type='text' ng-value="{{eachItemDataObj.qty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
                             </p>
                             <p class="uca_ordercartRequestedEachStoreItemTotalAmtPClass">
                                 Total Amt: {{eachItemDataObj.totalamount}}
