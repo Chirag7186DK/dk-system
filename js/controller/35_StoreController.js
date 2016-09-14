@@ -163,8 +163,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.toggleStoreProductTypeProductCategoryElementClass = function(currentElementClickedId, clickedElementParentClass){
             // toggle backgroun class also
             if(currentElementClickedId!==undefined && currentElementClickedId!==undefined){
-                $('.'+clickedElementParentClass).find('li').removeClass('cshopstore_eachRequestedProductCategoryLIClass');
-                $('#'+currentElementClickedId).addClass('cshopstore_eachRequestedProductCategoryLIClass');
+                $('.'+clickedElementParentClass).find('li').removeClass('storeEachRequestedProductCategoryContainerLIClass');
+                $('#'+currentElementClickedId).addClass('storeEachRequestedProductCategoryContainerLIClass');
             }
         };
         
