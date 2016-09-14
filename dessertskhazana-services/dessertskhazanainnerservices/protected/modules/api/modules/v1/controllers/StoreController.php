@@ -8,7 +8,7 @@
 class StoreController extends V1Controller{
     
     // CJ defined this action 2016-09-09
-    public function actionDeliveryAreaBasedDessertTypeStoresList(){
+    public function actionStoreListDeliveryAreaBasedDessertType(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
             $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
@@ -16,10 +16,10 @@ class StoreController extends V1Controller{
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreaBasedDessertTypeStoresList($dkParamDataArr);
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoresListDeliveryAreaBasedDessertType($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $StoreServicesV1 = new StoreServicesV1();
-                    $rspDetails = $StoreServicesV1->getDeliveryAreaBasedDessertTypeStoresList($dkParamDataArr);
+                    $rspDetails = $StoreServicesV1->getStoreListDeliveryAreaBasedDessertType($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
