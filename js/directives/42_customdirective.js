@@ -391,9 +391,9 @@ function applyMaxHeightCssOnAllProductBoxWidget(applyMaxheightOnElementClassName
     }
 }
 
-angular.module('DKAPP').directive('scrollHorizontallyOrdercartAllsectionheaderDirective', scrollHorizontallyOrdercartAllsectionheaderDirective);
+angular.module('DKAPP').directive('horizontallyScrollableOrdercartAllsectionheaderDirective', horizontallyScrollableOrdercartAllsectionheaderDirective);
 
-function scrollHorizontallyOrdercartAllsectionheaderDirective(){
+function horizontallyScrollableOrdercartAllsectionheaderDirective(){
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#uca_ordercartAllSectionHeaderContainerDivId').length>0){
