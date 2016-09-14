@@ -752,7 +752,6 @@ class commonfunction{
             $storeMinOrderAmt = $paramJsonData['minorderamt'];
             $storeOrderDeliveryFee = $paramJsonData['deliveryfee'];
             $userTotalOrderAmt = $paramJsonData['totalamount'];
-            $storeOdrSubtotalAmt = $paramJsonData['storeSubtotalAmt'];
             
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
