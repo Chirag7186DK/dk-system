@@ -253,6 +253,19 @@ class OrderCartDao{
         if(array_key_exists('totalamount', $paramJson)){
             $dynamicSql.=" totalamount='".$paramJson['totalamount']."',";
         }
+        if(array_key_exists('status', $paramJson)){
+            if($paramJson['status']!=''){
+                $dynamicSql.=" status='".$paramJson['status']."',";
+            }
+        }
+        if(array_key_exists('reason', $paramJson)){
+            if($paramJson['reason']!=''){
+                $dynamicSql.=" reason='".$paramJson['reason']."',";
+            }
+        }
+        if(array_key_exists('totalamount', $paramJson)){
+            $dynamicSql.=" totalamount='".$paramJson['totalamount']."',";
+        }
         if(array_key_exists('updated_by', $paramJson)){
             if($paramJson['updated_by']!=''){
                 $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
