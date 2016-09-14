@@ -5,7 +5,7 @@ angular.module('DKAPP').controller('StoreController', StoreController);
 function StoreController($rootScope, $rootScope, ProductServices, StoreServices, RatingReviewServices){
     try{
         
-        $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
+        $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
         $rootScope.toggleStoreRatingReviewSummaryInfoLblText = "Show Details";
         $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
         $rootScope.isShowStoreAllProductFilter = false;
@@ -525,11 +525,11 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }
         };
         
-        // toggleStoreSummaryInfoDetails
-        $rootScope.toggleStoreSummaryInfoDetails = function(){
+        // toggleStoreSelfSummaryInfoDetails
+        $rootScope.toggleStoreSelfSummaryInfoDetails = function(){
             if($rootScope.isToggleStoreSummaryInfo===false){
                 $rootScope.isToggleStoreSummaryInfo = true;
-                $rootScope.toggleStoreSummaryInfoLblText = "Hide Details";
+                $rootScope.toggleStoreSelfSummaryInfoLblText = "Hide Details";
                 $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowStoreRatingReviewDetails = false;
@@ -542,7 +542,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.loadStoresWorkingStyle();
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
-                $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
+                $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowStoreRatingReviewDetails = false;
@@ -558,7 +558,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.toggleStoreRatingReviewDetails = function(){
             if($rootScope.isShowStoreRatingReviewDetails===false){
                 $rootScope.isToggleStoreSummaryInfo = false;
-                $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
+                $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowStoreRatingReviewDetails = true;
@@ -572,7 +572,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.loadStoreAllUserRatingReviewed();
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
-                $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
+                $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowStoreRatingReviewDetails = false;
@@ -588,7 +588,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.toggleStoreDessertsMenu = function(){
             if($rootScope.isToggleStoreDessertsMenu===false){
                 $rootScope.isToggleStoreSummaryInfo = false;
-                $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
+                $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleStoreDessertsMenu = true;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Hide Details";
                 $rootScope.isShowStoreRatingReviewDetails = false;
@@ -601,7 +601,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.storeNotFoundProductMsgStr = '';
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
-                $rootScope.toggleStoreSummaryInfoLblText = "Show Details";
+                $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
                 $rootScope.isToggleStoreDessertsMenu = false;
                 $rootScope.toggleStoreDessertsMenuSummaryInfoLblText = "Show Details";
                 $rootScope.isShowStoreRatingReviewDetails = false;
