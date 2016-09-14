@@ -53,14 +53,14 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchParamJsonObj = {};
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+                    $rootScope.storeDeliveryAreaBasedDessertsTypeList = false;
                     // calling StoreServices
                     StoreServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
-                                    $rootScope.dkDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
+                                    $rootScope.storeDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
                                 }
                             }
                         });
@@ -68,7 +68,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 }
             }catch(ex){
                 console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
-                $rootScope.dkDeliveryAreaBasedDessertsTypeList = false;
+                $rootScope.storeDeliveryAreaBasedDessertsTypeList = false;
             }
         };
         
@@ -554,8 +554,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }
         };
         
-        // toggleStoreRatingReviewDetails
-        $rootScope.toggleStoreRatingReviewDetails = function(){
+        // toggleStoreRatingReviewSummaryDetails
+        $rootScope.toggleStoreRatingReviewSummaryDetails = function(){
             if($rootScope.isShowStoreRatingReviewDetails===false){
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
