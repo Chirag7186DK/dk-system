@@ -436,7 +436,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeAllProductDetailsList = false;
                     $rootScope.storeDefaultSelectProductCategoryTitle = '';
-                    $rootScope.storeNotFoundProductMsgStr = '';
+                    $rootScope.storeProductNotFoundMsgStr = '';
                     $rootScope.storeTotalProductCount = 0;
                     // calling ProductServices 
                     ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
@@ -450,7 +450,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                                         $rootScope.storeAllProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
                                         $rootScope.storeTotalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
                                     }else{
-                                        $rootScope.storeNotFoundProductMsgStr = 'No products found or used proper filter !!!';
+                                        $rootScope.storeProductNotFoundMsgStr = 'No products found or used proper filter !!!';
                                     }
                                 }
                             }
@@ -460,7 +460,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }catch(ex){
                 $rootScope.storeAllProductDetailsList = false;
                 $rootScope.storeDefaultSelectProductCategoryTitle = '';
-                $rootScope.storeNotFoundProductMsgStr = 'No products found or used proper filter !!!';
+                $rootScope.storeProductNotFoundMsgStr = 'No products found or used proper filter !!!';
                 $rootScope.storeTotalProductCount = 0;
                 console.log("problem in loadProductTypeProductCategoryAllProductListStore ex=>"+ex);
             }
@@ -538,7 +538,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.isShowStoreWorkingStyleDetails = true;
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
-                $rootScope.storeNotFoundProductMsgStr = '';
+                $rootScope.storeProductNotFoundMsgStr = '';
                 $rootScope.loadStoresWorkingStyle();
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
@@ -568,7 +568,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.storeWorkingStyleDetails = false;
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
-                $rootScope.storeNotFoundProductMsgStr = '';
+                $rootScope.storeProductNotFoundMsgStr = '';
                 $rootScope.loadStoreAllUserRatingReviewed();
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
@@ -598,7 +598,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 $rootScope.storeWorkingStyleDetails = false;
                 $rootScope.productTypeAllProductCategoryList = false;
                 $rootScope.storeAllProductDetailsList = false;
-                $rootScope.storeNotFoundProductMsgStr = '';
+                $rootScope.storeProductNotFoundMsgStr = '';
             }else{
                 $rootScope.isToggleStoreSummaryInfo = false;
                 $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
