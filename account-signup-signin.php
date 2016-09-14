@@ -37,7 +37,7 @@
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
                     </li>
-                    <li notifyuser-selected-deliveryarea-textheader-directive class="selectedDeliveryAreaTextHeaderLIClass" title="Click here to change delivery location">
+                    <li ng-if="selectedDeliveryAreaTextHeader!==''" notifyuser-selected-deliveryarea-textheader-directive class="selectedDeliveryAreaTextHeaderLIClass">
                         <i class="fa fa-map-marker"></i> At: {{selectedDeliveryAreaTextHeader}}
                     </li>
                     <li title="Click here to view your current order cart all item(s)">
@@ -54,15 +54,18 @@
         <div ng-controller="UsersController" ng-init="isEnableAccountSignUpSignIn()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_bodyDivClass">
             
             <!-- customer bread crumb -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userBreadcrumbDivClass">
-                <ul class="ma_userBreadcrumbULClass list-inline">
-                    <li class='wl_userBreadcrumbHomeTitleLIClass'>
-                        <a href="<?php echo $BaseSitePath; ?>">
-                            Home
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
+                        <a href="<?php echo $BaseSitePath;?>">
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
-                    <li class='ma_userBreadcrumbMyAccountTitleLIClass'>
-                        |&nbsp; Log In / Sign Up
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        Sign In / Sign Up
                     </li>
                 </ul>
             </div>
