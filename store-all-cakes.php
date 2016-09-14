@@ -69,68 +69,68 @@
 
         <!-- view store details like menu, information, rating/review from customer side -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeDetailsBodyWrapperDivClass">
-            
+
             <!-- customer bread crumb -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
-                <ul class="cshopstore_userBreadcrumbULClass list-inline">
-                    <li class='userBreadcrumbHomeLIClass'>
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
-                            Home
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
-                    <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">
-                            {{storeInfo.shopStoreName}}
-                        </a>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
                     </li>
-                    <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">
-                            Cakes
-                        </a>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{storeInfo.shopStoreName}}
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        Cakes
                     </li>
                 </ul>
             </div>
             
             <!-- store summary(self,rating/review/desserts menu) info -->
-            <div scroll-horizontally-cshopstoresummaryinfo id='cshopStoreSummaryInfoWrapperDivId' ng-controller="StoreController" ng-init="loadStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreSummaryInfoWrapperDivClass">
+            <div horizontally-scrollable-storeinfo id='horizontallyScrollableStoreInfoDivId' ng-controller="StoreController" ng-init="loadStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeSummaryTypeInfoWrapperDivClass">
                 
                 <!-- store basic info -->
-                <div class='cshopsstoreSelfSummaryInfoDivClass' title="Click to show more details about this seller">
-                    <p class='cShopStoreNameTextLblPClass'>
-                        <span class="cshopstoreNameSClass">
-                            {{storeInfo.shopStoreNameInCaps}}
-                        </span>
+                <div class='storeSelfInfoDivClass'>
+                    <p class='storeSelfNameTextLblPClass'>
+                        {{storeInfo.shopStoreNameInCaps}}
                     </p>
-                    <p class='cShopStoreLocatedInfoLblPClass'>
-                        <i class="fa fa-map-marker storeLocationMapIconClass"></i> {{storeInfo.shopStoreAddress}}
+                    <p class='storeSelfLocatedInfoLblPClass'>
+                        <i class="fa fa-map-marker storeSelfLocationIconClass"></i> {{storeInfo.shopStoreAddress}}
                     </p>
-                    <p ng-click="toggleStoreSummaryInfoDetails()" class='showMoreShopSummaryInfoPClass'>
-                        {{toggleStoreSummaryInfoLblText}}
+                    <p ng-click="toggleStoreSelfSummaryInfoDetails()" class='showMoreStoreSelfInfoPClass'>
+                        {{toggleStoreSelfSummaryInfoLblText}}
                     </p>
                 </div>
                 
-                <!-- store summary rating & review info -->
-                <div class='cshopsstoreSummaryReviewRatingDivClass' title="Click to show more detailed reviewed / rating about this seller">
-                    <p class='cShopStoreReviewRatingTextLblPClass'>
+                <!-- store rating & review summary info -->
+                <div class='storeReviewRatingSummaryDivClass'>
+                    <p class='storeReviewRatingTextLblPClass'>
                         REVIEW & RATINGS
                     </p>
-                    <p class='cShopStoreReviewdRatingUsercountInfoLblPClass'>
+                    <p class='storeReviewRatingAllUserCountInfoLblPClass'>
                         {{customersReviewedRatingMsgStr}}
                     </p>
-                    <p ng-click="toggleStoreRatingReviewDetails()" class='showMoreShopReviewRatingInfoPClass'>
+                    <p ng-click="toggleStoreRatingReviewSummaryDetails()" class='showMoreStoreReviewRatingSummaryInfoPClass'>
                         {{toggleStoreRatingReviewSummaryInfoLblText}}
                     </p>
                 </div>
                 
-                <!-- desserts type summary info -->
-                <div class='cshopsstoreMenuSummaryInfoDivClass' title="Click to show all desserts(menu) about this seller">
-                    <p class='cShopStoreMenuTextLblPClass'>
+                <!-- store desserts type menu summary info -->
+                <div class='storeDessertsMenuSummaryInfoDivClass'>
+                    <p class='storeMenuTextLblPClass'>
                         WE SERVED
                     </p>
-                    <p class='cShopStoreDessertsMenuInfoLblPClass'>
-                        {{dkDeliveryAreaBasedDessertsTypeList.length}} Desserts
+                    <p class='storeDessertsMenuInfoLblPClass'>
+                        {{storeDeliveryAreaBasedDessertsTypeList.length}} Desserts
                     </p>
-                    <p ng-click="toggleStoreDessertsMenu()" class='showMoreShopMenuSummaryInfoPClass'>
+                    <p ng-click="toggleStoreDessertsMenu()" class='showMoreStoreMenuSummaryInfoPClass'>
                         {{toggleStoreDessertsMenuSummaryInfoLblText}}
                     </p>
                 </div>
@@ -139,7 +139,7 @@
 
 
             <!-- store served all desserts type info -->
-            <div ng-show="isToggleStoreDessertsMenu" ng-controller="StoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
+            <div ng-show="isToggleStoreDessertsMenu" ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopStoreServedAllDessertsProductContainerDivClass">
                 
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="dkDeliveryAreaBasedDessertsTypeList.length>=1" class="cshopstoreServedDessertsProductNoteLIClass">
