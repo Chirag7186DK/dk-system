@@ -885,12 +885,12 @@
         padding:5px!important;
     }
 
-    .cshopstore_notFoundProductMsgDivClass{
+    .storeProductNotFoundMsgDivClass{
         text-align:center!important;
         font-size:20px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        color: #f54264!important;
+        color:#f54264!important;
     }
 
     .cshopstore_allUserReviewAboutProductContainerDivClass{
