@@ -893,21 +893,21 @@
         color:#f54264!important;
     }
 
-    .cshopstore_allUserReviewAboutProductContainerDivClass{
+    .storeAllUserReviewedRatingContainerDivClass{
         margin-top:15px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
         border:1px solid #DCE0EF!important;
     }
 
-    .cshopstore_allUserReviewRatingDetailsLabelSpanClass{
+    .storeAllUserReviewedRatingLblSClass{
         color:#800080!important;
         font-size:24px!important;
         font-family:serif!important;
         font-weight:normal!important;
     }
 
-    .cshopstore_displayEachUserReviewAboutProductContainerDivClass{
+    .storeDisplayEachUserReviewedRatingContainerDivClass{
         padding-top:12px!important;
         padding-bottom:12px!important;
         border-bottom:1px solid #eee!important;
@@ -916,47 +916,39 @@
         font-weight:normal!important;
     }
 
-    .cshopstore_displayEachUserReviewAboutProductContainerDivClass:last-child{
+    .storeDisplayEachUserReviewedRatingContainerDivClass:last-child{
         border-bottom:none!important;
     }
 
-    .cshopstore_eachUserNameRatedReviewAbtProductPClass{
+    .storeEachUserNameRatedReviewPClass{
         color:rgb(70, 75, 80)!important;
         font-size:22px!important;
         font-family:serif!important;
         font-weight:normal!important;
     }
 
-    .cshopstore_userAvgRatedAboutProductSClass{
-        padding:2px!important;
-        color:rgb(229, 5, 245)!important;
-        font-size:12px!important;
-        font-family:serif!important;
-        font-weight:normal!important;
-    }
-
-    .cshopstore_eachUserRatedAbtProductPClass{
+    .storeEachUserRatedReviewPClass{
         color:rgb(70, 75, 80)!important;
         font-size:16px!important;
         font-family:serif!important;
         font-weight:normal!important;
     }
 
-    .cshopstore_ratedQuestionAboutProductSClass{
+    .storeEachUserRatingReviewQuestionAnswerSClass{
         padding:2px!important;
         color:rgba(205, 46, 216, 0.44)!important;
         font-family:serif!important;
         font-weight:normal!important;
     }
     
-    .cshopstore_eachUserAvgRatedReviewAbtProductPClass{
+    .storeEachUserAvgRatedReviewPClass{
         color:rgb(70, 75, 80)!important;
         font-size:16px!important;
         font-family:serif!important;
         font-weight:normal!important;
     }
     
-    .cshopstore_reviewRatingNotFoundMsgDivClass{
+    .storeReviewRatingNotFoundMsgDivClass{
         text-align:left!important;
         font-weight:bold!important;
         font-family:serif!important;
@@ -964,7 +956,7 @@
         color:#fb366e!important;
     }
 
-    .cshopstore_workingStyleWrapperDivClass{
+    .storeWorkingStyleWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         padding-top:10px!important;
@@ -973,7 +965,7 @@
         border:1px solid #e7e7e7!important;
     }
 
-    .cShopstoreWorkingStyleHeaderPClass{
+    .storeWorkingStyleHeaderPClass{
         text-align:center!important;
         font-weight:normal!important;
         font-family:serif!important;
@@ -981,11 +973,11 @@
         color:#ab0b38!important;
     }
 
-    .cShopstoreWorkingStyleIconClass{
+    .storeWorkingStyleTimeIconClass{
         color:rgba(154, 205, 50, 0.88)!important;
     }
 
-    .cShopStoreWorkingEachDaySchedulePClass{
+    .storeWorkingEachDaySchedulePClass{
         text-align:left!important;
         font-weight:bold!important;
         font-family:serif!important;
@@ -994,11 +986,11 @@
         font-style:italic!important;
     }
 
-    .cShopStoreWorkingTodayDaySchedulePClass{
+    .storeWorkingTodayDaySchedulePClass{
         color:#fb366e!important;
     }
 
-    .cshopstore_workingStyleNotFoundMsgDivClass{
+    .storeWorkingStyleNotFoundMsgDivClass{
         text-align:left!important;
         font-weight:bold!important;
         font-family:serif!important;
