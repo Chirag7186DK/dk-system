@@ -47,9 +47,9 @@ function LocationController($scope, $rootScope, LocationServices){
         
         // buildDeliveryCityListHtmlSelectControl
         $rootScope.buildDeliveryCityListHtmlSelectControl = function(cityList, cityListLoadedOnPage){
-            if($('#dkDeliveryCityListSelectCtrlId').length===1){
+            if($('#deliveryCityListSelectCtrlId').length===1){
                 // get html element obj 
-                var cityListSelectControlElementObj = document.getElementById("dkDeliveryCityListSelectCtrlId");
+                var cityListSelectControlElementObj = document.getElementById("deliveryCityListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
                 $(cityListSelectControlElementObj).find('option').remove();
                 $(cityListSelectControlElementObj).selectpicker('destroy');
@@ -101,13 +101,13 @@ function LocationController($scope, $rootScope, LocationServices){
                 && $rootScope.userSelectedDeliveryCityId!==false && $rootScope.userSelectedDeliveryCityId!==undefined){
                 $rootScope.isUserChangedDeliveryCity = true;
                 // remove existing delivery area list
-                if($('#dkDeliveryAreaListWrapperDivId').length===1){
-                    $('#dkDeliveryAreaListSelectCtrlId').find('option').remove();
+                if($('#deliveryAreaListWrapperDivId').length===1){
+                    $('#deliveryAreaListSelectCtrlId').find('option').remove();
                     $rootScope.loadDeliveryAreaList(cityListLoadedOnPage);
                 }
                 // remove existing delivery area desserts type list
-                if($('#dkDeliveryAreaDessertsProductListWrapperDivId').length===1){
-                    $('#dkDeliveryAreaDessertsProductListSelectCtrlId').find('option').remove();
+                if($('#deliveryAreaDessertsTypeListWrapperDivId').length===1){
+                    $('#deliveryAreaDessertsTypeListSelectCtrlId').find('option').remove();
                 }
             }
         };
@@ -156,8 +156,8 @@ function LocationController($scope, $rootScope, LocationServices){
         
         // buildDeliveryAreaListHtmlSelectControl
         $rootScope.buildDeliveryAreaListHtmlSelectControl = function(dkDeliveryAreaList, loadAreaListOnPage){
-            if($('#dkDeliveryAreaListSelectCtrlId').length===1){    
-                var areaListSelectControlElementObj = document.getElementById("dkDeliveryAreaListSelectCtrlId");
+            if($('#deliveryAreaListSelectCtrlId').length===1){    
+                var areaListSelectControlElementObj = document.getElementById("deliveryAreaListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
                 $(areaListSelectControlElementObj).find('option').remove();
                 $(areaListSelectControlElementObj).selectpicker('destroy');
@@ -220,8 +220,8 @@ function LocationController($scope, $rootScope, LocationServices){
                 $rootScope.isUserChangedDeliveryArea = true;
             }
             // remove existing desserts type list
-            if($('#dkDeliveryAreaDessertsProductListWrapperDivId').length===1){
-                $('#dkDeliveryAreaDessertsProductListSelectCtrlId').find('option').remove();
+            if($('#deliveryAreaDessertsTypeListWrapperDivId').length===1){
+                $('#deliveryAreaDessertsTypeListSelectCtrlId').find('option').remove();
                 $rootScope.loadDeliveryAreaBasedDessertsTypeList($rootScope.isUserChangedDeliveryArea, loadAreaListOnPage);
             }
         };
@@ -259,7 +259,7 @@ function LocationController($scope, $rootScope, LocationServices){
         
         // buildDeliveryAreaBasedDessertsTypeListHtmlSelectControl
         $rootScope.buildDeliveryAreaBasedDessertsTypeListHtmlSelectControl = function(allDessertsTypeList, loadDessertTypeListOnPage){
-            if($('#dkDeliveryAreaDessertsTypeListSelectCtrlId').length===1){    
+            if($('#deliveryAreaDessertsTypeListSelectCtrlId').length===1){    
                 var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsTypeListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
                 $(dessertsTypeListSelectControlElementObj).find('option').remove();
