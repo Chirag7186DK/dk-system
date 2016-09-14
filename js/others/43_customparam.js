@@ -1937,8 +1937,10 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
             paramObj['minorderamt'] = productDetailsObj['minorderamt'];
             paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
             paramObj['orderStoreItemId'] = productDetailsObj['orderStoreItemId'];
+            paramObj['status'] = 'ZC';
+            paramObj['reason'] = 'Removed/Deleted by customer';
         }
-        if(Object.keys(paramObj).length===10){
+        if(Object.keys(paramObj).length===12){
             return paramObj;
         }else{
             return false;
