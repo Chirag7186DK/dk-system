@@ -433,7 +433,6 @@
     
     /*  store all products css code */
 
-
     .storeSummaryTypeInfoWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
@@ -623,11 +622,6 @@
         padding-right:20px!important;
     }
 
-    .cShopStoreViewAllProductDetailsBodyWrapperDivClass{
-        padding-left:1px!important;
-        padding-right:1px!important;
-    }
-
     .storeProductTypeAllCategoryWrapperDivClass{
         margin-top:14px!important;
         padding-left:0px!important;
@@ -676,7 +670,7 @@
         font-size:14px!important;
     }
 
-    .cShopStoreProductFilterOperationWrapperDivClass{
+    .storeProductFilterOperationWrapperDivClass{
         padding-left:0px!important;
         padding-top:10px;
         padding-bottom:20px;
@@ -686,7 +680,7 @@
         border:1px solid #e7e7e7;
     }
 
-    .cshopstore_tipAbtFilterProductPClass{
+    .storeTipAbtProductFilterPClass{
         padding:2px!important;
         text-align:center;
         font-weight:bold;
@@ -695,8 +689,8 @@
         font-size:18px!important;
     }
 
-    .cshopstore_toggleProductFilterBtnClass, 
-    .cshopstore_toggleProductFilterBtnClass:hover{
+    .storeToggleProductFilterBtnClass, 
+    .storeToggleProductFilterBtnClass:hover{
         border-radius:0px!important;
         font-weight:bold!important;
         padding:0px!important;
@@ -709,38 +703,38 @@
         font-family:serif!important;
     }
 
-    .cshopstore_productFilterOperationContainerDivClass{
+    .storeProductFilterOperationContainerDivClass{
         padding-top:10px!important;
     }
 
-    .cshopstore_productFilterPopupBodyDivClass{
+    .storeProductFilterPopupBodyDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
     }
 
-    .cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass{
-        text-align:center;
+    .storeProductCountInfMsgPopupDivClass{
+        text-align:center!important;
         font-size:13px!important;
         color:rgba(218, 13, 47, 0.85)!important;
     }
 
-    .cshopstore_priceFilterOperationDivClass{
+    .storePriceFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         margin-bottom:20px!important;
         margin-left:25%!important;
     }
 
-    .cshopstore_priceFilterOperationDivClass .dropdown-menu>.active>a{
+    .storePriceFilterOperationDivClass .dropdown-menu>.active>a{
         background:rgba(240, 99, 122, 0.85)!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
     }
 
-    .cshopstore_priceFilterOperationDivClass .btn, 
-    .cshopstore_priceFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .cshopstore_priceFilterOperationDivClass .btn:hover{
+    .storePriceFilterOperationDivClass .btn, 
+    .storePriceFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .storePriceFilterOperationDivClass .btn:hover{
         border-radius:0px!important;
         height:40px!important;
         background-color:#fff!important;
@@ -751,29 +745,29 @@
         color:rgba(0, 0, 0, 0.73)!important;
     }
 
-    .cshopstore_labelPriceFilterPClass{
+    .storePriceFilterLblPClass{
         text-align:left!important;
         font-size:14px!important;
         color:#f17023!important;
     }
 
-    .cshopstore_sizeFilterOperationDivClass{
+    .storeProductSizeFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         margin-bottom:20px!important;
         margin-left:25%!important;
     }
 
-    .cshopstore_sizeFilterOperationDivClass .dropdown-menu>.active>a{
+    .storeProductSizeFilterOperationDivClass .dropdown-menu>.active>a{
         background:rgba(240, 99, 122, 0.85)!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
     }
 
-    .cshopstore_sizeFilterOperationDivClass .btn, 
-    .cshopstore_sizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .cshopstore_sizeFilterOperationDivClass .btn:hover{
+    .storeProductSizeFilterOperationDivClass .btn, 
+    .storeProductSizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .storeProductSizeFilterOperationDivClass .btn:hover{
         border-radius:0px!important;
         height:40px!important;
         background-color:#fff!important;
@@ -784,29 +778,29 @@
         color:rgba(0, 0, 0, 0.73)!important;
     }
 
-    .cshopstore_labelSizeFilterPClass{
+    .storeProductSizeFilterLblPClass{
         text-align:left!important;
         font-size:14px!important;
         color:#f17023!important;
     }
 
-    .cshopstore_discountFilterOperationDivClass{
+    .storeDiscountFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         margin-bottom:20px!important;
         margin-left:25%!important;
     }
 
-    .cshopstore_discountFilterOperationDivClass .dropdown-menu>.active>a{
+    .storeDiscountFilterOperationDivClass .dropdown-menu>.active>a{
         background:rgba(240, 99, 122, 0.85)!important;
         font-weight: normal!important;
         font-family: serif!important;
         font-size:16px!important;
     }
 
-    .cshopstore_discountFilterOperationDivClass .btn, 
-    .cshopstore_discountFilterOperationDivClass .btn-group.open .dropdown-toggle,
-    .cshopstore_discountFilterOperationDivClass .btn:hover{
+    .storeDiscountFilterOperationDivClass .btn, 
+    .storeDiscountFilterOperationDivClass .btn-group.open .dropdown-toggle,
+    .storeDiscountFilterOperationDivClass .btn:hover{
         border-radius:0px!important;
         height:40px!important;
         background-color:#fff!important;
@@ -817,13 +811,18 @@
         color:rgba(0, 0, 0, 0.73)!important;
     }
 
-    .cshopstore_labelDiscountFilterPClass{
+    .storeDiscountFilterLblPClass{
         text-align:left!important;
         font-size:14px!important;
         color:#f17023!important;
     }
-
-    .cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass{
+    
+    .storeAllProductDetailsBodyWrapperDivClass{
+        padding-left:1px!important;
+        padding-right:1px!important;
+    }
+    
+    .storeProductFounCountInfoMsgDivClass{
         font-family:serif!important;
         color:rgba(218, 13, 47, 0.85)!important;
         font-size:20px!important;
@@ -832,44 +831,26 @@
         padding:10px!important;
     }
 
-    .cshopstore_productBoxWidgetDivClass{
+    .storeProductBoxDivClass{
         padding-left:1px!important;
     }
 
-    .cshopstore_productBoxWidgetDividerLineDivClass{
-        margin-bottom:10px;
+    .storeProductBoxDividerLineDivClass{
+        margin-bottom:10px!important;
         border:1px solid rgba(240, 99, 122, 0.85)!important;
     }
 
-    .cshopstore_productNamePClass{
+    .storeProductNamePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
     }
-
-    .cshopstore_productCutPriceTextSClass{
-        text-decoration:line-through!important;
-        color:#999999!important;;
-        font-size:13px!important;
-        margin-right:6px;
-    }
-
-    .cshopstore_productPayBlgPriceTextSClass{
-        font-size:20px!important;
-        margin-right:6px;
-        color:rgb(70, 75, 80)!important;
-    }
-
-    .cshopstore_productDiscountPercentTextSClass{
-        color:#60bf79!important;
-        font-size:14px!important;
-    }
-
-    .cshopstore_productWeightPClass{
+    
+    .storeProductSizePClass{
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
     }
     
-    .cshopstore_productVegIconClass{
+    .storeProductVegIconClass{
         color:#4b8211!important;
         border-radius:0px!important;
         font-size:12px!important;
@@ -877,7 +858,26 @@
         font-weight:bold!important;
     }
 
-    .cshopstore_specificProductViewDetailsBtnClass{
+    .storeProductOnlineSellingPriceTextSClass{
+        font-size:20px!important;
+        margin-right:6px;
+        color:rgb(70, 75, 80)!important;
+    }
+    
+    .storeProductPriceCutTextSClass{
+        text-decoration:line-through!important;
+        color:#999999!important;;
+        font-size:13px!important;
+        margin-right:6px;
+    }
+
+    .storeProductDiscountPercentTextSClass{
+        color:#60bf79!important;
+        font-size:14px!important;
+    }
+
+    .storeViewProductDetailsBtnClass,
+    .storeViewProductDetailsBtnClass:hover{
         border-radius:0px!important;
         font-weight:normal!important;
         background-color:#ab0b38!important;
