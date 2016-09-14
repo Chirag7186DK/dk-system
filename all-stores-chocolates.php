@@ -72,16 +72,17 @@
             
             <!-- customer bread crumb -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
-                <ul class="cshopstore_userBreadcrumbULClass list-inline">
-                    <li class='userBreadcrumbHomeLIClass'>
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
                             Home
                         </a>
                     </li>
-                    <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">
-                            Chocolates
-                        </a>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        Chocolates
                     </li>
                 </ul>
             </div>
