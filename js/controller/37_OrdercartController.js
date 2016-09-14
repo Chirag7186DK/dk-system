@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('OrderCartController', OrderCartController);
 
 // OrderCartController
-function OrderCartController($rootScope, OrderCartServices, ShopStoreServices){
+function OrderCartController($rootScope, OrderCartServices, StoreServices){
     try{
          
         // checkProductDataToAddInOrdercart 
@@ -52,7 +52,7 @@ function OrderCartController($rootScope, OrderCartServices, ShopStoreServices){
                                 // refresh user order cart dashboard summary data using services
                                 OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
                                 if(productDataFromSession!=='session'){
-                                    ShopStoreServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
+                                    StoreServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
                                 }
                             }
                             showNotificationBoxMsg(notificationMsgStr);
