@@ -1000,25 +1000,45 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check ordercart_itemid key present or not
-        if(array_key_exists('ordercart_itemid', $paramJsonData)){
-            if($paramJsonData['ordercart_itemid']!='' && ($paramJsonData['ordercart_itemid'])>0){
+        // check ordercartId key present or not
+        if(array_key_exists('ordercartId', $paramJsonData)){
+            if($paramJsonData['ordercartId']!='' && ($paramJsonData['ordercartId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check reason key present or not
-        if(array_key_exists('reason', $paramJsonData)){
-            if($paramJsonData['reason']!='' && strlen($paramJsonData['reason'])>0){
+        // check ordercartStoreId key present or not
+        if(array_key_exists('ordercartStoreId', $paramJsonData)){
+            if($paramJsonData['ordercartStoreId']!='' && ($paramJsonData['ordercartStoreId'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check status key present or not
-        if(array_key_exists('status', $paramJsonData)){
-            if($paramJsonData['status']=='ZC' || $paramJsonData['status']=='ZA'){
+        // check store_id key present or not
+        if(array_key_exists('store_id', $paramJsonData)){
+            if($paramJsonData['store_id']!='' && ($paramJsonData['store_id'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==5){
+        // check ccaId key present or not
+        if(array_key_exists('ccaId', $paramJsonData)){
+            if($paramJsonData['ccaId']!='' && ($paramJsonData['ccaId'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check minorderamt key present or not
+        if(array_key_exists('minorderamt', $paramJsonData)){
+            $givenParamDataCorrectCount++;
+        }
+        // check deliveryfee key present or not
+        if(array_key_exists('deliveryfee', $paramJsonData)){
+            $givenParamDataCorrectCount++;
+        }
+        // check orderStoreItemId key present or not
+        if(array_key_exists('orderStoreItemId', $paramJsonData)){
+            if($paramJsonData['orderStoreItemId']!='' && ($paramJsonData['orderStoreItemId'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==8){
             $retStatus = 'TRUE';
         }
         return $retStatus;
