@@ -261,47 +261,47 @@
             </div>
             
             <!-- displaying all user reviewed rating details -->
-            <div ng-show="isShowStoreRatingReviewDetails" ng-controller='StoreController' ng-init="loadStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allUserReviewAboutProductContainerDivClass">
-                <span ng-if="allUserRatingReviewDetails.length>0" class="cshopstore_allUserReviewRatingDetailsLabelSpanClass">
+            <div ng-show="isShowStoreRatingReviewDetails" ng-controller='StoreController' ng-init="loadStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeAllUserReviewedRatingContainerDivClass">
+                <span ng-if="allUserRatingReviewDetails.length>0" class="storeAllUserReviewedRatingLblSClass">
                     Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
                 </span>
-                <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_displayEachUserReviewAboutProductContainerDivClass">
-                    <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 cshopstore_eachUserReviewedRatingRightSideDivClass">
-                        <p class="cshopstore_eachUserNameRatedReviewAbtProductPClass">
+                <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeDisplayEachUserReviewedRatingContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="storeEachUserNameRatedReviewPClass">
                             reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
                         </p>
-                        <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT' === eachReviewedRatingTypeDetails.answerPattern" class='cshopstore_eachUserRatedAbtProductPClass'>
+                        <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT' === eachReviewedRatingTypeDetails.answerPattern" class='storeEachUserRatedReviewPClass'>
                             {{eachReviewedRatingTypeDetails.questionTitle}} : 
-                            <span class="cshopstore_ratedQuestionAboutProductSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
+                            <span class="storeEachUserRatingReviewQuestionAnswerSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
                         </p>
                         <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA' === eachReviewedRatingTypeDetails.answerPattern" class='cshopstore_eachUserReviewedCommentAbtProductPClass'>
                             {{eachReviewedRatingTypeDetails.answerText}}
                         </p>
-                        <p class="cshopstore_eachUserAvgRatedReviewAbtProductPClass">
+                        <p class="storeEachUserAvgRatedReviewPClass">
                             Avg Rating : {{eachUserReviewedRatingDetails.avgRated}} OUT OF 5
                         </p>
                     </div>
                 </div>
-                <div ng-hide='allUserRatingReviewDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_reviewRatingNotFoundMsgDivClass">
-                    No any customer(s) reviewed & ratings yet !!!
+                <div ng-hide='allUserRatingReviewDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeReviewRatingNotFoundMsgDivClass">
+                    No any customer(s) reviewed & ratings yet about product !!!
                 </div>
             </div>
 
             <!-- store working style -->
-            <div ng-show='isShowStoreWorkingStyleDetails' ng-controller='StoreController' ng-init="loadStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperDivClass">
-                <div ng-show='storeWorkingStyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleWrapperContainerDivClass">
-                    <p class='cShopstoreWorkingStyleHeaderPClass'>
-                        Our Working Hours <i class="fa fa-clock-o faa-tada animated cShopstoreWorkingStyleIconClass"></i>
+            <div ng-show='isShowStoreWorkingStyleDetails' ng-controller='StoreController' ng-init="loadStoresWorkingStyle()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeWorkingStyleWrapperDivClass">
+                <div ng-show='storeWorkingStyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeWorkingStyleWrapperContainerDivClass">
+                    <p class='storeWorkingStyleHeaderPClass'>
+                        Our Working Hours <i class="fa fa-clock-o faa-tada animated storeWorkingStyleTimeIconClass"></i>
                     </p>
-                    <p class='cShopstoreWorkingStyleBodyPClass'>
-                        <p ng-repeat="eachWorkingScheduleDetails in storeWorkingStyleDetails" class="cShopStoreWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'cShopStoreWorkingTodayDaySchedulePClass':''}}">
+                    <p class='storeWorkingStyleBodyPClass'>
+                        <p ng-repeat="eachWorkingScheduleDetails in storeWorkingStyleDetails" class="storeWorkingEachDaySchedulePClass {{(eachWorkingScheduleDetails.isTodayDayMatched=='Y')?'storeWorkingTodayDaySchedulePClass':''}}">
                             <span>
                                 {{eachWorkingScheduleDetails.dayName}} ({{eachWorkingScheduleDetails.openTime + "-" + eachWorkingScheduleDetails.closeTime}})
                             </span>
                         </p>
                     </p>
                 </div>
-                <div ng-hide='storeWorkingStyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_workingStyleNotFoundMsgDivClass">
+                <div ng-hide='storeWorkingStyleDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeWorkingStyleNotFoundMsgDivClass">
                     No working hours defined by '{{storeInfo.shopStoreNameInCaps}}' store !
                 </div>
             </div>
