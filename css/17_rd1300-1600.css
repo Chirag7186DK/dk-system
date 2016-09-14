@@ -51,20 +51,20 @@
         font-size:12px!important;
     }
 
-    /* dk delivery city area desserts container css code */
+    /* delivery city area desserts type container css code */
 
-    .dkDeliveryCityAreaDessertsContainerDivClass{
+    .deliveryCityAreaDessertsContainerDivClass{
         background-image:url(../images/dk/homebanner/landing_pagebg-1500|500.png);
         background-size:cover!important;
         height:310px!important;
         border-bottom:1px solid #e6e0e0!important;
     }
 
-    .dkDeliveryCityAreaDessertsTagLinesContainerDivClass{
+    .deliveryCityAreaDessertsTagLinesContainerDivClass{
         margin-top:5px!important;
     }
 
-    .dkDeliveryCityAreaDessertsTagLinesPClass{
+    .deliveryCityAreaDessertsTagLinesPClass{
         text-align:center!important;
         color: #f32956!important;
         font-size:25px!important;
@@ -72,31 +72,31 @@
         margin:0px!important;
     }
 
-    .dkDeliveryCityListContainerDivClass{
+    .deliveryCityListContainerDivClass{
         margin-top:4px!important;
     }
 
-    .dkDeliveryCityListWrapperDivClass{
+    .deliveryCityListWrapperDivClass{
         margin-left:30%!important;
     }
 
-    .dkDeliveryCityLblSClass{
+    .deliveryCityLblSClass{
         color:rgb(1, 122, 241)!important;
         font-size:17px!important;
         font-weight:500!important;
         font-family:serif!important;
     }
 
-    .dkDeliveryCityListWrapperDivClass .dropdown-menu>.active>a{
+    .deliveryCityListWrapperDivClass .dropdown-menu>.active>a{
         background:#fb366e!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
     }
 
-    .dkDeliveryCityListWrapperDivClass .btn, 
-    .dkDeliveryCityListWrapperDivClass .btn:hover,
-    .dkDeliveryCityListWrapperDivClass .btn-group:focus{
+    .deliveryCityListWrapperDivClass .btn, 
+    .deliveryCityListWrapperDivClass .btn:hover,
+    .deliveryCityListWrapperDivClass .btn-group:focus{
         border-radius:0px!important;
         height:40px!important;
         background-color:#fff!important;
@@ -108,30 +108,30 @@
         border-color:#CDCEE8!important;
     }
 
-    .dkDeliveryAreaListContainerDivClass{
+    .deliveryAreaListContainerDivClass{
         margin-top:20px!important;
     }
 
-    .dkDeliveryAreaListWrapperDivClass{
+    .deliveryAreaListWrapperDivClass{
         margin-left:30%!important;
     }
 
-    .dkDeliveryAreaLblSClass{
+    .deliveryAreaLblSClass{
         color:rgb(1, 122, 241)!important;
         font-size:17px!important;
         font-weight:500!important;
         font-family:serif!important;
     }
 
-    .dkDeliveryAreaListWrapperDivClass .dropdown-menu>.active>a{
+    .deliveryAreaListWrapperDivClass .dropdown-menu>.active>a{
         background:#fb366e!important;
         font-weight: normal!important;
         font-family: serif!important;
         font-size:16px!important;
     }
 
-    .dkDeliveryAreaListWrapperDivClass .btn, 
-    .dkDeliveryAreaListWrapperDivClass .btn:hover{
+    .deliveryAreaListWrapperDivClass .btn, 
+    .deliveryAreaListWrapperDivClass .btn:hover{
         border-radius:0px!important;
         height:40px!important;
         background-color:#fff!important;
@@ -143,30 +143,30 @@
         border-color:#CDCEE8!important;
     }
 
-    .dkDeliveryAreaDessertsProductListContainerDivClass{
+    .deliveryAreaDessertsTypeListContainerDivClass{
         margin-top:20px!important;
     }
 
-    .dkDeliveryAreaDessertsProductListWrapperDivClass{
+    .deliveryAreaDessertsTypeListWrapperDivClass{
         margin-left:30%!important;
     }
 
-    .dkDeliveryAreaDessertsProductLblSClass{
+    .deliveryAreaDessertsTypeListLblSClass{
         color:rgb(1, 122, 241)!important;
         font-size:17px!important;
         font-weight:500!important;
         font-family:serif!important;
     }
 
-    .dkDeliveryAreaDessertsProductListWrapperDivClass .dropdown-menu>.active>a{
+    .deliveryAreaDessertsTypeListWrapperDivClass .dropdown-menu>.active>a{
         background:#fb366e!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
     }
 
-    .dkDeliveryAreaDessertsProductListWrapperDivClass .btn, 
-    .dkDeliveryAreaDessertsProductListWrapperDivClass .btn:hover{
+    .deliveryAreaDessertsTypeListWrapperDivClass .btn, 
+    .deliveryAreaDessertsTypeListWrapperDivClass .btn:hover{
         border-radius:0px!important;
         height:40px!important;
         background-color:#fff!important;
