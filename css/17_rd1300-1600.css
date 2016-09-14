@@ -1577,34 +1577,6 @@
     
     /*  myaccount sigin form css code */
 
-    .ma_userBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .ma_userBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:17px!important;
-        padding-top:6px!important;
-    }
-
-    .ma_userBreadcrumbULClass li a, 
-    .ma_userBreadcrumbULClass li a:hover{
-        color:#828282!important;
-        border-bottom:2px dotted #CDCEE8!important;
-        text-decoration:none!important;
-        font-weight:100!important;
-        cursor:pointer!important;
-        font-size:14px!important;
-    }
-
-    .ma_userBreadcrumbMyAccountTitleLIClass{
-        color:#828282!important;
-        cursor:pointer;
-        font-size:14px!important;
-    }
-
     .ma_userSignInFormInfoWrapperDivClass{
         margin-top:20px;
         padding-top:10px!important;
