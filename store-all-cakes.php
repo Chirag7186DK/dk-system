@@ -179,32 +179,32 @@
             </div>
             
             <!-- product filter operation -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreProductFilterOperationWrapperDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductFilterOperationWrapperDivClass">
                 <!-- info / tips about product filtering operation -->
-                <p class='cshopstore_tipAbtFilterProductPClass'>
+                <p class='storeTipAbtProductFilterPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
-                    <button ng-click="toggleStoreAllProductFilterContainer()" class="btn cshopstore_toggleProductFilterBtnClass" title="Click to show/hide product filter">
+                    <button ng-click="toggleStoreAllProductFilterContainer()" class="btn storeToggleProductFilterBtnClass">
                         <i class="fa fa-filter"></i> {{toggleStoreProductFilterBtnLabel}}
                     </button>
                 </p>
                 <div ng-show="isShowStoreAllProductFilter" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{storeProductFilterPopupDivClass}}">
-                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productFilterPopupBodyDivClass'>    
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_allProductInfoAbtProductCategoryProductFoundMsgPopupDivClass'>
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductFilterPopupBodyDivClass'>    
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductCountInfMsgPopupDivClass'>
                             <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Found {{storeTotalProductCount}} Items)
                         </div>
                         <!-- by price -->
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_priceFilterOperationDivClass'>
-                            <p class='cshopstore_labelPriceFilterPClass'>By price</p>
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 storePriceFilterOperationDivClass'>
+                            <p class='storePriceFilterLblPClass'>By price</p>
                             <select id='allProductPriceFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Price" multiple data-selected-text-format="count>1"></select>
                         </div>
                         <!-- by size -->
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_sizeFilterOperationDivClass'>
-                            <p class='cshopstore_labelSizeFilterPClass'>By size</p>
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 storeProductSizeFilterOperationDivClass'>
+                            <p class='storeProductSizeFilterLblPClass'>By size</p>
                             <select id='allProductSizeFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Size" multiple data-selected-text-format="count>1"></select>
                         </div>
                         <!-- by discount -->
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 cshopstore_discountFilterOperationDivClass'>
-                            <p class='cshopstore_labelDiscountFilterPClass'>By discount</p>
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-7 storeDiscountFilterOperationDivClass'>
+                            <p class='storeDiscountFilterLblPClass'>By discount</p>
                             <select id='allProductDiscountFilterListSelectCtrlId' class="selectpicker show-menu-arrow show-tick" data-size="5" data-width="100%" data-live-search="true" title="Discount" multiple data-selected-text-format="count>1"></select>
                         </div>
                     </div>
@@ -212,42 +212,42 @@
             </div>
             
             <!-- store all product list will be loaded here -->
-            <div ng-controller="StoreController" ng-show="storeAllProductDetailsList" id='cShopStoreViewAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreViewAllProductDetailsBodyWrapperDivClass">
+            <div ng-controller="StoreController" ng-show="storeAllProductDetailsList" id='storeAllProductDetailsBodyWrapperDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeAllProductDetailsBodyWrapperDivClass">
                 
-                <!-- summary info display -->
-                <div ng-show='storeAllProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 cShopStoreInfoAbtProductCategoryProductFoundMsgDivClass'>
+                <!-- found products count info display -->
+                <div ng-show='storeAllProductDetailsList.length' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductFounCountInfoMsgDivClass'>
                     <i class="fa fa-birthday-cake"></i> {{storeDefaultSelectProductCategoryTitle}} (Showing {{storeTotalProductCount}} Items)
                 </div>
                 
                 <!-- each product details iterate for displaying purpose -->
-                <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 cshopstore_productBoxWidgetDivClass">
+                <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 storeProductBoxDivClass">
                     <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
-                    <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 cshopstore_productBoxWidgetDividerLineDivClass'></div>
-                    <p class='cshopstore_productNamePClass'>
+                    <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 storeProductBoxDividerLineDivClass'></div>
+                    <p class='storeProductNamePClass'>
                         {{eachProductDetails.productListTitle}}
                     </p>
-                    <p class='cshopstore_productWeightPClass'>
+                    <p class='storeProductSizePClass'>
                         Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
                         <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
-                            <i class="fa fa-square cshopstore_productVegIconClass"></i>
+                            <i class="fa fa-square storeProductVegIconClass"></i>
                         </span>
-                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right vap_productNonvegIconClass">
-                            <i class="fa fa-square cshopstore_productVegIconClass"></i>
+                        <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right storeProductVegIconClass">
+                            <i class="fa fa-square storeProductVegIconClass"></i>
                         </span>
                     </p>
-                    <p class='cshopstore_productPricePClass'> 
-                        <span class='cshopstore_productPayBlgPriceTextSClass'>
+                    <p class='storeProductPricePClass'> 
+                        <span class='storeProductOnlineSellingPriceTextSClass'>
                             <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureOnlineSellingPrice}}
                         </span>
-                        <span class='cshopstore_productCutPriceTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
+                        <span class='storeProductPriceCutTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
                             <i class="fa fa-rupee"></i> {{eachProductDetails.productFeatureBasePrice}}
                         </span>
-                        <span class='cshopstore_productDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
+                        <span class='storeProductDiscountPercentTextSClass' ng-if="eachProductDetails.productFeatureDiscount !== ''">
                             ({{eachProductDetails.productFeatureDiscount}}% Off)
                         </span>
                     </p>
                     <p class='cshopstore_productBtnWrapperPClass'> 
-                        <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' title='Click to view more about {{eachProductDetails.productListTitle}} item details' class="cshopstore_specificProductViewDetailsBtnClass btn">
+                        <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' class="storeViewProductDetailsBtnClass btn">
                             <i class="fa fa-list"></i> VIEW
                         </button>
                     </p>
