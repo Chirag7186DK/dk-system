@@ -1926,27 +1926,26 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
         var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
-            && jQuery.isEmptyObject(userLoggedDataObj)===false){
-            if(productDetailsObj!==false && productDetailsObj!==undefined 
-                && jQuery.isEmptyObject(productDetailsObj)===false){
-                if(productDetailsObj.hasOwnProperty('ordercartItemId')===true){
-                    if(parseInt(productDetailsObj['ordercartItemId'])>0){
-                        paramObj['ordercart_itemid'] = productDetailsObj['ordercartItemId'];
-                        paramObj['reason'] = 'Item removed by customer';
-                        paramObj['status'] = 'ZC';
-                        paramObj = $.extend(paramObj, userLoggedDataObj);
-                    }
-                }
-            }
+            && jQuery.isEmptyObject(userLoggedDataObj)===false
+            && productDetailsObj!==false && productDetailsObj!==undefined 
+            && jQuery.isEmptyObject(productDetailsObj)===false){
+            paramObj = $.extend(paramObj, userLoggedDataObj);
+            paramObj['ordercartId'] = productDetailsObj['ordercartId'];
+            paramObj['ordercartStoreId'] = productDetailsObj['ordercartStoreId'];
+            paramObj['store_id'] = productDetailsObj['store_id'];
+            paramObj['ccaId'] = productDetailsObj['ccaId'];
+            paramObj['minorderamt'] = productDetailsObj['minorderamt'];
+            paramObj['deliveryfee'] = productDetailsObj['deliveryfee'];
+            paramObj['orderStoreItemId'] = productDetailsObj['orderStoreItemId'];
         }
-        if(Object.keys(paramObj).length===6){
+        if(Object.keys(paramObj).length===10){
             return paramObj;
         }else{
             return false;
         }
     }catch(ex){
         // console.log("problem in getParamDataToRemoveItemFromOrdercart ex=>"+ex);
-        paramObj = {};
+        return false;
     }
 }
 
