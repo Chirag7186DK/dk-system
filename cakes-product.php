@@ -212,7 +212,7 @@
                 </p>
                 <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
                     Message On Cake
-                    <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
+                    <textarea product-msgbox-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
                     <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_specificProductAddBtnClass btn">
