@@ -263,7 +263,7 @@
                         <!-- each store basic info display -->
                         <div class="uca_ordercartRequestedEachStoreBasicInfoDivClass">
                             <p class="uca_ordercartRequestedEachStoreNamePClass">
-                                {{eachStoreAllItemDataObj.shopStoreTitle}}
+                                Item added from '{{eachStoreAllItemDataObj.shopStoreTitle}}' store
                             </p>
                             <p class="uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass">
                                 Order will be deliver from 'Dhange Chowk' to '{{eachStoreAllItemDataObj.deliveryAreaname}}'
@@ -280,10 +280,14 @@
                             <p class="uca_ordercartRequestedEachStoreTotalAmtPClass">
                                 Total Amt: {{eachStoreAllItemDataObj.totalamount}}
                             </p>
+                            <p ng-click="toggleOrdercartRequestedStoreItemsList('');" class="uca_ordercartRequestedEachStoreToggleItemsAddedLblPClass">
+                                Show Added Items In Cart 
+                                <i class='fa fa-chevron-circle-up'></i>
+                            </p>
                             <hr class='uca_ordercartRequestedEachStoreBasicInfoHrClass'>
                         </div>
                         <!-- each store all items will be display -->
-                        <div ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass uca_ordercartRequestedEachStoreItemDivClass{{eachItemDataObj.orderStoreItemId}}'>
+                        <div ng-show="false" ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass uca_ordercartRequestedEachStoreItemDivClass{{eachItemDataObj.orderStoreItemId}}'>
                             <p class="uca_ordercartRequestedEachStoreItemNamePClass">
                                 {{eachItemDataObj.productListTitle}}
                             </p>
