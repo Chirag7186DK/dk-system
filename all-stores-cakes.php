@@ -91,7 +91,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
             <!-- all stores wise info container -->
-            <div ng-controller="StoreController" ng-init="loadDeliveryAreaBasedDessertsTypeStoresList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoContainerDivClass">
+            <div ng-controller="StoreController" ng-init="loadStoreListDeliveryAreaBasedDessertsType();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoContainerDivClass">
                 
                 <p ng-if="allStoresInfoList.length>0" class="allStoresInfoNoteHeaderPClass">
                     <i class="fa fa-smile-o"></i> 
