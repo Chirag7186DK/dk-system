@@ -327,10 +327,9 @@ function horizontallyScrollableDessertstypelistStorelevel(){
     };
 }
 
+angular.module('DKAPP').directive('horizontallyScrollableProducttypeProductcategorylistStorelevel', horizontallyScrollableProducttypeProductcategorylistStorelevel);
 
-angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel', scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel);
-
-function scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel(){
+function horizontallyScrollableProducttypeProductcategorylistStorelevel(){
     return function(scope, element, attrs){
         if(scope.$first){
             $(element).addClass('cshopstore_eachRequestedProductCategoryLIClass');
@@ -338,18 +337,18 @@ function scrollHorizontallyDessertsproducttypeProductcategorylistCshopstorelevel
         if(scope.$last){
             // apply horizontal scrolling features
             setTimeout(function(){
-                if($('#cShopStoreProductAllCategoryContainerDivId').length>0){
+                if($('#storeProductTypeAllCategoryContainerDivId').length>0){
                     var existingOwlOptions = {
                         navigation:false,
                         paginationSpeed:1000,
                         goToFirstSpeed:2000,
                         transitionStyle:"fade"
                     };
-                    var owlObj = $("#cShopStoreProductAllCategoryContainerDivId").data('owlCarousel');
+                    var owlObj = $("#storeProductTypeAllCategoryContainerDivId").data('owlCarousel');
                     if(owlObj!==false && owlObj!==undefined && owlObj!==''){
                         owlObj.reinit(existingOwlOptions);
                     }else{
-                        $("#cShopStoreProductAllCategoryContainerDivId").owlCarousel(existingOwlOptions);
+                        $("#storeProductTypeAllCategoryContainerDivId").owlCarousel(existingOwlOptions);
                     }
                 }
             }, 1);
