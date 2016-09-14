@@ -7,7 +7,7 @@ function StoreServices($rootScope){
         
         var storeDetails = {};
         
-        storeDetails.getDeliveryAreaBasedDessertsTypeStoresList = function(preparedParamJsonObj){
+        storeDetails.getDKDeliveryAreaBasedDessertsTypeList = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
@@ -18,7 +18,7 @@ function StoreServices($rootScope){
             return promiseObject;
         };
         
-        storeDetails.getDKDeliveryAreaBasedDessertsTypeList = function(preparedParamJsonObj){
+        storeDetails.getDeliveryAreaBasedDessertsTypeList = function(preparedParamJsonObj){
             var jsonParamBlockUIObject = {};
             jsonParamBlockUIObject['css'] = {"padding":10};
             jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
