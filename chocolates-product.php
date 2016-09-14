@@ -208,7 +208,7 @@
                 </p>
                 <p class='vpd_productQtyPClass'>
                     Qty
-                    <input view-productqtyinput-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" value='1'>
+                    <input product-qty-input-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" value='1'>
                 </p>
                 <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
                     Message On Cake
