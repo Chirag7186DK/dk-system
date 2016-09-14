@@ -433,12 +433,6 @@
     
     /*  store all products css code */
 
-    .cshopstore_dessertsProductTypeCountSClass{
-        background:#f17023!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        font-size:15px!important;
-    }
 
     .storeSummaryTypeInfoWrapperDivClass{
         padding-left:0px!important;
@@ -555,22 +549,29 @@
         margin-top:10px!important;
     }
 
-    .cshopStoreServedAllDessertsProductContainerDivClass{
+    .storeServeDessertsTypeContainerDivClass{
         margin-top:20px!important;
         margin-bottom:10px!important;
         padding-left:0px!important;
     }
 
-    .cshopstoreServedDessertsProductNoteLIClass{
-        text-align:center;
+    .storeServingDessertsTypeNoteInfoLIClass{
+        text-align:center!important;
         list-style:none!important;
         font-weight:normal!important;
         font-size:20px!important;
         color:#f17023!important;
         font-family:serif;
     }
+    
+    .storeCanServeDessertsTypeCountSClass{
+        background:#f17023!important;
+        color:#fff!important;
+        font-weight:bold!important;
+        font-size:15px!important;
+    }
 
-    .cshopStoreServedAllDessertsProductScrollerWrapperDivClass{
+    .storeCanServeDessertsTypeListScrollableWrapperDivClass{
         padding-right:0px!important;
         height:147px!important;
         white-space:nowrap!important;
@@ -578,11 +579,11 @@
         padding-left:0px!important;
     }
 
-    .cshopStoreServedAllDessertsProductScrollerWrapperDivClass .owl-item{
+    .storeCanServeDessertsTypeListScrollableWrapperDivClass .owl-item{
         width:auto!important;
     }
 
-    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass{
+    .storeCanServeEachDessertsTypeScrollableWrapperDivClass{
         color:rgb(249, 99, 99)!important;
         background-color:whitesmoke!important;
         padding-top:10px!important;
@@ -592,16 +593,16 @@
         float:left!important;
     }
 
-    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconPClass{
+    .storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeIconPClass{
         text-align: center;
         margin: 0px!important;
     }
 
-    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconClass{
+    .storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeIconClass{
         font-size:50px!important;
     }
 
-    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductTitleHClass{
+    .storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeTitleHClass{
         text-align:center;
         margin:3px!important;
         font-size:18px!important;
@@ -610,7 +611,7 @@
         margin:0px!important;
     }
 
-    .cshopStoreServedEachDessertsProductScrollerWrapperDivClass .viewDessertsProductPClass{
+    .storeCanServeEachDessertsTypeScrollableWrapperDivClass .viewDessertsTypePClass{
         text-align:center;
         margin:0px!important;
         margin-top:12px!important;
@@ -627,49 +628,30 @@
         padding-right:1px!important;
     }
 
-    .cShopStoreProductAllCategoryWrapperDivClass{
-        padding-top:5px;
+    .storeProductTypeAllCategoryWrapperDivClass{
         margin-top:14px!important;
-        margin-bottom:14px!important;
-        background-color:#fff!important;
-        border:1px solid #e7e7e7!important;
-        border-bottom:none!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
     }
 
-    .infoAbtProductCategoriesPClass{
-        text-align:center;
-        font-weight:bold;
-        color:rgb(70, 75, 80)!important;
-        font-weight:normal!important;
-        font-family:serif;
-        font-size:18px!important;
-    }
-
-    .totalCountProductCategorySClass{
-        background-color:#cb202d!important;
-        font-weight:bold;
-        font-size:15px!important;
-    }
-
-    .cShopStoreProductAllCategoryContainerDivClass{
+    .storeProductTypeAllCategoryContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         cursor:pointer!important;
     }
 
-    .cShopStoreProductAllCategoryContainerDivClass .owl-item{
+    .storeProductTypeAllCategoryContainerDivClass .owl-item{
         width:auto!important;
         margin-right:20px!important;
     }
 
-    .cshopstore_eachProductCategoryContainerLIClass{
+    .storeEachProductCategoryContainerLIClass{
         text-align:center!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         padding-left:5px!important;
         padding-right:5px!important;
         background:whitesmoke!important;
-        //border-bottom:1px solid #cb202d!important;
         color:rgba(0,0,0,.95)!important;
         font-weight:bold!important;
         font-family:serif!important;
@@ -678,7 +660,7 @@
         font-size:14px!important;
     }
 
-    .cshopstore_eachRequestedProductCategoryLIClass{
+    .storeEachRequestedProductCategoryContainerLIClass{
         text-align:center!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
