@@ -79,16 +79,28 @@
                         </a>
                     </li>
                     <li class='customerBreadcrumbLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</a>
+                        |
                     </li>
                     <li class='customerBreadcrumbLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeTitle}}</a>
+                        {{customerBreadCrumbOnWebApp.shopStoreTitle}}
                     </li>
                     <li class='customerBreadcrumbLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productCategoryTitle}}</a>
+                        |
                     </li>
                     <li class='customerBreadcrumbLIClass'>
-                        |&nbsp; {{customerBreadCrumbOnWebApp.productListTitle}}
+                        {{customerBreadCrumbOnWebApp.productTypeTitle}}
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{customerBreadCrumbOnWebApp.productCategoryTitle}}
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{customerBreadCrumbOnWebApp.productListTitle}}
                     </li>
                 </ul>
             </div>
