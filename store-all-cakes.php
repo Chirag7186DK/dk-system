@@ -256,8 +256,8 @@
             </div>
             
             <!-- not found product show message div -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_notFoundProductMsgDivClass">
-                {{storeNotFoundProductMsgStr}}
+            <div ng-hide='storeAllProductDetailsList.length' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductNotFoundMsgDivClass">
+                {{storeProductNotFoundMsgStr}}
             </div>
             
             <!-- displaying all user reviewed rating details -->
