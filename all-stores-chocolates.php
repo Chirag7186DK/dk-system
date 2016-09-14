@@ -67,8 +67,8 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
 
-        <!-- all store wise info body  -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoBodyWrapperDivClass">
+        <!-- all stores wise info body  -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
@@ -89,11 +89,12 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
-            <!-- all store wise info container -->
-            <div ng-controller="StoreController" ng-init="loadDeliveryAreaBasedDessertsTypeStoresList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoreInfoContainerDivClass">
+            <!-- all stores wise info container -->
+            <div ng-controller="StoreController" ng-init="loadDeliveryAreaBasedDessertsTypeStoresList();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoContainerDivClass">
                 
-                <p ng-if="allStoresInfoList.length>0" class="allStoreInfoNoteHeaderPClass">
-                    Order from {{allStoresInfoList.length}} stores delivering to your door
+                <p ng-if="allStoresInfoList.length>0" class="allStoresInfoNoteHeaderPClass">
+                    <i class="fa fa-smile-o"></i> 
+                    Order cakes from <span class="badge countAllStoresSClass">{{allStoresInfoList.length}}</span> stores delivering to your door step !!!
                 </p>
             
                 <!-- iterate each store info container -->
@@ -139,8 +140,8 @@
                     </div>
                 </div>
                 
-                <div ng-if="allStoresInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoreFoundInfoMsgContainerDivClass">
-                    <i class="fa fa-frown-o"></i> Sorry, we don't served any desserts at '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
+                <div ng-if="allStoresInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoresFoundInfoMsgContainerDivClass">
+                    <i class="fa fa-frown-o"></i> Sorry, we don't served chocolates at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </div>
                 
             </div>
