@@ -128,7 +128,7 @@ class RatingReviewServicesV1 implements IRatingReviewServicesV1{
             $gStoreId = $dkParamDataArr['shopstoreids'];
             $gproductListId = $dkParamDataArr['productlist_ids'];
             // fetch avg rating about product details
-            $retAvgRatedAndReviwedByUserAbtProductDetailsArr = RatingReviewDao :: getAvgRatingAboutProductDetails($gStoreId, $gproductListId);
+            $retAvgRatedAndReviwedByUserAbtProductDetailsArr = RatingReviewDao :: getAvgRatingProductDetails($gStoreId, $gproductListId);
             if(count($retAvgRatedAndReviwedByUserAbtProductDetailsArr)>0 && $retAvgRatedAndReviwedByUserAbtProductDetailsArr!=false){
                 $rspDetails["avgRatingReviewedProductDetails"] = array(
                     "isUserRatedAndReviewProduct"=>"true",
