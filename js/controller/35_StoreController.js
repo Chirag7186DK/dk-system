@@ -207,7 +207,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             if($rootScope.isShowStoreAllProductFilter===false){
                 $rootScope.toggleStoreProductFilterBtnLabel = "HIDE FILTER";
                 $rootScope.isShowStoreAllProductFilter = true;
-                $rootScope.storeProductFilterPopupDivClass = "cshopstore_productFilterOperationContainerDivClass";
+                $rootScope.storeProductFilterPopupDivClass = "storeProductFilterOperationContainerDivClass";
             }else{
                 $rootScope.toggleStoreProductFilterBtnLabel = "SHOW FILTER";
                 $rootScope.isShowStoreAllProductFilter = false;
