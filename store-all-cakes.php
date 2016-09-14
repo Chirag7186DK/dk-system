@@ -179,7 +179,7 @@
             </div>
             
             <!-- product filter operation -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductFilterOperationWrapperDivClass">
+            <div ng-show="productTypeAllProductCategoryList.length>=1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductFilterOperationWrapperDivClass">
                 <!-- info / tips about product filtering operation -->
                 <p class='storeTipAbtProductFilterPClass'>
                     Tip *: Use filter given below to find products more easy & quickly !
