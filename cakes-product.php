@@ -311,10 +311,10 @@
                                 <TEXTAREA data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
                             </div>
                         </div>
-                        <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isRatingReviewQuestionDetailsFound'>
+                        <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isStoreRatingReviewQuestionFound'>
                             <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2'></div>
-                            <div ng-controller='RatingReviewController' class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
-                                <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddRatingReviewAboutProduct('vpd_takeUserReviewRatingAboutProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn' title='Click to submit rating & review about product'>
+                            <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                                <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddRatingReviewAboutProduct('vpd_takeUserReviewRatingAboutProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn'>
                                     SUBMIT A REVIEW
                                 </button> 
                                 <span class='vpd_infoAbtToEnableSubmitRatingReviewBtnSClass' ng-hide='isEnableRatingReviewSubmitButton'>
@@ -328,20 +328,20 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
                     
                     <!-- rating and review summary about product -->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_summaryReviewRatingContainerDivClass" ng-if="avgRatingReviewedProductDetails.isUserRatedAndReviewAbtProduct">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_summaryReviewRatingContainerDivClass" ng-if="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
                         <span class='vpd_summaryReviewRatingLblSClass'>
-                            {{avgRatingReviewedProductDetails.totalUserRatingAbtProduct}} customer(s) reviewed,  
-                            {{avgRatingReviewedProductDetails.totalAvgRatingAbtProduct}} 
+                            {{avgRatingReviewedProductDetails.totalUserRatingProduct}} customer(s) reviewed,  
+                            {{avgRatingReviewedProductDetails.totalAvgRatingProduct}} 
                             <i class="fa fa-star vpd_productAvgRatedIconClass"></i> average rated about product based on 
                         </span>
-                        <div ng-controller='RatingReviewController' ng-init="loadMaxAverageRatingReviewedAboutProduct()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_allMaxReviewRatingDetailsDivClass'>
-                            <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_eachQuestionMaxRatingReviewDetailsDivClass' ng-repeat="eachMaxRatingAndReviewedTypeDetails in maxRatingAndReviewedTypeDetailsArr">
+                        <div ng-controller='RatingReviewController' ng-init="loadMaxAverageRatingReviewedProduct()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_allMaxReviewRatingDetailsDivClass'>
+                            <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_eachQuestionMaxRatingReviewDetailsDivClass' ng-repeat="eachMaxRatingReviewedTypeDetails in maxRatingReviewedTypeDetailsArr">
                                 <h5 class='vpd_maxRatingAboutQuestionTitleHClass'>
-                                    {{eachMaxRatingAndReviewedTypeDetails.ratingQuestionTitle}}
+                                    {{eachMaxRatingReviewedTypeDetails.ratingQuestionTitle}}
                                 </h5>
                                 <span class='vpd_maxRatingAboutQuestionAnswerDetailsHClass'>
-                                    Highest {{eachMaxRatingAndReviewedTypeDetails.maxRating}} 
-                                    <i class="fa fa-star"></i> rated from {{eachMaxRatingAndReviewedTypeDetails.userCount}} user(s)
+                                    Highest {{eachMaxRatingReviewedTypeDetails.maxRating}} 
+                                    <i class="fa fa-star"></i> rated from {{eachMaxRatingReviewedTypeDetails.userCount}} user(s)
                                 </span>
                             </div>
                         </div>
