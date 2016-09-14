@@ -8,7 +8,7 @@
 class StoreServicesV1 implements IStoreServicesV1{
     
     // CJ defined this action 2016-09-09
-    public function getDeliveryAreaBasedDessertTypeStoresList($dkParamDataArr){
+    public function getStoreListDeliveryAreaBasedDessertType($dkParamDataArr){
         $rspDetails = array();
         // checking requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
