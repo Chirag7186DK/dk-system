@@ -1050,7 +1050,7 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==10){
+        if($givenParamDataCorrectCount==11){
             $retStatus = 'TRUE';
         }
         return $retStatus;
