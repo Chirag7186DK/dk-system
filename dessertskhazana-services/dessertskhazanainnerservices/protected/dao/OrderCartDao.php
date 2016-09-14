@@ -385,7 +385,7 @@ class OrderCartDao{
                 COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
                 FROM DK_ORDERCART odr
                 JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-                LEF JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id AND odrsim.status='R' 
+                LEFT JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id AND odrsim.status='R' 
                 WHERE 1
                 AND odr.user_id='$userid'
                 AND odrs.store_id='$store_id'
