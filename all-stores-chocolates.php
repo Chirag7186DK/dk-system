@@ -71,11 +71,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cshopstore_userBreadcrumbDivClass">
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
                 <ul class="customerBreadcrumbULClass list-inline">
                     <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
-                            Home
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
                     <li class='customerBreadcrumbLIClass'>
@@ -142,7 +142,7 @@
                 </div>
                 
                 <div ng-if="allStoresInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoresFoundInfoMsgContainerDivClass">
-                    <i class="fa fa-frown-o"></i> Sorry, we don't served chocolates at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
+                    <i class="fa fa-frown-o"></i> Sorry, we don't serve cakes at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </div>
                 
             </div>
