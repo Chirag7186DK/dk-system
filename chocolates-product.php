@@ -71,24 +71,36 @@
         <div ng-controller="ProductController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_userBreadcrumbDivClass">
-                <ul class="vpd_userBreadcrumbULClass list-inline">
-                    <li class='userBreadcrumbHomeLIClass'>
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
                             {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
-                    <li class='userBreadcrumbProductTypeCategoryTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.shopStoreTitle}}</a>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
                     </li>
-                    <li class='userBreadcrumbProductTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productTypeTitle}}</a>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{customerBreadCrumbOnWebApp.shopStoreTitle}}
                     </li>
-                    <li class='userBreadcrumbProductTypeCategoryTypeLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.productCategoryTitle}}</a>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
                     </li>
-                    <li class='vpd_userBreadcrumbProductTypeCategoryTypeProductListLIClass'>
-                        |&nbsp; {{customerBreadCrumbOnWebApp.productListTitle}}
+                    <li class='customerBreadcrumbLIClass'>
+                        {{customerBreadCrumbOnWebApp.productTypeTitle}}
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{customerBreadCrumbOnWebApp.productCategoryTitle}}
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{customerBreadCrumbOnWebApp.productListTitle}}
                     </li>
                 </ul>
             </div>
