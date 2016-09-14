@@ -351,7 +351,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
                     
                     <!-- displaying all user reviewed and rating details -->
-                    <div ng-controller='RatingReviewController' ng-init="loadAllUserRatingReviewAboutProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayAllUserReviewAboutProductContainerDivClass" ng-if="avgRatingReviewedProductDetails.isUserRatedAndReviewAbtProduct">
+                    <div ng-controller='RatingReviewController' ng-init="loadAllUserRatingReviewProduct()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayAllUserReviewAboutProductContainerDivClass" ng-if="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
                         <span class="vpd_allUserReviewRatingDetailsLabelSpanClass">
                             Displaying {{(allUserRatingReviewAboutProductDetailsArr).length}} customer(s) posted reviewed and ratings about product
                         </span>
