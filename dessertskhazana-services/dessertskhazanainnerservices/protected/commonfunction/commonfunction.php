@@ -814,6 +814,7 @@ class commonfunction{
                         $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
                     }else{
                         // add entry in order cart store
+                        $storeOdrTotalAmt = $userTotalOrderAmt;
                         $addStoreOrderDeliveryFee = $storeOrderDeliveryFee;
                         if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
                             && $userTotalOrderAmt>=$storeMinOrderAmt){
