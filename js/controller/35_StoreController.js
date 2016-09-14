@@ -45,8 +45,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }
         };
         
-        // loadDKDeliveryAreaBasedDessertsTypeList 
-        $rootScope.loadDKDeliveryAreaBasedDessertsTypeList = function(){
+        // loadStoreDeliveryAreaBasedDessertsTypeList 
+        $rootScope.loadStoreDeliveryAreaBasedDessertsTypeList = function(){
             try{
                 // get param obj to desserts type list
                 var preparedParamJsonObj = getParamObjFromSessionAtDeliveryAreaBasedStoreServeDessertsTypeList();
@@ -55,7 +55,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeDeliveryAreaBasedDessertsTypeList = false;
                     // calling StoreServices
-                    StoreServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                    StoreServices.getDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
@@ -67,7 +67,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     });
                 }
             }catch(ex){
-                console.log("problem in loadDKDeliveryAreaBasedDessertsTypeList ex=>"+ex);
+                console.log("problem in loadStoreDeliveryAreaBasedDessertsTypeList ex=>"+ex);
                 $rootScope.storeDeliveryAreaBasedDessertsTypeList = false;
             }
         };
