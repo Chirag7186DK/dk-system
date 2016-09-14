@@ -95,7 +95,6 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
             try{
                 // get param obj to load all user rating about product 
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                // console.log("loadAllUserRatingReviewAboutProductDetails preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
@@ -106,7 +105,7 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                 if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.allUserRatingReviewAboutProductDetailsArr = retObj.allUserRatingReviewAbtProductDetails;
+                                    $rootScope.allUserRatingReviewAboutProductDetailsArr = retObj.allUserRatingReviewProductDetails;
                                 }
                             }
                         });
