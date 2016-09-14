@@ -70,7 +70,7 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     $rootScope.storeRatingReviewQuestionDetails = false;
                     $rootScope.isStoreRatingReviewQuestionFound = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getShopStoreRatingReviewQuestionsAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getStoreRatingReviewQuestions(fetchedParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
