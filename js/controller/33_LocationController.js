@@ -260,7 +260,7 @@ function LocationController($scope, $rootScope, LocationServices){
         // buildDeliveryAreaBasedDessertsTypeListHtmlSelectControl
         $rootScope.buildDeliveryAreaBasedDessertsTypeListHtmlSelectControl = function(allDessertsTypeList, loadDessertTypeListOnPage){
             if($('#deliveryAreaDessertsTypeListSelectCtrlId').length===1){    
-                var dessertsTypeListSelectControlElementObj = document.getElementById("dkDeliveryAreaDessertsTypeListSelectCtrlId");
+                var dessertsTypeListSelectControlElementObj = document.getElementById("deliveryAreaDessertsTypeListSelectCtrlId");
                 // all options remove and destroy bootstrap select feature
                 $(dessertsTypeListSelectControlElementObj).find('option').remove();
                 $(dessertsTypeListSelectControlElementObj).selectpicker('destroy');
