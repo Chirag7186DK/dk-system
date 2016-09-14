@@ -274,6 +274,8 @@ function maxheightProductboxwidgetAllproductslevel(){
 }
 
 
+///////////////////  start 
+
 angular.module('DKAPP').directive('horizontallyScrollableStoreinfo', horizontallyScrollableStoreinfo);
 
 function horizontallyScrollableStoreinfo(){
