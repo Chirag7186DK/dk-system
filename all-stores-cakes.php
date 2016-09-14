@@ -142,7 +142,7 @@
                 </div>
                 
                 <div ng-if="allStoresInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoresFoundInfoMsgContainerDivClass">
-                    <i class="fa fa-frown-o"></i> Sorry, we don't served cakes at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
+                    <i class="fa fa-frown-o"></i> Sorry, we don't serve cakes at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </div>
                 
             </div>
