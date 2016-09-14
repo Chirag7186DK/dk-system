@@ -332,7 +332,7 @@ angular.module('DKAPP').directive('horizontallyScrollableProducttypeProductcateg
 function horizontallyScrollableProducttypeProductcategorylistStorelevel(){
     return function(scope, element, attrs){
         if(scope.$first){
-            $(element).addClass('storeEachProductCategoryContainerLIClass');
+            $(element).addClass('storeEachRequestedProductCategoryContainerLIClass');
         }
         if(scope.$last){
             // apply horizontal scrolling features
