@@ -18,8 +18,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.isShowStoreWorkingStyleDetails = false;
         $rootScope.storeWorkingStyleDetails = false;
         
-        // loadDeliveryAreaBasedDessertsTypeCStoreList 
-        $rootScope.loadDeliveryAreaBasedDessertsTypeStoresList = function(){
+        // loadStoreListDeliveryAreaBasedDessertsType 
+        $rootScope.loadStoreListDeliveryAreaBasedDessertsType = function(){
             try{
                 // get param obj data
                 var preparedParamJsonObj = getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeStoresList();
@@ -28,7 +28,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.allStoresInfoList = false;
                     // calling StoreServices
-                    StoreServices.getDeliveryAreaBasedDessertsTypeStoresList(fetchParamJsonObj).done(function(retResponseJson){
+                    StoreServices.getStoreListDeliveryAreaBasedDessertsType(fetchParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', retResponseJson);
@@ -40,7 +40,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     });
                 }
             }catch(ex){
-                console.log("problem in loadDeliveryAreaBasedDessertsTypeStoresList ex=>"+ex);
+                console.log("problem in loadStoreListDeliveryAreaBasedDessertsType ex=>"+ex);
                 $rootScope.allStoresInfoList = false;
             }
         };
