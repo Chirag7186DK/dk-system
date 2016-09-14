@@ -1038,7 +1038,19 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount==8){
+        // check status key present or not
+        if(array_key_exists('status', $paramJsonData)){
+            if($paramJsonData['status']!='' && ($paramJsonData['status']=='ZC' || $paramJsonData['status']=='ZA')){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check reason key present or not
+        if(array_key_exists('reason', $paramJsonData)){
+            if($paramJsonData['reason']!='' && strlen($paramJsonData['reason'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==10){
             $retStatus = 'TRUE';
         }
         return $retStatus;
