@@ -260,6 +260,34 @@
         font-weight:bold!important;
     }
     
+    .customerBreadcrumbDivClass{
+        margin-top:20px;
+        border:1px solid #DCE0EF!important;
+        background-color:whitesmoke!important;
+    }
+
+    .customerBreadcrumbULClass{
+        font-family:serif!important;
+        font-size:15px!important;
+        padding-top:6px!important;
+    }
+    
+    .customerBreadcrumbLIClass a, 
+    .customerBreadcrumbLIClass a:hover{
+        color:#828282!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+        font-size:12px!important;
+    }
+    
+    .customerBreadcrumbLIClass{
+        color:#828282!important;
+        text-decoration:none!important;
+        font-weight:100!important;
+        font-size:12px!important;
+        padding-left:0px!important;
+    }
+
     
     /* all store list specific dessert type css code*/
     
@@ -403,32 +431,7 @@
     }
     
     
-    /*  customer point view shopstore css code */
-
-    .cshopstore_userBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .cshopstore_userBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:12px!important;
-        padding-top:6px!important;
-    }
-
-    .cshopstore_userBreadcrumbULClass li{
-        padding-bottom:3px!important;
-    }
-
-    .cshopstore_userBreadcrumbULClass li a, 
-    .cshopstore_userBreadcrumbULClass li a:hover{
-        border-bottom:2px dotted #CDCEE8!important;
-        text-decoration:none!important;
-        font-weight:100!important;
-        color:#828282!important;
-        font-size:12px!important;
-    }
+    /*  store all products css code */
 
     .cshopstore_dessertsProductTypeCountSClass{
         background:#f17023!important;
@@ -437,31 +440,31 @@
         font-size:15px!important;
     }
 
-    .cshopStoreSummaryInfoWrapperDivClass{
+    .storeSummaryTypeInfoWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
         margin-top:5px!important;
     }
 
-    .cshopStoreSummaryInfoWrapperDivClass .owl-item{
+    .storeSummaryTypeInfoWrapperDivClass .owl-item{
         width:auto!important;
         margin-right:20px!important;
         margin-top:20px!important;
         height:100px!important;
     }
     
-    .cshopStoreSummaryInfoWrapperDivClass .owl-item:first-child{
+    .storeSummaryTypeInfoWrapperDivClass .owl-item:first-child{
         margin-left:2px!important;
     }
 
-    .cshopsstoreSelfSummaryInfoDivClass{
+    .storeSelfInfoDivClass{
         text-align:center!important;
         padding:5px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7!important;
     }
 
-    .cShopStoreNameTextLblPClass{
+    .storeSelfNameTextLblPClass{
         margin:0px!important;
         color: #ab0b38!important;
         font-family:serif!important;
@@ -471,7 +474,7 @@
         text-align:center!important;
     }
 
-    .cShopStoreLocatedInfoLblPClass{
+    .storeSelfLocatedInfoLblPClass{
         margin:0px!important;
         font-family:serif!important;
         font-size:14px!important;
@@ -479,7 +482,7 @@
         color:#808A94!important;
     }
 
-    .showMoreShopSummaryInfoPClass{
+    .showMoreStoreSelfInfoPClass{
         font-family:serif!important;
         font-size:14px!important;
         font-weight:bold!important;
@@ -488,14 +491,14 @@
         margin-top:10px!important;
     }
 
-    .cshopsstoreSummaryReviewRatingDivClass{
+    .storeReviewRatingSummaryDivClass{
         text-align:center!important;
         padding:5px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7!important;
     }
 
-    .cShopStoreReviewRatingTextLblPClass{
+    .storeReviewRatingTextLblPClass{
         margin:0px!important;
         font-weight:bold!important;
         color: #ab0b38!important;
@@ -503,7 +506,7 @@
         font-size:16px!important;
     }
 
-    .cShopStoreReviewdRatingUsercountInfoLblPClass{
+    .storeReviewRatingAllUserCountInfoLblPClass{
         margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
@@ -511,7 +514,7 @@
         color:#808A94!important;
     }
 
-    .showMoreShopReviewRatingInfoPClass{
+    .showMoreStoreReviewRatingSummaryInfoPClass{
         font-family: serif!important;
         font-size:14px!important;
         font-weight:bold!important;
@@ -520,14 +523,14 @@
         margin-top:10px!important;
     }
 
-    .cshopsstoreMenuSummaryInfoDivClass{
+    .storeDessertsMenuSummaryInfoDivClass{
         text-align:center!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7!important;
         padding:5px!important;
     }
 
-    .cShopStoreMenuTextLblPClass{
+    .storeMenuTextLblPClass{
         margin:0px!important;
         font-family:serif!important;
         font-weight:bold!important;
@@ -535,7 +538,7 @@
         font-size:16px!important;
     }
 
-    .cShopStoreDessertsMenuInfoLblPClass{
+    .storeDessertsMenuInfoLblPClass{
         margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
@@ -543,7 +546,7 @@
         color:#808A94!important;
     }
 
-    .showMoreShopMenuSummaryInfoPClass{
+    .showMoreStoreMenuSummaryInfoPClass{
         font-family: serif!important;
         font-size:14px!important;
         font-weight:bold!important;
@@ -1023,33 +1026,7 @@
     
 
     /*  view product css code  */
-
-    .vpd_userBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
-
-    .vpd_userBreadcrumbULClass{
-        font-family:serif!important;
-        font-size:17px!important;
-        padding-top:6px!important;
-    }
-
-    .vpd_userBreadcrumbULClass li a, 
-    .vpd_userBreadcrumbULClass li a:hover{
-        color:#828282!important;
-        border-bottom:2px dotted #CDCEE8!important;
-        text-decoration:none!important;
-        font-weight:100!important;
-        font-size:12px!important;
-    }
-
-    .vpd_userBreadcrumbProductTypeCategoryTypeProductListLIClass{
-        color:#828282!important;
-        font-size:12px!important;
-    }
-
+    
     .vpd_shopStoreServedAllDessertsProductContainerDivClass{
         margin-top:20px!important;
         margin-bottom:10px!important;
