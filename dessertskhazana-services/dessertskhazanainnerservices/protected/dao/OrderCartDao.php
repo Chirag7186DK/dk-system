@@ -259,7 +259,7 @@ class OrderCartDao{
             }
         }
         if(array_key_exists('reason', $paramJson)){
-            if($paramJson['reason']!=''){
+            if($paramJson['reason']!='' && strlen($paramJson['reason'])>0){
                 $dynamicSql.=" reason='".$paramJson['reason']."',";
             }
         }
@@ -620,7 +620,7 @@ class OrderCartDao{
             }
         }
         if(array_key_exists('reason', $paramJson)){
-            if($paramJson['reason']!='' && ($paramJson['reason'])>0){
+            if($paramJson['reason']!='' && strlen($paramJson['reason'])>0){
                 $dynamicSql.=" reason='".$paramJson['reason']."',";
             }
         }
