@@ -65,20 +65,26 @@
 
         <!-- my-account body content-->
         <div ng-show="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_bodyDivClass">
-
+            
             <!-- customer bread crumb -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userBreadcrumbDivClass">
-                <ul class="ma_userBreadcrumbULClass list-inline">
-                    <li class='wl_userBreadcrumbHomeTitleLIClass'>
-                        <a href="<?php echo $BaseSitePath; ?>">
-                            Home
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
+                        <a href="<?php echo $BaseSitePath;?>">
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
-                    <li class='ma_userBreadcrumbMyAccountTitleLIClass'>
-                        |&nbsp; {{loggedUserName}}
+                    <li class='customerBreadcrumbLIClass'>
+                        |
                     </li>
-                    <li class='ma_userBreadcrumbMyAccountTitleLIClass'>
-                        |&nbsp; {{displayedSectionName}}
+                    <li class='customerBreadcrumbLIClass'>
+                        {{loggedUserName}}
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        {{displayedSectionName}}
                     </li>
                 </ul>
             </div>
