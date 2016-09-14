@@ -111,7 +111,7 @@ class RatingReviewController extends V1Controller{
                 $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingRatingReviewProduct($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getAverageRatingReviewAboutProduct($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getAverageRatingReviewProduct($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
