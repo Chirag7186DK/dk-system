@@ -105,31 +105,38 @@
                 </ul>
             </div>
             
-            <!-- store can serve other desserts type listed -->
-            <div ng-controller="ShopStoreController" ng-init="loadDKDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductContainerDivClass">
+            <!-- store served all desserts type info -->
+            <div ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeServeDessertsTypeContainerDivClass">
                 
-                <li class="vpd_storeServedDessertsProductNoteLIClass">
+                <!-- display selected desserts type title ordering by customer -->
+                <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length==1" class="storeServingDessertsTypeNoteInfoLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you ordering from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' to deliver product at 
-                    '{{selectedDeliveryAreaTextHeader}}' area !!!
+                    Hey you are viewing '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' product  
+                    in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
+                </li>
+                <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class="storeServingDessertsTypeNoteInfoLIClass">
+                    <i class='fa fa-smile-o'></i> 
+                    Hey you are viewing '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' product and also can serve other 
+                        <span class="badge storeCanServeDessertsTypeCountSClass">
+                            {{storeDeliveryAreaBasedDessertsTypeList.length}}
+                        </span>
+                    desserts in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </li>
                 
-                <!-- display all desserts type can served by store in selected delivery area, more than one -->
-                <div ng-if="dkDeliveryAreaBasedDessertsTypeList.length>1" id="vpd_shopStoreServedAllDessertsProductScrollerWrapperDivId" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass'>
-                    
+                <!-- display all desserts type can served by store in your selected delivery area -->
+                <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
-                    <div ng-repeat="eachDessertsTypeDetails in dkDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" title='Click to view all {{eachDessertsTypeDetails.dessertsTypeTitle}} desserts all products' class='vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass' scroll-horizontally-dessertsproducttypelist-viewproductlevel>
-                        <p class="dessertsProductIconPClass">
-                            <i class="{{eachDessertsTypeDetails.dessertsIcon}} dessertsProductIconClass"></i>
+                    <div horizontally-scrollable-dessertstypelist-storelevel ng-repeat="eachDessertsTypeDetails in storeDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" class='storeCanServeEachDessertsTypeScrollableWrapperDivClass'>
+                        <p class="dessertsTypeIconPClass">
+                            <i class="{{eachDessertsTypeDetails.dessertsIcon}} dessertsTypeIconClass"></i>
                         </p>
-                        <h2 class="dessertsProductTitleHClass">
+                        <h2 class="dessertsTypeTitleHClass">
                             {{eachDessertsTypeDetails.dessertsTypeTitle}}
                         </h2>
-                        <p ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewCStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsProductPClass">
-                            View desserts
+                        <p ng-controller='StoreController' ng-click="storeDessertsTypeDataDetailsInSessionStorageToViewStoreAllProductList(eachDessertsTypeDetails)" class="viewDessertsTypePClass">
+                            Show products
                         </p>
                     </div>
-                    
                 </div>
                 
             </div>
@@ -156,13 +163,13 @@
                         {{productDetails[0]['shopStoreTitle']}}
                     </span>
                 </p>
-                <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedProductDetails.isUserRatedAndReviewAbtProduct" title="To see detailed reviewed / rating about this item please scroll down page to rating / review section">
-                    {{avgRatingReviewedProductDetails.totalUserRatingAbtProduct}} reviewed,
-                    {{avgRatingReviewedProductDetails.totalUserRatingAbtProduct}} ratings,   
-                    {{avgRatingReviewedProductDetails.totalAvgRatingAbtProduct}} 
+                <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
+                    {{avgRatingReviewedProductDetails.totalUserRatingProduct}} reviewed,
+                    {{avgRatingReviewedProductDetails.totalUserRatingProduct}} ratings,   
+                    {{avgRatingReviewedProductDetails.totalAvgRatingProduct}} 
                     <i class="fa fa-star faa-tada animated vpd_productAvgRatedIconClass"></i> average rated based on (Quality/Taste, Delivery Services, Price)
                 </p>
-                <p ng-hide="avgRatingReviewedProductDetails.isUserRatedAndReviewAbtProduct">
+                <p ng-hide="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
                     No rating & review from customer yet !!!
                 </p>
                 <hr>
@@ -181,13 +188,13 @@
                 <hr>
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
-                    <select class='form-control' id="productMeasurementSelectCtrlId" title="This item is also available in another size">
+                    <select class='form-control' id="productMeasurementSelectCtrlId">
                         <option ng-repeat="eachMeasurementDetails in productDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachMeasurementDetails.shopStoreId}}' data-ccaid='{{eachMeasurementDetails.ccaId}}' data-deliveryfee='{{eachMeasurementDetails.storeOrderDeliveryFee}}' data-minorderamt='{{eachMeasurementDetails.storeMinOrderAmt}}' data-productfeatureid='{{eachMeasurementDetails.productFeatureId}}' data-productprice='{{eachMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
                             {{eachMeasurementDetails.productFeatureDisplayMeasurementType}}
                         </option>
                     </select>
                 </p>
-                <p class='viewProductPricePClass' title="Item price varies based on selected size/weight"> 
+                <p class='viewProductPricePClass'> 
                     <span class='vpd_productPayBlgPriceTextSClass'>
                         <i class="fa fa-rupee faa-tada animated"></i> 
                         <i class='onlineProductSellingPriceTextClass'>{{productDetails[0]['productFeatureOnlineSellingPrice']}}</i>
@@ -201,14 +208,14 @@
                 </p>
                 <p class='vpd_productQtyPClass'>
                     Qty
-                    <input view-productqtyinput-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" title="Type Qty" value='1'>
+                    <input view-productqtyinput-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" value='1'>
                 </p>
-                <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'" title="Type 40 characters only & not allowed any special characters"> 
+                <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
                     Message On Cake
                     <textarea view-productmsginput-directive class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
-                    <button title="Click to add {{customerBreadCrumbOnWebApp.productListTitle}} item in order cart" ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_specificProductAddBtnClass btn">
+                    <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_specificProductAddBtnClass btn">
                         <i class="fa fa-shopping-cart"></i> ADD
                     </button>
                 </p>
