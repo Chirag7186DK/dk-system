@@ -63,17 +63,17 @@ class ProductDao{
             $sql.="
                     FROM PRODUCTTYPE pt
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
                         AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
-                    JOIN SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
-                    JOIN SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
-                    JOIN SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+                    JOIN STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+                    JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+                    JOIN STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
                     JOIN COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
                     JOIN COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
                     JOIN CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
                     JOIN AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
-                    LEFT JOIN SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+                    LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
                         ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y' ";
                         
                     // add product_listids in left join condition for image file mapping
@@ -279,12 +279,12 @@ class ProductDao{
                     COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
                     FROM PRODUCTTYPE pt
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
                         AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
-                    JOIN SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
-                    JOIN SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
-                    JOIN SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+                    JOIN STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+                    JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+                    JOIN STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
                     JOIN COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
                     JOIN COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
                     JOIN CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
@@ -315,7 +315,7 @@ class ProductDao{
                 COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
                 COALESCE(ppimg.image_filename, 'no-image.png') productImageFileName,
                 COALESCE(ppimg.file_path, 'images/producttype/default/') productImageFilePath
-                FROM SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg
+                FROM STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg
                 WHERE 
                 ppimg.product_listid='$productListId'
                 AND ppimg.status='A'
@@ -341,7 +341,7 @@ class ProductDao{
                 COALESCE(spldd.description_content, '') productDescription,
                 COALESCE(spldd.content_file, '') productContentFile,
                 COALESCE(spldd.content_filepath, '') productContentFilePath
-                FROM SHOPSTORE_PRODUCTLIST_DESCRIPTIONDETAILS spldd
+                FROM STORE_PRODUCTLIST_DESCRIPTIONDETAILS spldd
                 WHERE 1
                 AND spldd.productlist_id='$productListId'
                 AND spldd.status='A' ";
@@ -459,15 +459,15 @@ class ProductDao{
                     sppc.producttype_categoryid productTypeProductCategoryId,
                     sppl.id productListId,
                     spfd.id productFeatureId
-                    FROM SHOPSTORES ss 
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shoptstore_id=ss.id AND spa.status='A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc
+                    FROM STORE ss 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shoptstore_id=ss.id AND spa.status='A'
+                    JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc
                         ON sppc.shopstores_producttype_affiliationid=spa.id AND sppc.status='A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl
+                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl
                         ON sppl.shopstores_producttype_affiliationid=spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid
                         AND sppl.status='A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS spfd
+                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS spfd
                         ON spfd.product_listid=sppl.id AND spfd.status='A'
                     WHERE 1 AND ss.status='A'";
                     // add shopStoreId in where condition
