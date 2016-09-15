@@ -14,10 +14,10 @@ class StoreDao{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
                 COALESCE(ss.id, '') shopStoreId, 
-                COALESCE(ss.shopstore_name, '') shopStoreName,
-                UPPER(COALESCE(ss.shopstore_name, '')) shopStoreNameInCaps,
-                COALESCE(ss.shopstore_logofile, '') shopStoreLogoFile,
-                COALESCE(ss.shopstore_mobile, '') shopStoreContact,
+                COALESCE(ss.name, '') shopStoreName,
+                UPPER(COALESCE(ss.name, '')) shopStoreNameInCaps,
+                COALESCE(ss.logofile, '') shopStoreLogoFile,
+                COALESCE(ss.mobile, '') shopStoreContact,
                 COALESCE(ss.address, '') shopStoreAddress,
                 COALESCE(a.id, '') areaId, COALESCE(a.name, '') areaName
                 FROM STORE ss 
@@ -51,7 +51,7 @@ class StoreDao{
             $connection = Yii::App()->db;
             
             $sql= " SELECT 
-                    COALESCE(ss.id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreName,
+                    COALESCE(ss.id, '') shopStoreId, COALESCE(ss.name, '') shopStoreName,
                     COALESCE(ss.country_city_area_affiliationId, '') countryCityAreaAffiliationId,
                     COALESCE(country.id, '') countryId, COALESCE(country.name, '') countryName, 
                     COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
