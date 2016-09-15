@@ -121,7 +121,7 @@ class LocationDao{
                     COALESCE(cca.area_id, '') areaId, COALESCE(a.name,'') areaName,
                     COALESCE(cpts.product_typeid, '') productTypeId, COALESCE(pt.name, '') productTypeTitle,
                     COALESCE(s.id, '') shopStoreId, COALESCE(s.name, '') shopStoreTitle
-                    FROM CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE cpts
+                    FROM CCA_CONDUCT_PRODUCTTYPE_STORE cpts
                     JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=cpts.cca_id 
                     JOIN CITYREACHED c ON c.id=cca.city_id 
                     JOIN AREAREACHED a ON a.id=cca.area_id 
