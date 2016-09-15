@@ -958,21 +958,22 @@ class commonfunction{
                 $sortedDataArr1 = utils::arraySort($dataArr1, array("ordercartId"));
                 if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
                     
-                    // iterating order store wise with delivery location data
+                    // iterating order cart wise data
                     foreach($sortedDataArr1 as $ordercartIdKey=>$allItemsDataArr){
                         array_push($allOrdercartWiseDataArr, 
                             array(
                                 "humanReadableOrdercartId"=>$allItemsDataArr[0]['humanReadableOrdercartId'],
                                 "totalItems"=>count($allItemsDataArr),
-                                "isShowItemList"=>false
+                                "isShowItemList"=>false,
+                                "allItemsData"=>$allItemsDataArr
                             )
                         );
                     }
                 }
             }
         }
-        if(count($allStorewiseDataArr)>0 && $allStorewiseDataArr!=false){
-            return $allStorewiseDataArr;
+        if(count($allOrdercartWiseDataArr)>0 && $allOrdercartWiseDataArr!=false){
+            return $allOrdercartWiseDataArr;
         }else{
             return false;
         }
