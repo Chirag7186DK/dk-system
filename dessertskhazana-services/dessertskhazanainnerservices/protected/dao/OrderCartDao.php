@@ -446,12 +446,12 @@ class OrderCartDao{
                     FROM ORDERCART odr
                     JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
                     JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
-                    JOIN SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
-                    JOIN SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+                    JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
+                    JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
                         AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
-                    JOIN SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
                     JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
                     JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
                     JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
@@ -506,15 +506,15 @@ class OrderCartDao{
                     JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
                     JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+                    JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
+                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
-                    LEFT JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
+                    LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
                         ON ppimg.product_listid=sppl.id
                         AND ppimg.is_showcasefile = 'Y'    
                     WHERE 1
@@ -575,15 +575,15 @@ class OrderCartDao{
                     JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
                     JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+                    JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
-                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
+                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
-                    LEFT JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
+                    LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
                         ON ppimg.product_listid=sppl.id
                         AND ppimg.is_showcasefile = 'Y'    
                     WHERE 1
