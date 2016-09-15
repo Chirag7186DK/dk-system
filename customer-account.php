@@ -326,6 +326,17 @@
                             </p>
                         </div>
                     </div>
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreWiseSummarySectionDivClass'>
+                        <p class="">
+                            Subtotal Amt: 300
+                        </p>
+                        <p class="">
+                            Total Delivery Fee: 60
+                        </p>
+                        <p class="">
+                            Total Amt: 360
+                        </p>
+                    </div>
                 </div>
                 
                 <!-- canceled order cart all items info will be displayed -->
