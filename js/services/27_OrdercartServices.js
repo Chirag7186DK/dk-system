@@ -14,10 +14,14 @@ function OrderCartServices($rootScope){
                 $rootScope.ordercartCount = userOrdercartDashboardDataObj['ordercartCount'];
                 $rootScope.ordercartItemRequestedCount = userOrdercartDashboardDataObj['ordercartItemRequestedCount'];
                 $rootScope.subtotalOrderAmt = userOrdercartDashboardDataObj['subtotalOrderAmt'];
+                $rootScope.totalDeliveryFee = userOrdercartDashboardDataObj['totalDeliveryFee'];
+                $rootScope.totalOrderAmt = userOrdercartDashboardDataObj['totalOrderAmt'];
             }else{
                 $rootScope.ordercartCount = 0;
                 $rootScope.ordercartItemRequestedCount = 0;
                 $rootScope.subtotalOrderAmt = 0;
+                $rootScope.totalDeliveryFee = 0;
+                $rootScope.totalOrderAmt = 0;
             }
         };
         
