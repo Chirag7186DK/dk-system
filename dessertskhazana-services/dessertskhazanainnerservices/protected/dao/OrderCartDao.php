@@ -483,9 +483,9 @@ class OrderCartDao{
                 COALESCE(odrs.address, '') deliveryAddress,
                 COALESCE(spl.name, '') productListTitle, 
                 COALESCE(odrsim.featureid, '') featureId, COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
-                COALESCE(odrsim.size, '') productSize, 
-                COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
-                COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
+                COALESCE(odrsim.size, '') size, 
+                COALESCE(odrsim.price, '') price, COALESCE(odrsim.qty, '0') qty, 
+                COALESCE(odrsim.totalamount, '') totalamount, COALESCE(odrsim.description, '') description,
                 COALESCE(odrsim.reason, '') ordercartStoreItemReason
                 FROM ORDERCART odr
                 JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
