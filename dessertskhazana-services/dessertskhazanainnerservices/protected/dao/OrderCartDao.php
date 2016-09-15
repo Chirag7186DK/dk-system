@@ -362,6 +362,7 @@ class OrderCartDao{
             $connection = Yii::App()->db;
             $sql= "SELECT
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
+                COALESCE(COUNT(DISTINCT odrs.id), 0) totalStores,
                 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
                 COALESCE(SUM(odrs.subtotalamount), 0) subtotalOrderAmt,
                 COALESCE(SUM(odrs.apply_deliveryfee), 0) totalDeliveryFee,
