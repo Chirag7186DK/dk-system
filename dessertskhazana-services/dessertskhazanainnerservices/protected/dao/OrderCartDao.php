@@ -475,7 +475,36 @@ class OrderCartDao{
         $result = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " ";
+            $sql= "SELECT 
+                odr.id ordercartId,
+                odrs.store_id storeId, COALESCE(ss.name, '') shopStoreTitle,
+                COALESCE(a.name, '') storeLocatedAreaName,
+                odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
+                COALESCE(odrs.address, '') deliveryAddress,
+                COALESCE(spl.name, '') productListTitle, 
+                COALESCE(odrsim.featureid, '') featureId, COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
+                COALESCE(odrsim.size, '') productSize, 
+                COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
+                COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
+                COALESCE(odrsim.reason, '') ordercartStoreItemReason
+                FROM ORDERCART odr
+                JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid
+                JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id
+                JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid
+                JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
+                    AND spa.id=spac.store_producttype_affiliationid
+                LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
+                JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id
+                JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
+                JOIN CITYREACHED c ON c.id=cca.city_id
+                JOIN AREAREACHED a ON a.id=cca.area_id
+                WHERE 1
+                AND odr.user_id='$userid'
+                AND (odrs.status='ZC' || odrs.status='ZA')
+                AND (odrsim.status='ZC' || odrsim.status='ZA')
+                ORDER BY odrsim.updated_by DESC, odrs.store_id ASC";
             $command = $connection->createCommand($sql);
             $ordercartAllItemDetailsArr = $command->queryAll();
             if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
