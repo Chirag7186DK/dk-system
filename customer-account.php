@@ -241,6 +241,9 @@
                     Your shopping bags contains 
                     (Items: {{ordercartItemRequestedCount}}, Subtotal Rs: {{subtotalOrderAmt}},
                     Total Delivery Rs: {{totalDeliveryFee}}, Total Amt Rs: {{totalOrderAmt}})
+                    <button ng-if="ordercartItemRequestedCount>0" class='btn uca_ordercartSectionCheckoutBtnClass'>
+                        CHECKOUT
+                    </button>
                 </p>
 
                 <!-- order cart all section header title -->
@@ -351,6 +354,16 @@
                                 CHECKOUT
                             </button>
                         </p>
+                    </div>
+                    <!-- no canceled ordered item found message div -->
+                    <div ng-if="ordercartRequestedAllStoreWiseData<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreNotFoundMsgDivClass">
+                        <p class="ordercartEmptyPClass">
+                            <i class="fa fa-smile-o"></i> Your Shopping Bags is Empty !!!
+                        </p>
+                        <p>
+                            <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
+                        </p>
+                        <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
                     </div>
                 </div>
                 
