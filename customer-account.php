@@ -259,7 +259,7 @@
 
                 <!-- requested order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreWiseSectionDivClass'>
-                    <div ng-repeat="eachStoreAllItemDataObj in ordercartRequestedAllItemDetailsArrObj" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreWiseSectionDivClass'>
+                    <div ng-repeat="eachStoreAllItemDataObj in ordercartRequestedAllStoreWiseData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreWiseSectionDivClass'>
                         <!-- each store basic info display -->
                         <div class="uca_ordercartRequestedEachStoreBasicInfoDivClass">
                             <p class="uca_ordercartRequestedEachStoreNamePClass">
@@ -328,13 +328,16 @@
                     </div>
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreWiseSummarySectionDivClass'>
                         <p class="">
-                            Subtotal Amt: 300
+                            Total Stores: {{ordercartRequestedSummaryData.totalStores}}
                         </p>
                         <p class="">
-                            Total Delivery Fee: 60
+                            Subtotal Amt: {{ordercartRequestedSummaryData.subtotalAmount}}
                         </p>
                         <p class="">
-                            Total Amt: 360
+                            Total Delivery Fee: {{ordercartRequestedSummaryData.totalDeliveryFee}}
+                        </p>
+                        <p class="">
+                            Total Amt: {{ordercartRequestedSummaryData.totalAmount}}
                         </p>
                     </div>
                 </div>
