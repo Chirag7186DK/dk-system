@@ -1,19 +1,51 @@
 
 
-SELECT
-COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
-COALESCE(COUNT(DISTINCT odrs.id), 0) totalStores,
-COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-COALESCE(SUM(odrs.subtotalamount), 0) subtotalOrderAmt,
-COALESCE(SUM(odrs.apply_deliveryfee), 0) totalDeliveryFee,
-COALESCE(SUM(odrs.totalamount), 0) totalOrderAmt
+SELECT 
+odr.id ordercartId,
+odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+COALESCE(a.name, '') storeLocatedAreaName,
+odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
+COALESCE(odrs.address, '') deliveryAddress,
+COALESCE(spl.name, '') productListTitle, 
+COALESCE(odrsim.featureid, '') featureId, COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
+COALESCE(odrsim.size, '') productSize, 
+COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
+COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
+COALESCE(odrsim.reason, '') ordercartStoreItemReason
 FROM ORDERCART odr
 JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
 JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
-WHERE 
-odr.status='R' AND odrs.status='R' AND odrsim.status='R'
+JOIN SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid
+JOIN SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id
+JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid
+JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+    AND spa.id=spac.shopstores_producttype_affiliationid
+LEFT JOIN SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
+JOIN SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id
+JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
+JOIN CITYREACHED c ON c.id=cca.city_id
+JOIN AREAREACHED a ON a.id=cca.area_id
+WHERE 1
 AND odr.user_id='1'
-HAVING ordercartCount>0
+AND (odrs.status='ZC' || odrs.status='ZA')
+AND (odrsim.status='ZC' || odrsim.status='ZA')
+ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
+
+
+-- SELECT
+-- COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
+-- COALESCE(COUNT(DISTINCT odrs.id), 0) totalStores,
+-- COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
+-- COALESCE(SUM(odrs.subtotalamount), 0) subtotalOrderAmt,
+-- COALESCE(SUM(odrs.apply_deliveryfee), 0) totalDeliveryFee,
+-- COALESCE(SUM(odrs.totalamount), 0) totalOrderAmt
+-- FROM ORDERCART odr
+-- JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+-- JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+-- WHERE 
+-- odr.status='R' AND odrs.status='R' AND odrsim.status='R'
+-- AND odr.user_id='1'
+-- HAVING ordercartCount>0
 
 
 
