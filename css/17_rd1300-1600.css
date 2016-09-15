@@ -1813,6 +1813,15 @@
         font-size:13px!important;
     }
     
+    .uca_ordercartSectionCheckoutBtnClass{
+        border-radius:0px!important;
+        background:#ab0b38!important;
+        color:#fff!important;
+        font-size:9px!important;
+        font-weight:bold!important;
+        padding:2px!important;
+    }
+    
     .uca_ordercartAllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
         margin-right:15px!important;
@@ -1864,7 +1873,7 @@
     
     .uca_ordercartRequestedEachStoreNamePClass{
         font-weight:bold!important;
-        font-size:15px!important;
+        font-size:13px!important;
         text-align:center!important;
         color:#ab0b38!important;
         text-transform:uppercase!important;
@@ -1909,7 +1918,7 @@
     .uca_ordercartRequestedEachStoreToggleItemsAddedLblPClass{
         padding-left:12px!important;
         color:#ab0b38!important;
-        font-size:16px!important;
+        font-size:13px!important;
         font-weight:bold!important;
         margin-bottom:5px!important;
         cursor:pointer!important;
@@ -1989,7 +1998,7 @@
         border-radius:0px!important;
         background:#ab0b38!important;
         font-weight:bold!important;
-        font-size:12px!important;
+        font-size:9px!important;
         color:#fff!important;
         margin-right:1%!important;
     }
@@ -2000,7 +2009,7 @@
         border-radius:0px!important;
         background:#ab0b38!important;
         font-weight:bold!important;
-        font-size:12px!important;
+        font-size:9px!important;
         color:#fff!important;
     }
 
@@ -2010,7 +2019,7 @@
         border-radius:0px!important;
         background:none!important;
         font-weight:bold!important;
-        font-size:12px!important;
+        font-size:9px!important;
         color:#ab0b38!important;
     }
 
@@ -2048,8 +2057,11 @@
         padding:5px!important;
     }
     
+    .uca_ordercartRequestedAllStoreNotFoundMsgDivClass{
+        text-align:center!important;
+    }
     
-    .shoppingBagsEmptyPClass{
+    .ordercartEmptyPClass{
         font-size:17px!important;
         color:#67717D!important;
     }
