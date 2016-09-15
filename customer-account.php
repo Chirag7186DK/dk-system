@@ -259,6 +259,7 @@
 
                 <!-- requested order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='requestitem'" ng-controller="UCustomerController" ng-init="populateOrdercartRequestedItemList('R')" id='uca_ordercartRequestedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreWiseSectionDivClass'>
+                    <!-- all store with all items display -->
                     <div ng-repeat="eachStoreAllItemDataObj in ordercartRequestedAllStoreWiseData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreWiseSectionDivClass'>
                         <!-- each store basic info display -->
                         <div class="uca_ordercartRequestedEachStoreBasicInfoDivClass">
@@ -326,21 +327,27 @@
                             </p>
                         </div>
                     </div>
+                    <!-- order cart requested summary display -->
                     <div ng-show="ordercartRequestedAllStoreWiseData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedSummaryDivClass'>
                         <p class="uca_ordercartRequestedSummaryHeaderPClass">
-                            CART SUMMARY
+                            <i class="fa fa-shopping-basket"></i> CART SUMMARY
                         </p>
                         <p class="uca_ordercartRequestedSummaryAllStoreCountLblPClass">
-                            Total Stores: {{ordercartRequestedSummaryData.totalStores}}
+                            Total Stores : {{ordercartRequestedSummaryData.totalStores}}
                         </p>
                         <p class="uca_ordercartRequestedSummarySubtotalLblPClass">
-                            Subtotal Amt(Rs): {{ordercartRequestedSummaryData.subtotalAmount}}
+                            Subtotal Amt(Rs) : {{ordercartRequestedSummaryData.subtotalAmount}}
                         </p>
                         <p class="uca_ordercartRequestedSummaryDeliveryFeeLblPClass">
-                            Total Delivery Fee(Rs): {{ordercartRequestedSummaryData.totalDeliveryFee}}
+                            Total Delivery Fee(Rs) : {{ordercartRequestedSummaryData.totalDeliveryFee}}
                         </p>
                         <p class="uca_ordercartRequestedSummaryTotalAmtLblPClass">
-                            Total Amt(Rs): {{ordercartRequestedSummaryData.totalAmount}}
+                            Total Amt(Rs) : {{ordercartRequestedSummaryData.totalAmount}}
+                        </p>
+                        <p class="uca_ordercartRequestedSummaryOperationPClass">
+                            <button class='btn ordercartRequestedSummaryCheckoutBtnClass'>
+                                CHECKOUT
+                            </button>
                         </p>
                     </div>
                 </div>
