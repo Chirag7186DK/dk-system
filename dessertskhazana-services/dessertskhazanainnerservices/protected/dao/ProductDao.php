@@ -279,7 +279,7 @@ class ProductDao{
                     FROM PRODUCTTYPE pt
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
                     JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.store_producttype_affiliationid=spa.id 
                         AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
                     JOIN STORE_PRODUCTLIST spl ON spl.store_ptpc_affiliationid = spac.id AND spl.status = 'A'
                     JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
