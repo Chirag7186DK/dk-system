@@ -860,16 +860,24 @@ class commonfunction{
     
     // CJ defined this function 2016-08-14
     public static function getRequestedOrdercartItemDetails($userId){
-        $retDataArr = array();
+        $allStorewiseDataArr = array();
+        $ordercartSummaryDataArr = array();
+        $ordercartSummaryDataArr['totalStores'] = 0;
+        $ordercartSummaryDataArr['subtotalAmount'] = 0;
+        $ordercartSummaryDataArr['totalDeliveryFee'] = 0;
+        $ordercartSummaryDataArr['totalAmount'] = 0;
         if($userId!='' && $userId!=false){
             // fetching requested order cart all items for given user
             $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
             if(count($dataArr1)>0 && $dataArr1!=false){
+                
                 // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
                 $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
                 if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
+                    
                     // iterating order store wise with delivery location data
                     foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                        
                         $eachOrdercartStoresDataArr = array();
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
@@ -884,6 +892,7 @@ class commonfunction{
                         $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryFee'];
                         $eachOrdercartStoresDataArr['isShowItemList'] = false;
                         $eachOrdercartStoresDataArr['allItemsData'] = array();
+                        
                         // iterate each item details
                         for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
                             array_push($eachOrdercartStoresDataArr['allItemsData'], 
@@ -907,6 +916,7 @@ class commonfunction{
                                 )
                             );
                         }
+                        
                         // checking for delivery fee msg 
                         if($storeAppliedDeliveryFeeOnOdrAmt<=0 && $storeAppliedDeliveryFeeOnOdrAmt!=''){
                             $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
@@ -915,13 +925,20 @@ class commonfunction{
                         }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
                         }
-                        array_push($retDataArr, $eachOrdercartStoresDataArr);
+                        
+                        $ordercartSummaryDataArr['totalStores'] = $ordercartSummaryDataArr['totalStores'] + 1;
+                        $ordercartSummaryDataArr['subtotalAmount'] = $ordercartSummaryDataArr['subtotalAmount'] + $eachOrdercartStoresDataArr['subtotalamount'];
+                        $ordercartSummaryDataArr['totalDeliveryFee'] = $ordercartSummaryDataArr['totalDeliveryFee'] + $storeAppliedDeliveryFeeOnOdrAmt;
+                        $ordercartSummaryDataArr['totalAmount'] = $ordercartSummaryDataArr['totalAmount'] + $eachOrdercartStoresDataArr['totalamount'];
+                        array_push($allStorewiseDataArr, $eachOrdercartStoresDataArr);
                     }
                 }
             }
         }
-        if(count($retDataArr)>0 && $retDataArr!=false){
-            return $retDataArr;
+        if(count($allStorewiseDataArr)>0 && $allStorewiseDataArr!=false){
+            $orderCartDataArr = array();
+            $orderCartDataArr['ordercartAllStoreWiseData'] = $allStorewiseDataArr;
+            $orderCartDataArr['ordercartSummaryData'] = $ordercartSummaryDataArr;
         }else{
             return false;
         }
