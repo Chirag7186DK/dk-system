@@ -430,6 +430,7 @@ class OrderCartDao{
                     odr.id ordercartId, odr.user_sessionid userSessionId, odr.user_id userId,
                     odrs.id ordercartStoreId,
                     odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+                    COALESCE(a.name, '') storeLocatedAreaName,
                     COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
                     COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
                     odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
@@ -450,6 +451,9 @@ class OrderCartDao{
                     JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
                         AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
                     JOIN SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+                    JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
+                    JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
+                    JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
                     WHERE 1
                     AND odr.user_id='$userid'
                     AND odr.status='R'
