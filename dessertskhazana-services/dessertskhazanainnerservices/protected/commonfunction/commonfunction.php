@@ -939,6 +939,7 @@ class commonfunction{
             $orderCartDataArr = array();
             $orderCartDataArr['ordercartAllStoreWiseData'] = $allStorewiseDataArr;
             $orderCartDataArr['ordercartSummaryData'] = $ordercartSummaryDataArr;
+            return $orderCartDataArr;
         }else{
             return false;
         }
