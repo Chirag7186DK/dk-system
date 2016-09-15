@@ -210,19 +210,22 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    $rootScope.ordercartRequestedAllItemDetailsArrObj =  false;
+                    $rootScope.ordercartRequestedAllStoreWiseData =  false;
+                    $rootScope.ordercartRequestedSummaryData =  false;
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
-                            var requestedOrdercartAllItemDetailsArrObj =  false;
+                            var ordercartRequestedData =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                requestedOrdercartAllItemDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartAllItemDetails', retResponseJson);
+                                ordercartRequestedData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartRequestedData', retResponseJson);
                             }
-                            if(requestedOrdercartAllItemDetailsArrObj!==false && requestedOrdercartAllItemDetailsArrObj!==undefined 
-                                && jQuery.isEmptyObject(requestedOrdercartAllItemDetailsArrObj)===false){
-                                $rootScope.ordercartRequestedAllItemDetailsArrObj =  requestedOrdercartAllItemDetailsArrObj;
+                            if(ordercartRequestedData!==false && ordercartRequestedData!==undefined 
+                                && jQuery.isEmptyObject(ordercartRequestedData)===false){
+                                $rootScope.ordercartRequestedAllStoreWiseData =  ordercartRequestedData.ordercartAllStoreWiseData;
+                                $rootScope.ordercartRequestedSummaryData =  ordercartRequestedData.ordercartSummaryData;
                             }else{
-                                $rootScope.ordercartRequestedAllItemDetailsArrObj =  false;
+                                $rootScope.ordercartAllStoreWiseData =  false;
+                                $rootScope.ordercartRequestedSummaryData =  false;
                             }
                         });
                     });
