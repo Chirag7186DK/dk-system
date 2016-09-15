@@ -99,7 +99,7 @@ class RatingReviewDao{
                 AND rqd.status='A'
                 ORDER BY rqd.sort_order ASC";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr = $command->queryAll();
+            $storeRatingReviewQuestions = $command->queryAll();
             if(count($retRatingReviewQuestionsAboutProductByShopStoresDetailsArr)>0 
                 && $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr!=false){
                 $retResult =  $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr;
