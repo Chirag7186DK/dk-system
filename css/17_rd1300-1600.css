@@ -1871,7 +1871,6 @@
         margin-bottom:3px!important;
     }
     
-    
     .uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass{
         padding-left:12px!important;
         color:rgb(30, 34, 37)!important;
@@ -2015,24 +2014,31 @@
         color:#ab0b38!important;
     }
 
-    .uca_ordercartCheckoutBtnDivClass{
-        padding-top:20px!important;
-        padding-bottom:20px!important;
-        text-align:center!important;
+    .uca_ordercartRequestedSummaryDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        margin-bottom:30px!important;
+        border:1px solid #e7e7e7!important;
     }
-
-    .uca_ordercartCheckoutBtnClass{
-        font-weight:bold;
+    
+    .uca_ordercartRequestedSummaryDivClass p{
+        padding-left:12px!important;
+        color:rgb(30, 34, 37);
+        font-size:14px!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartRequestedSummaryHeaderPClass{
+        font-weight:bold!important;
         font-size:15px!important;
-        border-radius:0px!important;
-        color:#fff!important;
-        background:#00B9F5!important;
-    }
-
-    .uca_ordercartCheckoutBtnDivClass{
         text-align:center!important;
+        color:rgba(39,171,92,0.9)!important;
+        text-transform:uppercase!important;
+        margin-bottom:4px!important;
     }
-
+    
+    
     .shoppingBagsEmptyPClass{
         font-size:17px!important;
         color:#67717D!important;
