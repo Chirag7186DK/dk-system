@@ -252,7 +252,7 @@
                         Shopping Items
                     </li>
                     <li ng-click="uca_toggleOrdercartSectionList('cancelledordered', 'uca_ordercartEachTabLabelSectionContainerLIId3', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId3' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
-                        Cancelled Orders
+                        Cancelled Ordered
                     </li>
                     <li ng-click="uca_toggleOrdercartSectionList('allordered', 'uca_ordercartEachTabLabelSectionContainerLIId2', 'uca_ordercartAllSectionHeaderContainerDivClass');" title='Click to view all ordered item(s)' id='uca_ordercartEachTabLabelSectionContainerLIId2' class='uca_ordercartEachTabLabelSectionContainerLIClass'>
                         All Ordered
@@ -288,7 +288,7 @@
                             <p class="uca_ordercartRequestedEachStoreTotalAmtPClass">
                                 Total Amt: {{eachStoreAllItemDataObj.totalamount}}
                             </p>
-                            <p ng-click="uca_OrdercartRequestedStoreItemsList(eachStoreAllItemDataObj);" class="uca_ordercartRequestedEachStoreToggleItemsAddedLblPClass">
+                            <p ng-click="uca_toggleOrdercartRequestedStoreItemsList(eachStoreAllItemDataObj);" class="uca_ordercartRequestedEachStoreToggleItemsAddedLblPClass">
                                 Show Added Items In Cart 
                                 <i class="{{eachStoreAllItemDataObj.isShowItemList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
                             </p>
@@ -371,58 +371,42 @@
                 <!-- canceled order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='cancelledordered'" ng-controller="OrderCartController" ng-init="populateOrdercartCancelledItemList('ZC,ZA')" id='uca_ordercartCancelledAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledAllItemListSectionDivClass'>
                     
-                    <!-- canceled order item will be filtering -->
-                    <div ng-if="ordercartCancelledAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartCancelledItemDivClass">
-                        <label class="searchTextOrdercartItemRequestedLblClass">
-                            Use for filtering and access fast canceled item !
-                        </label>
-                        <input ng-model="searchTextOrdercartItemCancelled" type="text" class="form-control" placeholder="Find canceled items !">
-                    </div>
-                    
-                    <!-- each order item will display -->
-                    <div ng-repeat="ordercartCancelledEachItemDetailsArrObj in ordercartCancelledAllItemDetailsArrObj | filter:searchTextOrdercartItemCancelled:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemSectionContainerDivClass">
-                        <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartCancelledEachItemImageDivClass'>
-                            <img style='width:100%;' class='ordercartCancelledEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
+                    <!-- all order cart info display -->
+                    <div ng-repeat="eachOrdercartDataObj in allOrdercartWiseCancelledData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachOrdercartWiseCancelledSectionDivClass'>
+                        <!-- each order cart info display -->
+                        <div class="uca_eachOrdercartWiseCancelledBasicInfoDivClass">
+                            <p class="uca_eachOrdercartWiseCancelledHeaderInfoDivClass">
+                                Order cart '{{eachOrdercartDataObj.humanReadableOrdercartId}}' contains
+                                <span class="badge ordercartCancelledAllItemCountSClass">{{eachOrdercartDataObj.totalItems}}</span> cancelled items
+                            </p>
+                            <p ng-click="uca_toggleOrdercartCancelledItemsList(eachOrdercartDataObj);" class="uca_ordercartToggleCancelledItemsLblPClass">
+                                Show Cancelled Items In Cart 
+                                <i class="{{eachOrdercartDataObj.isShowItemList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
+                            </p>
+                            <hr class='uca_ordercartCancelledBasicInfoHrClass'>
                         </div>
-                        <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartCancelledEachItemDetailsDivClass'>
-                            <p class="ordercartCancelledEachItemNoSClass">
-                                Ordered No: {{ordercartCancelledEachItemDetailsArrObj.ordercartNo}}
+                        <!-- each items will be display -->
+                        <div ng-show='eachOrdercartDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachOrdercartDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemDivClass'>
+                            <p class="uca_ordercartCancelledItemNamePClass">
+                                {{eachItemDataObj.productListTitle}}
                             </p>
-                            <p class="ordercartCancelledEachItemSellerNamePClass">
-                                Seller: {{ordercartCancelledEachItemDetailsArrObj.shopStoreTitle}}
+                            <p class="uca_ordercartCancelledItemSizePClass">
+                                Size: {{eachItemDataObj.size}}
                             </p>
-                            <p class="ordercartCancelledEachItemNamePClass">
-                                {{ordercartCancelledEachItemDetailsArrObj.productListTitle}}
-                            </p>
-                            <p class="ordercartCancelledEachItemSizePClass">
-                                Size: {{ordercartCancelledEachItemDetailsArrObj.itemMeasurementType}}
-                            </p>
-                            <p class='ordercartCancelledEachItemPriceDetailsPClass'> 
-                                Current Price: 
-                                <span class='ordercartCancelledEachItemDiscountPercentTextSClass' ng-if="ordercartCancelledEachItemDetailsArrObj.productFeatureDiscount!==''">
-                                    {{ordercartCancelledEachItemDetailsArrObj.productFeatureDiscount}}%
-                                </span>
-                                <span class='ordercartCancelledEachItemCutPriceTextSClass' ng-if="ordercartCancelledEachItemDetailsArrObj.productFeatureBasePrice!==''">
-                                    <i class="fa fa-rupee"></i> {{ordercartCancelledEachItemDetailsArrObj.productFeatureBasePrice}}
-                                </span>
-                                <span class='ordercartCancelledEachItemPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> {{ordercartCancelledEachItemDetailsArrObj.productFeatureOnlineSellingPrice}}
+                            <p class='uca_ordercartCancelledItemPricePClass'> 
+                                <span class='uca_ordercartCancelledItemPriceTextSClass'>
+                                    <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
                                 </span>
                             </p>
-                            <p class="ordercartCancelledEachItemQtyPClass">
-                                Bought Qty: {{ordercartCancelledEachItemDetailsArrObj.itemQty}}
+                            <p class="uca_ordercartCancelledItemQtyPClass">
+                                Bought Qty: {{eachItemDataObj.qty}}
+                            </p>
+                            <p class="uca_ordercartCancelledItemTotalAmtPClass">
+                                Total Amt: {{eachItemDataObj.totalamount}}
                             </p>
                         </div>
                     </div>
                     
-                    <!-- no canceled ordered item found message div -->
-                    <div ng-if="ordercartCancelledAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoCancelledItemFoundDivClass">
-                        <p class="orderCancelledItemEmptyPClass">Your Shopping Bags is Empty !</p>
-                        <p>
-                            <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
-                        </p>
-                        <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
-                    </div>
                 </div>
                 
                 <!-- ordered order cart all items info will be displayed -->
