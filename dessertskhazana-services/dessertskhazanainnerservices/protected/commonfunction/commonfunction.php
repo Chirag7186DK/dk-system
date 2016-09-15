@@ -974,6 +974,7 @@ class commonfunction{
                             array_push($eachOrdercartStoresDataArr['allItemsData'], 
                                 array(
                                     "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
+                                    "imageName"=>$storeAllItemsDataArr[$eachIndx]['productImageFileName'],
                                     "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
                                     "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
                                     "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
