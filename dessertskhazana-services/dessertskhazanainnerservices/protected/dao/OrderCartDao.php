@@ -13,7 +13,7 @@ class OrderCartDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT COALESCE(MAX(uoc.id), 0) orderCartId
-                FROM DK_ORDERCART uoc
+                FROM ORDERCART uoc
                 WHERE 1";
             $command = $connection->createCommand($sql);
             $ordercartDetailsArr = $command->queryAll();
@@ -34,7 +34,7 @@ class OrderCartDao{
                 COALESCE(uoc.order_cartid, '') humanReadableOrdercartId,
                 COALESCE(uoc.user_id, '') orderedUserId,
                 COALESCE(uoc.user_sessionid, '') userSessionId
-                FROM DK_ORDERCART uoc
+                FROM ORDERCART uoc
                 WHERE 1 AND uoc.status='R' 
                 AND uoc.order_cartid IS NOT NULL
                 AND uoc.user_sessionid IS NOT NULL
@@ -86,7 +86,7 @@ class OrderCartDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_ORDERCART " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO ORDERCART " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -112,7 +112,7 @@ class OrderCartDao{
             }
         }
         if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_ORDERCART SET ".rtrim($dynamicSql, ',');
+            $sqlQuery = " UPDATE ORDERCART SET ".rtrim($dynamicSql, ',');
             $sqlQuery.=" WHERE id='".$paramJson['id']."' AND order_cartid='".$paramJson['order_cartid']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
@@ -139,7 +139,7 @@ class OrderCartDao{
             }
         }
         if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_ORDERCART SET ".rtrim($dynamicSql, ',');
+            $sqlQuery = " UPDATE ORDERCART SET ".rtrim($dynamicSql, ',');
             $sqlQuery.=" WHERE id='".$paramJson['id']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
@@ -223,7 +223,7 @@ class OrderCartDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_ORDERCARTSTORE " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO ORDERCARTSTORE " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -272,7 +272,7 @@ class OrderCartDao{
             }
         }
         if($dynamicSql!=''){
-            $sqlQuery = " UPDATE DK_ORDERCARTSTORE SET ".rtrim($dynamicSql, ',');
+            $sqlQuery = " UPDATE ORDERCARTSTORE SET ".rtrim($dynamicSql, ',');
             $sqlQuery.=" WHERE id='".$paramJson['id']."'";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
@@ -345,7 +345,7 @@ class OrderCartDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_ORDERCARTSTORE_ITEMDETAILS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO ORDERCARTSTORE_ITEMDETAILS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -366,9 +366,9 @@ class OrderCartDao{
                 COALESCE(
                     COALESCE(SUM(odrsim.totalamount), 0) + COALESCE(SUM(odrs.deliveryfee), 0)
                 ) subtotalOrderAmt
-                FROM DK_ORDERCART odr
-                JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-                JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                FROM ORDERCART odr
+                JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
                 WHERE 
                 odr.status='R' AND odrs.status='R' AND odrsim.status='R'
                 AND odr.user_id='$userid'
@@ -396,9 +396,9 @@ class OrderCartDao{
                     COALESCE(SUM(odrsim.totalamount), 0) - COALESCE(SUM(odrs.apply_deliveryfee), 0)
                 ) subtotalOrderAmtIncludingDeliveryFee,
                 COALESCE(SUM(odrsim.totalamount), 0) subtotalOrderAmtNotIncludingDeliveryFee
-                FROM DK_ORDERCART odr
-                JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-                LEFT JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id AND odrsim.status='R' 
+                FROM ORDERCART odr
+                JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                LEFT JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id AND odrsim.status='R' 
                 WHERE 1
                 AND odr.user_id='$userid'
                 AND odrs.store_id='$store_id'
@@ -441,15 +441,15 @@ class OrderCartDao{
                     COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
                     COALESCE(splld.baseprice, '') productFeatureBasePrice, 
                     COALESCE(splld.product_discount, '') productFeatureDiscount
-                    FROM DK_ORDERCART odr
-                    JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-                    JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
-                    JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
-                    JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+                    FROM ORDERCART odr
+                    JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                    JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                    JOIN SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
+                    JOIN SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
+                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
+                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
                         AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
-                    JOIN DK_SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+                    JOIN SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
                     WHERE 1
                     AND odr.user_id='$userid'
                     AND odr.status='R'
@@ -497,19 +497,19 @@ class OrderCartDao{
                     COALESCE(uocim.product_features_totalamount, 0) itemTotalAmt,
                     COALESCE(uocim.product_description,'') itemDescriptionIncart,
                     'N' isCancelledItemAvailable
-                    FROM DK_USERORDERCART uoc 
-                    JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
-                    JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid
-                    JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+                    FROM USERORDERCART uoc 
+                    JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
+                    JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
+                    JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
+                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
+                    JOIN SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
-                    LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
+                    LEFT JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
                         ON ppimg.product_listid=sppl.id
                         AND ppimg.is_showcasefile = 'Y'    
                     WHERE 1
@@ -566,19 +566,19 @@ class OrderCartDao{
                         ELSE 'Call customer care to know status'
                     END) orderedItemStatus,
                     'N' isOrderedItemAvailable
-                    FROM DK_USERORDERCART uoc 
-                    JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
-                    JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid
-                    JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+                    FROM USERORDERCART uoc 
+                    JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
+                    JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
+                    JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
+                    JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
-                    JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
+                    JOIN SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+                    JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
-                    LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
+                    LEFT JOIN SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
                         ON ppimg.product_listid=sppl.id
                         AND ppimg.is_showcasefile = 'Y'    
                     WHERE 1
@@ -631,7 +631,7 @@ class OrderCartDao{
         }
         if($dynamicSql!='' && array_key_exists('orderStoreItemId', $paramJson)==true){
             if($paramJson['orderStoreItemId']!='' && ($paramJson['orderStoreItemId'])>0){
-                $sqlQuery = " UPDATE DK_ORDERCARTSTORE_ITEMDETAILS SET ".rtrim($dynamicSql, ',');
+                $sqlQuery = " UPDATE ORDERCARTSTORE_ITEMDETAILS SET ".rtrim($dynamicSql, ',');
                 $sqlQuery.=" WHERE id='".$paramJson['orderStoreItemId']."'";
                 $command = $connection->createCommand($sqlQuery);
                 $result = $command->execute();
