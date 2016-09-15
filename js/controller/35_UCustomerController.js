@@ -235,15 +235,14 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             }
         };
         
-        // uca_OrdercartRequestedStoreItemsList
-        $rootScope.uca_OrdercartRequestedStoreItemsList = function(storeDataObj){
+        // uca_toggleOrdercartRequestedStoreItemsList
+        $rootScope.uca_toggleOrdercartRequestedStoreItemsList = function(storeDataObj){
             if(storeDataObj.isShowItemList===true){
                 storeDataObj.isShowItemList = false;
             }else{
                 storeDataObj.isShowItemList = true;
             }
         };
-        
         
         // populateOrdercartCancelledItemList
         $rootScope.populateOrdercartCancelledItemList = function(ordercartItemListByStatusType){
@@ -255,7 +254,7 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    $rootScope.ordercartCancelledAllStoreWiseData =  false;
+                    $rootScope.allOrdercartWiseCancelledData =  false;
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
@@ -265,15 +264,24 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                             }
                             if(ordercartCancelledData!==false && ordercartCancelledData!==undefined 
                                 && jQuery.isEmptyObject(ordercartCancelledData)===false){
-                                $rootScope.ordercartCancelledAllStoreWiseData =  ordercartCancelledData;
+                                $rootScope.allOrdercartWiseCancelledData =  ordercartCancelledData;
                             }else{
-                                $rootScope.ordercartCancelledAllStoreWiseData =  false;
+                                $rootScope.allOrdercartWiseCancelledData =  false;
                             }
                         });
                     });
                 }
             }catch(ex){
                 console.log("problem in populateOrdercartCancelledItemList ex=>"+ex);
+            }
+        };
+        
+        // uca_toggleOrdercartCancelledItemsList
+        $rootScope.uca_toggleOrdercartCancelledItemsList = function(ordercartDataObj){
+            if(ordercartDataObj.isShowItemList===true){
+                ordercartDataObj.isShowItemList = false;
+            }else{
+                ordercartDataObj.isShowItemList = true;
             }
         };
         
@@ -319,6 +327,8 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 console.log("problem in populateOrdercartAllOrderedItemList ex=>"+ex);
             }
         };
+        
+        
         
         // checkProductDataToUdateInOrdercart 
         $rootScope.checkProductDataToUdateInOrdercart = function(productDetailsObj, fcontentClass){
