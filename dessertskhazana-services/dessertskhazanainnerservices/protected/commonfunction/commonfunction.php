@@ -866,7 +866,7 @@ class commonfunction{
         $ordercartSummaryDataArr['subtotalAmount'] = 0;
         $ordercartSummaryDataArr['totalDeliveryFee'] = 0;
         $ordercartSummaryDataArr['totalAmount'] = 0;
-        if($userId!='' && $userId!=false){
+        if($userId!=false && $userId>0){
             // fetching requested order cart all items for given user
             $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
             if(count($dataArr1)>0 && $dataArr1!=false){
@@ -948,15 +948,51 @@ class commonfunction{
     
     // CJ defined this function 2016-08-15
     public static function getCancelledOrdercartItemDetails($userId){
-        $retDataArr = false;
-        if($userId!='' && $userId!=false){
+        $allStorewiseDataArr = array();
+        if($userId>0 && $userId!=false){
             // fetching cancelled order cart all items by end user or admin members
-            $ordercartAllItemDetailsArr = OrderCartDao :: getCancelledOrdercartItemDetails($userId);
-            if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
-                $retDataArr = $ordercartAllItemDetailsArr;
+            $dataArr1 = OrderCartDao :: getCancelledOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                
+                // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
+                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
+                    
+                    // iterating order store wise with delivery location data
+                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                        
+                        $eachOrdercartStoresDataArr = array();
+                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
+                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
+                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
+                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
+                        $eachOrdercartStoresDataArr['isShowItemList'] = false;
+                        $eachOrdercartStoresDataArr['allItemsData'] = array();
+                        
+                        // iterate each item details
+                        for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
+                            array_push($eachOrdercartStoresDataArr['allItemsData'], 
+                                array(
+                                    "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
+                                    "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
+                                    "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
+                                    "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
+                                    "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt'],
+                                    "description"=>$storeAllItemsDataArr[$eachIndx]['description'],
+                                    "reason"=>$storeAllItemsDataArr[$eachIndx]['ordercartStoreItemReason']
+                                )
+                            );
+                        }
+                        array_push($allStorewiseDataArr, $eachOrdercartStoresDataArr);
+                    }
+                }
             }
         }
-        return $retDataArr;
+        if(count($allStorewiseDataArr)>0 && $allStorewiseDataArr!=false){
+            return $allStorewiseDataArr;
+        }else{
+            return false;
+        }
     }
     
     // CJ defined this function 2016-08-21
