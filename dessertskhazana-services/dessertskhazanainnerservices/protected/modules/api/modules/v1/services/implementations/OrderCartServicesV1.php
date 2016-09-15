@@ -53,7 +53,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                 $ordercartItemListByStatusType = $dkParamDataArr['ordercartItemListByStatusType'];
                 $userId = $userSessionDetailsData['unmd5UserId'];
                 if($ordercartItemListByStatusType=='R'){
-                    $rspDetails['ordercartAllItemDetails'] = commonfunction :: getRequestedOrdercartItemDetails($userId);
+                    $rspDetails['ordercartRequestedData'] = commonfunction :: getRequestedOrdercartItemDetails($userId);
                 }
                 if($ordercartItemListByStatusType=='ZC,ZA'){
                     $rspDetails['ordercartAllItemDetails'] = commonfunction :: getCancelledOrdercartItemDetails($userId);
