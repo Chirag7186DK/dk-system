@@ -38,7 +38,7 @@ class UsersDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_TRACKUSERS_ACCESSWEBSITES " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO TRACKUSERS_ACCESSWEBSITES " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -55,7 +55,7 @@ class UsersDao{
             $connection = Yii::App()->db;
             $sql= " SELECT 
                 COALESCE(MAX(id),0) maxUserLogNo
-                FROM DK_USERLOG";
+                FROM USERLOG";
             $command = $connection->createCommand($sql);
             $userMaxLogNoDetailsArr = $command->queryAll();
             if(count($userMaxLogNoDetailsArr)>0 && $userMaxLogNoDetailsArr!=false){
@@ -111,7 +111,7 @@ class UsersDao{
             $userLogDetails['login_datedtime'] = date('Y-m-d H:i:s');
             $sqlColumnNames.=" login_datedtime,";
             $sqlValues.="'".$userLogDetails['login_datedtime']."',";
-            $sqlQuery = " INSERT INTO DK_USERLOG " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO USERLOG " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -163,7 +163,7 @@ class UsersDao{
         }
         if($dynamicSql!='' && array_key_exists('user_id', $paramJson)){
             if($paramJson['user_id']!=''){
-                $sqlQuery = " UPDATE DK_USERS SET ".rtrim($dynamicSql, ',');
+                $sqlQuery = " UPDATE USERS SET ".rtrim($dynamicSql, ',');
                 $sqlQuery.=" WHERE id='".$paramJson['user_id']."'";
                 $command = $connection->createCommand($sqlQuery);
                 $result = $command->execute();
@@ -196,9 +196,9 @@ class UsersDao{
                 COALESCE(u.gender, 'Male') userGender,
                 COALESCE(u.birthdate, '') userBirthdate,
                 COALESCE(u.status, 'Z') userStatus
-                FROM DK_USERLOG ul
-                JOIN DK_USERS u ON ul.user_id=u.id AND u.status='A' 
-                JOIN DK_USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
+                FROM USERLOG ul
+                JOIN USERS u ON ul.user_id=u.id AND u.status='A' 
+                JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
                 WHERE 1
                 AND ul.status='A' 
                 AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
@@ -229,8 +229,8 @@ class UsersDao{
                     MD5(up.id) userProfileTypeId, up.id unmd5ProfileTypeId,
                     DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y') userSinceFrom,
                     COALESCE(u.status, 'Z') userStatus
-                    FROM DK_USERS u
-                    JOIN DK_USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
+                    FROM USERS u
+                    JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
                     WHERE 1 ";  
                     // add userLoggedId in where condition
                     if(array_key_exists('userLoggedId', $paramJson)){
@@ -294,7 +294,7 @@ class UsersDao{
             $connection = Yii::App()->db;
             $sql= " SELECT 
                 COALESCE(MAX(session_idno),0) userSessionId
-                FROM DK_USERSESSION";
+                FROM USERSESSION";
             $command = $connection->createCommand($sql);
             $sessionNoDetailsArr = $command->queryAll();
             if(count($sessionNoDetailsArr)>0 && $sessionNoDetailsArr!=false){
@@ -309,7 +309,7 @@ class UsersDao{
         $retStatus = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " INSERT INTO DK_USERSESSION (session_idno, user_sessionid) VALUES('$maxUserSessionNo', '$userSessionId') ";
+            $sql= " INSERT INTO USERSESSION (session_idno, user_sessionid) VALUES('$maxUserSessionNo', '$userSessionId') ";
             $command = $connection->createCommand($sql);
             $result = $command->execute();
             if($result>0){
@@ -325,7 +325,7 @@ class UsersDao{
         $retStatus = 'FALSE';
         try{
             $connection = Yii::App()->db;
-            $sql= " UPDATE DK_USERLOG SET status='Z', logout_datedtime='".date('Y-m-d H:i:s')."'
+            $sql= " UPDATE USERLOG SET status='Z', logout_datedtime='".date('Y-m-d H:i:s')."'
                 WHERE user_logno='$udblogId' AND user_sessionid='$userSessionId' ";
             $command = $connection->createCommand($sql);
             $result = $command->execute();
