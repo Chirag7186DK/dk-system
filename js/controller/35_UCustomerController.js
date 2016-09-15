@@ -252,38 +252,27 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    
-                    $rootScope.ordercartCancelledAllItemDetailsArrObj =  false;
-                    
+                    $rootScope.ordercartCancelledAllStoreWiseData =  false;
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
-                            var ordercartCancelledAllItemDetailsArrObj =  false;
+                            var ordercartCancelledData =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                ordercartCancelledAllItemDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartAllItemDetails', retResponseJson);
+                                ordercartCancelledData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartCancelledData', retResponseJson);
                             }
-                            if(ordercartCancelledAllItemDetailsArrObj!==false && ordercartCancelledAllItemDetailsArrObj!==undefined 
-                                && jQuery.isEmptyObject(ordercartCancelledAllItemDetailsArrObj)===false){
-                                $rootScope.ordercartCancelledAllItemDetailsArrObj =  ordercartCancelledAllItemDetailsArrObj;
+                            if(ordercartCancelledData!==false && ordercartCancelledData!==undefined 
+                                && jQuery.isEmptyObject(ordercartCancelledData)===false){
+                                $rootScope.ordercartCancelledAllStoreWiseData =  ordercartCancelledData;
                             }else{
-                                $rootScope.ordercartCancelledAllItemDetailsArrObj =  false;
+                                $rootScope.ordercartCancelledAllStoreWiseData =  false;
                             }
                         });
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in populateOrdercartCancelledItemList ex=>"+ex);
             }
         };
