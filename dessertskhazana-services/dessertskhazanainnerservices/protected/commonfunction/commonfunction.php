@@ -880,6 +880,7 @@ class commonfunction{
                         
                         $eachOrdercartStoresDataArr = array();
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
+                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
                         $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
                         $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
