@@ -26,7 +26,7 @@ class ProductDao{
             $command = $connection->createCommand($sqlFetchQuery);
             $retProductTypeListArr = $command->queryAll();
             if($retProductTypeListArr!=false && count($retProductTypeListArr)>0){
-                $retResult =  $retCityListArr;
+                $retResult =  $retProductTypeListArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
