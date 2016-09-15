@@ -211,7 +211,7 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.ordercartRequestedAllStoreWiseData =  false;
-                    $rootScope.ordercartRequestedSummaryData =  false;
+                    // $rootScope.ordercartRequestedSummaryData =  false;
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
@@ -222,10 +222,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                             if(ordercartRequestedData!==false && ordercartRequestedData!==undefined 
                                 && jQuery.isEmptyObject(ordercartRequestedData)===false){
                                 $rootScope.ordercartRequestedAllStoreWiseData =  ordercartRequestedData.ordercartAllStoreWiseData;
-                                $rootScope.ordercartRequestedSummaryData =  ordercartRequestedData.ordercartSummaryData;
+                                // $rootScope.ordercartRequestedSummaryData =  ordercartRequestedData.ordercartSummaryData;
                             }else{
                                 $rootScope.ordercartAllStoreWiseData =  false;
-                                $rootScope.ordercartRequestedSummaryData =  false;
+                                // $rootScope.ordercartRequestedSummaryData =  false;
                             }
                         });
                     });
