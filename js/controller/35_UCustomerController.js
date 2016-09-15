@@ -232,6 +232,16 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             }
         };
         
+        // uca_OrdercartRequestedStoreItemsList
+        $rootScope.uca_OrdercartRequestedStoreItemsList = function(storeDataObj){
+            if(storeDataObj.isShowItemList===true){
+                storeDataObj.isShowItemList = false;
+            }else{
+                storeDataObj.isShowItemList = true;
+            }
+        };
+        
+        
         // populateOrdercartCancelledItemList
         $rootScope.populateOrdercartCancelledItemList = function(ordercartItemListByStatusType){
             try{
