@@ -882,6 +882,7 @@ class commonfunction{
                         $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
                         $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
                         $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['isShowItemList'] = false;
                         $eachOrdercartStoresDataArr['allItemsData'] = array();
                         // iterate each item details
                         for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
