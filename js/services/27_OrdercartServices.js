@@ -19,6 +19,7 @@ function OrderCartServices($rootScope){
                 $rootScope.totalOrderAmt = userOrdercartDashboardDataObj['totalOrderAmt'];
             }else{
                 $rootScope.ordercartCount = 0;
+                $rootScope.totalStores = 0;
                 $rootScope.ordercartItemRequestedCount = 0;
                 $rootScope.subtotalOrderAmt = 0;
                 $rootScope.totalDeliveryFee = 0;
