@@ -20,7 +20,7 @@ class StoreDao{
                 COALESCE(ss.shopstore_mobile, '') shopStoreContact,
                 COALESCE(ss.address, '') shopStoreAddress,
                 COALESCE(a.id, '') areaId, COALESCE(a.name, '') areaName
-                FROM SHOPSTORES ss 
+                FROM STORE ss 
                 JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
                 JOIN CITYREACHED c ON c.id=cca.city_id 
                 JOIN AREAREACHED a ON a.id=cca.area_id
@@ -67,8 +67,8 @@ class StoreDao{
                     COALESCE(sdl.orderdelivery_closetime, '') orderDeliveryCloseTime,
                     COALESCE(sdl.deliveryfee, '0') deliveryfee, COALESCE(sdl.min_orderamount, '0') min_orderamount,
                     COALESCE(sdl.delivery_time, '60 MIN') delivery_time
-                    FROM SHOPSTORES ss
-                    JOIN SHOPSTORE_DELIVERYLOCATIONDETAILS sdl ON sdl.shopstore_id=ss.id AND sdl.status='A'
+                    FROM STORE ss
+                    JOIN STORE_DELIVERYLOCATIONDETAILS sdl ON sdl.shopstore_id=ss.id AND sdl.status='A'
                     JOIN COUNTRYREACHED country ON sdl.country_id=country.id AND country.status='A'
                     JOIN CITYREACHED city ON sdl.city_id=city.id AND city.status='A' 
                     JOIN AREAREACHED area ON sdl.area_id=area.id AND area.status='A'";
@@ -180,7 +180,7 @@ class StoreDao{
                 COALESCE(sw.close_time, '') closeTime,
                 (CASE WHEN COALESCE(sw.is_shopholiday,'N')='N' THEN 'OPEN' ELSE 'CLOSE' END) isShopholiday,
                 (CASE WHEN DAYNAME(CURDATE())=COALESCE(sw.dayname, '') THEN 'Y' ELSE 'N' END) isTodayDayMatched
-                FROM SHOPSTORE_WORKINGHOURS sw 
+                FROM STORE_WORKINGHOURS sw 
                 WHERE sw.status='A' AND sw.shopstore_id IN ($shop_storeids) ";
             $command = $connection->createCommand($sqlFetchQuery);
             $storeWorkingDetailsArr = $command->queryAll();
