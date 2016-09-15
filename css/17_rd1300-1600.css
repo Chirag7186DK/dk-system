@@ -1940,6 +1940,10 @@
         font-weight:normal!important;
         margin-bottom:3px!important;
     }
+    
+    .ordercartRequestedEachStoreAllItemCountSClass{
+        background:#ffa500!important;
+    }
 
     .uca_ordercartRequestedEachStoreItemSizePClass{
         color:rgb(70, 75, 80)!important;
