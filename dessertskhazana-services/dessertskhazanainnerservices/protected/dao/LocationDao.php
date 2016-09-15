@@ -126,7 +126,7 @@ class LocationDao{
                     JOIN CITYREACHED c ON c.id=cca.city_id 
                     JOIN AREAREACHED a ON a.id=cca.area_id 
                     JOIN PRODUCTTYPE pt ON pt.id=cpts.product_typeid 
-                    JOIN SHOPSTORES s ON FIND_IN_SET_X(s.id, cpts.shopstore_ids)>0
+                    JOIN STORE s ON FIND_IN_SET_X(s.id, cpts.shopstore_ids)>0
                     WHERE 1
                     AND cpts.status='A' AND cca.status='A' AND c.status='A' AND a.status='A' 
                     AND pt.status='A' AND s.status='A'
