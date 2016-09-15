@@ -363,9 +363,9 @@ class OrderCartDao{
             $sql= "SELECT
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
                 COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
-                COALESCE(
-                    COALESCE(SUM(odrsim.totalamount), 0) + COALESCE(SUM(odrs.deliveryfee), 0)
-                ) subtotalOrderAmt
+                COALESCE(SUM(odrs.subtotalamount), 0) subtotalOrderAmt,
+                COALESCE(SUM(odrs.apply_deliveryfee), 0) totalDeliveryFee,
+                COALESCE(SUM(odrs.totalamount), 0) totalOrderAmt
                 FROM ORDERCART odr
                 JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
                 JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
