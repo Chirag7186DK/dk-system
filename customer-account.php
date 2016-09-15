@@ -269,7 +269,8 @@
                         <!-- each store basic info display -->
                         <div class="uca_ordercartRequestedEachStoreBasicInfoDivClass">
                             <p class="uca_ordercartRequestedEachStoreNamePClass">
-                                Bags Contains {{eachStoreAllItemDataObj.totalItems}} Items 
+                                Bags Contains 
+                                <span class="badge ordercartRequestedEachStoreAllItemCountSClass">{{eachStoreAllItemDataObj.totalItems}}</span> Items
                                 from '{{eachStoreAllItemDataObj.shopStoreTitle}}' store
                             </p>
                             <p class="uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass">
