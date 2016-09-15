@@ -449,9 +449,9 @@ class OrderCartDao{
                     JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
                     JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
                     JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.id=odrs.store_id
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
                         AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
-                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.id=ss.id AND ss.status='A'
+                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
                     JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
                     JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
                     JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
@@ -475,53 +475,7 @@ class OrderCartDao{
         $result = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " SELECT 
-                    uoc.id ordercartId, uocim.id ordercartItemId, 
-                    COALESCE(uoc.order_cartid, '') ordercartNo,
-                    COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
-                    COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
-                    COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '')  productTypeProductCategoryTitle,
-                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
-                    COALESCE(sppl.id, '') productListId, COALESCE(sppl.name, '') productListTitle,
-                    COALESCE(sppfd.id, '') productFeatureId, 
-                    COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
-                    COALESCE(sppfd.food_type, '') productFeatureFoodType, 
-                    COALESCE(sppfd.taste_type, '') productFeatureTasteType, 
-                    COALESCE(sppfd.pattern_type, '') productFeaturePatternType, 
-                    COALESCE(sppfd.order_opentime, '') productFeatureOrderOpenTime, 
-                    COALESCE(sppfd.order_closetime, '') productFeatureOrderOpenTime, 
-                    COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
-                    COALESCE(sppfd.product_discount, '') productFeatureDiscount,
-                    COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice,
-                    COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
-                    COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
-                    COALESCE(ppimg.file_path, 'images/') productImageFilePath,
-                    COALESCE(uocim.product_featuresize, '') itemMeasurementType,
-                    COALESCE(uocim.product_featuresprice, 0) itemPerpriceIncart,
-                    COALESCE(uocim.product_featuresqty, 0) itemQty,
-                    COALESCE(uocim.product_features_totalamount, 0) itemTotalAmt,
-                    COALESCE(uocim.product_description,'') itemDescriptionIncart,
-                    'N' isCancelledItemAvailable
-                    FROM USERORDERCART uoc 
-                    JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
-                    JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
-                    JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.id 
-                    JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
-                        AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
-                        AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.id
-                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
-                        ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
-                    LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
-                        ON ppimg.product_listid=sppl.id
-                        AND ppimg.is_showcasefile = 'Y'    
-                    WHERE 1
-                    AND (uoc.status='ZC' OR uoc.status='ZA' OR uoc.status='R')
-                    AND (uocim.status='ZC' OR uocim.status='ZA')
-                    AND uoc.user_id='$userid'
-                    ORDER BY uoc.order_cartid ASC, uoc.updated_datedtime DESC";
+            $sql= " ";
             $command = $connection->createCommand($sql);
             $ordercartAllItemDetailsArr = $command->queryAll();
             if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
@@ -542,7 +496,7 @@ class OrderCartDao{
                     COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
                     COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
                     COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '')  productTypeProductCategoryTitle,
-                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
+                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
                     COALESCE(sppl.id, '') productListId, COALESCE(sppl.name, '') productListTitle,
                     COALESCE(sppfd.id, '') productFeatureId, 
                     COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
@@ -575,12 +529,12 @@ class OrderCartDao{
                     JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
                     JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
                     JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
                     JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.id
+                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
                     JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
                     LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
