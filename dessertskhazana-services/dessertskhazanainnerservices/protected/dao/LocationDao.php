@@ -15,7 +15,7 @@ class LocationDao{
             $sql= " SELECT 
                     COALESCE(c.id, '') cityId, 
                     COALESCE(c.name, '') cityName
-                    FROM DK_CITYREACHED c 
+                    FROM CITYREACHED c 
                     WHERE 1
                     AND c.status='A' AND c.name IS NOT NULL";
                     if($city_ids!=''){
@@ -42,7 +42,7 @@ class LocationDao{
             $sql= " SELECT 
                     COALESCE(a.id, '') areaId, 
                     COALESCE(a.name, '') areaName
-                    FROM DK_AREAREACHED a
+                    FROM AREAREACHED a
                     WHERE 1
                     AND a.status='A' AND a.name IS NOT NULL";
                     if($area_ids!=''){
@@ -74,10 +74,10 @@ class LocationDao{
                     COALESCE(city.id, '') cityId, COALESCE(city.name, '') cityName,
                     COALESCE(area.id, '') areaId, COALESCE(area.name, '') areaName, 
                     COALESCE(area.pincode, '') areaPincode
-                    FROM DK_COUNTRYCITYAREAAFFILIATION cca
-                    JOIN DK_COUNTRYREACHED country ON country.id=cca.country_id AND country.status='A'
-                    JOIN DK_CITYREACHED city ON city.id=cca.city_id AND city.status='A'
-                    JOIN DK_AREAREACHED area ON area.id=cca.area_id AND area.status='A'
+                    FROM COUNTRYCITYAREAAFFILIATION cca
+                    JOIN COUNTRYREACHED country ON country.id=cca.country_id AND country.status='A'
+                    JOIN CITYREACHED city ON city.id=cca.city_id AND city.status='A'
+                    JOIN AREAREACHED area ON area.id=cca.area_id AND area.status='A'
                     WHERE cca.status='A' AND country.name IS NOT NULL 
                     AND city.name IS NOT NULL AND area.name IS NOT NULL ";
                     if($country_ids!=''){
@@ -121,12 +121,12 @@ class LocationDao{
                     COALESCE(cca.area_id, '') areaId, COALESCE(a.name,'') areaName,
                     COALESCE(cpts.product_typeid, '') productTypeId, COALESCE(pt.name, '') productTypeTitle,
                     COALESCE(s.id, '') shopStoreId, COALESCE(s.shopstore_name, '') shopStoreTitle
-                    FROM DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE cpts
-                    JOIN DK_COUNTRYCITYAREAAFFILIATION cca ON cca.id=cpts.cca_id 
-                    JOIN DK_CITYREACHED c ON c.id=cca.city_id 
-                    JOIN DK_AREAREACHED a ON a.id=cca.area_id 
-                    JOIN DK_PRODUCTTYPE pt ON pt.id=cpts.product_typeid 
-                    JOIN DK_SHOPSTORES s ON FIND_IN_SET_X(s.id, cpts.shopstore_ids)>0
+                    FROM CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE cpts
+                    JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=cpts.cca_id 
+                    JOIN CITYREACHED c ON c.id=cca.city_id 
+                    JOIN AREAREACHED a ON a.id=cca.area_id 
+                    JOIN PRODUCTTYPE pt ON pt.id=cpts.product_typeid 
+                    JOIN SHOPSTORES s ON FIND_IN_SET_X(s.id, cpts.shopstore_ids)>0
                     WHERE 1
                     AND cpts.status='A' AND cca.status='A' AND c.status='A' AND a.status='A' 
                     AND pt.status='A' AND s.status='A'
