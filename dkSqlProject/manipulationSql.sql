@@ -2,7 +2,7 @@
 
 SELECT 
 odr.id ordercartId,
-odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+odrs.store_id storeId, COALESCE(ss.name, '') shopStoreTitle,
 COALESCE(a.name, '') storeLocatedAreaName,
 odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
 COALESCE(odrs.address, '') deliveryAddress,
@@ -15,13 +15,13 @@ COALESCE(odrsim.reason, '') ordercartStoreItemReason
 FROM ORDERCART odr
 JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
 JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
-JOIN SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid
-JOIN SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id
-JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid
-JOIN SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
-    AND spa.id=spac.shopstores_producttype_affiliationid
-LEFT JOIN SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
-JOIN SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id
+JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid
+JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id
+JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid
+JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
+    AND spa.id=spac.store_producttype_affiliationid
+LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
+JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id
 JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
 JOIN CITYREACHED c ON c.id=cca.city_id
 JOIN AREAREACHED a ON a.id=cca.area_id
@@ -68,12 +68,12 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- FROM DK_ORDERCART odr
 -- JOIN DK_ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
 -- JOIN DK_ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
--- JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+-- JOIN DK_STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
+-- JOIN DK_STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
 --     AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
--- JOIN DK_SHOPSTORES ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+-- JOIN DK_STORE ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
 -- WHERE 1
 -- -- AND odr.user_sessionid='1'
 -- AND odr.user_id='1'
@@ -92,12 +92,12 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
 -- FROM DK_PRODUCTTYPE pt
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
 --     AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+-- JOIN DK_STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+-- JOIN DK_STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+-- JOIN DK_STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
 -- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
 -- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
@@ -132,17 +132,17 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- COALESCE(splImg.file_path, 'images/') productImageFilePath 
 -- FROM DK_PRODUCTTYPE pt
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
 --     AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+-- JOIN DK_STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+-- JOIN DK_STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+-- JOIN DK_STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
 -- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
 -- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
 -- JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+-- LEFT JOIN DK_STORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
 --     ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y'  
 --     AND splImg.product_listid IN (2)   
 -- WHERE 1  AND ss.id IN (1) AND spa.shopstore_id IN (1)  
@@ -177,17 +177,17 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- COALESCE(splImg.file_path, 'images/') productImageFilePath
 -- FROM DK_PRODUCTTYPE pt
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
 --     AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+-- JOIN DK_STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+-- JOIN DK_STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+-- JOIN DK_STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
 -- JOIN DK_COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
 -- JOIN DK_CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
 -- JOIN DK_AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+-- LEFT JOIN DK_STORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
 --     ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y'
 
 
@@ -375,15 +375,15 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- JOIN DK_USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
 -- JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
 --     AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld 
+-- JOIN DK_STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld 
 --     ON splld.product_listid=sppl.id AND splld.id=uocim.product_featureid
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+-- LEFT JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
 --     ON splImg.product_listid=sppl.id  AND splImg.status = 'A' 
 --     AND splImg.is_showcasefile = 'Y'    
 -- WHERE 1
@@ -410,16 +410,16 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid AND pt.status='A'
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
 --     AND ppc.status = 'A' AND pt.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
 --     AND spa.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
 --     AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
 --     AND sppc.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
 --     AND sppl.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld 
+-- JOIN DK_STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld 
 --     ON splld.product_listid=sppl.id AND splld.id=uocim.product_featureid AND splld.status = 'A'
 -- WHERE 
 -- uoc.status='R'
@@ -483,15 +483,15 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- JOIN DK_PRODUCTTYPE pt ON pt.id=uocim.product_typeid AND pt.status='A'
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
 --     AND ppc.status = 'A' AND pt.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
 --     AND spa.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
 --     AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
 --     AND sppc.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
 --     AND sppl.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
+-- JOIN DK_STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id AND ss.status = 'A' 
 -- WHERE 
 -- uoc.status='A'
 -- AND uocim.status='Requested'
@@ -517,18 +517,18 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- JOIN DK_PRODUCTTYPE pt ON pt.id=wlm.product_typeid AND pt.status='A'
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND pt.status = 'A'
 --     AND ppc.id=wlm.product_categoryid AND ppc.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  
 --     AND spa.product_typeid=wlm.product_typeid AND spa.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
 --     AND sppc.producttype_categoryid=ppc.id  AND sppc.producttype_categoryid=wlm.product_categoryid
 --     AND sppc.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid 
 --     AND sppl.id=wlm.product_listid AND sppl.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
+-- JOIN DK_STORE ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
 --     AND splld.id=wlm.product_featureid AND splld.status = 'A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+-- LEFT JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
 --     ON splImg.product_listid=sppl.id AND splImg.status = 'A' 
 --     AND splImg.is_showcasefile = 'Y'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
@@ -574,18 +574,18 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- JOIN DK_PRODUCTTYPE pt ON pt.id=wlm.product_typeid AND pt.status='A'
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND pt.status = 'A'
 --     AND ppc.id=wlm.product_categoryid AND ppc.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  
 --     AND spa.product_typeid=wlm.product_typeid AND spa.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
 --     AND sppc.producttype_categoryid=ppc.id  AND sppc.producttype_categoryid=wlm.product_categoryid
 --     AND sppc.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid 
 --     AND sppl.id=wlm.product_listid AND sppl.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
+-- JOIN DK_STORE ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
 --     AND splld.id=wlm.product_featureid AND splld.status = 'A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+-- LEFT JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
 --     ON splImg.product_listid=sppl.id AND splImg.status = 'A' 
 --     AND splImg.is_showcasefile = 'Y'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
@@ -604,16 +604,16 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- sppc.producttype_categoryid productTypeProductCategoryId,
 -- sppl.id productListId,
 -- spfd.id productFeatureId
--- FROM DK_SHOPSTORES ss 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.shoptstore_id=ss.id AND spa.status='A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc
+-- FROM DK_STORE ss 
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shoptstore_id=ss.id AND spa.status='A'
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc
 --     ON sppc.shopstores_producttype_affiliationid=spa.id
 --     AND sppc.status='A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl
 --     ON sppl.shopstores_producttype_affiliationid=spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid
 --     AND sppl.status='A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS spfd
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS spfd
 --     ON spfd.product_listid=sppl.id AND spfd.status='A'
 -- WHERE 1 AND ss.status='A'
 -- AND ss.id='1'
@@ -652,18 +652,18 @@ ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 -- JOIN DK_PRODUCTTYPE pt ON pt.id=wlm.product_typeid AND pt.status='A'
 -- JOIN DK_PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND pt.status = 'A'
 --     AND ppc.id=wlm.product_categoryid AND ppc.status = 'A' 
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  
+-- JOIN DK_STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  
 --     AND spa.product_typeid=wlm.product_typeid AND spa.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
 --     AND sppc.producttype_categoryid=ppc.id  AND sppc.producttype_categoryid=wlm.product_categoryid
 --     AND sppc.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
 --     AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid 
 --     AND sppl.id=wlm.product_listid AND sppl.status = 'A'
--- JOIN DK_SHOPSTORES ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
--- JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
+-- JOIN DK_STORE ss ON ss.id=spa.shoptstore_id  AND ss.status = 'A'
+-- JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS splld ON splld.product_listid=sppl.id
 --     AND splld.id=wlm.product_featureid AND splld.status = 'A'
--- LEFT JOIN DK_SHOPSTORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
+-- LEFT JOIN DK_STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
 --     ON splImg.product_listid=sppl.id AND splImg.status = 'A' 
 --     AND splImg.is_showcasefile = 'Y'
 -- JOIN DK_COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
