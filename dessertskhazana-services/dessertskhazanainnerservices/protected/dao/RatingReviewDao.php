@@ -71,7 +71,7 @@ class RatingReviewDao{
             $paramJson['created_datedtime'] = date('Y-m-d H:i:s');
             $sqlColumnNames.=" created_datedtime,";
             $sqlValues.="'".$paramJson['created_datedtime']."',";
-            $sqlQuery = " INSERT INTO DK_USER_REVIEWANSWERDETAILS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO USER_REVIEWANSWERDETAILS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
@@ -93,7 +93,7 @@ class RatingReviewDao{
                 rqd.question_title questionTitle, 
                 rqd.question_answerpattern questionPattern,
                 COALESCE(rqd.max_points, '0') maxPoints
-                FROM DK_REVIEWQESTIONSDETAILS rqd 
+                FROM REVIEWQESTIONSDETAILS rqd 
                 WHERE 
                 rqd.shopstore_id='$shop_storeid'
                 AND rqd.status='A'
@@ -120,8 +120,8 @@ class RatingReviewDao{
                             THEN SUM(urd.given_answerpoints) ELSE 0 END
                         )/COUNT( DISTINCT urd.group_no)/5),1)
                 , '') totalAvgRatingAbtProduct
-                FROM DK_USER_REVIEWANSWERDETAILS urd
-                JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+                FROM USER_REVIEWANSWERDETAILS urd
+                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
                 AND urd.shopstore_id='$shopStoreId'
@@ -150,8 +150,8 @@ class RatingReviewDao{
                             THEN SUM(urd.given_answerpoints) ELSE 0 END
                         )/COUNT( DISTINCT urd.group_no)/5),1)
                 , '') totalAvgRatingProduct
-                FROM DK_USER_REVIEWANSWERDETAILS urd
-                JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+                FROM USER_REVIEWANSWERDETAILS urd
+                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
                 AND urd.shopstore_id='$shopStoreId'
@@ -178,9 +178,9 @@ class RatingReviewDao{
                 COALESCE(qrd.question_title, '') questionTitle,
                 COALESCE(qrd.max_points, '') maxPoints,
                 COALESCE(urd.given_answerpoints, 0) givenMaxAnswerPoints
-                FROM DK_USER_REVIEWANSWERDETAILS urd
-                JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
-                JOIN DK_USERS u ON u.id=urd.user_id
+                FROM USER_REVIEWANSWERDETAILS urd
+                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+                JOIN USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND urd.shopstore_id ='$shopStoreId'
@@ -209,9 +209,9 @@ class RatingReviewDao{
                 COALESCE(qrd.question_title, '') questionTitle,
                 COALESCE(qrd.max_points, '') maxPoints,
                 COALESCE(urd.given_answerpoints, 0) givenMaxAnswerPoints
-                FROM DK_USER_REVIEWANSWERDETAILS urd
-                JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
-                JOIN DK_USERS u ON u.id=urd.user_id
+                FROM USER_REVIEWANSWERDETAILS urd
+                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+                JOIN USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND urd.shopstore_id='$shopStoreId'
@@ -243,8 +243,8 @@ class RatingReviewDao{
                 COALESCE(
                     ROUND((CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 THEN SUM(urd.given_answerpoints) ELSE 0 END)/5, 1)
                 , '') avgRatingByUser
-                FROM DK_USER_REVIEWANSWERDETAILS urd
-                JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+                FROM USER_REVIEWANSWERDETAILS urd
+                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND qrd.question_answerpattern='SELECT'
@@ -276,9 +276,9 @@ class RatingReviewDao{
                 COALESCE(qrd.question_answerpattern, '') answerPattern,
                 COALESCE(urd.given_answertext, '') answerText,
                 COALESCE(DATE_FORMAT(urd.updated_datedtime, '%M-%d-%Y (%H:%i:%s)'), '') updatedDate
-                FROM DK_USER_REVIEWANSWERDETAILS urd
-                JOIN DK_REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
-                JOIN DK_USERS u ON u.id=urd.user_id
+                FROM USER_REVIEWANSWERDETAILS urd
+                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+                JOIN USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND urd.shopstore_id='$shopStoreId'
@@ -302,7 +302,7 @@ class RatingReviewDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT MAX(urd.group_no) maxUserGrpNo
-                FROM DK_USER_REVIEWANSWERDETAILS urd
+                FROM USER_REVIEWANSWERDETAILS urd
                 WHERE urd.group_no IS NOT NULL
                 HAVING MAX(urd.group_no)>0";
             $command = $connection->createCommand($sqlFetchQuery);
