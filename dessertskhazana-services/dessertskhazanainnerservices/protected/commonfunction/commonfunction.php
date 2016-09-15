@@ -939,7 +939,7 @@ class commonfunction{
         if(count($allStorewiseDataArr)>0 && $allStorewiseDataArr!=false){
             $orderCartDataArr = array();
             $orderCartDataArr['ordercartAllStoreWiseData'] = $allStorewiseDataArr;
-            $orderCartDataArr['ordercartSummaryData'] = $ordercartSummaryDataArr;
+            // $orderCartDataArr['ordercartSummaryData'] = $ordercartSummaryDataArr;
             return $orderCartDataArr;
         }else{
             return false;
