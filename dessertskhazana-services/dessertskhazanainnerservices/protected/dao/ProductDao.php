@@ -44,7 +44,7 @@ class ProductDao{
                     COALESCE(ccr.country_id, '') countryId, 
                     COALESCE(ccr.city_id, '') cityId, COALESCE(country.name, '') cityName, 
                     COALESCE(ccr.area_id, '') areaId, COALESCE(area.name, '') areaTitle,
-                    COALESCE(spa.shopstore_id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
+                    COALESCE(ss.id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
                     COALESCE(ss.storelabel, '') shopStoreLabel, COALESCE(ss.logofile, '') shopstore_logofile,
                     COALESCE(ss.mobile, '') shopstore_mobile,
                     COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
@@ -63,12 +63,12 @@ class ProductDao{
             $sql.="
                     FROM PRODUCTTYPE pt
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.status = 'A' 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.store_producttype_affiliationid=spa.id 
                         AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
-                    JOIN STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+                    JOIN STORE_PRODUCTLIST spl ON spl.store_ptpc_affiliationid = spac.id AND spl.status = 'A'
                     JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
-                    JOIN STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+                    JOIN STORE ss ON ss.id=spa.store_id AND ss.status = 'A'
                     JOIN COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
                     JOIN COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
                     JOIN CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
@@ -90,7 +90,7 @@ class ProductDao{
                 if(array_key_exists('shop_storesids', $paramJson)){
                     if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
                         && $paramJson['shop_storesids']!=null){
-                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND spa.shopstore_id IN (".$paramJson['shop_storesids'].") ";
+                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND spa.store_id IN (".$paramJson['shop_storesids'].") ";
                     }
                 }
                 
@@ -281,15 +281,15 @@ class ProductDao{
                     JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id  AND spa.status = 'A' 
                     JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.shopstores_producttype_affiliationid=spa.id 
                         AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
-                    JOIN STORE_PRODUCTLIST spl ON spl.shopstores_ptpc_affiliationid = spac.id AND spl.status = 'A'
+                    JOIN STORE_PRODUCTLIST spl ON spl.store_ptpc_affiliationid = spac.id AND spl.status = 'A'
                     JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
-                    JOIN STORE ss ON ss.id=spa.shopstore_id AND ss.status = 'A'
+                    JOIN STORE ss ON ss.id=spa.store_id AND ss.status = 'A'
                     JOIN COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
                     JOIN COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
                     JOIN CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
                     JOIN AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
                     WHERE 1
-                    AND ss.id IN ($storeId) AND spa.shopstore_id IN ($storeId)
+                    AND ss.id IN ($storeId) AND spa.store_id IN ($storeId)
                     AND pt.id IN ($productTypeId) AND ppc.product_typeid IN ($productTypeId)
                     AND spa.product_typeid IN ($productTypeId)
                     GROUP BY ss.id, spa.product_typeid
@@ -353,99 +353,5 @@ class ProductDao{
         }catch(Exception $ex){}   
         return $retResult;
     }
-    
-    // CJ defined this function 2016-06-06
-    public static function getAvgRatingAboutProductDetails($shopStoreId, $productListId){
-        $retResult = false;
-        try{
-            $connection = Yii::app()->db;
-            $sqlFetchQuery = " SELECT 
-                COUNT(DISTINCT urd.group_no) totalUserRatingAbtProduct,
-                COALESCE(
-                    ROUND(((CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 THEN SUM(urd.given_answerpoints) ELSE 0 END)/5)/COUNT( DISTINCT urd.group_no), 1)
-                , '') totalAvgRatingAbtProduct
-                FROM USER_REVIEWANSWERDETAILS urd
-                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
-                WHERE 
-                urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
-                AND urd.shopstore_id='$shopStoreId'
-                AND urd.product_listid='$productListId' 
-                HAVING COUNT(DISTINCT urd.group_no)>0 ";
-            $command = $connection->createCommand($sqlFetchQuery);
-            $retAvgRatingProductDetailsArr = $command->queryAll();
-            if($retAvgRatingProductDetailsArr!=false && count($retAvgRatingProductDetailsArr)>0){
-                $retResult =  $retAvgRatingProductDetailsArr;
-            }
-        }catch(Exception $ex){}   
-        return $retResult;
-    }
-    
-    
-    // CJ defined this function 2016-06-06
-    public static function getUserAvgRatingAboutProductDetails($shopStoreId, $productListId, $userId){
-        $retResult = false;
-        try{
-            $connection = Yii::app()->db;
-            $sqlFetchQuery = " SELECT 
-                COALESCE(urd.shopstore_id, '') shopStoreId,
-                COALESCE(urd.user_id,'') userId,
-                COALESCE(urd.product_listid, '') productListId,
-                COALESCE(urd.group_no, '') groupNo,
-                (CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 THEN SUM(urd.given_answerpoints) ELSE 0 END) totalRatingByUser,
-                COALESCE(
-                    ROUND((CASE WHEN urd.answer_pattern='SELECT' AND urd.given_answerpoints>0 THEN SUM(urd.given_answerpoints) ELSE 0 END)/5, 1)
-                , '') avgRatingByUser
-                FROM USER_REVIEWANSWERDETAILS urd
-                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
-                WHERE 
-                urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND urd.shopstore_id='$shopStoreId'
-                AND urd.user_id='$userId' 
-                AND urd.product_listid='$productListId' 
-                GROUP BY urd.group_no ";
-            $command = $connection->createCommand($sqlFetchQuery);
-            $retUserAvgRatingAboutProductDetailsArr = $command->queryAll();
-            if($retUserAvgRatingAboutProductDetailsArr!=false 
-                && count($retUserAvgRatingAboutProductDetailsArr)>0){
-                $retResult =  $retUserAvgRatingAboutProductDetailsArr;
-            }
-        }catch(Exception $ex){}   
-        return $retResult;
-    }
-    
-    // CJ defined this function 2016-06-06
-    public static function getUserReviewAndRatingAboutProductDetails($shopStoreId, $productListId, $userId, $groupNo){
-        $retResult = false;
-        try{
-            $connection = Yii::app()->db;
-            $sqlFetchQuery = " SELECT 
-                COALESCE(urd.shopstore_id, '') shopStoreId,
-                COALESCE(urd.user_id, '') userId,
-                CONCAT(u.name, '') userName,
-                COALESCE(urd.product_listid, '') productListId,
-                COALESCE(urd.group_no, '') groupNo,
-                COALESCE(qrd.question_title, '') questionTitle,
-                COALESCE(qrd.max_points, '') maxPoints,
-                COALESCE(qrd.question_answerpattern, '') answerPattern,
-                COALESCE(urd.given_answertext, '') answerText
-                FROM USER_REVIEWANSWERDETAILS urd
-                JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
-                JOIN USERS u ON u.id=urd.user_id
-                WHERE 
-                urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND urd.shopstore_id='$shopStoreId'
-                AND urd.product_listid='$productListId'
-                AND urd.user_id='$userId'
-                AND urd.group_no = '$groupNo' ";
-            $command = $connection->createCommand($sqlFetchQuery);
-            $retReviewedAboutProductDetailsArr = $command->queryAll();
-            if($retReviewedAboutProductDetailsArr!=false 
-                && count($retReviewedAboutProductDetailsArr)>0){
-                $retResult =  $retReviewedAboutProductDetailsArr;
-            }
-        }catch(Exception $ex){}   
-        return $retResult;
-    }
-    
-    
+     
 }
