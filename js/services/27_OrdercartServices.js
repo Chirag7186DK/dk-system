@@ -12,6 +12,7 @@ function OrderCartServices($rootScope){
             if(userOrdercartDashboardDataObj!=='' && userOrdercartDashboardDataObj!==false 
                 && userOrdercartDashboardDataObj!==undefined){
                 $rootScope.ordercartCount = userOrdercartDashboardDataObj['ordercartCount'];
+                $rootScope.totalStores = userOrdercartDashboardDataObj['totalStores'];
                 $rootScope.ordercartItemRequestedCount = userOrdercartDashboardDataObj['ordercartItemRequestedCount'];
                 $rootScope.subtotalOrderAmt = userOrdercartDashboardDataObj['subtotalOrderAmt'];
                 $rootScope.totalDeliveryFee = userOrdercartDashboardDataObj['totalDeliveryFee'];
