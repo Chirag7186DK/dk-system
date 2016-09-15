@@ -430,7 +430,7 @@ class OrderCartDao{
             $sql= " SELECT 
                     odr.id ordercartId, odr.user_sessionid userSessionId, odr.user_id userId,
                     odrs.id ordercartStoreId,
-                    odrs.store_id storeId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+                    odrs.store_id storeId, COALESCE(ss.name, '') shopStoreTitle,
                     COALESCE(a.name, '') storeLocatedAreaName,
                     COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
                     COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
@@ -449,9 +449,9 @@ class OrderCartDao{
                     JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
                     JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
                     JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.id=odrs.store_id
                         AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
-                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.id=ss.id AND ss.status='A'
                     JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
                     JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
                     JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
@@ -481,7 +481,7 @@ class OrderCartDao{
                     COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
                     COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
                     COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '')  productTypeProductCategoryTitle,
-                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
                     COALESCE(sppl.id, '') productListId, COALESCE(sppl.name, '') productListTitle,
                     COALESCE(sppfd.id, '') productFeatureId, 
                     COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
@@ -506,12 +506,12 @@ class OrderCartDao{
                     JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
                     JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.id 
                     JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
                     JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.id
                     JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
                     LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
@@ -542,7 +542,7 @@ class OrderCartDao{
                     COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
                     COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
                     COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '')  productTypeProductCategoryTitle,
-                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
+                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
                     COALESCE(sppl.id, '') productListId, COALESCE(sppl.name, '') productListTitle,
                     COALESCE(sppfd.id, '') productFeatureId, 
                     COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
@@ -575,12 +575,12 @@ class OrderCartDao{
                     JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
                     JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
                     JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.id 
                     JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
                         AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
                     JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
                         AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
+                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.id
                     JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
                         ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
                     LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
