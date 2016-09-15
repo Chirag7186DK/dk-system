@@ -448,10 +448,10 @@ class OrderCartDao{
                     JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
                     JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
                     JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
-                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.shopstores_ptpc_affiliationid AND spac.status='A'
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shopstore_id=odrs.store_id
-                        AND spa.id=spac.shopstores_producttype_affiliationid AND spa.status='A'
-                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.shopstore_id=ss.id AND ss.status='A'
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid AND spac.status='A'
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
+                        AND spa.id=spac.store_producttype_affiliationid AND spa.status='A'
+                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id AND ss.status='A'
                     JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
                     JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
                     JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
