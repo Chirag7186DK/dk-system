@@ -54,6 +54,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                 $userId = $userSessionDetailsData['unmd5UserId'];
                 if($ordercartItemListByStatusType=='R'){
                     $rspDetails['ordercartRequestedData'] = commonfunction :: getRequestedOrdercartItemDetails($userId);
+                    // $rspDetails['ordercartRequestedData'] = false;
                 }
                 if($ordercartItemListByStatusType=='ZC,ZA'){
                     $rspDetails['ordercartAllItemDetails'] = commonfunction :: getCancelledOrdercartItemDetails($userId);
