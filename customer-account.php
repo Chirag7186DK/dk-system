@@ -326,18 +326,21 @@
                             </p>
                         </div>
                     </div>
-                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreWiseSummarySectionDivClass'>
-                        <p class="">
+                    <div ng-show="ordercartRequestedAllStoreWiseData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedSummaryDivClass'>
+                        <p class="uca_ordercartRequestedSummaryHeaderPClass">
+                            CART SUMMARY
+                        </p>
+                        <p class="uca_ordercartRequestedSummaryAllStoreCountLblPClass">
                             Total Stores: {{ordercartRequestedSummaryData.totalStores}}
                         </p>
-                        <p class="">
-                            Subtotal Amt: {{ordercartRequestedSummaryData.subtotalAmount}}
+                        <p class="uca_ordercartRequestedSummarySubtotalLblPClass">
+                            Subtotal Amt(Rs): {{ordercartRequestedSummaryData.subtotalAmount}}
                         </p>
-                        <p class="">
-                            Total Delivery Fee: {{ordercartRequestedSummaryData.totalDeliveryFee}}
+                        <p class="uca_ordercartRequestedSummaryDeliveryFeeLblPClass">
+                            Total Delivery Fee(Rs): {{ordercartRequestedSummaryData.totalDeliveryFee}}
                         </p>
-                        <p class="">
-                            Total Amt: {{ordercartRequestedSummaryData.totalAmount}}
+                        <p class="uca_ordercartRequestedSummaryTotalAmtLblPClass">
+                            Total Amt(Rs): {{ordercartRequestedSummaryData.totalAmount}}
                         </p>
                     </div>
                 </div>
