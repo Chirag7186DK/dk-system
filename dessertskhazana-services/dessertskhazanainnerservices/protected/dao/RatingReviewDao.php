@@ -99,10 +99,10 @@ class RatingReviewDao{
                 AND rqd.status='A'
                 ORDER BY rqd.sort_order ASC";
             $command = $connection->createCommand($sqlFetchQuery);
-            $storeRatingReviewQuestions = $command->queryAll();
-            if(count($retRatingReviewQuestionsAboutProductByShopStoresDetailsArr)>0 
-                && $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr!=false){
-                $retResult =  $retRatingReviewQuestionsAboutProductByShopStoresDetailsArr;
+            $storeRatingReviewQuestionsDataArr = $command->queryAll();
+            if(count($storeRatingReviewQuestionsDataArr)>0 
+                && $storeRatingReviewQuestionsDataArr!=false){
+                $retResult =  $storeRatingReviewQuestionsDataArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -128,10 +128,10 @@ class RatingReviewDao{
                 AND urd.answer_pattern='SELECT'       
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retAvgRatingProductDetailsArr = $command->queryAll();
-            if(count($retAvgRatingProductDetailsArr)>0 
-                && $retAvgRatingProductDetailsArr!=false){
-                $retResult =  $retAvgRatingProductDetailsArr;
+            $storeRatingReviewDataArr = $command->queryAll();
+            if(count($storeRatingReviewDataArr)>0 
+                && $storeRatingReviewDataArr!=false){
+                $retResult =  $storeRatingReviewDataArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -159,9 +159,9 @@ class RatingReviewDao{
                 AND urd.answer_pattern='SELECT'    
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $avgRatingProductDetailsArr = $command->queryAll();
-            if($avgRatingProductDetailsArr!=false && count($avgRatingProductDetailsArr)>0){
-                $retResult =  $avgRatingProductDetailsArr;
+            $storeProductAvgRatingReviewDataArr = $command->queryAll();
+            if($storeProductAvgRatingReviewDataArr!=false && count($storeProductAvgRatingReviewDataArr)>0){
+                $retResult =  $storeProductAvgRatingReviewDataArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -188,10 +188,10 @@ class RatingReviewDao{
                 GROUP BY qrd.id, COALESCE(urd.given_answerpoints, 0)
                 ORDER BY qrd.sort_order ASC, COALESCE(urd.given_answerpoints, 0) DESC";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retMaxRatingProductDetailsArr = $command->queryAll();
-            if(count($retMaxRatingProductDetailsArr)>0 
-                && $retMaxRatingProductDetailsArr!=false){
-                $retResult =  $retMaxRatingProductDetailsArr;
+            $storeMaxRatingReviewDataArr = $command->queryAll();
+            if(count($storeMaxRatingReviewDataArr)>0 
+                && $storeMaxRatingReviewDataArr!=false){
+                $retResult =  $storeMaxRatingReviewDataArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -220,9 +220,9 @@ class RatingReviewDao{
                 GROUP BY qrd.id, COALESCE(urd.given_answerpoints, 0)
                 ORDER BY qrd.sort_order ASC, COALESCE(urd.given_answerpoints, 0) DESC";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retMaxRatingProductDetailsArr = $command->queryAll();
-            if(count($retMaxRatingProductDetailsArr)>0 && $retMaxRatingProductDetailsArr!=false){
-                $retResult =  $retMaxRatingProductDetailsArr;
+            $storeProductMaxRatingReviewDataArr = $command->queryAll();
+            if(count($storeProductMaxRatingReviewDataArr)>0 && $storeProductMaxRatingReviewDataArr!=false){
+                $retResult =  $storeProductMaxRatingReviewDataArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -254,10 +254,10 @@ class RatingReviewDao{
                 }    
             $sqlFetchQuery.= " GROUP BY urd.group_no ORDER BY urd.updated_datedtime DESC ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $userAvgRatingAboutProductDetailsArr = $command->queryAll();
-            if(count($userAvgRatingAboutProductDetailsArr)>0 
-                && $userAvgRatingAboutProductDetailsArr!=false){
-                $retResult =  $userAvgRatingAboutProductDetailsArr;
+            $userAvgRatingProductDetailsArr = $command->queryAll();
+            if(count($userAvgRatingProductDetailsArr)>0 
+                && $userAvgRatingProductDetailsArr!=false){
+                $retResult =  $userAvgRatingProductDetailsArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -288,9 +288,9 @@ class RatingReviewDao{
                 AND urd.group_no = '$groupNo' 
                 ORDER BY urd.updated_datedtime DESC ";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retReviewedAboutProductDetailsArr = $command->queryAll();
-            if(count($retReviewedAboutProductDetailsArr)>0 && $retReviewedAboutProductDetailsArr!=false){
-                $retResult =  $retReviewedAboutProductDetailsArr;
+            $userRatingProductDetailsArr = $command->queryAll();
+            if(count($userRatingProductDetailsArr)>0 && $userRatingProductDetailsArr!=false){
+                $retResult =  $userRatingProductDetailsArr;
             }
         }catch(Exception $ex){}   
         return $retResult;
@@ -306,9 +306,9 @@ class RatingReviewDao{
                 WHERE urd.group_no IS NOT NULL
                 HAVING MAX(urd.group_no)>0";
             $command = $connection->createCommand($sqlFetchQuery);
-            $retUserMaxgrpNoDetailsArr = $command->queryAll();
-            if($retUserMaxgrpNoDetailsArr!=false && count($retUserMaxgrpNoDetailsArr)>0){
-                $maxUserGrpNo =  ($retUserMaxgrpNoDetailsArr[0]['maxUserGrpNo'])+1;
+            $userMaxgrpNoDetailsArr = $command->queryAll();
+            if($userMaxgrpNoDetailsArr!=false && count($userMaxgrpNoDetailsArr)>0){
+                $maxUserGrpNo = ($userMaxgrpNoDetailsArr[0]['maxUserGrpNo'])+1;
             }
         }catch(Exception $ex){}   
         return $maxUserGrpNo;
