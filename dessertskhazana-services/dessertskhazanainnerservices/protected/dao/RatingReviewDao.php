@@ -89,13 +89,13 @@ class RatingReviewDao{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
                 COALESCE(rqd.id, '') reviewQuestionId,
-                COALESCE(rqd.shopstore_id, '') shopStoreId,
+                COALESCE(rqd.store_id, '') shopStoreId,
                 rqd.question_title questionTitle, 
                 rqd.question_answerpattern questionPattern,
                 COALESCE(rqd.max_points, '0') maxPoints
                 FROM REVIEWQESTIONSDETAILS rqd 
                 WHERE 
-                rqd.shopstore_id='$shop_storeid'
+                rqd.store_id='$shop_storeid'
                 AND rqd.status='A'
                 ORDER BY rqd.sort_order ASC";
             $command = $connection->createCommand($sqlFetchQuery);
@@ -124,7 +124,7 @@ class RatingReviewDao{
                 JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
-                AND urd.shopstore_id='$shopStoreId'
+                AND urd.store_id='$shopStoreId'
                 AND urd.answer_pattern='SELECT'       
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
             $command = $connection->createCommand($sqlFetchQuery);
@@ -154,7 +154,7 @@ class RatingReviewDao{
                 JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
                 WHERE 
                 urd.status='A' AND urd.group_no IS NOT NULL AND qrd.status='A'
-                AND urd.shopstore_id='$shopStoreId'
+                AND urd.store_id='$shopStoreId'
                 AND urd.product_listid='$productListId' 
                 AND urd.answer_pattern='SELECT'    
                 HAVING COUNT(DISTINCT urd.group_no)>0 ";
@@ -183,7 +183,7 @@ class RatingReviewDao{
                 JOIN USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND urd.shopstore_id ='$shopStoreId'
+                AND urd.store_id ='$shopStoreId'
                 AND qrd.question_answerpattern='SELECT'
                 GROUP BY qrd.id, COALESCE(urd.given_answerpoints, 0)
                 ORDER BY qrd.sort_order ASC, COALESCE(urd.given_answerpoints, 0) DESC";
@@ -214,7 +214,7 @@ class RatingReviewDao{
                 JOIN USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND urd.shopstore_id='$shopStoreId'
+                AND urd.store_id='$shopStoreId'
                 AND urd.product_listid='$productListId'
                 AND qrd.question_answerpattern='SELECT'
                 GROUP BY qrd.id, COALESCE(urd.given_answerpoints, 0)
@@ -248,7 +248,7 @@ class RatingReviewDao{
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
                 AND qrd.question_answerpattern='SELECT'
-                AND urd.shopstore_id='$shopStoreId' AND qrd.shopstore_id='$shopStoreId' ";
+                AND urd.store_id='$shopStoreId' AND qrd.store_id='$shopStoreId' ";
                 if($productListId!=''){
                     $sqlFetchQuery.= " AND urd.product_listid='$productListId' ";
                 }    
@@ -281,7 +281,7 @@ class RatingReviewDao{
                 JOIN USERS u ON u.id=urd.user_id
                 WHERE 
                 urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
-                AND urd.shopstore_id='$shopStoreId'
+                AND urd.store_id='$shopStoreId'
                 AND urd.product_listid='$productListId'
                 AND urd.user_id='$userId'
                 AND qrd.question_answerpattern='SELECT'    
