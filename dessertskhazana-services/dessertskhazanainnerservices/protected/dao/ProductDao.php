@@ -44,9 +44,9 @@ class ProductDao{
                     COALESCE(ccr.country_id, '') countryId, 
                     COALESCE(ccr.city_id, '') cityId, COALESCE(country.name, '') cityName, 
                     COALESCE(ccr.area_id, '') areaId, COALESCE(area.name, '') areaTitle,
-                    COALESCE(spa.shopstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
-                    COALESCE(ss.shop_storelabel, '') shopStoreLabel, COALESCE(ss.shopstore_logofile, '') shopstore_logofile,
-                    COALESCE(ss.shopstore_mobile, '') shopstore_mobile,
+                    COALESCE(spa.shopstore_id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
+                    COALESCE(ss.storelabel, '') shopStoreLabel, COALESCE(ss.logofile, '') shopstore_logofile,
+                    COALESCE(ss.mobile, '') shopstore_mobile,
                     COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
                     COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
                     COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '') productTypeProductCategoryTitle,
@@ -223,7 +223,6 @@ class ProductDao{
                     }
                 }
                 
-                
                 // sort by price
                 if(array_key_exists('price_lowtohigh', $paramJson)){
                     if($paramJson['price_lowtohigh']=='Y'){
@@ -273,7 +272,7 @@ class ProductDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = "SELECT
-                    ss.id shopStoreId, ss.shopstore_name shopStoreTitle, COALESCE(area.name, '') shopStoreOrgLocation,
+                    ss.id shopStoreId, ss.name shopStoreTitle, COALESCE(area.name, '') shopStoreOrgLocation,
                     COUNT(*) totalProduct, COALESCE(MAX(splld.product_discount), '') maxProductDiscount,
                     COALESCE(MAX(splld.online_sellprice), '') maxOnlineProductPrice,
                     COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
@@ -445,67 +444,6 @@ class ProductDao{
                 $retResult =  $retReviewedAboutProductDetailsArr;
             }
         }catch(Exception $ex){}   
-        return $retResult;
-    }
-    
-    // CJ defined this function 2016-07-29
-    public static function getUnMd5DataOfGivenProductDetails($paramJson=array()){
-        $retResult = false;
-        try{
-            $connection = Yii::App()->db;
-            $sql= " SELECT 
-                    ss.id shopStoreId,
-                    spa.product_typeid productTypeId,
-                    sppc.producttype_categoryid productTypeProductCategoryId,
-                    sppl.id productListId,
-                    spfd.id productFeatureId
-                    FROM STORE ss 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.shoptstore_id=ss.id AND spa.status='A'
-                    JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc
-                        ON sppc.shopstores_producttype_affiliationid=spa.id AND sppc.status='A'
-                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl
-                        ON sppl.shopstores_producttype_affiliationid=spa.id
-                        AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid
-                        AND sppl.status='A'
-                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS spfd
-                        ON spfd.product_listid=sppl.id AND spfd.status='A'
-                    WHERE 1 AND ss.status='A'";
-                    // add shopStoreId in where condition
-                    if(array_key_exists('shopStoreId', $paramJson)){
-                        if(strlen($paramJson['shopStoreId'])==32){
-                            $sql.=" AND MD5(ss.id)='".$paramJson['shopStoreId']."' AND MD5(spa.shoptstore_id)='".$paramJson['shopStoreId']."'";
-                        } 
-                    } 
-                    // add productTypeId in where condition
-                    if(array_key_exists('productTypeId', $paramJson)){
-                        if(strlen($paramJson['productTypeId'])==32){
-                            $sql.=" AND MD5(spa.product_typeid)='".$paramJson['productTypeId']."'";
-                        } 
-                    } 
-                    // add productTypeCategoryId in where condition
-                    if(array_key_exists('productTypeCategoryId', $paramJson)){
-                        if(strlen($paramJson['productTypeCategoryId'])==32){
-                            $sql.=" AND MD5(sppc.producttype_categoryid)='".$paramJson['productTypeCategoryId']."'";
-                        } 
-                    } 
-                    // add productListId in where condition
-                    if(array_key_exists('productListId', $paramJson)){
-                        if(strlen($paramJson['productListId'])==32){
-                            $sql.=" AND MD5(sppl.id)='".$paramJson['productListId']."' AND MD5(spfd.product_listid)='".$paramJson['productListId']."'";
-                        } 
-                    } 
-                    // add productFeatureId in where condition
-                    if(array_key_exists('productFeatureId', $paramJson)){
-                        if(strlen($paramJson['productFeatureId'])==32){
-                            $sql.=" AND MD5(spfd.id)='".$paramJson['productFeatureId']."'";
-                        } 
-                    } 
-            $command = $connection->createCommand($sql);
-            $retDataArr = $command->queryAll();
-            if(count($retDataArr)==1 && $retDataArr!=false){
-                $retResult =  $retDataArr;    
-            }
-        }catch(Exception $ex){}
         return $retResult;
     }
     
