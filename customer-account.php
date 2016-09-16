@@ -356,7 +356,7 @@
                             </button>
                         </p>
                     </div>
-                    <!-- no canceled ordered item found message div -->
+                    <!-- no ordered requested item found message div -->
                     <div ng-if="ordercartRequestedAllStoreWiseData<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedAllStoreNotFoundMsgDivClass">
                         <p class="ordercartEmptyPClass">
                             <i class="fa fa-smile-o"></i> Your Shopping Bags is Empty !!!
@@ -406,7 +406,16 @@
                             </p>
                         </div>
                     </div>
-                    
+                    <!-- no canceled ordered item found message div -->
+                    <div ng-if="allOrdercartWiseCancelledData<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledItemNotFoundMsgDivClass">
+                        <p class="ordercartEmptyPClass">
+                            <i class="fa fa-smile-o"></i> No Cancelled Items Found !!!
+                        </p>
+                        <p>
+                            <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
+                        </p>
+                        <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
+                    </div>
                 </div>
                 
                 <!-- ordered order cart all items info will be displayed -->
