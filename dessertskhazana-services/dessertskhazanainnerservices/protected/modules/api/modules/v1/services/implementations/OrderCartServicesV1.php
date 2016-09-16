@@ -61,7 +61,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                     //$rspDetails['ordercartCancelledData'] = false;
                 }
                 if($ordercartItemListByStatusType=='all_ordered'){
-                    $rspDetails['ordercartAllItemDetails'] = commonfunction :: getAllOrderedOrdercartItemDetails($userId);
+                    $rspDetails['ordercartOrderedData'] = commonfunction :: getAllOrderedOrdercartItemDetails($userId);
                 }
             }
         } 
