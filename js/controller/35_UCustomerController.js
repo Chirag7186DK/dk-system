@@ -236,11 +236,11 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
         };
         
         // uca_toggleOrdercartRequestedStoreItemsList
-        $rootScope.uca_toggleOrdercartRequestedStoreItemsList = function(storeDataObj){
-            if(storeDataObj.isShowItemList===true){
-                storeDataObj.isShowItemList = false;
+        $rootScope.uca_toggleOrdercartRequestedStoreItemsList = function(ordercartStoreDataObj){
+            if(ordercartStoreDataObj.isShowItemList===true){
+                ordercartStoreDataObj.isShowItemList = false;
             }else{
-                storeDataObj.isShowItemList = true;
+                ordercartStoreDataObj.isShowItemList = true;
             }
         };
         
@@ -292,43 +292,39 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
-                    
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-
                     var fetchedParamJsonObj = {};
                     fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
-                    
-                    $rootScope.allOrdercartNoAllItemDetailsArrObj =  false;
-                    
+                    $rootScope.allOrdercartWiseOrderedData =  false;
                     // calling OrderCartServices 
                     OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
-                        showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
-                            var ordercartOrderedAllItemDetailsArrObj =  false;
+                            var allOrdercartWiseOrderedData =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                ordercartOrderedAllItemDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartAllItemDetails', retResponseJson);
+                                allOrdercartWiseOrderedData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartOrderedData', retResponseJson);
                             }
-                            if(ordercartOrderedAllItemDetailsArrObj!==false && ordercartOrderedAllItemDetailsArrObj!==undefined 
-                                && jQuery.isEmptyObject(ordercartOrderedAllItemDetailsArrObj)===false){
-                                $rootScope.allOrdercartNoAllItemDetailsArrObj =  ordercartOrderedAllItemDetailsArrObj;
+                            if(allOrdercartWiseOrderedData!==false && allOrdercartWiseOrderedData!==undefined 
+                                && jQuery.isEmptyObject(allOrdercartWiseOrderedData)===false){
+                                $rootScope.allOrdercartWiseOrderedData =  allOrdercartWiseOrderedData;
                             }else{
-                                $rootScope.allOrdercartNoAllItemDetailsArrObj =  false;
+                                $rootScope.allOrdercartWiseOrderedData =  false;
                             }
                         });
                     });
                 }
             }catch(ex){
-                showHideLoaderBox('hide');
                 console.log("problem in populateOrdercartAllOrderedItemList ex=>"+ex);
             }
         };
         
-        
+        // uca_toggleOrdercartOrderedItemsList
+        $rootScope.uca_toggleOrdercartOrderedItemsList = function(ordercartStoreDataObj){
+            if(ordercartStoreDataObj.isShowItemList===true){
+                ordercartStoreDataObj.isShowItemList = false;
+            }else{
+                ordercartStoreDataObj.isShowItemList = true;
+            }
+        };
         
         // checkProductDataToUdateInOrdercart 
         $rootScope.checkProductDataToUdateInOrdercart = function(productDetailsObj, fcontentClass){
