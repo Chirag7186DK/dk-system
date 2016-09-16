@@ -995,11 +995,13 @@ class commonfunction{
                         $eachOrdercartWiseDataArr['allStoresData'] = array();
                         // iterate each store wise data
                         foreach($allSortedStoreDataArr as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                            $deliveryFromToAreaName = "from ". $storeAllItemsDataArr[0]['storeLocatedAreaName']." to ".$storeAllItemsDataArr[0]['delivery_areaname'];
                             array_push($eachOrdercartWiseDataArr['allStoresData'], 
                                 array(
                                     "shopStoreTitle"=>$storeAllItemsDataArr[0]['shopStoreTitle'],
                                     "storeLocatedAreaName"=>$storeAllItemsDataArr[0]['storeLocatedAreaName'],
                                     "deliveryAreaname>"=>$storeAllItemsDataArr[0]['delivery_areaname'],
+                                    "deliveryFromToAreaName"=>$deliveryFromToAreaName,
                                     "subtotalamount"=>$storeAllItemsDataArr[0]['subtotalamount'],
                                     "apply_deliveryFee"=>$storeAllItemsDataArr[0]['apply_deliveryFee'],
                                     "discountamount"=>$storeAllItemsDataArr[0]['discountamount'],
