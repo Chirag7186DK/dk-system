@@ -1858,17 +1858,12 @@
         padding-left:0px!important;
         padding-right:0px!important;
         margin-bottom:30px!important;
-        border:1px solid #e7e7e7;
+        border:1px solid #dcdcdc!important;
     }
     
     .uca_ordercartRequestedEachStoreBasicInfoDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-    }
-    
-    .uca_ordercartRequestedEachStoreBasicInfoHrClass{
-        margin:0px!important;
-        border-color:#e7e7e7!important;
     }
     
     .uca_ordercartRequestedEachStoreNamePClass{
@@ -1927,9 +1922,9 @@
     .uca_ordercartRequestedEachStoreItemDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border-bottom:1px dashed rgb(70, 75, 80)!important;
+        border-top:1px dashed rgb(70, 75, 80);
     }
-
+    
     .uca_ordercartRequestedEachStoreItemDivClass:last-child{
         border-bottom:none!important;
     }
@@ -2096,7 +2091,7 @@
         padding-bottom:10px!important;
         padding-left:0px!important;
         padding-right:0px!important;
-        border:1px solid #e7e7e7;
+        border:1px solid #dcdcdc!important;
     }
     
     .uca_eachOrdercartWiseCancelledHeaderInfoPClass{
@@ -2112,11 +2107,6 @@
         background:#ffa500!important;
     }
     
-    .uca_ordercartCancelledBasicInfoHrClass{
-        margin:0px!important;
-        border-color:#e7e7e7!important;
-    }
-    
     .uca_ordercartToggleCancelledItemsLblPClass{
         padding-left:12px!important;
         color:#ab0b38!important;
@@ -2129,15 +2119,13 @@
     .uca_ordercartCancelledEachItemDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border-bottom:1px dashed rgb(70, 75, 80);
+        border-top:1px dashed rgb(70, 75, 80);
     }
     
     .uca_ordercartCancelledEachItemDivClass p{
         margin-bottom:2px!important;
-    }
-    
-    .uca_ordercartCancelledEachItemDivClass:last-child{
-        border-bottom:none!important;
+        color:#67717D!important;
+        font-size:14px!important;
     }
     
     .uca_ordercartCancelledItemNotFoundMsgDivClass{
