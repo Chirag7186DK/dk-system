@@ -993,7 +993,6 @@ class commonfunction{
                         $eachOrdercartWiseDataArr['humanReadableOrdercartId'] = $humanReadableOrdercartId;
                         $eachOrdercartWiseDataArr['totalStores'] = count($allSortedStoreDataArr);
                         $eachOrdercartWiseDataArr['allStoresData'] = array();
-                        $eachOrdercartWiseDataArr['isShowItemList'] = false;
                         // iterate each store wise data
                         foreach($allSortedStoreDataArr as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
                             array_push($eachOrdercartWiseDataArr['allStoresData'], 
@@ -1005,7 +1004,8 @@ class commonfunction{
                                     "apply_deliveryFee"=>$storeAllItemsDataArr[0]['apply_deliveryFee'],
                                     "discountamount"=>$storeAllItemsDataArr[0]['discountamount'],
                                     "totalamount"=>$storeAllItemsDataArr[0]['totalamount'],
-                                    "allItemsData"=>$storeAllItemsDataArr
+                                    "allItemsData"=>$storeAllItemsDataArr,
+                                    "isShowItemList"=>false
                                 )
                             );
                         }
