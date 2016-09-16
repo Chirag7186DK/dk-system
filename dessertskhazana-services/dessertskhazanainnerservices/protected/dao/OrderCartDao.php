@@ -530,6 +530,8 @@ class OrderCartDao{
                     COALESCE(odrsim.size, '') productSize, 
                     COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
                     COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
+                    COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee, COALESCE(odrs.subtotalamount, '') subtotalamount, 
+                    COALESCE(odrs.discountamount, '') discountamount, COALESCE(odrs.totalamount, '') totalamount,
                     (CASE 
                         WHEN odrs.status='O' THEN 'Ordered'
                         WHEN odrs.status='PR' THEN 'Under Processing'
