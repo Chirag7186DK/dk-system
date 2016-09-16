@@ -519,64 +519,52 @@ class OrderCartDao{
         $result = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " SELECT 
-                    uoc.id ordercartId, uocim.id ordercartItemId, 
-                    COALESCE(uoc.order_cartid, '') ordercartNo,
-                    COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
-                    COALESCE(UPPER(pt.name), '') productTypeTitleInCaps, 
-                    COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '')  productTypeProductCategoryTitle,
-                    COALESCE(spa.shoptstore_id, '') shopStoreId, COALESCE(ss.shopstore_name, '') shopStoreTitle,
-                    COALESCE(sppl.id, '') productListId, COALESCE(sppl.name, '') productListTitle,
-                    COALESCE(sppfd.id, '') productFeatureId, 
-                    COALESCE(sppfd.display_measurementtype, '') productFeatureDisplayMeasurementType,
-                    COALESCE(sppfd.food_type, '') productFeatureFoodType, 
-                    COALESCE(sppfd.taste_type, '') productFeatureTasteType, 
-                    COALESCE(sppfd.pattern_type, '') productFeaturePatternType, 
-                    COALESCE(sppfd.order_opentime, '') productFeatureOrderOpenTime, 
-                    COALESCE(sppfd.order_closetime, '') productFeatureOrderOpenTime, 
-                    COALESCE(sppfd.baseprice, '') productFeatureBasePrice,
-                    COALESCE(sppfd.product_discount, '') productFeatureDiscount,
-                    COALESCE(sppfd.online_sellprice, '') productFeatureOnlineSellingPrice,
-                    COALESCE(ppimg.is_showcasefile, 'N') isProductImageFileShowCase,
-                    COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
-                    COALESCE(ppimg.file_path, 'images/') productImageFilePath,
-                    COALESCE(uocim.product_featuresize, '') itemMeasurementType,
-                    COALESCE(uocim.product_featuresprice, 0) itemPerpriceIncart,
-                    COALESCE(uocim.product_featuresqty, 0) itemQty,
-                    COALESCE(uocim.product_features_totalamount, 0) itemTotalAmt,
-                    COALESCE(uocim.product_description,'') itemDescriptionIncart,
+            $sql= "SELECT 
+                    odr.id ordercartId, odr.order_cartid humanReadableOrdercartId,
+                    odrs.store_id storeId, COALESCE(ss.name, '') shopStoreTitle,
+                    COALESCE(a.name, '') storeLocatedAreaName,
+                    odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
+                    COALESCE(odrs.address, '') deliveryAddress,
+                    COALESCE(spl.name, '') productListTitle, 
+                    COALESCE(odrsim.featureid, '') featureId, COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
+                    COALESCE(odrsim.size, '') productSize, 
+                    COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
+                    COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
                     (CASE 
-                        WHEN uocim.status='O' THEN 'Ordered'
-                        WHEN uocim.status='P' THEN 'Processing'
-                        WHEN uocim.status='W' THEN 'On the Way'
-                        WHEN uocim.status='D' THEN 'Delivered'
-                        WHEN uocim.status='PF' THEN 'Payment Failed'
+                        WHEN odrs.status='O' THEN 'Ordered'
+                        WHEN odrs.status='PR' THEN 'Under Processing'
+                        WHEN odrs.status='W' THEN 'On the Way'
+                        WHEN odrs.status='D' THEN 'Delivered'
+                        WHEN odrs.status='PF' THEN 'Payment Failed'
                         ELSE 'Call customer care to know status'
-                    END) orderedItemStatus,
-                    'N' isOrderedItemAvailable
-                    FROM USERORDERCART uoc 
-                    JOIN USERORDERCART_ITEMDETAILS uocim ON uocim.order_cartid=uoc.id
-                    JOIN PRODUCTTYPE pt ON pt.id=uocim.product_typeid
-                    JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.id=uocim.product_categoryid 
-                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.shoptstore_id=uocim.shopstore_id 
-                    JOIN STORE_PRODUCTTYPE_PRODUCTCATEGORY sppc ON sppc.shopstores_producttype_affiliationid=spa.id 
-                        AND sppc.producttype_categoryid=ppc.id AND uocim.product_categoryid=sppc.producttype_categoryid 
-                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST sppl ON sppl.shopstores_producttype_affiliationid = spa.id
-                        AND sppl.shopstores_product_categoryid=sppc.producttype_categoryid AND sppl.id=uocim.product_listid 
-                    JOIN STORE ss ON ss.id=spa.shoptstore_id AND ss.id=uocim.shopstore_id
-                    JOIN STORE_PRODUCTTYPE_PRODUCTLIST_FEATURESDETAILS sppfd 
-                        ON sppfd.product_listid=sppl.id AND sppfd.id=uocim.product_featureid
-                    LEFT JOIN STORE_PRODUCTTYPE_PRODUCTLIST_IMAGEFILEMAPPING ppimg 
-                        ON ppimg.product_listid=sppl.id
-                        AND ppimg.is_showcasefile = 'Y'    
+                    END) ordercartStoreStatus,
+                    (CASE 
+                        WHEN odrsim.status='O' THEN 'Ordered'
+                        WHEN odrsim.status='PR' THEN 'Under Processing'
+                        WHEN odrsim.status='W' THEN 'On the Way'
+                        WHEN odrsim.status='D' THEN 'Delivered'
+                        WHEN odrsim.status='PF' THEN 'Payment Failed'
+                        ELSE 'Call customer care to know status'
+                    END) ordercartStoreItemStatus,
+                    COALESCE(odrsim.reason, '') ordercartStoreItemReason
+                    FROM ORDERCART odr
+                    JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+                    JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                    JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid
+                    JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id
+                    JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid
+                    JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
+                        AND spa.id=spac.store_producttype_affiliationid
+                    LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
+                    JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id
+                    JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
+                    JOIN CITYREACHED c ON c.id=cca.city_id
+                    JOIN AREAREACHED a ON a.id=cca.area_id
                     WHERE 1
-                    AND (
-                        uocim.status='O' OR uocim.status='P' OR uocim.status='W'
-                        OR uocim.status='D' OR uocim.status='PF'
-                    )
-                    AND (uoc.status='R' OR uoc.status='A')
-                    AND uoc.user_id='$userid'
-                    ORDER BY uoc.order_cartid ASC, uoc.updated_datedtime DESC";
+                    AND odr.user_id='$userid'
+                    AND (odrs.status='O' || odrs.status='PR' || odrs.status='PF' || odrs.status='W' || odrs.status='D')
+                    AND (odrsim.status='O' || odrsim.status='PR' || odrsim.status='PF' || odrsim.status='W' || odrsim.status='D')
+                    ORDER BY odrsim.updated_by DESC, odrs.store_id ASC";
             $command = $connection->createCommand($sql);
             $ordercartAllItemDetailsArr = $command->queryAll();
             if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
