@@ -2134,130 +2134,52 @@
     
     /* order cart all ordered item section css code */
     
-    .uca_ordercartnoWiseAllItemSectionContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-    
-    .uca_ordercartnoWiseAllItemSectionLabelPClass{
-        color:#67717D!important;
-        font-size:17px!important;
-        text-align:center!important;
-    }
-    
-    .uca_ordercartnoAllItemsCountSClass{
-        background:#67717D!important;
-        color:#fff!important;
-        font-size:17px!important;
-    }
-    
     .uca_ordercartOrderedAllItemListSectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
     }
 
-    .searchTextOrdercartItemOrderedLblClass{
-        color:#67717D!important;
-        font-size:12px!important;
-        font-weight:normal!important;
-    }
-
-    .inputSearchTextOrdercartOrderedItemDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-
-    .uca_ordercartOrderedEachItemSectionContainerDivClass{
-        padding-top:20px!important;
-        padding-bottom:20px!important;
-        padding-left:0px!important;
-        padding-right:0px!important;
-        border-bottom:1px dashed #FAB005!important;
-    }
-
-    .uca_ordercartOrderedEachItemSectionContainerDivClass:last-child{
-        border-bottom:none!important;
-    }
-    
-    .ordercartOrderedEachItemNoSClass{
-        color:#67717D!important;
-        font-size:14px!important;
-    }
-    
-    .ordercartOrderedEachItemStatusSClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .ordercartOrderedEachItemSellerNamePClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .ordercartOrderedEachItemNamePClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .ordercartOrderedEachItemSizePClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .ordercartOrderedEachItemDiscountPercentTextSClass{
-        color:#fff!important;
-        background:#F5A623!important;
-        border-radius:0px!important;
-        padding:1px 4px;
-        font-size:13px;
-        margin-right:1%!important;
-    }
-
-    .ordercartOrderedEachItemCutPriceTextSClass{
-        color:#67717D!important;
-        font-size:12px!important;
-        text-decoration:line-through;
-        margin-right:1%!important;
-    }
-
-    .ordercartOrderedEachItemPriceTextSClass{
-        color:#67717D!important;
-        font-size:18px!important;
-    }
-
-    .ordercartOrderedEachItemQtyPClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .ordercartOrderedEachItemInputQtyClass{
-        width:10%!important;
-    }
-
-    .ordercartOrderedEachItemPriceDetailsPClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-    
-    .ordercartOrderedEachItemPricePClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-    
-    .ordercartOrderedEachItemTotalAmtPClass{
-        color:#67717D!important;
-        font-size:13px!important;
-    }
-
-    .uca_ordercartNoOrderedItemFoundDivClass{
-        text-align:center!important;
+    .uca_eachOrdercartWiseOrderedSectionDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        border:1px solid #dcdcdc!important;
+        margin-bottom:20px!important;
     }
-
-    .orderedItemEmptyPClass{
-        font-size:17px!important;
+    
+    .uca_eachOrdercartWiseOrderedHeaderInfoPClass{
+        font-weight:bold!important;
+        font-size:13px!important;
+        text-align:center!important;
+        color:#ab0b38!important;
+        text-transform:uppercase!important;
+        margin-bottom:3px!important;
+    }
+    
+    .ordercartOrderedAllStoreCountSClass{
+        background:#ffa500!important;
+    }
+    
+    .uca_ordercartToggleOrderedItemsLblPClass{
+        padding-left:12px!important;
+        color:#ab0b38!important;
+        font-size:13px!important;
+        font-weight:bold!important;
+        margin-bottom:5px!important;
+        cursor:pointer!important;
+    }
+    
+    .uca_ordercartOrderedEachItemDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .uca_ordercartOrderedEachItemDivClass p{
+        margin-bottom:2px!important;
         color:#67717D!important;
+        font-size:14px!important;
     }
     
     
