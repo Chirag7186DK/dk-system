@@ -292,7 +292,6 @@
                                 Show Added Items In Cart 
                                 <i class="{{eachStoreAllItemDataObj.isShowItemList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
                             </p>
-                            <hr class='uca_ordercartRequestedEachStoreBasicInfoHrClass'>
                         </div>
                         <!-- each store all items will be display -->
                         <div ng-show='eachStoreAllItemDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass uca_ordercartRequestedEachStoreItemDivClass{{eachItemDataObj.orderStoreItemId}}'>
@@ -383,7 +382,6 @@
                                 Show Cancelled Items In Cart 
                                 <i class="{{eachOrdercartDataObj.isShowItemList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
                             </p>
-                            <hr class='uca_ordercartCancelledBasicInfoHrClass'>
                         </div>
                         <!-- each items will be display -->
                         <div ng-show='eachOrdercartDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachOrdercartDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemDivClass'>
