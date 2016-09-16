@@ -369,7 +369,6 @@
                 
                 <!-- canceled order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='cancelledordered'" ng-controller="OrderCartController" ng-init="populateOrdercartCancelledItemList('ZC,ZA')" id='uca_ordercartCancelledAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledAllItemListSectionDivClass'>
-                    
                     <!-- all order cart info display -->
                     <div ng-repeat="eachOrdercartDataObj in allOrdercartWiseCancelledData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachOrdercartWiseCancelledSectionDivClass'>
                         <!-- each order cart info display -->
@@ -418,62 +417,47 @@
                 
                 <!-- ordered order cart all items info will be displayed -->
                 <div ng-if="displayOrdercartSectionType==='allordered'" ng-controller="OrderCartController" ng-init="populateOrdercartAllOrderedItemList('all_ordered')" id='uca_ordercartOrderedAllItemListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedAllItemListSectionDivClass'>
-                    
-                    <!-- ordered item will be filtering -->
-                    <div ng-if="allOrdercartNoAllItemDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextOrdercartOrderedItemDivClass">
-                        <label class="searchTextOrdercartItemRequestedLblClass">
-                            Use for filtering and access fast ordered item !
-                        </label>
-                        <input ng-model="searchTextOrdercartItemOrdered" type="text" class="form-control" placeholder="Find ordered items !">
-                    </div>
-                    
-                    <!-- display order cart no wise all items details -->
-                    <div ng-repeat="eachOrdercartNoAllItemDetailsArrObj in allOrdercartNoAllItemDetailsArrObj | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartnoWiseAllItemSectionContainerDivClass">
-                        
-                        <!-- create horizontally space div between -->
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-                
-                        <p class="uca_ordercartnoWiseAllItemSectionLabelPClass">
-                            Showing 
-                            <span class="badge uca_ordercartnoAllItemsCountSClass">
-                                {{eachOrdercartNoAllItemDetailsArrObj['totalOrderedItems']}}
-                            </span> items in ordered no: {{eachOrdercartNoAllItemDetailsArrObj['ordercartNo']}}
-                        </p>
-                        
-                        <!-- each ordered item will display -->
-                        <div ng-repeat="ordercartOrderedEachItemDetailsArrObj in eachOrdercartNoAllItemDetailsArrObj['orderedAllItemsDetailsArr'] | filter:searchTextOrdercartItemOrdered:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedEachItemSectionContainerDivClass">
-                            <div class='col-xs-3 col-sm-1 col-md-1 col-lg-1 ordercartOrderedEachItemImageDivClass'>
-                                <img style='width:100%;' class='ordercartOrderedEachItemImageClass' ng-src="<?php echo $BaseSitePath;?>images/productphotoback.png">
-                            </div>
-                            <div class='col-xs-9 col-sm-11 col-md-11 col-lg-11 ordercartOrderedEachItemDetailsDivClass'>
-                                <p class="ordercartOrderedEachItemStatusSClass">
-                                    Status: {{ordercartOrderedEachItemDetailsArrObj.orderedItemStatus}}
+                    <!-- all order cart info display -->
+                    <div ng-repeat="eachOrdercartDataObj in allOrdercartWiseOrderedData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachOrdercartWiseOrderedSectionDivClass'>
+                        <!-- each order cart info display -->
+                        <div class="uca_eachOrdercartWiseOrderedBasicInfoDivClass">
+                            <p class="uca_eachOrdercartWiseOrderedHeaderInfoPClass">
+                                Order cart '{{eachOrdercartDataObj.humanReadableOrdercartId}}' contains
+                                <span class="badge ordercartOrderedAllStoreCountSClass">{{eachOrdercartDataObj.totalStores}}</span> stores items
+                            </p>
+                            <div ng-repeat="eachStoreDataObj in eachOrdercartDataObj['allStoresData']" class="uca_eachOrdercartWiseOrderedStoreBasicInfoDivClass">
+                                <p ng-click="uca_toggleOrdercartOrderedItemsList(eachStoreDataObj);" class="uca_ordercartToggleOrderedItemsLblPClass">
+                                    {{eachStoreDataObj.shopStoreTitle}} - from '{{eachStoreDataObj.storeLocatedAreaName}}' to '{{eachStoreDataObj.deliveryAreaname}}'
+                                    <i class="{{eachStoreDataObj.isShowItemList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
                                 </p>
-                                <p class="ordercartOrderedEachItemSellerNamePClass">
-                                    Seller: {{ordercartOrderedEachItemDetailsArrObj.shopStoreTitle}}
-                                </p>
-                                <p class="ordercartOrderedEachItemNamePClass">
-                                    {{ordercartOrderedEachItemDetailsArrObj.productListTitle}}
-                                </p>
-                                <p class="ordercartOrderedEachItemSizePClass">
-                                    Size: {{ordercartOrderedEachItemDetailsArrObj.itemMeasurementType}}
-                                </p>
-                                <p class="ordercartOrderedEachItemPricePClass">
-                                    <i class="fa fa-rupee"></i> {{ordercartOrderedEachItemDetailsArrObj.itemPerpriceIncart}}
-                                </p>
-                                <p class="ordercartOrderedEachItemQtyPClass">
-                                    Bought Qty: {{ordercartOrderedEachItemDetailsArrObj.itemQty}}
-                                </p>
-                                <p class="ordercartOrderedEachItemTotalAmtPClass">
-                                    Total Amt: {{ordercartOrderedEachItemDetailsArrObj.itemTotalAmt}}
-                                </p>
+                                <!-- each items will be display -->
+                                <div ng-show='eachStoreDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachStoreDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedEachItemDivClass'>
+                                    <p class="uca_ordercartOrderedItemNamePClass">
+                                        {{eachItemDataObj.productListTitle}}
+                                    </p>
+                                    <p class="uca_ordercartOrderedItemSizePClass">
+                                        Size: {{eachItemDataObj.size}}
+                                    </p>
+                                    <p class='uca_ordercartOrderedItemPricePClass'> 
+                                        <span class='uca_ordercartOrderedItemPriceTextSClass'>
+                                            <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
+                                        </span>
+                                    </p>
+                                    <p class="uca_ordercartOrderedItemQtyPClass">
+                                        Bought Qty: {{eachItemDataObj.qty}}
+                                    </p>
+                                    <p class="uca_ordercartOrderedItemTotalAmtPClass">
+                                        Total Amt: {{eachItemDataObj.totalamount}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
                     <!-- no ordered item found message div -->
-                    <div ng-if="allOrdercartNoAllItemDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartNoOrderedItemFoundDivClass">
-                        <p class="orderedItemEmptyPClass">Your Shopping Bags is Empty !</p>
+                    <div ng-if="allOrdercartWiseOrderedData<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartOrderedItemNotFoundMsgDivClass">
+                        <p class="ordercartEmptyPClass">
+                            <i class="fa fa-smile-o"></i> Your Shopping Bags is Empty !!!
+                        </p>
                         <p>
                             <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
                         </p>
