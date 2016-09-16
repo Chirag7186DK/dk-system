@@ -2140,6 +2140,9 @@
         border-bottom:none!important;
     }
     
+    .uca_ordercartCancelledItemNotFoundMsgDivClass{
+        text-align:center!important;
+    }
     
     /* order cart all ordered item section css code */
     
