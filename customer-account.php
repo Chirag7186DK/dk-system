@@ -236,14 +236,18 @@
             <div ng-if="requestedSectionName==='ordercart'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartSectionContainerDivClass">
 
                 <!-- order cart summary info -->
-                <p class='uca_ordercartSectionMsgPClass'>
+                <p ng-if="ordercartItemRequestedCount>0" class='uca_ordercartSectionMsgPClass'>
                     <i class="fa fa-shopping-basket ordercartRequestedItemShoppingBagIconClass"></i> 
                     Your shopping bags contains 
                     (Items: {{ordercartItemRequestedCount}}, Subtotal Rs: {{subtotalOrderAmt}},
                     Total Delivery Rs: {{totalDeliveryFee}}, Total Amt Rs: {{totalOrderAmt}})
-                    <button ng-if="ordercartItemRequestedCount>0" class='btn uca_ordercartSectionCheckoutBtnClass'>
+                    <button class='btn uca_ordercartSectionCheckoutBtnClass'>
                         CHECKOUT
                     </button>
+                </p>
+                <p ng-if="ordercartItemRequestedCount<=0" class='uca_ordercartSectionMsgPClass'>
+                    <i class="fa fa-shopping-basket ordercartRequestedItemShoppingBagIconClass"></i> 
+                    Your shopping bags is empty !!! 
                 </p>
 
                 <!-- order cart all section header title -->
