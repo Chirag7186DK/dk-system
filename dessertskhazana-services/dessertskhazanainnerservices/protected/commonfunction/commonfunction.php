@@ -882,10 +882,10 @@ class commonfunction{
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
                         $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
-                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
                         $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
-                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
                         $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
+                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
                         $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
                         $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = '';
                         $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
@@ -950,14 +950,12 @@ class commonfunction{
     public static function getCancelledOrdercartItemDetails($userId){
         $allOrdercartWiseDataArr = array();
         if($userId>0 && $userId!=false){
-            // fetching cancelled order cart all items by end user or admin members
+            // fetching all cancelled order cart with all items by end user or admin members
             $dataArr1 = OrderCartDao :: getCancelledOrdercartItemDetails($userId);
             if(count($dataArr1)>0 && $dataArr1!=false){
-                
                 // sorted on ordercartId
                 $sortedDataArr1 = utils::arraySort($dataArr1, array("ordercartId"));
                 if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
-                    
                     // iterating order cart wise data
                     foreach($sortedDataArr1 as $ordercartIdKey=>$allItemsDataArr){
                         array_push($allOrdercartWiseDataArr, 
@@ -981,28 +979,46 @@ class commonfunction{
     
     // CJ defined this function 2016-08-21
     public static function getAllOrderedOrdercartItemDetails($userId){
-        $retDataArr = array();
-        if($userId!='' && $userId!=false){
-            // fetching cancelled order cart all items by end user or admin members
-            $ordercartAllItemDetailsArr = OrderCartDao :: getAllOrderedOrdercartItemDetails($userId);
-            if(count($ordercartAllItemDetailsArr)>0 && $ordercartAllItemDetailsArr!=false){
-                // sorted on order cart no 
-                $sortedOnCartnoAllItemDetailsArr = utils :: arraySort($ordercartAllItemDetailsArr, array("ordercartNo"));
-                if(count($sortedOnCartnoAllItemDetailsArr)>0 && $sortedOnCartnoAllItemDetailsArr!=false){
-                    // iterate each order cartno all item details arr
-                    foreach($sortedOnCartnoAllItemDetailsArr as $ordercartNoKey=>$allOrderedItemDetailsArr){
-                        array_push($retDataArr, 
-                            array(
-                                "ordercartNo"=>$ordercartNoKey,
-                                "totalOrderedItems"=>count($allOrderedItemDetailsArr),
-                                "orderedAllItemsDetailsArr"=>$allOrderedItemDetailsArr
-                            )
-                        );
+        $allOrdercartWiseDataArr = array();
+        if($userId>0 && $userId!=false){
+            // fetching all order cart with all ordered items by end user
+            $dataArr1 = OrderCartDao :: getAllOrderedOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorted on ordercartId
+                $sortedOrdercartDataArr = utils::arraySort($dataArr1, array("humanReadableOrdercartId", "storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                if(count($sortedOrdercartDataArr)>0 && $sortedOrdercartDataArr!=false){
+                    // iterate order cart wise data
+                    foreach($sortedOrdercartDataArr as $humanReadableOrdercartId=>$allSortedStoreDataArr){
+                        $eachOrdercartWiseDataArr = array();
+                        $eachOrdercartWiseDataArr['humanReadableOrdercartId'] = $humanReadableOrdercartId;
+                        $eachOrdercartWiseDataArr['totalStores'] = count($allSortedStoreDataArr);
+                        $eachOrdercartWiseDataArr['allStoresData'] = array();
+                        $eachOrdercartWiseDataArr['isShowItemList'] = false;
+                        // iterate each store wise data
+                        foreach($allSortedStoreDataArr as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                            array_push($eachOrdercartWiseDataArr['allStoresData'], 
+                                array(
+                                    "shopStoreTitle"=>$storeAllItemsDataArr[0]['shopStoreTitle'],
+                                    "storeLocatedAreaName"=>$storeAllItemsDataArr[0]['storeLocatedAreaName'],
+                                    "deliveryAreaname>"=>$storeAllItemsDataArr[0]['delivery_areaname'],
+                                    "subtotalamount"=>$storeAllItemsDataArr[0]['subtotalamount'],
+                                    "apply_deliveryFee"=>$storeAllItemsDataArr[0]['apply_deliveryFee'],
+                                    "discountamount"=>$storeAllItemsDataArr[0]['discountamount'],
+                                    "totalamount"=>$storeAllItemsDataArr[0]['totalamount'],
+                                    "allItemsData"=>$storeAllItemsDataArr
+                                )
+                            );
+                        }
+                        array_push($allOrdercartWiseDataArr, $eachOrdercartWiseDataArr);
                     }
                 }
             }
         }
-        return $retDataArr;
+        if(count($allOrdercartWiseDataArr)>0 && $allOrdercartWiseDataArr!=false){
+            return $allOrdercartWiseDataArr;
+        }else{
+            return false;
+        }
     }
     
     
