@@ -375,7 +375,7 @@
                     <div ng-repeat="eachOrdercartDataObj in allOrdercartWiseCancelledData" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachOrdercartWiseCancelledSectionDivClass'>
                         <!-- each order cart info display -->
                         <div class="uca_eachOrdercartWiseCancelledBasicInfoDivClass">
-                            <p class="uca_eachOrdercartWiseCancelledHeaderInfoDivClass">
+                            <p class="uca_eachOrdercartWiseCancelledHeaderInfoPClass">
                                 Order cart '{{eachOrdercartDataObj.humanReadableOrdercartId}}' contains
                                 <span class="badge ordercartCancelledAllItemCountSClass">{{eachOrdercartDataObj.totalItems}}</span> cancelled items
                             </p>
