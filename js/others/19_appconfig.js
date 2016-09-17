@@ -14,7 +14,7 @@ console.log("on load deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight)
 //alert("on laod deviceWidth=>"+deviceWidth+", deviceHeight=>"+deviceHeight);
 
 // web-app module defined here 
-var dkapp = angular.module('DKAPP', []);
+angular.module('DKAPP', []);
 
 //dkapp.config(['$stateProvider', '$urlRouterProvider',
 //    function ($stateProvider, $urlRouterProvider) {
