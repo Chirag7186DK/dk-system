@@ -1045,7 +1045,16 @@ class commonfunction{
             // fetching party order list data
             $dataArr1 = PartyOrdersDao::getPartyOrderList($userId);
             if(count($dataArr1)>0 && $dataArr1!=false){
-                $partyOrderDataArr = $dataArr1;
+                // iterate each party order data details
+                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                    $partyOrderId = $dataArr1[$eachIndex]['partyOrderId'];
+                    $dataArr1[$eachIndex]['poLogDetails'] = false;
+                    // fetch each partyOrderId further log details
+                    $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $partyOrderId);
+                    if(count($dataArr2)>0 && $dataArr2!=false){
+                        $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
+                    }
+                }
             }
         }
         return $partyOrderDataArr;
