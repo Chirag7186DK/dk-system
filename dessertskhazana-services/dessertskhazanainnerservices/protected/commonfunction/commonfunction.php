@@ -1024,6 +1024,39 @@ class commonfunction{
     }
     
     
+    // CJ defined this function 2016-09-18
+    public static function getStorewiseOrderSummaryData($userId){
+        $allStorewiseOrderSummaryDataArr = array();
+        if($userId!=false && $userId>0){
+            // fetching requested order cart all items for given user
+            $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
+                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
+                    // iterating order store wise with delivery location data
+                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                        $eachOrdercartStoresDataArr = array();
+                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
+                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
+                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
+                        $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
+                        $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
+                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
+                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
+                    }
+                }
+            }
+        }
+        if(count($allStorewiseOrderSummaryDataArr)>0 
+            && $allStorewiseOrderSummaryDataArr!=false){
+            return $allStorewiseOrderSummaryDataArr;
+        }else{
+            return false;
+        }
+    }
+    
     /////////////////////////////// party order related code ///////////////////
     
     // CJ defined this function 2016-08-21
