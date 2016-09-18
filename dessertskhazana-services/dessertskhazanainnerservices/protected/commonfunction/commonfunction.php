@@ -1025,7 +1025,7 @@ class commonfunction{
     
     
     // CJ defined this function 2016-09-18
-    public static function getStorewiseOrderSummaryData($userId){
+    public static function getStorewiseOrderSummaryDataForCheckoutProcess($userId){
         $allStorewiseOrderSummaryDataArr = array();
         if($userId!=false && $userId>0){
             // fetching requested order cart all items for given user
