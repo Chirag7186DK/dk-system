@@ -1059,6 +1059,7 @@ class customparam{
     
     //////////////////////////// party order related code //////////////////////////////////////
     
+    
     // CJ defined this function 2016-07-20
     public static function checkParamDataForAddingPartyOrderRequest($paramJsonData){
         $retStatus = 'FALSE';
@@ -1083,7 +1084,7 @@ class customparam{
         }
         // check nos_person key present or not
         if(array_key_exists('nos_person', $paramJsonData)){
-            if($paramJsonData['nos_person']!='' && $paramJsonData['nos_person']!=false){
+            if($paramJsonData['nos_person']!='' && ($paramJsonData['nos_person'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
