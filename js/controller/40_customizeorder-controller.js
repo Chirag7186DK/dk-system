@@ -50,20 +50,12 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                 }else{
                     // get param obj to add customize order request
                     var preparedParamJsonObj = getParamDataObjForCustomizeOrderRequest();
-                    // console.log("addCustomizeOrdersRequest preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-                        
                         var fetchAreaParamJsonObj = {};
                         fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
                         // calling CustomizeOrdersServices to add customize order request
                         CustomizeOrdersServices.addCustomizeOrderRequest(fetchAreaParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
-                                showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var coRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'coRequestedStatusDetails', retResponseJson);
                                     if(coRequestedStatusDetails!==false && coRequestedStatusDetails!==undefined 
@@ -90,7 +82,6 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                 }
             }catch(ex){
                 console.log("problem in addCustomizeOrderRequest ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
@@ -107,25 +98,17 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
             }
         };
         
-        // getCustomizeOrdersList 
-        $rootScope.getCustomizeOrdersList = function(){
+        // loadCustomizeOrdersList 
+        $rootScope.loadCustomizeOrdersList = function(){
             try{
                 var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                        
                     var fetchAreaParamJsonObj = {};
                     fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.customizeOrderListArrObj = false;
-                    
                     // calling CustomizeOrdersServices to add party order request
                     CustomizeOrdersServices.getCustomizeOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var customizeOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'customizeOrderList', retResponseJson);
                                 if(customizeOrderListArrObj!==false && customizeOrderListArrObj!==undefined 
@@ -140,7 +123,6 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                 }
             }catch(ex){
                 console.log("problem in getCustomizeOrdersList ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
