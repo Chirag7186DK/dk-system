@@ -708,12 +708,12 @@
                         <p class="poEstimatedAmtPClass">
                             Estimated Budget (Rs): {{eachPartyOrderDataObj.estimatedBudget}}
                         </p>
-                        <p ng-if="eachPartyOrderDataObj.isShowPaymentBtn==true" class="poPaymentSummaryDetailsPClass">
+                        <p ng-if="eachPartyOrderDataObj.isShowPoPaymentBtn==true" class="poPaymentSummaryDetailsPClass">
                             Total Payment (Rs): {{eachPartyOrderDataObj.poGeneratedTotalAmt}}, 
                             Paying Amt (Rs): {{eachPartyOrderDataObj.payingamount}},
                             Balance Amt (Rs): {{eachPartyOrderDataObj.balanceamount}}
                         </p>
-                        <p ng-if="eachPartyOrderDataObj.isShowPaymentBtn==true" class="poPaymentBtnPClass">
+                        <p ng-if="eachPartyOrderDataObj.isShowPoPaymentBtn==true" class="poPaymentBtnPClass">
                             <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn poPaymentBtnClass'>
                                 MAKE PAYMENT (Rs: {{eachPartyOrderDataObj.payingamount}})
                             </button>
@@ -846,7 +846,7 @@
                 </div>
                 
                 <!-- requested customize cart all items info will be displayed -->
-                <div ng-if="displayCustomizeOrderInfoSectionType==='allcustomizeorders'" ng-controller="CustomizeOrdersController" ng-init="getCustomizeOrdersList()" id='allCoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allCoListSectionDivClass'>
+                <div ng-if="displayCustomizeOrderInfoSectionType==='allcustomizeorders'" ng-controller="CustomizeOrdersController" ng-init="loadCustomizeOrdersList()" id='allCoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allCoListSectionDivClass'>
                    
                     <!-- each customize order info will display -->
                     <div ng-repeat="eachCustomizeOrderDataObj in customizeOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachCOListContainerDivClass">
