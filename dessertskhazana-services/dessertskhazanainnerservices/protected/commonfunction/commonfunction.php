@@ -1107,15 +1107,56 @@ class commonfunction{
     }
     
     // CJ defined this function 2016-08-22
-    public static function getCustomizeOrderList($unMd5UserId){
-        $retJsonData = false;
-        if($unMd5UserId!='' && $unMd5UserId!=false){
-            $customizeOrderDetailsArr = CustomizeOrdersDao::getCustomizeOrderList($unMd5UserId);
-            if(count($customizeOrderDetailsArr)>0 && $customizeOrderDetailsArr!=false){
-                $retJsonData = $customizeOrderDetailsArr;
+    public static function getCustomizeOrderList($userId){
+        $customizeOrderDataArr = false;
+        if($userId!='' && $userId>0){
+            // fetching customize order list data
+            $dataArr1 = CustomizeOrdersDao::getCustomizeOrderList($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // iterate each customize order data details
+                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                    $coId = $dataArr1[$eachIndex]['customizeOrderId'];
+                    $coStatus = $dataArr1[$eachIndex]['corShortStatus'];
+                    
+                    // fetch each customizeOrderId further consveration/log details
+                    $dataArr1[$eachIndex]['coLogCount'] = '0';
+                    $dataArr1[$eachIndex]['coLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isCoShowLogList'] = false;
+                    $dataArr2 = CustomizeOrdersDao :: getCustomizeOrderLogDetails($userId, $coId);
+                    if(count($dataArr2)>0 && $dataArr2!=false){
+                        $dataArr1[$eachIndex]['coLogCount'] = count($dataArr2);
+                        $dataArr1[$eachIndex]['coLogDetails'] = $dataArr2;
+                    }
+                    
+                    // deciding payment btn to show or not
+                    $dataArr1[$eachIndex]['isShowCoPaymentBtn'] = ($coStatus=='PP'?true:false);
+                    
+                    // fetch each customizeOrderId payment log details 
+                    $dataArr1[$eachIndex]['coPaymentInstallment'] = '0';
+                    $dataArr1[$eachIndex]['coPaymentLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isShowCoPaymentLogList'] = false;
+                    $dataArr3 = CustomizeOrdersDao :: getPaymentDetailsForCustomizeOrder($userId, $coId);
+                    if(count($dataArr3)>0 && $dataArr3!=false){
+                        $dataArr1[$eachIndex]['coPaymentInstallment'] = count($dataArr3);
+                        $dataArr1[$eachIndex]['coPaymentLogDetails'] = $dataArr3;
+                    }
+
+                    // deciding how much need to pay or balance also
+                    $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = '0';
+                    $dataArr1[$eachIndex]['payingamount'] = '0';
+                    $dataArr1[$eachIndex]['balanceamount'] = '0';
+                    $dataArr4 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $coId, 'Y');
+                    if(count($dataArr4)==1 && $dataArr4!=false){
+                        $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = $dataArr4[0]['coGeneratedTotalAmt'];
+                        $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
+                        $dataArr1[$eachIndex]['balanceamount'] = $dataArr4[0]['balanceamount'];
+                    }
+                    
+                }
+                $customizeOrderDataArr = $dataArr1;
             }
         }
-        return $retJsonData;
+        return $customizeOrderDataArr;
     }
     
 }
