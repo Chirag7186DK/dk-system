@@ -1049,11 +1049,12 @@ class commonfunction{
                 for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
                     $partyOrderId = $dataArr1[$eachIndex]['partyOrderId'];
                     $dataArr1[$eachIndex]['poLogCount'] = '0';
+                    $dataArr1[$eachIndex]['isShowLogList'] = false;
                     // fetch each partyOrderId further log details
                     $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $partyOrderId);
                     if(count($dataArr2)>0 && $dataArr2!=false){
-                        $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
                         $dataArr1[$eachIndex]['poLogCount'] = count($dataArr2);
+                        $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
                     }
                 }
                 $partyOrderDataArr = $dataArr1;
