@@ -77,7 +77,7 @@
                 });
                 return promiseObject;
             };
-
+            
             return locationDetails;
 
         }catch(ex){
