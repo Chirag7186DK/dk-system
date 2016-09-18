@@ -6,6 +6,7 @@ COALESCE(por.nos_person, '') nosOfPerson,
 COALESCE(por.party_date, '') partyDate, 
 COALESCE(por.party_venue, '') partyVenue, 
 COALESCE(por.party_requirements, '') partyRequirements,
+COALESCE(por.estimated_budget, '') estimatedBudget,
 (CASE 
     WHEN por.status='R' THEN 'Requested'
     WHEN por.status='CC' THEN 'Confirmed by you for further processing'
@@ -14,9 +15,8 @@ COALESCE(por.party_requirements, '') partyRequirements,
     WHEN por.status='PF' THEN 'Payment Failed'
     WHEN por.status='ZC' THEN 'Deleted/Removed by you'
     WHEN por.status='ZA' THEN 'Deleted/Removed by us'
-END) portLongStatusMsg,
-COALESCE(por.status, '') porShortStatus,
-'2000' estimatedAmt, '1800' confirmedAmt
+END) porLongStatusMsg, COALESCE(por.status, '') porShortStatus,
+'1800' confirmedAmt
 FROM USERS u 
 JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
 WHERE 1
