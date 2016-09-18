@@ -610,7 +610,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the occasion ?
                             </p>
-                            <input placeholder="What's the occasion" autocomplete="on" type="text" id='po_occasionTitleInputId' class="form-control po_occasionTitleInputClass">
+                            <input placeholder="What's the occasion"  type="text" id='po_occasionTitleInputId' class="form-control po_occasionTitleInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
                             </p>
@@ -619,7 +619,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people to treat ?
                             </p>
-                            <input placeholder="How many awesome people to treat" autocomplete="on" type="text" id='po_nosPeopleInputId' class="form-control po_nosPeopleInputClass">
+                            <input placeholder="How many awesome people to treat"  type="text" id='po_nosPeopleInputId' class="form-control po_nosPeopleInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: 20
                             </p>
@@ -628,7 +628,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-calendar faa-tada animated"></i> Party date (YYYY-MM-DD) ?
                             </p>
-                            <input placeholder="Party date" autocomplete="on" type="text" id='po_dateInputId' class="form-control po_dateInputClass">
+                            <input placeholder="Party date"  type="text" id='po_dateInputId' class="form-control po_dateInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: <?php echo date('Y-m-d');?>
                             </p>
@@ -637,7 +637,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-map-marker faa-tada animated"></i> Party venue ?
                             </p>
-                            <textarea placeholder="Party venue" autocomplete="on" class='form-control po_venueInputClass' id='po_venueInputId' rows="5" cols="20"></textarea>
+                            <textarea placeholder="Party venue"  class='form-control po_venueInputClass' id='po_venueInputId' rows="5" cols="20"></textarea>
                             <p class="po_formfieldHintPClass">
                                 Eg: 421302 Bhiwandi
                             </p>
@@ -646,9 +646,18 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-envelope faa-tada animated"></i> Enter Requirements
                             </p>
-                            <textarea placeholder="Party requirements" autocomplete="on" class='form-control po_messageInputClass' id='po_messageInputId' rows="5" cols="20"></textarea>
+                            <textarea placeholder="Party requirements"  class='form-control po_messageInputClass' id='po_messageInputId' rows="5" cols="20"></textarea>
                             <p class="po_formfieldHintPClass">
                                 Eg: Cakes,Chocolates,Sweets,Ice-cream, birthday party etc...
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_budgetAmtContainerDivClass">
+                            <p class="po_formfieldLabelPClass">
+                                <i class="po_formfieldiconclass fa fa-rupee faa-tada animated"></i> Approx Budget ?
+                            </p>
+                            <input placeholder="Approx Budget Amount"  type="text" id='po_budgetAmtInputId' class="form-control po_budgetAmtInputClass">
+                            <p class="po_formfieldHintPClass">
+                                Eg: 500, 1000, 2000
                             </p>
                         </div>
                         <div ng-show="isShowPartyOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_errorMsgContainerDivClass">
@@ -776,7 +785,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the event ?
                             </p>
-                            <input placeholder="What's the event" autocomplete="on" type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
+                            <input placeholder="What's the event"  type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
                             </p>
@@ -785,7 +794,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people in event ?
                             </p>
-                            <input placeholder="How many awesome people in event" autocomplete="on" type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
+                            <input placeholder="How many awesome people in event"  type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: 20
                             </p>
@@ -794,7 +803,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-calendar faa-tada animated"></i> Event date (YYYY-MM-DD) ?
                             </p>
-                            <input placeholder="Event date" autocomplete="on" type="text" id='co_dateInputId' class="form-control co_dateInputClass">
+                            <input placeholder="Event date"  type="text" id='co_dateInputId' class="form-control co_dateInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: <?php echo date('Y-m-d');?>
                             </p>
@@ -803,7 +812,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-map-marker faa-tada animated"></i> Event venue ?
                             </p>
-                            <textarea placeholder="Event venue" autocomplete="on" class='form-control co_venueInputClass' id='co_venueInputId' rows="5" cols="20"></textarea>
+                            <textarea placeholder="Event venue"  class='form-control co_venueInputClass' id='co_venueInputId' rows="5" cols="20"></textarea>
                             <p class="co_formfieldHintPClass">
                                 Eg: 421302 Bhiwandi
                             </p>
@@ -812,9 +821,18 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-envelope faa-tada animated"></i> Enter Requirements
                             </p>
-                            <textarea placeholder="Event requirements" autocomplete="on" class='form-control co_messageInputClass' id='co_messageInputId' rows="5" cols="20"></textarea>
+                            <textarea placeholder="Event requirements"  class='form-control co_messageInputClass' id='co_messageInputId' rows="5" cols="20"></textarea>
                             <p class="co_formfieldHintPClass">
                                 Eg: Cakes,Chocolates,Sweets,Ice-cream, birthday party etc...
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_budgetAmtContainerDivClass">
+                            <p class="co_formfieldLabelPClass">
+                                <i class="co_formfieldiconclass fa fa-rupee faa-tada animated"></i> Approx Budget ?
+                            </p>
+                            <input placeholder="Approx Budget Amount"  type="text" id='co_budgetAmtInputId' class="form-control co_budgetAmtInputClass">
+                            <p class="co_formfieldHintPClass">
+                                Eg: 500, 1000, 2000
                             </p>
                         </div>
                         <div ng-show="isShowCustomizeOrderRequestErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_errorMsgContainerDivClass">
