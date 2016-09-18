@@ -128,6 +128,15 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
             }
         };
         
+        // togglePOLogList
+        $rootScope.togglePOLogList = function(poDataObj){
+            if(poDataObj.isShowLogList===true){
+                poDataObj.isShowLogList = false;
+            }else{
+                poDataObj.isShowLogList = true;
+            }
+        };
+        
     }catch(ex){
         console.log("problem in PartyOrdersController ex=>"+ex);
     }
