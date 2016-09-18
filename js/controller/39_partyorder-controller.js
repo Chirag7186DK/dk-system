@@ -52,7 +52,6 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
                 }else{
                     // get param obj to add party order request
                     var preparedParamJsonObj = getParamDataObjForPartyOrderRequest();
-                    // console.log("addPartyOrdersRequest preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var fetchAreaParamJsonObj = {};
                         fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
