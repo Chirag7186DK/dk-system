@@ -2542,13 +2542,26 @@
     .poDatePClass,
     .poVenuePClass,
     .poRequirementsPClass,
-    .poEstimatedAmtPClass{
+    .poEstimatedAmtPClass,
+    .poPaymentSummaryDetailsPClass,
+    .poPaymentBtnPClass{
         color:#67717D!important;
         font-size:13px!important;
-        margin-bottom:3px!important;
+        margin-bottom:4px!important;
     }
     
-    .poLogLblPClass{
+    .poPaymentBtnClass, 
+    .poPaymentBtnClass:hover{
+        font-size:10px!important;
+        font-weight:bold!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
+        color:#fff!important;
+        padding:3px!important;
+    }
+    
+    .poLogLblPClass,
+    .poPaymentLogLblPClass{
         padding-left:12px!important;
         color:#ab0b38!important;
         font-size:13px!important;
@@ -2564,11 +2577,17 @@
     
     .eachPOListLogContainerDivClass{
         padding-top:10px!important;
-        padding-bottom:10px!important;
+        margin-bottom:5px!important;
         color:#67717D!important;
         font-size:13px!important;
     }
     
+    .eachPOPaymentLogContainerDivClass{
+        padding-top:10px!important;
+        margin-bottom:5px!important;
+        color:#67717D!important;
+        font-size:13px!important;
+    }
     
     /* user customize order css code */
     
