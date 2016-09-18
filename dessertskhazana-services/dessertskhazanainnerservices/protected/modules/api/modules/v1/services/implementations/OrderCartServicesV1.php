@@ -183,6 +183,23 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
         return $rspDetails;
     }
     
+    // CJ defined this action 2016-09-18
+    public function getStorewiseOrderSummaryData($dkParamDataArr){
+        $rspDetails = array();
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetch user session data details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                // detect type of item list to fetch based on status
+                $userId = $userSessionDetailsData['unmd5UserId'];
+                $rspDetails['storewiseOrderSummaryData'] = commonfunction :: getStorewiseOrderSummaryData($userId);
+                // $rspDetails['storewiseOrderSummaryData'] = false;
+            }
+        } 
+        return $rspDetails;
+    }
+    
     // CJ defined this action 2016-09-05
     public function resetAllItemOrdercart($dkParamDataArr){
         $rspDetails = array();
