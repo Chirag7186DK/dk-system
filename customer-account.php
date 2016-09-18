@@ -236,7 +236,7 @@
                     Your shopping bags contains 
                     (Items: {{ordercartItemRequestedCount}}, Subtotal Rs: {{subtotalOrderAmt}},
                     Total Delivery Rs: {{totalDeliveryFee}}, Total Amt Rs: {{totalOrderAmt}})
-                    <button class='btn uca_ordercartSectionCheckoutBtnClass'>
+                    <button ng-controller="CheckoutController"  ng-click="gotoCheckoutProcess();" class='btn uca_ordercartSectionCheckoutBtnClass'>
                         CHECKOUT
                     </button>
                 </p>
