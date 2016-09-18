@@ -108,7 +108,7 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
                     var fetchAreaParamJsonObj = {};
                     fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.partyOrderListArrObj = false;
-                    // calling PartyOrdersServices to add party order request
+                    // calling PartyOrdersServices to get party order list
                     PartyOrdersServices.getPartyOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
