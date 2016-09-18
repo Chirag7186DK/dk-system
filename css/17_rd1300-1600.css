@@ -2557,12 +2557,14 @@
         cursor:pointer!important;
     }
     
+    .eachPOListHrClass{
+        border-top:1px dashed rgb(70, 75, 80)!important;
+        margin:0px!important;
+    }
+    
     .eachPOListLogContainerDivClass{
-        //padding-left:0px!important;
-        //padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border-top:1px dashed rgb(70, 75, 80);
         color:#67717D!important;
         font-size:13px!important;
     }
