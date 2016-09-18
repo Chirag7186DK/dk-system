@@ -196,4 +196,71 @@ class CustomizeOrdersDao{
         return $result;
     }
     
+    // CJ defined this function 2016-09-18
+    public static function getCustomizeOrderLogDetails($userId, $customizeOrderId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                COALESCE(corl.description, '') poLogDescription,
+                COALESCE(DATE_FORMAT(corl.updated_datedtime, '%b %D %a, %Y'), '') lastUpdatedTime,
+                (CASE 
+                    WHEN corl.profile_typeid='2' THEN 'You' 
+                    ELSE 'Admin'
+                END) coLogMemberLabel
+                FROM USERS u 
+                JOIN CUSTOMIZEORDERS_REQUEST por ON cor.user_id=u.id
+                JOIN CUSTOMIZEORDERS_REQUEST_LOG porl ON corl.party_id=cor.id
+                WHERE 1
+                AND u.status='A' AND corl.status='A'
+                AND u.id='$userId' AND cor.user_id='$userId'
+                AND cor.id='$customizeOrderId' AND corl.customizeorder_id='$customizeOrderId'
+                ORDER BY corl.updated_datedtime DESC ";
+            $command = $connection->createCommand($sql);
+            $coLogDetailsArr = $command->queryAll();
+            if(count($coLogDetailsArr)>0 && $coLogDetailsArr!=false){
+                $result =  $coLogDetailsArr;
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
+    // CJ defined this function 2016-09-18
+    public static function getPaymentDetailsForCustomizeOrder($userId, $customizeOrderId, $isIncludeTobePayingAmtStatus='N'){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                COALESCE(cogp.totalamount, 0) poGeneratedTotalAmt,
+                COALESCE(cogp.payingamount, 0) payingamount,
+                COALESCE(cogp.balanceamount, 0) balanceamount,
+                COALESCE(cogp.description, 0) description,
+                (CASE 
+                    WHEN cogp.status='G' THEN 'Generated'
+                    WHEN cogp.status='PD' THEN 'Payment Done'
+                    WHEN cogp.status='PF' THEN 'Payment Failed'
+                    WHEN cogp.status='ZC' THEN 'Deleted/Removed by you'
+                    WHEN cogp.status='ZA' THEN 'Deleted/Removed by us'
+                END) cogpLongStatusMsg, COALESCE(cogp.status, '') cogpShortStatus,
+                COALESCE(DATE_FORMAT(cogp.udated_datedtime, '%b %D %a, %Y'), '') lastUpdatedTime
+                FROM USERS u 
+                JOIN CUSTOMIZEORDERS_REQUEST por ON cor.user_id=u.id
+                JOIN CUSTOMIZEORDERS_GENERATEPAYMENT cogp ON cogp.customizeorder_id=cor.id
+                WHERE 1
+                AND u.status='A'
+                AND u.id='$userId' AND cor.user_id='$userId'
+                AND cor.id='$customizeOrderId' AND cogp.customizeorder_id='$customizeOrderId' ";
+                if($isIncludeTobePayingAmtStatus=='Y'){
+                    $sql.=" AND (cogp.status='G' || cogp.status='PF') ";
+                }    
+                $sql.=" ORDER BY cogp.udated_datedtime DESC";
+            $command = $connection->createCommand($sql);
+            $coPaymentDetailsArr = $command->queryAll();
+            if(count($coPaymentDetailsArr)>0 && $coPaymentDetailsArr!=false){
+                $result =  $coPaymentDetailsArr;
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
 }
