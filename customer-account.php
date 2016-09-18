@@ -682,14 +682,8 @@
                 <!-- requested order cart all items info will be displayed -->
                 <div ng-if="displayPartyOrderInfoSectionType==='allpartyorders'" ng-controller="PartyOrdersController" ng-init="getPartyOrdersList()" id='allPoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allPoListSectionDivClass'>
                     
-                    <!-- all party order will be filtering -->
-                    <div ng-if="partyOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextPODivClass">
-                        <label class="searchTextPOLblClass">Use for filtering and access fast party order details !</label>
-                        <input ng-model="searchTextPO" type="text" class="form-control" placeholder="Track party order details !">
-                    </div>
-                    
                     <!-- each party order will display -->
-                    <div ng-repeat="eachPartyOrderDetailsArrObj in partyOrderListArrObj|filter:searchTextPO:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
+                    <div ng-repeat="eachPartyOrderDetailsArrObj in partyOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
                         <p class="poNoPClass">
                             Order No: {{eachPartyOrderDetailsArrObj.partyOrderNo}}
                         </p>
