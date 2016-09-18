@@ -1269,36 +1269,31 @@ function checkParamDataToRedirectForRequestCorporateTieup(){
 // CJ defined this function 2016-07-20
 function getParamDataObjForPartyOrderRequest(){
     try{
-        var retParamDataObj = {};
+        var paramDataObj = {};
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('partyOrder')===true){
-                // extract party order param obj
-                var partyOrderParamObj = dkParamObj['partyOrder'];
-                if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                    retParamDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
-                    retParamDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
-                    retParamDataObj['name'] = removeHtmlStripTagsOfContent($('#po_contactPersonNameInputId').val());
-                    retParamDataObj['mobile'] = removeHtmlStripTagsOfContent($('#po_contactMobileInputId').val());
-                    retParamDataObj['email'] = removeHtmlStripTagsOfContent($('#po_contactEmailInputId').val());
-                    retParamDataObj['occassion_title'] = removeHtmlStripTagsOfContent($('#po_occasionTitleInputId').val());
-                    retParamDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#po_nosPeopleInputId').val());
-                    retParamDataObj['party_date'] = removeHtmlStripTagsOfContent($('#po_dateInputId').val());
-                    retParamDataObj['party_venue'] = removeHtmlStripTagsOfContent($('#po_venueInputId').val());
-                    retParamDataObj['party_requirements'] = removeHtmlStripTagsOfContent($('#po_messageInputId').val());
-                    retParamDataObj['file'] = '';
-                }
-            }
+            paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+            paramDataObj['udblogId'] = removeHtmlStripTagsOfContent(dkParamObj['userSession']['udblogId']);
+            paramDataObj['name'] = removeHtmlStripTagsOfContent($('#po_contactPersonNameInputId').val());
+            paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#po_contactMobileInputId').val());
+            paramDataObj['email'] = removeHtmlStripTagsOfContent($('#po_contactEmailInputId').val());
+            paramDataObj['occassion_title'] = removeHtmlStripTagsOfContent($('#po_occasionTitleInputId').val());
+            paramDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#po_nosPeopleInputId').val());
+            paramDataObj['party_date'] = removeHtmlStripTagsOfContent($('#po_dateInputId').val());
+            paramDataObj['party_venue'] = removeHtmlStripTagsOfContent($('#po_venueInputId').val());
+            paramDataObj['party_requirements'] = removeHtmlStripTagsOfContent($('#po_messageInputId').val());
+            paramDataObj['file'] = '';
         }
-        if(Object.keys(retParamDataObj).length===11){
-            return retParamDataObj;
+        if(Object.keys(paramDataObj).length===11){
+            return paramDataObj;
         }else{
             return false;
         }
     }catch(ex){
+        console.log("Problem in getParamDataObjForPartyOrderRequest=>"+ex);
         return false;
     }
 }
@@ -1306,7 +1301,7 @@ function getParamDataObjForPartyOrderRequest(){
 // CJ defined this function 2016-07-24
 function getParamDataObjForCustomizeOrderRequest(){
     try{
-        var retParamDataObj = {};
+        var paramDataObj = {};
         // checking session param
         if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
@@ -1316,22 +1311,22 @@ function getParamDataObjForCustomizeOrderRequest(){
                 // extract customize order param obj
                 var partyOrderParamObj = dkParamObj['customizeOrder'];
                 if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                    retParamDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
-                    retParamDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
-                    retParamDataObj['name'] = removeHtmlStripTagsOfContent($('#co_contactPersonNameInputId').val());
-                    retParamDataObj['mobile'] = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
-                    retParamDataObj['email'] = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
-                    retParamDataObj['event_title'] = removeHtmlStripTagsOfContent($('#co_occasionTitleInputId').val());
-                    retParamDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#co_nosPeopleInputId').val());
-                    retParamDataObj['event_date'] = removeHtmlStripTagsOfContent($('#co_dateInputId').val());
-                    retParamDataObj['event_venue'] = removeHtmlStripTagsOfContent($('#co_venueInputId').val());
-                    retParamDataObj['event_requirements'] = removeHtmlStripTagsOfContent($('#co_messageInputId').val());
-                    retParamDataObj['file'] = '';
+                    paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
+                    paramDataObj['name'] = removeHtmlStripTagsOfContent($('#co_contactPersonNameInputId').val());
+                    paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
+                    paramDataObj['email'] = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
+                    paramDataObj['event_title'] = removeHtmlStripTagsOfContent($('#co_occasionTitleInputId').val());
+                    paramDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#co_nosPeopleInputId').val());
+                    paramDataObj['event_date'] = removeHtmlStripTagsOfContent($('#co_dateInputId').val());
+                    paramDataObj['event_venue'] = removeHtmlStripTagsOfContent($('#co_venueInputId').val());
+                    paramDataObj['event_requirements'] = removeHtmlStripTagsOfContent($('#co_messageInputId').val());
+                    paramDataObj['file'] = '';
                 }
             }
         }
-        if(Object.keys(retParamDataObj).length===11){
-            return retParamDataObj;
+        if(Object.keys(paramDataObj).length===11){
+            return paramDataObj;
         }else{
             return false;
         }
