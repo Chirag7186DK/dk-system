@@ -190,9 +190,9 @@ class PartyOrdersDao{
                     AND u.id='$userId' AND por.user_id='$userId'
                     ORDER BY por.updated_datedtime DESC ";
             $command = $connection->createCommand($sql);
-            $partyOrderDetailsArr = $command->queryAll();
-            if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
-                $result =  $partyOrderDetailsArr;
+            $poDetailsArr = $command->queryAll();
+            if(count($poDetailsArr)>0 && $poDetailsArr!=false){
+                $result =  $poDetailsArr;
             }
         }catch(Exception $ex){}
         return $result;
@@ -220,9 +220,43 @@ class PartyOrdersDao{
                 AND por.id='$partyOrderId' AND porl.party_id='$partyOrderId'
                 ORDER BY porl.updated_datedtime DESC ";
             $command = $connection->createCommand($sql);
-            $partyOrderLogDetailsArr = $command->queryAll();
-            if(count($partyOrderLogDetailsArr)>0 && $partyOrderLogDetailsArr!=false){
-                $result =  $partyOrderLogDetailsArr;
+            $poLogDetailsArr = $command->queryAll();
+            if(count($poLogDetailsArr)>0 && $poLogDetailsArr!=false){
+                $result =  $poLogDetailsArr;
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
+    // CJ defined this function 2016-09-18
+    public static function getPaymentDetailsForPartyOrder($userId, $partyOrderId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                COALESCE(pogp.totalamount, 0) poGeneratedTotalAmt,
+                COALESCE(pogp.payingamount, 0) payingamount,
+                COALESCE(pogp.balanceamount, 0) balanceamount,
+                COALESCE(pogp.description, 0) description,
+                (CASE 
+                    WHEN pogp.status='G' THEN 'Generated'
+                    WHEN pogp.status='PD' THEN 'Payment Done'
+                    WHEN pogp.status='PF' THEN 'Payment Failed'
+                    WHEN pogp.status='ZC' THEN 'Deleted/Removed by you'
+                    WHEN pogp.status='ZA' THEN 'Deleted/Removed by us'
+                END) pogpLongStatusMsg, COALESCE(pogp.status, '') pogpShortStatus
+                FROM USERS u 
+                JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
+                JOIN PARTYORDERS_GENERATEPAYMENT pogp ON pogp.party_id=por.id
+                WHERE 1
+                AND u.status='A'
+                AND u.id='$userId' AND por.user_id='$userId'
+                AND por.id='$partyOrderId' AND pogp.party_id='$partyOrderId'
+                ORDER BY pogp.udated_datedtime DESC";
+            $command = $connection->createCommand($sql);
+            $poPaymentDetailsArr = $command->queryAll();
+            if(count($poPaymentDetailsArr)>0 && $poPaymentDetailsArr!=false){
+                $result =  $poPaymentDetailsArr;
             }
         }catch(Exception $ex){}
         return $result;
