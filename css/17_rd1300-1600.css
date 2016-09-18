@@ -2462,7 +2462,8 @@
 
     .po_nosPeopleInputClass,
     .po_dateInputClass,
-    .po_occasionTitleInputClass{
+    .po_occasionTitleInputClass,
+    .po_budgetAmtInputClass{
         height:40px!important;
     }
 
@@ -2709,7 +2710,8 @@
 
     .co_nosPeopleInputClass,
     .co_dateInputClass,
-    .co_occasionTitleInputClass{
+    .co_occasionTitleInputClass,
+    .co_budgetAmtInputClass{
         height:40px!important;
     }
 
