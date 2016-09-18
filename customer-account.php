@@ -680,45 +680,56 @@
                 </div>
                 
                 <!-- requested order cart all items info will be displayed -->
-                <div ng-if="displayPartyOrderInfoSectionType==='allpartyorders'" ng-controller="PartyOrdersController" ng-init="getPartyOrdersList()" id='allPoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allPoListSectionDivClass'>
+                <div ng-if="displayPartyOrderInfoSectionType==='allpartyorders'" ng-controller="PartyOrdersController" ng-init="loadPartyOrdersList()" id='allPoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allPoListSectionDivClass'>
                     
-                    <!-- each party order will display -->
-                    <div ng-repeat="eachPartyOrderDetailsArrObj in partyOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
+                    <!-- each party order info will display -->
+                    <div ng-repeat="eachPartyOrderDataObj in partyOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOListContainerDivClass">
                         <p class="poNoPClass">
-                            Order No: {{eachPartyOrderDetailsArrObj.partyOrderNo}}
+                            YOUR PARTY ORDER NO - '{{eachPartyOrderDataObj.partyOrderNo}}'
                         </p>
                         <p class="poStatusPClass">
-                            Status: {{eachPartyOrderDetailsArrObj.portLongStatusMsg}}
+                            Last Status: {{eachPartyOrderDataObj.porLongStatusMsg}}
                         </p>
                         <p class="poOccassionPClass">
-                            Occassion: {{eachPartyOrderDetailsArrObj.occassionTitle}}
+                            Occassion: {{eachPartyOrderDataObj.occassionTitle}}
                         </p>
                         <p class="poPersonPClass">
-                            Person: {{eachPartyOrderDetailsArrObj.nosOfPerson}}
+                            Include Person: {{eachPartyOrderDataObj.nosOfPerson}}
                         </p>
                         <p class="poDatePClass">
-                            Date: {{eachPartyOrderDetailsArrObj.partyDate}}
+                            Date: {{eachPartyOrderDataObj.partyDate}}
                         </p>
                         <p class="poVenuePClass">
-                            Venue: {{eachPartyOrderDetailsArrObj.partyVenue}}
+                            Venue: {{eachPartyOrderDataObj.partyVenue}}
                         </p>
                         <p class="poRequirementsPClass">
-                            Requirements: {{eachPartyOrderDetailsArrObj.partyRequirements}}
+                            Requirements: {{eachPartyOrderDataObj.partyRequirements}}
                         </p>
                         <p class="poEstimatedAmtPClass">
-                            Estimated Amt(Rs): {{eachPartyOrderDetailsArrObj.estimatedAmt}}
+                            Estimated Budget (Rs): {{eachPartyOrderDataObj.estimatedBudget}}
                         </p>
-                        <p ng-if="eachPartyOrderDetailsArrObj.porStatus=='PP'" class="poRequirementsPClass">
-                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
-                                MAKE PAYMENT (Rs: {{eachPartyOrderDetailsArrObj.confirmedAmt}})
+                        <p ng-if="eachPartyOrderDataObj.porStatus=='PP'" class="poRequirementsPClass">
+                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn poPaymentAcceptanceBtnClass'>
+                                MAKE PAYMENT (Rs: {{eachPartyOrderDataObj.confirmedAmt}})
                             </button>
                         </p>
+                        <p ng-click="togglePOLogList(eachPartyOrderDataObj);" ng-if="eachPartyOrderDataObj.poLogCount!=='0'" class="poLogLblPClass">
+                            Show further consveration details 
+                            <i class="{{eachPartyOrderDataObj.isShowLogList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
+                        </p>
+                        <hr class='eachPOListHrClass' ng-show="eachPartyOrderDataObj.isShowLogList" ng-if="eachPartyOrderDataObj.poLogCount!=='0'">
+                        <!-- party order log details display here -->
+                        <div ng-show="eachPartyOrderDataObj.isShowLogList" ng-if="eachPartyOrderDataObj.poLogCount!=='0'" ng-repeat="eachPartyOrderLogDataObj in eachPartyOrderDataObj.poLogDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOListLogContainerDivClass">
+                            {{eachPartyOrderLogDataObj.poLogMemberLabel}}: {{eachPartyOrderLogDataObj.poLogDescription}} - {{eachPartyOrderLogDataObj.lastUpdatedTime}} 
+                        </div>
+                        
                     </div>
                     
-                    <!-- no party order found message div -->
-                    <div ng-if="partyOrderListArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <p class="shoppingBagsEmptyPClass">To request party order click on 'Create' tab !</p>
+                    <!-- no party order list found message div -->
+                    <div ng-if="partyOrderListArrObj<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="shoppingBagsEmptyPClass">To request party order click on 'Request' tab !</p>
                     </div>
+                    
                 </div>
                 
 
