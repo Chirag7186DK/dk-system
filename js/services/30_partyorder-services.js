@@ -7,6 +7,7 @@
     function PartyOrdersServices($http, $q){
         try{
             var partyOrdersDetails = {
+                
                 addPartyOrderRequest:function(preparedParamJsonObj){
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
@@ -17,6 +18,7 @@
                     });
                     return promiseObject;
                 },
+                
                 getPartyOrdersList:function(preparedParamJsonObj){
                     var jsonParamBlockUIObject = {};
                     jsonParamBlockUIObject['css'] = {"padding":10};
@@ -27,8 +29,11 @@
                     });
                     return promiseObject;
                 }
+                
             };
+            
             return partyOrdersDetails;
+            
         }catch(ex){
             console.log("Problem in PartyOrdersServices=>"+ex);
             return false;
