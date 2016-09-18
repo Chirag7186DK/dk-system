@@ -739,7 +739,6 @@
                     </div>
                     
                 </div>
-                
 
             </div>
             
@@ -749,7 +748,7 @@
                 <!-- customize order all section header title -->
                 <div scroll-horizontally-customizeorder-allsectionheader-directive id='co_AllSectionHeaderContainerDivId' class='co_AllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_toggleCustomizeOrderSectionList('createcustomizeorder', 'co_EachTabLabelSectionContainerLIId1', 'co_AllSectionHeaderContainerDivClass');" title='Click to request new customize order' id='co_EachTabLabelSectionContainerLIId1' class='co_EachTabLabelSectionContainerLIClass co_SelectedTabLabelSectionContainerLIClass'>
-                        Create
+                        Request
                     </li>
                     <li ng-click="uca_toggleCustomizeOrderSectionList('allcustomizeorders', 'co_EachTabLabelSectionContainerLIId2', 'co_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='co_EachTabLabelSectionContainerLIId2' class='co_EachTabLabelSectionContainerLIClass'>
                         All Orders
@@ -822,7 +821,7 @@
                             {{customizeOrderErrorMsgStr}}
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_btnContainerDivClass">
-                            <button ng-click="addCustomizeOrdersRequest()" class='btn customizeOrderRequestSubmtBtnClass' id='customizeOrderRequestSubmtBtnId'>
+                            <button ng-click="addCustomizeOrdersRequest()" class='btn customizeOrderRequestSubmitBtnClass' id='customizeOrderRequestSubmtBtnId'>
                                 SEND REQUEST
                             </button>
                         </div>
@@ -848,50 +847,63 @@
                 
                 <!-- requested customize cart all items info will be displayed -->
                 <div ng-if="displayCustomizeOrderInfoSectionType==='allcustomizeorders'" ng-controller="CustomizeOrdersController" ng-init="getCustomizeOrdersList()" id='allCoListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 allCoListSectionDivClass'>
-                    
-                    <!-- all customizee order will be filtering -->
-                    <div ng-if="customizeOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextPODivClass">
-                        <label class="searchTextPOLblClass">Use for filtering and access fast party order details !</label>
-                        <input ng-model="searchTextCO" type="text" class="form-control" placeholder="Track party order details !">
-                    </div>
-                    
-                    <!-- each customize order will display -->
-                    <div ng-repeat="eachCustomizeOrderDetailsArrObj in customizeOrderListArrObj | filter:searchTextCO:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOContainerDivClass">
+                   
+                    <!-- each customize order info will display -->
+                    <div ng-repeat="eachCustomizeOrderDataObj in customizeOrderListArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachCOListContainerDivClass">
                         <p class="coNoPClass">
-                            Order No: {{eachCustomizeOrderDetailsArrObj.customizeOrderNo}}
+                            YOUR CUSTOMIZE ORDER NO - '{{eachCustomizeOrderDataObj.customizeOrderNo}}'
                         </p>
                         <p class="coStatusPClass">
-                            Status: {{eachCustomizeOrderDetailsArrObj.cortLongStatusMsg}}
+                            Last Status: {{eachCustomizeOrderDataObj.corLongStatusMsg}}
                         </p>
                         <p class="coOccassionPClass">
-                            Event: {{eachCustomizeOrderDetailsArrObj.eventTitle}}
+                            Occassion: {{eachCustomizeOrderDataObj.occassionTitle}}
                         </p>
                         <p class="coPersonPClass">
-                            Person: {{eachCustomizeOrderDetailsArrObj.nosOfPerson}}
+                            Include Person: {{eachCustomizeOrderDataObj.nosOfPerson}}
                         </p>
                         <p class="coDatePClass">
-                            Date: {{eachCustomizeOrderDetailsArrObj.eventDate}}
+                            Date: {{eachCustomizeOrderDataObj.eventDate}}
                         </p>
                         <p class="coVenuePClass">
-                            Venue: {{eachCustomizeOrderDetailsArrObj.eventVenue}}
+                            Venue: {{eachCustomizeOrderDataObj.eventVenue}}
                         </p>
                         <p class="coRequirementsPClass">
-                            Requirements: {{eachCustomizeOrderDetailsArrObj.eventRequirements}}
+                            Requirements: {{eachCustomizeOrderDataObj.eventRequirements}}
                         </p>
                         <p class="coEstimatedAmtPClass">
-                            Estimated Amt(Rs): {{eachCustomizeOrderDetailsArrObj.estimatedAmt}}
+                            Estimated Budget (Rs): {{eachCustomizeOrderDataObj.estimatedBudget}}
                         </p>
-                        <p ng-if="eachCustomizeOrderDetailsArrObj.corStatus=='PP'" class="coRequirementsPClass">
-                            <button class='btn ordercartRequestedEachItemUpdateBtnClass'>
-                                MAKE PAYMENT (Rs: {{eachCustomizeOrderDetailsArrObj.confirmedAmt}})
+                        <p ng-if="eachCustomizeOrderDataObj.isShowPaymentBtn==true" class="coPaymentSummaryDetailsPClass">
+                            Total Payment (Rs): {{eachCustomizeOrderDataObj.poGeneratedTotalAmt}}, 
+                            Paying Amt (Rs): {{eachCustomizeOrderDataObj.payingamount}},
+                            Balance Amt (Rs): {{eachCustomizeOrderDataObj.balanceamount}}
+                        </p>
+                        <p ng-if="eachCustomizeOrderDataObj.isShowCOPaymentBtn==true" class="coPaymentBtnPClass">
+                            <button class='btn coPaymentBtnClass'>
+                                MAKE PAYMENT (Rs: {{eachCustomizeOrderDataObj.payingamount}})
                             </button>
                         </p>
+                        <p ng-click="toggleCOLogList(eachCustomizeOrderDataObj);" ng-if="eachCustomizeOrderDataObj.coLogCount!=='0'" class="coLogLblPClass">
+                            Show further conservation details 
+                            <i class="{{eachCustomizeOrderDataObj.isCoShowLogList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
+                        </p>
+                        <hr class='eachCOListHrClass' ng-show="eachCustomizeOrderDataObj.isCoShowLogList" ng-if="eachCustomizeOrderDataObj.coLogCount!=='0'">
+                        
+                        <!-- customize order log details display here -->
+                        <div ng-show="eachCustomizeOrderDataObj.isCoShowLogList" ng-if="eachCustomizeOrderDataObj.coLogCount!=='0'" ng-repeat="eachCustomizeOrderLogDataObj in eachCustomizeOrderDataObj.coLogDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachCOListLogContainerDivClass">
+                            {{eachCustomizeOrderLogDataObj.coLogMemberLabel}}: {{eachCustomizeOrderLogDataObj.coLogDescription}} - {{eachCustomizeOrderLogDataObj.lastUpdatedTime}} 
+                        </div>
+                        
                     </div>
                     
-                    <!-- no party order found message div -->
-                    <div ng-if="customizeOrderListArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <p class="shoppingBagsEmptyPClass">To request customize order click on 'Create' tab !</p>
+                    <!-- no party order list found message div -->
+                    <div ng-if="partyOrderListArrObj<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 poListNotFoundMsgDivClass">
+                        <p class="shoppingBagsEmptyPClass">
+                            <i class='fa fa-gift'></i> To request party order click on 'Request' tab !!!
+                        </p>
                     </div>
+                   
                 </div>
                 
 
