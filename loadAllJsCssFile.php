@@ -46,13 +46,16 @@
     if(count($css_filelist)>0 && $css_filelist!=false && $css_filelist!=null){
         $retStatusSortedFiles = usort($css_filelist , 'sortFilesNumberically');
         // iterate each css files to load in dom
+        $cssFilePathArr = array();
         for($count = 0; $count<count($css_filelist); $count++){
             $filename = $css_filelist[$count];
             if(($filename!=".") && ($filename!="..") && ($filename!="")){
                 $curTimeStamp = md5(mt_rand());
+                array_push($cssFilePathArr, $filename);
                 echo "<link rel='stylesheet' type='text/css' href='$filename?reload=$curTimeStamp'>";
             }
         }
+        //echo "<link rel='stylesheet' type='text/css' href='".explode(",", $cssFilePathArr)."'>";
     }
     
     // collect all js files
