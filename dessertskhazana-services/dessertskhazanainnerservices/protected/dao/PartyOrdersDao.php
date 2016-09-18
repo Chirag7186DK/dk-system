@@ -186,9 +186,9 @@ class PartyOrdersDao{
                     FROM USERS u 
                     JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
                     WHERE 1
-                    AND u.id='$userId'
-                    AND por.user_id='$userId'
-                    AND u.status='A'";
+                    AND u.status='A' 
+                    AND u.id='$userId' AND por.user_id='$userId'
+                    ORDER BY por.updated_datedtime DESC ";
             $command = $connection->createCommand($sql);
             $partyOrderDetailsArr = $command->queryAll();
             if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
@@ -212,7 +212,8 @@ class PartyOrdersDao{
                 WHERE 1
                 AND u.status='A' AND porl.status='A'
                 AND u.id='$userId' AND por.user_id='$userId'
-                AND por.id='$partyOrderId' AND porl.party_id='$partyOrderId'";
+                AND por.id='$partyOrderId' AND porl.party_id='$partyOrderId'
+                ORDER BY porl.updated_datedtime DESC ";
             $command = $connection->createCommand($sql);
             $partyOrderLogDetailsArr = $command->queryAll();
             if(count($partyOrderLogDetailsArr)>0 && $partyOrderLogDetailsArr!=false){
