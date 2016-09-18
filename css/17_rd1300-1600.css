@@ -2589,6 +2589,13 @@
         font-size:13px!important;
     }
     
+    .poListNotFoundMsgDivClass{
+        font-size:17px!important;
+        color: #67717D!important;
+        text-align:center!important;
+    }
+    
+    
     /* user customize order css code */
     
     .co_userBreadcrumbDivClass{
