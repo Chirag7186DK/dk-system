@@ -426,7 +426,7 @@
                             </p>
                             <div ng-repeat="eachStoreDataObj in eachOrdercartDataObj['allStoresData']" class="uca_eachOrdercartWiseOrderedStoreBasicInfoDivClass">
                                 <p ng-click="uca_toggleOrdercartOrderedItemsList(eachStoreDataObj);" class="uca_ordercartToggleOrderedItemsLblPClass">
-                                    <i class='fa fa-arrow-right'></i> {{eachStoreDataObj.shopStoreTitle}} - '{{eachStoreDataObj.deliveryFromToAreaName}}'
+                                    {{eachStoreDataObj.shopStoreTitle}} - '{{eachStoreDataObj.deliveryFromToAreaName}}'
                                     <i class="{{eachStoreDataObj.isShowItemList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
                                 </p>
                                 <!-- each items will be display -->
