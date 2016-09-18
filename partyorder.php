@@ -20,12 +20,7 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('home'); checkInBackgroundDataAvailableForUpdationFromSession('partyorder');">
-        
-        <!-- common SCROLL TOP BUTTON -->
-        <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
-            <i class="fa fa-angle-up"></i>
-        </a>
+    <body ng-cloak class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('partyorder');">
         
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
@@ -42,6 +37,9 @@
                 <ul class="topMenuBarULClass list-inline">
                     <li title="Click here to contact us">
                         <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
+                    </li>
+                    <li notifyuser-selected-deliveryarea-textheader-directive class="selectedDeliveryAreaTextHeaderLIClass" title="Click here to change delivery location">
+                        <i class="fa fa-map-marker"></i> At: {{selectedDeliveryAreaTextHeader}}
                     </li>
                     <li ng-controller="UsersController" title="Click here to view your current order cart all item(s)" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                         <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
@@ -64,13 +62,6 @@
                 </ul>
             </div>
             
-            <!-- show customer delivery city area desserts product type on header as text -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderDivClass">
-                <p ng-show='isShowCustomerDeliveryCityAreaDessertsProductTypeTextForHeader' class="showCustomerDeliveryCityAreaDessertsProductTypeTextForHeaderPClass">
-                    <i class="fa fa-map-marker faa faa-tada animated showCustomerDeliveryCityAreaDessertsProductTypeTextIconClass"></i> {{customerDeliveryCityAreaDessertsProductTypeTextForHeader}}
-                </p>
-            </div>
-            
         </div>
         
         <!-- header row border div class -->
@@ -79,16 +70,19 @@
         <!-- party order  -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_bodyDivClass">
             
-            <!-- customer party order bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_userBreadcrumbDivClass">
-                <ul class="po_userBreadcrumbULClass list-inline">
-                    <li class='po_userBreadcrumbHomeTitleLIClass'>
+            <!-- customer bread crumb -->
+            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+                <ul class="customerBreadcrumbULClass list-inline">
+                    <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeKey}}
+                            {{customerBreadCrumbOnWebApp.homeTitle}}
                         </a>
                     </li>
-                    <li class='po_userBreadcrumbPartyTitleLIClass'>
-                        |&nbsp; <a href="#">{{customerBreadCrumbOnWebApp.partyOrderTitle}}</a>
+                    <li class='customerBreadcrumbLIClass'>
+                        |
+                    </li>
+                    <li class='customerBreadcrumbLIClass'>
+                        Party Order
                     </li>
                 </ul>
             </div>
