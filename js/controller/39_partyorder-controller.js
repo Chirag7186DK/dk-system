@@ -2,7 +2,8 @@
 angular.module('DKAPP').controller('PartyOrdersController', PartyOrdersController);
 
 // PartyOrdersController
-function PartyOrdersController($scope, $rootScope, $http, PartyOrdersServices){
+function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
+    
     try{
         
         $rootScope.isShowPartyOrderRequestErrorMsg = false;
@@ -53,20 +54,12 @@ function PartyOrdersController($scope, $rootScope, $http, PartyOrdersServices){
                     var preparedParamJsonObj = getParamDataObjForPartyOrderRequest();
                     // console.log("addPartyOrdersRequest preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-                        
                         var fetchAreaParamJsonObj = {};
                         fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
                         // calling PartyOrdersServices to add party order request
                         PartyOrdersServices.addPartyOrderRequest(fetchAreaParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
-                                showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    // console.log("addPartyOrdersRequest retResponseJson=>"+JSON.stringify(retResponseJson));
                                     var poRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'poRequestedStatusDetails', retResponseJson);
                                     if(poRequestedStatusDetails!==false && poRequestedStatusDetails!==undefined 
                                         && jQuery.isEmptyObject(poRequestedStatusDetails)===false){
@@ -92,7 +85,6 @@ function PartyOrdersController($scope, $rootScope, $http, PartyOrdersServices){
                 }
             }catch(ex){
                 console.log("problem in addPartyOrderRequest ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
@@ -113,24 +105,14 @@ function PartyOrdersController($scope, $rootScope, $http, PartyOrdersServices){
         $rootScope.getPartyOrdersList = function(){
             try{
                 var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
-                // console.log("addPartyOrdersRequest preparedParamJsonObj=>"+JSON.stringify(preparedParamJsonObj));
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                        
                     var fetchAreaParamJsonObj = {};
                     fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    
                     $rootScope.partyOrderListArrObj = false;
-                    
                     // calling PartyOrdersServices to add party order request
                     PartyOrdersServices.getPartyOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                // console.log("addPartyOrdersRequest retResponseJson=>"+JSON.stringify(retResponseJson));
                                 var partyOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'partyOrderList', retResponseJson);
                                 if(partyOrderListArrObj!==false && partyOrderListArrObj!==undefined 
                                     && jQuery.isEmptyObject(partyOrderListArrObj)===false){
@@ -144,7 +126,6 @@ function PartyOrdersController($scope, $rootScope, $http, PartyOrdersServices){
                 }
             }catch(ex){
                 console.log("problem in getPartyOrdersList ex=>"+ex);
-                showHideLoaderBox('hide');
             }
         };
         
