@@ -106,7 +106,7 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                     var fetchAreaParamJsonObj = {};
                     fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.customizeOrderListArrObj = false;
-                    // calling CustomizeOrdersServices to add party order request
+                    // calling CustomizeOrdersServices to add customize order request
                     CustomizeOrdersServices.getCustomizeOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -122,9 +122,30 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                     });
                 }
             }catch(ex){
-                console.log("problem in getCustomizeOrdersList ex=>"+ex);
+                console.log("problem in loadCustomizeOrdersList ex=>"+ex);
             }
         };
+        
+        // toggleCOLogList
+        $rootScope.toggleCOLogList = function(coDataObj){
+            coDataObj.isShowCoPaymentLogList = false;
+            if(coDataObj.isCoShowLogList===true){
+                coDataObj.isCoShowLogList = false;
+            }else{
+                coDataObj.isCoShowLogList = true;
+            }
+        };
+        
+        // toggleCOPaymentLogList
+        $rootScope.toggleCOPaymentLogList = function(coDataObj){
+            coDataObj.isCoShowLogList = false;
+            if(coDataObj.isShowCoPaymentLogList===true){
+                coDataObj.isShowCoPaymentLogList = false;
+            }else{
+                coDataObj.isShowCoPaymentLogList = true;
+            }
+        };
+        
         
     }catch(ex){
         console.log("problem in CustomizeOrdersController ex=>"+ex);
