@@ -15,14 +15,14 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
         $rspDetails['poRequestedStatusDetails']["partyOrderNo"] = '';
         // check requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            // add party order request status
-            $dkParamDataArr['status'] = 'R';
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
                 $dkParamDataArr['partyorder_no'] = commonfunction :: generatePartyOrderNo();
-                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
-                $dkParamDataArr['created_by'] = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['user_id'] = $unmd5UserId;
+                $dkParamDataArr['created_by'] = $unmd5UserId;
+                $dkParamDataArr['status'] = 'R';
                 $lastPORID = PartyOrdersDao::addPartyOrderRequest($dkParamDataArr);
                 if($lastPORID>0 && $lastPORID!=false){
                     $rspDetails['poRequestedStatusDetails']["isPartyOrderRequestSend"] = 'YES';
