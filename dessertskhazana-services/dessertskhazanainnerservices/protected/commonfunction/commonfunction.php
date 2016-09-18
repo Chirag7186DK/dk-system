@@ -1047,15 +1047,43 @@ class commonfunction{
             if(count($dataArr1)>0 && $dataArr1!=false){
                 // iterate each party order data details
                 for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
-                    $partyOrderId = $dataArr1[$eachIndex]['partyOrderId'];
+                    $poId = $dataArr1[$eachIndex]['partyOrderId'];
+                    $poStatus = $dataArr1[$eachIndex]['porShortStatus'];
+                    
+                    // fetch each partyOrderId further consveration/log details
                     $dataArr1[$eachIndex]['poLogCount'] = '0';
-                    $dataArr1[$eachIndex]['isShowLogList'] = false;
-                    // fetch each partyOrderId further log details
-                    $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $partyOrderId);
+                    $dataArr1[$eachIndex]['poLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isPoShowLogList'] = false;
+                    $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $poId);
                     if(count($dataArr2)>0 && $dataArr2!=false){
                         $dataArr1[$eachIndex]['poLogCount'] = count($dataArr2);
                         $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
                     }
+                    
+                    // deciding payment btn to show or not
+                    $dataArr1[$eachIndex]['isShowPaymentBtn'] = ($poStatus=='PP'?true:false);
+                    
+                    // fetch each partyOrderId payment log details 
+                    $dataArr1[$eachIndex]['poPaymentInstallment'] = '0';
+                    $dataArr1[$eachIndex]['poPaymentLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isShowPaymentLogList'] = false;
+                    $dataArr3 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId);
+                    if(count($dataArr3)>0 && $dataArr3!=false){
+                        $dataArr1[$eachIndex]['poPaymentInstallment'] = count($dataArr3);
+                        $dataArr1[$eachIndex]['poPaymentLogDetails'] = $dataArr3;
+                    }
+
+                    // deciding how much need to pay or balance also
+                    $dataArr1[$eachIndex]['poGeneratedTotalAmt'] = '0';
+                    $dataArr1[$eachIndex]['payingamount'] = '0';
+                    $dataArr1[$eachIndex]['balanceamount'] = '0';
+                    $dataArr4 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId, 'Y');
+                    if(count($dataArr4)==1 && $dataArr4!=false){
+                        $dataArr1[$eachIndex]['poGeneratedTotalAmt'] = $dataArr4[0]['poGeneratedTotalAmt'];
+                        $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
+                        $dataArr1[$eachIndex]['balanceamount'] = $dataArr4[0]['balanceamount'];
+                    }
+                    
                 }
                 $partyOrderDataArr = $dataArr1;
             }
