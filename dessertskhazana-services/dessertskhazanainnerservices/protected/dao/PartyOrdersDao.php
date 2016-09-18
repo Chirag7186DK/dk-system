@@ -25,84 +25,84 @@ class PartyOrdersDao{
     }
    
     // CJ defined this function 2016-07-20
-    public static function addPartyOrderRequest($poRequestParamDetails){
+    public static function addPartyOrderRequest($paramDetails){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('partyorder_no', $poRequestParamDetails)){
-            if($poRequestParamDetails['partyorder_no']!=''){
+        if(array_key_exists('partyorder_no', $paramDetails)){
+            if($paramDetails['partyorder_no']!=''){
                 $sqlColumnNames.=" partyorder_no,";
-                $sqlValues.="'".$poRequestParamDetails['partyorder_no']."',";
+                $sqlValues.="'".$paramDetails['partyorder_no']."',";
             }
         }
-        if(array_key_exists('user_sessionid', $poRequestParamDetails)){
-            if($poRequestParamDetails['user_sessionid']!='' 
-                && strlen($poRequestParamDetails['user_sessionid'])>=20){
+        if(array_key_exists('user_sessionid', $paramDetails)){
+            if($paramDetails['user_sessionid']!='' 
+                && strlen($paramDetails['user_sessionid'])>=20){
                 $sqlColumnNames.=" user_sessionid,";
-                $sqlValues.="'".$poRequestParamDetails['user_sessionid']."',";
+                $sqlValues.="'".$paramDetails['user_sessionid']."',";
             }
         }
-        if(array_key_exists('user_id', $poRequestParamDetails)){
-            if($poRequestParamDetails['user_id']!='' 
-                && ($poRequestParamDetails['user_id'])>0){
+        if(array_key_exists('user_id', $paramDetails)){
+            if($paramDetails['user_id']!='' 
+                && ($paramDetails['user_id'])>0){
                 $sqlColumnNames.=" user_id,";
-                $sqlValues.="'".$poRequestParamDetails['user_id']."',";
+                $sqlValues.="'".$paramDetails['user_id']."',";
             }
         }
-        if(array_key_exists('occassion_title', $poRequestParamDetails)){
-            if($poRequestParamDetails['occassion_title']!=''){
+        if(array_key_exists('occassion_title', $paramDetails)){
+            if($paramDetails['occassion_title']!=''){
                 $sqlColumnNames.=" occassion_title,";
-                $sqlValues.="'".$poRequestParamDetails['occassion_title']."',";
+                $sqlValues.="'".$paramDetails['occassion_title']."',";
             }
         }
-        if(array_key_exists('nos_person', $poRequestParamDetails)){
-            if($poRequestParamDetails['nos_person']!='' 
-                && ($poRequestParamDetails['nos_person'])>0){
+        if(array_key_exists('nos_person', $paramDetails)){
+            if($paramDetails['nos_person']!='' 
+                && ($paramDetails['nos_person'])>0){
                 $sqlColumnNames.=" nos_person,";
-                $sqlValues.="'".$poRequestParamDetails['nos_person']."',";
+                $sqlValues.="'".$paramDetails['nos_person']."',";
             }
         }
-        if(array_key_exists('party_date', $poRequestParamDetails)){
-            if($poRequestParamDetails['party_date']!=''){
+        if(array_key_exists('party_date', $paramDetails)){
+            if($paramDetails['party_date']!=''){
                 $sqlColumnNames.=" party_date,";
-                $sqlValues.="'".$poRequestParamDetails['party_date']."',";
+                $sqlValues.="'".$paramDetails['party_date']."',";
             }
         }
-        if(array_key_exists('party_venue', $poRequestParamDetails)){
-            if($poRequestParamDetails['party_venue']!=''){
+        if(array_key_exists('party_venue', $paramDetails)){
+            if($paramDetails['party_venue']!=''){
                 $sqlColumnNames.=" party_venue,";
-                $sqlValues.="'".$poRequestParamDetails['party_venue']."',";
+                $sqlValues.="'".$paramDetails['party_venue']."',";
             }
         }
-        if(array_key_exists('party_requirements', $poRequestParamDetails)){
-            if($poRequestParamDetails['party_requirements']!=''){
+        if(array_key_exists('party_requirements', $paramDetails)){
+            if($paramDetails['party_requirements']!=''){
                 $sqlColumnNames.=" party_requirements,";
-                $sqlValues.="'".$poRequestParamDetails['party_requirements']."',";
+                $sqlValues.="'".$paramDetails['party_requirements']."',";
             }
         }
-        if(array_key_exists('file', $poRequestParamDetails)){
-            if($poRequestParamDetails['file']!=''){
+        if(array_key_exists('file', $paramDetails)){
+            if($paramDetails['file']!=''){
                 $sqlColumnNames.=" file,";
-                $sqlValues.="'".$poRequestParamDetails['file']."',";
+                $sqlValues.="'".$paramDetails['file']."',";
             }
         }
-        if(array_key_exists('created_by', $poRequestParamDetails)){
-            if($poRequestParamDetails['created_by']!='' && ($poRequestParamDetails['created_by'])>0){
+        if(array_key_exists('created_by', $paramDetails)){
+            if($paramDetails['created_by']!='' && ($paramDetails['created_by'])>0){
                 $sqlColumnNames.=" created_by,";
-                $sqlValues.="'".$poRequestParamDetails['created_by']."',";
+                $sqlValues.="'".$paramDetails['created_by']."',";
             }
         }
-        if(array_key_exists('status', $poRequestParamDetails)){
-            if($poRequestParamDetails['status']!=''){
+        if(array_key_exists('status', $paramDetails)){
+            if($paramDetails['status']!=''){
                 $sqlColumnNames.=" status,";
-                $sqlValues.="'".$poRequestParamDetails['status']."',";
+                $sqlValues.="'".$paramDetails['status']."',";
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $poRequestParamDetails['created_datedtime'] = date('Y-m-d H:i:s');
+            $paramDetails['created_datedtime'] = date('Y-m-d H:i:s');
             $sqlColumnNames.=" created_datedtime,";
-            $sqlValues.="'".$poRequestParamDetails['created_datedtime']."',";
+            $sqlValues.="'".$paramDetails['created_datedtime']."',";
             $sqlQuery = " INSERT INTO PARTYORDERS_REQUEST " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
@@ -115,40 +115,41 @@ class PartyOrdersDao{
     
     
     // CJ defined this function 2016-07-20
-    public static function addPartyOrderRequestLog($poRequestParamDetails){
+    public static function addPartyOrderRequestLog($paramDetails){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('party_id', $poRequestParamDetails)){
-            if($poRequestParamDetails['party_id']!=''){
+        if(array_key_exists('party_id', $paramDetails)){
+            if($paramDetails['party_id']!='' && ($paramDetails['party_id'])>0){
                 $sqlColumnNames.=" party_id,";
-                $sqlValues.="'".$poRequestParamDetails['party_id']."',";
+                $sqlValues.="'".$paramDetails['party_id']."',";
             }
         }
-        if(array_key_exists('description', $poRequestParamDetails)){
-            if($poRequestParamDetails['description']!=''){
+        if(array_key_exists('description', $paramDetails)){
+            if($paramDetails['description']!='' 
+                && strlen($paramDetails['description'])>0){
                 $sqlColumnNames.=" description,";
-                $sqlValues.="'".$poRequestParamDetails['description']."',";
+                $sqlValues.="'".$paramDetails['description']."',";
             }
         }
-        if(array_key_exists('status', $poRequestParamDetails)){
-            if($poRequestParamDetails['status']!=''){
-                $sqlColumnNames.=" status,";
-                $sqlValues.="'".$poRequestParamDetails['status']."',";
-            }
-        }
-        if(array_key_exists('created_by', $poRequestParamDetails)){
-            if($poRequestParamDetails['created_by']!=''){
+        if(array_key_exists('created_by', $paramDetails)){
+            if($paramDetails['created_by']!=''){
                 $sqlColumnNames.=" created_by,";
-                $sqlValues.="'".$poRequestParamDetails['created_by']."',";
-                $poRequestParamDetails['created_datedtime'] = date('Y-m-d H:i:s');
+                $sqlValues.="'".$paramDetails['created_by']."',";
+                $paramDetails['created_datedtime'] = date('Y-m-d H:i:s');
                 $sqlColumnNames.=" created_datedtime,";
-                $sqlValues.="'".$poRequestParamDetails['created_datedtime']."',";
+                $sqlValues.="'".$paramDetails['created_datedtime']."',";
+            }
+        }
+        if(array_key_exists('status', $paramDetails)){
+            if($paramDetails['status']=='A' || $paramDetails['status']=='Z'){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$paramDetails['status']."',";
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $sqlQuery = " INSERT INTO DK_PARTYORDERS_REQUEST_LOG " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO PARTYORDERS_REQUEST_LOG " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
