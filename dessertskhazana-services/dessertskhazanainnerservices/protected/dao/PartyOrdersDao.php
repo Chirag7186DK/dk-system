@@ -229,7 +229,7 @@ class PartyOrdersDao{
     }
     
     // CJ defined this function 2016-09-18
-    public static function getPaymentDetailsForPartyOrder($userId, $partyOrderId){
+    public static function getPaymentDetailsForPartyOrder($userId, $partyOrderId, $isIncludeTobePayingAmtStatus='N'){
         $result = false;
         try{
             $connection = Yii::App()->db;
@@ -244,15 +244,19 @@ class PartyOrdersDao{
                     WHEN pogp.status='PF' THEN 'Payment Failed'
                     WHEN pogp.status='ZC' THEN 'Deleted/Removed by you'
                     WHEN pogp.status='ZA' THEN 'Deleted/Removed by us'
-                END) pogpLongStatusMsg, COALESCE(pogp.status, '') pogpShortStatus
+                END) pogpLongStatusMsg, COALESCE(pogp.status, '') pogpShortStatus,
+                COALESCE(DATE_FORMAT(pogp.udated_datedtime, '%b %D %a, %Y'), '') lastUpdatedTime
                 FROM USERS u 
                 JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
                 JOIN PARTYORDERS_GENERATEPAYMENT pogp ON pogp.party_id=por.id
                 WHERE 1
                 AND u.status='A'
                 AND u.id='$userId' AND por.user_id='$userId'
-                AND por.id='$partyOrderId' AND pogp.party_id='$partyOrderId'
-                ORDER BY pogp.udated_datedtime DESC";
+                AND por.id='$partyOrderId' AND pogp.party_id='$partyOrderId' ";
+                if($isIncludeTobePayingAmtStatus=='Y'){
+                    $sql.=" AND (pogp.status='G' || pogp.status='PF') ";
+                }    
+                $sql.=" ORDER BY pogp.udated_datedtime DESC";
             $command = $connection->createCommand($sql);
             $poPaymentDetailsArr = $command->queryAll();
             if(count($poPaymentDetailsArr)>0 && $poPaymentDetailsArr!=false){
