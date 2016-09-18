@@ -1145,7 +1145,7 @@ class commonfunction{
                     $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = '0';
                     $dataArr1[$eachIndex]['payingamount'] = '0';
                     $dataArr1[$eachIndex]['balanceamount'] = '0';
-                    $dataArr4 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $coId, 'Y');
+                    $dataArr4 = CustomizeOrdersDao :: getPaymentDetailsForCustomizeOrder($userId, $coId, 'Y');
                     if(count($dataArr4)==1 && $dataArr4!=false){
                         $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = $dataArr4[0]['coGeneratedTotalAmt'];
                         $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
