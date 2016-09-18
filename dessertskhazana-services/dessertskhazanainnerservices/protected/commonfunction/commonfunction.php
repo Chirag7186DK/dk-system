@@ -1040,7 +1040,7 @@ class commonfunction{
     
     // CJ defined this function 2016-08-22
     public static function getPartyOrderList($userId){
-        $partyOrderDataArr = array();
+        $partyOrderDataArr = false;
         if($userId!='' && $userId>0){
             // fetching party order list data
             $dataArr1 = PartyOrdersDao::getPartyOrderList($userId);
@@ -1049,12 +1049,15 @@ class commonfunction{
                 for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
                     $partyOrderId = $dataArr1[$eachIndex]['partyOrderId'];
                     $dataArr1[$eachIndex]['poLogDetails'] = false;
+                    $dataArr1[$eachIndex]['poLogCount'] = 0;
                     // fetch each partyOrderId further log details
                     $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $partyOrderId);
                     if(count($dataArr2)>0 && $dataArr2!=false){
                         $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
+                        $dataArr1[$eachIndex]['poLogCount'] = count($dataArr2);
                     }
                 }
+                $partyOrderDataArr = $dataArr1;
             }
         }
         return $partyOrderDataArr;
