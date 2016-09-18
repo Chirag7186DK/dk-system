@@ -45,9 +45,9 @@ class PartyOrdersServicesV1 implements IPartyOrdersServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $user_id = $userSessionDetailsData['unmd5UserId'];
-                $partyOrderDetailsArr = commonfunction :: getPartyOrderList($user_id);
-                if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
-                    $rspDetails['partyOrderList'] = $partyOrderDetailsArr;
+                $dataArr1 = commonfunction :: getPartyOrderList($user_id);
+                if(count($dataArr1)>0 && $dataArr1!=false){
+                    $rspDetails['partyOrderList'] = $dataArr1;
                 }
             }
         } 
