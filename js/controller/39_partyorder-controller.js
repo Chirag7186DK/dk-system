@@ -130,7 +130,7 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
         
         // togglePOLogList
         $rootScope.togglePOLogList = function(poDataObj){
-            poDataObj.isShowPaymentLogList = false;
+            poDataObj.isShowPoPaymentLogList = false;
             if(poDataObj.isPoShowLogList===true){
                 poDataObj.isPoShowLogList = false;
             }else{
@@ -141,10 +141,10 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
         // togglePOPaymentLogList
         $rootScope.togglePOPaymentLogList = function(poDataObj){
             poDataObj.isPoShowLogList = false;
-            if(poDataObj.isShowPaymentLogList===true){
-                poDataObj.isShowPaymentLogList = false;
+            if(poDataObj.isShowPoPaymentLogList===true){
+                poDataObj.isShowPoPaymentLogList = false;
             }else{
-                poDataObj.isShowPaymentLogList = true;
+                poDataObj.isShowPoPaymentLogList = true;
             }
         };
         
