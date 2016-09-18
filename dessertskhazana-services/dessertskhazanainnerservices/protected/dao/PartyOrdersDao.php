@@ -205,7 +205,12 @@ class PartyOrdersDao{
         try{
             $connection = Yii::App()->db;
             $sql= "SELECT 
-                COALESCE(porl.description, '') poLogDescription
+                COALESCE(porl.description, '') poLogDescription,
+                COALESCE(DATE_FORMAT(porl.updated_datedtime, '%b %D %a, %Y'), '') lastUpdatedTime,
+                (CASE 
+                    WHEN porl.profile_typeid='1' THEN 'You' 
+                    ELSE 'Admin'
+                END) poLogMemberLabel
                 FROM USERS u 
                 JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
                 JOIN PARTYORDERS_REQUEST_LOG porl ON porl.party_id=por.id
