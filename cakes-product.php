@@ -126,7 +126,7 @@
                 <!-- display all desserts type can served by store in your selected delivery area -->
                 <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
-                    <div horizontally-scrollable-dessertstypelist-storelevel ng-repeat="eachDessertsTypeDetails in storeDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" class='storeCanServeEachDessertsTypeScrollableWrapperDivClass'>
+                    <div horizontally-scrollable-dessertstypelist-storelevel ng-repeat="eachDessertsTypeDetails in storeDeliveryAreaBasedDessertsTypeList | orderBy: '-isRequestedProductTypeIdMatched'" class='storeCanServeEachDessertsTypeScrollableWrapperDivClass'>
                         <p class="dessertsTypeIconPClass">
                             <i class="{{eachDessertsTypeDetails.dessertsIcon}} dessertsTypeIconClass"></i>
                         </p>
@@ -186,7 +186,7 @@
                     </span>
                 </p>
                 <hr>
-                <p class='vpd_productSelectMeasurementLabelPClass'> 
+                <p ng-if="productDetails.length>0" class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId">
                         <option ng-repeat="eachMeasurementDetails in productDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachMeasurementDetails.shopStoreId}}' data-ccaid='{{eachMeasurementDetails.ccaId}}' data-deliveryfee='{{eachMeasurementDetails.storeOrderDeliveryFee}}' data-minorderamt='{{eachMeasurementDetails.storeMinOrderAmt}}' data-productfeatureid='{{eachMeasurementDetails.productFeatureId}}' data-productprice='{{eachMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
