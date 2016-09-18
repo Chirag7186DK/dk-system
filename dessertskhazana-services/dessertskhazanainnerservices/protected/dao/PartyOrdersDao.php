@@ -87,6 +87,13 @@ class PartyOrdersDao{
                 $sqlValues.="'".$paramDetails['file']."',";
             }
         }
+        if(array_key_exists('estimated_budget', $paramDetails)){
+            if($paramDetails['estimated_budget']!='' 
+                && ($paramDetails['estimated_budget'])>0){
+                $sqlColumnNames.=" estimated_budget,";
+                $sqlValues.="'".$paramDetails['estimated_budget']."',";
+            }
+        }
         if(array_key_exists('created_by', $paramDetails)){
             if($paramDetails['created_by']!='' && ($paramDetails['created_by'])>0){
                 $sqlColumnNames.=" created_by,";
