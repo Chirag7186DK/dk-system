@@ -1286,8 +1286,9 @@ function getParamDataObjForPartyOrderRequest(){
             paramDataObj['party_venue'] = removeHtmlStripTagsOfContent($('#po_venueInputId').val());
             paramDataObj['party_requirements'] = removeHtmlStripTagsOfContent($('#po_messageInputId').val());
             paramDataObj['file'] = '';
+            paramDataObj['estimated_budget'] = removeHtmlStripTagsOfContent($('#po_budgetAmtInputId').val());
         }
-        if(Object.keys(paramDataObj).length===11){
+        if(Object.keys(paramDataObj).length===12){
             return paramDataObj;
         }else{
             return false;
@@ -1307,25 +1308,20 @@ function getParamDataObjForCustomizeOrderRequest(){
             && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('customizeOrder')===true){
-                // extract customize order param obj
-                var partyOrderParamObj = dkParamObj['customizeOrder'];
-                if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                    paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
-                    paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
-                    paramDataObj['name'] = removeHtmlStripTagsOfContent($('#co_contactPersonNameInputId').val());
-                    paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
-                    paramDataObj['email'] = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
-                    paramDataObj['event_title'] = removeHtmlStripTagsOfContent($('#co_occasionTitleInputId').val());
-                    paramDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#co_nosPeopleInputId').val());
-                    paramDataObj['event_date'] = removeHtmlStripTagsOfContent($('#co_dateInputId').val());
-                    paramDataObj['event_venue'] = removeHtmlStripTagsOfContent($('#co_venueInputId').val());
-                    paramDataObj['event_requirements'] = removeHtmlStripTagsOfContent($('#co_messageInputId').val());
-                    paramDataObj['file'] = '';
-                }
-            }
+            paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+            paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
+            paramDataObj['name'] = removeHtmlStripTagsOfContent($('#co_contactPersonNameInputId').val());
+            paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
+            paramDataObj['email'] = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
+            paramDataObj['event_title'] = removeHtmlStripTagsOfContent($('#co_occasionTitleInputId').val());
+            paramDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#co_nosPeopleInputId').val());
+            paramDataObj['event_date'] = removeHtmlStripTagsOfContent($('#co_dateInputId').val());
+            paramDataObj['event_venue'] = removeHtmlStripTagsOfContent($('#co_venueInputId').val());
+            paramDataObj['event_requirements'] = removeHtmlStripTagsOfContent($('#co_messageInputId').val());
+            paramDataObj['file'] = '';
+            paramDataObj['estimated_budget'] = removeHtmlStripTagsOfContent($('#co_budgetAmtInputId').val());
         }
-        if(Object.keys(paramDataObj).length===11){
+        if(Object.keys(paramDataObj).length===12){
             return paramDataObj;
         }else{
             return false;
