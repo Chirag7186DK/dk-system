@@ -1061,12 +1061,12 @@ class commonfunction{
                     }
                     
                     // deciding payment btn to show or not
-                    $dataArr1[$eachIndex]['isShowPaymentBtn'] = ($poStatus=='PP'?true:false);
+                    $dataArr1[$eachIndex]['isShowPoPaymentBtn'] = ($poStatus=='PP'?true:false);
                     
                     // fetch each partyOrderId payment log details 
                     $dataArr1[$eachIndex]['poPaymentInstallment'] = '0';
                     $dataArr1[$eachIndex]['poPaymentLogDetails'] = false;
-                    $dataArr1[$eachIndex]['isShowPaymentLogList'] = false;
+                    $dataArr1[$eachIndex]['isShowPoPaymentLogList'] = false;
                     $dataArr3 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId);
                     if(count($dataArr3)>0 && $dataArr3!=false){
                         $dataArr1[$eachIndex]['poPaymentInstallment'] = count($dataArr3);
