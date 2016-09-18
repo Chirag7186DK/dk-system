@@ -59,23 +59,6 @@ function productMsgboxDirective($timeout){
     };
 }
 
-angular.module('DKAPP').directive('orderProductqtyinputDirective', orderProductqtyinputDirective);
-
-function orderProductqtyinputDirective($timeout){
-    return {
-        link: function ($scope, $el, $attrs){
-            $el.numeric(
-                {
-                    "allowMinus":false, 
-                    "allowThouSep":false, 
-                    "allowLeadingSpaces":false, 
-                    "startWith":"1",
-                    "allowDecSep":false
-                }
-            );
-        }
-    };
-}
 
 angular.module('DKAPP').directive('loadDklogoImagesDirective', loadDklogoImagesDirective);
 
@@ -204,77 +187,6 @@ function scrollHorizontallyDessertsproducttypelistViewproductlevel(){
     };
 }
 
-angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypelistAllproductlevel', scrollHorizontallyDessertsproducttypelistAllproductlevel);
-
-function scrollHorizontallyDessertsproducttypelistAllproductlevel(){
-    return function(scope, element, attrs){
-        if(scope.$last){
-            setTimeout(function(){
-                if($('#vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId').length>0){
-                    var existingOwlOptions = {
-                        navigation:false,
-                        paginationSpeed:1000,
-                        goToFirstSpeed:2000,
-                        transitionStyle:"fade"
-                    };
-                    var owlObj = $("#vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId").data('owlCarousel');
-                    if(owlObj!==false && owlObj!==undefined && owlObj!==''){
-                        owlObj.reinit(existingOwlOptions);
-                    }else{
-                        $("#vap_deliveryAreabasedDkServedAllDessertsScrollerWrapperDivId").owlCarousel(existingOwlOptions);
-                    }
-                }
-            }, 1);
-        }
-    };
-}
-
-angular.module('DKAPP').directive('scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel', scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel);
-
-function scrollHorizontallyDessertsproducttypeProductcategorylistAllproductlevel(){
-    return function(scope, element, attrs){
-        if(scope.$first){
-            $(element).addClass('vap_eachRequestedProductCategoryLabelLIClass');
-        }
-        if(scope.$last){
-            setTimeout(function(){
-                if($('#vap_productAllCategoryContainerDivId').length>0){
-                    var existingOwlOptions = {
-                        navigation:false,
-                        paginationSpeed:1000,
-                        goToFirstSpeed:2000,
-                        transitionStyle:"fade"
-                    };
-                    var owlObj = $("#vap_productAllCategoryContainerDivId").data('owlCarousel');
-                    if(owlObj!==false && owlObj!==undefined && owlObj!==''){
-                        owlObj.reinit(existingOwlOptions);
-                    }else{
-                        $("#vap_productAllCategoryContainerDivId").owlCarousel(existingOwlOptions);
-                    }
-                }
-            }, 1);
-        }
-    };
-}
-
-angular.module('DKAPP').directive('maxheightProductboxwidgetAllproductslevel', maxheightProductboxwidgetAllproductslevel);
-
-function maxheightProductboxwidgetAllproductslevel(){
-    return function(scope, element, attrs){
-        if(scope.$last){
-            // apply max height css on element
-            setTimeout(function(){
-                applyMaxHeightCssOnAllProductBoxWidget('vap_productBoxWidgetDivClass');
-            }, 1);
-            scope.$on('resize::resize', function() {
-                applyMaxHeightCssOnAllProductBoxWidget('vap_productBoxWidgetDivClass');
-            });
-        }
-    };
-}
-
-
-///////////////////  start 
 
 angular.module('DKAPP').directive('horizontallyScrollableStoreinfo', horizontallyScrollableStoreinfo);
 
@@ -414,9 +326,9 @@ function horizontallyScrollableOrdercartAllsectionheaderDirective(){
     };
 }
 
-angular.module('DKAPP').directive('scrollHorizontallyPartyorderAllsectionheaderDirective', scrollHorizontallyPartyorderAllsectionheaderDirective);
+angular.module('DKAPP').directive('horizontallyScrollablePartyorderAllsectionheaderDirective', horizontallyScrollablePartyorderAllsectionheaderDirective);
 
-function scrollHorizontallyPartyorderAllsectionheaderDirective(){
+function horizontallyScrollablePartyorderAllsectionheaderDirective(){
     return function(scope, element, attrs){
         setTimeout(function(){
             if($('#po_AllSectionHeaderContainerDivId').length>0){
