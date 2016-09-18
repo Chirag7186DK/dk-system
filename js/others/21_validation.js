@@ -45,53 +45,46 @@ function validateParamDataPartyOrderRequest(){
     var blankFieldValueCount = 0 ;
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk param session data
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('partyOrder')===true){
-            // extract party order param obj
-            var partyOrderParamObj = dkParamObj['partyOrder'];
-            if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                // check form field is blank or not for party order request
-                if($('#po_occasionTitleInputId').length===1){
-                    if($('#po_occasionTitleInputId').val()===''){
-                        $('#po_occasionTitleInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#po_occasionTitleInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#po_nosPeopleInputId').length===1){
-                    if($('#po_nosPeopleInputId').val()===''){
-                        $('#po_nosPeopleInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#po_nosPeopleInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#po_dateInputId').length===1){
-                    if($('#po_dateInputId').val()===''){
-                        $('#po_dateInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#po_dateInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#po_venueInputId').length===1){
-                    if($('#po_venueInputId').val()===''){
-                        $('#po_venueInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#po_venueInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#po_messageInputId').length===1){
-                    if($('#po_messageInputId').val()===''){
-                        $('#po_messageInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#po_messageInputId').css({'border-color':'#ccc'});
-                    }
-                }
+        
+        // check form field is blank or not for party order request
+        if($('#po_occasionTitleInputId').length===1){
+            if($('#po_occasionTitleInputId').val()===''){
+                $('#po_occasionTitleInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#po_occasionTitleInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#po_nosPeopleInputId').length===1){
+            if($('#po_nosPeopleInputId').val()===''){
+                $('#po_nosPeopleInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#po_nosPeopleInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#po_dateInputId').length===1){
+            if($('#po_dateInputId').val()===''){
+                $('#po_dateInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#po_dateInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#po_venueInputId').length===1){
+            if($('#po_venueInputId').val()===''){
+                $('#po_venueInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#po_venueInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#po_messageInputId').length===1){
+            if($('#po_messageInputId').val()===''){
+                $('#po_messageInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#po_messageInputId').css({'border-color':'#ccc'});
             }
         }
     }
