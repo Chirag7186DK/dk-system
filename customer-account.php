@@ -708,26 +708,34 @@
                         <p class="poEstimatedAmtPClass">
                             Estimated Budget (Rs): {{eachPartyOrderDataObj.estimatedBudget}}
                         </p>
-                        <p ng-if="eachPartyOrderDataObj.porStatus=='PP'" class="poRequirementsPClass">
-                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn poPaymentAcceptanceBtnClass'>
-                                MAKE PAYMENT (Rs: {{eachPartyOrderDataObj.confirmedAmt}})
+                        <p ng-if="eachPartyOrderDataObj.isShowPaymentBtn==true" class="poPaymentSummaryDetailsPClass">
+                            Total Payment (Rs): {{eachPartyOrderDataObj.poGeneratedTotalAmt}}, 
+                            Paying Amt (Rs): {{eachPartyOrderDataObj.payingamount}},
+                            Balance Amt (Rs): {{eachPartyOrderDataObj.balanceamount}}
+                        </p>
+                        <p ng-if="eachPartyOrderDataObj.isShowPaymentBtn==true" class="poPaymentBtnPClass">
+                            <button ng-click="checkProductDataToUdateInOrdercart(ordercartRequestedEachItemDetailsArrObj);" class='btn poPaymentBtnClass'>
+                                MAKE PAYMENT (Rs: {{eachPartyOrderDataObj.payingamount}})
                             </button>
                         </p>
                         <p ng-click="togglePOLogList(eachPartyOrderDataObj);" ng-if="eachPartyOrderDataObj.poLogCount!=='0'" class="poLogLblPClass">
-                            Show further consveration details 
-                            <i class="{{eachPartyOrderDataObj.isShowLogList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
+                            Show further conservation details 
+                            <i class="{{eachPartyOrderDataObj.isPoShowLogList===false?'fa fa-chevron-circle-up':'fa fa-chevron-circle-down'}}"></i>
                         </p>
-                        <hr class='eachPOListHrClass' ng-show="eachPartyOrderDataObj.isShowLogList" ng-if="eachPartyOrderDataObj.poLogCount!=='0'">
+                        <hr class='eachPOListHrClass' ng-show="eachPartyOrderDataObj.isPoShowLogList" ng-if="eachPartyOrderDataObj.poLogCount!=='0'">
+                        
                         <!-- party order log details display here -->
-                        <div ng-show="eachPartyOrderDataObj.isShowLogList" ng-if="eachPartyOrderDataObj.poLogCount!=='0'" ng-repeat="eachPartyOrderLogDataObj in eachPartyOrderDataObj.poLogDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOListLogContainerDivClass">
+                        <div ng-show="eachPartyOrderDataObj.isPoShowLogList" ng-if="eachPartyOrderDataObj.poLogCount!=='0'" ng-repeat="eachPartyOrderLogDataObj in eachPartyOrderDataObj.poLogDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 eachPOListLogContainerDivClass">
                             {{eachPartyOrderLogDataObj.poLogMemberLabel}}: {{eachPartyOrderLogDataObj.poLogDescription}} - {{eachPartyOrderLogDataObj.lastUpdatedTime}} 
                         </div>
                         
                     </div>
                     
                     <!-- no party order list found message div -->
-                    <div ng-if="partyOrderListArrObj<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <p class="shoppingBagsEmptyPClass">To request party order click on 'Request' tab !</p>
+                    <div ng-if="partyOrderListArrObj<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 poListNotFoundMsgDivClass">
+                        <p class="shoppingBagsEmptyPClass">
+                            <i class='fa fa-gift'></i> To request party order click on 'Request' tab !!!
+                        </p>
                     </div>
                     
                 </div>
