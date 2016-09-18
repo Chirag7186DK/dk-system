@@ -15,14 +15,14 @@ class CustomizeOrdersServicesV1 implements ICustomizeOrdersServicesV1{
         $rspDetails['coRequestedStatusDetails']["customizeOrderNo"] = '';
         // check requested param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            // add customize order request status
-            $dkParamDataArr['status'] = 'R';
             // fetch user session data details
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
                 $dkParamDataArr['customizeorder_no'] = commonfunction :: generateCustomizeOrderNo();
-                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
-                $dkParamDataArr['created_by'] = $userSessionDetailsData['unmd5UserId'];
+                $dkParamDataArr['user_id'] = $unmd5UserId;
+                $dkParamDataArr['created_by'] = $unmd5UserId;
+                $dkParamDataArr['status'] = 'R';
                 $lastCORID = CustomizeOrdersDao::addCustomizeOrderRequest($dkParamDataArr);
                 if($lastCORID>0 && $lastCORID!=false){
                     $rspDetails['coRequestedStatusDetails']["isCustomizeOrderRequestSend"] = 'YES';
@@ -45,9 +45,9 @@ class CustomizeOrdersServicesV1 implements ICustomizeOrdersServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $user_id = $userSessionDetailsData['unmd5UserId'];
-                $customizeOrderDetailsArr = commonfunction :: getCustomizeOrderList($user_id);
-                if(count($customizeOrderDetailsArr)>0 && $customizeOrderDetailsArr!=false){
-                    $rspDetails['customizeOrderList'] = $customizeOrderDetailsArr;
+                $dataArr1 = commonfunction :: getCustomizeOrderList($user_id);
+                if(count($dataArr1)>0 && $dataArr1!=false){
+                    $rspDetails['customizeOrderList'] = $dataArr1;
                 }
             }
         } 
