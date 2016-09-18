@@ -11,13 +11,13 @@ class CustomizeOrdersController extends V1Controller{
     public function actionManageCustomizeOrders(){
         if(ComponentsHttp::httpMethod()=="POST"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAddingCustomizeOrderRequest($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForAddingCustomizeOrderRequest($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $CustomizeOrdersServicesV1 = new CustomizeOrdersServicesV1();
                     $rspDetails = $CustomizeOrdersServicesV1->addCustomizeOrdersRequest($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
@@ -30,13 +30,13 @@ class CustomizeOrdersController extends V1Controller{
         }
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $retRequestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($retRequestedParamKeyStatusFromInDtoFile!=false && $retRequestedParamKeyStatusFromInDtoFile!=''){
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $retParamDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
-                if($retParamDataCorrectIncorrectStatus=='TRUE'){
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $CustomizeOrdersServicesV1 = new CustomizeOrdersServicesV1();
                     $rspDetails = $CustomizeOrdersServicesV1->getCustomizeOrderList($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
