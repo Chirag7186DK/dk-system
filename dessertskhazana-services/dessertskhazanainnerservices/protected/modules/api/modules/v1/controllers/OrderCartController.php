@@ -106,6 +106,29 @@ class OrderCartController extends V1Controller{
         }
     }
     
+    // CJ defined this action 2016-08-14
+    public function actionStorewiseOrderSummaryCheckoutProcess(){
+        
+        if(ComponentsHttp::httpMethod()=="GET"){
+            // checking requested param key name 
+            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
+            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
+                $inDtoArray = $this->_inDtoArray;
+                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
+                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                    $OrderCartServicesV1 = new OrderCartServicesV1();
+                    $rspDetails = $OrderCartServicesV1->getStorewiseOrderSummaryDataForCheckoutProcess($dkParamDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     // CJ defined this action 2016-09-05
     public function actionResetAllItemOrdercart(){
         
