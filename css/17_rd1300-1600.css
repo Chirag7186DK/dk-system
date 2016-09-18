@@ -2369,6 +2369,33 @@
         padding:20px;
     }
     
+    .poSignInSignUpInfoPClass{
+        color:#828282!important;
+        font-weight:bold!important;
+        text-align:center;
+        white-space:pre-line!important;
+    }
+
+    .poSignInSignUpInfoPClass .accountSignUpSignInIconClass{
+        font-size:50px!important;
+        color:#FAB005!important;
+        padding:7px!important;
+        margin-bottom:5px!important;
+    }
+    
+    .poSignInSignUpBtnDivClass{
+        text-align:center!important;
+    }
+    
+    .poSignInSignUpBtnClass, 
+    .poSignInSignUpBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#5663ab!important;
+        color:#fff!important;
+    }
+    
     .po_AllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
         margin-right:15px!important;
@@ -2530,31 +2557,14 @@
         cursor:pointer!important;
     }
     
-    .poSignInSignUpInfoPClass{
-        color:#828282!important;
-        font-weight:bold!important;
-        text-align:center;
-        white-space:pre-line!important;
-    }
-
-    .poSignInSignUpInfoPClass .accountSignUpSignInIconClass{
-        font-size:50px!important;
-        color:#FAB005!important;
-        padding:7px!important;
-        margin-bottom:5px!important;
-    }
-    
-    .poSignInSignUpBtnDivClass{
-        text-align:center!important;
-    }
-    
-    .poSignInSignUpBtnClass, 
-    .poSignInSignUpBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#5663ab!important;
-        color:#fff!important;
+    .eachPOListLogContainerDivClass{
+        //padding-left:0px!important;
+        //padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+        color:#67717D!important;
+        font-size:13px!important;
     }
     
     
