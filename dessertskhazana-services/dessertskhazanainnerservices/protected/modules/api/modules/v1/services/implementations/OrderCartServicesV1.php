@@ -184,7 +184,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
     }
     
     // CJ defined this action 2016-09-18
-    public function getStorewiseOrderSummaryData($dkParamDataArr){
+    public function getStorewiseOrderSummaryDataForCheckoutProcess($dkParamDataArr){
         $rspDetails = array();
         // checking param data length
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
@@ -193,7 +193,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 // detect type of item list to fetch based on status
                 $userId = $userSessionDetailsData['unmd5UserId'];
-                $rspDetails['storewiseOrderSummaryData'] = commonfunction :: getStorewiseOrderSummaryData($userId);
+                $rspDetails['storewiseOrderSummaryData'] = commonfunction :: getStorewiseOrderSummaryDataForCheckoutProcess($userId);
                 // $rspDetails['storewiseOrderSummaryData'] = false;
             }
         } 
