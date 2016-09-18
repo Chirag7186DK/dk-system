@@ -1942,6 +1942,47 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
     }
 }
 
+// CJ defined this function 2016-08-06
+function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
+    try{
+        var paramObj = {};
+        var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+        if(userLoggedDataObj!==false && userLoggedDataObj!==undefined 
+            && jQuery.isEmptyObject(userLoggedDataObj)===false){
+            paramObj = $.extend(paramObj, userLoggedDataObj);
+            // through view product page
+            if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
+                if($('.'+fcontentClass).length>0){
+                    paramObj['ordercartStoreAddressArr'] = new Array();
+                    // iterate each form content
+                    $('.'+fcontentClass).each(function(){
+                        var currentFormContentObj = $(this);
+                        if($(currentFormContentObj).find('textarea').length===1){
+                            var deliveryAddress = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').val());
+                            var ordercartStoreId = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').attr('data-ordercartstoreid'));
+                            if(deliveryAddress!=='' && deliveryAddress!==false 
+                                && deliveryAddress!==undefined && parseInt(ordercartStoreId)>0){
+                                (paramObj['ordercartStoreAddressArr']).push({
+                                    "ordercartStoreId":ordercartStoreId,
+                                    "address":deliveryAddress
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        }
+        if(Object.keys(paramObj).length===4){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        // console.log("problem in getParamDataToAddOrderDeliveryAddressInOrdercartStore ex=>"+ex);
+        return false;
+    }
+}
+
 
 ///////////////////////// Rating/Review related code ///////////////////
 
