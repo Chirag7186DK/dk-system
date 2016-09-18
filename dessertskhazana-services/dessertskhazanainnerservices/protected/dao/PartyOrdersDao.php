@@ -37,13 +37,15 @@ class PartyOrdersDao{
             }
         }
         if(array_key_exists('user_sessionid', $poRequestParamDetails)){
-            if($poRequestParamDetails['user_sessionid']!=''){
+            if($poRequestParamDetails['user_sessionid']!='' 
+                && strlen($poRequestParamDetails['user_sessionid'])>=20){
                 $sqlColumnNames.=" user_sessionid,";
                 $sqlValues.="'".$poRequestParamDetails['user_sessionid']."',";
             }
         }
         if(array_key_exists('user_id', $poRequestParamDetails)){
-            if($poRequestParamDetails['user_id']!=''){
+            if($poRequestParamDetails['user_id']!='' 
+                && ($poRequestParamDetails['user_id'])>0){
                 $sqlColumnNames.=" user_id,";
                 $sqlValues.="'".$poRequestParamDetails['user_id']."',";
             }
@@ -55,7 +57,8 @@ class PartyOrdersDao{
             }
         }
         if(array_key_exists('nos_person', $poRequestParamDetails)){
-            if($poRequestParamDetails['nos_person']!=''){
+            if($poRequestParamDetails['nos_person']!='' 
+                && ($poRequestParamDetails['nos_person'])>0){
                 $sqlColumnNames.=" nos_person,";
                 $sqlValues.="'".$poRequestParamDetails['nos_person']."',";
             }
@@ -85,7 +88,7 @@ class PartyOrdersDao{
             }
         }
         if(array_key_exists('created_by', $poRequestParamDetails)){
-            if($poRequestParamDetails['created_by']!=''){
+            if($poRequestParamDetails['created_by']!='' && ($poRequestParamDetails['created_by'])>0){
                 $sqlColumnNames.=" created_by,";
                 $sqlValues.="'".$poRequestParamDetails['created_by']."',";
             }
@@ -100,7 +103,7 @@ class PartyOrdersDao{
             $poRequestParamDetails['created_datedtime'] = date('Y-m-d H:i:s');
             $sqlColumnNames.=" created_datedtime,";
             $sqlValues.="'".$poRequestParamDetails['created_datedtime']."',";
-            $sqlQuery = " INSERT INTO DK_PARTYORDERS_REQUEST " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $sqlQuery = " INSERT INTO PARTYORDERS_REQUEST " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
             if($result>=1){
