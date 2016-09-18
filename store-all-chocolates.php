@@ -20,7 +20,7 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('store-all-chocolates');">
+    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('store-all-cakes');">
 
         <!-- header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
@@ -88,7 +88,7 @@
                         |
                     </li>
                     <li class='customerBreadcrumbLIClass'>
-                        Chocolates
+                        Cakes
                     </li>
                 </ul>
             </div>
@@ -152,7 +152,7 @@
                 </li>
                 
                 <!-- display all desserts type can served by store in your selected delivery area -->
-                <div id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
+                <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div horizontally-scrollable-dessertstypelist-storelevel ng-repeat="eachDessertsTypeDetails in storeDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" class='storeCanServeEachDessertsTypeScrollableWrapperDivClass'>
                         <p class="dessertsTypeIconPClass">
