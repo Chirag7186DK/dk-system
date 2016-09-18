@@ -173,6 +173,7 @@ class PartyOrdersDao{
                     COALESCE(por.party_venue, '') partyVenue, 
                     COALESCE(por.party_requirements, '') partyRequirements,
                     COALESCE(por.estimated_budget, 0) estimatedBudget,
+                    COALESCE(por.totalamount, 0) poTotalAmount,
                     (CASE 
                         WHEN por.status='R' THEN 'Requested by you'
                         WHEN por.status='CC' THEN 'Confirmed by you for further processing'
@@ -181,8 +182,7 @@ class PartyOrdersDao{
                         WHEN por.status='PF' THEN 'Payment Failed'
                         WHEN por.status='ZC' THEN 'Deleted/Removed by you'
                         WHEN por.status='ZA' THEN 'Deleted/Removed by us'
-                    END) porLongStatusMsg, COALESCE(por.status, '') porShortStatus,
-                    '1800' confirmedAmt
+                    END) porLongStatusMsg, COALESCE(por.status, '') porShortStatus
                     FROM USERS u 
                     JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
                     WHERE 1
