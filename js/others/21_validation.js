@@ -616,6 +616,38 @@ function validateProductDataToUpdateInOrdercart(fcClass){
     }
 }
 
+// CJ defined this function 2016-09-18
+function validateOrderDeliveryAddressData(fcClass){
+    try{
+        var blankFieldValueCount = 0 ;
+        if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
+            if($('.'+fcClass).length>0){
+                // iterate each form content
+                $('.'+fcClass).each(function(){
+                    var currentFormContentObj = $(this);
+                    if($(currentFormContentObj).find('textarea').length===1){
+                        var deliveryAddress = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').val());
+                        if(deliveryAddress==='' || deliveryAddress===false || deliveryAddress===undefined){
+                            $(currentFormContentObj).find('textarea').css({'border-color':'#f18178'});
+                            blankFieldValueCount++;
+                        }else{
+                            $(currentFormContentObj).find('textarea').css({'border-color':'#ccc'});
+                        }
+                    }
+                });
+            }
+        }
+        if(blankFieldValueCount>0){
+            return false;
+        }else{
+            return true;
+        }
+    }catch(ex){
+        return false;
+    }
+}
+
+
 
 ////////////////////////// user personal info /////////////////////
 
