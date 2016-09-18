@@ -404,7 +404,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             }
         };
         
-        
         // displayShareoffersSectionToAccessInUserCAccount
         $rootScope.displayShareoffersSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.isShowSharingOffersOperationDetails = false;
