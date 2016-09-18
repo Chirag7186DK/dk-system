@@ -171,7 +171,7 @@ class CustomizeOrdersDao{
                 COALESCE(cor.event_venue, '') eventVenue, 
                 COALESCE(cor.event_requirements, '') eventRequirements,
                 COALESCE(cor.estimated_budget, 0) estimatedBudget,
-                COALESCE(cor.totalamount, 0) poTotalAmount,
+                COALESCE(cor.totalamount, 0) coTotalAmount,
                 (CASE 
                     WHEN cor.status='R' THEN 'Requested by you'
                     WHEN cor.status='CC' THEN 'Confirmed by you for further processing'
