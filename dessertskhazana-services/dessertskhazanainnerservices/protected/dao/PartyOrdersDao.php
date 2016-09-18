@@ -208,7 +208,7 @@ class PartyOrdersDao{
                 COALESCE(porl.description, '') poLogDescription,
                 COALESCE(DATE_FORMAT(porl.updated_datedtime, '%b %D %a, %Y'), '') lastUpdatedTime,
                 (CASE 
-                    WHEN porl.profile_typeid='1' THEN 'You' 
+                    WHEN porl.profile_typeid='2' THEN 'You' 
                     ELSE 'Admin'
                 END) poLogMemberLabel
                 FROM USERS u 
