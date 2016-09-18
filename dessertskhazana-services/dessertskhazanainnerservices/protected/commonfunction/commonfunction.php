@@ -1046,6 +1046,7 @@ class commonfunction{
                         $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
                         $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
                         $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
+                        array_push($allStorewiseOrderSummaryDataArr, $eachOrdercartStoresDataArr);
                     }
                 }
             }
