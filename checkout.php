@@ -71,7 +71,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 checkoutInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
                 <ul class="customerBreadcrumbULClass list-inline">
                     <li class='customerBreadcrumbLIClass'>
                         <a href="<?php echo $BaseSitePath;?>">
@@ -90,11 +90,66 @@
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
+            <!-- checkout delivery address section -->
+            <div ng-controller="CheckoutController" ng-init="loadStorewiseOrderSummaryForCheckoutProcess();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_deliveryAddressSectionDivClass">
+                <p class='chkout_deliveryAddressHeaderPClass'>
+                    <i class="fa fa-bus"></i> DELIVERY ADDRESS
+                </p>
+                <!-- each store order summary will be display -->
+                <div ng-repeat="eachStoreOrderSummaryDataObj in allStorewiseOrderSummaryDataArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_eachStoreOrderSummaryDivClass">
+                    <p class="chkout_eachStoreBasicInfoLblPClass">
+                        {{eachStoreOrderSummaryDataObj.shopStoreTitle}} store order 
+                        will be deliver from '{{eachStoreOrderSummaryDataObj.storeLocatedAreaName}}' 
+                        to '{{eachStoreOrderSummaryDataObj.deliveryAreaname}}' area
+                    </p>
+                    <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
+                        Type delivery address
+                        <textarea class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address"></textarea>
+                    </p>
+                </div>
+                <p class="chkout_orderDeliveryAddressSaveBtnPClass">
+                    <button class='btn chkout_orderDeliveryAddressSaveBtnClass'>
+                        SAVE
+                    </button>
+                </p>
+            </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
+            <!-- checkout payment summary section -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_paymentSummarySectionDivClass">
+                <p class='chkout_paymentSummaryHeaderPClass'>
+                    <i class="fa fa-money"></i> PAYMENT SUMMARY
+                </p>
+                <div ng-if="ordercartItemRequestedCount>0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_paymentSummaryDivClass">
+                    <p>
+                        Total Stores : {{totalStores}}
+                    </p>
+                    <p>
+                        Subtotal Amt(Rs) : {{subtotalOrderAmt}}
+                    </p>
+                    <p>
+                        Total Delivery Fee(Rs) : {{totalDeliveryFee}}
+                    </p>
+                    <p>
+                        Total Amt(Rs) : {{totalOrderAmt}}
+                    </p>
+                    <p class="chkout_makePaymentBtnPClass">
+                        <button class='btn chkout_makePaymentBtnClass'>
+                            Make Payment
+                        </button>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- create horizontally space div between -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+            
         </div>
         
         <!-- create horizontally space div between -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-        
         
         <!-- refresh web application data -->
         <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
