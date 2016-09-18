@@ -37,6 +37,17 @@ function attachedFieldValidationPartyOrdersRequest(){
 //            types: ["geocode"]
 //        });
     }
+    if($('#po_budgetAmtInputId').length===1){
+        $('#po_budgetAmtInputId').numeric(
+            {
+                "allowMinus":false, 
+                "allowThouSep":false, 
+                "allowLeadingSpaces":false, 
+                "maxDigits":"5", 
+                "allowDecSep":false
+            }
+        );
+    }
 }
 
 // CJ defined this function 2016-07-20
@@ -87,6 +98,14 @@ function validateParamDataPartyOrderRequest(){
                 $('#po_messageInputId').css({'border-color':'#ccc'});
             }
         }
+        if($('#po_budgetAmtInputId').length===1){
+            if($('#po_budgetAmtInputId').val()===''){
+                $('#po_budgetAmtInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#po_budgetAmtInputId').css({'border-color':'#ccc'});
+            }
+        }
     }
     if(blankFieldValueCount>0){
         return false;
@@ -133,6 +152,17 @@ function attachedFieldValidationCustomizeOrdersRequest(){
 //            types: ["geocode"]
 //        });
     }
+    if($('#co_budgetAmtInputId').length===1){
+        $('#co_budgetAmtInputId').numeric(
+            {
+                "allowMinus":false, 
+                "allowThouSep":false, 
+                "allowLeadingSpaces":false, 
+                "maxDigits":"5", 
+                "allowDecSep":false
+            }
+        );
+    }
 }
 
 
@@ -142,53 +172,53 @@ function validateParamDataCustomizeOrderRequest(){
     var blankFieldValueCount = 0 ;
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk param session data
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('customizeOrder')===true){
-            // extract customize order param obj
-            var partyOrderParamObj = dkParamObj['customizeOrder'];
-            if(partyOrderParamObj.hasOwnProperty('title')!==''){
-                // check form field is blank or not for party order request
-                if($('#co_occasionTitleInputId').length===1){
-                    if($('#co_occasionTitleInputId').val()===''){
-                        $('#co_occasionTitleInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#co_occasionTitleInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#co_nosPeopleInputId').length===1){
-                    if($('#co_nosPeopleInputId').val()===''){
-                        $('#co_nosPeopleInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#co_nosPeopleInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#co_dateInputId').length===1){
-                    if($('#co_dateInputId').val()===''){
-                        $('#co_dateInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#co_dateInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#co_venueInputId').length===1){
-                    if($('#co_venueInputId').val()===''){
-                        $('#co_venueInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#co_venueInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#co_messageInputId').length===1){
-                    if($('#co_messageInputId').val()===''){
-                        $('#co_messageInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
-                    }else{
-                        $('#co_messageInputId').css({'border-color':'#ccc'});
-                    }
-                }
+        // check form field is blank or not for party order request
+        if($('#co_occasionTitleInputId').length===1){
+            if($('#co_occasionTitleInputId').val()===''){
+                $('#co_occasionTitleInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#co_occasionTitleInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#co_nosPeopleInputId').length===1){
+            if($('#co_nosPeopleInputId').val()===''){
+                $('#co_nosPeopleInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#co_nosPeopleInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#co_dateInputId').length===1){
+            if($('#co_dateInputId').val()===''){
+                $('#co_dateInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#co_dateInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#co_venueInputId').length===1){
+            if($('#co_venueInputId').val()===''){
+                $('#co_venueInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#co_venueInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#co_messageInputId').length===1){
+            if($('#co_messageInputId').val()===''){
+                $('#co_messageInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#co_messageInputId').css({'border-color':'#ccc'});
+            }
+        }
+        if($('#co_budgetAmtInputId').length===1){
+            if($('#co_budgetAmtInputId').val()===''){
+                $('#co_budgetAmtInputId').css({'border-color':'#f18178'});
+                blankFieldValueCount++;
+            }else{
+                $('#co_budgetAmtInputId').css({'border-color':'#ccc'});
             }
         }
     }
