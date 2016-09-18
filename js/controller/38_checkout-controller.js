@@ -31,13 +31,13 @@ function CheckoutController($rootScope, OrderCartServices){
                 // calling OrderCartServices 
                 OrderCartServices.getStorewiseOrderSummaryForCheckoutProcess(fetchedParamJsonObj).done(function(retResponseJson){
                     $rootScope.$apply(function(){
-                        var storewiseOrderSummaryData =  false;
+                        var allStorewiseOrderSummaryDataArrObj =  false;
                         if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                            storewiseOrderSummaryData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'storewiseOrderSummaryData', retResponseJson);
+                            allStorewiseOrderSummaryDataArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'storewiseOrderSummaryData', retResponseJson);
                         }
-                        if(storewiseOrderSummaryData!==false && storewiseOrderSummaryData!==undefined 
-                            && jQuery.isEmptyObject(storewiseOrderSummaryData)===false){
-                            $rootScope.storewiseOrderSummaryData =  storewiseOrderSummaryData;
+                        if(allStorewiseOrderSummaryDataArrObj!==false && allStorewiseOrderSummaryDataArrObj!==undefined 
+                            && jQuery.isEmptyObject(allStorewiseOrderSummaryDataArrObj)===false){
+                            $rootScope.allStorewiseOrderSummaryDataArrObj =  allStorewiseOrderSummaryDataArrObj;
                         }else{
                             window.location.href = globalBaseSitePath;
                         }
