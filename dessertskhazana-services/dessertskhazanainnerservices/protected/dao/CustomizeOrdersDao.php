@@ -25,15 +25,15 @@ class CustomizeOrdersDao{
     }
     
     // CJ defined this function 2016-07-24
-    public static function addCustomizeOrderRequest($coRequestParamDetails){
+    public static function addCustomizeOrderRequest($paramDetails){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('customizeorder_no', $coRequestParamDetails)){
-            if($coRequestParamDetails['customizeorder_no']!=''){
+        if(array_key_exists('customizeorder_no', $paramDetails)){
+            if($paramDetails['customizeorder_no']!=''){
                 $sqlColumnNames.=" customizeorder_no,";
-                $sqlValues.="'".$coRequestParamDetails['customizeorder_no']."',";
+                $sqlValues.="'".$paramDetails['customizeorder_no']."',";
             }
         }
         if(array_key_exists('user_sessionid', $paramDetails)){
@@ -50,10 +50,10 @@ class CustomizeOrdersDao{
                 $sqlValues.="'".$paramDetails['user_id']."',";
             }
         }
-        if(array_key_exists('event_title', $coRequestParamDetails)){
-            if($coRequestParamDetails['event_title']!=''){
+        if(array_key_exists('event_title', $paramDetails)){
+            if($paramDetails['event_title']!=''){
                 $sqlColumnNames.=" event_title,";
-                $sqlValues.="'".$coRequestParamDetails['event_title']."',";
+                $sqlValues.="'".$paramDetails['event_title']."',";
             }
         }
         if(array_key_exists('nos_person', $paramDetails)){
@@ -63,28 +63,28 @@ class CustomizeOrdersDao{
                 $sqlValues.="'".$paramDetails['nos_person']."',";
             }
         }
-        if(array_key_exists('event_date', $coRequestParamDetails)){
-            if($coRequestParamDetails['event_date']!=''){
+        if(array_key_exists('event_date', $paramDetails)){
+            if($paramDetails['event_date']!=''){
                 $sqlColumnNames.=" event_date,";
-                $sqlValues.="'".$coRequestParamDetails['event_date']."',";
+                $sqlValues.="'".$paramDetails['event_date']."',";
             }
         }
-        if(array_key_exists('event_venue', $coRequestParamDetails)){
-            if($coRequestParamDetails['event_venue']!=''){
+        if(array_key_exists('event_venue', $paramDetails)){
+            if($paramDetails['event_venue']!=''){
                 $sqlColumnNames.=" event_venue,";
-                $sqlValues.="'".$coRequestParamDetails['event_venue']."',";
+                $sqlValues.="'".$paramDetails['event_venue']."',";
             }
         }
-        if(array_key_exists('event_requirements', $coRequestParamDetails)){
-            if($coRequestParamDetails['event_requirements']!=''){
+        if(array_key_exists('event_requirements', $paramDetails)){
+            if($paramDetails['event_requirements']!=''){
                 $sqlColumnNames.=" event_requirements,";
-                $sqlValues.="'".$coRequestParamDetails['event_requirements']."',";
+                $sqlValues.="'".$paramDetails['event_requirements']."',";
             }
         }
-        if(array_key_exists('file', $coRequestParamDetails)){
-            if($coRequestParamDetails['file']!=''){
+        if(array_key_exists('file', $paramDetails)){
+            if($paramDetails['file']!=''){
                 $sqlColumnNames.=" file,";
-                $sqlValues.="'".$coRequestParamDetails['file']."',";
+                $sqlValues.="'".$paramDetails['file']."',";
             }
         }
         if(array_key_exists('created_by', $paramDetails)){
@@ -100,9 +100,9 @@ class CustomizeOrdersDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
-            $coRequestParamDetails['created_datedtime'] = date('Y-m-d H:i:s');
+            $paramDetails['created_datedtime'] = date('Y-m-d H:i:s');
             $sqlColumnNames.=" created_datedtime,";
-            $sqlValues.="'".$coRequestParamDetails['created_datedtime']."',";
+            $sqlValues.="'".$paramDetails['created_datedtime']."',";
             $sqlQuery = " INSERT INTO CUSTOMIZEORDERS_REQUEST " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
@@ -114,21 +114,21 @@ class CustomizeOrdersDao{
     }
     
     // CJ defined this function 2016-07-24
-    public static function addCustomizeOrderRequestLog($coRequestParamDetails){
+    public static function addCustomizeOrderRequestLog($paramDetails){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('customizeorder_id', $coRequestParamDetails)){
-            if($coRequestParamDetails['customizeorder_id']!=''){
+        if(array_key_exists('customizeorder_id', $paramDetails)){
+            if($paramDetails['customizeorder_id']!=''){
                 $sqlColumnNames.=" customizeorder_id,";
-                $sqlValues.="'".$coRequestParamDetails['customizeorder_id']."',";
+                $sqlValues.="'".$paramDetails['customizeorder_id']."',";
             }
         }
-        if(array_key_exists('description', $coRequestParamDetails)){
-            if($coRequestParamDetails['description']!=''){
+        if(array_key_exists('description', $paramDetails)){
+            if($paramDetails['description']!=''){
                 $sqlColumnNames.=" description,";
-                $sqlValues.="'".$coRequestParamDetails['description']."',";
+                $sqlValues.="'".$paramDetails['description']."',";
             }
         }
         if(array_key_exists('created_by', $paramDetails)){
