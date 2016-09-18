@@ -165,6 +165,7 @@ class PartyOrdersDao{
         try{
             $connection = Yii::App()->db;
             $sql= "SELECT
+                    COALESCE(por.id, '') partyOrderId, 
                     COALESCE(por.partyorder_no, '') partyOrderNo, 
                     COALESCE(por.occassion_title, '') occassionTitle,
                     COALESCE(por.nos_person, '') nosOfPerson, 
@@ -192,6 +193,30 @@ class PartyOrdersDao{
             $partyOrderDetailsArr = $command->queryAll();
             if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
                 $result =  $partyOrderDetailsArr;
+            }
+        }catch(Exception $ex){}
+        return $result;
+    }
+    
+    
+    // CJ defined this function 2016-09-18
+    public static function getPartyOrderLogDetails($userId, $partyOrderId){
+        $result = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                COALESCE(porl.description, '') poLogDescription
+                FROM USERS u 
+                JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
+                JOIN PARTYORDERS_REQUEST_LOG porl ON porl.party_id=por.id
+                WHERE 1
+                AND u.status='A' AND porl.status='A'
+                AND u.id='$userId' AND por.user_id='$userId'
+                AND por.id='$partyOrderId' AND porl.party_id='$partyOrderId'";
+            $command = $connection->createCommand($sql);
+            $partyOrderLogDetailsArr = $command->queryAll();
+            if(count($partyOrderLogDetailsArr)>0 && $partyOrderLogDetailsArr!=false){
+                $result =  $partyOrderLogDetailsArr;
             }
         }catch(Exception $ex){}
         return $result;
