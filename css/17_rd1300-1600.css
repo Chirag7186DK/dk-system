@@ -2453,13 +2453,8 @@
         padding:4px!important;
     }
 
-    .po_thankyouContentWrapperDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-
     .po_thankyouContentWrapperContainerDivClass{
-        border:1px dashed #FFDC00!important;
+        border:1px dashed #e7e7e7!important;
         background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
@@ -2469,9 +2464,8 @@
     .po_thankyoubodyPClass{
         color:#828282!important;
         font-weight:bold!important;
-        text-align:center;
+        text-align:center!important;
         white-space:pre-line!important;
-        padding-bottom:20px!important;
     }
 
     .po_thankyousmileIconClass{
