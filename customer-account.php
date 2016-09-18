@@ -22,11 +22,6 @@
     <!-- body start here -->
     <body ng-cloak scroll-window-directive resize-window-directive class="ng-cloak onBodyScrollClass" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('accountSignUpSignIn');">
 
-        <!-- common SCROLL TOP BUTTON -->
-        <a class="scrollToTopBtnClass" ng-show="isShowScrollToTopBtnWebAppPage" href="#" title='Click to scroll up page'>
-            <i class="fa fa-angle-up"></i>
-        </a>
-
         <!-- first header -->
         <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
            
@@ -585,9 +580,9 @@
             <div ng-if="requestedSectionName==='partyorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_SectionContainerDivClass">
                 
                 <!-- party order all section header title -->
-                <div scroll-horizontally-partyorder-allsectionheader-directive id='po_AllSectionHeaderContainerDivId' class='po_AllSectionHeaderContainerDivClass'>
+                <div horizontally-scrollable-partyorder-allsectionheader-directive id='po_AllSectionHeaderContainerDivId' class='po_AllSectionHeaderContainerDivClass'>
                     <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'po_EachTabLabelSectionContainerLIId1', 'po_AllSectionHeaderContainerDivClass');" title='Click to request new party order' id='po_EachTabLabelSectionContainerLIId1' class='po_EachTabLabelSectionContainerLIClass po_SelectedTabLabelSectionContainerLIClass'>
-                        Create
+                        Request
                     </li>
                     <li ng-click="uca_togglePartyOrderSectionList('allpartyorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
                         All Orders
@@ -660,7 +655,7 @@
                             {{partyOrderErrorMsgStr}}
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_btnContainerDivClass">
-                            <button ng-click="addPartyOrdersRequest()" class='btn partyOrderRequestSubmtBtnClass' id='partyOrderRequestSubmtBtnId'>
+                            <button ng-click="addPartyOrdersRequest()" class='btn partyOrderRequestSubmitBtnClass' id='partyOrderRequestSubmtBtnId'>
                                 SEND REQUEST
                             </button>
                         </div>
