@@ -137,6 +137,15 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
             }
         };
         
+        // togglePOPaymentLogList
+        $rootScope.togglePOPaymentLogList = function(poDataObj){
+            if(poDataObj.isShowPaymentLogList===true){
+                poDataObj.isShowPaymentLogList = false;
+            }else{
+                poDataObj.isShowPaymentLogList = true;
+            }
+        };
+        
     }catch(ex){
         console.log("problem in PartyOrdersController ex=>"+ex);
     }
