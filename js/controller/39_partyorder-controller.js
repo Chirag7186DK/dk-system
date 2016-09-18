@@ -100,8 +100,8 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
             }
         };
         
-        // getPartyOrdersList 
-        $rootScope.getPartyOrdersList = function(){
+        // loadPartyOrdersList 
+        $rootScope.loadPartyOrdersList = function(){
             try{
                 var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -124,7 +124,7 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
                     });
                 }
             }catch(ex){
-                console.log("problem in getPartyOrdersList ex=>"+ex);
+                console.log("problem in loadPartyOrdersList ex=>"+ex);
             }
         };
         
