@@ -1037,6 +1037,7 @@ class commonfunction{
                     // iterating order store wise with delivery location data
                     foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
                         $eachOrdercartStoresDataArr = array();
+                        $eachOrdercartStoresDataArr['ordercartStoreId'] = $storeAllItemsDataArr[0]['ordercartStoreId'];
                         $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
                         $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
