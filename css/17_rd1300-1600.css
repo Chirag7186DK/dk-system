@@ -2521,6 +2521,15 @@
         margin-bottom:3px!important;
     }
     
+    .poLogLblPClass{
+        padding-left:12px!important;
+        color:#ab0b38!important;
+        font-size:13px!important;
+        font-weight:normal!important;
+        margin-bottom:7px!important;
+        cursor:pointer!important;
+    }
+    
     .poSignInSignUpInfoPClass{
         color:#828282!important;
         font-weight:bold!important;
