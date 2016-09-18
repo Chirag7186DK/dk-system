@@ -1112,7 +1112,13 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount>=7){
+        // check estimated_budget key present or not
+        if(array_key_exists('estimated_budget', $paramJsonData)){
+            if($paramJsonData['estimated_budget']!='' && ($paramJsonData['estimated_budget'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount>=8){
             $retStatus = 'TRUE';
         }
         return $retStatus;
@@ -1173,7 +1179,13 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if($givenParamDataCorrectCount>=7){
+        // check estimated_budget key present or not
+        if(array_key_exists('estimated_budget', $paramJsonData)){
+            if($paramJsonData['estimated_budget']!='' && ($paramJsonData['estimated_budget'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount>=8){
             $retStatus = 'TRUE';
         }
         return $retStatus;
