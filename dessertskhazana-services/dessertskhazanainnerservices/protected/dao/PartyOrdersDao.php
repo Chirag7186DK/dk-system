@@ -163,30 +163,30 @@ class PartyOrdersDao{
         $result = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " SELECT
-                COALESCE(por.partyorder_no, '') partyOrderNo, 
-                COALESCE(por.occassion_title, '') occassionTitle,
-                COALESCE(por.nos_person, '') nosOfPerson, 
-                COALESCE(por.party_date, '') partyDate, 
-                COALESCE(por.party_venue, '') partyVenue, 
-                COALESCE(por.party_requirements, '') partyRequirements,
-                (CASE 
-                    WHEN por.status='R' THEN 'Requested'
-                    WHEN por.status='CV' THEN 'Consulting with vendor'
-                    WHEN por.status='C' THEN 'Confirmed by you & me'
-                    WHEN por.status='PP' THEN 'Payment Pending'
-                    WHEN por.status='PF' THEN 'Payment Failed'
-                    WHEN por.status='PF' THEN 'Deleted by you'
-                    WHEN por.status='ZA' THEN 'Deleted by us'
-                END) portLongStatusMsg,
-                COALESCE(por.status, '') porStatus,
-                '2000' estimatedAmt, '1800' confirmedAmt
-                FROM DK_USERS u 
-                JOIN DK_PARTYORDERS_REQUEST por ON por.user_id=u.id
-                WHERE 1
-                AND u.id='$userId'
-                AND por.user_id='$userId'
-                AND u.status='A'";
+            $sql= "SELECT
+                    COALESCE(por.partyorder_no, '') partyOrderNo, 
+                    COALESCE(por.occassion_title, '') occassionTitle,
+                    COALESCE(por.nos_person, '') nosOfPerson, 
+                    COALESCE(por.party_date, '') partyDate, 
+                    COALESCE(por.party_venue, '') partyVenue, 
+                    COALESCE(por.party_requirements, '') partyRequirements,
+                    COALESCE(por.estimated_budget, 0) estimatedBudget,
+                    (CASE 
+                        WHEN por.status='R' THEN 'Requested by you'
+                        WHEN por.status='CC' THEN 'Confirmed by you for further processing'
+                        WHEN por.status='CV' THEN 'Consulting with our vendor'
+                        WHEN por.status='PP' THEN 'Payment Pending'
+                        WHEN por.status='PF' THEN 'Payment Failed'
+                        WHEN por.status='ZC' THEN 'Deleted/Removed by you'
+                        WHEN por.status='ZA' THEN 'Deleted/Removed by us'
+                    END) porLongStatusMsg, COALESCE(por.status, '') porShortStatus,
+                    '1800' confirmedAmt
+                    FROM USERS u 
+                    JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
+                    WHERE 1
+                    AND u.id='$userId'
+                    AND por.user_id='$userId'
+                    AND u.status='A'";
             $command = $connection->createCommand($sql);
             $partyOrderDetailsArr = $command->queryAll();
             if(count($partyOrderDetailsArr)>0 && $partyOrderDetailsArr!=false){
