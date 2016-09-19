@@ -798,8 +798,8 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        if(array_key_exists('userAllQuesAnwerRatingReviewAbtProductArr', $paramJsonData)){
-            if(count($paramJsonData['userAllQuesAnwerRatingReviewAbtProductArr'])===4){
+        if(array_key_exists('ratingReviewedProductArr', $paramJsonData)){
+            if(count($paramJsonData['ratingReviewedProductArr'])===4){
                 $givenParamDataCorrectCount++;
             }
         }
