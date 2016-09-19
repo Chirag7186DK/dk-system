@@ -7,8 +7,8 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
         // view-product-details
         $rootScope.viewProductDetails = function(paramObj){
             try{
-                var storeDataStatus = storeProductTypeProductCategoryProductDataInSession(paramObj);
-                if(storeDataStatus===true){
+                var storedDataStatus = storeProductTypeProductCategoryProductDataInSession(paramObj);
+                if(storedDataStatus===true){
                     if((paramObj['productTypeTitle']).toLowerCase()==='cakes'){
                         window.location.href =  globalBaseSitePath+"cakes-product.php";
                     }else if((paramObj['productTypeTitle']).toLowerCase()==='chocolates'){
@@ -26,11 +26,11 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                 // get param obj
                 var preparedParamJsonObj = getParamObjFromSessionForProductTypeProductCategoryProductDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDetails = false;
                     // calling ProductServices to get product details
-                    ProductServices.getProductTypeProductCategoryProductDetails(fetchedParamJsonObj).done(function(retResponseJson){
+                    ProductServices.getProductTypeProductCategoryProductDetails(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
@@ -62,14 +62,14 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForProductDescriptionDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDescriptionDetailsArr = false;
                     $rootScope.isProductDescriptionDetailsFound = false;
                     $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
                     $rootScope.isToggleProductDescriptionContent = false;
                     // calling ProductServices 
-                    ProductServices.getProductDescriptionDetails(fetchedParamJsonObj).done(function(retResponseJson){
+                    ProductServices.getProductDescriptionDetails(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var productDescriptionDetailsArr = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'descriptionDetailsArr', retResponseJson);
