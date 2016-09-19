@@ -53,10 +53,10 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
                     // get param obj to add party order request
                     var preparedParamJsonObj = getParamDataObjForPartyOrderRequest();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchAreaParamJsonObj = {};
-                        fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         // calling PartyOrdersServices to add party order request
-                        PartyOrdersServices.addPartyOrderRequest(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        PartyOrdersServices.addPartyOrderRequest(apiParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var poRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'poRequestedStatusDetails', retResponseJson);
@@ -105,11 +105,11 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
             try{
                 var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchAreaParamJsonObj = {};
-                    fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.partyOrderListArrObj = false;
                     // calling PartyOrdersServices to get party order list
-                    PartyOrdersServices.getPartyOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                    PartyOrdersServices.getPartyOrdersList(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var partyOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'partyOrderList', retResponseJson);
