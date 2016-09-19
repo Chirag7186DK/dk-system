@@ -223,18 +223,29 @@
             
             <!-- order summary details details -->
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_orderSummaryContainerDivClass">
-                <p class='vpd_orderSummaryLabelPClass'> 
-                    <i class='fa fa-credit-card'></i> CART SUMMARY
+                <p class='vpd_orderSummaryHeaderLblPClass'> 
+                    <i class='fa fa-shopping-basket'></i> CART SUMMARY
                 </p>
                 <hr class="vpd_horizontalLineClass">
-                <p class='vpd_orderSummaryTotalProductPricePClass'> 
-                    Total Item(s) : {{ordercartItemRequestedCount}}
+                <p class="vpd_totalOrderStorePClass">
+                    Total Stores: {{totalStores}}
                 </p>
-                <p class='vpd_orderSummaryTotalProductAmtPClass'>
-                    <i class="fa fa-rupee"></i> Subtotal : {{subtotalOrderAmt}}
+                <p class="vpd_totalOrderItemPClass">
+                    Total Item: {{ordercartItemRequestedCount}}
+                </p>
+                <p class="vpd_orderSubtotalAmtPClass">
+                    Subtotal (Rs): {{subtotalOrderAmt}}
+                </p>
+                <p class="vpd_totalOrderDeliveryFeePClass">
+                    Total Delivery (Rs): {{totalDeliveryFee}}
+                </p>
+                <p class="vpd_totalOrderAmtPClass">
+                    Total (Rs): {{totalOrderAmt}}
                 </p>
                 <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
-                    <button class="vpd_orderSummaryCheckoutBtnClass btn">Checkout to Pay Rs: {{subtotalOrderAmt}}</button>
+                    <button class="btn vpd_orderSummaryCheckoutBtnClass">
+                        CHECKOUT
+                    </button>
                 </p>
             </div>
             
