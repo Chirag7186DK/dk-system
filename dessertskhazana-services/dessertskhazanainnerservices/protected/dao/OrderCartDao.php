@@ -241,17 +241,27 @@ class OrderCartDao{
         if(array_key_exists('deliveryfee', $paramJson)){
             $dynamicSql.=" deliveryfee='".$paramJson['deliveryfee']."',";
         }
+        if(array_key_exists('subtotalamount', $paramJson)){
+            $dynamicSql.=" subtotalamount='".$paramJson['subtotalamount']."',";
+        }
         if(array_key_exists('apply_deliveryfee', $paramJson)){
             $dynamicSql.=" apply_deliveryfee='".$paramJson['apply_deliveryfee']."',";
         }
         if(array_key_exists('discountamount', $paramJson)){
             $dynamicSql.=" discountamount='".$paramJson['discountamount']."',";
         }
-        if(array_key_exists('subtotalamount', $paramJson)){
-            $dynamicSql.=" subtotalamount='".$paramJson['subtotalamount']."',";
-        }
         if(array_key_exists('totalamount', $paramJson)){
             $dynamicSql.=" totalamount='".$paramJson['totalamount']."',";
+        }
+        if(array_key_exists('address', $paramJson)){
+            if($paramJson['address']!='' && strlen($paramJson['address'])>0){
+                $dynamicSql.=" address='".$paramJson['address']."',";
+            }
+        }
+        if(array_key_exists('updated_by', $paramJson)){
+            if($paramJson['updated_by']!=''){
+                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
+            }
         }
         if(array_key_exists('status', $paramJson)){
             if($paramJson['status']!=''){
@@ -261,14 +271,6 @@ class OrderCartDao{
         if(array_key_exists('reason', $paramJson)){
             if($paramJson['reason']!='' && strlen($paramJson['reason'])>0){
                 $dynamicSql.=" reason='".$paramJson['reason']."',";
-            }
-        }
-        if(array_key_exists('totalamount', $paramJson)){
-            $dynamicSql.=" totalamount='".$paramJson['totalamount']."',";
-        }
-        if(array_key_exists('updated_by', $paramJson)){
-            if($paramJson['updated_by']!=''){
-                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
             }
         }
         if($dynamicSql!=''){
