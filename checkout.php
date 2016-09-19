@@ -108,7 +108,7 @@
                     </p>
                 </div>
                 <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryAddressSaveBtnPClass">
-                    <button ng-click="checkOrderDeliveryAddressDataForSave('chkout_eachStoreOrderSummaryDivClass')" class='btn chkout_orderDeliveryAddressSaveBtnClass'>
+                    <button ng-click="checkOrderDeliveryAddressDataForUpdate('chkout_eachStoreOrderSummaryDivClass')" class='btn chkout_orderDeliveryAddressSaveBtnClass'>
                         SAVE
                     </button>
                 </p>
