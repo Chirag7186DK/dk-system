@@ -25,10 +25,10 @@ function generateDkUserSessionId(){
 // CJ define this funcion 2016-08-12
 function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     // get param obj 
-    var preparedParamJsonObj = getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad);
-    if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+    var paramDataObj = getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad);
+    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
         var fetchAreaParamJsonObj = {};
-        fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+        fetchAreaParamJsonObj['dkParamDataArr'] = paramDataObj;
         communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageTrackUserAccessingWebsites", 'apiFile', 'POST', '', fetchAreaParamJsonObj).done(function(retResponseJson){});
     }
 }
