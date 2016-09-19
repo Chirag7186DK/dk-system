@@ -703,7 +703,7 @@ class commonfunction{
                 // store one by one rating/review question answer details 
                 $ratingReviewedProductArr = $paramJsonData['ratingReviewedProductArr'];
                 if(count($ratingReviewedProductArr)==4){
-                    // fetch group no
+                    // fetch max groupno
                     $userGrpNo = RatingReviewDao :: getMaxUserGrpNoFromRatingReviewedProduct();
                     if($userGrpNo<=0){
                         $userGrpNo = rand(0, 10000);
