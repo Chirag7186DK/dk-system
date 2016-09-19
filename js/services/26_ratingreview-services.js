@@ -4,7 +4,7 @@
     angular.module('DKAPP').factory('RatingReviewServices', RatingReviewServices);
 
     // CJ defined this function 2016-04-22
-    function RatingReviewServices($http, $q){
+    function RatingReviewServices(){
         try{
 
             var ratingReviewDetails = {};
