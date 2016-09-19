@@ -8,10 +8,10 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
         $rootScope.loadAverageRatingReviewedProduct = function(){
             try{
                 // get param obj
-                var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                var paramDataObj = getParamObjFromSessionForRatingReviewDetails();
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
-                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.avgRatingReviewedProductDetails = false;
                     // calling RatingReviewServices 
                     RatingReviewServices.getAverageRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
@@ -24,7 +24,6 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             }
                         });
                     });
-                    
                 }
             }catch(ex){
                 $rootScope.avgRatingReviewedProductDetails = false;
@@ -36,10 +35,10 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
         $rootScope.loadMaxAverageRatingReviewedProduct = function(){
             try{
                 // get param obj to get product description details
-                var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                var paramDataObj = getParamObjFromSessionForRatingReviewDetails();
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
-                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.maxRatingReviewedTypeDetailsArr = false;
                     // calling RatingReviewServices 
                     RatingReviewServices.getMaxRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
@@ -63,10 +62,10 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
         $rootScope.loadStoreRatingReviewQuestions = function(){
             try{
                 // get param obj to get product description details
-                var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                var paramDataObj = getParamObjFromSessionForRatingReviewDetails();
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
-                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.storeRatingReviewQuestionDetails = false;
                     $rootScope.isStoreRatingReviewQuestionFound = false;
                     // calling RatingReviewServices 
@@ -94,10 +93,10 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
         $rootScope.loadAllUserRatingReviewProduct = function(){
             try{
                 // get param obj to load all user rating about product 
-                var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                var paramDataObj = getParamObjFromSessionForRatingReviewDetails();
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
-                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.allUserRatingReviewProductDetailsArr = false;
                     // calling RatingReviewServices 
                     RatingReviewServices.getAllUserRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
@@ -148,12 +147,13 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isUserAddedRatingReviewProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isUserAddedRatingReviewProduct', retResponseJson);
                             }
+                            alert(isUserAddedRatingReviewProduct);
                             if(isUserAddedRatingReviewProduct==='TRUE'){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !!!';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
+                                $rootScope.loadAverageRatingReviewedProduct();
                                 $rootScope.loadMaxAverageRatingReviewedProduct();
                                 $rootScope.loadAllUserRatingReviewProduct();
-                                $rootScope.loadAverageRatingReviewedProduct();
                             }
                             showNotificationBoxMsg(notifyMsgStr);
                         });
