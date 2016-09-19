@@ -11,14 +11,14 @@ function LocationController($scope, $rootScope, LocationServices){
                 // get param obj to get delivery city list
                 var preparedParamJsonObj = getParamObjFromSessionForLoadingDeliveryCityList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchCityParamJsonObj = {};
-                    fetchCityParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.deliveryCityList = false;
                     $rootScope.userSelectedDeliveryCityId = false;
                     $rootScope.userSelectedDeliveryCityDataObj = false;
                     $rootScope.isResetDeliveryCityDependencySessionData = 'Y';
                     // calling LocationServices to get delivery city list
-                    LocationServices.getDeliveryCityList(fetchCityParamJsonObj).done(function(retResponseJson){
+                    LocationServices.getDeliveryCityList(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', retResponseJson);
@@ -119,14 +119,14 @@ function LocationController($scope, $rootScope, LocationServices){
                     // get param obj to delivery area list
                     var preparedParamJsonObj = getParamObjFromSessionForLoadingDeliveryAreaList();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchParamJsonObj = {};
-                        fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.deliveryAreaList = false;
                         $rootScope.userSelectedDeliveryAreaId = false;
                         $rootScope.userSelectedDeliveryAreaDataObj = false;
                         $rootScope.isResetDeliveryAreaDependencySessionData = 'Y';
                         // calling LocationServices to get delivery area list
-                        LocationServices.getDKDeliveryAreaList(fetchParamJsonObj).done(function(retResponseJson){
+                        LocationServices.getDKDeliveryAreaList(apiParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
@@ -233,11 +233,11 @@ function LocationController($scope, $rootScope, LocationServices){
                     // get param obj to desserts type list
                     var preparedParamJsonObj = getParamObjFromSessionForLoadingDeliveryAreaBasedDessertsTypeList();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchParamJsonObj = {};
-                        fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.deliveryAreaBasedDessertsTypeList = false;
                         // calling LocationServices to get delivery area based desserts type list
-                        LocationServices.getDKDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                        LocationServices.getDKDeliveryAreaBasedDessertsTypeList(apiParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
