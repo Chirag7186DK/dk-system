@@ -63,8 +63,8 @@ function CheckoutController($rootScope, OrderCartServices){
         }
     };
     
-    // addOrderDeliveryAddressInOrdercartStore
-    $rootScope.addOrderDeliveryAddressInOrdercartStore = function(fcontentClass){
+    // updateOrderDeliveryAddressInOrdercartStore
+    $rootScope.updateOrderDeliveryAddressInOrdercartStore = function(fcontentClass){
         try{
             // collect product data
             var preparedProductParamDataObj = getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass);
@@ -72,14 +72,14 @@ function CheckoutController($rootScope, OrderCartServices){
                 var fetchedParamJsonObj = {};
                 fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
                 // calling OrderCartServices 
-                OrderCartServices.addStorewiseOrderDeliveryAddress(fetchedParamJsonObj).done(function(retResponseJson){
+                OrderCartServices.updateOrderDeliveryAddressInOrdercartStore(fetchedParamJsonObj).done(function(retResponseJson){
                     $rootScope.$apply(function(){
-                        var isOrderDeliveryAddedSuccessfully = 'FALSE';
+                        var isUpdatedOrderDeliveryAddress = 'FALSE';
                         var notificationMsgStr = "Please try again to add delivery address !!!";
                         if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                            isOrderDeliveryAddedSuccessfully = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isOrderDeliveryAddedSuccessfully', retResponseJson);
+                            isUpdatedOrderDeliveryAddress = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUpdatedOrderDeliveryAddress', retResponseJson);
                         }
-                        if(isOrderDeliveryAddedSuccessfully==='TRUE'){
+                        if(isUpdatedOrderDeliveryAddress==='TRUE'){
                             notificationMsgStr = "Order delivery address added successfully !!!";
                         }
                         showNotificationBoxMsg(notificationMsgStr);
