@@ -695,25 +695,26 @@ class commonfunction{
         $retStatus = 'FALSE';
         // checking param data length
         if(count($paramJsonData)>0 && $paramJsonData!=false){
-            // fetch unmd5 user data 
             $counterSuccess = 0;
+            // fetch user session data 
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $unMd5UserLoggedId = $userSessionDetailsData['unmd5UserId'];
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
                 // store one by one rating/review question answer details 
-                $userAllQuesAnwerRatingReviewAbtProductArr = $paramJsonData['userAllQuesAnwerRatingReviewAbtProductArr'];
-                if(count($userAllQuesAnwerRatingReviewAbtProductArr)==4){
-                    $userGrpNo = RatingReviewDao :: getMaxUserGrpNoFromRatingReviewAbtProduct();
+                $ratingReviewedProductArr = $paramJsonData['ratingReviewedProductArr'];
+                if(count($ratingReviewedProductArr)==4){
+                    // fetch group no
+                    $userGrpNo = RatingReviewDao :: getMaxUserGrpNoFromRatingReviewedProduct();
                     if($userGrpNo<=0){
                         $userGrpNo = rand(0, 10000);
                     }
-                    // iterate each 
-                    for($eachIndex = 0; $eachIndex<count($userAllQuesAnwerRatingReviewAbtProductArr); $eachIndex++){
-                        $userAllQuesAnwerRatingReviewAbtProductArr[$eachIndex]['user_id'] = $unMd5UserLoggedId;
-                        $userAllQuesAnwerRatingReviewAbtProductArr[$eachIndex]['created_by'] = $unMd5UserLoggedId;
-                        $userAllQuesAnwerRatingReviewAbtProductArr[$eachIndex]['group_no'] = $userGrpNo;
-                        $lastInsertedRatingReviewAbtProductId = RatingReviewDao :: addUserRatingReviewAbtProduct($userAllQuesAnwerRatingReviewAbtProductArr[$eachIndex]);
-                        if($lastInsertedRatingReviewAbtProductId>0){
+                    // iterate each data
+                    for($eachIndex = 0; $eachIndex<count($ratingReviewedProductArr); $eachIndex++){
+                        $ratingReviewedProductArr[$eachIndex]['user_id'] = $unmd5UserId;
+                        $ratingReviewedProductArr[$eachIndex]['created_by'] = $unmd5UserId;
+                        $ratingReviewedProductArr[$eachIndex]['group_no'] = $userGrpNo;
+                        $lastInsertedIdRatingReviewProduct = RatingReviewDao :: addUserRatingReviewProduct($ratingReviewedProductArr[$eachIndex]);
+                        if($lastInsertedIdRatingReviewProduct>0){
                             $counterSuccess++;
                         }
                     }
