@@ -236,7 +236,7 @@
                     Your shopping bags contains 
                     (Items: {{ordercartItemRequestedCount}}, Subtotal Rs: {{subtotalOrderAmt}},
                     Total Delivery Rs: {{totalDeliveryFee}}, Total Amt Rs: {{totalOrderAmt}})
-                    <button ng-controller="CheckoutController"  ng-click="gotoCheckoutProcess();" class='btn uca_ordercartSectionCheckoutBtnClass'>
+                    <button ng-controller="OrderCartController"  ng-click="gotoCheckoutProcess();" class='btn uca_ordercartSectionCheckoutBtnClass'>
                         CHECKOUT
                     </button>
                 </p>
@@ -325,7 +325,7 @@
                                 <button ng-click="removeItemOrdercart(eachItemDataObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>
                                     REMOVE
                                 </button>
-                                <button class='btn ordercartRequestedEachItemCheckoutBtnClass'>
+                                <button ng-controller="OrderCartController" ng-click="gotoCheckoutProcess();" class='btn ordercartRequestedEachItemCheckoutBtnClass'>
                                     CHECKOUT
                                 </button>
                             </p>
