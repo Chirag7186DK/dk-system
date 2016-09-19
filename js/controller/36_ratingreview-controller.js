@@ -10,11 +10,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                 // get param obj
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.avgRatingReviewedProductDetails = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getAverageRatingReviewProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getAverageRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
@@ -38,11 +38,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.maxRatingReviewedTypeDetailsArr = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getMaxRatingReviewProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getMaxRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
@@ -65,12 +65,12 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                 // get param obj to get product description details
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeRatingReviewQuestionDetails = false;
                     $rootScope.isStoreRatingReviewQuestionFound = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getStoreRatingReviewQuestions(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getStoreRatingReviewQuestions(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -96,11 +96,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                 // get param obj to load all user rating about product 
                 var preparedParamJsonObj = getParamObjFromSessionForRatingReviewDetails();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.allUserRatingReviewProductDetailsArr = false;
                     // calling RatingReviewServices 
-                    RatingReviewServices.getAllUserRatingReviewProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.getAllUserRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
@@ -159,10 +159,10 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
         $rootScope.addUserRatingReviewProduct = function(preparedParamJsonObj, fcontentCass){
             try{
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     // calling RatingReviewServices 
-                    RatingReviewServices.addRatingReviewAboutProduct(fetchedParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.addRatingReviewAboutProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             var notifyMsgStr = 'Please try again to post review & rating about product !';
                             var isUserAddedRatingReviewProduct = 'FALSE';
