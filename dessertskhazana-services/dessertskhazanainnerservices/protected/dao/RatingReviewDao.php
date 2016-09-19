@@ -235,7 +235,7 @@ class RatingReviewDao{
         try{
             $connection = Yii::app()->db;
             $sqlFetchQuery = " SELECT 
-                COALESCE(urd.shopstore_id, '') shopStoreId,
+                COALESCE(urd.store_id, '') shopStoreId,
                 COALESCE(urd.user_id, '') userId,
                 COALESCE(urd.product_listid, '') productListId,
                 COALESCE(urd.group_no, '') groupNo,
