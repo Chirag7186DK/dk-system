@@ -9,56 +9,56 @@
 
             var productDetails = {};
 
-            productDetails.getProductTypeAllProductCategoryList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeAllProductCategoryDetails", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            productDetails.getProductTypeAllProductCategoryList = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeAllProductCategoryDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
-            productDetails.getProductTypeProductCategoryFilterTypeList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryFilterTypeList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            productDetails.getProductTypeProductCategoryFilterTypeList = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryFilterTypeList", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
-            productDetails.getProductTypeProductCategoryAllProductList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryAllProductDetails", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            productDetails.getProductTypeProductCategoryAllProductList = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryAllProductDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
-            productDetails.getProductTypeProductCategoryProductDetails = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryProductDetails", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            productDetails.getProductTypeProductCategoryProductDetails = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryProductDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
-            productDetails.getProductDescriptionDetails = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductDescriptionDetails", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            productDetails.getProductDescriptionDetails = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductDescriptionDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
