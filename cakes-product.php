@@ -314,7 +314,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div ng-repeat="eachReviewRatingTypeObj in ratingReviewQuestionAboutProductByShopStoresDetails" ng-if="'TEXTAREA'===eachReviewRatingTypeObj.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeProductContainerDivClass'>
+                        <div ng-repeat="eachReviewRatingTypeObj in storeRatingReviewQuestionDetails" ng-if="'TEXTAREA'===eachReviewRatingTypeObj.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeProductContainerDivClass'>
                             <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
                                 {{eachReviewRatingTypeObj.questionTitle}}
                             </div>
@@ -374,7 +374,9 @@
                                 </p>
                                 <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserRatedAbtProductPClass'>
                                     {{eachReviewedRatingTypeDetails.questionTitle}} : 
-                                    <span class="vpd_ratedQuestionAboutProductSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
+                                    <span class="vpd_ratedQuestionAboutProductSClass">
+                                        {{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i>
+                                    </span>
                                 </p>
                                 <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserReviewedCommentAbtProductPClass'>
                                     {{eachReviewedRatingTypeDetails.answerText}}
