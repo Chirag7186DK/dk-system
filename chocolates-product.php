@@ -223,18 +223,29 @@
             
             <!-- order summary details details -->
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_orderSummaryContainerDivClass">
-                <p class='vpd_orderSummaryLabelPClass'> 
-                    <i class='fa fa-credit-card'></i> CART SUMMARY
+                <p class='vpd_orderSummaryHeaderLblPClass'> 
+                    <i class='fa fa-shopping-basket'></i> CART SUMMARY
                 </p>
                 <hr class="vpd_horizontalLineClass">
-                <p class='vpd_orderSummaryTotalProductPricePClass'> 
-                    Total Item(s) : {{ordercartItemRequestedCount}}
+                <p class="vpd_totalOrderStorePClass">
+                    Total Stores: {{totalStores}}
                 </p>
-                <p class='vpd_orderSummaryTotalProductAmtPClass'>
-                    <i class="fa fa-rupee"></i> Subtotal : {{subtotalOrderAmt}}
+                <p class="vpd_totalOrderItemPClass">
+                    Total Item: {{ordercartItemRequestedCount}}
+                </p>
+                <p class="vpd_orderSubtotalAmtPClass">
+                    Subtotal (Rs): {{subtotalOrderAmt}}
+                </p>
+                <p class="vpd_totalOrderDeliveryFeePClass">
+                    Total Delivery (Rs): {{totalDeliveryFee}}
+                </p>
+                <p class="vpd_totalOrderAmtPClass">
+                    Total (Rs): {{totalOrderAmt}}
                 </p>
                 <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
-                    <button class="vpd_orderSummaryCheckoutBtnClass btn">Checkout to Pay Rs: {{subtotalOrderAmt}}</button>
+                    <button class="btn vpd_orderSummaryCheckoutBtnClass">
+                        CHECKOUT
+                    </button>
                 </p>
             </div>
             
@@ -295,26 +306,26 @@
                             </div>
                             <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
                                 <select class='form-control vpd_ratingProductSelectCtrlClass'>
-                                    <option data-productlistid="{{productDetails[0]['productListId']}}"  data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='1'>1 Star</option>
-                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='2'>2 Star</option>
-                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='3'>3 Star</option>
-                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='4'>4 Star</option>
-                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='5'>5 Star</option>
+                                    <option data-productlistid="{{productDetails[0]['productListId']}}"  data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='1'>1 Star</option>
+                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='2'>2 Star</option>
+                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='3'>3 Star</option>
+                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='4'>4 Star</option>
+                                    <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='5'>5 Star</option>
                                 </select>
                             </div>
                         </div>
-                        <div ng-repeat="eachReviewRatingTypeObj in ratingReviewQuestionAboutProductByShopStoresDetails" ng-if="'TEXTAREA'===eachReviewRatingTypeObj.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeProductContainerDivClass'>
+                        <div ng-repeat="eachReviewRatingTypeObj in storeRatingReviewQuestionDetails" ng-if="'TEXTAREA'===eachReviewRatingTypeObj.questionPattern" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_eachTakeUserReviewRatingTypeProductContainerDivClass'>
                             <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
                                 {{eachReviewRatingTypeObj.questionTitle}}
                             </div>
                             <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
-                                <TEXTAREA data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-shopstoreid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
+                                <TEXTAREA data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
                             </div>
                         </div>
                         <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isStoreRatingReviewQuestionFound'>
                             <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2'></div>
                             <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
-                                <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddRatingReviewAboutProduct('vpd_takeUserReviewRatingAboutProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn'>
+                                <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddUserRatingReviewProduct('vpd_takeUserReviewRatingProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn'>
                                     SUBMIT A REVIEW
                                 </button> 
                                 <span class='vpd_infoAbtToEnableSubmitRatingReviewBtnSClass' ng-hide='isEnableRatingReviewSubmitButton'>
@@ -363,7 +374,9 @@
                                 </p>
                                 <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserRatedAbtProductPClass'>
                                     {{eachReviewedRatingTypeDetails.questionTitle}} : 
-                                    <span class="vpd_ratedQuestionAboutProductSClass">{{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i></span>
+                                    <span class="vpd_ratedQuestionAboutProductSClass">
+                                        {{eachReviewedRatingTypeDetails.givenAnswerPoints}} <i class="fa fa-star"></i>
+                                    </span>
                                 </p>
                                 <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'TEXTAREA'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserReviewedCommentAbtProductPClass'>
                                     {{eachReviewedRatingTypeDetails.answerText}}
