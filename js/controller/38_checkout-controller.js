@@ -56,7 +56,7 @@ function CheckoutController($rootScope, OrderCartServices){
         // validating order delivery address details
         var validatedDataStatus = validateOrderDeliveryAddressData(fcontentClass);
         if(validatedDataStatus===true){
-            $rootScope.addOrderDeliveryAddressInOrdercartStore(fcontentClass);
+            $rootScope.updateOrderDeliveryAddressInOrdercartStore(fcontentClass);
         }else{
             var notifyMsgStr = "Please enter product qty / message to add item in order cart !!!";
             showNotificationBoxMsg(notifyMsgStr);
