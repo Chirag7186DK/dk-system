@@ -1953,7 +1953,7 @@ function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
             // through view product page
             if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
                 if($('.'+fcontentClass).length>0){
-                    paramObj['ordercartStoreAddressArr'] = new Array();
+                    paramObj['deliveryAddressArr'] = new Array();
                     // iterate each form content
                     $('.'+fcontentClass).each(function(){
                         var currentFormContentObj = $(this);
@@ -1962,7 +1962,7 @@ function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
                             var ordercartStoreId = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').attr('data-ordercartstoreid'));
                             if(deliveryAddress!=='' && deliveryAddress!==false 
                                 && deliveryAddress!==undefined && parseInt(ordercartStoreId)>0){
-                                (paramObj['ordercartStoreAddressArr']).push({
+                                (paramObj['deliveryAddressArr']).push({
                                     "ordercartStoreId":ordercartStoreId,
                                     "address":deliveryAddress
                                 });
