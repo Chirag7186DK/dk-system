@@ -713,8 +713,8 @@ class commonfunction{
                         $ratingReviewedProductArr[$eachIndex]['user_id'] = $unmd5UserId;
                         $ratingReviewedProductArr[$eachIndex]['created_by'] = $unmd5UserId;
                         $ratingReviewedProductArr[$eachIndex]['group_no'] = $userGrpNo;
-                        $lastInsertedIdRatingReviewProduct = RatingReviewDao :: addUserRatingReviewProduct($ratingReviewedProductArr[$eachIndex]);
-                        if($lastInsertedIdRatingReviewProduct>0){
+                        $lastInsertedId = RatingReviewDao :: addUserRatingReviewProduct($ratingReviewedProductArr[$eachIndex]);
+                        if($lastInsertedId>0 && $lastInsertedId!=false){
                             $counterSuccess++;
                         }
                     }
