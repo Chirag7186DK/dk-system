@@ -200,6 +200,34 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
         return $rspDetails;
     }
     
+    // CJ defined this action 2016-08-19
+    public function updateDeliveryAddressOrdercartStorewise($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isUpdatedOrderDeliveryAddress'] = 'FALSE';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            // fetching user session data
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
+                $deliveryAddressDataArr = $dkParamDataArr['deliveryAddressArr'];
+                if(count($deliveryAddressDataArr)>0 && $deliveryAddressDataArr!==false){
+                    // iterate each delivery address data
+                    for($eachIndex = 0; $eachIndex<count($deliveryAddressDataArr); $eachIndex++){
+                        $updateOrdercartStoreDataObj = array(
+                            "address"=>$deliveryAddressDataArr[$eachIndex]['address'], 
+                            "updated_by"=>$unmd5UserId,
+                            "id"=>$deliveryAddressDataArr[$eachIndex]['ordercartStoreId']
+                        );
+                        $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
+                    }
+                    $rspDetails['isUpdatedOrderDeliveryAddress'] = 'TRUE';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+    
     // CJ defined this action 2016-09-05
     public function resetAllItemOrdercart($dkParamDataArr){
         $rspDetails = array();
