@@ -51,10 +51,10 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                     // get param obj to add customize order request
                     var preparedParamJsonObj = getParamDataObjForCustomizeOrderRequest();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchAreaParamJsonObj = {};
-                        fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         // calling CustomizeOrdersServices to add customize order request
-                        CustomizeOrdersServices.addCustomizeOrderRequest(fetchAreaParamJsonObj).done(function(retResponseJson){
+                        CustomizeOrdersServices.addCustomizeOrderRequest(apiParamJsonObj).done(function(retResponseJson){
                             $scope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var coRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'coRequestedStatusDetails', retResponseJson);
@@ -103,11 +103,11 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
             try{
                 var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchAreaParamJsonObj = {};
-                    fetchAreaParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.customizeOrderListArrObj = false;
                     // calling CustomizeOrdersServices to add customize order request
-                    CustomizeOrdersServices.getCustomizeOrdersList(fetchAreaParamJsonObj).done(function(retResponseJson){
+                    CustomizeOrdersServices.getCustomizeOrdersList(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var customizeOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'customizeOrderList', retResponseJson);
