@@ -111,14 +111,14 @@ function OrderCartController($rootScope, OrderCartServices, StoreServices){
             }
         };
 
-        //  checkOrderDeliveryAddressDataForSave
-        $rootScope.checkOrderDeliveryAddressDataForSave = function(fcontentClass){
+        //  checkOrderDeliveryAddressDataForUpdate
+        $rootScope.checkOrderDeliveryAddressDataForUpdate = function(fcontentClass){
             // validating order delivery address details
             var validatedDataStatus = validateOrderDeliveryAddressData(fcontentClass);
             if(validatedDataStatus===true){
                 $rootScope.updateOrderDeliveryAddressInOrdercartStore(fcontentClass);
             }else{
-                var notifyMsgStr = "Please enter delivery address !!!";
+                var notifyMsgStr = "Please enter order delivery address for updation !!!";
                 showNotificationBoxMsg(notifyMsgStr);
             }
         };
