@@ -24,11 +24,11 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 // get param obj data
                 var preparedParamJsonObj = getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeStoresList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchParamJsonObj = {};
-                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.allStoresInfoList = false;
                     // calling StoreServices
-                    StoreServices.getStoreListDeliveryAreaBasedDessertsType(fetchParamJsonObj).done(function(retResponseJson){
+                    StoreServices.getStoreListDeliveryAreaBasedDessertsType(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', retResponseJson);
@@ -51,11 +51,11 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 // get param obj to desserts type list
                 var preparedParamJsonObj = getParamObjFromSessionAtDeliveryAreaBasedStoreServeDessertsTypeList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchParamJsonObj = {};
-                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeDeliveryAreaBasedDessertsTypeList = false;
                     // calling StoreServices
-                    StoreServices.getDeliveryAreaBasedDessertsTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                    StoreServices.getDeliveryAreaBasedDessertsTypeList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
@@ -90,13 +90,13 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 // get param obj
                 var preparedParamJsonObj = getParamObjForStoreSummaryInfo();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeInfo = false;
                     $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !!!';
                     $rootScope.isRatingReviewBasedInfoFound = false;
                     // calling StoreServices
-                    StoreServices.getStoreSummaryInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                    StoreServices.getStoreSummaryInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
@@ -123,11 +123,11 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 // get param obj to load product all product category list
                 var preparedParamJsonObj = getParamObjForProductTypeAllProductCategoryList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchParamJsonObj = {};
-                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productTypeAllProductCategoryList = false;
                     // calling ProductServices
-                    ProductServices.getProductTypeAllProductCategoryList(fetchParamJsonObj).done(function(retResponseJson){
+                    ProductServices.getProductTypeAllProductCategoryList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
@@ -174,10 +174,10 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 // get param obj to load product type product category filter type list
                 var preparedParamJsonObj = getParamObjForProductTypeProductCategoryFilterTypeList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchParamJsonObj = {};
-                    fetchParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     // calling ProductServices
-                    ProductServices.getProductTypeProductCategoryFilterTypeList(fetchParamJsonObj).done(function(retResponseJson){
+                    ProductServices.getProductTypeProductCategoryFilterTypeList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'filterOperationTypeList', retResponseJson);
@@ -432,14 +432,14 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                 // get param obj
                 var preparedParamJsonObj = getParamObjForProductTypeProductCategoryAllProductList();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeAllProductDetailsList = false;
                     $rootScope.storeDefaultSelectProductCategoryTitle = '';
                     $rootScope.storeProductNotFoundMsgStr = '';
                     $rootScope.storeTotalProductCount = 0;
                     // calling ProductServices 
-                    ProductServices.getProductTypeProductCategoryAllProductList(fetchedParamJsonObj).done(function(retResponseJson){
+                    ProductServices.getProductTypeProductCategoryAllProductList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
@@ -473,13 +473,12 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     // get param obj to load all user rating review about store 
                     var preparedParamJsonObj = getParamObjFromSessionForStoreAllUserRatingReviewedDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.allUserRatingReviewDetails = false;
                         // calling RatingReviewServices 
-                        RatingReviewServices.getStoreAllUserRatingReviewed(fetchedParamJsonObj).done(function(retResponseJson){
+                        RatingReviewServices.getStoreAllUserRatingReviewed(apiParamJsonObj).done(function(retResponseJson){
                             $rootScope.$apply(function(){
-                                showHideLoaderBox('hide');
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                                     if(retObj!==false && retObj!==undefined && retObj!==''){
@@ -503,11 +502,11 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     // get param obj to load store working style details
                     var preparedParamJsonObj = getParamObjForCShopStoreWorkingStyleDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.storeWorkingStyleDetails = false;
                         // calling StoreServices 
-                        StoreServices.getStoreWorkingStyleDetails(fetchedParamJsonObj).done(function(retResponseJson){
+                        StoreServices.getStoreWorkingStyleDetails(apiParamJsonObj).done(function(retResponseJson){
                             $rootScope.$apply(function(){
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                     var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'shopstoreWorkingStyleDetails', retResponseJson);
