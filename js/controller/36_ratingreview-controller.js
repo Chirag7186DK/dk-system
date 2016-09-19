@@ -147,13 +147,12 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isUserAddedRatingReviewProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isUserAddedRatingReviewProduct', retResponseJson);
                             }
-                            alert(isUserAddedRatingReviewProduct);
                             if(isUserAddedRatingReviewProduct==='TRUE'){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !!!';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
                                 $rootScope.loadAverageRatingReviewedProduct();
-                                $rootScope.loadMaxAverageRatingReviewedProduct();
-                                $rootScope.loadAllUserRatingReviewProduct();
+                                //$rootScope.loadMaxAverageRatingReviewedProduct();
+                                //$rootScope.loadAllUserRatingReviewProduct();
                             }
                             showNotificationBoxMsg(notifyMsgStr);
                         });
