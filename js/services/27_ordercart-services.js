@@ -166,7 +166,17 @@
                 return promiseObject;
             };
             
-            // resetAllItemOrdercart
+            orderDetails.updateOrderDeliveryAddressInOrdercartStore = function(preparedParamJsonObj){
+                var jsonParamBlockUIObject = {};
+                jsonParamBlockUIObject['css'] = {"padding":10};
+                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageDeliveryAddressOrdercartStorewise", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
+                    showHideLoaderBox('hide');
+                });
+                return promiseObject;
+            };
+            
             orderDetails.resetAllItemOrdercart = function(){
                 try{
                     // fetch param data from session
