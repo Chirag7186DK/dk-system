@@ -58,11 +58,11 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.userPersonalDetails =  false;
                     // calling UsersServices 
-                    UsersServices.getUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                    UsersServices.getUserPersonalInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var userPersonalDetailsArrObj =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -102,10 +102,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             try{
                 if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
                     && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = userPersonalInfoParamData;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = userPersonalInfoParamData;
                     // calling UsersServices 
-                    UsersServices.updateUserPersonalInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                    UsersServices.updateUserPersonalInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var isUserprofileInfoUpdated =  false;
                             var notificationMsgStr = 'User profile info not update, please try again !';
@@ -152,10 +152,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             try{
                 if(userChangedPasswordInfoParamData!==false && userChangedPasswordInfoParamData!==undefined
                     && jQuery.isEmptyObject(userChangedPasswordInfoParamData)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = userChangedPasswordInfoParamData;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = userChangedPasswordInfoParamData;
                     // calling UsersServices 
-                    UsersServices.updateUserPasswordInfo(fetchedParamJsonObj).done(function(retResponseJson){
+                    UsersServices.updateUserPasswordInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var userpwdChangedStatusDetails =  false;
                             var notificationMsgStr = 'Your password is not change, please try again !';
@@ -208,12 +208,12 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.ordercartRequestedAllStoreWiseData =  false;
                     // $rootScope.ordercartRequestedSummaryData =  false;
                     // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.ordercartItemList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var ordercartRequestedData =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -252,11 +252,11 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.allOrdercartWiseCancelledData =  false;
                     // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.ordercartItemList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var ordercartCancelledData =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -293,11 +293,11 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 if(authenticatedUserParamDataObj!==false && authenticatedUserParamDataObj!==undefined
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                     authenticatedUserParamDataObj['ordercartItemListByStatusType'] = ordercartItemListByStatusType;
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.allOrdercartWiseOrderedData =  false;
                     // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.ordercartItemList(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var allOrdercartWiseOrderedData =  false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -349,10 +349,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                 // check is user logged in or not session
                 var paramDataObj = getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass);
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling OrderCartServices 
-                    OrderCartServices.updateItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.updateItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var isItemUpdatedFromOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to update item in order cart !";
@@ -379,10 +379,10 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             try{
                 var paramDataObj = getParamDataToRemoveItemFromOrdercart(productDetailsObj);
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling OrderCartServices 
-                    OrderCartServices.removeItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.removeItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var isItemRemovedFromOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to remove item from order cart !";
@@ -439,13 +439,13 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
                     showHideLoaderBox('show', jsonParamBlockUIObject);
 
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     
                     $rootScope.userSharingAllDiscountCouponDetailsArrObj =  false;
 
                     // calling DiscountCouponServices 
-                    DiscountCouponServices.userSharingDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
+                    DiscountCouponServices.userSharingDiscountCouponList(apiParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userSharingAllDiscountCouponDetailsArrObj =  false;
@@ -497,11 +497,11 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
                     showHideLoaderBox('show', jsonParamBlockUIObject);
 
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
 
                     // calling DiscountCouponServices 
-                    DiscountCouponServices.addSharingOffersFrmOneUserToOtherUsers(fetchedParamJsonObj).done(function(retResponseJson){
+                    DiscountCouponServices.addSharingOffersFrmOneUserToOtherUsers(apiParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var isOffersShared =  'FALSE';
@@ -538,14 +538,14 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
                     showHideLoaderBox('show', jsonParamBlockUIObject);
 
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     
                     $rootScope.userSharedAllDiscountCouponDetailsArrObj =  false;
                     $rootScope.totalCountUserSharedAllDiscountCoupon =  0;
 
                     // calling DiscountCouponServices 
-                    DiscountCouponServices.userSharedDiscountCouponList(fetchedParamJsonObj).done(function(retResponseJson){
+                    DiscountCouponServices.userSharedDiscountCouponList(apiParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                         $rootScope.$apply(function(){
                             var userSharedAllDiscountCouponDetailsArrObj =  false;
