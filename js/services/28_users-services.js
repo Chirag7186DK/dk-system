@@ -11,10 +11,10 @@
 
             // checkUserAuthentication
             userDetails.checkUserAuthentication = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/CheckUserAuthentication", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -25,11 +25,11 @@
             userDetails.signOutUser = function(){
                 try{
                     // fetch param data from session
-                    var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
-                    if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                        var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', fetchedParamJsonObj).done(function(retResponseJson){});
+                    var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                        var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(retResponseJson){});
                         return promiseObject;
                     }
                 }catch(ex){
@@ -39,10 +39,10 @@
 
             // getUserPersonalInfo
             userDetails.getUserPersonalInfo = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -51,10 +51,10 @@
 
             // updateUserPersonalInfo
             userDetails.updateUserPersonalInfo = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -63,10 +63,10 @@
 
             // updateUserPasswordInfo
             userDetails.updateUserPasswordInfo = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UpdateUserPasswordInfoData", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -98,12 +98,12 @@
             userDetails.refreshUserDashboardSummaryDataDetails = function(){
                 try{
                     // fetch param data from session
-                    var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
-                    if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                         // calling UsersServices 
-                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserDashboardSummaryData", 'apiFile', 'GET', '', fetchedParamJsonObj).done(function(retResponseJson){
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                             $rootScope.$apply(function(){
                                 var userDashboardDataObj = false;
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
