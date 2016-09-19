@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UsersController', UsersController);
 
-function UsersController($scope, $rootScope, $http, UsersServices){
+function UsersController($scope, $rootScope, UsersServices){
     try{
         
         // redirectToMyAccount
@@ -52,10 +52,10 @@ function UsersController($scope, $rootScope, $http, UsersServices){
         $rootScope.checkUserSignInAuthentication = function(paramDataObj){
             try{
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling UsersServices 
-                    UsersServices.checkUserAuthentication(fetchedParamJsonObj).done(function(retResponseJson){
+                    UsersServices.checkUserAuthentication(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             var authenticatedUserDetailsObj = false;
                             var notificationMsgStr = '';
