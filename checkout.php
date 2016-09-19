@@ -103,9 +103,8 @@
                         to '{{eachStoreOrderSummaryDataObj.deliveryAreaname}}' area
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
-                        Type delivery address
+                        Your delivery address
                         <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
-
                     </p>
                 </div>
                 <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryAddressSaveBtnPClass">
