@@ -26,10 +26,10 @@ function CheckoutController($rootScope, OrderCartServices){
             var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
             if(authenticatedUserParamDataObj!==false 
                 && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                var fetchedParamJsonObj = {};
-                fetchedParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
+                var apiParamJsonObj = {};
+                apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                 // calling OrderCartServices 
-                OrderCartServices.getStorewiseOrderSummaryForCheckoutProcess(fetchedParamJsonObj).done(function(retResponseJson){
+                OrderCartServices.getStorewiseOrderSummaryForCheckoutProcess(apiParamJsonObj).done(function(retResponseJson){
                     $rootScope.$apply(function(){
                         var allStorewiseOrderSummaryDataArrObj =  false;
                         if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -69,10 +69,10 @@ function CheckoutController($rootScope, OrderCartServices){
             // collect product data
             var preparedProductParamDataObj = getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass);
             if(preparedProductParamDataObj!==false && jQuery.isEmptyObject(preparedProductParamDataObj)===false){
-                var fetchedParamJsonObj = {};
-                fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
+                var apiParamJsonObj = {};
+                apiParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
                 // calling OrderCartServices 
-                OrderCartServices.updateOrderDeliveryAddressInOrdercartStore(fetchedParamJsonObj).done(function(retResponseJson){
+                OrderCartServices.updateOrderDeliveryAddressInOrdercartStore(apiParamJsonObj).done(function(retResponseJson){
                     $rootScope.$apply(function(){
                         var isUpdatedOrderDeliveryAddress = 'FALSE';
                         var notificationMsgStr = "Please try again to updated order delivery address !!!";
