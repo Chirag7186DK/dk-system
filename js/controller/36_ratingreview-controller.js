@@ -117,33 +117,12 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
             }
         };
         
-        // checkUserLoggedInForSubmitingRatingReviewAbtProduct
-        $rootScope.checkUserLoggedInForSubmitingRatingReviewAbtProduct = function(){
-            $rootScope.isEnableRatingReviewSubmitButton = false;
-            // check in session 
-            if(sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined){
-                // extract dk param obj from session
-                var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                if(existingDkParamObj!==false && existingDkParamObj!=='' && jQuery.isEmptyObject(existingDkParamObj)===false){
-                    // extract user param obj
-                    if(existingDkParamObj.hasOwnProperty('userSession')===true){
-                        var userSessionObj = existingDkParamObj['userSession'];
-                        if(userSessionObj.hasOwnProperty('isUserLoggedIn')===true){
-                            if(userSessionObj['isUserLoggedIn']==='Y'){
-                                $rootScope.isEnableRatingReviewSubmitButton = true;
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        
-        // collectDataToAddUserRatingReviewAboutProduct
-        $rootScope.collectDataToAddUserRatingReviewAboutProduct = function(fcontentCass){
-            var validatedDataStatus = validateUserRatingReviewProduct(fcontentCass);
+        // collectDataToAddUserRatingReviewProduct
+        $rootScope.collectDataToAddUserRatingReviewProduct = function(fcontentCass){
+            var validatedDataStatus = validateDataToAddUserRatingReviewProduct(fcontentCass);
             if(validatedDataStatus===true){
-                var paramDataObj  = getParamDataForAddingUserRatingReviewProduct(fcontentCass);
-                if(Object.keys(paramDataObj).length===3 && paramDataObj!==false){
+                var paramDataObj = getParamDataForAddingUserRatingReviewProduct(fcontentCass);
+                if(Object.keys(paramDataObj).length===4 && paramDataObj!==false){
                     $rootScope.addUserRatingReviewProduct(paramDataObj, fcontentCass);
                 }else{
                     var notifyMsgStr = 'Please enter comment for rating & review about product !';
@@ -156,21 +135,21 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
         };
         
         // addUserRatingReviewProduct
-        $rootScope.addUserRatingReviewProduct = function(preparedParamJsonObj, fcontentCass){
+        $rootScope.addUserRatingReviewProduct = function(paramDataObj, fcontentCass){
             try{
-                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
-                    apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling RatingReviewServices 
-                    RatingReviewServices.addRatingReviewAboutProduct(apiParamJsonObj).done(function(retResponseJson){
+                    RatingReviewServices.addUserRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            var notifyMsgStr = 'Please try again to post review & rating about product !';
+                            var notifyMsgStr = 'Please try again to post review & rating about product !!!';
                             var isUserAddedRatingReviewProduct = 'FALSE';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isUserAddedRatingReviewProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isUserAddedRatingReviewProduct', retResponseJson);
                             }
                             if(isUserAddedRatingReviewProduct==='TRUE'){
-                                notifyMsgStr = 'Your reviewed & rating about product posted successfully !';
+                                notifyMsgStr = 'Your reviewed & rating about product posted successfully !!!';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
                                 $rootScope.loadMaxAverageRatingReviewedProduct();
                                 $rootScope.loadAllUserRatingReviewProduct();
