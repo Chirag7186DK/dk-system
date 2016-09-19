@@ -9,23 +9,23 @@
 
             var customizeOrdersDetails = {
 
-                addCustomizeOrderRequest:function(preparedParamJsonObj){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CustomizeOrders/ManageCustomizeOrders", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){
+                addCustomizeOrderRequest:function(apiParamJsonObj){
+                    var blockUIObj = {};
+                    blockUIObj['css'] = {"padding":10};
+                    blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', blockUIObj);
+                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CustomizeOrders/ManageCustomizeOrders", 'apiFile', 'POST', '', apiParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                     });
                     return promiseObject;
                 },
 
-                getCustomizeOrdersList:function(preparedParamJsonObj){
-                    var jsonParamBlockUIObject = {};
-                    jsonParamBlockUIObject['css'] = {"padding":10};
-                    jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                    showHideLoaderBox('show', jsonParamBlockUIObject);
-                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CustomizeOrders/ManageCustomizeOrders", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+                getCustomizeOrdersList:function(apiParamJsonObj){
+                    var blockUIObj = {};
+                    blockUIObj['css'] = {"padding":10};
+                    blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                    showHideLoaderBox('show', blockUIObj);
+                    var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CustomizeOrders/ManageCustomizeOrders", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                         showHideLoaderBox('hide');
                     });
                     return promiseObject;
