@@ -2066,30 +2066,29 @@ function getParamDataForAddingUserRatingReviewProduct(fcClass){
         if(userSessionDataObj!==false && userSessionDataObj!==undefined 
             && jQuery.isEmptyObject(userSessionDataObj)===false){
             if($('.'+fcClass).length===1){
-                var userAllQuesAnswerRatingReviewAbtProductArr = new Array();
-                paramDataObj['user_sessionid'] = userSessionDataObj['user_sessionid'];
-                paramDataObj['udblogId'] = userSessionDataObj['udblogId'];
+                paramDataObj = $.extend(paramDataObj, userSessionDataObj);
+                var ratingReviewedProductArr = new Array();
                 if($('.'+fcClass).find('textarea').length===1){
                     var userEachQuesAnswerRatingReviewAbtProductObj = {};
                     var commentInputObj = $('.'+fcClass).find('textarea');
-                    userEachQuesAnswerRatingReviewAbtProductObj['shopstore_id'] = $(commentInputObj).attr('data-shopstoreid');
+                    userEachQuesAnswerRatingReviewAbtProductObj['store_id'] = $(commentInputObj).attr('data-storeid');
                     userEachQuesAnswerRatingReviewAbtProductObj['product_listid'] = $(commentInputObj).attr('data-productlistid');
                     userEachQuesAnswerRatingReviewAbtProductObj['question_id'] = $(commentInputObj).attr('data-questionid');
                     userEachQuesAnswerRatingReviewAbtProductObj['given_answertext'] = removeHtmlStripTagsOfContent($(commentInputObj).val());
                     userEachQuesAnswerRatingReviewAbtProductObj['answer_pattern'] = $(commentInputObj).attr('data-questionpattern');
-                    var shopstore_id = $(commentInputObj).attr('data-shopstoreid');
+                    var store_id = $(commentInputObj).attr('data-storeid');
                     var product_listid = $(commentInputObj).attr('data-productlistid');
                     var question_id = $(commentInputObj).attr('data-questionid');
                     var given_answerpoints = removeHtmlStripTagsOfContent($(commentInputObj).val());
                     var answer_pattern = $(commentInputObj).attr('data-questionpattern');
-                    if(parseInt(shopstore_id)>0 && parseInt(product_listid)>0 
+                    if(parseInt(store_id)>0 && parseInt(product_listid)>0 
                         && parseInt(question_id)>0 && given_answerpoints!=='' && answer_pattern!==''){
-                        userEachQuesAnswerRatingReviewAbtProductObj['shopstore_id'] = shopstore_id;
+                        userEachQuesAnswerRatingReviewAbtProductObj['store_id'] = store_id;
                         userEachQuesAnswerRatingReviewAbtProductObj['product_listid'] = product_listid;
                         userEachQuesAnswerRatingReviewAbtProductObj['question_id'] = question_id;
                         userEachQuesAnswerRatingReviewAbtProductObj['given_answerpoints'] = given_answerpoints;
                         userEachQuesAnswerRatingReviewAbtProductObj['answer_pattern'] = answer_pattern;
-                        userAllQuesAnswerRatingReviewAbtProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
+                        ratingReviewedProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
                     }
                 }
                 if($('.'+fcClass).find('select').length===3){
@@ -2098,24 +2097,24 @@ function getParamDataForAddingUserRatingReviewProduct(fcClass){
                         var selectInputObj = $(this);
                         var points = $(this).find('option:selected').val();
                         var userEachQuesAnswerRatingReviewAbtProductObj = {};
-                        var shopstore_id = $(selectInputObj).find('option:selected').attr('data-shopstoreid');
+                        var store_id = $(selectInputObj).find('option:selected').attr('data-storeid');
                         var product_listid = $(selectInputObj).find('option:selected').attr('data-productlistid');
                         var question_id = $(selectInputObj).find('option:selected').attr('data-questionid');
                         var given_answerpoints = points;
                         var answer_pattern = $(selectInputObj).find('option:selected').attr('data-questionpattern');
-                        if(parseInt(shopstore_id)>0 && parseInt(product_listid)>0 
+                        if(parseInt(store_id)>0 && parseInt(product_listid)>0 
                             && parseInt(question_id)>0 && given_answerpoints!=='' && answer_pattern!==''){
-                            userEachQuesAnswerRatingReviewAbtProductObj['shopstore_id'] = shopstore_id;
+                            userEachQuesAnswerRatingReviewAbtProductObj['store_id'] = store_id;
                             userEachQuesAnswerRatingReviewAbtProductObj['product_listid'] = product_listid;
                             userEachQuesAnswerRatingReviewAbtProductObj['question_id'] = question_id;
                             userEachQuesAnswerRatingReviewAbtProductObj['given_answerpoints'] = given_answerpoints;
                             userEachQuesAnswerRatingReviewAbtProductObj['answer_pattern'] = answer_pattern;
-                            userAllQuesAnswerRatingReviewAbtProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
+                            ratingReviewedProductArr.push(userEachQuesAnswerRatingReviewAbtProductObj);
                         }
                     });
                 }
-                if(userAllQuesAnswerRatingReviewAbtProductArr.length===4){
-                    paramDataObj['userAllQuesAnwerRatingReviewAbtProductArr'] = userAllQuesAnswerRatingReviewAbtProductArr;
+                if(ratingReviewedProductArr.length===4){
+                    paramDataObj['ratingReviewedProductArr'] = ratingReviewedProductArr;
                 }
             }
         }
@@ -2123,7 +2122,7 @@ function getParamDataForAddingUserRatingReviewProduct(fcClass){
         console.log("problem in getParamDataForAddingUserRatingReviewAbtProduct=>"+ex);
         paramDataObj = {};
     }
-    if(Object.keys(paramDataObj).length===3){
+    if(Object.keys(paramDataObj).length===4){
         return paramDataObj;
     }else{
         return false;
