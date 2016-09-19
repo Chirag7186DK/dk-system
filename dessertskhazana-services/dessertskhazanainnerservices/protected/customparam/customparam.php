@@ -1056,6 +1056,35 @@ class customparam{
         return $retStatus;
     }
     
+    // CJ defined this function 2016-08-26
+    public static function checkParamDataToUpdateOrderDeliveryAddressStorewise($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check isUserLoggedIn key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check udblogId key present or not
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check deliveryAddressArr key present or not
+        if(array_key_exists('deliveryAddressArr', $paramJsonData)){
+            if(count($paramJsonData['deliveryAddressArr'])>0 
+                && $paramJsonData['deliveryAddressArr']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==3){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     //////////////////////////// party order related code //////////////////////////////////////
     
