@@ -45,34 +45,34 @@
                 }  
             };
 
-            locationDetails.getDeliveryCityList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            locationDetails.getDeliveryCityList = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
-            locationDetails.getDKDeliveryAreaList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            locationDetails.getDKDeliveryAreaList = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
-            locationDetails.getDKDeliveryAreaBasedDessertsTypeList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedDessertsTypeList", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
+            locationDetails.getDKDeliveryAreaBasedDessertsTypeList = function(apiParamJsonObj){
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedDessertsTypeList", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
