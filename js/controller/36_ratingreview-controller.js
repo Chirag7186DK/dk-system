@@ -17,9 +17,9 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     RatingReviewServices.getAverageRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.avgRatingReviewedProductDetails = retObj.avgRatingReviewedProductDetails;
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(dataObj!==false && dataObj!==undefined && dataObj!==''){
+                                    $rootScope.avgRatingReviewedProductDetails = dataObj.avgRatingReviewedProductDetails;
                                 }
                             }
                         });
@@ -44,9 +44,9 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     RatingReviewServices.getMaxRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.maxRatingReviewedTypeDetailsArr = retObj.maxRatingAndReviewedTypeDetails;
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(dataObj!==false && dataObj!==undefined && dataObj!==''){
+                                    $rootScope.maxRatingReviewedTypeDetailsArr = dataObj.maxRatingAndReviewedTypeDetails;
                                 }
                             }
                         });
@@ -73,10 +73,10 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                         $scope.$apply(function(){
                             showHideLoaderBox('hide');
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.storeRatingReviewQuestionDetails = retObj.storeRatingReviewQuestionDetails;
-                                    $rootScope.isStoreRatingReviewQuestionFound = retObj.isStoreRatingReviewQuestionFound;
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(dataObj!==false && dataObj!==undefined && dataObj!==''){
+                                    $rootScope.storeRatingReviewQuestionDetails = dataObj.storeRatingReviewQuestionDetails;
+                                    $rootScope.isStoreRatingReviewQuestionFound = dataObj.isStoreRatingReviewQuestionFound;
                                 }
                             }
                         });
@@ -102,9 +102,9 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     RatingReviewServices.getAllUserRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
-                                if(retObj!==false && retObj!==undefined && retObj!==''){
-                                    $rootScope.allUserRatingReviewAboutProductDetailsArr = retObj.allUserRatingReviewProductDetails;
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(dataObj!==false && dataObj!==undefined && dataObj!==''){
+                                    $rootScope.allUserRatingReviewAboutProductDetailsArr = dataObj.allUserRatingReviewProductDetails;
                                 }
                             }
                         });
