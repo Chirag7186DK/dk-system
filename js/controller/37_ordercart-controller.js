@@ -36,10 +36,10 @@ function OrderCartController($rootScope, OrderCartServices, StoreServices){
                 // collect product data
                 var preparedProductParamDataObj = getParamDataToAddProductInOrdercart(fcontentClass, productDataFromSession);
                 if(preparedProductParamDataObj!==false && jQuery.isEmptyObject(preparedProductParamDataObj)===false){
-                    var fetchedParamJsonObj = {};
-                    fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
                     // calling OrderCartServices 
-                    OrderCartServices.addItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                    OrderCartServices.addItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var isProductAddedInOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to add item in your order cart !";
