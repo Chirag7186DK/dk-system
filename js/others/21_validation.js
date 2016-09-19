@@ -527,14 +527,14 @@ function validateDataUWLUpdation(fcClass){
 
 
 // CJ defined this function 2016-08-06
-function validateUserRatingReviewProduct(fcClass){
+function validateDataToAddUserRatingReviewProduct(fcClass){
     var blankFieldValueCount = 0 ;
     if($('.'+fcClass).length===1){
         if($('.'+fcClass).find('textarea').length===1){
-            var userCommentRatingReviewAbtProduct = removeHtmlStripTagsOfContent($('.'+fcClass).find('textarea').val());
-            if(userCommentRatingReviewAbtProduct==='' 
-                || userCommentRatingReviewAbtProduct===false
-                || userCommentRatingReviewAbtProduct===undefined){
+            var userCommentRatingReviewProduct = removeHtmlStripTagsOfContent($('.'+fcClass).find('textarea').val());
+            if(userCommentRatingReviewProduct==='' 
+                || userCommentRatingReviewProduct===false
+                || userCommentRatingReviewProduct===undefined){
                 $('.'+fcClass).find('textarea').css({'border-color':'#f18178'});
                 blankFieldValueCount++;
             }else{
