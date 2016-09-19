@@ -33,17 +33,17 @@
             orderDetails.refreshUserOrdercartDashboardSummaryDataDetails = function(){
                 try{
                     // fetch param data from session
-                    var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
-                    if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
+                    var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var blockUIObj = {};
+                        blockUIObj['css'] = {"padding":10};
+                        blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                        showHideLoaderBox('show', blockUIObj);
 
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
 
-                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/UserOrdercartDashboardSummaryData", 'apiFile', 'GET', '', fetchedParamJsonObj).done(function(retResponseJson){
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/UserOrdercartDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                             showHideLoaderBox('hide');
                             $rootScope.$apply(function(){
                                 var userOrdercartDashboardDataObj = false;
@@ -71,18 +71,18 @@
             orderDetails.addProductDataInOrdercartFromSession = function(fcontentClass, productDataFromSession){
                 try{
                     // collect product data
-                    var preparedProductParamDataObj = getParamDataToAddProductInOrdercart(fcontentClass, productDataFromSession);
-                    if(preparedProductParamDataObj!==false && jQuery.isEmptyObject(preparedProductParamDataObj)===false){
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
+                    var paramDataObj = getParamDataToAddProductInOrdercart(fcontentClass, productDataFromSession);
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var blockUIObj = {};
+                        blockUIObj['css'] = {"padding":10};
+                        blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                        showHideLoaderBox('show', blockUIObj);
 
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedProductParamDataObj;
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
 
                         // calling OrderCartServices 
-                        orderDetails.addItemOrdercart(fetchedParamJsonObj).done(function(retResponseJson){
+                        orderDetails.addItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
                             showHideLoaderBox('hide');
                             $rootScope.$apply(function(){
                                 var isProductAddedInOrdercart = 'FALSE';
@@ -108,10 +108,10 @@
 
             // ordercartItemList
             orderDetails.ordercartItemList = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -120,10 +120,10 @@
 
             // addItemOrdercart
             orderDetails.addItemOrdercart = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -132,10 +132,10 @@
 
             // updateItemOrdercart
             orderDetails.updateItemOrdercart = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -144,10 +144,10 @@
 
             // removeItemOrdercart
             orderDetails.removeItemOrdercart = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'DELETE', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -156,10 +156,10 @@
             
             // ordercartItemList
             orderDetails.getStorewiseOrderSummaryForCheckoutProcess = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/StorewiseOrderSummaryCheckoutProcess", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
@@ -167,39 +167,14 @@
             };
             
             orderDetails.updateOrderDeliveryAddressInOrdercartStore = function(preparedParamJsonObj){
-                var jsonParamBlockUIObject = {};
-                jsonParamBlockUIObject['css'] = {"padding":10};
-                jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', jsonParamBlockUIObject);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
+                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageDeliveryAddressOrdercartStorewise", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
-            };
-            
-            orderDetails.resetAllItemOrdercart = function(){
-                try{
-                    // fetch param data from session
-                    var preparedParamJsonObj = getParamDataAuthenticatedUserDetailsFromSession();
-                    if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-
-                        var jsonParamBlockUIObject = {};
-                        jsonParamBlockUIObject['css'] = {"padding":10};
-                        jsonParamBlockUIObject['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', jsonParamBlockUIObject);
-
-                        var fetchedParamJsonObj = {};
-                        fetchedParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-
-                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ResetAllItemOrdercart", 'apiFile', 'DELETE', '', fetchedParamJsonObj).done(function(retResponseJson){
-                            showHideLoaderBox('hide');
-                            // orderDetails.refreshUserOrdercartDashboardSummaryDataDetails();
-                        });
-                    }
-                }catch(ex){
-                    showHideLoaderBox('hide');
-                    console.log("Problem in refreshUserOrdercartDashboardSummaryDataDetails=>"+ex);
-                }
             };
 
             return orderDetails;
