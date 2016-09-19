@@ -8,15 +8,15 @@
 class RatingReviewDao{
     
     // CJ defined this function 2016-08-06
-    public static function addUserRatingReviewAbtProduct($paramJson){
+    public static function addUserRatingReviewProduct($paramJson){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('shopstore_id', $paramJson)){
-            if($paramJson['shopstore_id']!=''){
-                $sqlColumnNames.=" shopstore_id,";
-                $sqlValues.="'".$paramJson['shopstore_id']."',";
+        if(array_key_exists('store_id', $paramJson)){
+            if($paramJson['store_id']!=''){
+                $sqlColumnNames.=" store_id,";
+                $sqlValues.="'".$paramJson['store_id']."',";
             }
         }
         if(array_key_exists('user_id', $paramJson)){
@@ -297,7 +297,7 @@ class RatingReviewDao{
     }
     
     // CJ defined this function 2016-08-06
-    public static function getMaxUserGrpNoFromRatingReviewAbtProduct(){
+    public static function getMaxUserGrpNoFromRatingReviewedProduct(){
         $maxUserGrpNo = 1;
         try{
             $connection = Yii::app()->db;
