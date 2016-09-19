@@ -104,11 +104,11 @@
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
                         Type delivery address
-                        <textarea class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address"></textarea>
+                        <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address"></textarea>
                     </p>
                 </div>
                 <p class="chkout_orderDeliveryAddressSaveBtnPClass">
-                    <button class='btn chkout_orderDeliveryAddressSaveBtnClass'>
+                    <button ng-click="checkOrderDeliveryAddressDataForSave('chkout_eachStoreOrderSummaryDivClass')" class='btn chkout_orderDeliveryAddressSaveBtnClass'>
                         SAVE
                     </button>
                 </p>
