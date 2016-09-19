@@ -1204,21 +1204,31 @@
         color:rgb(70, 75, 80)!important;
     }
 
-    .vpd_orderSummaryLabelPClass{
+    .vpd_orderSummaryHeaderLblPClass{
         margin-top:10px;
         color:rgba(39,171,92,0.9)!important;
         font-size:15px!important;
         font-family:serif;
         font-weight:700!important;
     }
+    
+    .vpd_totalOrderStorePClass,
+    .vpd_totalOrderItemPClass,
+    .vpd_orderSubtotalAmtPClass,
+    .vpd_totalOrderDeliveryFeePClass,
+    .vpd_totalOrderAmtPClass{
+        font-size:13px!important;
+        margin-bottom:3px!important;
+    }
 
-    .vpd_orderSummaryCheckoutBtnClass{
+    .vpd_orderSummaryCheckoutBtnClass,
+    .vpd_orderSummaryCheckoutBtnClass:hover{
         border-radius:0px!important;
-        background-color:rgba(154, 205, 50, 0.88)!important;
+        background-color:#ab0b38!important;
         color:#fff!important;
-        margin-right:2%!important;
-        // opacity:0.2;
+        font-size:12px!important;
         font-weight:bold!important;
+        padding: 5px!important;
     }
     
     .vpd_productFeaturesContainerDivClass{
