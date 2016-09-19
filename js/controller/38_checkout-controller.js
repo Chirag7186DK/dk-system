@@ -4,7 +4,7 @@ angular.module('DKAPP').controller('CheckoutController', CheckoutController);
 // CheckoutController
 function CheckoutController($rootScope, OrderCartServices){
     
-    // gotoCheckout
+    // gotoCheckoutProcess
     $rootScope.gotoCheckoutProcess = function(){
         try{
             // check user logged in session
@@ -58,7 +58,7 @@ function CheckoutController($rootScope, OrderCartServices){
         if(validatedDataStatus===true){
             $rootScope.updateOrderDeliveryAddressInOrdercartStore(fcontentClass);
         }else{
-            var notifyMsgStr = "Please enter product qty / message to add item in order cart !!!";
+            var notifyMsgStr = "Please enter delivery address !!!";
             showNotificationBoxMsg(notifyMsgStr);
         }
     };
@@ -75,19 +75,19 @@ function CheckoutController($rootScope, OrderCartServices){
                 OrderCartServices.updateOrderDeliveryAddressInOrdercartStore(fetchedParamJsonObj).done(function(retResponseJson){
                     $rootScope.$apply(function(){
                         var isUpdatedOrderDeliveryAddress = 'FALSE';
-                        var notificationMsgStr = "Please try again to add delivery address !!!";
+                        var notificationMsgStr = "Please try again to updated order delivery address !!!";
                         if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                             isUpdatedOrderDeliveryAddress = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUpdatedOrderDeliveryAddress', retResponseJson);
                         }
                         if(isUpdatedOrderDeliveryAddress==='TRUE'){
-                            notificationMsgStr = "Order delivery address added successfully !!!";
+                            notificationMsgStr = "Order delivery address updated successfully !!!";
                         }
                         showNotificationBoxMsg(notificationMsgStr);
                     });
                 });
             }
         }catch(ex){
-            console.log("problem in addOrderDeliveryAddressInOrdercartStore ex=>"+ex);
+            console.log("problem in updateOrderDeliveryAddressInOrdercartStore ex=>"+ex);
         }
     };
     
