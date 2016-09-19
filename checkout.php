@@ -91,7 +91,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- checkout delivery address section -->
-            <div ng-controller="CheckoutController" ng-init="loadStorewiseOrderSummaryForCheckoutProcess();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_deliveryAddressSectionDivClass">
+            <div ng-controller="OrderCartController" ng-init="loadStorewiseOrderSummaryForCheckoutProcess();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_deliveryAddressSectionDivClass">
                 <p class='chkout_deliveryAddressHeaderPClass'>
                     <i class="fa fa-bus"></i> DELIVERY ADDRESS
                 </p>
@@ -108,7 +108,7 @@
 
                     </p>
                 </div>
-                <p class="chkout_orderDeliveryAddressSaveBtnPClass">
+                <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryAddressSaveBtnPClass">
                     <button ng-click="checkOrderDeliveryAddressDataForSave('chkout_eachStoreOrderSummaryDivClass')" class='btn chkout_orderDeliveryAddressSaveBtnClass'>
                         SAVE
                     </button>
@@ -119,7 +119,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
             <!-- checkout payment summary section -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_paymentSummarySectionDivClass">
+            <div ng-if="ordercartItemRequestedCount>0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_paymentSummarySectionDivClass">
                 <p class='chkout_paymentSummaryHeaderPClass'>
                     <i class="fa fa-money"></i> PAYMENT SUMMARY
                 </p>
@@ -143,9 +143,6 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
         </div>
         
