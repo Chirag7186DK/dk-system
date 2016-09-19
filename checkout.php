@@ -104,9 +104,8 @@
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
                         Type delivery address
-                        <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address">
-                            {{eachStoreOrderSummaryDataObj.deliveryaddress}}
-                        </textarea>
+                        <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
+
                     </p>
                 </div>
                 <p class="chkout_orderDeliveryAddressSaveBtnPClass">
