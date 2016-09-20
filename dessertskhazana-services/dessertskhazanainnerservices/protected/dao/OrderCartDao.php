@@ -258,6 +258,11 @@ class OrderCartDao{
                 $dynamicSql.=" address='".$paramJson['address']."',";
             }
         }
+        if(array_key_exists('deliverydate', $paramJson)){
+            if($paramJson['deliverydate']!=''){
+                $dynamicSql.=" deliverydate='".$paramJson['deliverydate']."',";
+            }
+        }
         if(array_key_exists('updated_by', $paramJson)){
             if($paramJson['updated_by']!=''){
                 $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
