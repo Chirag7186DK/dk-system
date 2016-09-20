@@ -210,10 +210,10 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
             $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
-                $deliveryAddressDataArr = $dkParamDataArr['deliveryAddressArr'];
-                if(count($deliveryAddressDataArr)>0 && $deliveryAddressDataArr!==false){
+                $orderDeliveryDataArr = $dkParamDataArr['orderDeliveryDataArr'];
+                if(count($orderDeliveryDataArr)>0 && $orderDeliveryDataArr!==false){
                     // iterate each delivery address data
-                    for($eachIndex = 0; $eachIndex<count($deliveryAddressDataArr); $eachIndex++){
+                    for($eachIndex = 0; $eachIndex<count($orderDeliveryDataArr); $eachIndex++){
                         $updateOrdercartStoreDataObj = array(
                             "address"=>$deliveryAddressDataArr[$eachIndex]['address'], 
                             "deliverydate"=>$deliveryAddressDataArr[$eachIndex]['deliverydate'], 
