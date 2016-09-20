@@ -1072,10 +1072,10 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check deliveryAddressArr key present or not
-        if(array_key_exists('deliveryAddressArr', $paramJsonData)){
-            if(count($paramJsonData['deliveryAddressArr'])>0 
-                && $paramJsonData['deliveryAddressArr']!=false){
+        // check orderDeliveryDataArr key present or not
+        if(array_key_exists('orderDeliveryDataArr', $paramJsonData)){
+            if(count($paramJsonData['orderDeliveryDataArr'])>0 
+                && $paramJsonData['orderDeliveryDataArr']!=false){
                 $givenParamDataCorrectCount++;
             }
         }
