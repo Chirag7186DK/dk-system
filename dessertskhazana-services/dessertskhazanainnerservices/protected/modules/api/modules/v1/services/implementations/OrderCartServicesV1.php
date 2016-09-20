@@ -220,7 +220,7 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                             "updated_by"=>$unmd5UserId,
                             "id"=>$deliveryAddressDataArr[$eachIndex]['ordercartStoreId']
                         );
-                        $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
+                        $updatedStatusOrdercartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
                     }
                     $rspDetails['isUpdatedOrderDeliveryAddress'] = 'TRUE';
                 }
