@@ -107,8 +107,8 @@
                         <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryAddressInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryDatePClass'> 
-                        Your delivery address
-                        <input data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" type='text' class="form-control chkout_deliveryDateInputBoxClass" placeholder="Type delivery date" value='{{eachStoreOrderSummaryDataObj.deliverydate}}'>                          
+                        Your delivery date
+                        <input order-deliverydate-input-directive data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" type='text' class="form-control chkout_deliveryDateInputBoxClass" placeholder="Type delivery date" value='{{eachStoreOrderSummaryDataObj.deliverydate}}'>                          
                     </p>
                 </div>
                 <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryDetailsSaveBtnPClass">
