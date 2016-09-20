@@ -1043,6 +1043,7 @@ class commonfunction{
                         $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
                         $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
                         $eachOrdercartStoresDataArr['deliveryaddress'] = $storeAllItemsDataArr[0]['deliveryAddress'];
+                        $eachOrdercartStoresDataArr['deliverydate'] = $storeAllItemsDataArr[0]['deliverydate'];
                         $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
                         $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
                         $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
