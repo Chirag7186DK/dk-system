@@ -11,5 +11,5 @@ interface IOrderCartServicesV1{
     public function updateItemDetailsInOrdercart($dkInDtoArray);
     public function removeItemDetailsFromOrdercart($dkInDtoArray);
     public function getStorewiseOrderSummaryDataForCheckoutProcess($dkInDtoArray);
-    public function resetAllItemOrdercart($dkInDtoArray);
+    public function updateDeliveryAddressOrdercartStorewise($dkInDtoArray);
 }
