@@ -104,11 +104,15 @@
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
                         Your delivery address
-                        <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
+                        <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryAddressInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
+                    </p>
+                    <p class='chkout_eachStoreOrderDeliveryDatePClass'> 
+                        Your delivery address
+                        <input data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" type='text' class="form-control chkout_deliveryDateInputBoxClass" placeholder="Type delivery date" value='{{eachStoreOrderSummaryDataObj.deliverydate}}'>                          
                     </p>
                 </div>
-                <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryAddressSaveBtnPClass">
-                    <button ng-click="checkOrderDeliveryAddressDataForUpdate('chkout_eachStoreOrderSummaryDivClass')" class='btn chkout_orderDeliveryAddressSaveBtnClass'>
+                <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryDetailsSaveBtnPClass">
+                    <button ng-click="checkOrderDeliveryAddressDataForUpdate('chkout_eachStoreOrderSummaryDivClass')" class='btn chkout_orderDeliveryDateSaveBtnClass'>
                         SAVE
                     </button>
                 </p>
