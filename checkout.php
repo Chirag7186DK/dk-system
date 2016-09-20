@@ -96,7 +96,7 @@
                     <i class="fa fa-bus"></i> DELIVERY ADDRESS
                 </p>
                 <!-- each store order summary will be display -->
-                <div ng-repeat="eachStoreOrderSummaryDataObj in allStorewiseOrderSummaryDataArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_eachStoreOrderSummaryDivClass">
+                <div ng-repeat="eachStoreOrderSummaryDataObj in allStorewiseOrderSummaryDataArrObj" data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_eachStoreOrderSummaryDivClass">
                     <p class="chkout_eachStoreBasicInfoLblPClass">
                         {{eachStoreOrderSummaryDataObj.shopStoreTitle}} store order 
                         will be deliver from '{{eachStoreOrderSummaryDataObj.storeLocatedAreaName}}' 
@@ -104,11 +104,11 @@
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
                         Your delivery address
-                        <textarea data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="form-control chkout_deliveryAddressInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
+                        <textarea class="form-control chkout_deliveryAddressInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
                     </p>
                     <p class='chkout_eachStoreOrderDeliveryDatePClass'> 
                         Your delivery date
-                        <input order-deliverydate-input-directive data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" type='text' class="form-control chkout_deliveryDateInputBoxClass" placeholder="Type delivery date" value='{{eachStoreOrderSummaryDataObj.deliverydate}}'>                          
+                        <input order-deliverydate-input-directive type='text' class="form-control chkout_deliveryDateInputBoxClass" placeholder="Type delivery date" value='{{eachStoreOrderSummaryDataObj.deliverydate}}'>                          
                     </p>
                 </div>
                 <p ng-if="allStorewiseOrderSummaryDataArrObj.length>0" class="chkout_orderDeliveryDetailsSaveBtnPClass">
