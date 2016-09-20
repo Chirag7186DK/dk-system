@@ -127,7 +127,7 @@ function OrderCartController($rootScope, OrderCartServices, StoreServices){
         $rootScope.updateOrderDeliveryAddressInOrdercartStore = function(fcontentClass){
             try{
                 // collect product data
-                var paramDataObj = getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass);
+                var paramDataObj = getParamDataToUdateOrderDeliveryAddressInOrdercartStore(fcontentClass);
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
