@@ -1953,20 +1953,27 @@ function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
             // through view product page
             if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
                 if($('.'+fcontentClass).length>0){
-                    paramObj['deliveryAddressArr'] = new Array();
+                    paramObj['orderDeliveryDataArr'] = new Array();
                     // iterate each form content
                     $('.'+fcontentClass).each(function(){
                         var currentFormContentObj = $(this);
+                        var eachOrderDeliveryDataObj = {};
+                        eachOrderDeliveryDataObj['ordercartStoreId'] = removeHtmlStripTagsOfContent($(currentFormContentObj).attr('data-ordercartstoreid'));
                         if($(currentFormContentObj).find('textarea').length===1){
                             var deliveryAddress = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').val());
-                            var ordercartStoreId = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').attr('data-ordercartstoreid'));
                             if(deliveryAddress!=='' && deliveryAddress!==false 
                                 && deliveryAddress!==undefined && parseInt(ordercartStoreId)>0){
-                                (paramObj['deliveryAddressArr']).push({
-                                    "ordercartStoreId":ordercartStoreId,
-                                    "address":deliveryAddress
-                                });
+                                eachOrderDeliveryDataObj['address'] = deliveryAddress;
                             }
+                        }
+                        if($(currentFormContentObj).find("input[type='text']").length===1){
+                            var deliveryDate = removeHtmlStripTagsOfContent($(currentFormContentObj).find("input[type='text']").val());
+                            if(deliveryDate!=='' && deliveryDate!==false && deliveryDate!==undefined){
+                                eachOrderDeliveryDataObj['deliverydate'] = deliveryDate;
+                            }
+                        }
+                        if(Object.keys(eachOrderDeliveryDataObj).length===3){
+                            (paramObj['orderDeliveryDataArr']).push(eachOrderDeliveryDataObj);
                         }
                     });
                 }
