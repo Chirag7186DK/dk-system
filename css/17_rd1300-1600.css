@@ -2902,17 +2902,27 @@
         padding-left:10px!important;
     }
     
-    .chkout_deliveryInputBoxClass{
+    .chkout_deliveryAddressInputBoxClass{
         width:30%!important;
     }
     
-    .chkout_orderDeliveryAddressSaveBtnPClass{
+    .chkout_eachStoreOrderDeliveryDatePClass{
         color:rgb(70, 75, 80)!important;
         font-size:12px!important;
         padding-left:10px!important;
     }
     
-    .chkout_orderDeliveryAddressSaveBtnClass{
+    .chkout_deliveryDateInputBoxClass{
+        width:30%!important;
+    }
+    
+    .chkout_orderDeliveryDetailsSaveBtnPClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:12px!important;
+        padding-left:10px!important;
+    }
+    
+    .chkout_orderDeliveryDateSaveBtnClass{
         padding:5px!important;
         font-weight:bold!important;
         font-size:11px!important;
