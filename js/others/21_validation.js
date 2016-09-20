@@ -634,6 +634,15 @@ function validateOrderDeliveryAddressData(fcClass){
                             $(currentFormContentObj).find('textarea').css({'border-color':'#ccc'});
                         }
                     }
+                    if($(currentFormContentObj).find("input[type='text']").length===1){
+                        var deliveryDate = removeHtmlStripTagsOfContent($(currentFormContentObj).find("input[type='text']").val());
+                        if(deliveryDate==='' || deliveryDate===false || deliveryDate===undefined){
+                            $(currentFormContentObj).find("input[type='text']").css({'border-color':'#f18178'});
+                            blankFieldValueCount++;
+                        }else{
+                            $(currentFormContentObj).find("input[type='text']").css({'border-color':'#ccc'});
+                        }
+                    }
                 });
             }
         }
