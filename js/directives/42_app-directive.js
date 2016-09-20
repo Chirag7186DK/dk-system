@@ -394,3 +394,19 @@ function scrollHorizontallyShareoffersAllsectionheaderDirective(){
         }, 1);
     };
 }
+
+angular.module('DKAPP').directive('orderDeliverydateInputDirective', orderDeliverydateInputDirective);
+
+function orderDeliverydateInputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            var cdate = new Date();
+            $($el).datepicker({
+                minDate:cdate,
+                dateFormat:'yy-mm-dd',
+                changeMonth:true,
+                changeYear:true
+            });
+        }
+    };
+}
