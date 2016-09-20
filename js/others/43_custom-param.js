@@ -1943,7 +1943,7 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
 }
 
 // CJ defined this function 2016-08-06
-function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
+function getParamDataToUdateOrderDeliveryAddressInOrdercartStore(fcontentClass){
     try{
         var paramObj = {};
         var userLoggedDataObj = getParamDataAuthenticatedUserDetailsFromSession();
@@ -1962,7 +1962,7 @@ function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
                         if($(currentFormContentObj).find('textarea').length===1){
                             var deliveryAddress = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').val());
                             if(deliveryAddress!=='' && deliveryAddress!==false 
-                                && deliveryAddress!==undefined && parseInt(ordercartStoreId)>0){
+                                && deliveryAddress!==undefined){
                                 eachOrderDeliveryDataObj['address'] = deliveryAddress;
                             }
                         }
@@ -1985,7 +1985,7 @@ function getParamDataToAddOrderDeliveryAddressInOrdercartStore(fcontentClass){
             return false;
         }
     }catch(ex){
-        // console.log("problem in getParamDataToAddOrderDeliveryAddressInOrdercartStore ex=>"+ex);
+        console.log("problem in getParamDataToAddOrderDeliveryAddressInOrdercartStore ex=>"+ex);
         return false;
     }
 }
