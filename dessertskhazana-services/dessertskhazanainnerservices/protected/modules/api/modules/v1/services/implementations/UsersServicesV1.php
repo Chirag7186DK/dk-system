@@ -63,14 +63,18 @@ class UsersServicesV1 implements IUsersServicesV1{
             }else{
                 $isSendOtpCode = 'Y';
             }
-            
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
                 $mobile = $userEmailParamData['encoded_mobile'];
                 $otpCode = '111';
+                $dkParamDataArr['otpcode'] = $otpCode;
+                // storing otp code
+                $statusOtpcodeStored = UsersDao :: addUserOtpcodeDetails($dkParamDataArr);
+                // sending otp code
                 $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
+                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobile";
+                $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
             }
-            
         } 
         return $rspDetails;
     }
