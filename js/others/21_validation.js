@@ -1,4 +1,23 @@
 
+// CJ defined this function 2016-09-21
+function attachEmailValidationOnInput(elementObj){
+    $(elementObj).bind("keypress keydown keyup change paste", function(e){
+        try{
+            var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
+            if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
+                var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(!currentTextVal.match(mail)){
+                    $(this).css({'border-color':'#f18178'});
+                }else{
+                    $(this).css({'border-color':'#ccc'});
+                }
+            }
+        }catch(ex){
+            console.log("Problem in attachEmailValidationOnInput=>"+ex);
+        }
+    });
+}
+
 // CJ defined this fucntion 2016-07-20
 function attachedFieldValidationPartyOrdersRequest(){
     if($('#po_occasionTitleInputId').length===1){
