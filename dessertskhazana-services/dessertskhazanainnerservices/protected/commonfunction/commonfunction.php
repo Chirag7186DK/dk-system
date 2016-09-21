@@ -439,6 +439,7 @@ class commonfunction{
         return $userSessionId;
     }
     
+    
     // CJ defined this function 2016-08-11
     public static function getUserSessionDetails($paramJsonData){
         $userSessionDetailsData = array();
@@ -451,6 +452,17 @@ class commonfunction{
         return $userSessionDetailsData;
     }
     
+    
+    // CJ defined this function 2016-09-21
+    public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
+        $smsSentStatus = true;
+        if($mobile!='' && strlen($mobile)==10){
+            $smsMsgBodyStr = "$otpcode is your verification code to verify your mobile# on DessertsKhazana.";
+            $smsMsgBodyStr.= "This verificaton is important for safety of your account and must be done before you proceed.";
+            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
+        }
+        return $smsSentStatus;
+    }
     
     // CJ defined this function 2016-08-01
     public static function getUserAsCustomerDashboardSummaryDataDetails($authenticatedUserJsonData){
