@@ -410,13 +410,3 @@ function orderDeliverydateInputDirective($timeout){
         }
     };
 }
-
-angular.module('DKAPP').directive('attachEmailValidationinputDirective', attachEmailValidationinputDirective);
-
-function attachEmailValidationinputDirective($timeout){
-    return {
-        link: function ($scope, $el, $attrs){
-            attachEmailValidationOnInput($el);
-        }
-    };
-}
