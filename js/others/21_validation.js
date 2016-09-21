@@ -1,22 +1,4 @@
 
-// CJ defined this function 2016-09-21
-function attachEmailValidationOnInput(elementObj){
-    $(elementObj).bind("keypress keydown keyup change paste", function(e){
-        try{
-            var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-            if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                if(!currentTextVal.match(mail)){
-                    $(this).css({'border-color':'#f18178!important;'});
-                }else{
-                    $(this).css({'border-color':'#ccc!important;'});
-                }
-            }
-        }catch(ex){
-            console.log("Problem in attachEmailValidationOnInput=>"+ex);
-        }
-    });
-}
 
 // CJ defined this fucntion 2016-07-20
 function attachedFieldValidationPartyOrdersRequest(){
@@ -442,16 +424,15 @@ function validateDataUserSignInAuthentication(){
             $('.ma_userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
             blankFieldValueCount++;
         }else if($('#ma_userSignInEmailInputId').val()!==''){
-            var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignInMobileInputId').val());
-            var mobilePattern = /^[6-9]\d{9}$/g;
-            if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==10){
-                $('#ma_userSignInMobileInputId').css({'border-color':'#f18178'});
-                $('.ma_userSignInMobileInput_ErrorClass').empty().append("Please enter valid 10 digits registered mobile no.s !");
-                $('.ma_userSignInMobileInput_ErrorClass').css({'color':'#f18178'});
+            var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
+            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(!enteredEmailId.match(emailPattern)){
+                $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
+                $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
+                $('.ma_userSignInEmailInput_ErrorClass').css({'color':'#f18178'});
                 blankFieldValueCount++;
-            }else if(enterMobileNo.match(mobilePattern)===true && (enterMobileNo).length===10){
-                $('#ma_userSignInMobileInputId').css({'color':'#ccc'});
-                $('.ma_userSignInMobileInput_ErrorClass').empty();
+            }else{
+                $('#ma_userSignInEmailInputId').css({'border-color':'#ccc!important;'});
             }
         }
     }
