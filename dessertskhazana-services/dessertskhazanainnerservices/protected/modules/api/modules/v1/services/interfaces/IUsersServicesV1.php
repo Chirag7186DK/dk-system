@@ -7,6 +7,7 @@
 interface IUsersServicesV1{
     public function addTrackUserInfoAccessingWebsitesDetails($dkInDtoArray);
     public function generateUserSessionId($dkInDtoArray);
+    public function userSignUpAuthentication($dkInDtoArray);
     public function checkUserAuthentication($dkInDtoArray);
     public function getUserDashboardSummaryDataDetails($dkInDtoArray);
     public function getUserPersonalInfoData($dkInDtoArray);
