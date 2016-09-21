@@ -1593,11 +1593,6 @@
     
     /*  myaccount sigup form css code */
     
-    .ma_userSignUpFormInfoWrapperDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-    
     .ma_userSignUpformContentWrappperContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
@@ -1681,11 +1676,6 @@
     
     /*  myaccount sigin form css code */
 
-    .ma_userSignInFormInfoWrapperDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-    }
-    
     .ma_userSignInformContentWrappperContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
