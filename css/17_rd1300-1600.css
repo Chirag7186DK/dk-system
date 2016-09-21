@@ -1630,6 +1630,7 @@
 
     .ma_userSignUpErrorMsgContainerDivClass{
         color:#4747d0!important;
+        margin:0px!important;
     }
 
     .ma_userSignUpBtnContainerDivClass{
