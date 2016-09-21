@@ -262,6 +262,12 @@ class UsersDao{
                             $sql.=" AND u.mobile='".$paramJson['encoded_mobile']."'";
                         } 
                     }
+                    // add email in where condition
+                    if(array_key_exists('encoded_email', $paramJson)){
+                        if(strlen($paramJson['encoded_email'])>0){
+                            $sql.=" AND u.email='".$paramJson['encoded_email']."'";
+                        } 
+                    }
                     // add password in where condition
                     if(array_key_exists('encoded_password', $paramJson)){
                         if($paramJson['encoded_password']!='' && $paramJson['encoded_password']!=false){
