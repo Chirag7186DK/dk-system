@@ -55,7 +55,7 @@ class UsersController extends V1Controller{
                 $inDtoArray = $this->_inDtoArray;
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
                 // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForUserSignUpEmailAuthentication($dkParamDataArr);
+                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForUserSignUpAuthentication($dkParamDataArr);
                 if($paramDataCorrectIncorrectStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
                     $rspDetails = $UsersServicesV1->userSignUpAuthentication($dkParamDataArr);
