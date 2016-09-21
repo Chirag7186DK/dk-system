@@ -73,25 +73,21 @@
             <!-- display customer sign-in form info -->
             <div ng-hide="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInFormInfoWrapperDivClass">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ma_userSignInformContentWrappperContainerDivClass">
-                    <!-- sign-in form content -->
-                    <p class="ma_userSignInformHeaderPClass">
-                        <i class="fa fa-sign-in wl_userSignInIconClass"></i> Please fill-up form to sign-in with desserts khazana account
-                    </p>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInMobileContainerDivClass">
                         <p class="ma_userSignInFormfieldLabelPClass">
-                            <i class="ma_userSigInFormfieldiconclass fa fa-phone faa-tada animated"></i>Type Mobile
+                            <i class="ma_userSigInFormfieldiconclass fa fa-envelope faa-tada animated"></i> Email-Id
                         </p>
-                        <input autocomplete="on" type="text" id='ma_userSignInMobileInputId' class="form-control ma_userSignInMobileInputClass">
+                        <input type="text" id='ma_userSignInEmailInputId' class="form-control ma_userSignInEmailInputClass">
                         <p class="ma_userSignInFormfieldHintPClass">
                             Eg: 9975967186, 9975909090
                         </p>
-                        <p class="ma_userSignInMobileInput_ErrorClass"></p>
+                        <p class="ma_userSignInEmailInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInpasswordContainerDivClass">
                         <p class="ma_userSignInFormfieldLabelPClass">
-                            <i class="ma_userSigInFormfieldiconclass fa fa-key faa-tada animated"></i> Type password
+                            <i class="ma_userSigInFormfieldiconclass fa fa-key faa-tada animated"></i> Password
                         </p>
-                        <input autocomplete="on" type="password" id='ma_userSignInPasswordInputId' class="form-control ma_userSignInPasswordInputClass">
+                        <input type="password" id='ma_userSignInPasswordInputId' class="form-control ma_userSignInPasswordInputClass">
                         <p class="ma_userSignInFormfieldHintPClass">
                             Eg: 23Sddd
                         </p>
