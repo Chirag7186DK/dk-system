@@ -8,33 +8,33 @@
 class UsersDao{
    
     // CJ defined this function 2016-07-24
-    public static function addTrackUserInfoAccessingWebsitesDetails($utawParamDetails){
+    public static function addTrackUserInfoAccessingWebsitesDetails($paramData){
         $connection = Yii::app()->db;
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
-        if(array_key_exists('user_sessionid', $utawParamDetails)){
-            if($utawParamDetails['user_sessionid']!=''){
+        if(array_key_exists('user_sessionid', $paramData)){
+            if($paramData['user_sessionid']!=''){
                 $sqlColumnNames.=" user_sessionid,";
-                $sqlValues.="'".$utawParamDetails['user_sessionid']."',";
+                $sqlValues.="'".$paramData['user_sessionid']."',";
             }
         }
-        if(array_key_exists('usersession_startimestamp', $utawParamDetails)){
-            if($utawParamDetails['usersession_startimestamp']!=''){
+        if(array_key_exists('usersession_startimestamp', $paramData)){
+            if($paramData['usersession_startimestamp']!=''){
                 $sqlColumnNames.=" usersession_startimestamp,";
-                $sqlValues.="'".$utawParamDetails['usersession_startimestamp']."',";
+                $sqlValues.="'".$paramData['usersession_startimestamp']."',";
             }
         }
-        if(array_key_exists('ipaddress', $utawParamDetails)){
-            if($utawParamDetails['ipaddress']!=''){
+        if(array_key_exists('ipaddress', $paramData)){
+            if($paramData['ipaddress']!=''){
                 $sqlColumnNames.=" ipaddress,";
-                $sqlValues.="'".$utawParamDetails['ipaddress']."',";
+                $sqlValues.="'".$paramData['ipaddress']."',";
             }
         }
-        if(array_key_exists('geolocation', $utawParamDetails)){
-            if($utawParamDetails['geolocation']!=''){
+        if(array_key_exists('geolocation', $paramData)){
+            if($paramData['geolocation']!=''){
                 $sqlColumnNames.=" geolocation,";
-                $sqlValues.="'".$utawParamDetails['geolocation']."',";
+                $sqlValues.="'".$paramData['geolocation']."',";
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
@@ -65,62 +65,81 @@ class UsersDao{
         return $maxUserLogNo;
     }
     
-    // CJ defined this function 2016-08-01
-    public static function addUserLogDetails($userLogDetails){
-        $connection = Yii::app()->db;
-        $sqlColumnNames = "";
-        $sqlValues = "";
-        $lastInsertedId = false;
-        if(array_key_exists('user_logno', $userLogDetails)){
-            if($userLogDetails['user_logno']!=''){
-                $sqlColumnNames.=" user_logno,";
-                $sqlValues.="'".$userLogDetails['user_logno']."',";
+    // CJ defined this function 2016-07-27
+    public static function getUserDetails($paramJson=array()){
+        $retResult = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= " SELECT 
+                    u.id unmd5UserId, MD5(u.id) userId, UPPER(u.name) userName,
+                    u.email userEmail, u.mobile userMobile, 
+                    MD5(up.id) userProfileTypeId, up.id unmd5ProfileTypeId,
+                    DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y') userSinceFrom,
+                    COALESCE(u.status, 'Z') userStatus
+                    FROM USERS u
+                    JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
+                    WHERE 1 ";  
+                    // add userLoggedId in where condition
+                    if(array_key_exists('userLoggedId', $paramJson)){
+                        if(strlen($paramJson['userLoggedId'])==32){
+                            $sql.=" AND MD5(u.id)='".$paramJson['userLoggedId']."'";
+                        } 
+                    }
+                    // add user_id in where condition
+                    if(array_key_exists('user_id', $paramJson)){
+                        if(strlen($paramJson['user_id'])==32){
+                            $sql.=" AND MD5(u.id)='".$paramJson['user_id']."'";
+                        } 
+                    }
+                    // add created_by in where condition
+                    if(array_key_exists('created_by', $paramJson)){
+                        if(strlen($paramJson['created_by'])==32){
+                            $sql.=" AND MD5(u.id)='".$paramJson['created_by']."'";
+                        } 
+                    }
+                    // add user profile type id in where condition
+                    if(array_key_exists('userProfileTypeId', $paramJson)){
+                        if(strlen($paramJson['userProfileTypeId'])==32){
+                            $sql.=" AND MD5(up.id)='".$paramJson['userProfileTypeId']."' AND MD5(u.profile_typeid)='".$paramJson['userProfileTypeId']."'";
+                        } 
+                    }
+                    // add mobile in where condition
+                    if(array_key_exists('encoded_mobile', $paramJson)){
+                        if(strlen($paramJson['encoded_mobile'])==10){
+                            $sql.=" AND u.mobile='".$paramJson['encoded_mobile']."'";
+                        } 
+                    }
+                    // add email in where condition
+                    if(array_key_exists('encoded_email', $paramJson)){
+                        if(strlen($paramJson['encoded_email'])>0){
+                            $sql.=" AND u.email='".$paramJson['encoded_email']."'";
+                        } 
+                    }
+                    // add password in where condition
+                    if(array_key_exists('encoded_password', $paramJson)){
+                        if($paramJson['encoded_password']!='' && $paramJson['encoded_password']!=false){
+                            $sql.=" AND u.pwd=MD5('".$paramJson['encoded_password']."')";
+                        } 
+                    }
+                    // add status in where condition
+                    if(array_key_exists('status', $paramJson)){
+                        if($paramJson['status']!='' && $paramJson['status']!=false){
+                            $sql.=" AND u.status IN (".$paramJson['status'].")";
+                        }else{
+                            $sql.=" AND u.status='A'";
+                        } 
+                    }else{
+                        $sql.=" AND u.status='A'";
+                    }
+            $command = $connection->createCommand($sql);
+            $retUserDetailsArr = $command->queryAll();
+            if(count($retUserDetailsArr)>0 && $retUserDetailsArr!=false){
+                $retResult =  $retUserDetailsArr;    
             }
-        }
-        if(array_key_exists('user_id', $userLogDetails)){
-            if($userLogDetails['user_id']!=''){
-                $sqlColumnNames.=" user_id,";
-                $sqlValues.="'".$userLogDetails['user_id']."',";
-            }
-        }
-        if(array_key_exists('user_sessionid', $userLogDetails)){
-            if($userLogDetails['user_sessionid']!=''){
-                $sqlColumnNames.=" user_sessionid,";
-                $sqlValues.="'".$userLogDetails['user_sessionid']."',";
-            }
-        }
-        if(array_key_exists('user_sessionstarttime', $userLogDetails)){
-            if($userLogDetails['user_sessionstarttime']!=''){
-                $sqlColumnNames.=" user_sessionstarttime,";
-                $sqlValues.="'".$userLogDetails['user_sessionstarttime']."',";
-            }
-        }
-        if(array_key_exists('user_geolocationdetails', $userLogDetails)){
-            if($userLogDetails['user_geolocationdetails']!=''){
-                $sqlColumnNames.=" user_geolocationdetails,";
-                $sqlValues.="'".$userLogDetails['user_geolocationdetails']."',";
-            }
-        }
-        if(array_key_exists('status', $userLogDetails)){
-            if($userLogDetails['status']!=''){
-                $sqlColumnNames.=" status,";
-                $sqlValues.="'".$userLogDetails['status']."',";
-            }
-        }
-        if($sqlValues!='' && $sqlColumnNames!=''){
-            $userLogDetails['login_datedtime'] = date('Y-m-d H:i:s');
-            $sqlColumnNames.=" login_datedtime,";
-            $sqlValues.="'".$userLogDetails['login_datedtime']."',";
-            $sqlQuery = " INSERT INTO USERLOG " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
-            $command = $connection->createCommand($sqlQuery);
-            $result = $command->execute();
-            if($result>=1){
-                $lastInsertedId = $connection->getLastInsertID();
-            }
-        }
-        return $lastInsertedId;
+        }catch(Exception $ex){}
+        return $retResult;
     }
-    
+   
     // CJ defined this function 2016-08-21
     public static function updateUserPersonalInfoData($paramJson){
         $connection = Yii::app()->db;
@@ -217,82 +236,62 @@ class UsersDao{
         return $retResult;
     }
     
-    
-    // CJ defined this function 2016-07-27
-    public static function getUserDetails($paramJson=array()){
-        $retResult = false;
-        try{
-            $connection = Yii::App()->db;
-            $sql= " SELECT 
-                    u.id unmd5UserId, MD5(u.id) userId, UPPER(u.name) userName,
-                    u.email userEmail, u.mobile userMobile, 
-                    MD5(up.id) userProfileTypeId, up.id unmd5ProfileTypeId,
-                    DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y') userSinceFrom,
-                    COALESCE(u.status, 'Z') userStatus
-                    FROM USERS u
-                    JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
-                    WHERE 1 ";  
-                    // add userLoggedId in where condition
-                    if(array_key_exists('userLoggedId', $paramJson)){
-                        if(strlen($paramJson['userLoggedId'])==32){
-                            $sql.=" AND MD5(u.id)='".$paramJson['userLoggedId']."'";
-                        } 
-                    }
-                    // add user_id in where condition
-                    if(array_key_exists('user_id', $paramJson)){
-                        if(strlen($paramJson['user_id'])==32){
-                            $sql.=" AND MD5(u.id)='".$paramJson['user_id']."'";
-                        } 
-                    }
-                    // add created_by in where condition
-                    if(array_key_exists('created_by', $paramJson)){
-                        if(strlen($paramJson['created_by'])==32){
-                            $sql.=" AND MD5(u.id)='".$paramJson['created_by']."'";
-                        } 
-                    }
-                    // add user profile type id in where condition
-                    if(array_key_exists('userProfileTypeId', $paramJson)){
-                        if(strlen($paramJson['userProfileTypeId'])==32){
-                            $sql.=" AND MD5(up.id)='".$paramJson['userProfileTypeId']."' AND MD5(u.profile_typeid)='".$paramJson['userProfileTypeId']."'";
-                        } 
-                    }
-                    // add mobile in where condition
-                    if(array_key_exists('encoded_mobile', $paramJson)){
-                        if(strlen($paramJson['encoded_mobile'])==10){
-                            $sql.=" AND u.mobile='".$paramJson['encoded_mobile']."'";
-                        } 
-                    }
-                    // add email in where condition
-                    if(array_key_exists('encoded_email', $paramJson)){
-                        if(strlen($paramJson['encoded_email'])>0){
-                            $sql.=" AND u.email='".$paramJson['encoded_email']."'";
-                        } 
-                    }
-                    // add password in where condition
-                    if(array_key_exists('encoded_password', $paramJson)){
-                        if($paramJson['encoded_password']!='' && $paramJson['encoded_password']!=false){
-                            $sql.=" AND u.pwd=MD5('".$paramJson['encoded_password']."')";
-                        } 
-                    }
-                    // add status in where condition
-                    if(array_key_exists('status', $paramJson)){
-                        if($paramJson['status']!='' && $paramJson['status']!=false){
-                            $sql.=" AND u.status IN (".$paramJson['status'].")";
-                        }else{
-                            $sql.=" AND u.status='A'";
-                        } 
-                    }else{
-                        $sql.=" AND u.status='A'";
-                    }
-            $command = $connection->createCommand($sql);
-            $retUserDetailsArr = $command->queryAll();
-            if(count($retUserDetailsArr)>0 && $retUserDetailsArr!=false){
-                $retResult =  $retUserDetailsArr;    
+    // CJ defined this function 2016-08-01
+    public static function addUserLogDetails($paramData){
+        $connection = Yii::app()->db;
+        $sqlColumnNames = "";
+        $sqlValues = "";
+        $lastInsertedId = false;
+        if(array_key_exists('user_logno', $paramData)){
+            if($paramData['user_logno']!=''){
+                $sqlColumnNames.=" user_logno,";
+                $sqlValues.="'".$paramData['user_logno']."',";
             }
-        }catch(Exception $ex){}
-        return $retResult;
+        }
+        if(array_key_exists('user_id', $paramData)){
+            if($paramData['user_id']!=''){
+                $sqlColumnNames.=" user_id,";
+                $sqlValues.="'".$paramData['user_id']."',";
+            }
+        }
+        if(array_key_exists('user_sessionid', $paramData)){
+            if($paramData['user_sessionid']!=''){
+                $sqlColumnNames.=" user_sessionid,";
+                $sqlValues.="'".$paramData['user_sessionid']."',";
+            }
+        }
+        if(array_key_exists('user_sessionstarttime', $paramData)){
+            if($paramData['user_sessionstarttime']!=''){
+                $sqlColumnNames.=" user_sessionstarttime,";
+                $sqlValues.="'".$paramData['user_sessionstarttime']."',";
+            }
+        }
+        if(array_key_exists('user_geolocationdetails', $paramData)){
+            if($paramData['user_geolocationdetails']!=''){
+                $sqlColumnNames.=" user_geolocationdetails,";
+                $sqlValues.="'".$paramData['user_geolocationdetails']."',";
+            }
+        }
+        if(array_key_exists('status', $paramData)){
+            if($paramData['status']!=''){
+                $sqlColumnNames.=" status,";
+                $sqlValues.="'".$paramData['status']."',";
+            }
+        }
+        if($sqlValues!='' && $sqlColumnNames!=''){
+            $paramData['login_datedtime'] = date('Y-m-d H:i:s');
+            $sqlColumnNames.=" login_datedtime,";
+            $sqlValues.="'".$paramData['login_datedtime']."',";
+            $sqlQuery = " INSERT INTO USERLOG " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>=1){
+                $lastInsertedId = $connection->getLastInsertID();
+            }
+        }
+        return $lastInsertedId;
     }
-    
+     
     // CJ defined this function 2016-08-06
     public static function generateMaxSessionNo(){
         $maxUserSessionNo = 0;
@@ -340,6 +339,59 @@ class UsersDao{
             }
         }catch(Exception $ex){}
         return $retStatus;
+    }
+    
+    // CJ defined this function 2016-09-21
+    public static function addUserOtpcodeDetails($paramData){
+        $connection = Yii::app()->db;
+        $sqlColumnNames = "";
+        $sqlValues = "";
+        $lastInsertedId = false;
+        if(array_key_exists('user_sessionid', $paramData)){
+            if($paramData['user_sessionid']!=''){
+                $sqlColumnNames.=" user_sessionid,";
+                $sqlValues.="'".$paramData['user_sessionid']."',";
+            }
+        }
+        if(array_key_exists('encoded_name', $paramData)){
+            if($paramData['encoded_name']!='' && strlen($paramData['encoded_name'])>0){
+                $sqlColumnNames.=" name,";
+                $sqlValues.="'".$paramData['encoded_name']."',";
+            }
+        }
+        if(array_key_exists('encoded_email', $paramData)){
+            if($paramData['encoded_email']!='' && strlen($paramData['encoded_email'])>0){
+                $sqlColumnNames.=" email,";
+                $sqlValues.="'".$paramData['encoded_email']."',";
+            }
+        }
+        if(array_key_exists('encoded_mobile', $paramData)){
+            if($paramData['encoded_mobile']!='' && strlen($paramData['encoded_mobile'])>0){
+                $sqlColumnNames.=" mobile,";
+                $sqlValues.="'".$paramData['encoded_mobile']."',";
+            }
+        }
+        if(array_key_exists('otpcode', $paramData)){
+            if($paramData['otpcode']!='' && strlen($paramData['otpcode'])>0){
+                $sqlColumnNames.=" otpcode,";
+                $sqlValues.="'".$paramData['otpcode']."',";
+            }
+        }
+        if(array_key_exists('sent_onmedium', $paramData)){
+            if($paramData['sent_onmedium']!='' && strlen($paramData['sent_onmedium'])>0){
+                $sqlColumnNames.=" sent_onmedium,";
+                $sqlValues.="'".$paramData['sent_onmedium']."',";
+            }
+        }
+        if($sqlValues!='' && $sqlColumnNames!=''){
+            $sqlQuery = " INSERT INTO USER_OTPCODE ".rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>=1){
+                $lastInsertedId = $connection->getLastInsertID();
+            }
+        }
+        return $lastInsertedId;
     }
     
 }
