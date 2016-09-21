@@ -35,6 +35,46 @@ class UsersServicesV1 implements IUsersServicesV1{
         return $rspDetails;
     }
     
+    // CJ defined this action 2016-09-21
+    public function userSignUpAuthentication($dkParamDataArr){
+        $rspDetails = array();
+        $rspDetails['isOtpCodeSent'] = 'N';
+        $isSendOtpCode = 'N';
+        // checking param data length
+        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+            $userEmailParamData = array();
+            $userEmailParamData['encoded_email'] = $dkParamDataArr['encoded_email'];
+            $userEmailParamData['status'] = "'A','Z'";
+            $dataArr1 = UsersDao :: getUserDetails($userEmailParamData);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorting on status based
+                $sortedOnStatusDataArr = utils::arraySort($dataArr1);
+                if(array_key_exists('A', $sortedOnStatusDataArr)==true){
+                    if(count($sortedOnStatusDataArr['A'])>1){
+                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us !!!';
+                    }else if(count($sortedOnStatusDataArr['A'])==1){
+                        $isSendOtpCode = 'Y';
+                    }
+                }else if(array_key_exists('Z', $sortedOnStatusDataArr)==true){
+                    if(count($sortedOnStatusDataArr['Z'])==1){
+                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
+                    }
+                }
+            }else{
+                $isSendOtpCode = 'Y';
+            }
+            
+            // sending otp code and storing purpose
+            if($isSendOtpCode=='Y'){
+                $mobile = $userEmailParamData['encoded_mobile'];
+                $otpCode = '111';
+                $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
+            }
+            
+        } 
+        return $rspDetails;
+    }
+    
     // CJ defined this action 2016-08-01 & use for user signIn purpose 
     public function checkUserAuthentication($dkParamDataArr){
         $rspDetails = array();
