@@ -575,8 +575,9 @@ class customparam{
             }
         }
         // check encoded_mobile key present or not
-        if(array_key_exists('encoded_mobile', $paramJsonData)){
-            if(strlen($paramJsonData['encoded_mobile'])==10){
+        if(array_key_exists('encoded_email', $paramJsonData)){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['encoded_email']);
+            if(strlen($paramJsonData['encoded_email'])>0 && $isEmailStringMatched==true){
                 $givenParamDataCorrectCount++;
             }
         }
