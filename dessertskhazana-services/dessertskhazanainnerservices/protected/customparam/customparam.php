@@ -556,6 +556,49 @@ class customparam{
     
     //////////////////////////// user related code //////////////////////
     
+    // CJ defined this function 2016-09-21
+    public static function checkParamDataForUserSignUpAuthentication($paramJsonData){
+        $retStatus = 'FALSE';
+        $givenParamDataCorrectCount = 0;
+        // check user_sessionid key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check user_sessionstarttime key present or not
+        if(array_key_exists('usersession_starttimestamp', $paramJsonData)){
+            if($paramJsonData['usersession_starttimestamp']!='' 
+                && $paramJsonData['usersession_starttimestamp']!=false){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check encoded_name key present or not
+        if(array_key_exists('encoded_name', $paramJsonData)){
+            if(strlen($paramJsonData['encoded_name'])>0){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check encoded_mobile key present or not
+        if(array_key_exists('encoded_email', $paramJsonData)){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['encoded_email']);
+            if(strlen($paramJsonData['encoded_email'])>0 && $isEmailStringMatched==true){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        // check encoded_mobile key present or not
+        if(array_key_exists('encoded_mobile', $paramJsonData)){
+            $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['encoded_mobile']);
+            if(strlen($paramJsonData['encoded_mobile'])==10 && $isMobileStringMatched==true){
+                $givenParamDataCorrectCount++;
+            }
+        }
+        if($givenParamDataCorrectCount==5){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     // CJ defined this function 2016-07-27
     public static function checkParamDataForUserSignInAuthentication($paramJsonData){
