@@ -1581,7 +1581,7 @@ function getParamDataForUserSignInAuthentication(){
                         && (userSessionParamObj['udblogId']).length===0){
                         paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                         paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
-                        paramObj['encoded_mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignInMobileInputId').val());
+                        paramObj['encoded_email'] = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
                         paramObj['encoded_password'] = removeHtmlStripTagsOfContent($('#ma_userSignInPasswordInputId').val());
                     }
                 }
