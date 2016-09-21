@@ -1591,33 +1591,106 @@
         color:#fff!important;
     }
     
+    /*  myaccount sigup form css code */
+    
+    .ma_userSignUpFormInfoWrapperDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+    }
+    
+    .ma_userSignUpformContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px solid #e7e7e7!important;
+        background:#fff!important;
+    }
+
+    .ma_userSignUpformContentWrappperContainerDivClass div{
+        margin-bottom:15px;
+    }
+
+    .ma_userSignUpFormfieldLabelPClass{
+        font-weight:normal!important;
+        color:#708090!important;
+        margin:0px!important;
+    }
+
+    .ma_userSignUpFormfieldHintPClass{
+        font-size:11px!important;
+        font-weight:normal!important;
+        color:#708090!important;
+        margin:0px!important;
+    }
+
+    .ma_userSignUpFormfieldiconclass{
+        color:#708090!important;
+        font-size:15px!important;
+    }
+    
+    .ma_userSignUpNameInputClass,
+    .ma_userSignUpEmailInputClass,
+    .ma_userSignUpPasswordInputClass{
+        height:40px!important;
+    }
+
+    .ma_userSignUpErrorMsgContainerDivClass{
+        color:#4747d0!important;
+    }
+
+    .ma_userSignUpBtnContainerDivClass{
+        text-align:center;
+    }
+
+    .ma_userSignUpSubmitBtnClass, 
+    .ma_userSignUpSubmitBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#fb366e!important;
+        color:#fff!important;
+    }
+
+    .ma_userSignUpBorderDivClass{
+        width:100%; 
+        text-align:center!important; 
+        border-bottom:1px solid #f10052!important;
+        line-height:0.1em; 
+        margin:10px 0 20px; 
+    }
+
+    .ma_userSignUpBorderDivClass span{ 
+        background:#fff!important; 
+        padding:0 10px!important; 
+        color:#7b8590!important;
+    }
+
+    .ma_redirectForUserSignUpBtnContainerDivClass{
+        text-align:center;
+        margin-top:10px!important;
+    }
+
+    .ma_redirectForUserSignInBtnClass, 
+    .ma_redirectForUserSignInBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:#5663ab!important;
+        color:#fff!important;
+    }
+
+    
     /*  myaccount sigin form css code */
 
     .ma_userSignInFormInfoWrapperDivClass{
-        margin-top:20px;
         padding-top:10px!important;
         padding-bottom:10px!important;
     }
-
-    .ma_userSignInformHeaderPClass{
-        color:#ab0b38!important;
-        font-weight:normal!important;
-        text-align:center!important;
-    }
-
-    .ma_userSignInIconClass{
-        font-size:20px!important;
-        font-weight:normal!important;
-        color:#f74074!important;
-    }
-
+    
     .ma_userSignInformContentWrappperContainerDivClass{
-        margin-top: 10px!important;
-        border:1px solid #e7e7e7;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        margin-left:25%!important;
+        border:1px solid #e7e7e7!important;
+        background:#fff!important;
     }
 
     .ma_userSignInformContentWrappperContainerDivClass div{
@@ -1625,22 +1698,24 @@
     }
 
     .ma_userSignInFormfieldLabelPClass{
-        color:#778ca0!important;
         font-weight:normal!important;
+        color:#708090!important;
+        margin:0px!important;
     }
 
     .ma_userSignInFormfieldHintPClass{
         font-size:11px!important;
-        color:#708090!important;
         font-weight:normal!important;
+        color:#708090!important;
+        margin:0px!important;
     }
 
     .ma_userSignInFormfieldiconclass{
-        color:#fa8072!important;
+        color:#708090!important;
         font-size:15px!important;
     }
 
-    .ma_userSignInMobileInputClass,
+    .ma_userSignInEmailInputClass,
     .ma_userSignInPasswordInputClass{
         height:40px!important;
     }
