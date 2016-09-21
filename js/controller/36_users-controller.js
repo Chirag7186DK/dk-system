@@ -31,7 +31,7 @@ function UsersController($scope, $rootScope, UsersServices){
         $rootScope.resetVariableAccountSignUpSignIn = function(purposeType){
             if(purposeType==='signin'){
                 $rootScope.isUserLoggedInSession = false;
-                attachedFieldValidationUserSignInFormContent();
+                // attachedFieldValidationUserSignInFormContent();
             }
         };
         
