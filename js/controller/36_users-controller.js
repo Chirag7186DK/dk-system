@@ -4,8 +4,8 @@ angular.module('DKAPP').controller('UsersController', UsersController);
 function UsersController($scope, $rootScope, UsersServices){
     try{
         
-        // redirectToMyAccount
-        $rootScope.redirectToAccountSignUpSignIn = function(fromPageLoad){
+        // goToSignUpSignInAccountSection
+        $rootScope.goToSignUpSignInAccountSection = function(fromPageLoad){
             storePageDetailsUserAccessedFrom(fromPageLoad);
             // fetch param data from session
             var userLoggedInSessionStatus = checkUserLoggedInSession();
@@ -14,25 +14,19 @@ function UsersController($scope, $rootScope, UsersServices){
             }    
         };
         
-        // isEnableAccountSignUpSignIn
-        $rootScope.isEnableAccountSignUpSignIn = function(){
-            var fromPageLoad = getPageDetailsUserAccessedFrom();
-            if(fromPageLoad!=='' && fromPageLoad!==false){
-                var userLoggedInSessionStatus = checkUserLoggedInSession();
-                if(userLoggedInSessionStatus===true){
-                    window.location.href = globalBaseSitePath;
-                }else if(userLoggedInSessionStatus===false){
-                    $rootScope.resetVariableAccountSignUpSignIn('signin');
-                } 
-            }
+        // isUserAlreadySignedInAccountSection
+        $rootScope.isUserAlreadySignedInAccountSection = function(){
+            var userLoggedInSessionStatus = checkUserLoggedInSession();
+            if(userLoggedInSessionStatus===true){
+                window.location.href = globalBaseSitePath;
+            }else if(userLoggedInSessionStatus===false){
+                $rootScope.resetSignUpSignInAccountSection('signIn');
+            } 
         };
         
-        // resetVariableAccountSignUpSignIn
-        $rootScope.resetVariableAccountSignUpSignIn = function(purposeType){
-            if(purposeType==='signin'){
-                $rootScope.isUserLoggedInSession = false;
-                // attachedFieldValidationUserSignInFormContent();
-            }
+        // resetSignUpSignInAccountSection
+        $rootScope.resetSignUpSignInAccountSection = function(purposeType){
+            $rootScope.displaySignInSignUpSectionAccountName = purposeType;
         };
         
         // collectDataUserSignInAuthentication
@@ -115,14 +109,6 @@ function UsersController($scope, $rootScope, UsersServices){
             UsersServices.signOutUser();
             resetDKSessionData();
             window.location.href = globalBaseSitePath;
-        };
-        
-        // checkUserCAccountIsActiveInSession
-        $rootScope.checkUserCAccountIsActiveInSession = function(){
-            var isUserLoggedInSession = checkUserLoggedInSession();
-            if(isUserLoggedInSession===true){
-                UsersServices.refreshUserDashboardSummaryDataDetails();
-            }
         };
         
         // storeRequestedSectionNameToAccessInUserAccount
