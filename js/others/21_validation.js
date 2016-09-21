@@ -393,27 +393,19 @@ function validateParamDataCorporateTieupRequest(){
 
 // CJ defined this fucntion 2016-08-01
 function attachedFieldValidationUserSignInFormContent(){
-    if($('#ma_userSignInMobileInputId').length===1){
-        $('#ma_userSignInMobileInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"10", 
-                "allowDecSep":false
-            }
-        );
-        // CJ added code here 2016-07-27
-        $('#ma_userSignInMobileInputId').bind("keypress keydown keyup change paste", function(e){
+    if($('#ma_userSignInEmailInputId').length===1){
+        $('#ma_userSignInEmailInputId').bind("keypress keydown keyup change paste", function(e){
             try{
                 var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
                 if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    if(currentTextVal.charAt(0)<=5){
-                        $(this).val('');
+                    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    if(!currentTextVal.match(mail)){
+                        $(this).css({'border-color':'#f18178'});
+                    }else{
+                        $(this).css({'border-color':'#ccc'});
                     }
                 }
             }catch(ex){
-                $(this).val('');
             }
         });
     }
@@ -423,14 +415,14 @@ function attachedFieldValidationUserSignInFormContent(){
 // CJ defined this function 2016-08-01
 function validateDataUserSignInAuthentication(){
     var blankFieldValueCount = 0;
-    if($('#ma_userSignInMobileInputId').length===1){
-        if($('#ma_userSignInMobileInputId').val()===''
-            || $('#ma_userSignInMobileInputId').val()===false){
-            $('#ma_userSignInMobileInputId').css({'border-color':'#f18178'});
-            $('.ma_userSignInMobileInput_ErrorClass').empty().append("Please enter 10 digits registered mobile no.s !");
-            $('.ma_userSignInMobileInput_ErrorClass').css({'border-color':'#f18178'});
+    if($('#ma_userSignInEmailInputId').length===1){
+        if($('#ma_userSignInEmailInputId').val()===''
+            || $('#ma_userSignInEmailInputId').val()===false){
+            $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
+            $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
+            $('.ma_userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
             blankFieldValueCount++;
-        }else if($('#ma_userSignInMobileInputId').val()!==''){
+        }else if($('#ma_userSignInEmailInputId').val()!==''){
             var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignInMobileInputId').val());
             var mobilePattern = /^[6-9]\d{9}$/g;
             if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==10){
