@@ -7,9 +7,9 @@ function attachEmailValidationOnInput(elementObj){
             if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
                 var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 if(!currentTextVal.match(mail)){
-                    $(this).css({'border-color':'#f18178'});
+                    $(this).css({'border-color':'#f18178!important;'});
                 }else{
-                    $(this).css({'border-color':'#ccc'});
+                    $(this).css({'border-color':'#ccc!important;'});
                 }
             }
         }catch(ex){
