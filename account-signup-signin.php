@@ -144,7 +144,7 @@
                         <p class="ma_userSignUpFormfieldLabelPClass">
                             <i class="ma_userSignUpFormfieldiconclass fa fa-mobile faa-tada animated"></i> Mobile
                         </p>
-                        <input attachvalidation-mobileinput-directive type="text" id='ma_userSignUpMobileInputId' class="form-control ma_userSignUpMobileInputClass">
+                        <input attach-validation-mobileinput-directive type="text" id='ma_userSignUpMobileInputId' class="form-control ma_userSignUpMobileInputClass">
                         <p class="ma_userSignUpFormfieldHintPClass">
                             Eg: 9975967186
                         </p>
@@ -154,7 +154,7 @@
                         {{userSignUpFormContentErrorMsgStr}}
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication()" class='btn ma_userSignUpSubmitBtnClass' id='ma_userSignUpSubmitBtnId'>
+                        <button ng-click="collectDataUserSignUpAuthentication('signupSection')" class='btn ma_userSignUpSubmitBtnClass' id='ma_userSignUpSubmitBtnId'>
                             <i class='fa fa-lock'></i> SIGN UP
                         </button>
                     </div>
@@ -174,25 +174,15 @@
                         <p class="ma_userSignUpFormfieldLabelPClass">
                             <i class="ma_userSignUpFormfieldiconclass fa fa-mobile faa-tada animated"></i> OTP Code
                         </p>
-                        <input type="text" id='ma_userSignUpOtpCodeInputId' class="form-control ma_userSignUpOtpCodeInputClass">
+                        <input attach-validation-otpcodeinput-directive type="text" id='ma_userSignUpOtpCodeInputId' class="form-control ma_userSignUpOtpCodeInputClass">
                         <p class="ma_userSignUpFormfieldHintPClass">
                             Eg: 23Sddd
                         </p>
                         <p class="ma_userSignUpOtpCodeInput_ErrorClass"></p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpPasswordContainerDivClass">
-                        <p class="ma_userSignUpFormfieldLabelPClass">
-                            <i class="ma_userSignUpFormfieldiconclass fa fa-key faa-tada animated"></i> Password
-                        </p>
-                        <input type="password" id='ma_userSignUpPasswordInputId' class="form-control ma_userSignUpPasswordInputClass">
-                        <p class="ma_userSignUpFormfieldHintPClass">
-                            Eg: 23Sddd
-                        </p>
-                        <p class="ma_userSignUpPasswordInput_ErrorClass"></p>
-                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication()" class='btn ma_userSignUpSubmitBtnClass'>
-                            <i class='fa fa-lock'></i> SIGN UP
+                        <button ng-click="collectDataUserSignUpAuthentication('otpcodeSection')" class='btn ma_userSignUpSubmitBtnClass'>
+                            <i class='fa fa-lock'></i> CONTINUE
                         </button>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBorderDivClass">
