@@ -598,6 +598,17 @@ class customparam{
                 $retStatus = 'TRUE';
             }
         }
+        // check EmailAuthAndOtpRequest key present or not
+        if(array_key_exists('validateOtpAndCreateAccountRequest', $paramJsonData) 
+            && array_key_exists('otpcode', $paramJsonData)){
+            if($paramJsonData['validateOtpAndCreateAccountRequest']=='Y'
+                && strlen($paramJsonData['otpcode'])==6){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==6){
+                $retStatus = 'TRUE';
+            }
+        }
         return $retStatus;
     }
     
