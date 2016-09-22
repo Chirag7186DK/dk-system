@@ -82,14 +82,50 @@ function UsersController($scope, $rootScope, UsersServices){
         
         // collectDataUserSignUpAuthentication
         $rootScope.collectDataUserSignUpAuthentication = function(fromSection){
-            // validate form content data for user signIn related wish list
             var retValidateDataStatus = validateDataUserSignUpAuthentication(fromSection);
             if(retValidateDataStatus===true){
-                // get param obj for signIn purpose
-                var preparedParamJsonObj = getParamDataForUserSignInAuthentication();
+                var preparedParamJsonObj = getParamDataForUserSignUpAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    $rootScope.checkUserSignInAuthentication(preparedParamJsonObj);
+                    $rootScope.userSignUpAuthentication(preparedParamJsonObj);
                 }
+            }
+        };
+        
+        // userSignUpAuthentication
+        $rootScope.userSignUpAuthentication = function(paramDataObj){
+            try{
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    // calling UsersServices 
+                    UsersServices.userSignUpAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            var authenticatedUserDetailsObj = false;
+                            var notificationMsgStr = '';
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                authenticatedUserDetailsObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                            }
+                            if(authenticatedUserDetailsObj!=='' && authenticatedUserDetailsObj!==false 
+                                && authenticatedUserDetailsObj!==undefined){
+                                if(authenticatedUserDetailsObj['isUserAccountActive']==='N'){
+                                    $rootScope.isShowUserSignInFormContentErrorMsg = true;
+                                    $rootScope.userSignInFormContentErrorMsgStr = authenticatedUserDetailsObj['msgStr'];
+                                    notificationMsgStr = authenticatedUserDetailsObj['msgStr'];
+                                }else{
+                                    storeAuthenticatedUserDetailsInSession(authenticatedUserDetailsObj);
+                                    $rootScope.redirectToUserAccessedLastPageFrom();
+                                }
+                            }else{
+                                notificationMsgStr = 'Please enter valid details to sign-in with desserts khazana account !';
+                                $rootScope.isShowUserSignInFormContentErrorMsg = true;
+                                $rootScope.userSignInFormContentErrorMsgStr = notificationMsgStr;
+                                showNotificationBoxMsg(notificationMsgStr);
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in checkUserSignInAuthentication=>"+ex);
             }
         };
         
