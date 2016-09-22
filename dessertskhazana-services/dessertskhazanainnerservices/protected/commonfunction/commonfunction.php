@@ -439,6 +439,31 @@ class commonfunction{
         return $userSessionId;
     }
     
+    // CJ defined this function 2016-08-01
+    public static function preparedDataToStoreInfoAbtTrackedUserAccessingWebsitesDetails($userJsonData){
+        $retLastInsertedUserInfoTrackedId = false;
+        if(count($userJsonData)>0 && $userJsonData!=false){
+            // track user info accessing web app details
+            $utawParamDetails = array();
+            $utawParamDetails['is_loggedInUser'] = 'Y';
+            $utawParamDetails['profile_id'] = $userJsonData['unmd5ProfileTypeId'];
+            $utawParamDetails['user_id'] = $userJsonData['unmd5UserId'];
+            $utawParamDetails['ipaddress'] = $_SERVER['REMOTE_ADDR'];
+            $retLastInsertedUserInfoTrackedId = UsersDao :: addTrackUserInfoAccessingWebsitesDetails($utawParamDetails);
+        }
+        return $retLastInsertedUserInfoTrackedId;
+    }
+    
+    // CJ defined this function 2016-09-21
+    public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
+        $smsSentStatus = true;
+        if($mobile!='' && strlen($mobile)==10){
+            $smsMsgBodyStr = "$otpcode is your verification code to verify your mobile# on DessertsKhazana.";
+            $smsMsgBodyStr.= "This verificaton is important for safety of your account and must be done before you proceed.";
+            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
+        }
+        return $smsSentStatus;
+    }
     
     // CJ defined this function 2016-08-11
     public static function getUserSessionDetails($paramJsonData){
@@ -452,26 +477,41 @@ class commonfunction{
         return $userSessionDetailsData;
     }
     
-    
-    // CJ defined this function 2016-09-21
-    public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
-        $smsSentStatus = true;
-        if($mobile!='' && strlen($mobile)==10){
-            $smsMsgBodyStr = "$otpcode is your verification code to verify your mobile# on DessertsKhazana.";
-            $smsMsgBodyStr.= "This verificaton is important for safety of your account and must be done before you proceed.";
-            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
+    // CJ defined this function 2016-08-01
+    public static function preparedDataToStoreInfoAbtUserAsLog($userJsonData, $paramDataArr){
+        $userLogNo = false;
+        if(count($userJsonData)>0 && $userJsonData!=false){
+            // fetch user max log no
+            $userMaxLogNo = UsersDao::generateMaxUserLogNo();
+            if($userMaxLogNo>=0){
+                $sha1String = sha1($userMaxLogNo.time());
+                $userLogNo = "ULNO".$userMaxLogNo.time().$sha1String;
+            }else{
+                $userLogNo = "ULNO".time().$sha1String;
+            }
+            // track user info accessing web app details
+            $userInfoLogDetails = array();
+            $userInfoLogDetails['user_id'] = $userJsonData['unmd5UserId'];
+            $userInfoLogDetails['user_logno'] = $userLogNo;
+            $userInfoLogDetails['user_sessionid'] = $paramDataArr['user_sessionid'];
+            $userInfoLogDetails['user_sessionstarttime'] = $paramDataArr['usersession_starttimestamp'];
+            $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
+            $userInfoLogDetails['status'] = 'A';
+            $lastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
+            if($lastInsertedUserInfoLogId>0){}
         }
-        return $smsSentStatus;
+        return $userLogNo;
     }
     
+    
     // CJ defined this function 2016-08-01
-    public static function getUserAsCustomerDashboardSummaryDataDetails($authenticatedUserJsonData){
+    public static function getUserAsCustomerDashboardSummaryDataDetails($userJsonData){
         $retJsonData = array();
         // checking data length
-        if(count($authenticatedUserJsonData)>0 && $authenticatedUserJsonData!=false){
-            $user_sessionid = $authenticatedUserJsonData['user_sessionid'];
-            $udblogId = $authenticatedUserJsonData['userLogId'];
-            $explodedLoggedUsername = explode(" ", $authenticatedUserJsonData['userName']);
+        if(count($userJsonData)>0 && $userJsonData!=false){
+            $user_sessionid = $userJsonData['user_sessionid'];
+            $udblogId = $userJsonData['userLogId'];
+            $explodedLoggedUsername = explode(" ", $userJsonData['userName']);
             $userAsCustomerInfoSectionListArr = array(
                 array("displayTitle"=>"Personal Info", "hoverTitle"=>"Click here to see personal info details", "sectionName"=>"personalinfo"),
                 array("displayTitle"=>"Change Password", "hoverTitle"=>"Click here to change your password details", "sectionName"=>"changepassword"),
@@ -486,53 +526,57 @@ class commonfunction{
                 "udblogId"=>$udblogId,
                 "isUserLoggedInSession"=>"Y",
                 "loggedUserName"=>$explodedLoggedUsername[0],
-                "userSinceFrom"=>$authenticatedUserJsonData['userSinceFrom'],
+                "userSinceFrom"=>$userJsonData['userSinceFrom'],
                 "userInfoAllSectionListArr"=>$userAsCustomerInfoSectionListArr
             );
         }
         return $retJsonData;
     }
     
-    // CJ defined this function 2016-08-01
-    public static function preparedDataToStoreInfoAbtTrackedUserAccessingWebsitesDetails($authenticatedUserJsonData){
-        $retLastInsertedUserInfoTrackedId = false;
-        if(count($authenticatedUserJsonData)>0 && $authenticatedUserJsonData!=false){
-            // track user info accessing web app details
-            $utawParamDetails = array();
-            $utawParamDetails['is_loggedInUser'] = 'Y';
-            $utawParamDetails['profile_id'] = $authenticatedUserJsonData['unmd5ProfileTypeId'];
-            $utawParamDetails['user_id'] = $authenticatedUserJsonData['unmd5UserId'];
-            $utawParamDetails['ipaddress'] = $_SERVER['REMOTE_ADDR'];
-            $retLastInsertedUserInfoTrackedId = UsersDao :: addTrackUserInfoAccessingWebsitesDetails($utawParamDetails);
-        }
-        return $retLastInsertedUserInfoTrackedId;
+    // CJ defined this function 2016-09-22
+    public static function handleUserSignUpEmailAndOtpRequest($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
+        $rspDetails['isOtpCodeSent'] = 'N';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $userEmailParamData = array();
+            $userEmailParamData['email'] = $paramDataArr['email'];
+            $userEmailParamData['status'] = "'A','Z'";
+            $dataArr1 = UsersDao :: getUserDetails($userEmailParamData);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorting on status based
+                $sortedOnStatusDataArr = utils::arraySort($dataArr1);
+                if(array_key_exists('A', $sortedOnStatusDataArr)==true){
+                    if(count($sortedOnStatusDataArr['A'])>1){
+                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us !!!';
+                    }else if(count($sortedOnStatusDataArr['A'])==1){
+                        $isSendOtpCode = 'Y';
+                    }
+                }else if(array_key_exists('Z', $sortedOnStatusDataArr)==true){
+                    if(count($sortedOnStatusDataArr['Z'])==1){
+                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
+                    }
+                }
+            }else{
+                $isSendOtpCode = 'Y';
+            }
+            // sending otp code and storing purpose
+            if($isSendOtpCode=='Y'){
+                $mobile = $userEmailParamData['mobile'];
+                $otpCode = '111';
+                $paramDataArr['otpcode'] = $otpCode;
+                $paramDataArr['sent_onmedium'] = 'mobile';
+                // storing otp code
+                $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+                // sending otp code
+                // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
+                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobile";
+                $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
+            }
+        } 
+        return $rspDetails;
     }
     
-    // CJ defined this function 2016-08-01
-    public static function preparedDataToStoreInfoAbtUserAsLog($authenticatedUserJsonData, $dkParamDataArr){
-        $userLogNo = false;
-        if(count($authenticatedUserJsonData)>0 && $authenticatedUserJsonData!=false){
-            // fetch user max log no
-            $userMaxLogNo = UsersDao::generateMaxUserLogNo();
-            if($userMaxLogNo>=0){
-                $sha1String = sha1($userMaxLogNo.time());
-                $userLogNo = "ULNO".$userMaxLogNo.time().$sha1String;
-            }else{
-                $userLogNo = "ULNO".time().$sha1String;
-            }
-            // track user info accessing web app details
-            $userInfoLogDetails = array();
-            $userInfoLogDetails['user_id'] = $authenticatedUserJsonData['unmd5UserId'];
-            $userInfoLogDetails['user_logno'] = $userLogNo;
-            $userInfoLogDetails['user_sessionid'] = $dkParamDataArr['user_sessionid'];
-            $userInfoLogDetails['user_sessionstarttime'] = $dkParamDataArr['usersession_starttimestamp'];
-            $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
-            $userInfoLogDetails['status'] = 'A';
-            $lastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
-            if($lastInsertedUserInfoLogId>0){}
-        }
-        return $userLogNo;
-    }
     
     
     /////////////////////// coupon discount related code ////////////////////////////////
