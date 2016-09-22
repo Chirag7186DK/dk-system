@@ -10,16 +10,13 @@ class StoreController extends V1Controller{
     // CJ defined this action 2016-09-09
     public function actionStoreListDeliveryAreaBasedDessertType(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoresListDeliveryAreaBasedDessertType($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingStoresListDeliveryAreaBasedDessertType($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $StoreServicesV1 = new StoreServicesV1();
-                    $rspDetails = $StoreServicesV1->getStoreListDeliveryAreaBasedDessertType($dkParamDataArr);
+                    $rspDetails = $StoreServicesV1->getStoreListDeliveryAreaBasedDessertType($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -33,16 +30,13 @@ class StoreController extends V1Controller{
     // CJ defined this action 2016-09-04
     public function actionDeliveryAreaBasedStoresConductDessertType(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreabasedStoresConductDessertType($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingDeliveryAreabasedStoresConductDessertType($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $StoreServicesV1 = new StoreServicesV1();
-                    $rspDetails = $StoreServicesV1->getDeliveryAreaBasedStoresConductDessertType($dkParamDataArr);
+                    $rspDetails = $StoreServicesV1->getDeliveryAreaBasedStoresConductDessertType($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -56,16 +50,13 @@ class StoreController extends V1Controller{
     // CJ defined this action 2016-06-24
     public function actionStoreSummaryInfo(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoresummaryInfo($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingStoresummaryInfo($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $StoreServicesV1 = new StoreServicesV1();
-                    $rspDetails = $StoreServicesV1->getStoreSummaryInfo($dkParamDataArr);
+                    $rspDetails = $StoreServicesV1->getStoreSummaryInfo($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -79,16 +70,13 @@ class StoreController extends V1Controller{
     // CJ defined this action 2016-07-18
     public function actionStoreWorkingstyle(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoreWorkingstyle($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingStoreWorkingstyle($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $StoreServicesV1 = new StoreServicesV1();
-                    $rspDetails = $StoreServicesV1->getStoreWorkingstyleDetails($dkParamDataArr);
+                    $rspDetails = $StoreServicesV1->getStoreWorkingstyleDetails($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -102,16 +90,13 @@ class StoreController extends V1Controller{
     // CJ defined this action 2016-07-18
     public function actionStoreDeliveryFeeApplicableDeliveryArea(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataStoreDeliveryFeeApplicableOnDeliveryArea($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $StoreServicesV1 = new StoreServicesV1();
-                    $rspDetails = $StoreServicesV1->getStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr);
+                    $rspDetails = $StoreServicesV1->getStoreDeliveryFeeApplicableOnDeliveryArea($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
