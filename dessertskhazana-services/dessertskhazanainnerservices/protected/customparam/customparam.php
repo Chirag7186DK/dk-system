@@ -4,20 +4,16 @@ class customparam{
     
     // CJ defined this function 2016-07-20
     public static function checkRequestedParamKeyFromInDtoFile($paramJsonData, $InDtoClassName='DessertsKhazanaInDto'){
+        $paramDataObj = 'FALSE';
         try{
             if(count($paramJsonData)>0 && $paramJsonData!=false){
-                $dkInDtoObj = InDtoObjectFactory::create($InDtoClassName, $paramJsonData); 
-                if($dkInDtoObj->isRequestParamKeyValid=='false'){
-                    return false;
-                }else{
-                    return $dkInDtoObj;
+                $indtoObj = InDtoObjectFactory::create($InDtoClassName, $paramJsonData); 
+                if($indtoObj->isRequestParamKeyValid=='TRUE'){
+                    $paramDataObj = $indtoObj;
                 }
-            }else{
-                return false;
             }
-        }catch(Exception $ex){
-            return false;
-        }
+        }catch(Exception $ex){}
+        return $paramDataObj;
     }
     
     ////////////////////////// delivery city list  //////////////////////////
@@ -573,23 +569,23 @@ class customparam{
                 $givenParamDataCorrectCount++;
             }
         }
-        // check encoded_name key present or not
-        if(array_key_exists('encoded_name', $paramJsonData)){
-            if(strlen($paramJsonData['encoded_name'])>0){
+        // check name key present or not
+        if(array_key_exists('name', $paramJsonData)){
+            if(strlen($paramJsonData['name'])>0){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check encoded_mobile key present or not
-        if(array_key_exists('encoded_email', $paramJsonData)){
-            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['encoded_email']);
-            if(strlen($paramJsonData['encoded_email'])>0 && $isEmailStringMatched==true){
+        // check email key present or not
+        if(array_key_exists('email', $paramJsonData)){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
+            if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
                 $givenParamDataCorrectCount++;
             }
         }
-        // check encoded_mobile key present or not
-        if(array_key_exists('encoded_mobile', $paramJsonData)){
-            $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['encoded_mobile']);
-            if(strlen($paramJsonData['encoded_mobile'])==10 && $isMobileStringMatched==true){
+        // check mobile key present or not
+        if(array_key_exists('mobile', $paramJsonData)){
+            $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['mobile']);
+            if(strlen($paramJsonData['mobile'])==10 && $isMobileStringMatched==true){
                 $givenParamDataCorrectCount++;
             }
         }
