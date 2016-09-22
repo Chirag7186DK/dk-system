@@ -80,6 +80,19 @@ function UsersController($scope, $rootScope, UsersServices){
             }
         };
         
+        // collectDataUserSignUpAuthentication
+        $rootScope.collectDataUserSignUpAuthentication = function(fromSection){
+            // validate form content data for user signIn related wish list
+            var retValidateDataStatus = validateDataUserSignInAuthentication(fromSection);
+            if(retValidateDataStatus===true){
+                // get param obj for signIn purpose
+                var preparedParamJsonObj = getParamDataForUserSignInAuthentication();
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    $rootScope.checkUserSignInAuthentication(preparedParamJsonObj);
+                }
+            }
+        };
+        
         // redirectToUserAccessedLastPageFrom
         $rootScope.redirectToUserAccessedLastPageFrom = function(){
             var lastPageAccessedByUser = getPageDetailsUserAccessedFrom();
