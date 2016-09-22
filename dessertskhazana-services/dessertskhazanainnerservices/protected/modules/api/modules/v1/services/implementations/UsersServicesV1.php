@@ -60,7 +60,11 @@ class UsersServicesV1 implements IUsersServicesV1{
                         $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
                         if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
                             $signInParamDataArr = array();
-                            $signInParamDataArr['email'] = 
+                            $signInParamDataArr['email'] = $paramDataArr['email'];
+                            $signInParamDataArr['mobile'] = $paramDataArr['mobile'];
+                            $signInParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
+                            $signInParamDataArr['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                            // fetching user signin details about creating new account
                             $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
                             $rspDetails = array_merge($rspDetails, $rtDataArr2);
                         }
