@@ -8,12 +8,12 @@
 class UsersServicesV1 implements IUsersServicesV1{
     
     // CJ defined this action 2016-07-20
-    public function addTrackUserInfoAccessingWebsitesDetails($dkParamDataArr){
+    public function addTrackUserInfoAccessingWebsitesDetails($paramDataArr){
         $rspDetails = array();
         $rspDetails["isTrackedUserInfoAccessingWebsites"] = 'NO';
         // check requested param data
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!='' && $dkParamDataArr!=false){
-            $utawParamDetails = commonfunction :: prepareParamDataForTrackingUserInfoAccessingWebsites($dkParamDataArr);
+        if(count($paramDataArr)>0 && $paramDataArr!='' && $paramDataArr!=false){
+            $utawParamDetails = commonfunction :: prepareParamDataForTrackingUserInfoAccessingWebsites($paramDataArr);
             $lastUTAWId = UsersDao::addTrackUserInfoAccessingWebsitesDetails($utawParamDetails);
             if($lastUTAWId>0 && $lastUTAWId!=false){
                 $rspDetails["isTrackedUserInfoAccessingWebsites"] = 'YES';
@@ -23,10 +23,10 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-08-06
-    public function generateUserSessionId($dkParamDataArr){
+    public function generateUserSessionId($paramDataArr){
         $rspDetails = array();
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
             $userSessionId = commonfunction :: getUserSessionId();
             if($userSessionId!=false && strlen($userSessionId)>7){
                 $rspDetails['userSessionId'] = $userSessionId;
@@ -36,58 +36,30 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-09-21
-    public function userSignUpAuthentication($dkParamDataArr){
+    public function userSignUpAuthentication($paramDataArr){
         $rspDetails = array();
+        $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
-        $isSendOtpCode = 'N';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $userEmailParamData = array();
-            $userEmailParamData['encoded_email'] = $dkParamDataArr['encoded_email'];
-            $userEmailParamData['status'] = "'A','Z'";
-            $dataArr1 = UsersDao :: getUserDetails($userEmailParamData);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                // sorting on status based
-                $sortedOnStatusDataArr = utils::arraySort($dataArr1);
-                if(array_key_exists('A', $sortedOnStatusDataArr)==true){
-                    if(count($sortedOnStatusDataArr['A'])>1){
-                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us !!!';
-                    }else if(count($sortedOnStatusDataArr['A'])==1){
-                        $isSendOtpCode = 'Y';
-                    }
-                }else if(array_key_exists('Z', $sortedOnStatusDataArr)==true){
-                    if(count($sortedOnStatusDataArr['Z'])==1){
-                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
-                    }
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            if(array_key_exists('EmailAuthAndOtpRequest', $paramDataArr)){
+                if($paramDataArr['EmailAuthAndOtpRequest']=='Y'){
+                    $rspDetails = commonfunction :: handleUserSignUpEmailAndOtpRequest($paramDataArr);
                 }
-            }else{
-                $isSendOtpCode = 'Y';
-            }
-            // sending otp code and storing purpose
-            if($isSendOtpCode=='Y'){
-                $mobile = $userEmailParamData['encoded_mobile'];
-                $otpCode = '111';
-                $dkParamDataArr['otpcode'] = $otpCode;
-                // storing otp code
-                $statusOtpcodeStored = UsersDao :: addUserOtpcodeDetails($dkParamDataArr);
-                // sending otp code
-                $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
-                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobile";
-                $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
             }
         } 
         return $rspDetails;
     }
     
     // CJ defined this action 2016-08-01 & use for user signIn purpose 
-    public function checkUserAuthentication($dkParamDataArr){
+    public function checkUserAuthentication($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
         $rspDetails['userDetails']['msgStr'] = 'Invalid account details !';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $dkParamDataArr['status'] = "'A','Z'";
-            $userAuthenticationDetailsArr = UsersDao :: getUserDetails($dkParamDataArr);
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $paramDataArr['status'] = "'A','Z'";
+            $userAuthenticationDetailsArr = UsersDao :: getUserDetails($paramDataArr);
             if(count($userAuthenticationDetailsArr)==1 && $userAuthenticationDetailsArr!=false){
                 $userStatus = $userAuthenticationDetailsArr[0]['userStatus'];
                 if($userStatus=='Z'){
@@ -97,11 +69,11 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !';
                     // store user info as login status
-                    $lastInsertedUserInfoLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userAuthenticationDetailsArr[0], $dkParamDataArr);
+                    $lastInsertedUserInfoLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userAuthenticationDetailsArr[0], $paramDataArr);
                     if($lastInsertedUserInfoLogNo!=false && $lastInsertedUserInfoLogNo!=''){
                         $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogNo;
-                        $rspDetails['userDetails']['user_sessionid'] = $dkParamDataArr['user_sessionid'];
-                        $rspDetails['userDetails']['usersession_starttimestamp'] = $dkParamDataArr['usersession_starttimestamp'];
+                        $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
+                        $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                         $rspDetails['userDetails']['userProfileTypeId'] = $userAuthenticationDetailsArr[0]['unmd5ProfileTypeId'];
                     }
                 }
@@ -113,11 +85,11 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-08-01
-    public function getUserDashboardSummaryDataDetails($dkParamDataArr){
+    public function getUserDashboardSummaryDataDetails($paramDataArr){
         $rspDetails = array();
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $userProfileTypeId = $userSessionDetailsData['unmd5ProfileTypeId'];
                 $userProfileType = strtolower($userSessionDetailsData['profile_type']);
@@ -132,12 +104,12 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
 
     // CJ defined this action 2016-08-21
-    public function getUserPersonalInfoData($dkParamDataArr){
+    public function getUserPersonalInfoData($paramDataArr){
         $rspDetails = array();
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
             // fetch user session details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $rspDetails['userPersonalDetails'] = array();
                 $rspDetails['userPersonalDetails']['name'] = $userSessionDetailsData['userName'];
@@ -151,17 +123,17 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-08-21
-    public function updateUserPersonalInfoData($dkParamDataArr){
+    public function updateUserPersonalInfoData($paramDataArr){
         $rspDetails = array();
         $rspDetails['isUserprofileInfoUpdated'] = 'FALSE';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
             // fetch user session details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
-                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
-                $updateProfileInfoDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
+                $paramDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
+                $paramDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $updateProfileInfoDataStatus = UsersDao :: updateUserPersonalInfoData($paramDataArr);
                 if($updateProfileInfoDataStatus==true){
                     $rspDetails['isUserprofileInfoUpdated'] = 'TRUE';
                 }
@@ -171,20 +143,20 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
 
     // CJ defined this action 2016-08-21
-    public function updateUserPasswordInfoData($dkParamDataArr){
+    public function updateUserPasswordInfoData($paramDataArr){
         $rspDetails = array();
         $rspDetails['userpwdChangedStatusDetails'] = array();
         $rspDetails['userpwdChangedStatusDetails']['ispwdChanged'] = 'FALSE';
         $rspDetails['userpwdChangedStatusDetails']['statusMsg'] = 'Your password is not change, please try again !';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
             // fetch user session details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $dkParamDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
-                $dkParamDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
-                $dkParamDataArr['pwd'] = MD5($dkParamDataArr['new_password']);
-                $updatedPasswordDataStatus = UsersDao :: updateUserPersonalInfoData($dkParamDataArr);
+                $paramDataArr['user_id'] = $userSessionDetailsData['unmd5UserId'];
+                $paramDataArr['updated_by'] = $userSessionDetailsData['unmd5UserId'];
+                $paramDataArr['pwd'] = MD5($paramDataArr['new_password']);
+                $updatedPasswordDataStatus = UsersDao :: updateUserPersonalInfoData($paramDataArr);
                 if($updatedPasswordDataStatus==true){
                     $rspDetails['userpwdChangedStatusDetails']['ispwdChanged'] = 'TRUE';
                     $rspDetails['userpwdChangedStatusDetails']['statusMsg'] = 'Your password is changed successfully !';
@@ -198,13 +170,13 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
 
     // CJ defined this action 2016-08-30
-    public function userLogoutFromWebsites($dkParamDataArr){
+    public function userLogoutFromWebsites($paramDataArr){
         $rspDetails = array();
         $rspDetails['isUserLogoutFromWebsites'] = 'FALSE';
         // checking param data length
-        if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
             // fetch user session details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($dkParamDataArr);
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramDataArr);
             if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
                 $udblogId = $userSessionDetailsData['userLogId'];
                 $userSessionId = $userSessionDetailsData['user_sessionid'];
