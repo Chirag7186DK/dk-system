@@ -9,7 +9,7 @@ class customparam{
             if(count($paramJsonData)>0 && $paramJsonData!=false){
                 $indtoObj = InDtoObjectFactory::create($InDtoClassName, $paramJsonData); 
                 if($indtoObj->isRequestParamKeyValid=='TRUE'){
-                    $paramDataObj = $indtoObj->_inDtoArray;
+                    $paramDataObj = json_decode(json_encode($indtoObj), true);
                 }
             }
         }catch(Exception $ex){}
