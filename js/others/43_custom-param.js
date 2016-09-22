@@ -1,8 +1,4 @@
 
-//////////////////////// DK session related data ////////////////////////
-
-// CJ defined this function 2016-07-28
-
 function initializeDkSessionData(){
     try{
         
@@ -77,6 +73,44 @@ function initializeDkSessionData(){
     }catch(ex){
         return false;
     }    
+}
+
+function checkDkSessionParamObjExists(){
+    var rtStatus = 'FALSE';
+    try{
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            rtStatus = 'TRUE';
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
+
+function checkUnAuthorizedUserSessionParamObjExists(){
+    var rtStatus = 'FALSE';
+    try{
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSession')===true){
+                // extract userSession param obj
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
+                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
+                    if((userSessionParamObj['user_sessionid']).length>=20 
+                        && (userSessionParamObj['udblogId']).length===0){
+                        rtStatus = 'TRUE';
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
 }
 
 // CJ defined this function 2016-07-28
@@ -1583,6 +1617,44 @@ function getParamDataForUserSignInAuthentication(){
                         paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
                         paramObj['encoded_email'] = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
                         paramObj['encoded_password'] = removeHtmlStripTagsOfContent($('#ma_userSignInPasswordInputId').val());
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        console.log("problem in getParamDataForUserSignInAuthentication=>"+ex);
+        paramObj = {};
+    }
+    if(Object.keys(paramObj).length===4){
+        return paramObj;
+    }else{
+        return false;
+    }
+}
+
+
+// CJ defined this function 2016-09-22
+function getParamDataForUserSignUpAuthentication(fromSection){
+    var paramObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(checkUnAuthorizedUserSessionParamObjExists()==='TRUE'){
+                var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(fromSection==='signupSection'){
+                    paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
+                    paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
+                    paramObj['name'] = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
+                    paramObj['email'] = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
+                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+                }
+                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
+                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
+                    if((userSessionParamObj['user_sessionid']).length>=20 
+                        && (userSessionParamObj['udblogId']).length===0){
+                    
+                    
+                        
                     }
                 }
             }
