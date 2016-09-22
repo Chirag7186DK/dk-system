@@ -56,8 +56,14 @@ class UsersServicesV1 implements IUsersServicesV1{
                     if($rtDataArr1['isOtpCodeValidated']=='N'){
                         $rspDetails = array_merge($rspDetails, $rtDataArr1);
                     }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
-                        $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
-                        $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                        // creating new account 
+                        $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
+                        if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
+                            $signInParamDataArr = array();
+                            $signInParamDataArr['email'] = 
+                            $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+                            $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                        }
                     }
                 }
             }
