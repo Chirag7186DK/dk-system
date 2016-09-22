@@ -1624,7 +1624,8 @@
     
     .ma_userSignUpNameInputClass,
     .ma_userSignUpEmailInputClass,
-    .ma_userSignUpPasswordInputClass{
+    .ma_userSignUpMobileInputClass,
+    .ma_userSignUpOtpCodeInputClass{
         height:40px!important;
     }
 
