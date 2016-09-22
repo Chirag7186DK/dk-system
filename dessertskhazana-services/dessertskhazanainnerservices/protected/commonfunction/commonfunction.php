@@ -455,14 +455,36 @@ class commonfunction{
     }
     
     // CJ defined this function 2016-09-21
-    public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
-        $smsSentStatus = true;
-        if($mobile!='' && strlen($mobile)==10){
-            $smsMsgBodyStr = "$otpcode is your verification code to verify your mobile# on DessertsKhazana.";
-            $smsMsgBodyStr.= "This verificaton is important for safety of your account and must be done before you proceed.";
-            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
-        }
-        return $smsSentStatus;
+    public static function handlingUserSignInAuthentication($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+        $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
+        // checking param data length
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $paramDataArr['status'] = "'A','Z'";
+            $userJsonData = UsersDao :: getUserDetails($paramDataArr);
+            if(count($userJsonData)==1 && $userJsonData!=false){
+                $userStatus = $userJsonData[0]['userStatus'];
+                if($userStatus=='Z'){
+                    $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+                    $rspDetails['userDetails']['msgStr'] = 'Your account is inactive, please call customer care no.s to make account active !';
+                }else{
+                    $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
+                    $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !';
+                    // store user info as login status
+                    $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userJsonData[0], $paramDataArr);
+                    if($lastInsertedUserInfoLogId!=false && $lastInsertedUserInfoLogId!=''){
+                        $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogId;
+                        $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
+                        $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                        $rspDetails['userDetails']['userProfileTypeId'] = $userJsonData[0]['unmd5ProfileTypeId'];
+                    }
+                }
+            }else{
+                $rspDetails['userDetails']['msgStr'] = 'Invalid account details !';
+            }
+        } 
+        return $rspDetails;
     }
     
     // CJ defined this function 2016-08-11
@@ -534,7 +556,7 @@ class commonfunction{
     }
     
     // CJ defined this function 2016-09-22
-    public static function handleUserSignUpEmailAndOtpRequest($paramDataArr){
+    public static function handlingUserSignUpEmailAndOtpRequest($paramDataArr){
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
@@ -548,13 +570,13 @@ class commonfunction{
                 $sortedOnStatusDataArr = utils::arraySort($dataArr1);
                 if(array_key_exists('A', $sortedOnStatusDataArr)==true){
                     if(count($sortedOnStatusDataArr['A'])>1){
-                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us !!!';
+                        $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
                     }else if(count($sortedOnStatusDataArr['A'])==1){
                         $isSendOtpCode = 'Y';
                     }
                 }else if(array_key_exists('Z', $sortedOnStatusDataArr)==true){
                     if(count($sortedOnStatusDataArr['Z'])==1){
-                        $rspDetails['userDetails']['msgStr'] = 'Email-Id is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
+                        $rspDetails['msgStr'] = 'Email-Id is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
                     }
                 }
             }else{
@@ -570,14 +592,45 @@ class commonfunction{
                 $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
                 // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
-                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobile";
-                $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
+                $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobile";
+                $rspDetails['isOtpCodeSent'] = "Y";
             }
         } 
         return $rspDetails;
     }
     
+    // CJ defined this function 2016-09-21
+    public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
+        $smsSentStatus = true;
+        if($mobile!='' && strlen($mobile)==10){
+            $smsMsgBodyStr = "$otpcode is your verification code to verify your mobile# on DessertsKhazana.";
+            $smsMsgBodyStr.= "This verificaton is important for safety of your account and must be done before you proceed.";
+            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
+        }
+        return $smsSentStatus;
+    }
     
+    // CJ defined this function 2016-09-22
+    public static function handlingUserSignUpSentOtpcode($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['msgStr'] = 'Invalid One Time Password has been entered !!!';
+        $rspDetails['isOtpCodeValidated'] = 'N';
+        $rspDetails['isOtpCodeSent'] = 'Y';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            // checking otp code active or not
+            $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignUpAuth(
+                $paramDataArr['user_sessionid'], $paramDataArr['name'],
+                $paramDataArr['email'], $paramDataArr['mobile'], $paramDataArr['otpcode']);
+            if(count($dataArr1)==1 && $dataArr1!=false){
+                $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1['otpcodeId']);
+                if($rtOtpcodeStatusUpdated=='TRUE'){
+                    $rspDetails['msgStr'] = 'Entered One Time Password has been matched !!!';
+                    $rspDetails['isOtpCodeValidated'] = 'Y';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
     
     /////////////////////// coupon discount related code ////////////////////////////////
     
