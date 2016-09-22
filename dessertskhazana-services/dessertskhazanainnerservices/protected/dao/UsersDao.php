@@ -394,4 +394,42 @@ class UsersDao{
         return $lastInsertedId;
     }
     
+    // CJ defined this function 2016-08-06
+    public static function checkOtpCodeActiveForUserSignUpAuth($userSessionId, $name, $email, $mobile, $otpcode){
+        $retResult = 0;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                uotpc.id otpcodeId
+                FROM USER_OTPCODE uotpc
+                WHERE 
+                uotpc.user_sessionid='$userSessionId' AND uotpc.name='$name'
+                AND uotpc.email='$email' AND uotpc.mobile='$mobile'
+                AND uotpc.otpcode='$otpcode' AND uotpc.status='S'";
+            $command = $connection->createCommand($sql);
+            $userOtpcodeDataArr = $command->queryAll();
+            if(count($userOtpcodeDataArr)==1 && $userOtpcodeDataArr!=false){
+                $retResult = $userOtpcodeDataArr;
+            }
+        }catch(Exception $ex){
+            $retResult = false;
+        }
+        return $retResult;
+    }
+    
+    // CJ defined this function 2016-08-21
+    public static function updateOtpCodeStatus($otpcodeId){
+        $retStatus = 'FALSE';
+        if($otpcodeId>0 && $otpcodeId!=false){
+            $connection = Yii::app()->db;
+            $sql = "UPDATE USER_OTPCODE uotpc SET uotpc.status='V' WHERE uotpc.id='$otpcodeId'";
+            $command = $connection->createCommand($sql);
+            $retResult = $command->execute();
+            if($retResult>0 && $retResult!=false){
+                $retStatus = 'TRUE';
+            }
+        }
+        return $retStatus;
+    }
+    
 }
