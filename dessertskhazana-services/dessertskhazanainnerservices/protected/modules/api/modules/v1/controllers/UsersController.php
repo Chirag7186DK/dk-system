@@ -63,7 +63,7 @@ class UsersController extends V1Controller{
     
     
     // CJ defined this action 2016-08-01
-    public function actionCheckUserAuthentication(){
+    public function actionUserSignInAuthentication(){
         if(ComponentsHttp::httpMethod()=="GET"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
             if($inDtoArray!='FALSE'){
