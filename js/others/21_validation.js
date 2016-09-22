@@ -541,7 +541,18 @@ function validateDataUserSignUpAuthentication(fromSection){
     
     if(fromSection==='otpcodeSection'){
         $('.ma_userSignUpOtpCodeInput_ErrorClass').empty();
-        if(isProperInputElementContent('ma_userSignUpMobileInputId')==='FALSE'){
+        if(isProperInputElementContent('ma_userSignUpOtpCodeInputId')==='TRUE'){
+            var nameData = $('#ma_userSignUpOtpCodeInputId').attr('data-namedata');
+            var emailData = $('#ma_userSignUpOtpCodeInputId').attr('data-emaildata');
+            var mobileData = $('#ma_userSignUpOtpCodeInputId').attr('data-mobiledata');
+            if(nameData!==undefined && nameData!==''
+                && emailData!==undefined && emailData!==''    
+                && mobileData!==undefined && mobileData!==''){
+            }else{
+                $('.ma_userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+                inValidDataCount++;
+            }
+        }else{
             $('.ma_userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }
