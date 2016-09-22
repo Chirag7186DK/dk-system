@@ -183,20 +183,17 @@ function showHideLoaderBox(showHideMethod, jsonParamBlockUI, divLoaderBoxId){
     }
 }
 
-
-// CJ defined this function and modify on 2016-07-20
 function removeHtmlStripTagsOfContent(givenContent){
     try{
         if(givenContent!=='' && givenContent!==undefined && givenContent!==false){
             var regex = /(<([^>]+)>)/ig;
             var htmlStripTagLessContent = givenContent.replace(regex, "");
-            return htmlStripTagLessContent;
+            return (htmlStripTagLessContent).trim();
         }else{
-            return givenContent;
+            return (givenContent).trim();
         }
     }catch(ex){
-        //console.log("ex removeHtmlStripTagsOfContent=>"+givenContent+", ex=>"+ex);
-        return givenContent;
+        return (givenContent).trim();
     }
 }
 
