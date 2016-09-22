@@ -1647,15 +1647,15 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     paramObj['name'] = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
                     paramObj['email'] = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+                    paramObj['EmailAuthAndOtpRequest'] = 'Y';
                 }
-                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
-                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>=20 
-                        && (userSessionParamObj['udblogId']).length===0){
-                    
-                    
-                        
-                    }
+                if(fromSection==='otpcodeSection'){
+                    paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
+                    paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
+                    paramObj['name'] = removeHtmlStripTagsOfContent($('#ma_userSignUpOtpCodeInputId').attr('data-namedata'));
+                    paramObj['email'] = removeHtmlStripTagsOfContent($('#ma_userSignUpOtpCodeInputId').attr('data-emaildata'));
+                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignUpOtpCodeInputId').attr('data-mobiledata'));
+                    paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
                 }
             }
         }
@@ -1663,7 +1663,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
         console.log("problem in getParamDataForUserSignInAuthentication=>"+ex);
         paramObj = {};
     }
-    if(Object.keys(paramObj).length===4){
+    if(Object.keys(paramObj).length===6){
         return paramObj;
     }else{
         return false;
