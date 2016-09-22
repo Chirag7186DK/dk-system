@@ -184,21 +184,15 @@ class UsersDao{
                         } 
                     }
                     // add mobile in where condition
-                    if(array_key_exists('encoded_mobile', $paramJson)){
-                        if(strlen($paramJson['encoded_mobile'])==10){
-                            $sql.=" AND u.mobile='".$paramJson['encoded_mobile']."'";
+                    if(array_key_exists('mobile', $paramJson)){
+                        if(strlen($paramJson['mobile'])==10){
+                            $sql.=" AND u.mobile='".$paramJson['mobile']."'";
                         } 
                     }
                     // add email in where condition
                     if(array_key_exists('email', $paramJson)){
                         if(strlen($paramJson['email'])>0){
                             $sql.=" AND u.email='".$paramJson['email']."'";
-                        } 
-                    }
-                    // add password in where condition
-                    if(array_key_exists('password', $paramJson)){
-                        if($paramJson['password']!='' && $paramJson['password']!=false){
-                            $sql.=" AND u.pwd=MD5('".$paramJson['password']."')";
                         } 
                     }
                     // add status in where condition
