@@ -48,21 +48,101 @@ class UsersDao{
         return $lastInsertedId;
     }
     
-    // CJ defined this function 2016-08-19
-    public static function generateMaxUserLogNo(){
-        $maxUserLogNo = 0;
-        try{
-            $connection = Yii::App()->db;
-            $sql= " SELECT 
-                COALESCE(MAX(id),0) maxUserLogNo
-                FROM USERLOG";
-            $command = $connection->createCommand($sql);
-            $userMaxLogNoDetailsArr = $command->queryAll();
-            if(count($userMaxLogNoDetailsArr)>0 && $userMaxLogNoDetailsArr!=false){
-                $maxUserLogNo = (int) $userMaxLogNoDetailsArr[0]['maxUserLogNo'];    
+    // CJ defined this function 2016-09-22
+    public static function addUserDetails($paramData){
+        $connection = Yii::app()->db;
+        $sqlColumnNames = "";
+        $sqlValues = "";
+        $lastInsertedId = false;
+        if(array_key_exists('profile_typeid', $paramData)){
+            if($paramData['profile_typeid']!='' && $paramData['profile_typeid']>0){
+                $sqlColumnNames.=" profile_typeid,";
+                $sqlValues.="'".$paramData['profile_typeid']."',";
             }
-        }catch(Exception $ex){}
-        return $maxUserLogNo;
+        }
+        if(array_key_exists('name', $paramData)){
+            if($paramData['name']!='' && strlen($paramData['name'])>0){
+                $sqlColumnNames.=" name,";
+                $sqlValues.="'".$paramData['name']."',";
+            }
+        }
+        if(array_key_exists('email', $paramData)){
+            if($paramData['email']!='' && strlen($paramData['email'])>0){
+                $sqlColumnNames.=" email,";
+                $sqlValues.="'".$paramData['email']."',";
+            }
+        }
+        if(array_key_exists('mobile', $paramData)){
+            if($paramData['mobile']!='' && strlen($paramData['mobile'])>0){
+                $sqlColumnNames.=" mobile,";
+                $sqlValues.="'".$paramData['mobile']."',";
+            }
+        }
+        if($sqlValues!='' && $sqlColumnNames!=''){
+            $sqlColumnNames.=" created_datedtime,";
+            $sqlValues.="'".date('Y-m-d H:i:s')."',";
+            $sqlQuery = " INSERT INTO USERS " .rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
+            $command = $connection->createCommand($sqlQuery);
+            $result = $command->execute();
+            if($result>=1){
+                $lastInsertedId = $connection->getLastInsertID();
+            }
+        }
+        return $lastInsertedId;
+    }
+    
+    // CJ defined this function 2016-08-21
+    public static function updateUserPersonalInfoData($paramJson){
+        $connection = Yii::app()->db;
+        $dynamicSql = "";
+        $retStatus = false;
+        if(array_key_exists('name', $paramJson)){
+            if($paramJson['name']!=''){
+                $dynamicSql.=" name='".$paramJson['name']."',";
+            }
+        }
+        if(array_key_exists('email', $paramJson)){
+            if($paramJson['email']!=''){
+                $dynamicSql.=" email='".$paramJson['email']."',";
+            }
+        }
+        if(array_key_exists('mobile', $paramJson)){
+            if($paramJson['mobile']!=''){
+                $dynamicSql.=" mobile='".$paramJson['mobile']."',";
+            }
+        }
+        if(array_key_exists('pwd', $paramJson)){
+            if($paramJson['pwd']!=''){
+                $dynamicSql.=" pwd='".$paramJson['pwd']."',";
+            }
+        }
+        if(array_key_exists('gender', $paramJson)){
+            if($paramJson['gender']!=''){
+                $dynamicSql.=" gender='".$paramJson['gender']."',";
+            }
+        }
+        if(array_key_exists('birthdate', $paramJson)){
+            if($paramJson['birthdate']!=''){
+                $dynamicSql.=" birthdate='".$paramJson['birthdate']."',";
+            }
+        }
+        if(array_key_exists('updated_by', $paramJson)){
+            if($paramJson['updated_by']!=''){
+                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
+            }
+        }
+        if($dynamicSql!='' && array_key_exists('user_id', $paramJson)){
+            if($paramJson['user_id']!=''){
+                $sqlQuery = " UPDATE USERS SET ".rtrim($dynamicSql, ',');
+                $sqlQuery.=" WHERE id='".$paramJson['user_id']."'";
+                $command = $connection->createCommand($sqlQuery);
+                $result = $command->execute();
+                if($result>0){
+                    $retStatus = true;
+                }
+            }
+        }
+        return $retStatus;
     }
     
     // CJ defined this function 2016-07-27
@@ -139,102 +219,6 @@ class UsersDao{
         }catch(Exception $ex){}
         return $retResult;
     }
-   
-    // CJ defined this function 2016-08-21
-    public static function updateUserPersonalInfoData($paramJson){
-        $connection = Yii::app()->db;
-        $dynamicSql = "";
-        $retStatus = false;
-        if(array_key_exists('name', $paramJson)){
-            if($paramJson['name']!=''){
-                $dynamicSql.=" name='".$paramJson['name']."',";
-            }
-        }
-        if(array_key_exists('email', $paramJson)){
-            if($paramJson['email']!=''){
-                $dynamicSql.=" email='".$paramJson['email']."',";
-            }
-        }
-        if(array_key_exists('mobile', $paramJson)){
-            if($paramJson['mobile']!=''){
-                $dynamicSql.=" mobile='".$paramJson['mobile']."',";
-            }
-        }
-        if(array_key_exists('pwd', $paramJson)){
-            if($paramJson['pwd']!=''){
-                $dynamicSql.=" pwd='".$paramJson['pwd']."',";
-            }
-        }
-        if(array_key_exists('gender', $paramJson)){
-            if($paramJson['gender']!=''){
-                $dynamicSql.=" gender='".$paramJson['gender']."',";
-            }
-        }
-        if(array_key_exists('birthdate', $paramJson)){
-            if($paramJson['birthdate']!=''){
-                $dynamicSql.=" birthdate='".$paramJson['birthdate']."',";
-            }
-        }
-        if(array_key_exists('updated_by', $paramJson)){
-            if($paramJson['updated_by']!=''){
-                $dynamicSql.=" updated_by='".$paramJson['updated_by']."',";
-            }
-        }
-        if($dynamicSql!='' && array_key_exists('user_id', $paramJson)){
-            if($paramJson['user_id']!=''){
-                $sqlQuery = " UPDATE USERS SET ".rtrim($dynamicSql, ',');
-                $sqlQuery.=" WHERE id='".$paramJson['user_id']."'";
-                $command = $connection->createCommand($sqlQuery);
-                $result = $command->execute();
-                if($result>0){
-                    $retStatus = true;
-                }
-            }
-        }
-        return $retStatus;
-    }
-    
-    // CJ defined this function 2016-07-27 , udblog mdg format can be bug here plz think on it CJ
-    public static function getUserLogDetails($paramJson){
-        $retResult = false;
-        try{
-            $connection = Yii::App()->db;
-            $sql= "SELECT 
-                COALESCE(ul.user_logno, '') userLogId,
-                COALESCE(ul.user_sessionid, '') user_sessionid,
-                COALESCE(u.id, '') unmd5UserId, 
-                MD5(COALESCE(u.id, '')) userId, 
-                UPPER(COALESCE(u.name, '')) userName,
-                COALESCE(u.email, '') userEmail, 
-                COALESCE(u.mobile, '') userMobile, 
-                MD5(COALESCE(up.id, '')) userProfileTypeId, 
-                COALESCE(up.id, '') unmd5ProfileTypeId,
-                COALESCE(up.profile_type, '') profile_type,
-                COALESCE(DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y'), '') userSinceFrom,
-                COALESCE(u.pincode, '') userPincode,
-                COALESCE(u.gender, 'Male') userGender,
-                COALESCE(u.birthdate, '') userBirthdate,
-                COALESCE(u.status, 'Z') userStatus
-                FROM USERLOG ul
-                JOIN USERS u ON ul.user_id=u.id AND u.status='A' 
-                JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
-                WHERE 1
-                AND ul.status='A' 
-                AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
-                AND ul.user_logno='".$paramJson['udblogId']."'";  
-                if(array_key_exists('old_password', $paramJson)){
-                    if($paramJson['old_password']!='' && strlen($paramJson['old_password'])>0){
-                        $sql.=" AND u.pwd=MD5('".$paramJson['old_password']."')";
-                    }
-                }
-            $command = $connection->createCommand($sql);
-            $retUserLogDetailsArr = $command->queryAll();
-            if(count($retUserLogDetailsArr)==1 && $retUserLogDetailsArr!=false){
-                $retResult =  $retUserLogDetailsArr[0];    
-            }
-        }catch(Exception $ex){}
-        return $retResult;
-    }
     
     // CJ defined this function 2016-08-01
     public static function addUserLogDetails($paramData){
@@ -291,22 +275,82 @@ class UsersDao{
         }
         return $lastInsertedId;
     }
-     
-    // CJ defined this function 2016-08-06
-    public static function generateMaxSessionNo(){
-        $maxUserSessionNo = 0;
+    
+    // CJ defined this function 2016-08-19
+    public static function generateMaxUserLogNo(){
+        $maxUserLogNo = 0;
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                COALESCE(MAX(session_idno),0) userSessionId
-                FROM USERSESSION";
+                COALESCE(MAX(id),0) maxUserLogNo
+                FROM USERLOG";
             $command = $connection->createCommand($sql);
-            $sessionNoDetailsArr = $command->queryAll();
-            if(count($sessionNoDetailsArr)>0 && $sessionNoDetailsArr!=false){
-                $maxUserSessionNo =  (int) $sessionNoDetailsArr[0]['userSessionId'];    
+            $userMaxLogNoDetailsArr = $command->queryAll();
+            if(count($userMaxLogNoDetailsArr)>0 && $userMaxLogNoDetailsArr!=false){
+                $maxUserLogNo = (int) $userMaxLogNoDetailsArr[0]['maxUserLogNo'];    
             }
         }catch(Exception $ex){}
-        return $maxUserSessionNo;
+        return $maxUserLogNo;
+    }
+    
+    
+    // CJ defined this function 2016-07-27 , udblog mdg format can be bug here plz think on it CJ
+    public static function getUserLogDetails($paramJson){
+        $retResult = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                COALESCE(ul.user_logno, '') userLogId,
+                COALESCE(ul.user_sessionid, '') user_sessionid,
+                COALESCE(u.id, '') unmd5UserId, 
+                MD5(COALESCE(u.id, '')) userId, 
+                UPPER(COALESCE(u.name, '')) userName,
+                COALESCE(u.email, '') userEmail, 
+                COALESCE(u.mobile, '') userMobile, 
+                MD5(COALESCE(up.id, '')) userProfileTypeId, 
+                COALESCE(up.id, '') unmd5ProfileTypeId,
+                COALESCE(up.profile_type, '') profile_type,
+                COALESCE(DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y'), '') userSinceFrom,
+                COALESCE(u.pincode, '') userPincode,
+                COALESCE(u.gender, 'Male') userGender,
+                COALESCE(u.birthdate, '') userBirthdate,
+                COALESCE(u.status, 'Z') userStatus
+                FROM USERLOG ul
+                JOIN USERS u ON ul.user_id=u.id AND u.status='A' 
+                JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
+                WHERE 1
+                AND ul.status='A' 
+                AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
+                AND ul.user_logno='".$paramJson['udblogId']."'";  
+                if(array_key_exists('old_password', $paramJson)){
+                    if($paramJson['old_password']!='' && strlen($paramJson['old_password'])>0){
+                        $sql.=" AND u.pwd=MD5('".$paramJson['old_password']."')";
+                    }
+                }
+            $command = $connection->createCommand($sql);
+            $retUserLogDetailsArr = $command->queryAll();
+            if(count($retUserLogDetailsArr)==1 && $retUserLogDetailsArr!=false){
+                $retResult =  $retUserLogDetailsArr[0];    
+            }
+        }catch(Exception $ex){}
+        return $retResult;
+    }
+   
+    
+    // CJ defined this function 2016-08-30
+    public static function userLogoutFromWebsites($udblogId, $userSessionId){
+        $retStatus = 'FALSE';
+        try{
+            $connection = Yii::App()->db;
+            $sql= " UPDATE USERLOG SET status='Z', logout_datedtime='".date('Y-m-d H:i:s')."'
+                WHERE user_logno='$udblogId' AND user_sessionid='$userSessionId' ";
+            $command = $connection->createCommand($sql);
+            $result = $command->execute();
+            if($result>0){
+                $retStatus = 'TRUE';
+            }
+        }catch(Exception $ex){}
+        return $retStatus;
     }
     
     // CJ defined this function 2016-08-06
@@ -325,20 +369,21 @@ class UsersDao{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-30
-    public static function userLogoutFromWebsites($udblogId, $userSessionId){
-        $retStatus = 'FALSE';
+    // CJ defined this function 2016-08-06
+    public static function generateMaxSessionNo(){
+        $maxUserSessionNo = 0;
         try{
             $connection = Yii::App()->db;
-            $sql= " UPDATE USERLOG SET status='Z', logout_datedtime='".date('Y-m-d H:i:s')."'
-                WHERE user_logno='$udblogId' AND user_sessionid='$userSessionId' ";
+            $sql= " SELECT 
+                COALESCE(MAX(session_idno),0) userSessionId
+                FROM USERSESSION";
             $command = $connection->createCommand($sql);
-            $result = $command->execute();
-            if($result>0){
-                $retStatus = 'TRUE';
+            $sessionNoDetailsArr = $command->queryAll();
+            if(count($sessionNoDetailsArr)>0 && $sessionNoDetailsArr!=false){
+                $maxUserSessionNo =  (int) $sessionNoDetailsArr[0]['userSessionId'];    
             }
         }catch(Exception $ex){}
-        return $retStatus;
+        return $maxUserSessionNo;
     }
     
     // CJ defined this function 2016-09-21
