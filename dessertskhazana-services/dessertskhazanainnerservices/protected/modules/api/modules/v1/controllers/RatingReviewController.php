@@ -10,16 +10,13 @@ class RatingReviewController extends V1Controller{
     // CJ defined this action 2016-08-06
     public function actionUserRatingReviewProduct(){
         if(ComponentsHttp::httpMethod()=="POST"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataToAddUserRatingReviewProduct($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataToAddUserRatingReviewProduct($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->addUserRatingReviewProduct($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->addUserRatingReviewProduct($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -33,16 +30,13 @@ class RatingReviewController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionStoreRatingReviewQuestions(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoreRatingReviewQuestion($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingStoreRatingReviewQuestion($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getStoreRatingReviewQuestions($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getStoreRatingReviewQuestions($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -56,16 +50,13 @@ class RatingReviewController extends V1Controller{
     // CJ defined this action 2016-06-26
     public function actionStoreAllUserRating(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingStoreAllUserRating($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingStoreAllUserRating($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getStoreAllUserRating($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getStoreAllUserRating($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -79,16 +70,13 @@ class RatingReviewController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionAllUserRatingReviewProduct(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingRatingReviewProduct($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingRatingReviewProduct($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getAllUserRatingReviewProduct($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getAllUserRatingReviewProduct($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -102,16 +90,13 @@ class RatingReviewController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionAverageRatingReviewProduct(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingRatingReviewProduct($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingRatingReviewProduct($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getAverageRatingReviewProduct($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getAverageRatingReviewProduct($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -125,16 +110,13 @@ class RatingReviewController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionMaxRatingReviewProduct(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingRatingReviewProduct($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingRatingReviewProduct($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $RatingReviewServicesV1 = new RatingReviewServicesV1();
-                    $rspDetails = $RatingReviewServicesV1->getMaxRatingReviewProduct($dkParamDataArr);
+                    $rspDetails = $RatingReviewServicesV1->getMaxRatingReviewProduct($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
