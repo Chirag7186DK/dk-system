@@ -10,16 +10,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-07-24
     public function actionManageTrackUserAccessingWebsites(){
         if(ComponentsHttp::httpMethod()=="POST"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForAddingTrackUserAccessingWebsites($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForAddingTrackUserAccessingWebsites($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $UsersServicesV1->addTrackUserInfoAccessingWebsitesDetails($dkParamDataArr);
+                    $UsersServicesV1->addTrackUserInfoAccessingWebsitesDetails($paramDataArr);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
@@ -32,13 +29,11 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-08-06
     public function actionGenerateUserSessionId(){
         if(ComponentsHttp::httpMethod()=="POST"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
                 $UsersServicesV1 = new UsersServicesV1();
-                $rspDetails = $UsersServicesV1->generateUserSessionId($dkParamDataArr);
+                $rspDetails = $UsersServicesV1->generateUserSessionId($paramDataArr);
                 ComponentsJson::GenerateJsonAndSend($rspDetails);
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
@@ -49,16 +44,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-09-21
     public function actionUserSignUpAuthentication(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForUserSignUpAuthentication($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForUserSignUpAuthentication($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->userSignUpAuthentication($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->userSignUpAuthentication($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -73,16 +65,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-08-01
     public function actionCheckUserAuthentication(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForUserSignInAuthentication($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForUserSignInAuthentication($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->checkUserAuthentication($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->checkUserAuthentication($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -96,16 +85,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-08-14
     public function actionUserDashboardSummaryData(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForAuthenticatedUserDetails($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->getUserDashboardSummaryDataDetails($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->getUserDashboardSummaryDataDetails($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -119,16 +105,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-08-21
     public function actionManageUserPersonalInfoData(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForAuthenticatedUserDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForAuthenticatedUserDetails($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->getUserPersonalInfoData($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->getUserPersonalInfoData($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -138,16 +121,13 @@ class UsersController extends V1Controller{
             }
         }
         if(ComponentsHttp::httpMethod()=="PUT"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForUpdatingUserPersonalDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForUpdatingUserPersonalDetails($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->updateUserPersonalInfoData($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->updateUserPersonalInfoData($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -161,16 +141,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-08-21
     public function actionUpdateUserPasswordInfoData(){
         if(ComponentsHttp::httpMethod()=="PUT"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForUpdatingUserPasswordDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForUpdatingUserPasswordDetails($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->updateUserPasswordInfoData($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->updateUserPasswordInfoData($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -184,16 +161,13 @@ class UsersController extends V1Controller{
     // CJ defined this action 2016-08-30
     public function actionUserLogout(){
         if(ComponentsHttp::httpMethod()=="PUT"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataForLogoutUser($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForLogoutUser($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->userLogoutFromWebsites($dkParamDataArr);
+                    $rspDetails = $UsersServicesV1->userLogoutFromWebsites($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
