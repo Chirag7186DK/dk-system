@@ -444,3 +444,19 @@ function attachValidationMobileinputDirective($timeout){
         }
     };
 }
+
+angular.module('DKAPP').directive('attachValidationOtpcodeinputDirective', attachValidationOtpcodeinputDirective);
+
+function attachValidationOtpcodeinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $($el).alphanum({
+                "disallow":".", 
+                "allowSpace":false,
+                "allowNumeric":true, 
+                "allowOtherCharSets":false,
+                "maxLength":6
+            });
+        }
+    };
+}
