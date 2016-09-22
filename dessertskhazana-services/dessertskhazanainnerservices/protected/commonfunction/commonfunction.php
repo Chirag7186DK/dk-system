@@ -467,10 +467,10 @@ class commonfunction{
                 $userStatus = $userJsonData[0]['userStatus'];
                 if($userStatus=='Z'){
                     $rspDetails['userDetails']['isUserAccountActive'] = 'N';
-                    $rspDetails['userDetails']['msgStr'] = 'Your account is inactive, please call customer care no.s to make account active !';
+                    $rspDetails['userDetails']['msgStr'] = 'Your account is inactive, please call customer care no.s to make account active !!!';
                 }else{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
-                    $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !';
+                    $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !!!';
                     // store user info as login status
                     $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userJsonData[0], $paramDataArr);
                     if($lastInsertedUserInfoLogId!=false && $lastInsertedUserInfoLogId!=''){
@@ -481,7 +481,7 @@ class commonfunction{
                     }
                 }
             }else{
-                $rspDetails['userDetails']['msgStr'] = 'Invalid account details !';
+                $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
             }
         } 
         return $rspDetails;
