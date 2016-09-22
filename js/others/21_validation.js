@@ -1,5 +1,22 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // CJ defined this fucntion 2016-07-20
 function attachedFieldValidationPartyOrdersRequest(){
     if($('#po_occasionTitleInputId').length===1){
@@ -54,7 +71,7 @@ function attachedFieldValidationPartyOrdersRequest(){
 // CJ defined this function 2016-07-20
 function validateParamDataPartyOrderRequest(){
     // checking session param
-    var blankFieldValueCount = 0 ;
+    var inValidDataCount = 0 ;
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
         
@@ -62,7 +79,7 @@ function validateParamDataPartyOrderRequest(){
         if($('#po_occasionTitleInputId').length===1){
             if($('#po_occasionTitleInputId').val()===''){
                 $('#po_occasionTitleInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#po_occasionTitleInputId').css({'border-color':'#ccc'});
             }
@@ -70,7 +87,7 @@ function validateParamDataPartyOrderRequest(){
         if($('#po_nosPeopleInputId').length===1){
             if($('#po_nosPeopleInputId').val()===''){
                 $('#po_nosPeopleInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#po_nosPeopleInputId').css({'border-color':'#ccc'});
             }
@@ -78,7 +95,7 @@ function validateParamDataPartyOrderRequest(){
         if($('#po_dateInputId').length===1){
             if($('#po_dateInputId').val()===''){
                 $('#po_dateInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#po_dateInputId').css({'border-color':'#ccc'});
             }
@@ -86,7 +103,7 @@ function validateParamDataPartyOrderRequest(){
         if($('#po_venueInputId').length===1){
             if($('#po_venueInputId').val()===''){
                 $('#po_venueInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#po_venueInputId').css({'border-color':'#ccc'});
             }
@@ -94,7 +111,7 @@ function validateParamDataPartyOrderRequest(){
         if($('#po_messageInputId').length===1){
             if($('#po_messageInputId').val()===''){
                 $('#po_messageInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#po_messageInputId').css({'border-color':'#ccc'});
             }
@@ -102,13 +119,13 @@ function validateParamDataPartyOrderRequest(){
         if($('#po_budgetAmtInputId').length===1){
             if($('#po_budgetAmtInputId').val()===''){
                 $('#po_budgetAmtInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#po_budgetAmtInputId').css({'border-color':'#ccc'});
             }
         }
     }
-    if(blankFieldValueCount>0){
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
@@ -170,14 +187,14 @@ function attachedFieldValidationCustomizeOrdersRequest(){
 // CJ defined this function 2016-07-20
 function validateParamDataCustomizeOrderRequest(){
     // checking session param
-    var blankFieldValueCount = 0 ;
+    var inValidDataCount = 0 ;
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
         // check form field is blank or not for party order request
         if($('#co_occasionTitleInputId').length===1){
             if($('#co_occasionTitleInputId').val()===''){
                 $('#co_occasionTitleInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#co_occasionTitleInputId').css({'border-color':'#ccc'});
             }
@@ -185,7 +202,7 @@ function validateParamDataCustomizeOrderRequest(){
         if($('#co_nosPeopleInputId').length===1){
             if($('#co_nosPeopleInputId').val()===''){
                 $('#co_nosPeopleInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#co_nosPeopleInputId').css({'border-color':'#ccc'});
             }
@@ -193,7 +210,7 @@ function validateParamDataCustomizeOrderRequest(){
         if($('#co_dateInputId').length===1){
             if($('#co_dateInputId').val()===''){
                 $('#co_dateInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#co_dateInputId').css({'border-color':'#ccc'});
             }
@@ -201,7 +218,7 @@ function validateParamDataCustomizeOrderRequest(){
         if($('#co_venueInputId').length===1){
             if($('#co_venueInputId').val()===''){
                 $('#co_venueInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#co_venueInputId').css({'border-color':'#ccc'});
             }
@@ -209,7 +226,7 @@ function validateParamDataCustomizeOrderRequest(){
         if($('#co_messageInputId').length===1){
             if($('#co_messageInputId').val()===''){
                 $('#co_messageInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#co_messageInputId').css({'border-color':'#ccc'});
             }
@@ -217,13 +234,13 @@ function validateParamDataCustomizeOrderRequest(){
         if($('#co_budgetAmtInputId').length===1){
             if($('#co_budgetAmtInputId').val()===''){
                 $('#co_budgetAmtInputId').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('#co_budgetAmtInputId').css({'border-color':'#ccc'});
             }
         }
     }
-    if(blankFieldValueCount>0){
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
@@ -307,7 +324,7 @@ function attachedFieldValidationCorporateTieupRequest(){
 // CJ defined this function 2016-07-20
 function validateParamDataCorporateTieupRequest(){
     // checking session param
-    var blankFieldValueCount = 0 ;
+    var inValidDataCount = 0 ;
     if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
         && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
         // extract dk param session data
@@ -319,18 +336,18 @@ function validateParamDataCorporateTieupRequest(){
                 // check form field is blank or not for corporate tieup request
                 if($('#ct_corporateNameInputId').length===1){
                     if($('#ct_corporateNameInputId').val()===''){
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }
                 }
                 if($('#ct_contactPersonNameInputId').length===1){
                     if($('#ct_contactPersonNameInputId').val()===''){
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }
                 }
                 if($('#ct_contactMobileInputId').length===1){
                     if($('#ct_contactMobileInputId').val()===''){
                         $('#ct_contactMobileInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else if($('#ct_contactMobileInputId').val()!==''){
                         var enterMobileNo = removeHtmlStripTagsOfContent($('#ct_contactMobileInputId').val());
                         var mobilePattern = /^[6-9]\d{9}$/g;
@@ -344,13 +361,13 @@ function validateParamDataCorporateTieupRequest(){
                 if($('#ct_contactEmailInputId').length===1){
                     if($('#ct_contactEmailInputId').val()===''){
                         $('#ct_contactEmailInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else if($('#ct_contactEmailInputId').val()!==''){
                         var enteredEmailId = removeHtmlStripTagsOfContent($('#ct_contactEmailInputId').val());
                         var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                         if(!enteredEmailId.match(emailPattern)){
                             $('#ct_contactEmailInputId').css({'border-color':'#f18178'});
-                            blankFieldValueCount++;
+                            inValidDataCount++;
                         }else{
                             $('#ct_contactEmailInputId').css({'border-color':'#ccc'});
                         }
@@ -359,7 +376,7 @@ function validateParamDataCorporateTieupRequest(){
                 if($('#ct_nosPeopleInputId').length===1){
                     if($('#ct_nosPeopleInputId').val()===''){
                         $('#ct_nosPeopleInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else{
                         $('#ct_nosPeopleInputId').css({'border-color':'#ccc'});
                     }
@@ -367,7 +384,7 @@ function validateParamDataCorporateTieupRequest(){
                 if($('#ct_venueInputId').length===1){
                     if($('#ct_venueInputId').val()===''){
                         $('#ct_venueInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else{
                         $('#ct_venueInputId').css({'border-color':'#ccc'});
                     }
@@ -375,7 +392,7 @@ function validateParamDataCorporateTieupRequest(){
                 if($('#ct_messageInputId').length===1){
                     if($('#ct_messageInputId').val()===''){
                         $('#ct_messageInputId').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else{
                         $('#ct_messageInputId').css({'border-color':'#ccc'});
                     }
@@ -383,7 +400,7 @@ function validateParamDataCorporateTieupRequest(){
             }
         }
     }
-    if(blankFieldValueCount>0){
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
@@ -412,115 +429,131 @@ function attachedFieldValidationUserSignInFormContent(){
     }
 }
 
-
 // CJ defined this function 2016-08-01
 function validateDataUserSignInAuthentication(){
-    var blankFieldValueCount = 0;
-    if($('#ma_userSignInEmailInputId').length===1){
-        if($('#ma_userSignInEmailInputId').val()===''
-            || $('#ma_userSignInEmailInputId').val()===false){
-            $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
-            $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
-            $('.ma_userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
-            blankFieldValueCount++;
-        }else if($('#ma_userSignInEmailInputId').val()!==''){
-            var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
-            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if(!enteredEmailId.match(emailPattern)){
+    var inValidDataCount = 0;
+        if($('#ma_userSignInEmailInputId').length===1){
+            if($('#ma_userSignInEmailInputId').val()===''
+                || $('#ma_userSignInEmailInputId').val()===false){
                 $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
                 $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
-                $('.ma_userSignInEmailInput_ErrorClass').css({'color':'#f18178'});
-                blankFieldValueCount++;
-            }else{
-                $('#ma_userSignInEmailInputId').css({'border-color':'#ccc!important;'});
+                $('.ma_userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
+                inValidDataCount++;
+            }else if($('#ma_userSignInEmailInputId').val()!==''){
+                var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
+                var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(!enteredEmailId.match(emailPattern)){
+                    $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
+                    $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
+                    $('.ma_userSignInEmailInput_ErrorClass').css({'color':'#f18178'});
+                    inValidDataCount++;
+                }else{
+                    $('#ma_userSignInEmailInputId').css({'border-color':'#ccc!important;'});
+                }
             }
         }
-    }
-    if($('#ma_userSignInPasswordInputId').length===1){
-        if($('#ma_userSignInPasswordInputId').val()==='' 
-            || $('#ma_userSignInPasswordInputId').val()===false){
-            $('#ma_userSignInPasswordInputId').css({'border-color':'#f18178'});
-            $('.ma_userSignInPasswordInput_ErrorClass').empty().append("Please enter password !");
-            $('.ma_userSignInPasswordInput_ErrorClass').css({'color':'#f18178'});
-            blankFieldValueCount++;
-        }else{
-            $('#ma_userSignInPasswordInputId').css({'border-color':'#ccc'});
-            $('.ma_userSignInPasswordInput_ErrorClass').empty();
+        if($('#ma_userSignUpMobileInputId').length===1){
+            if($('#ma_userSignUpMobileInputId').val()===''){
+                $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
+                $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
+                $('.ma_userSignUpMobileInput_ErrorClass').empty().append("Please enter your mobile numbers !!!");
+                $('.ma_userSignUpMobileInput_ErrorClass').css({'border-color':'#f18178'});
+                inValidDataCount++;
+            }else if($('#ma_userSignUpMobileInputId').val()!==''){
+                var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+                var mobilePattern = /^[5-9]\d{9}$/g;
+                if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==9){
+                    $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
+                }else{
+                    $('#ma_userSignUpMobileInputId').css({'border-color':'#ccc'});
+                }
+            }
         }
-    }
-    if(blankFieldValueCount>0){
+    
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
     }
 }
 
-
-//////////////////// wishlist related validation code //////////////////////////////
-
-// CJ defined this function 2016-08-01
-function attachedFieldValidationWLCreation(){
-    if($('#cwl_titleInputId').length===1){
-        $('#cwl_titleInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":true, 
-                "allowSpace":true
+// CJ defined this function 2016-09-22
+function validateDataUserSignUpAuthentication(fromSection){
+    var inValidDataCount = 0;
+    if(fromSection==='signupSection'){
+        if($('#ma_userSignUpNameInputId').length===1){
+            if($('#ma_userSignUpNameInputId').val()===''
+                || $('#ma_userSignUpNameInputId').val()===false){
+                $('#ma_userSignUpNameInputId').css({'border-color':'#f18178'});
+                $('.ma_userSignUpNameInput_ErrorClass').empty().append("Enter your name !!!");
+                $('.ma_userSignUpNameInput_ErrorClass').css({'border-color':'#f18178'});
+                inValidDataCount++;
+            }else if($('#ma_userSignUpNameInputId').val()!==''){
+                var enteredNameText = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
+                if((enteredNameText).length>30){
+                    $('#ma_userSignUpNameInputId').css({'border-color':'#f18178'});
+                    $('.ma_userSignUpNameInput_ErrorClass').empty().append("Entered name length must be less than 30 characters !!!");
+                    $('.ma_userSignUpNameInput_ErrorClass').css({'border-color':'#f18178'});
+                    inValidDataCount++;
+                }else{
+                    $('#ma_userSignUpNameInputId').css({'border-color':'#ccc!important;'});
+                }
             }
-        );
-    }
-}
-
-// CJ defined this function 2016-07-30
-function validateDataUWLCreation(){
-    var blankFieldValueCount = 0 ;
-    if($('#cwl_titleInputId').length===1){
-        if($('#cwl_titleInputId').val()===''
-            || $('#cwl_titleInputId').val()===false){
-            $('#cwl_titleInputId').css({'border-color':'#f18178'});
-            $('.cwl_titleInput_ErrorClass').empty().append();
-            blankFieldValueCount++;
-        }else{
-            $('#cwl_titleInputId').css({'border-color':'#ccc'});
-            $('.cwl_titleInput_ErrorClass').empty();
+        }
+        if($('#ma_userSignUpEmailInputId').length===1){
+            if($('#ma_userSignUpEmailInputId').val()===''
+                || $('#ma_userSignUpEmailInputId').val()===false){
+                $('#ma_userSignUpEmailInputId').css({'border-color':'#f18178'});
+                $('.ma_userSignUpEmailInput_ErrorClass').empty().append("Enter your emailId !!!");
+                $('.ma_userSignUpEmailInput_ErrorClass').css({'border-color':'#f18178'});
+                inValidDataCount++;
+            }else if($('#ma_userSignUpEmailInputId').val()!==''){
+                var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
+                var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(!enteredEmailId.match(emailPattern)){
+                    $('#ma_userSignUpEmailInput_ErrorClass').css({'border-color':'#f18178'});
+                    $('.ma_userSignUpEmailInput_ErrorClass').empty().append("Entered emailId is not in proper format !!!");
+                    $('.ma_userSignUpEmailInput_ErrorClass').css({'color':'#f18178'});
+                    inValidDataCount++;
+                }else{
+                    $('#ma_userSignUpEmailInputId').css({'border-color':'#ccc!important;'});
+                }
+            }
+        }
+        if($('#ma_userSignUpMobileInputId').length===1){
+            if($('#ma_userSignUpMobileInputId').val()===''){
+                $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
+                $('.ma_userSignUpMobileInput_ErrorClass').empty().append("Enter your mobile no.s !!!");
+                $('.ma_userSignUpMobileInput_ErrorClass').css({'border-color':'#f18178'});
+                inValidDataCount++;
+            }else if($('#ma_userSignUpMobileInputId').val()!==''){
+                var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+                var mobilePattern = /^[5-9]\d{9}$/g;
+                if(enterMobileNo.match(mobilePattern)===null || enterMobileNo.match(mobilePattern)===undefined){
+                    $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
+                    $('.ma_userSignUpMobileInput_ErrorClass').empty().append("Enter valid mobile no.s !!!");
+                    $('.ma_userSignUpMobileInput_ErrorClass').css({'color':'#f18178'});
+                    inValidDataCount++;
+                }else{
+                    $('#ma_userSignUpMobileInputId').css({'border-color':'#ccc'});
+                }
+            }
         }
     }
-    if(blankFieldValueCount>0){
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
     }
 }
 
-// CJ defined this function 2016-08-02
-function validateDataUWLUpdation(fcClass){
-    var blankFieldValueCount = 0 ;
-    if($('.'+fcClass).length===1){
-        if($('.'+fcClass).find('input.wls_wishListTitleInputClass').length===1){
-            var inputVal = removeHtmlStripTagsOfContent($('.'+fcClass).find('.wls_wishListTitleInputClass').val());
-            if(inputVal==='' || inputVal===false){
-                $('.'+fcClass).find('input.wls_wishListTitleInputClass').css({'border-color':'#f18178'});
-                $('.'+fcClass).find('input.wld_wlTitleContainer_ErrorClass').empty().append("Please enter your wish list title !");
-                blankFieldValueCount++;
-            }else{
-                $('.'+fcClass).find('input.wls_wishListTitleInputClass').css({'border-color':'#ccc'});
-                $('.'+fcClass).find('input.wld_wlTitleContainer_ErrorClass').empty();
-            }
-        }
-    }
-    if(blankFieldValueCount>0){
-        return false;
-    }else{
-        return true;
-    }
-}
 
 ////////////////////////// Rating/Review related code /////////////////////
 
 
 // CJ defined this function 2016-08-06
 function validateDataToAddUserRatingReviewProduct(fcClass){
-    var blankFieldValueCount = 0 ;
+    var inValidDataCount = 0 ;
     if($('.'+fcClass).length===1){
         if($('.'+fcClass).find('textarea').length===1){
             var userCommentRatingReviewProduct = removeHtmlStripTagsOfContent($('.'+fcClass).find('textarea').val());
@@ -528,13 +561,13 @@ function validateDataToAddUserRatingReviewProduct(fcClass){
                 || userCommentRatingReviewProduct===false
                 || userCommentRatingReviewProduct===undefined){
                 $('.'+fcClass).find('textarea').css({'border-color':'#f18178'});
-                blankFieldValueCount++;
+                inValidDataCount++;
             }else{
                 $('.'+fcClass).find('textarea').css({'border-color':'#ccc'});
             }
         }
     }
-    if(blankFieldValueCount>0){
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
@@ -547,14 +580,14 @@ function validateDataToAddUserRatingReviewProduct(fcClass){
 // CJ defined this function 2016-08-06
 function validateProductDataToAddInOrdercart(fcClass){
     try{
-        var blankFieldValueCount = 0 ;
+        var inValidDataCount = 0 ;
         if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
             if($('.'+fcClass).length===1){
                 if($('.'+fcClass).find('textarea').length===1){
                     var userMsgOnProduct = removeHtmlStripTagsOfContent($('.'+fcClass).find('textarea').val());
                     if(userMsgOnProduct==='' || userMsgOnProduct===false || userMsgOnProduct===undefined){
                         $('.'+fcClass).find('textarea').css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else{
                         $('.'+fcClass).find('textarea').css({'border-color':'#ccc'});
                     }
@@ -563,14 +596,14 @@ function validateProductDataToAddInOrdercart(fcClass){
                     var userProductQty = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
                     if(userProductQty==='' || userProductQty===false || userProductQty===undefined || parseInt(userProductQty)<0){
                         $('.'+fcClass).find("input[type='text']").css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else{
                         $('.'+fcClass).find("input[type='text']").css({'border-color':'#ccc'});
                     }
                 }
             }
         }
-        if(blankFieldValueCount>0){
+        if(inValidDataCount>0){
             return false;
         }else{
             return true;
@@ -584,21 +617,21 @@ function validateProductDataToAddInOrdercart(fcClass){
 // CJ defined this function 2016-08-26
 function validateProductDataToUpdateInOrdercart(fcClass){
     try{
-        var blankFieldValueCount = 0 ;
+        var inValidDataCount = 0 ;
         if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
             if($('.'+fcClass).length===1){
                 if($('.'+fcClass).find("input[type='text']").length===1){
                     var userProductQty = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
                     if(userProductQty==='' || userProductQty===false || userProductQty===undefined || parseInt(userProductQty)<0){
                         $('.'+fcClass).find("input[type='text']").css({'border-color':'#f18178'});
-                        blankFieldValueCount++;
+                        inValidDataCount++;
                     }else{
                         $('.'+fcClass).find("input[type='text']").css({'border-color':'#ccc'});
                     }
                 }
             }
         }
-        if(blankFieldValueCount>0){
+        if(inValidDataCount>0){
             return false;
         }else{
             return true;
@@ -611,7 +644,7 @@ function validateProductDataToUpdateInOrdercart(fcClass){
 // CJ defined this function 2016-09-18
 function validateOrderDeliveryAddressData(fcClass){
     try{
-        var blankFieldValueCount = 0 ;
+        var inValidDataCount = 0 ;
         if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
             if($('.'+fcClass).length>0){
                 // iterate each form content
@@ -621,7 +654,7 @@ function validateOrderDeliveryAddressData(fcClass){
                         var deliveryAddress = removeHtmlStripTagsOfContent($(currentFormContentObj).find('textarea').val());
                         if(deliveryAddress==='' || deliveryAddress===false || deliveryAddress===undefined){
                             $(currentFormContentObj).find('textarea').css({'border-color':'#f18178'});
-                            blankFieldValueCount++;
+                            inValidDataCount++;
                         }else{
                             $(currentFormContentObj).find('textarea').css({'border-color':'#ccc'});
                         }
@@ -630,7 +663,7 @@ function validateOrderDeliveryAddressData(fcClass){
                         var deliveryDate = removeHtmlStripTagsOfContent($(currentFormContentObj).find("input[type='text']").val());
                         if(deliveryDate==='' || deliveryDate===false || deliveryDate===undefined){
                             $(currentFormContentObj).find("input[type='text']").css({'border-color':'#f18178'});
-                            blankFieldValueCount++;
+                            inValidDataCount++;
                         }else{
                             $(currentFormContentObj).find("input[type='text']").css({'border-color':'#ccc'});
                         }
@@ -638,7 +671,7 @@ function validateOrderDeliveryAddressData(fcClass){
                 });
             }
         }
-        if(blankFieldValueCount>0){
+        if(inValidDataCount>0){
             return false;
         }else{
             return true;
