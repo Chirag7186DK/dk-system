@@ -3,7 +3,7 @@
 class customparam{
     
     // CJ defined this function 2016-07-20
-    public static function checkRequestedParamKeyFromInDtoFile($paramJsonData, $InDtoClassName='DessertsKhazanaInDto'){
+    public static function checkRequestedParamKeyNamePresentInDtoFile($paramJsonData, $InDtoClassName='DessertsKhazanaInDto'){
         $paramDataObj = 'FALSE';
         try{
             if(count($paramJsonData)>0 && $paramJsonData!=false){
