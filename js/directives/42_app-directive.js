@@ -419,7 +419,27 @@ function attachValidationNameinputDirective($timeout){
             $($el).alphanum({
                 "disallow":".", 
                 "allowNumeric":false, 
-                "allowSpace":true
+                "allowOtherCharSets":false,
+                "allowSpace":true,
+                "maxLength":25
+            });
+        }
+    };
+}
+
+angular.module('DKAPP').directive('attachValidationMobileinputDirective', attachValidationMobileinputDirective);
+
+function attachValidationMobileinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $($el).alphanum({
+                "allowPlus":false,
+                "allowMinus":false, 
+                "allowThouSep":false,
+                "allowDecSep":false,
+                "allowLeadingSpaces":false, 
+                "maxDigits":"10", 
+                "startMinDigitWith":"5"
             });
         }
     };
