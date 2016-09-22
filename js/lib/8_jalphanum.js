@@ -54,7 +54,8 @@
         maxPreDecimalPlaces : NaN,   // The max number digits before the decimal point
         max                 : NaN,   // The max numeric value allowed
         min                 : NaN,    // The min numeric value allowed,
-        startWith: ''
+        startWith: '',
+        startMinDigitWith:''
     };
 	
     // Some pre-defined groups of settings for convenience
@@ -476,8 +477,13 @@
 		var i = 0;
 		var Char;
 		
-                if(inChars[0]!=='' && inChars[0]!==false && inChars[0]<settings['startWith']){
-                    // alert(inChars[0]+"=>,"+ settings['startWith']);
+                if(inChars[0]!=='' && inChars[0]!==false 
+                    && inChars[0]<settings['startWith'] && settings['startWith']!==''){
+                    return '';
+                }
+                
+                if(inChars[0]!=='' && inChars[0]!==false 
+                    && inChars[0]<settings['startMinDigitWith'] && settings['startMinDigitWith']!==''){
                     return '';
                 }
                 
