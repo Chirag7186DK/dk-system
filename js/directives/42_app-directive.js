@@ -410,3 +410,17 @@ function orderDeliverydateInputDirective($timeout){
         }
     };
 }
+
+angular.module('DKAPP').directive('attachValidationNameinputDirective', attachValidationNameinputDirective);
+
+function attachValidationNameinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $($el).alphanum({
+                "disallow":".", 
+                "allowNumeric":false, 
+                "allowSpace":true
+            });
+        }
+    };
+}
