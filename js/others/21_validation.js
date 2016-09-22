@@ -1,7 +1,23 @@
 
-
-
-
+// CJ defined this fucntion 2016-09-22
+function isProperInputElementContent(inputElementId){
+    var rtStatus = 'FALSE';
+    try{
+        if($('#'+inputElementId).length===1){
+            if($('#'+inputElementId).val()==='' || $('#'+inputElementId).val()===false
+            || ($('#'+inputElementId).val()).toLowerCase()==='undefined'
+            || ($('#'+inputElementId).val()).toLowerCase()==='false'
+            || ($('#'+inputElementId).val()).toLowerCase()==='true'){
+                rtStatus = 'FALSE';
+            }else{
+                rtStatus = 'TRUE';
+            }
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
 
 
 
@@ -480,64 +496,54 @@ function validateDataUserSignInAuthentication(){
 // CJ defined this function 2016-09-22
 function validateDataUserSignUpAuthentication(fromSection){
     var inValidDataCount = 0;
+    
     if(fromSection==='signupSection'){
-        if($('#ma_userSignUpNameInputId').length===1){
-            if($('#ma_userSignUpNameInputId').val()===''
-                || $('#ma_userSignUpNameInputId').val()===false){
-                $('#ma_userSignUpNameInputId').css({'border-color':'#f18178'});
-                $('.ma_userSignUpNameInput_ErrorClass').empty().append("Enter your name !!!");
-                $('.ma_userSignUpNameInput_ErrorClass').css({'border-color':'#f18178'});
+        
+        $('.ma_userSignUpNameInput_ErrorClass').empty();
+        $('.ma_userSignUpEmailInput_ErrorClass').empty();
+        $('.ma_userSignUpMobileInput_ErrorClass').empty();
+        
+        if(isProperInputElementContent('ma_userSignUpNameInputId')==='FALSE'){
+            $('.ma_userSignUpNameInput_ErrorClass').append("Enter your name !!!");
+            inValidDataCount++;
+        }else{
+            var enteredNameText = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
+            if((enteredNameText).length>30){
+                $('.ma_userSignUpNameInput_ErrorClass').append("Entered name length must be less than 30 characters !!!");
                 inValidDataCount++;
-            }else if($('#ma_userSignUpNameInputId').val()!==''){
-                var enteredNameText = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
-                if((enteredNameText).length>30){
-                    $('#ma_userSignUpNameInputId').css({'border-color':'#f18178'});
-                    $('.ma_userSignUpNameInput_ErrorClass').empty().append("Entered name length must be less than 30 characters !!!");
-                    $('.ma_userSignUpNameInput_ErrorClass').css({'border-color':'#f18178'});
-                    inValidDataCount++;
-                }else{
-                    $('#ma_userSignUpNameInputId').css({'border-color':'#ccc!important;'});
-                }
             }
         }
-        if($('#ma_userSignUpEmailInputId').length===1){
-            if($('#ma_userSignUpEmailInputId').val()===''
-                || $('#ma_userSignUpEmailInputId').val()===false){
-                $('#ma_userSignUpEmailInputId').css({'border-color':'#f18178'});
-                $('.ma_userSignUpEmailInput_ErrorClass').empty().append("Enter your emailId !!!");
-                $('.ma_userSignUpEmailInput_ErrorClass').css({'border-color':'#f18178'});
+        
+        if(isProperInputElementContent('ma_userSignUpEmailInputId')==='FALSE'){
+            $('.ma_userSignUpEmailInput_ErrorClass').append("Enter your emailId !!!");
+            inValidDataCount++;
+        }else{
+            var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
+            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(!enteredEmailId.match(emailPattern)){
+                $('.ma_userSignUpEmailInput_ErrorClass').append("Entered emailId is not in proper format !!!");
                 inValidDataCount++;
-            }else if($('#ma_userSignUpEmailInputId').val()!==''){
-                var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
-                var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                if(!enteredEmailId.match(emailPattern)){
-                    $('#ma_userSignUpEmailInput_ErrorClass').css({'border-color':'#f18178'});
-                    $('.ma_userSignUpEmailInput_ErrorClass').empty().append("Entered emailId is not in proper format !!!");
-                    $('.ma_userSignUpEmailInput_ErrorClass').css({'color':'#f18178'});
-                    inValidDataCount++;
-                }else{
-                    $('#ma_userSignUpEmailInputId').css({'border-color':'#ccc!important;'});
-                }
             }
         }
-        if($('#ma_userSignUpMobileInputId').length===1){
-            if($('#ma_userSignUpMobileInputId').val()===''){
-                $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
-                $('.ma_userSignUpMobileInput_ErrorClass').empty().append("Enter your mobile no.s !!!");
-                $('.ma_userSignUpMobileInput_ErrorClass').css({'border-color':'#f18178'});
+        
+        if(isProperInputElementContent('ma_userSignUpMobileInputId')==='FALSE'){
+            $('.ma_userSignUpMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
+            inValidDataCount++;
+        }else{
+            var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+            var mobilePattern = /^[5-9]\d{9}$/g;
+            if(enterMobileNo.match(mobilePattern)===null || enterMobileNo.match(mobilePattern)===undefined){
+                $('.ma_userSignUpMobileInput_ErrorClass').append("Enter valid mobile no.s !!!");
                 inValidDataCount++;
-            }else if($('#ma_userSignUpMobileInputId').val()!==''){
-                var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
-                var mobilePattern = /^[5-9]\d{9}$/g;
-                if(enterMobileNo.match(mobilePattern)===null || enterMobileNo.match(mobilePattern)===undefined){
-                    $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
-                    $('.ma_userSignUpMobileInput_ErrorClass').empty().append("Enter valid mobile no.s !!!");
-                    $('.ma_userSignUpMobileInput_ErrorClass').css({'color':'#f18178'});
-                    inValidDataCount++;
-                }else{
-                    $('#ma_userSignUpMobileInputId').css({'border-color':'#ccc'});
-                }
             }
+        }
+    }
+    
+    if(fromSection==='otpcodeSection'){
+        $('.ma_userSignUpOtpCodeInput_ErrorClass').empty();
+        if(isProperInputElementContent('ma_userSignUpMobileInputId')==='FALSE'){
+            $('.ma_userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+            inValidDataCount++;
         }
     }
     if(inValidDataCount>0){
