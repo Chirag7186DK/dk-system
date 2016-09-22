@@ -34,12 +34,12 @@ class InDtoObjectFactory {
                 }
             }
             if(count($inArray)>0 && count($inArray)==$counterRequestedParamDataMatched){
-                $obj->isRequestParamKeyValid = 'true';
+                $obj->isRequestParamKeyValid = 'TRUE';
             }else{
-                $obj->isRequestParamKeyValid = 'false';
+                $obj->isRequestParamKeyValid = 'FALSE';
             }
         }catch(Exception $ex){
-            $obj->isRequestParamKeyValid = 'false';
+            $obj->isRequestParamKeyValid = 'FALSE';
             // throw new Excepti on('Validation failed while creating: '.$inDtoClassName.' : '.$e->getMessage());
         }
         return $obj;
