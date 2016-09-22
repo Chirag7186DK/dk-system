@@ -83,7 +83,7 @@ function UsersController($scope, $rootScope, UsersServices){
         // collectDataUserSignUpAuthentication
         $rootScope.collectDataUserSignUpAuthentication = function(fromSection){
             // validate form content data for user signIn related wish list
-            var retValidateDataStatus = validateDataUserSignInAuthentication(fromSection);
+            var retValidateDataStatus = validateDataUserSignUpAuthentication(fromSection);
             if(retValidateDataStatus===true){
                 // get param obj for signIn purpose
                 var preparedParamJsonObj = getParamDataForUserSignInAuthentication();
