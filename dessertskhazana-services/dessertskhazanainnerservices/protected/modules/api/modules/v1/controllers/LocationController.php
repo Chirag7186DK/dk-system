@@ -10,16 +10,13 @@ class LocationController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionDeliveryCity(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryCityListServingDessertsProductType($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingDeliveryCityListServingDessertsProductType($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $LocationServicesV1 = new LocationServicesV1();
-                    $rspDetails = $LocationServicesV1->getDeliveryCityDetails($dkParamDataArr);
+                    $rspDetails = $LocationServicesV1->getDeliveryCityDetails($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
@@ -34,15 +31,13 @@ class LocationController extends V1Controller{
     public function actionDeliveryArea(){
         if(ComponentsHttp::httpMethod()=="GET"){
             // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
-                $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDeliveryAreaListServingDessertsProductType($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingDeliveryAreaListServingDessertsProductType($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $LocationServicesV1 = new LocationServicesV1();
-                    $rspDetails = $LocationServicesV1->getDeliveryAreaDetails($dkParamDataArr);
+                    $rspDetails = $LocationServicesV1->getDeliveryAreaDetails($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
