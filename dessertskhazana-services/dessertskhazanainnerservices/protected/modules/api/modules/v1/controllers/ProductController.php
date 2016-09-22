@@ -10,14 +10,11 @@ class ProductController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionDeliveryAreaBasedDessertsTypeList(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsTypeListServingInCountryCityArea($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingDessertsTypeListServingInCountryCityArea($dkParamDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $rspDetails = $ProductServicesV1->getDeliveryAreaBasedDessertsTypeList($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
@@ -33,14 +30,11 @@ class ProductController extends V1Controller{
     // CJ defined this action 2016-09-03
     public function actionProductTypeAllProductCategoryDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductTypeAllProductCategoryDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingProductTypeAllProductCategoryDetails($dkParamDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $rspDetails = $ProductServicesV1->getProductTypeAllProductCategoryDetails($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
@@ -56,14 +50,11 @@ class ProductController extends V1Controller{
     // CJ defined this action 2016-09-03
     public function actionProductTypeProductCategoryFilterTypeList(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductTypeProductCategoryFilterOperationDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingProductTypeProductCategoryFilterOperationDetails($dkParamDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $rspDetails = $ProductServicesV1->getProductTypeProductCategoryFilterTypeList($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
@@ -79,14 +70,11 @@ class ProductController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionProductTypeProductCategoryAllProductDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingAllProductDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingAllProductDetails($dkParamDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $rspDetails = $ProductServicesV1->getProductTypeProductCategoryAllProductDetails($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
@@ -102,14 +90,11 @@ class ProductController extends V1Controller{
     // CJ defined this action 2016-06-06
     public function actionProductTypeProductCategoryProductDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingDessertsProductTypeCategoryProductDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingDessertsProductTypeCategoryProductDetails($dkParamDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $rspDetails = $ProductServicesV1->getProductTypeProductCategoryProductDetails($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
@@ -125,14 +110,11 @@ class ProductController extends V1Controller{
     // CJ defined this action 2016-05-25
     public function actionProductDescriptionDetails(){
         if(ComponentsHttp::httpMethod()=="GET"){
-            // checking requested param key name 
-            $requestedParamKeyStatusFromInDtoFile = customparam :: checkRequestedParamKeyFromInDtoFile($this->_inDtoArray);
-            if($requestedParamKeyStatusFromInDtoFile!=false && $requestedParamKeyStatusFromInDtoFile!=''){
-                $inDtoArray = $this->_inDtoArray;
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
                 $dkParamDataArr = $inDtoArray['dkParamDataArr'];
-                // checking param key value data & return status
-                $paramDataCorrectIncorrectStatus = customparam :: checkParamDataFetchingProductDescriptionDetails($dkParamDataArr);
-                if($paramDataCorrectIncorrectStatus=='TRUE'){
+                $paramKeyValueDataStatus = customparam :: checkParamDataFetchingProductDescriptionDetails($dkParamDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
                     $ProductServicesV1 = new ProductServicesV1();
                     $rspDetails = $ProductServicesV1->getProductTypeProductCategoryProductDescriptionDetails($dkParamDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
