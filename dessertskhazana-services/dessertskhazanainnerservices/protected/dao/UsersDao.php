@@ -110,15 +110,15 @@ class UsersDao{
                         } 
                     }
                     // add email in where condition
-                    if(array_key_exists('encoded_email', $paramJson)){
-                        if(strlen($paramJson['encoded_email'])>0){
-                            $sql.=" AND u.email='".$paramJson['encoded_email']."'";
+                    if(array_key_exists('email', $paramJson)){
+                        if(strlen($paramJson['email'])>0){
+                            $sql.=" AND u.email='".$paramJson['email']."'";
                         } 
                     }
                     // add password in where condition
-                    if(array_key_exists('encoded_password', $paramJson)){
-                        if($paramJson['encoded_password']!='' && $paramJson['encoded_password']!=false){
-                            $sql.=" AND u.pwd=MD5('".$paramJson['encoded_password']."')";
+                    if(array_key_exists('password', $paramJson)){
+                        if($paramJson['password']!='' && $paramJson['password']!=false){
+                            $sql.=" AND u.pwd=MD5('".$paramJson['password']."')";
                         } 
                     }
                     // add status in where condition
