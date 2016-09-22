@@ -353,22 +353,22 @@ class UsersDao{
                 $sqlValues.="'".$paramData['user_sessionid']."',";
             }
         }
-        if(array_key_exists('encoded_name', $paramData)){
-            if($paramData['encoded_name']!='' && strlen($paramData['encoded_name'])>0){
+        if(array_key_exists('name', $paramData)){
+            if($paramData['name']!='' && strlen($paramData['name'])>0){
                 $sqlColumnNames.=" name,";
-                $sqlValues.="'".$paramData['encoded_name']."',";
+                $sqlValues.="'".$paramData['name']."',";
             }
         }
-        if(array_key_exists('encoded_email', $paramData)){
-            if($paramData['encoded_email']!='' && strlen($paramData['encoded_email'])>0){
+        if(array_key_exists('email', $paramData)){
+            if($paramData['email']!='' && strlen($paramData['email'])>0){
                 $sqlColumnNames.=" email,";
-                $sqlValues.="'".$paramData['encoded_email']."',";
+                $sqlValues.="'".$paramData['email']."',";
             }
         }
-        if(array_key_exists('encoded_mobile', $paramData)){
-            if($paramData['encoded_mobile']!='' && strlen($paramData['encoded_mobile'])>0){
+        if(array_key_exists('mobile', $paramData)){
+            if($paramData['mobile']!='' && strlen($paramData['mobile'])>0){
                 $sqlColumnNames.=" mobile,";
-                $sqlValues.="'".$paramData['encoded_mobile']."',";
+                $sqlValues.="'".$paramData['mobile']."',";
             }
         }
         if(array_key_exists('otpcode', $paramData)){
