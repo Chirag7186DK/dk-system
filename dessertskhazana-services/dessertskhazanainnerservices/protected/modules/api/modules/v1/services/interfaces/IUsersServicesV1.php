@@ -5,13 +5,13 @@
 */
 
 interface IUsersServicesV1{
-    public function addTrackUserInfoAccessingWebsitesDetails($dkInDtoArray);
-    public function generateUserSessionId($dkInDtoArray);
-    public function userSignUpAuthentication($dkInDtoArray);
-    public function checkUserAuthentication($dkInDtoArray);
-    public function getUserDashboardSummaryDataDetails($dkInDtoArray);
-    public function getUserPersonalInfoData($dkInDtoArray);
-    public function updateUserPersonalInfoData($dkInDtoArray);
-    public function updateUserPasswordInfoData($dkInDtoArray);
-    public function userLogoutFromWebsites($dkInDtoArray);
+    public function addTrackUserInfoAccessingWebsitesDetails($InDtoArr);
+    public function generateUserSessionId($InDtoArr);
+    public function userSignUpAuthentication($InDtoArr);
+    public function checkUserAuthentication($InDtoArr);
+    public function getUserDashboardSummaryDataDetails($InDtoArr);
+    public function getUserPersonalInfoData($InDtoArr);
+    public function updateUserPersonalInfoData($InDtoArr);
+    public function updateUserPasswordInfoData($InDtoArr);
+    public function userLogoutFromWebsites($InDtoArr);
 }
