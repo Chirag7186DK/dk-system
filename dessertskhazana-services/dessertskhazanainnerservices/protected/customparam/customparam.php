@@ -630,16 +630,17 @@ class customparam{
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check encoded_mobile key present or not
-        if(array_key_exists('encoded_email', $paramJsonData)){
-            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['encoded_email']);
-            if(strlen($paramJsonData['encoded_email'])>0 && $isEmailStringMatched==true){
+        // check email key present or not
+        if(array_key_exists('email', $paramJsonData)){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
+            if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check encoded_password key present or not
-        if(array_key_exists('encoded_password', $paramJsonData)){
-            if(strlen($paramJsonData['encoded_password'])>0 && $paramJsonData['encoded_password']!=''){
+        // check mobile key present or not
+        if(array_key_exists('mobile', $paramJsonData)){
+            $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['mobile']);
+            if(strlen($paramJsonData['mobile'])==10 && $isMobileStringMatched==true){
                 $correctParamKeyValueDataCount++;
             }
         }
