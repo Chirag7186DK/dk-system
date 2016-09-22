@@ -71,7 +71,7 @@ class UsersController extends V1Controller{
                 $paramKeyValueDataStatus = customparam :: checkParamDataForUserSignInAuthentication($paramDataArr);
                 if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->checkUserAuthentication($paramDataArr);
+                    $rspDetails = $UsersServicesV1->userSignInAuthentication($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
