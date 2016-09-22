@@ -40,11 +40,25 @@ class UsersServicesV1 implements IUsersServicesV1{
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
+        $rspDetails['isOtpCodeValidated'] = 'N';
         // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             if(array_key_exists('EmailAuthAndOtpRequest', $paramDataArr)){
                 if($paramDataArr['EmailAuthAndOtpRequest']=='Y'){
-                    $rspDetails = commonfunction :: handleUserSignUpEmailAndOtpRequest($paramDataArr);
+                    $rtDataArr1 = commonfunction :: handlingUserSignUpEmailAndOtpRequest($paramDataArr);
+                    $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                }
+            }else if(array_key_exists('validateOtpAndCreateAccountRequest', $paramDataArr) 
+                && array_key_exists('otpcode', $paramDataArr)){
+                if($paramDataArr['validateOtpAndCreateAccountRequest']=='Y'
+                    && strlen($paramDataArr['otpcode'])==6){
+                    $rtDataArr1 = commonfunction :: handlingUserSignUpSentOtpcode($paramDataArr);
+                    if($rtDataArr1['isOtpCodeValidated']=='N'){
+                        $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                    }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
+                        $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+                        $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                    }
                 }
             }
         } 
@@ -52,34 +66,10 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-08-01 & use for user signIn purpose 
-    public function checkUserAuthentication($paramDataArr){
+    public function userSignInAuthentication($paramDataArr){
         $rspDetails = array();
-        $rspDetails['userDetails']['isUserAccountActive'] = 'N';
-        $rspDetails['userDetails']['msgStr'] = 'Invalid account details !';
-        // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $paramDataArr['status'] = "'A','Z'";
-            $userAuthenticationDetailsArr = UsersDao :: getUserDetails($paramDataArr);
-            if(count($userAuthenticationDetailsArr)==1 && $userAuthenticationDetailsArr!=false){
-                $userStatus = $userAuthenticationDetailsArr[0]['userStatus'];
-                if($userStatus=='Z'){
-                    $rspDetails['userDetails']['isUserAccountActive'] = 'N';
-                    $rspDetails['userDetails']['msgStr'] = 'Your account is inactive, please call customer care no.s to make account active !';
-                }else{
-                    $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
-                    $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !';
-                    // store user info as login status
-                    $lastInsertedUserInfoLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userAuthenticationDetailsArr[0], $paramDataArr);
-                    if($lastInsertedUserInfoLogNo!=false && $lastInsertedUserInfoLogNo!=''){
-                        $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogNo;
-                        $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
-                        $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
-                        $rspDetails['userDetails']['userProfileTypeId'] = $userAuthenticationDetailsArr[0]['unmd5ProfileTypeId'];
-                    }
-                }
-            }else{
-                $rspDetails['userDetails']['msgStr'] = 'Invalid account details !';
-            }
+            $rspDetails = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
         } 
         return $rspDetails;
     }
