@@ -191,7 +191,7 @@ function getUserSignUpDataFromSesion(){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSignUpData')){
                 userSignupDataObj = dkParamObj['userSignUpData'];
-                if(dkParamObj.hasOwnProperty('name') && userSignupDataObj.hasOwnProperty('email')
+                if(userSignupDataObj.hasOwnProperty('name') && userSignupDataObj.hasOwnProperty('email')
                     && userSignupDataObj.hasOwnProperty('mobile')){
                 }else{
                     userSignupDataObj = {};
