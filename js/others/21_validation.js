@@ -611,7 +611,7 @@ function validateDataUserSignUpAuthentication(fromSection){
             inValidDataCount++;
         }else{
             if(isValidPwd($('#userSignUpPwdInputId').val())==='FALSE'){
-                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered password length must be between 5 to 10 characters only !!!");
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
                 inValidDataCount++;
             }
         }
