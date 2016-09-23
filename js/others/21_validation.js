@@ -502,44 +502,26 @@ function attachedFieldValidationUserSignInFormContent(){
 // CJ defined this function 2016-08-01
 function validateDataUserSignInAuthentication(){
     var inValidDataCount = 0;
-        if($('#userSignInEmailInputId').length===1){
-            if($('#userSignInEmailInputId').val()===''
-                || $('#userSignInEmailInputId').val()===false){
-                $('#userSignInEmailInputId').css({'border-color':'#f18178'});
-                $('.userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
-                $('.userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else if($('#userSignInEmailInputId').val()!==''){
-                var enteredEmailId = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
-                var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                if(!enteredEmailId.match(emailPattern)){
-                    $('#userSignInEmailInputId').css({'border-color':'#f18178'});
-                    $('.userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
-                    $('.userSignInEmailInput_ErrorClass').css({'color':'#f18178'});
-                    inValidDataCount++;
-                }else{
-                    $('#userSignInEmailInputId').css({'border-color':'#ccc!important;'});
-                }
-            }
+    $('.userSignInEmailInput_ErrorClass').empty();
+    $('.userSignInPwdInput_ErrorClass').empty();
+    if(isProperInputElementContent('userSignInEmailInputId')==='FALSE'){
+        $('.userSignInEmailInput_ErrorClass').append("Enter your email !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidEmailId($('#userSignInEmailInputId').val())==='FALSE'){
+            $('.userSignInEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
+            inValidDataCount++;
         }
-        if($('#userSignUpMobileInputId').length===1){
-            if($('#userSignUpMobileInputId').val()===''){
-                $('#userSignUpMobileInputId').css({'border-color':'#f18178'});
-                $('#userSignUpMobileInputId').css({'border-color':'#f18178'});
-                $('.userSignUpMobileInput_ErrorClass').empty().append("Please enter your mobile numbers !!!");
-                $('.userSignUpMobileInput_ErrorClass').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else if($('#userSignUpMobileInputId').val()!==''){
-                var enterMobileNo = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
-                var mobilePattern = /^[5-9]\d{9}$/g;
-                if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==9){
-                    $('#userSignUpMobileInputId').css({'border-color':'#f18178'});
-                }else{
-                    $('#userSignUpMobileInputId').css({'border-color':'#ccc'});
-                }
-            }
+    }
+    if(isProperInputElementContent('userSignInPwdInputId')==='FALSE'){
+        $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidPwd($('#userSignInPwdInputId').val())==='FALSE'){
+            $('.userSignInPwdInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
+            inValidDataCount++;
         }
-    
+    }
     if(inValidDataCount>0){
         return false;
     }else{
