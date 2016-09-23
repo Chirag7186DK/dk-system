@@ -1615,8 +1615,8 @@ function getParamDataForUserSignInAuthentication(){
                         && (userSessionParamObj['udblogId']).length===0){
                         paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                         paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
-                        paramObj['encoded_email'] = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
-                        paramObj['encoded_password'] = removeHtmlStripTagsOfContent($('#ma_userSignInPasswordInputId').val());
+                        paramObj['encoded_email'] = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
+                        paramObj['encoded_password'] = removeHtmlStripTagsOfContent($('#userSignInPasswordInputId').val());
                     }
                 }
             }
@@ -1644,17 +1644,18 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                 if(fromSection==='signupSection'){
                     paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                     paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
-                    paramObj['name'] = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
-                    paramObj['email'] = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
-                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+                    paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
+                    paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpEmailInputId').val());
+                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
                     paramObj['EmailAuthAndOtpRequest'] = 'Y';
                 }
                 if(fromSection==='otpcodeSection'){
                     paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                     paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
-                    paramObj['name'] = removeHtmlStripTagsOfContent($('#ma_userSignUpOtpCodeInputId').attr('data-namedata'));
-                    paramObj['email'] = removeHtmlStripTagsOfContent($('#ma_userSignUpOtpCodeInputId').attr('data-emaildata'));
-                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#ma_userSignUpOtpCodeInputId').attr('data-mobiledata'));
+                    paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-namedata'));
+                    paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-emaildata'));
+                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-mobiledata'));
+                    paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').val());
                     paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
                 }
             }
