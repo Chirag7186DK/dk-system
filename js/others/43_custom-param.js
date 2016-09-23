@@ -47,12 +47,8 @@ function initializeDkSessionData(){
         customizeOrderObj['title'] = '';
 
         var userAccessLastPageFromObj = {"page":""};
-
         var userOrderItemObj = {};
-        
-        var userOrdercartSummaryObj = {"totalRequestedItems":0};
-
-        var requestedSectionUserAccountObj = {};
+        var requestedUserAccountSectionNameObj = {};
 
         var dkParamObj = {};
         dkParamObj['userSession'] = userSessionObj;
@@ -64,8 +60,7 @@ function initializeDkSessionData(){
         dkParamObj['userRecentlyProduct'] = userRecentlyViewedProductObj;
         dkParamObj['userAccessLastPageFromObj'] = userAccessLastPageFromObj;
         dkParamObj['userOrderItemObj'] = userOrderItemObj;
-        dkParamObj['userOrdercartSummaryObj'] = userOrdercartSummaryObj;
-        dkParamObj['requestedSectionUserAccountObj'] = requestedSectionUserAccountObj;
+        dkParamObj['requestedSectionUserAccountObj'] = requestedUserAccountSectionNameObj;
 
         sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
         generateDkUserSessionId();
@@ -106,11 +101,8 @@ function resetDKSessionData(){
             userProductObj['producttype_featurevalue'] = '';
             userProductObj['productviewed_bystatus'] = 'productwise';
             
-            var userOrdercartSummaryObj = {"totalItems":0};
-            
             dkParamObj['userSession'] = userSessionObj;
             dkParamObj['userProduct'] = userProductObj;
-            dkParamObj['userOrdercartSummaryObj'] = userOrdercartSummaryObj;
             dkParamObj['userAccessLastPageFromObj'] = {"page":""};
             dkParamObj['userOrderItemObj'] = {};
             dkParamObj['requestedSectionUserAccountObj'] = {};
@@ -1475,18 +1467,12 @@ function checkUserLoggedInSession(){
     return retUserLoggedInStatus;
 }
 
-// CJ defined this function 2016-08-01(Very Imp)
 function storeAuthenticatedUserDetailsInSession(paramObj){
     try{
         if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
-            // checking session param
-            if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-                && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-                // extract dk param session data
+            if(checkDkSessionParamObjExists()==='TRUE'){
                 var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                // check userSession key present or not 
                 if(dkParamObj.hasOwnProperty('userSession')===true){
-                    // extract userSession param obj
                     var userSessionParamObj = dkParamObj['userSession'];
                     if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                         && userSessionParamObj.hasOwnProperty('udblogId')===true){
