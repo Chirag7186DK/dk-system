@@ -78,6 +78,12 @@ class UsersDao{
                 $sqlValues.="'".$paramData['mobile']."',";
             }
         }
+        if(array_key_exists('pwd', $paramData)){
+            if($paramData['pwd']!='' && strlen($paramData['pwd'])>0){
+                $sqlColumnNames.=" pwd,";
+                $sqlValues.="'".$paramData['pwd']."',";
+            }
+        }
         if($sqlValues!='' && $sqlColumnNames!=''){
             $sqlColumnNames.=" created_datedtime,";
             $sqlValues.="'".date('Y-m-d H:i:s')."',";
