@@ -1615,7 +1615,8 @@
     .userSignUpNameInputClass,
     .userSignUpEmailInputClass,
     .userSignUpMobileInputClass,
-    .userSignUpOtpCodeInputClass{
+    .userSignUpOtpCodeInputClass,
+    .userSignUpPwdInputClass{
         height:40px!important;
     }
 
