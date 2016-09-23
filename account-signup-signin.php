@@ -130,7 +130,7 @@
                         <p class="userSignUpEmailInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpMobileContainerDivClass">
-                        <input placeholder='Mobile'  attach-validation-mobileinput-directive type="text" id='userSignUpMobileInputId' class="form-control userSignUpMobileInputClass">
+                        <input placeholder='Mobile' attach-validation-mobileinput-directive type="text" id='userSignUpMobileInputId' class="form-control userSignUpMobileInputClass">
                         <p class="userSignUpFormfieldHintPClass">
                             Eg: 9975967186
                         </p>
@@ -152,14 +152,15 @@
                 <!-- sign-up text code form info -->
                 <div ng-if="displaySignInSignUpSectionAccountName=='otpCode'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpOtpCodeContainerDivClass">
-                        <p class="userSignUpFormfieldLabelPClass">
-                            <i class="userSignUpFormfieldiconclass fa fa-mobile faa-tada animated"></i> OTP Code
-                        </p>
-                        <input attach-validation-otpcodeinput-directive type="text" id='userSignUpOtpCodeInputId' class="form-control userSignUpOtpCodeInputClass">
-                        <p class="userSignUpFormfieldHintPClass">
-                            Eg: 23Sddd
-                        </p>
+                        <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userSignUpOtpCodeInputId' class="form-control userSignUpOtpCodeInputClass">
                         <p class="userSignUpOtpCodeInput_ErrorClass"></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpPwdContainerDivClass">
+                        <input placeholder='Password' attach-validation-pwdinput-directive type="text" id='userSignUpPwdInputId' class="form-control userSignUpPwdInputClass">
+                        <p class="userSignUpFormfieldHintPClass">
+                            Note: Password length must be between 5 to 10 alphanumeric characters only
+                        </p>
+                        <p class="userSignUpPwdInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
                         <button ng-click="collectDataUserSignUpAuthentication('otpcodeSection')" class='btn userSignUpSubmitBtnClass'>
