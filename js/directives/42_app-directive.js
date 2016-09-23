@@ -432,7 +432,7 @@ angular.module('DKAPP').directive('attachValidationMobileinputDirective', attach
 function attachValidationMobileinputDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
-            $($el).alphanum({
+            $($el).numeric({
                 "allowPlus":false,
                 "allowMinus":false, 
                 "allowThouSep":false,
