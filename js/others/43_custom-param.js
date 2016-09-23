@@ -1644,23 +1644,18 @@ function getPageDetailsUserAccessedFrom(){
 function getParamDataForUserSignInAuthentication(){
     var paramObj = {};
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // check userSession key present or not 
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                // extract userSession param obj
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(checkUnAuthorizedUserSessionParamObjExists()==='TRUE'){
+                var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
                     && userSessionParamObj.hasOwnProperty('udblogId')===true){
                     if((userSessionParamObj['user_sessionid']).length>=20 
                         && (userSessionParamObj['udblogId']).length===0){
-                        paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
-                        paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
-                        paramObj['encoded_email'] = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
-                        paramObj['encoded_password'] = removeHtmlStripTagsOfContent($('#userSignInPasswordInputId').val());
+                        paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                        paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                        paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
+                        paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignInPwdInputId').val());
                     }
                 }
             }
