@@ -598,12 +598,8 @@ function validateDataUserSignUpAuthentication(fromSection){
             $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }else{
-            var nameData = $('#userSignUpOtpCodeInputId').attr('data-namedata');
-            var emailData = $('#userSignUpOtpCodeInputId').attr('data-emaildata');
-            var mobileData = $('#userSignUpOtpCodeInputId').attr('data-mobiledata');
-            if(nameData!==undefined && nameData!==''
-                && emailData!==undefined && emailData!==''    
-                && mobileData!==undefined && mobileData!==''){
+            var userSignUpDataObj = getUserSignUpDataFromSesion();
+            if(userSignUpDataObj!==false && jQuery.isEmptyObject(userSignUpDataObj)===false){
             }else{
                 $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
                 inValidDataCount++;
