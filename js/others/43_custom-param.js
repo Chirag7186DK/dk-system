@@ -1642,16 +1642,16 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                 var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(fromSection==='signUpSection'){
-                    paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
-                    paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
                     paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
                     paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpEmailInputId').val());
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
                     paramObj['EmailAuthAndOtpRequest'] = 'Y';
                 }
                 if(fromSection==='otpSection'){
-                    paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
-                    paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
                     paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-namedata'));
                     paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-emaildata'));
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-mobiledata'));
@@ -1662,14 +1662,10 @@ function getParamDataForUserSignUpAuthentication(fromSection){
             }
         }
     }catch(ex){
-        console.log("problem in getParamDataForUserSignInAuthentication=>"+ex);
+        console.log("problem in getParamDataForUserSignUpAuthentication=>"+ex);
         paramObj = {};
     }
-    if(Object.keys(paramObj).length===6){
-        return paramObj;
-    }else{
-        return false;
-    }
+    return paramObj;
 }
 
 
