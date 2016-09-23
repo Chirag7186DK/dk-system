@@ -600,9 +600,10 @@ class customparam{
         }
         // check EmailAuthAndOtpRequest key present or not
         if(array_key_exists('validateOtpAndCreateAccountRequest', $paramJsonData) 
-            && array_key_exists('otpcode', $paramJsonData)){
+            && array_key_exists('otpcode', $paramJsonData) && array_key_exists('pwd', $paramJsonData)){
             if($paramJsonData['validateOtpAndCreateAccountRequest']=='Y'
-                && strlen($paramJsonData['otpcode'])==6){
+                && strlen($paramJsonData['otpcode'])==6 
+                && (strlen($paramJsonData['pwd'])>=5 && strlen($paramJsonData['pwd'])<=10)){
                 $correctParamKeyValueDataCount++;
             }
             if($correctParamKeyValueDataCount==6){
