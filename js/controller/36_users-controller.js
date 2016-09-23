@@ -20,13 +20,14 @@ function UsersController($scope, $rootScope, UsersServices){
             if(userLoggedInSessionStatus===true){
                 window.location.href = globalBaseSitePath;
             }else if(userLoggedInSessionStatus===false){
-                $rootScope.resetSignUpSignInAccountSection('signInSection');
+                $rootScope.toggleAccountFormSectionName('signInSection');
             } 
         };
         
-        // resetSignUpSignInAccountSection
-        $rootScope.resetSignUpSignInAccountSection = function(purposeType){
-            $rootScope.showAccountFormSectionName = purposeType;
+        // toggleAccountFormSectionName
+        $rootScope.toggleAccountFormSectionName = function(sectionName){
+            removeUserSignUpDataFromSesion();
+            $rootScope.showAccountFormSectionName = sectionName;
         };
         
         // collectDataUserSignInAuthentication
@@ -106,6 +107,7 @@ function UsersController($scope, $rootScope, UsersServices){
                             }
                             if(rtDataObj!=='' && rtDataObj!==false && rtDataObj!==undefined){
                                 if(rtDataObj['isOtpCodeSent']==='N' && rtDataObj['isOtpCodeValidated']==='N'){
+                                    removeUserSignUpDataFromSesion();
                                     $rootScope.showAccountFormSectionName = 'signUpSection';
                                     $rootScope.isShowUserSignUpNoticeMsg = 'TRUE';
                                     $rootScope.userSignUpNoticeMsgStr = rtDataObj['msgStr'];
@@ -114,7 +116,7 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.showAccountFormSectionName = 'otpSection';
                                     $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
                                     $rootScope.userSignUpOtpNoticeMsgStr = rtDataObj['msgStr'];
-                                }else{
+                                }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='Y'){
                                     console.log("rtDataObj=>"+JSON.stringify(rtDataObj));
                                 }
                             }
