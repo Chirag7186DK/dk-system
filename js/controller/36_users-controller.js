@@ -118,6 +118,7 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.userSignUpOtpNoticeMsgStr = rtDataObj['msgStr'];
                                 }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='Y'){
                                     storeAuthenticatedUserDetailsInSession(rtDataObj);
+                                    window.location.href = globalBaseSitePath;
                                 }
                             }
                         });
