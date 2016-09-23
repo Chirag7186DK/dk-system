@@ -43,7 +43,7 @@ class UsersController extends V1Controller{
     
     // CJ defined this action 2016-09-21
     public function actionUserSignUpAuthentication(){
-        if(ComponentsHttp::httpMethod()=="GET"){
+        if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
             if($inDtoArray!='FALSE'){
                 $paramDataArr = $inDtoArray['dkParamDataArr'];
