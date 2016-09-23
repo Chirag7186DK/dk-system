@@ -20,13 +20,13 @@ function UsersController($scope, $rootScope, UsersServices){
             if(userLoggedInSessionStatus===true){
                 window.location.href = globalBaseSitePath;
             }else if(userLoggedInSessionStatus===false){
-                $rootScope.resetSignUpSignInAccountSection('signIn');
+                $rootScope.resetSignUpSignInAccountSection('signInSection');
             } 
         };
         
         // resetSignUpSignInAccountSection
         $rootScope.resetSignUpSignInAccountSection = function(purposeType){
-            $rootScope.displaySignInSignUpSectionAccountName = purposeType;
+            $rootScope.showAccountFormSectionName = purposeType;
         };
         
         // collectDataUserSignInAuthentication
