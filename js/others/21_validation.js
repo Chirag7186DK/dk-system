@@ -1,5 +1,4 @@
 
-// CJ defined this fucntion 2016-09-22
 function isProperInputElementContent(inputElementId){
     var rtStatus = 'FALSE';
     try{
@@ -12,6 +11,51 @@ function isProperInputElementContent(inputElementId){
             }else{
                 rtStatus = 'TRUE';
             }
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
+
+function isValidEmailId(emailIdContent){
+    var rtStatus = 'FALSE';
+    try{
+        var givenEmailId = removeHtmlStripTagsOfContent(emailIdContent);
+        var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(!givenEmailId.match(emailPattern)){
+            rtStatus = 'FALSE';
+        }else{
+            rtStatus = 'TRUE';
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
+
+function isValidMobileNos(mobileContent){
+    var rtStatus = 'FALSE';
+    try{
+        var givenMobileStr = removeHtmlStripTagsOfContent(mobileContent);
+        var mobilePattern = /^[5-9]\d{9}$/g;
+        if(givenMobileStr.match(mobilePattern)===null || givenMobileStr.match(mobilePattern)===undefined){
+            rtStatus = 'FALSE';
+        }else{
+            rtStatus = 'TRUE';
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
+
+function isValidPwd(pwdContent){
+    var rtStatus = 'FALSE';
+    try{
+        var enteredPwdText = removeHtmlStripTagsOfContent(pwdContent);
+        if((enteredPwdText).length>=5 && (enteredPwdText).length<=10){
+            rtStatus = 'TRUE';
         }
     }catch(ex){
         rtStatus = 'FALSE';
@@ -427,8 +471,8 @@ function validateParamDataCorporateTieupRequest(){
 
 // CJ defined this fucntion 2016-08-01
 function attachedFieldValidationUserSignInFormContent(){
-    if($('#ma_userSignInEmailInputId').length===1){
-        $('#ma_userSignInEmailInputId').bind("keypress keydown keyup change paste", function(e){
+    if($('#userSignInEmailInputId').length===1){
+        $('#userSignInEmailInputId').bind("keypress keydown keyup change paste", function(e){
             try{
                 var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
                 if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
@@ -448,40 +492,40 @@ function attachedFieldValidationUserSignInFormContent(){
 // CJ defined this function 2016-08-01
 function validateDataUserSignInAuthentication(){
     var inValidDataCount = 0;
-        if($('#ma_userSignInEmailInputId').length===1){
-            if($('#ma_userSignInEmailInputId').val()===''
-                || $('#ma_userSignInEmailInputId').val()===false){
-                $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
-                $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
-                $('.ma_userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
+        if($('#userSignInEmailInputId').length===1){
+            if($('#userSignInEmailInputId').val()===''
+                || $('#userSignInEmailInputId').val()===false){
+                $('#userSignInEmailInputId').css({'border-color':'#f18178'});
+                $('.userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
+                $('.userSignInEmailInput_ErrorClass').css({'border-color':'#f18178'});
                 inValidDataCount++;
-            }else if($('#ma_userSignInEmailInputId').val()!==''){
-                var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignInEmailInputId').val());
+            }else if($('#userSignInEmailInputId').val()!==''){
+                var enteredEmailId = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
                 var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 if(!enteredEmailId.match(emailPattern)){
-                    $('#ma_userSignInEmailInputId').css({'border-color':'#f18178'});
-                    $('.ma_userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
-                    $('.ma_userSignInEmailInput_ErrorClass').css({'color':'#f18178'});
+                    $('#userSignInEmailInputId').css({'border-color':'#f18178'});
+                    $('.userSignInEmailInput_ErrorClass').empty().append("Please enter valid registered emailId !");
+                    $('.userSignInEmailInput_ErrorClass').css({'color':'#f18178'});
                     inValidDataCount++;
                 }else{
-                    $('#ma_userSignInEmailInputId').css({'border-color':'#ccc!important;'});
+                    $('#userSignInEmailInputId').css({'border-color':'#ccc!important;'});
                 }
             }
         }
-        if($('#ma_userSignUpMobileInputId').length===1){
-            if($('#ma_userSignUpMobileInputId').val()===''){
-                $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
-                $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
-                $('.ma_userSignUpMobileInput_ErrorClass').empty().append("Please enter your mobile numbers !!!");
-                $('.ma_userSignUpMobileInput_ErrorClass').css({'border-color':'#f18178'});
+        if($('#userSignUpMobileInputId').length===1){
+            if($('#userSignUpMobileInputId').val()===''){
+                $('#userSignUpMobileInputId').css({'border-color':'#f18178'});
+                $('#userSignUpMobileInputId').css({'border-color':'#f18178'});
+                $('.userSignUpMobileInput_ErrorClass').empty().append("Please enter your mobile numbers !!!");
+                $('.userSignUpMobileInput_ErrorClass').css({'border-color':'#f18178'});
                 inValidDataCount++;
-            }else if($('#ma_userSignUpMobileInputId').val()!==''){
-                var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
+            }else if($('#userSignUpMobileInputId').val()!==''){
+                var enterMobileNo = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
                 var mobilePattern = /^[5-9]\d{9}$/g;
                 if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==9){
-                    $('#ma_userSignUpMobileInputId').css({'border-color':'#f18178'});
+                    $('#userSignUpMobileInputId').css({'border-color':'#f18178'});
                 }else{
-                    $('#ma_userSignUpMobileInputId').css({'border-color':'#ccc'});
+                    $('#userSignUpMobileInputId').css({'border-color':'#ccc'});
                 }
             }
         }
@@ -499,62 +543,71 @@ function validateDataUserSignUpAuthentication(fromSection){
     
     if(fromSection==='signupSection'){
         
-        $('.ma_userSignUpNameInput_ErrorClass').empty();
-        $('.ma_userSignUpEmailInput_ErrorClass').empty();
-        $('.ma_userSignUpMobileInput_ErrorClass').empty();
+        $('.userSignUpNameInput_ErrorClass').empty();
+        $('.userSignUpEmailInput_ErrorClass').empty();
+        $('.userSignUpMobileInput_ErrorClass').empty();
         
-        if(isProperInputElementContent('ma_userSignUpNameInputId')==='FALSE'){
-            $('.ma_userSignUpNameInput_ErrorClass').append("Enter your name !!!");
+        if(isProperInputElementContent('userSignUpNameInputId')==='FALSE'){
+            $('.userSignUpNameInput_ErrorClass').append("Enter your name !!!");
             inValidDataCount++;
         }else{
-            var enteredNameText = removeHtmlStripTagsOfContent($('#ma_userSignUpNameInputId').val());
+            var enteredNameText = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
             if((enteredNameText).length>30){
-                $('.ma_userSignUpNameInput_ErrorClass').append("Entered name length must be less than 30 characters !!!");
+                $('.userSignUpNameInput_ErrorClass').append("Entered name length must be less than 30 characters !!!");
                 inValidDataCount++;
             }
         }
         
-        if(isProperInputElementContent('ma_userSignUpEmailInputId')==='FALSE'){
-            $('.ma_userSignUpEmailInput_ErrorClass').append("Enter your emailId !!!");
+        if(isProperInputElementContent('userSignUpEmailInputId')==='FALSE'){
+            $('.userSignUpEmailInput_ErrorClass').append("Enter your email !!!");
             inValidDataCount++;
         }else{
-            var enteredEmailId = removeHtmlStripTagsOfContent($('#ma_userSignUpEmailInputId').val());
-            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if(!enteredEmailId.match(emailPattern)){
-                $('.ma_userSignUpEmailInput_ErrorClass').append("Entered emailId is not in proper format !!!");
+            if(isValidEmailId($('#userSignUpEmailInputId').val())==='FALSE'){
+                $('.userSignUpEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
                 inValidDataCount++;
             }
         }
         
-        if(isProperInputElementContent('ma_userSignUpMobileInputId')==='FALSE'){
-            $('.ma_userSignUpMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
+        if(isProperInputElementContent('userSignUpMobileInputId')==='FALSE'){
+            $('.userSignUpMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
             inValidDataCount++;
         }else{
-            var enterMobileNo = removeHtmlStripTagsOfContent($('#ma_userSignUpMobileInputId').val());
-            var mobilePattern = /^[5-9]\d{9}$/g;
-            if(enterMobileNo.match(mobilePattern)===null || enterMobileNo.match(mobilePattern)===undefined){
-                $('.ma_userSignUpMobileInput_ErrorClass').append("Enter valid mobile no.s !!!");
+            if(isValidMobileNos($('#userSignUpMobileInputId').val())==='FALSE'){
+                $('.userSignUpMobileInput_ErrorClass').append("Enter valid mobile no.s !!!");
                 inValidDataCount++;
             }
         }
     }
     
     if(fromSection==='otpcodeSection'){
-        $('.ma_userSignUpOtpCodeInput_ErrorClass').empty();
-        if(isProperInputElementContent('ma_userSignUpOtpCodeInputId')==='TRUE'){
-            var nameData = $('#ma_userSignUpOtpCodeInputId').attr('data-namedata');
-            var emailData = $('#ma_userSignUpOtpCodeInputId').attr('data-emaildata');
-            var mobileData = $('#ma_userSignUpOtpCodeInputId').attr('data-mobiledata');
+        
+        $('.userSignUpOtpCodeInput_ErrorClass').empty();
+        $('.userSignUpPwdInput_ErrorClass').empty();
+        
+        if(isProperInputElementContent('userSignUpOtpCodeInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+            inValidDataCount++;
+        }else{
+            var nameData = $('#userSignUpOtpCodeInputId').attr('data-namedata');
+            var emailData = $('#userSignUpOtpCodeInputId').attr('data-emaildata');
+            var mobileData = $('#userSignUpOtpCodeInputId').attr('data-mobiledata');
             if(nameData!==undefined && nameData!==''
                 && emailData!==undefined && emailData!==''    
                 && mobileData!==undefined && mobileData!==''){
             }else{
-                $('.ma_userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
                 inValidDataCount++;
             }
-        }else{
-            $('.ma_userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+        }
+        
+        if(isProperInputElementContent('userSignUpPwdInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
             inValidDataCount++;
+        }else{
+            if(isValidPwd($('#userSignUpPwdInputId').val())==='FALSE'){
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered password length must be between 5 to 10 characters only !!!");
+                inValidDataCount++;
+            }
         }
     }
     if(inValidDataCount>0){
