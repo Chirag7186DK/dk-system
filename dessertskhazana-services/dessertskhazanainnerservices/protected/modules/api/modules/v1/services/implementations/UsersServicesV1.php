@@ -48,10 +48,8 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rtDataArr1 = commonfunction :: handlingUserSignUpEmailAndOtpRequest($paramDataArr);
                     $rspDetails = array_merge($rspDetails, $rtDataArr1);
                 }
-            }else if(array_key_exists('validateOtpAndCreateAccountRequest', $paramDataArr) 
-                && array_key_exists('otpcode', $paramDataArr)){
-                if($paramDataArr['validateOtpAndCreateAccountRequest']=='Y'
-                    && strlen($paramDataArr['otpcode'])==6){
+            }else if(array_key_exists('validateOtpAndCreateAccountRequest', $paramDataArr)){
+                if($paramDataArr['validateOtpAndCreateAccountRequest']=='Y'){
                     $rtDataArr1 = commonfunction :: handlingUserSignUpSentOtpcode($paramDataArr);
                     if($rtDataArr1['isOtpCodeValidated']=='N'){
                         $rspDetails = array_merge($rspDetails, $rtDataArr1);
@@ -61,7 +59,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                         if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
                             $signInParamDataArr = array();
                             $signInParamDataArr['email'] = $paramDataArr['email'];
-                            $signInParamDataArr['mobile'] = $paramDataArr['mobile'];
+                            $signInParamDataArr['pwd'] = $paramDataArr['pwd'];
                             $signInParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
                             $signInParamDataArr['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                             // fetching user signin details about creating new account
