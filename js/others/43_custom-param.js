@@ -1656,6 +1656,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-emaildata'));
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-mobiledata'));
                     paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').val());
+                    paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignUpPwdInputId').val());
                     paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
                 }
             }
