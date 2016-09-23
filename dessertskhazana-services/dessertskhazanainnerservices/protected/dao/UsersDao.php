@@ -159,43 +159,41 @@ class UsersDao{
                     FROM USERS u
                     JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
                     WHERE 1 ";  
-                    // add userLoggedId in where condition
                     if(array_key_exists('userLoggedId', $paramJson)){
                         if(strlen($paramJson['userLoggedId'])==32){
                             $sql.=" AND MD5(u.id)='".$paramJson['userLoggedId']."'";
                         } 
                     }
-                    // add user_id in where condition
                     if(array_key_exists('user_id', $paramJson)){
                         if(strlen($paramJson['user_id'])==32){
                             $sql.=" AND MD5(u.id)='".$paramJson['user_id']."'";
                         } 
                     }
-                    // add created_by in where condition
                     if(array_key_exists('created_by', $paramJson)){
                         if(strlen($paramJson['created_by'])==32){
                             $sql.=" AND MD5(u.id)='".$paramJson['created_by']."'";
                         } 
                     }
-                    // add user profile type id in where condition
                     if(array_key_exists('userProfileTypeId', $paramJson)){
                         if(strlen($paramJson['userProfileTypeId'])==32){
                             $sql.=" AND MD5(up.id)='".$paramJson['userProfileTypeId']."' AND MD5(u.profile_typeid)='".$paramJson['userProfileTypeId']."'";
                         } 
                     }
-                    // add mobile in where condition
-                    if(array_key_exists('mobile', $paramJson)){
-                        if(strlen($paramJson['mobile'])==10){
-                            $sql.=" AND u.mobile='".$paramJson['mobile']."'";
-                        } 
-                    }
-                    // add email in where condition
                     if(array_key_exists('email', $paramJson)){
                         if(strlen($paramJson['email'])>0){
                             $sql.=" AND u.email='".$paramJson['email']."'";
                         } 
                     }
-                    // add status in where condition
+                    if(array_key_exists('mobile', $paramJson)){
+                        if(strlen($paramJson['mobile'])==10){
+                            $sql.=" AND u.mobile='".$paramJson['mobile']."'";
+                        } 
+                    }
+                    if(array_key_exists('pwd', $paramJson)){
+                        if($paramJson['pwd']!='' && $paramJson['pwd']!=false){
+                            $sql.=" AND u.pwd=MD5('".$paramJson['pwd']."')";
+                        } 
+                    }
                     if(array_key_exists('status', $paramJson)){
                         if($paramJson['status']!='' && $paramJson['status']!=false){
                             $sql.=" AND u.status IN (".$paramJson['status'].")";
