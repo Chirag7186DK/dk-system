@@ -439,7 +439,7 @@ class UsersDao{
     
     // CJ defined this function 2016-08-06
     public static function checkOtpCodeActiveForUserSignUpAuth($userSessionId, $name, $email, $mobile, $otpcode){
-        $retResult = 0;
+        $retResult = false;
         try{
             $connection = Yii::App()->db;
             $sql= "SELECT 
