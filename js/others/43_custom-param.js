@@ -193,7 +193,8 @@ function getUserSignUpDataFromSesion(){
                 userSignupDataObj = dkParamObj['userSignUpData'];
                 if(dkParamObj.hasOwnProperty('name') && userSignupDataObj.hasOwnProperty('email')
                     && userSignupDataObj.hasOwnProperty('mobile')){
-            
+                }else{
+                    userSignupDataObj = {};
                 }
             }
         }
@@ -1705,14 +1706,20 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpEmailInputId').val());
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
                     paramObj['EmailAuthAndOtpRequest'] = 'Y';
+                    if(Object.keys(paramObj).length!==6){
+                        paramObj = {};
+                    }
                 }
                 if(fromSection==='otpSection'){
                     paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
                     paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
-                    paramObj = $.extend(paramObj, getUserSignUpDataFromSesion());
                     paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').val());
                     paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignUpPwdInputId').val());
                     paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
+                    paramObj = $.extend(paramObj, getUserSignUpDataFromSesion());
+                    if(Object.keys(paramObj).length!==8){
+                        paramObj = {};
+                    }
                 }
             }
         }
