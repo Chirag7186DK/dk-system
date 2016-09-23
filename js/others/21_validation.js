@@ -45,11 +45,11 @@ function isValidMobileNos(mobileContent){
         }else if(givenMobileStr.match(mob10DigitsPattern)!==null 
             && givenMobileStr.match(mob10DigitsPattern)!==undefined){
             var digitsRepeatingAtStartingPattern = /^[5-9]{1,7}$/g;
-            if(givenMobileStr.match(digitsRepeatingAtStartingPattern)!==null 
-                || givenMobileStr.match(digitsRepeatingAtStartingPattern)!==undefined){
-                rtStatus = 'FALSE';
-            }else{
+            if(givenMobileStr.match(digitsRepeatingAtStartingPattern)===null 
+                || givenMobileStr.match(digitsRepeatingAtStartingPattern)===undefined){
                 rtStatus = 'TRUE';
+            }else{
+                rtStatus = 'FALSE';
             }
         }else{
             rtStatus = 'TRUE';
