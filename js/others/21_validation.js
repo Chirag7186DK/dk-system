@@ -541,7 +541,7 @@ function validateDataUserSignInAuthentication(){
 function validateDataUserSignUpAuthentication(fromSection){
     var inValidDataCount = 0;
     
-    if(fromSection==='signupSection'){
+    if(fromSection==='signUpSection'){
         
         $('.userSignUpNameInput_ErrorClass').empty();
         $('.userSignUpEmailInput_ErrorClass').empty();
@@ -579,7 +579,7 @@ function validateDataUserSignUpAuthentication(fromSection){
         }
     }
     
-    if(fromSection==='otpcodeSection'){
+    if(fromSection==='otpSection'){
         
         $('.userSignUpOtpCodeInput_ErrorClass').empty();
         $('.userSignUpPwdInput_ErrorClass').empty();
