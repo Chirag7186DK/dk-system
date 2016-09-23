@@ -75,44 +75,6 @@ function initializeDkSessionData(){
     }    
 }
 
-function checkDkSessionParamObjExists(){
-    var rtStatus = 'FALSE';
-    try{
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            rtStatus = 'TRUE';
-        }
-    }catch(ex){
-        rtStatus = 'FALSE';
-    }
-    return rtStatus;
-}
-
-function checkUnAuthorizedUserSessionParamObjExists(){
-    var rtStatus = 'FALSE';
-    try{
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                // extract userSession param obj
-                var userSessionParamObj = dkParamObj['userSession'];
-                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
-                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>=20 
-                        && (userSessionParamObj['udblogId']).length===0){
-                        rtStatus = 'TRUE';
-                    }
-                }
-            }
-        }
-    }catch(ex){
-        rtStatus = 'FALSE';
-    }
-    return rtStatus;
-}
-
 function resetDKSessionData(){
     try{
         // checking session param
@@ -161,6 +123,44 @@ function resetDKSessionData(){
 }
 
 
+function checkDkSessionParamObjExists(){
+    var rtStatus = 'FALSE';
+    try{
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            rtStatus = 'TRUE';
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
+
+function checkUnAuthorizedUserSessionParamObjExists(){
+    var rtStatus = 'FALSE';
+    try{
+        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
+            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSession')===true){
+                // extract userSession param obj
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
+                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
+                    if((userSessionParamObj['user_sessionid']).length>=20 
+                        && (userSessionParamObj['udblogId']).length===0){
+                        rtStatus = 'TRUE';
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
+
 function storeTemporaryUserSignUpData(userDataObj){
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
@@ -189,7 +189,13 @@ function getUserSignUpDataFromSesion(){
         if(checkDkSessionParamObjExists()==='TRUE'){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            userSignupDataObj = dkParamObj['userSignUpData'];
+            if(dkParamObj.hasOwnProperty('userSignUpData')){
+                userSignupDataObj = dkParamObj['userSignUpData'];
+                if(dkParamObj.hasOwnProperty('name') && userSignupDataObj.hasOwnProperty('email')
+                    && userSignupDataObj.hasOwnProperty('mobile')){
+            
+                }
+            }
         }
     }catch(ex){
         console.log("Problem in getUserSignUpDataFromTemporarySesion=>"+ex);
