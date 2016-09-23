@@ -1641,7 +1641,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
             if(checkUnAuthorizedUserSessionParamObjExists()==='TRUE'){
                 var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 var userSessionParamObj = dkParamObj['userSession'];
-                if(fromSection==='signupSection'){
+                if(fromSection==='signUpSection'){
                     paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                     paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
                     paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
@@ -1649,7 +1649,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
                     paramObj['EmailAuthAndOtpRequest'] = 'Y';
                 }
-                if(fromSection==='otpcodeSection'){
+                if(fromSection==='otpSection'){
                     paramObj['user_sessionid'] = removeHtmlStripTagsOfContent(userSessionParamObj['user_sessionid']);
                     paramObj['usersession_starttimestamp'] = removeHtmlStripTagsOfContent(userSessionParamObj['usersession_starttimestamp']);
                     paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-namedata'));
