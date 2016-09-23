@@ -76,7 +76,7 @@
             <!-- display sign-in section info -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInFormInfoWrapperDivClass">
                 <!-- display sign-in form info -->
-                <div ng-if="displaySignInSignUpSectionAccountName=='signIn'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ma_userSignInformContentWrappperContainerDivClass">
+                <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ma_userSignInformContentWrappperContainerDivClass">
                     <div class="col-xs-12 col-sm-12 col-md-12 ma_userSignInEmailContainerDivClass">
                         <p class="ma_userSignInFormfieldLabelPClass">
                             <i class="ma_userSigInFormfieldiconclass fa fa-envelope faa-tada animated"></i> Email-Id
@@ -105,7 +105,7 @@
                             <i class='fa fa-lock'></i> SIGN IN
                         </button>
                     </div>
-                    <div ng-click="resetSignUpSignInAccountSection('signUp')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectUserSignUpBtnContainerDivClass">
+                    <div ng-click="resetSignUpSignInAccountSection('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectUserSignUpBtnContainerDivClass">
                         Not registered yet? Register here.
                     </div>
                 </div>
@@ -114,7 +114,10 @@
             <!-- display sign-up info section -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpFormInfoWrapperDivClass">
                 <!-- sign-up form info -->
-                <div ng-if="displaySignInSignUpSectionAccountName=='signUp'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
+                <div ng-if="showAccountFormSectionName=='signUpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
+                    <div ng-if="isShowUserSignUpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
+                        {{userSignUpNoticeMsgStr}}
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNameContainerDivClass">
                         <input placeholder='Full Name' attach-validation-nameinput-directive type="text" id='userSignUpNameInputId' class="form-control userSignUpNameInputClass">
                         <p class="userSignUpFormfieldHintPClass">
@@ -136,21 +139,21 @@
                         </p>
                         <p class="userSignUpMobileInput_ErrorClass"></p>
                     </div>
-                    <div ng-show="isShowUserSignUpFormContentErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
-                        {{userSignUpFormContentErrorMsgStr}}
-                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication('signupSection')" class='btn userSignUpSubmitBtnClass' id='userSignUpSubmitBtnId'>
+                        <button ng-click="collectDataUserSignUpAuthentication('signUpSection')" class='btn userSignUpSubmitBtnClass' id='userSignUpSubmitBtnId'>
                             <i class='fa fa-lock'></i> SIGN UP
                         </button>
                     </div>
-                    <div ng-click="resetSignUpSignInAccountSection('signIn')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                    <div ng-click="resetSignUpSignInAccountSection('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
                         Already have an account? SignIn here.
                     </div>
                 </div>
                 
                 <!-- sign-up text code form info -->
-                <div ng-if="displaySignInSignUpSectionAccountName=='otpCode'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
+                <div ng-if="showAccountFormSectionName=='otpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
+                    <div ng-if="isShowUserSignUpOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
+                        {{userSignUpOtpNoticeMsgStr}}
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpOtpCodeContainerDivClass">
                         <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userSignUpOtpCodeInputId' class="form-control userSignUpOtpCodeInputClass">
                         <p class="userSignUpOtpCodeInput_ErrorClass"></p>
@@ -163,11 +166,11 @@
                         <p class="userSignUpPwdInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication('otpcodeSection')" class='btn userSignUpSubmitBtnClass'>
+                        <button ng-click="collectDataUserSignUpAuthentication('otpSection')" class='btn userSignUpSubmitBtnClass'>
                             <i class='fa fa-lock'></i> CONTINUE
                         </button>
                     </div>
-                    <div ng-click="resetSignUpSignInAccountSection('signIn')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                    <div ng-click="resetSignUpSignInAccountSection('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
                         Already have an account? SignIn here.
                     </div>
                 </div>
