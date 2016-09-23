@@ -105,13 +105,8 @@
                             <i class='fa fa-lock'></i> SIGN IN
                         </button>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInBorderDivClass">
-                        <span>New to Desserts Khazana ?</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectForUserSignUpBtnContainerDivClass">
-                        <button ng-click="resetSignUpSignInAccountSection('signUp')" class='btn ma_redirectForUserSignUpBtnClass'>
-                            Signup with Desserts Khazana
-                        </button>
+                    <div ng-click="resetSignUpSignInAccountSection('signUp')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectUserSignUpBtnContainerDivClass">
+                        Not registered yet? Register here.
                     </div>
                 </div>
             </div>
@@ -119,79 +114,60 @@
             <!-- display sign-up info section -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpFormInfoWrapperDivClass">
                 <!-- sign-up form info -->
-                <div ng-if="displaySignInSignUpSectionAccountName=='signUp'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ma_userSignUpformContentWrappperContainerDivClass">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpNameContainerDivClass">
-                        <p class="ma_userSignUpFormfieldLabelPClass">
-                            <i class="ma_userSignUpFormfieldiconclass fa fa-user faa-tada animated"></i> Name
-                        </p>
-                        <input attach-validation-nameinput-directive type="text" id='ma_userSignUpNameInputId' class="form-control ma_userSignUpNameInputName">
-                        <p class="ma_userSignUpFormfieldHintPClass">
+                <div ng-if="displaySignInSignUpSectionAccountName=='signUp'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNameContainerDivClass">
+                        <input placeholder='Full Name' attach-validation-nameinput-directive type="text" id='userSignUpNameInputId' class="form-control userSignUpNameInputClass">
+                        <p class="userSignUpFormfieldHintPClass">
                             Eg: Chirag Jain, Mahesh Gupta, Rahul G
                         </p>
-                        <p class="ma_userSignUpNameInput_ErrorClass"></p>
+                        <p class="userSignUpNameInput_ErrorClass"></p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpEmailContainerDivClass">
-                        <p class="ma_userSignUpFormfieldLabelPClass">
-                            <i class="ma_userSignUpFormfieldiconclass fa fa-envelope faa-tada animated"></i> Email-Id
-                        </p>
-                        <input type="text" id='ma_userSignUpEmailInputId' class="form-control ma_userSignUpEmailInputClass">
-                        <p class="ma_userSignUpFormfieldHintPClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpEmailContainerDivClass">
+                        <input placeholder='Email' type="text" id='userSignUpEmailInputId' class="form-control userSignUpEmailInputClass">
+                        <p class="userSignUpFormfieldHintPClass">
                             Eg: chirag.jain@gmail.com
                         </p>
-                        <p class="ma_userSignUpEmailInput_ErrorClass"></p>
+                        <p class="userSignUpEmailInput_ErrorClass"></p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpMobileContainerDivClass">
-                        <p class="ma_userSignUpFormfieldLabelPClass">
-                            <i class="ma_userSignUpFormfieldiconclass fa fa-mobile faa-tada animated"></i> Mobile
-                        </p>
-                        <input attach-validation-mobileinput-directive type="text" id='ma_userSignUpMobileInputId' class="form-control ma_userSignUpMobileInputClass">
-                        <p class="ma_userSignUpFormfieldHintPClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpMobileContainerDivClass">
+                        <input placeholder='Mobile'  attach-validation-mobileinput-directive type="text" id='userSignUpMobileInputId' class="form-control userSignUpMobileInputClass">
+                        <p class="userSignUpFormfieldHintPClass">
                             Eg: 9975967186
                         </p>
-                        <p class="ma_userSignUpMobileInput_ErrorClass"></p>
+                        <p class="userSignUpMobileInput_ErrorClass"></p>
                     </div>
-                    <div ng-show="isShowUserSignUpFormContentErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInErrorMsgContainerDivClass">
+                    <div ng-show="isShowUserSignUpFormContentErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
                         {{userSignUpFormContentErrorMsgStr}}
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication('signupSection')" class='btn ma_userSignUpSubmitBtnClass' id='ma_userSignUpSubmitBtnId'>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
+                        <button ng-click="collectDataUserSignUpAuthentication('signupSection')" class='btn userSignUpSubmitBtnClass' id='userSignUpSubmitBtnId'>
                             <i class='fa fa-lock'></i> SIGN UP
                         </button>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBorderDivClass">
-                        <span>Already have an account ?</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectForUserSignUpBtnContainerDivClass">
-                        <button ng-click="resetSignUpSignInAccountSection('signIn')" class='btn ma_redirectForUserSignInBtnClass' id='ma_redirectForUserSignInBtnId'>
-                            Sigin with Desserts Khazana
-                        </button>
+                    <div ng-click="resetSignUpSignInAccountSection('signIn')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                        Already have an account? SignIn here.
                     </div>
                 </div>
                 
                 <!-- sign-up text code form info -->
-                <div ng-if="displaySignInSignUpSectionAccountName=='otpCode'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ma_userSignUpformContentWrappperContainerDivClass">
+                <div ng-if="displaySignInSignUpSectionAccountName=='otpCode'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpOtpCodeContainerDivClass">
-                        <p class="ma_userSignUpFormfieldLabelPClass">
-                            <i class="ma_userSignUpFormfieldiconclass fa fa-mobile faa-tada animated"></i> OTP Code
+                        <p class="userSignUpFormfieldLabelPClass">
+                            <i class="userSignUpFormfieldiconclass fa fa-mobile faa-tada animated"></i> OTP Code
                         </p>
-                        <input attach-validation-otpcodeinput-directive type="text" id='ma_userSignUpOtpCodeInputId' class="form-control ma_userSignUpOtpCodeInputClass">
-                        <p class="ma_userSignUpFormfieldHintPClass">
+                        <input attach-validation-otpcodeinput-directive type="text" id='userSignUpOtpCodeInputId' class="form-control userSignUpOtpCodeInputClass">
+                        <p class="userSignUpFormfieldHintPClass">
                             Eg: 23Sddd
                         </p>
-                        <p class="ma_userSignUpOtpCodeInput_ErrorClass"></p>
+                        <p class="userSignUpOtpCodeInput_ErrorClass"></p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication('otpcodeSection')" class='btn ma_userSignUpSubmitBtnClass'>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
+                        <button ng-click="collectDataUserSignUpAuthentication('otpcodeSection')" class='btn userSignUpSubmitBtnClass'>
                             <i class='fa fa-lock'></i> CONTINUE
                         </button>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpBorderDivClass">
-                        <span>Already have an account ?</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectForUserSignUpBtnContainerDivClass">
-                        <button ng-click="resetSignUpSignInAccountSection('signIn')" class='btn ma_redirectForUserSignInBtnClass'>
-                            Sigin with Desserts Khazana
-                        </button>
+                    <div ng-click="resetSignUpSignInAccountSection('signIn')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                        Already have an account? SignIn here.
                     </div>
                 </div>
                 
