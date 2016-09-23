@@ -100,32 +100,28 @@ function UsersController($scope, $rootScope, UsersServices){
                     // calling UsersServices 
                     UsersServices.userSignUpAuthentication(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            var authenticatedUserDetailsObj = false;
-                            var notificationMsgStr = '';
+                            var rtDataObj = false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                authenticatedUserDetailsObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                                rtDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
                             }
-                            if(authenticatedUserDetailsObj!=='' && authenticatedUserDetailsObj!==false 
-                                && authenticatedUserDetailsObj!==undefined){
-                                if(authenticatedUserDetailsObj['isUserAccountActive']==='N'){
-                                    $rootScope.isShowUserSignInFormContentErrorMsg = true;
-                                    $rootScope.userSignInFormContentErrorMsgStr = authenticatedUserDetailsObj['msgStr'];
-                                    notificationMsgStr = authenticatedUserDetailsObj['msgStr'];
+                            if(rtDataObj!=='' && rtDataObj!==false && rtDataObj!==undefined){
+                                if(rtDataObj['isOtpCodeSent']==='N' && rtDataObj['isOtpCodeValidated']==='N'){
+                                    $rootScope.showAccountFormSectionName = 'signUpSection';
+                                    $rootScope.isShowUserSignUpNoticeMsg = 'TRUE';
+                                    $rootScope.userSignUpNoticeMsgStr = rtDataObj['msgStr'];
+                                }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='N'){
+                                    $rootScope.showAccountFormSectionName = 'otpSection';
+                                    $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
+                                    $rootScope.userSignUpOtpNoticeMsgStr = rtDataObj['msgStr'];
                                 }else{
-                                    storeAuthenticatedUserDetailsInSession(authenticatedUserDetailsObj);
-                                    $rootScope.redirectToUserAccessedLastPageFrom();
+                                    console.log("rtDataObj=>"+JSON.stringify(rtDataObj));
                                 }
-                            }else{
-                                notificationMsgStr = 'Please enter valid details to sign-in with desserts khazana account !';
-                                $rootScope.isShowUserSignInFormContentErrorMsg = true;
-                                $rootScope.userSignInFormContentErrorMsgStr = notificationMsgStr;
-                                showNotificationBoxMsg(notificationMsgStr);
                             }
                         });
                     });
                 }
             }catch(ex){
-                console.log("problem in checkUserSignInAuthentication=>"+ex);
+                console.log("problem in userSignUpAuthentication=>"+ex);
             }
         };
         
