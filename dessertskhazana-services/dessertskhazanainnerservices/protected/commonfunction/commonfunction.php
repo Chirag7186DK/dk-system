@@ -622,7 +622,7 @@ class commonfunction{
                 $paramDataArr['user_sessionid'], $paramDataArr['name'],
                 $paramDataArr['email'], $paramDataArr['mobile'], $paramDataArr['otpcode']);
             if(count($dataArr1)==1 && $dataArr1!=false){
-                $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1['otpcodeId']);
+                $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1[0]['otpcodeId']);
                 if($rtOtpcodeStatusUpdated=='TRUE'){
                     $rspDetails['msgStr'] = 'Entered One Time Password has been matched !!!';
                     $rspDetails['isOtpCodeValidated'] = 'Y';
