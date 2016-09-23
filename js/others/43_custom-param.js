@@ -113,7 +113,6 @@ function checkUnAuthorizedUserSessionParamObjExists(){
     return rtStatus;
 }
 
-// CJ defined this function 2016-07-28
 function resetDKSessionData(){
     try{
         // checking session param
@@ -158,6 +157,58 @@ function resetDKSessionData(){
         }
     }catch(ex){
         console.log("Problem in resetDKSessionData=>"+ex);
+    }
+}
+
+
+function storeTemporaryUserSignUpData(userDataObj){
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(userDataObj!==false && userDataObj!==undefined
+                && jQuery.isEmptyObject(userDataObj)===false){
+                if(userDataObj.hasOwnProperty('name') && userDataObj.hasOwnProperty('email')
+                    && userDataObj.hasOwnProperty('mobile')){
+                    var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    var userSignUpDataObj = {};
+                    userSignUpDataObj['name'] = userDataObj['name'];
+                    userSignUpDataObj['email'] = userDataObj['email'];
+                    userSignUpDataObj['mobile'] = userDataObj['mobile'];
+                    dkParamObj['userSignUpData'] = userSignUpDataObj;
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+                }
+            }
+        }
+    }catch(ex){
+        console.log("Problem in storeTemporaryUserSignUpData=>"+ex);
+    }
+}
+
+function getUserSignUpDataFromSesion(){
+    var userSignupDataObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            userSignupDataObj = dkParamObj['userSignUpData'];
+        }
+    }catch(ex){
+        console.log("Problem in getUserSignUpDataFromTemporarySesion=>"+ex);
+    }
+    return userSignupDataObj;
+}
+
+function removeUserSignUpDataFromSesion(){
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSignUpData')===true){
+                delete dkParamObj['userSignUpData'];
+                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+            }
+        }
+    }catch(ex){
+        console.log("Problem in removeUserSignUpDataFromTemporarySesion=>"+ex);
     }
 }
 
@@ -1652,9 +1703,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                 if(fromSection==='otpSection'){
                     paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
                     paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
-                    paramObj['name'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-namedata'));
-                    paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-emaildata'));
-                    paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').attr('data-mobiledata'));
+                    paramObj = $.extend(paramObj, getUserSignUpDataFromSesion());
                     paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').val());
                     paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignUpPwdInputId').val());
                     paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
