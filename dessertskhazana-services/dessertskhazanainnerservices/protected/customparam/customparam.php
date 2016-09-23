@@ -556,40 +556,34 @@ class customparam{
     public static function checkParamDataForUserSignUpAuthentication($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
-        // check user_sessionid key present or not
         if(array_key_exists('user_sessionid', $paramJsonData)){
             if(strlen($paramJsonData['user_sessionid'])>=20){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check user_sessionstarttime key present or not
         if(array_key_exists('usersession_starttimestamp', $paramJsonData)){
             if($paramJsonData['usersession_starttimestamp']!='' 
                 && $paramJsonData['usersession_starttimestamp']!=false){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check name key present or not
         if(array_key_exists('name', $paramJsonData)){
             if(strlen($paramJsonData['name'])>0){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check email key present or not
         if(array_key_exists('email', $paramJsonData)){
             $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
             if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check mobile key present or not
         if(array_key_exists('mobile', $paramJsonData)){
             $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['mobile']);
             if(strlen($paramJsonData['mobile'])==10 && $isMobileStringMatched==true){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check EmailAuthAndOtpRequest key present or not
         if(array_key_exists('EmailAuthAndOtpRequest', $paramJsonData)){
             if($paramJsonData['EmailAuthAndOtpRequest']=='Y'){
                 $correctParamKeyValueDataCount++;
@@ -598,7 +592,6 @@ class customparam{
                 $retStatus = 'TRUE';
             }
         }
-        // check EmailAuthAndOtpRequest key present or not
         if(array_key_exists('validateOtpAndCreateAccountRequest', $paramJsonData) 
             && array_key_exists('otpcode', $paramJsonData) && array_key_exists('pwd', $paramJsonData)){
             if($paramJsonData['validateOtpAndCreateAccountRequest']=='Y'
@@ -618,30 +611,25 @@ class customparam{
     public static function checkParamDataForUserSignInAuthentication($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
-        // check user_sessionid key present or not
         if(array_key_exists('user_sessionid', $paramJsonData)){
             if(strlen($paramJsonData['user_sessionid'])>=20){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check user_sessionstarttime key present or not
         if(array_key_exists('usersession_starttimestamp', $paramJsonData)){
             if($paramJsonData['usersession_starttimestamp']!='' 
                 && $paramJsonData['usersession_starttimestamp']!=false){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check email key present or not
         if(array_key_exists('email', $paramJsonData)){
             $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
             if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check mobile key present or not
-        if(array_key_exists('mobile', $paramJsonData)){
-            $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['mobile']);
-            if(strlen($paramJsonData['mobile'])==10 && $isMobileStringMatched==true){
+        if(array_key_exists('pwd', $paramJsonData)){
+            if(strlen($paramJsonData['pwd'])>0 && strlen($paramJsonData['pwd'])<=10){
                 $correctParamKeyValueDataCount++;
             }
         }
