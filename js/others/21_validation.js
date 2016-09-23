@@ -38,9 +38,19 @@ function isValidMobileNos(mobileContent){
     var rtStatus = 'FALSE';
     try{
         var givenMobileStr = removeHtmlStripTagsOfContent(mobileContent);
-        var mobilePattern = /^[5-9]\d{9}$/g;
-        if(givenMobileStr.match(mobilePattern)===null || givenMobileStr.match(mobilePattern)===undefined){
+        var mob10DigitsPattern = /^[5-9]\d{9}$/g;
+        if(givenMobileStr.match(mob10DigitsPattern)===null 
+            || givenMobileStr.match(mob10DigitsPattern)===undefined){
             rtStatus = 'FALSE';
+        }else if(givenMobileStr.match(mob10DigitsPattern)!==null 
+            && givenMobileStr.match(mob10DigitsPattern)!==undefined){
+            var digitsRepeatingAtStartingPattern = /^[5-9]{1,7}$/g;
+            if(givenMobileStr.match(digitsRepeatingAtStartingPattern)!==null 
+                || givenMobileStr.match(digitsRepeatingAtStartingPattern)!==undefined){
+                rtStatus = 'FALSE';
+            }else{
+                rtStatus = 'TRUE';
+            }
         }else{
             rtStatus = 'TRUE';
         }
