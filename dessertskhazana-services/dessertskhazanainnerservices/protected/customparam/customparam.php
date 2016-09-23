@@ -579,7 +579,7 @@ class customparam{
             }
         }
         if(array_key_exists('mobile', $paramJsonData)){
-            $isMobileStringMatched = preg_match('/[^0-9]/', $paramJsonData['mobile']);
+            $isMobileStringMatched = preg_match('/^\d{10}$/', $paramJsonData['mobile']);
             if(strlen($paramJsonData['mobile'])==10 && $isMobileStringMatched==true){
                 $correctParamKeyValueDataCount++;
             }
