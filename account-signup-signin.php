@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
 
         <!-- my-account body content-->
-        <div ng-controller="UsersController" ng-init="isUserAlreadySignedInAccountSection()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_bodyDivClass">
+        <div ng-controller="UsersController" ng-init="isUserAlreadySignedInAccountSection()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bodyDivClass">
             
             <!-- customer bread crumb -->
             <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
@@ -74,45 +74,45 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
         
             <!-- display sign-in section info -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInFormInfoWrapperDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInFormInfoWrapperDivClass">
                 <!-- display sign-in form info -->
-                <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ma_userSignInformContentWrappperContainerDivClass">
-                    <div class="col-xs-12 col-sm-12 col-md-12 ma_userSignInEmailContainerDivClass">
-                        <p class="ma_userSignInFormfieldLabelPClass">
-                            <i class="ma_userSigInFormfieldiconclass fa fa-envelope faa-tada animated"></i> Email-Id
+                <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInformContentWrappperContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 userSignInEmailContainerDivClass">
+                        <p class="userSignInFormfieldLabelPClass">
+                            <i class="userSigInFormfieldiconclass fa fa-envelope faa-tada animated"></i> Email-Id
                         </p>
-                        <input type="text" id='ma_userSignInEmailInputId' class="form-control ma_userSignInEmailInputClass">
-                        <p class="ma_userSignInFormfieldHintPClass">
+                        <input type="text" id='userSignInEmailInputId' class="form-control userSignInEmailInputClass">
+                        <p class="userSignInFormfieldHintPClass">
                             Eg: 9975967186, 9975909090
                         </p>
-                        <p class="ma_userSignInEmailInput_ErrorClass"></p>
+                        <p class="userSignInEmailInput_ErrorClass"></p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInpasswordContainerDivClass">
-                        <p class="ma_userSignInFormfieldLabelPClass">
-                            <i class="ma_userSigInFormfieldiconclass fa fa-key faa-tada animated"></i> Password
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInpasswordContainerDivClass">
+                        <p class="userSignInFormfieldLabelPClass">
+                            <i class="userSigInFormfieldiconclass fa fa-key faa-tada animated"></i> Password
                         </p>
-                        <input type="password" id='ma_userSignInPasswordInputId' class="form-control ma_userSignInPasswordInputClass">
-                        <p class="ma_userSignInFormfieldHintPClass">
+                        <input type="password" id='userSignInPwdInputId' class="form-control userSignInPwdInputClass">
+                        <p class="userSignInFormfieldHintPClass">
                             Eg: 23Sddd
                         </p>
-                        <p class="ma_userSignInPasswordInput_ErrorClass"></p>
+                        <p class="userSignInPwdInput_ErrorClass"></p>
                     </div>
-                    <div ng-show="isShowUserSignInFormContentErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInErrorMsgContainerDivClass">
+                    <div ng-show="isShowUserSignInFormContentErrorMsg" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
                         {{userSignInFormContentErrorMsgStr}}
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignInBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignInAuthentication()" class='btn ma_userSigInSubmtBtnClass'>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInBtnContainerDivClass">
+                        <button ng-click="collectDataUserSignInAuthentication()" class='btn userSigInSubmtBtnClass'>
                             <i class='fa fa-lock'></i> SIGN IN
                         </button>
                     </div>
-                    <div ng-click="toggleAccountFormSectionName('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectUserSignUpBtnContainerDivClass">
+                    <div ng-click="toggleAccountFormSectionName('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignUpBtnContainerDivClass">
                         Not registered yet? Register here.
                     </div>
                 </div>
             </div>
             
             <!-- display sign-up info section -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpFormInfoWrapperDivClass">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpFormInfoWrapperDivClass">
                 <!-- sign-up form info -->
                 <div ng-if="showAccountFormSectionName=='signUpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
                     <div ng-if="isShowUserSignUpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
@@ -154,11 +154,11 @@
                     <div ng-if="isShowUserSignUpOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
                         {{userSignUpOtpNoticeMsgStr}}
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpOtpCodeContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpOtpCodeContainerDivClass">
                         <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userSignUpOtpCodeInputId' class="form-control userSignUpOtpCodeInputClass">
                         <p class="userSignUpOtpCodeInput_ErrorClass"></p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_userSignUpPwdContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpPwdContainerDivClass">
                         <input placeholder='Password' attach-validation-pwdinput-directive type="text" id='userSignUpPwdInputId' class="form-control userSignUpPwdInputClass">
                         <p class="userSignUpFormfieldHintPClass">
                             Note: Password length must be between 5 to 10 alphanumeric characters only
