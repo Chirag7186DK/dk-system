@@ -59,6 +59,9 @@ class UsersServicesV1 implements IUsersServicesV1{
                         $paramDataArr['profile_typeid'] = '2';
                         $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
                         if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
+                            $rspDetails['msgStr'] = 'Your account has been created !!!';
+                            $rspDetails['isOtpCodeSent'] = 'Y';
+                            $rspDetails['isOtpCodeValidated'] = 'Y';
                             $signInParamDataArr = array();
                             $signInParamDataArr['email'] = $paramDataArr['email'];
                             $signInParamDataArr['pwd'] = $paramDataArr['pwd'];
