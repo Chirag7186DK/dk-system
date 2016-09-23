@@ -64,7 +64,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                             $signInParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
                             $signInParamDataArr['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                             // fetching user signin details about creating new account
-                            $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+                            $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($signInParamDataArr);
                             $rspDetails = array_merge($rspDetails, $rtDataArr2);
                         }
                     }
