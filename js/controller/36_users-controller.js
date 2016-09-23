@@ -117,7 +117,7 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
                                     $rootScope.userSignUpOtpNoticeMsgStr = rtDataObj['msgStr'];
                                 }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='Y'){
-                                    console.log("rtDataObj=>"+JSON.stringify(rtDataObj));
+                                    storeAuthenticatedUserDetailsInSession(rtDataObj);
                                 }
                             }
                         });
