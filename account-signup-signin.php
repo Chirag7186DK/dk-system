@@ -105,7 +105,7 @@
                             <i class='fa fa-lock'></i> SIGN IN
                         </button>
                     </div>
-                    <div ng-click="resetSignUpSignInAccountSection('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectUserSignUpBtnContainerDivClass">
+                    <div ng-click="toggleAccountFormSectionName('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma_redirectUserSignUpBtnContainerDivClass">
                         Not registered yet? Register here.
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                             <i class='fa fa-lock'></i> SIGN UP
                         </button>
                     </div>
-                    <div ng-click="resetSignUpSignInAccountSection('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
                         Already have an account? SignIn here.
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                             <i class='fa fa-lock'></i> CONTINUE
                         </button>
                     </div>
-                    <div ng-click="resetSignUpSignInAccountSection('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
                         Already have an account? SignIn here.
                     </div>
                 </div>
