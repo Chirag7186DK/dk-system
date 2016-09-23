@@ -585,7 +585,7 @@ class commonfunction{
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
                 $mobile = $userEmailParamData['mobile'];
-                $otpCode = '111';
+                $otpCode = '123456';
                 $paramDataArr['otpcode'] = $otpCode;
                 $paramDataArr['sent_onmedium'] = 'mobile';
                 // storing otp code
