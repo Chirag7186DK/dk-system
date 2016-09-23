@@ -56,6 +56,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                     }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
                         // creating new account 
                         $paramDataArr['pwd'] = MD5($paramDataArr['pwd']);
+                        $paramDataArr['profile_typeid'] = '2';
                         $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
                         if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
                             $signInParamDataArr = array();
