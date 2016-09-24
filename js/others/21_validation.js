@@ -91,7 +91,7 @@ function validateDataUserSignInAuthentication(fromSection){
             }
         }
         if(isProperInputElementContent('userSignInPwdInputId')==='FALSE'){
-            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
+            $('.userSignInPwdInput_ErrorClass').append("Enter your password !!!");
             inValidDataCount++;
         }else{
             if(isValidPwd($('#userSignInPwdInputId').val())==='FALSE'){
