@@ -120,6 +120,9 @@
                     <div ng-click="toggleAccountFormSectionName('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignUpBtnContainerDivClass">
                         Not registered yet? Register here.
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 signInNoticesPolicyContainerDivClass">
+                        By logging in, you agree to Desserts Khazana Terms of Service, Privacy Policy and Content Policies.
+                    </div>
                 </div>
             </div>
             
@@ -159,6 +162,9 @@
                     <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
                         Already have an account? SignIn here.
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 signUpNoticesPolicyContainerDivClass">
+                        By creating an account, you agree to Desserts Khazana Terms of Service, Privacy Policy and Content Policies.
+                    </div>
                 </div>
                 <!-- sign-up text code form info -->
                 <div ng-if="showAccountFormSectionName=='signUpOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
@@ -183,6 +189,9 @@
                     </div>
                     <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
                         Already have an account? SignIn here.
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 signUpNoticesPolicyContainerDivClass">
+                        By creating an account, you agree to Desserts Khazana Terms of Service, Privacy Policy and Content Policies.
                     </div>
                 </div>
             </div>
