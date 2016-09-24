@@ -90,7 +90,7 @@ class UsersServicesV1 implements IUsersServicesV1{
             if($paramDataArr['isRequestCheckingCreditional']=='Y'){
                 // checking user account is active or not
                 $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
-                if($rtDataArr1['isUserAccountActive']=='Y'){
+                if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
                     // preparing sending otp code data
                     $sendingOtpParamDataArr = array();
                     $sendingOtpParamDataArr['name'] = $rtDataArr1['userDetails']['name'];
@@ -107,16 +107,16 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails = array_merge($rspDetails, $rtDataArr1);
                     $rspDetails['userDetails']['isUserAccountActive'] = 'N';
                 }
-            }else if($paramDataArr['requestValidateOtpAndUserSignedIn']=='Y'){
+            }else if($paramDataArr['isRequestValidateOtpAndUserSignedIn']=='Y'){
                 $rtDataArr3 = commonfunction :: handlingUserSignInSentOtpcode($paramDataArr);
-                if($rtDataArr3['isOtpCodeValidated']=='N'){
+                if($rtDataArr3['userDetails']['isOtpCodeValidated']=='N'){
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
                     $rspDetails['userDetails']['name'] = $paramDataArr['name'];
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
                     $rspDetails['userDetails']['mobile'] = $paramDataArr['mobile'];
-                }else if($rtDataArr3['isOtpCodeValidated']=='Y'){
+                }else if($rtDataArr3['userDetails']['isOtpCodeValidated']=='Y'){
                     $rtDataArr4 = commonfunction :: makeUserAccountActiveAsSignedIn($paramDataArr);
                     $rspDetails = array_merge($rspDetails, $rtDataArr4);
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
