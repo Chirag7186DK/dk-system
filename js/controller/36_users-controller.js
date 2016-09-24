@@ -125,7 +125,7 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.userSignUpNoticeMsgStr = rtDataObj['msgStr'];
                                 }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='N'){
                                     storeTemporaryUserSignUpData(paramDataObj);
-                                    $rootScope.showAccountFormSectionName = 'otpSection';
+                                    $rootScope.showAccountFormSectionName = 'signUpOtpSection';
                                     $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
                                     $rootScope.userSignUpOtpNoticeMsgStr = rtDataObj['msgStr'];
                                 }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='Y'){
