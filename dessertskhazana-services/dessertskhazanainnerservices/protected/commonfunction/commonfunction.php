@@ -515,8 +515,8 @@ class commonfunction{
             if(count($dataArr1)==1 && $dataArr1!=false){
                 $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1[0]['otpcodeId']);
                 if($rtOtpcodeStatusUpdated=='TRUE'){
-                    $rspDetails['msgStr'] = 'Entered One Time Password has been matched !!!';
-                    $rspDetails['isOtpCodeValidated'] = 'Y';
+                    $rspDetails['userDetails']['msgStr'] = 'Entered One Time Password has been matched !!!';
+                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
                 }
             }
         } 
