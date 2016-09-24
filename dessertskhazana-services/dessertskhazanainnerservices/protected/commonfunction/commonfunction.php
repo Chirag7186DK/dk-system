@@ -617,8 +617,9 @@ class commonfunction{
     // CJ defined this function 2016-09-22
     public static function handlingUserSignUpEmailAndOtpRequest($paramDataArr){
         $rspDetails = array();
-        $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
+        $rspDetails['msgStr'] = 'Email is already associated with us !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
+        $isSendOtpCode = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $userEmailParamData = array();
             $userEmailParamData['email'] = $paramDataArr['email'];
@@ -626,13 +627,9 @@ class commonfunction{
             $dataArr1 = UsersDao :: getUserDetails($userEmailParamData);
             if(count($dataArr1)>0 && $dataArr1!=false){
                 // sorting on status based
-                $sortedOnStatusDataArr = utils::arraySort($dataArr1);
+                $sortedOnStatusDataArr = utils::arraySort($dataArr1, array("userStatus"));
                 if(array_key_exists('A', $sortedOnStatusDataArr)==true){
-                    if(count($sortedOnStatusDataArr['A'])>1){
-                        $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
-                    }else if(count($sortedOnStatusDataArr['A'])==1){
-                        $isSendOtpCode = 'Y';
-                    }
+                    $rspDetails['msgStr'] = 'Email is already associated with us !!!';
                 }else if(array_key_exists('Z', $sortedOnStatusDataArr)==true){
                     if(count($sortedOnStatusDataArr['Z'])==1){
                         $rspDetails['msgStr'] = 'Email-Id is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
