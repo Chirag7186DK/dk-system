@@ -1583,7 +1583,6 @@ function getParamDataForUserSignInAuthentication(fromSection){
 }
 
 
-// CJ defined this function 2016-09-22
 function getParamDataForUserSignUpAuthentication(fromSection){
     var paramObj = {};
     try{
@@ -1611,7 +1610,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     paramObj['EmailAuthAndOtpRequest'] = 'N';
                     paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
                     paramObj = $.extend(paramObj, getTemporaryUserSignUpDataFromSesion());
-                    if(Object.keys(paramObj).length!==8){
+                    if(Object.keys(paramObj).length!==9){
                         paramObj = {};
                     }
                 }
