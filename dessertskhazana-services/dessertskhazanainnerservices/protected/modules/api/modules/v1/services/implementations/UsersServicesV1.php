@@ -41,7 +41,6 @@ class UsersServicesV1 implements IUsersServicesV1{
         $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
         $rspDetails['isOtpCodeValidated'] = 'N';
-        // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             if(array_key_exists('EmailAuthAndOtpRequest', $paramDataArr)){
                 if($paramDataArr['EmailAuthAndOtpRequest']=='Y'){
@@ -81,8 +80,51 @@ class UsersServicesV1 implements IUsersServicesV1{
     // CJ defined this action 2016-08-01 & use for user signIn purpose 
     public function userSignInAuthentication($paramDataArr){
         $rspDetails = array();
+        $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+        $rspDetails['userDetails']['userDetails']['msgStr'] = 'Invalid account details !!!';
+        $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+        // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $rspDetails = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+            if(array_key_exists('isRequestCheckingCreditional', $paramDataArr)){
+                if($paramDataArr['isRequestCheckingCreditional']=='Y'){
+                    $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+                    if($rtDataArr1['isUserAccountActive']=='Y'){
+                        $paramDataArr['name'] = $rtDataArr1['userDetails']['name'];
+                        $paramDataArr['mobile'] = $rtDataArr1['userDetails']['mobile'];
+                        $rtDataArr2 = commonfunction :: handlingUserSigInAndOtpRequest($paramDataArr);
+                        $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
+                        $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                    }else{
+                        $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                    }
+                }
+            }else if(array_key_exists('requestValidateOtpAndUserSignedIn', $paramDataArr)){
+                if($paramDataArr['requestValidateOtpAndUserSignedIn']=='Y'){
+                    $rtDataArr1 = commonfunction :: handlingUserSignInSentOtpcode($paramDataArr);
+                    if($rtDataArr1['isOtpCodeValidated']=='N'){
+                        $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                    }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
+                        // creating new account 
+                        $paramDataArr['pwd'] = MD5($paramDataArr['pwd']);
+                        $paramDataArr['profile_typeid'] = '2';
+                        $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
+                        if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
+                            $rspDetails['msgStr'] = 'Your account has been created !!!';
+                            $rspDetails['isOtpCodeSent'] = 'Y';
+                            $rspDetails['isOtpCodeValidated'] = 'Y';
+                            $signInParamDataArr = array();
+                            $signInParamDataArr['email'] = $paramDataArr['email'];
+                            $signInParamDataArr['pwd'] = $paramDataArr['pwd'];
+                            $signInParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
+                            $signInParamDataArr['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                            // fetching user signin details about creating new account
+                            $rtDataArr2 = commonfunction :: handlingUserSignInAuthentication($signInParamDataArr);
+                            $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                        }
+                    }
+                }
+            }
         } 
         return $rspDetails;
     }
