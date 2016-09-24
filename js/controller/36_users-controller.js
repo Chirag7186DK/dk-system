@@ -55,6 +55,7 @@ function UsersController($scope, $rootScope, UsersServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
                             }
+                            console.log("userDataObj=>"+JSON.stringify(userDataObj));
                             if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
                                 if(userDataObj['isUserAccountActive']==='N'
                                     && userDataObj['isOtpCodeSent']==='N' && userDataObj['isOtpCodeValidated']==='N'){
@@ -64,13 +65,13 @@ function UsersController($scope, $rootScope, UsersServices){
                                 }else if(userDataObj['isUserAccountActive']==='Y'
                                     && (userDataObj['isOtpCodeSent']==='Y' || userDataObj['isOtpCodeSent']==='N') 
                                     && userDataObj['isOtpCodeValidated']==='N'){
-                                    storeAuthenticatedUserDetailsInSession(userDataObj);
+                                    storeTemporaryUserSignedInData(userDataObj);
                                     $rootScope.showAccountFormSectionName = 'signInOtpSection';
                                     $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
                                     $rootScope.userSignInOtpNoticeMsgStr = userDataObj['msgStr'];
                                 }else if(userDataObj['isUserAccountActive']==='Y'
                                     && userDataObj['isOtpCodeSent']==='Y' && userDataObj['isOtpCodeValidated']==='Y'){
-                                    storeAuthenticatedUserDetailsInSession(userDataObj);
+                                    storeTemporaryUserSignedInData(userDataObj);
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
