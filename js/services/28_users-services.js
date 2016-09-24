@@ -10,12 +10,12 @@
             var userDetails = {};
 
             // checkUserAuthentication
-            userDetails.checkUserAuthentication = function(paramDataObj){
+            userDetails.userSignInAuthentication = function(paramDataObj){
                 var blockUIObj = {};
                 blockUIObj['css'] = {"padding":10};
                 blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
                 showHideLoaderBox('show', blockUIObj);
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/CheckUserAuthentication", 'apiFile', 'GET', '', paramDataObj).done(function(retResponseJson){
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignInAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
                     showHideLoaderBox('hide');
                 });
                 return promiseObject;
