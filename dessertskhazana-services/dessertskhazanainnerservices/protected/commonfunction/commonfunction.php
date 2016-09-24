@@ -538,7 +538,7 @@ class commonfunction{
                     $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
                     $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                     $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogId;
-                    $rspDetails['userDetails']['userProfileTypeId'] = $rtDataArr1['userDetails']['unmd5ProfileTypeId'];
+                    $rspDetails['userDetails']['userProfileTypeId'] = $rtDataArr1['userDetails']['userProfileTypeId'];
                 }
             }
         } 
