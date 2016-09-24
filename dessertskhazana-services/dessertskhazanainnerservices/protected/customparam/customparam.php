@@ -633,17 +633,21 @@ class customparam{
                 $correctParamKeyValueDataCount++;
             }
         }
-        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)){
-            if($paramJsonData['isRequestCheckingCreditional']=='Y'){
+        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)
+            && array_key_exists('requestValidateOtpAndUserSignedIn', $paramJsonData)){
+            if($paramJsonData['isRequestCheckingCreditional']=='Y'
+                && $paramJsonData['requestValidateOtpAndUserSignedIn']=='N'){
                 $correctParamKeyValueDataCount++;
             }
             if($correctParamKeyValueDataCount==5){
                 $retStatus = 'TRUE';
             }
         }
-        if(array_key_exists('requestValidateOtpAndUserSignedIn', $paramJsonData)
+        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)
+            && array_key_exists('requestValidateOtpAndUserSignedIn', $paramJsonData)
             && array_key_exists('otpcode', $paramJsonData)){
-            if($paramJsonData['requestValidateOtpAndUserSignedIn']=='Y'
+            if($paramJsonData['isRequestCheckingCreditional']=='N'
+                && $paramJsonData['requestValidateOtpAndUserSignedIn']=='Y'
                 && strlen($paramJsonData['otpcode'])==6){
                 $correctParamKeyValueDataCount++;
             }
