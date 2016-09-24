@@ -108,16 +108,17 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'N';
                 }
             }else if($paramDataArr['requestValidateOtpAndUserSignedIn']=='Y'){
-                $rtDataArr1 = commonfunction :: handlingUserSignInSentOtpcode($paramDataArr);
-                if($rtDataArr1['isOtpCodeValidated']=='N'){
+                $rtDataArr3 = commonfunction :: handlingUserSignInSentOtpcode($paramDataArr);
+                if($rtDataArr3['isOtpCodeValidated']=='N'){
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
-                    $rspDetails['userDetails']['name'] = $rtDataArr1['userDetails']['name'];
+                    $rspDetails['userDetails']['name'] = $paramDataArr['name'];
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
-                    $rspDetails['userDetails']['mobile'] = $rtDataArr1['userDetails']['mobile'];
-                }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
-                    
+                    $rspDetails['userDetails']['mobile'] = $paramDataArr['mobile'];
+                }else if($rtDataArr3['isOtpCodeValidated']=='Y'){
+                    $rtDataArr1 = commonfunction :: makeUserAccountActiveAsSignedIn($paramDataArr);
+                    $rspDetails = array_merge($rspDetails, $rtDataArr3);
                 }
             }
         } 
