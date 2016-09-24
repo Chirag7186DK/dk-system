@@ -54,27 +54,23 @@
         <div ng-controller="UsersController" ng-init="isUserAlreadySignedInAccountSection()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bodyDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
-                <ul class="customerBreadcrumbULClass list-inline">
-                    <li class='customerBreadcrumbLIClass'>
-                        <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeTitle}}
-                        </a>
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        Sign In / Sign Up
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-        
+            <ul class="customerBreadcrumbULClass list-inline">
+                <li class='customerBreadcrumbLIClass'>
+                    <a href="<?php echo $BaseSitePath;?>">
+                        Home
+                    </a>
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    Sign In / Sign Up
+                </li>
+            </ul>
+           
             <!-- display sign-in section info -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInFormInfoWrapperDivClass">
+                
                 <!-- display sign-in form info -->
                 <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                     <div ng-if="isShowUserSignInNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeMsgContainerDivClass">
@@ -102,30 +98,27 @@
                     <div ng-click="toggleAccountFormSectionName('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignUpBtnContainerDivClass">
                         Not registered yet? Register here.
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 signInNoticesPolicyContainerDivClass">
+                        By logging in, you agree to Desserts Khazana Terms of Service, Privacy Policy and Content Policies.
+                    </div>
                 </div>
+                
                 <!-- sign-in text code form info -->
                 <div ng-if="showAccountFormSectionName=='signInOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                     <div ng-if="isShowUserSignInOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeOtpMsgContainerDivClass">
                         {{userSignInOtpNoticeMsgStr}}
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpOtpCodeContainerDivClass">
-                        <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userSignUpOtpCodeInputId' class="form-control userSignUpOtpCodeInputClass">
-                        <p class="userSignUpOtpCodeInput_ErrorClass"></p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpPwdContainerDivClass">
-                        <input placeholder='Password' attach-validation-pwdinput-directive type="text" id='userSignUpPwdInputId' class="form-control userSignUpPwdInputClass">
-                        <p class="userSignUpFormfieldHintPClass">
-                            Note: Password length must be between 5 to 10 alphanumeric characters only
-                        </p>
-                        <p class="userSignUpPwdInput_ErrorClass"></p>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInOtpCodeContainerDivClass">
+                        <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userSignInOtpCodeInputId' class="form-control userSignInOtpCodeInputClass">
+                        <p class="userSignInOtpCodeInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication('otpSection')" class='btn userSignUpSubmitBtnClass'>
+                        <button ng-click="collectDataUserSignInAuthentication('signInOtpSection')" class='btn userSignUpSubmitBtnClass'>
                             <i class='fa fa-lock'></i> CONTINUE
                         </button>
                     </div>
-                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
-                        Already have an account? SignIn here.
+                    <div ng-click="toggleAccountFormSectionName('signUpSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignUpBtnContainerDivClass">
+                        Not registered yet? Register here.
                     </div>
                 </div>
             </div>
