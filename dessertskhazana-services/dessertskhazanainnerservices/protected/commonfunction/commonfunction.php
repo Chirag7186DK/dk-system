@@ -471,16 +471,11 @@ class commonfunction{
                 }else{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !!!';
-                    // store user info as login status
-                    $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($userJsonData[0], $paramDataArr);
-                    if($lastInsertedUserInfoLogId!=false && $lastInsertedUserInfoLogId!=''){
-                        $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogId;
-                        $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
-                        $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
-                        $rspDetails['userDetails']['userProfileTypeId'] = $userJsonData[0]['unmd5ProfileTypeId'];
-                        $rspDetails['userDetails']['name'] = strtolower($userJsonData[0]['userName']);
-                        $rspDetails['userDetails']['mobile'] = $userJsonData[0]['userMobile'];
-                    }
+                    $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
+                    $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                    $rspDetails['userDetails']['userProfileTypeId'] = $userJsonData[0]['unmd5ProfileTypeId'];
+                    $rspDetails['userDetails']['name'] = strtolower($userJsonData[0]['userName']);
+                    $rspDetails['userDetails']['mobile'] = $userJsonData[0]['userMobile'];
                 }
             }else{
                 $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
