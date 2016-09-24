@@ -158,7 +158,7 @@ class UsersDao{
             $connection = Yii::App()->db;
             $sql= " SELECT 
                     u.id unmd5UserId, MD5(u.id) userId, UPPER(u.name) userName,
-                    u.email userEmail, u.mobile userMobile, 
+                    u.email userEmail, COALESCE(u.mobile, '') userMobile, 
                     MD5(up.id) userProfileTypeId, up.id unmd5ProfileTypeId,
                     DATE_FORMAT(u.created_datedtime, '%b %D %a, %Y') userSinceFrom,
                     COALESCE(u.status, 'Z') userStatus
@@ -412,6 +412,12 @@ class UsersDao{
             if($paramData['mobile']!='' && strlen($paramData['mobile'])>0){
                 $sqlColumnNames.=" mobile,";
                 $sqlValues.="'".$paramData['mobile']."',";
+            }
+        }
+        if(array_key_exists('pwd', $paramData)){
+            if($paramData['pwd']!='' && strlen($paramData['pwd'])>0){
+                $sqlColumnNames.=" pwd,";
+                $sqlValues.="'".$paramData['pwd']."',";
             }
         }
         if(array_key_exists('otpcode', $paramData)){
