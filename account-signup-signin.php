@@ -176,7 +176,7 @@
                         <p class="userSignUpOtpCodeInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpPwdContainerDivClass">
-                        <input placeholder='Password' attach-validation-pwdinput-directive type="text" id='userSignUpPwdInputId' class="form-control userSignUpPwdInputClass">
+                        <input placeholder='Password' attach-validation-pwdinput-directive type="password" id='userSignUpPwdInputId' class="form-control userSignUpPwdInputClass">
                         <p class="userSignUpFormfieldHintPClass">
                             Note: Password length must be between 5 to 10 alphanumeric characters only
                         </p>
