@@ -213,8 +213,7 @@ function getTemporaryUserSignUpDataFromSesion(){
                     && dataObj.hasOwnProperty('mobile')){
                     if((dataObj['name']).length>0 
                         && (dataObj['email']).length>0
-                        && (dataObj['mobile']).length===10
-                        && ((dataObj['pwd']).length>=5) && (dataObj['pwd']).length<=10){
+                        && (dataObj['mobile']).length===10){
                         userSignupDataObj = dataObj;
                     }
                 }
@@ -1599,17 +1598,19 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignUpEmailInputId').val());
                     paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userSignUpMobileInputId').val());
                     paramObj['EmailAuthAndOtpRequest'] = 'Y';
-                    if(Object.keys(paramObj).length!==6){
+                    paramObj['validateOtpAndCreateAccountRequest'] = 'N';
+                    if(Object.keys(paramObj).length!==7){
                         paramObj = {};
                     }
                 }
-                if(fromSection==='otpSection'){
+                if(fromSection==='signUpOtpSection'){
                     paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
                     paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
                     paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').val());
                     paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignUpPwdInputId').val());
+                    paramObj['EmailAuthAndOtpRequest'] = 'N';
                     paramObj['validateOtpAndCreateAccountRequest'] = 'Y';
-                    paramObj = $.extend(paramObj, getUserSignUpDataFromSesion());
+                    paramObj = $.extend(paramObj, getTemporaryUserSignUpDataFromSesion());
                     if(Object.keys(paramObj).length!==8){
                         paramObj = {};
                     }
