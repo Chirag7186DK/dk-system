@@ -57,12 +57,10 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['mobile'] = $paramDataArr['mobile'];
                 }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
                     // creating new account 
-                    $paramDataArr['pwd'] = MD5($paramDataArr['pwd']);
+                    $paramDataArr['pwd'] = $paramDataArr['pwd'];
                     $paramDataArr['profile_typeid'] = '2';
                     $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
                     if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
-                        $rspDetails['isOtpCodeSent'] = 'Y';
-                        $rspDetails['isOtpCodeValidated'] = 'Y';
                         $signInParamDataArr = array();
                         $signInParamDataArr['email'] = $paramDataArr['email'];
                         $signInParamDataArr['pwd'] = $paramDataArr['pwd'];
@@ -70,7 +68,11 @@ class UsersServicesV1 implements IUsersServicesV1{
                         $signInParamDataArr['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                         // fetching user signin details about creating new account
                         $rtDataArr2 = commonfunction :: makeUserAccountActiveAsSignedIn($signInParamDataArr);
-                        $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                        if($rtDataArr2['userDetails']['isUserAccountActive']=='Y'){
+                            $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                            $rspDetails['isOtpCodeSent'] = 'Y';
+                            $rspDetails['isOtpCodeValidated'] = 'Y';
+                        }
                     }
                 }
             }
