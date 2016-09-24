@@ -478,6 +478,7 @@ class commonfunction{
                         $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
                         $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                         $rspDetails['userDetails']['userProfileTypeId'] = $userJsonData[0]['unmd5ProfileTypeId'];
+                        $rspDetails['userDetails']['name'] = strtolower($userJsonData[0]['userName']);
                         $rspDetails['userDetails']['mobile'] = $userJsonData[0]['userMobile'];
                     }
                 }
@@ -491,8 +492,8 @@ class commonfunction{
     // CJ defined this function 2016-09-22
     public static function handlingUserSigInAndOtpRequest($paramDataArr){
         $rspDetails = array();
-        $rspDetails['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
-        $rspDetails['isOtpCodeSent'] = 'N';
+        $rspDetails['userDetails']['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
+        $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             // sending otp code and storing purpose
             $otpCode = '123456';
@@ -503,8 +504,8 @@ class commonfunction{
             $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             // sending otp code
             // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
-            $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr";
-            $rspDetails['isOtpCodeSent'] = "Y";
+            $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr";
+            $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
         } 
         return $rspDetails;
     }
@@ -519,6 +520,29 @@ class commonfunction{
         }
         return $smsSentStatus;
     }
+    
+    // CJ defined this function 2016-09-22
+    public static function handlingUserSignInSentOtpcode($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['userDetails']['msgStr'] = 'Invalid One Time Password has been entered !!!';
+        $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
+        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            // checking otp code active or not
+            $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignInAuth(
+                $paramDataArr['user_sessionid'], $paramDataArr['name'],
+                $paramDataArr['email'], $paramDataArr['mobile'], $paramDataArr['pwd'], $paramDataArr['otpcode']);
+            if(count($dataArr1)==1 && $dataArr1!=false){
+                $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1[0]['otpcodeId']);
+                if($rtOtpcodeStatusUpdated=='TRUE'){
+                    $rspDetails['msgStr'] = 'Entered One Time Password has been matched !!!';
+                    $rspDetails['isOtpCodeValidated'] = 'Y';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+    
     
     // CJ defined this function 2016-08-11
     public static function getUserSessionDetails($paramJsonData){
