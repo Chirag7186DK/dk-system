@@ -478,6 +478,7 @@ class commonfunction{
                         $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
                         $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                         $rspDetails['userDetails']['userProfileTypeId'] = $userJsonData[0]['unmd5ProfileTypeId'];
+                        $rspDetails['userDetails']['mobile'] = $userJsonData[0]['userMobile'];
                     }
                 }
             }else{
@@ -485,6 +486,38 @@ class commonfunction{
             }
         } 
         return $rspDetails;
+    }
+    
+    // CJ defined this function 2016-09-22
+    public static function handlingUserSigInAndOtpRequest($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
+        $rspDetails['isOtpCodeSent'] = 'N';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            // sending otp code and storing purpose
+            $otpCode = '123456';
+            $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
+            $paramDataArr['otpcode'] = $otpCode;
+            $paramDataArr['sent_onmedium'] = 'mobile';
+            // storing otp code
+            $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+            // sending otp code
+            // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
+            $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr";
+            $rspDetails['isOtpCodeSent'] = "Y";
+        } 
+        return $rspDetails;
+    }
+    
+    
+    // CJ defined this function 2016-09-21
+    public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
+        $smsSentStatus = true;
+        if($mobile!='' && strlen($mobile)==10){
+            $smsMsgBodyStr = "$otpcode is your login OTP for signIn with Desserts Khazana.";
+            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
+        }
+        return $smsSentStatus;
     }
     
     // CJ defined this function 2016-08-11
