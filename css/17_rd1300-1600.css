@@ -1607,8 +1607,8 @@
     
     .userSignUpNoticeMsgContainerDivClass,
     .userSignUpNoticeOtpMsgContainerDivClass{
-        color:#bf4444!important;
-        font-size:14px!important;
+        color:#308fbb!important;
+        font-size:15px!important;
     }
 
     .userSignUpFormfieldHintPClass{
@@ -1682,8 +1682,8 @@
     
     .userSignInNoticeMsgContainerDivClass,
     .userSignInNoticeOtpMsgContainerDivClass{
-        color:#bf4444!important;
-        font-size:14px!important;
+        color:#308fbb!important;
+        font-size:15px!important;
     }
 
     .userSignInFormfieldHintPClass{
