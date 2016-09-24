@@ -73,6 +73,8 @@ function UsersController($scope, $rootScope, UsersServices){
                                     storeAuthenticatedUserDetailsInSession(userDataObj);
                                     removeTemporaryUserSignUpDataFromSesion();
                                     removeTemporaryUserSignedInDataFromSesion();
+                                    $.blockUI({ message:userDataObj['msgStr']}); 
+                                    setTimeout($.unblockUI, 20000); 
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
