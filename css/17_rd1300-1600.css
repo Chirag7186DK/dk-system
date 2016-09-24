@@ -1593,20 +1593,26 @@
     
     /*  myaccount sigup form css code */
     
-    .userSignUpformContentWrappperContainerDivClass{
+    .userSignUpFormSectionContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
         border:1px solid #e7e7e7!important;
         background:#fff!important;
     }
     
-    .userSignUpformContentWrappperContainerDivClass div{
+    .userSignUpFormSectionContainerDivClass div{
         padding-top:10px!important;
         padding-bottom:10px!important;
     }
+    
+    .userSignUpNoticeMsgContainerDivClass,
+    .userSignUpNoticeOtpMsgContainerDivClass{
+        color:#bf4444!important;
+        font-size:14px!important;
+    }
 
     .userSignUpFormfieldHintPClass{
-        font-size:9px!important;
+        font-size:12px!important;
         font-weight:normal!important;
         color:#708090!important;
         margin:0px!important;
@@ -1618,11 +1624,6 @@
     .userSignUpOtpCodeInputClass,
     .userSignUpPwdInputClass{
         height:40px!important;
-    }
-
-    .userSignUpErrorMsgContainerDivClass{
-        color:#4747d0!important;
-        margin:0px!important;
     }
 
     .userSignUpBtnContainerDivClass{
@@ -1645,6 +1646,13 @@
         cursor:pointer!important;
         color:#CB202D!important;
         padding:0px!important;
+    }
+    
+    .signUpNoticesPolicyContainerDivClass{
+        text-align:left!important;
+        font-size:11px!important;
+        font-weight:normal!important;
+        color:#89959B!important;
     }
     
     
