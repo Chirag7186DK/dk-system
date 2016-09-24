@@ -70,12 +70,11 @@ function initializeDkSessionData(){
     }    
 }
 
+
 function resetDKSessionData(){
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             
@@ -128,6 +127,7 @@ function checkDkSessionParamObjExists(){
     return rtStatus;
 }
 
+
 function checkUnAuthorizedUserSessionParamObjExists(){
     var rtStatus = 'FALSE';
     try{
@@ -153,6 +153,31 @@ function checkUnAuthorizedUserSessionParamObjExists(){
     return rtStatus;
 }
 
+
+function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
+    try{
+        var paramObj = {};
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSession')===true){
+                if(dkParamObj['userSession']['user_sessionid']!=='' 
+                    && (dkParamObj['userSession']['user_sessionid']).length>=20){
+                    paramObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
+                    paramObj['usersession_startimestamp'] = dkParamObj['userSession']['usersession_starttimestamp'];
+                    // update user session data obj 
+                    dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+                }
+            }
+        }
+        return paramObj;
+    }catch(ex){
+        return false;
+    }
+}
+
+
 function storeTemporaryUserSignUpData(userDataObj){
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
@@ -175,7 +200,7 @@ function storeTemporaryUserSignUpData(userDataObj){
     }
 }
 
-function getUserSignUpDataFromSesion(){
+function getTemporaryUserSignUpDataFromSesion(){
     var userSignupDataObj = {};
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
@@ -196,7 +221,7 @@ function getUserSignUpDataFromSesion(){
     return userSignupDataObj;
 }
 
-function removeUserSignUpDataFromSesion(){
+function removeTemporaryUserSignUpDataFromSesion(){
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
             // extract dk param session data
@@ -211,52 +236,72 @@ function removeUserSignUpDataFromSesion(){
     }
 }
 
-
-/////////////////////// Tracking user accessing websites info related data //////////////////////////
-
-// CJ defined this function 2016-07-24
-function getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
+function storeTemporaryUserSignedInData(userDataObj){
     try{
-        var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                if(dkParamObj['userSession']['user_sessionid']!=='' 
-                    && (dkParamObj['userSession']['user_sessionid']).length>=20){
-                    paramObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
-                    paramObj['usersession_startimestamp'] = dkParamObj['userSession']['usersession_starttimestamp'];
-                    // update user session data obj 
-                    dkParamObj['userSession']['isUserInfoTrackedAccessingWebsites'] = 'Y';
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(userDataObj!==false && userDataObj!==undefined
+                && jQuery.isEmptyObject(userDataObj)===false){
+                if(userDataObj.hasOwnProperty('name') && userDataObj.hasOwnProperty('email')
+                    && userDataObj.hasOwnProperty('mobile')){
+                    var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    var userSignedInDataObj = {};
+                    userSignedInDataObj['name'] = userDataObj['name'];
+                    userSignedInDataObj['email'] = userDataObj['email'];
+                    userSignedInDataObj['mobile'] = userDataObj['mobile'];
+                    dkParamObj['userSignedInData'] = userSignedInDataObj;
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
                 }
             }
         }
-        return paramObj;
     }catch(ex){
-        return false;
+        console.log("Problem in storeTemporaryUserSignedInData=>"+ex);
     }
 }
 
+function getTemporaryUserSignedInDataFromSesion(){
+    var userSignedInDataObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSignedInData')){
+                userSignedInDataObj = dkParamObj['userSignedInData'];
+                if(userSignedInDataObj.hasOwnProperty('name') && userSignedInDataObj.hasOwnProperty('email')
+                    && userSignedInDataObj.hasOwnProperty('mobile')){
+                }else{
+                    userSignedInDataObj = {};
+                }
+            }
+        }
+    }catch(ex){
+        console.log("Problem in getTemporaryUserSignedInDataFromSesion=>"+ex);
+    }
+    return userSignedInDataObj;
+}
 
-//////////////////////// Delivery city list related data ////////////////////////////////////
+function removeTemporaryUserSignedInDataFromSesion(){
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            // extract dk param session data
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSignedInData')===true){
+                delete dkParamObj['userSignedInData'];
+                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+            }
+        }
+    }catch(ex){
+        console.log("Problem in removeTemporaryUserSignedInDataFromSesion=>"+ex);
+    }
+}
 
-
-// CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDeliveryCityList(){
     try{
         var paramObj = {};
         paramObj['country_ids'] = '';
         paramObj['city_ids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
-                // extract user suggested city area session data
                 var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
                 if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('countryvalue')===true){
                     paramObj['country_ids'] = userSelectedDeliveryCityAreaDessertsTypeObj['countryvalue'];
@@ -276,13 +321,9 @@ function getParamObjFromSessionForLoadingDeliveryCityList(){
     }
 }
 
-
-// CJ defined this function 2016-07-10
 function storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSessionData){
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             dkParamObj['userSelectedDeliveryCityAreaDessertsType']['cityvalue'] = '';
             dkParamObj['userSelectedDeliveryCityAreaDessertsType']['cityname'] = '';
@@ -310,8 +351,6 @@ function storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSe
 }
 
 
-//////////////////////// Delivery area list related data ////////////////////////////////////
-
 // CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDeliveryAreaList(){
     try{
@@ -319,13 +358,9 @@ function getParamObjFromSessionForLoadingDeliveryAreaList(){
         paramObj['country_ids'] = '1';
         paramObj['city_ids'] = '';
         paramObj['area_ids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
-                // extract user suggested city area session data
                 var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
                 if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('countryvalue')===true){
                     if(userSelectedDeliveryCityAreaDessertsTypeObj['countryvalue']==='1'){
@@ -353,12 +388,9 @@ function getParamObjFromSessionForLoadingDeliveryAreaList(){
 }
 
 
-// CJ defined this function 2016-07-10
 function storeSelectedDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSessionData){
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             dkParamObj['userSelectedDeliveryCityAreaDessertsType']['areavalue'] = '';
             dkParamObj['userSelectedDeliveryCityAreaDessertsType']['areaname'] = '';
@@ -391,10 +423,6 @@ function storeSelectedDeliveryAreaDetailsInSessionStorage(paramObj, isResetAllSe
     }catch(ex){}
 }
 
-
-//////////////////////// Delivery area served dessert type list related data /////////////////////////
-
-// CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDeliveryAreaBasedDessertsTypeList(){
     try{
         var paramObj = {};
@@ -403,13 +431,9 @@ function getParamObjFromSessionForLoadingDeliveryAreaBasedDessertsTypeList(){
         paramObj['area_ids'] = '';
         paramObj['ccaId'] = '';
         paramObj['producttype_ids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
-                // extract user suggested city area session data
                 var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
                 if(userSelectedDeliveryCityAreaDessertsTypeObj.hasOwnProperty('ccaId')===true){
                     if(parseInt(userSelectedDeliveryCityAreaDessertsTypeObj['ccaId'])>0 
@@ -446,14 +470,10 @@ function getParamObjFromSessionForLoadingDeliveryAreaBasedDessertsTypeList(){
     }
 }
 
-
-// CJ defined this function 2016-07-10
 function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isResetAllSessionData){
     try{
         var storedDataStatus = false;
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             dkParamObj['userSelectedDeliveryCityAreaDessertsType']['dessertsproduct'] = '';
             dkParamObj['userSelectedDeliveryCityAreaDessertsType']['dessertsproducttitle'] = '';
@@ -486,15 +506,9 @@ function storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, isRes
 }
 
 
-///////////// all products level related code ////////////////
-
-// CJ defined this function 2016-09-05
 function resetUserproductSessionData(){
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
             userProductObj['shopstore_value'] = '';
@@ -516,14 +530,10 @@ function resetUserproductSessionData(){
     }
 }
 
-// CJ defined this function 2016-09-03
 function getParamObjForProductTypeAllProductCategoryList(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
                 // extract user suggested city area session data
@@ -584,13 +594,10 @@ function getParamObjForProductTypeAllProductCategoryList(){
     }
 }
 
-// CJ defined this function 2016-09-04
 function storeProductTypeProductCategoryDataInSession(paramDataObj, isResetAllData){
     try{
         var storeDataStatus = false;
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        if(checkDkSessionParamObjExists()==='TRUE'){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = dkParamObj['userProduct'];
@@ -618,14 +625,10 @@ function storeProductTypeProductCategoryDataInSession(paramDataObj, isResetAllDa
 }
 
 
-// CJ defined this function 2016-09-03
 function getParamObjForProductTypeProductCategoryFilterTypeList(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
@@ -661,14 +664,10 @@ function getParamObjForProductTypeProductCategoryFilterTypeList(){
 }
 
 
-// CJ defined this function 2016-09-04
 function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
     try{
         var storeDataStatus = false;
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             var userProductObj = {};
             userProductObj['shopstore_value'] = paramDataObj['shopStoreId'];
@@ -693,7 +692,6 @@ function storeProductTypeProductCategoryProductDataInSession(paramDataObj){
 }
 
 
-// CJ defined this function 2016-06-17
 function getParamObjForProductTypeProductCategoryAllProductList(){
     try{
         var paramObj = {};
@@ -702,10 +700,7 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
         paramObj['product_size_filter'] = '';
         paramObj['product_discount_filter'] = '';
         paramObj['product_featureids'] = '';
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
                 // extract user suggested city area session data
@@ -786,19 +781,11 @@ function getParamObjForProductTypeProductCategoryAllProductList(){
 }
 
 
-// CJ defined this function 2016-06-06
 function getParamObjFromSessionForProductTypeProductCategoryProductDetails(){
     try{
-        
         var paramObj = {};
-
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            
             // extract user suggested city area session data
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
                 var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
@@ -874,14 +861,10 @@ function getParamObjFromSessionForProductTypeProductCategoryProductDetails(){
 }
 
 
-// CJ defined this function 2016-06-06
 function getParamObjFromSessionForProductDescriptionDetails(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 // extract user userProduct session data
@@ -905,20 +888,11 @@ function getParamObjFromSessionForProductDescriptionDetails(){
 }
 
 
-/////////////////// store level related code ////////////////////////////////
-
-// CJ defined this function 2016-09-09
 function getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeStoresList(){
     try{
         var paramObj = {};
-
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            
             // extract user suggested city area session data
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
                 var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
@@ -967,19 +941,11 @@ function getParamObjDataFromSessionFetchingDeliveryAreaBasedDessertsTypeStoresLi
     }
 }
 
-
-// CJ defined this function 2016-09-04
 function getParamObjFromSessionAtDeliveryAreaBasedStoreServeDessertsTypeList(){
     try{
         var paramObj = {};
-
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            
             // extract user suggested city area session data
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
                 var userSelectedDeliveryCityAreaDessertsTypeObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
@@ -1035,13 +1001,11 @@ function getParamObjFromSessionAtDeliveryAreaBasedStoreServeDessertsTypeList(){
     }
 }
 
-// CJ defined this function 2016-09-04
+
 function storeDessertsTypeDataDetailsInSessionStorageToViewStoreAllProductList(paramObj){
     try{
         var storedDataStatus = false;
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(paramObj!==false && paramObj!=='' && jQuery.isEmptyObject(paramObj)===false){
                 if(paramObj.hasOwnProperty('dessertsTypeId')===true && paramObj.hasOwnProperty('dessertsTypeTitle')===true){
@@ -1071,14 +1035,10 @@ function storeDessertsTypeDataDetailsInSessionStorageToViewStoreAllProductList(p
 }
 
 
-// CJ defined this function 2016-06-24
 function getParamObjForStoreSummaryInfo(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
@@ -1101,14 +1061,10 @@ function getParamObjForStoreSummaryInfo(){
     }
 }
 
-// CJ defined this function 2016-07-18
 function getParamObjForCShopStoreWorkingStyleDetails(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
@@ -1132,14 +1088,10 @@ function getParamObjForCShopStoreWorkingStyleDetails(){
 }
 
 
-// CJ defined this function 2016-09-11
 function getParamObjStoreDeliveryFeeApplicableMsgOnDeliveryArea(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             // extract user suggested city area session data
             if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
@@ -1195,14 +1147,10 @@ function getParamObjStoreDeliveryFeeApplicableMsgOnDeliveryArea(){
 }
 
 
-
-// CJ defined this function 2016-07-10
 function getInfoUserSelectedDeliveryCityAreaDessertsProductType(){
     try{
         var infoObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj!==false && dkParamObj!=='' && jQuery.isEmptyObject(dkParamObj)===false){
                 // extract userSelectedDeliveryCityAreaDessertsType param obj
@@ -1230,12 +1178,9 @@ function getInfoUserSelectedDeliveryCityAreaDessertsProductType(){
 }
 
 
-// CJ defined this function 2016-07-10
 function getCustomerBreadcrumb(){
     var customerBreadcrumbObj = {};
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
+    if(checkDkSessionParamObjExists()==='TRUE'){
         var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         if(dkParamObj!==false && dkParamObj!=='' && jQuery.isEmptyObject(dkParamObj)===false){
             // extract dk userproduct param obj
@@ -1280,13 +1225,9 @@ function getCustomerBreadcrumb(){
 }
 
 
-// CJ defined this function 2016-07-16
 function checkParamDataToRedirectForRequestPartyOrder(){
     var retStatus = false;
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk partyOrder param obj
+    if(checkDkSessionParamObjExists()==='TRUE'){
         var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         if(dkParamObj.hasOwnProperty('partyOrder')===true){
             var userPartyorderParamObj = dkParamObj['partyOrder'];
@@ -1302,13 +1243,9 @@ function checkParamDataToRedirectForRequestPartyOrder(){
     return retStatus;
 }
 
-// CJ defined this function 2016-07-16
 function checkParamDataToRedirectForRequestCustomizeOrder(){
     var retStatus = false;
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk customize order param obj
+    if(checkDkSessionParamObjExists()==='TRUE'){
         var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
         if(dkParamObj.hasOwnProperty('customizeOrder')===true){
             var userCustomizeorderParamObj = dkParamObj['customizeOrder'];
@@ -1347,17 +1284,10 @@ function checkParamDataToRedirectForRequestCorporateTieup(){
 }
 
 
-
-//////////////////////// party order related code ////////////////////////////
-
-// CJ defined this function 2016-07-20
 function getParamDataObjForPartyOrderRequest(){
     try{
         var paramDataObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
             paramDataObj['udblogId'] = removeHtmlStripTagsOfContent(dkParamObj['userSession']['udblogId']);
@@ -1383,14 +1313,10 @@ function getParamDataObjForPartyOrderRequest(){
     }
 }
 
-// CJ defined this function 2016-07-24
 function getParamDataObjForCustomizeOrderRequest(){
     try{
         var paramDataObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
             paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
@@ -1435,21 +1361,60 @@ function getParamDataObjForCorporateTieupRequest(){
     return paramObj;
 }
 
+function getUserSessionIdFromUserSession(){
+    var userSessionId = false;
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSession')===true){
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true){
+                    if(userSessionParamObj['user_sessionid']!=='' 
+                        && userSessionParamObj['user_sessionid']!==false
+                        && (userSessionParamObj['user_sessionid']).length>=20
+                        && userSessionParamObj['user_sessionid']!==undefined){
+                        userSessionId = userSessionParamObj['user_sessionid'];
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        console.log("problem in getUserSessionIdFromUserSession=>"+ex);
+        userSessionId = false;
+    }
+    return userSessionId;
+}
 
-/////////////////////////  user related param ////////////////////////////////////////
 
-// CJ defined this function 2016-08-01
+function storeUserSessionIdInSession(user_sessionid){
+    try{
+        if(user_sessionid!==false && user_sessionid!=='' 
+            && user_sessionid!==undefined && (user_sessionid).length>=20){
+            if(checkDkSessionParamObjExists()==='TRUE'){
+                var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                if(dkParamObj.hasOwnProperty('userSession')===true){
+                    var userSessionParamObj = dkParamObj['userSession'];
+                    if(userSessionParamObj.hasOwnProperty('user_sessionid')===true){
+                        userSessionParamObj['user_sessionid'] = user_sessionid;
+                        dkParamObj['userSession'] = userSessionParamObj;
+                        sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+                    }
+                }
+            }
+        }else{
+            window.location.href = globalBaseSitePath;
+        }
+    }catch(ex){
+        console.log("problem in storeUserSessionIdInSession=>"+ex);
+    }    
+}
+
 function checkUserLoggedInSession(){
     var retUserLoggedInStatus = false;
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // check userSession key present or not 
             if(dkParamObj.hasOwnProperty('userSession')===true){
-                // extract userSession param obj
                 var userSessionParamObj = dkParamObj['userSession'];
                 if(userSessionParamObj.hasOwnProperty('udblogId')===true
                     && userSessionParamObj.hasOwnProperty('user_sessionid')===true){
@@ -1466,6 +1431,36 @@ function checkUserLoggedInSession(){
     }
     return retUserLoggedInStatus;
 }
+
+function getParamDataAuthenticatedUserDetailsFromSession(){
+    var paramObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userSession')===true){
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
+                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
+                    if((userSessionParamObj['user_sessionid']).length>=20
+                        && (userSessionParamObj['udblogId']).length>=20){
+                        paramObj['udblogId'] = userSessionParamObj['udblogId'];
+                        paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                        paramObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
+                    }
+                }
+            }
+        }
+        if(Object.keys(paramObj).length===3){
+            return paramObj;
+        }else{
+            return false;
+        }
+    }catch(ex){
+        console.log("problem in getParamDataAuthenticatedUserDetailsFromSession=>"+ex);
+        return false;
+    }
+}
+
 
 function storeAuthenticatedUserDetailsInSession(paramObj){
     try{
@@ -1491,112 +1486,13 @@ function storeAuthenticatedUserDetailsInSession(paramObj){
     }    
 }
 
-// CJ defined this function 2016-08-06
-function storeUserSessionIdInSession(user_sessionid){
-    try{
-        if(user_sessionid!==false && user_sessionid!=='' 
-            && user_sessionid!==undefined && (user_sessionid).length>7){
-            // checking session param
-            if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-                && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-                // extract dk param session data
-                var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                // check userSession key present or not 
-                if(dkParamObj.hasOwnProperty('userSession')===true){
-                    // extract userSession param obj
-                    var userSessionParamObj = dkParamObj['userSession'];
-                    if(userSessionParamObj.hasOwnProperty('user_sessionid')===true){
-                        userSessionParamObj['user_sessionid'] = user_sessionid;
-                        dkParamObj['userSession'] = userSessionParamObj;
-                        sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
-                    }
-                }
-            }
-        }else{
-            window.location.href = globalBaseSitePath;
-        }
-    }catch(ex){
-        console.log("problem in storeUserSessionIdInSession=>"+ex);
-    }    
-}
 
-// CJ defined this function 2016-08-01
-function getParamDataAuthenticatedUserDetailsFromSession(){
-    var paramObj = {};
-    try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // check userSession key present or not 
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                // extract userSession param obj
-                var userSessionParamObj = dkParamObj['userSession'];
-                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
-                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>=20
-                        && (userSessionParamObj['udblogId']).length>=20){
-                        paramObj['udblogId'] = userSessionParamObj['udblogId'];
-                        paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
-                        paramObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
-                    }
-                }
-            }
-        }
-        if(Object.keys(paramObj).length===3){
-            return paramObj;
-        }else{
-            return false;
-        }
-    }catch(ex){
-        console.log("problem in getParamDataAuthenticatedUserDetailsFromSession=>"+ex);
-        return false;
-    }
-}
-
-// CJ defined this function 2016-08-06
-function getUserSessionIdFromUserSession(){
-    var userSessionId = false;
-    try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // check userSession key present or not 
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                // extract userSession param obj
-                var userSessionParamObj = dkParamObj['userSession'];
-                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true){
-                    if(userSessionParamObj['user_sessionid']!=='' 
-                        && userSessionParamObj['user_sessionid']!==false
-                        && (userSessionParamObj['user_sessionid']).length>=20
-                        && userSessionParamObj['user_sessionid']!==undefined){
-                        userSessionId = userSessionParamObj['user_sessionid'];
-                    }
-                }
-            }
-        }
-    }catch(ex){
-        console.log("problem in getUserSessionIdFromUserSession=>"+ex);
-        userSessionId = false;
-    }
-    return userSessionId;
-}
-
-// CJ defined this function 2016-08-06
 function storePageDetailsUserAccessedFrom(fromPageLoad){
     try{
         if(fromPageLoad!==false && fromPageLoad!=='' && fromPageLoad!==undefined){
-            // checking session param
-            if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-                && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-                // extract dk param session data
+            if(checkDkSessionParamObjExists()==='TRUE'){
                 var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-                // check userAccessLastPageFromObj key present or not 
                 if(dkParamObj.hasOwnProperty('userAccessLastPageFromObj')===true){
-                    // extract userAccessLastPageFromObj param obj
                     var userAccessPageDataObj = dkParamObj['userAccessLastPageFromObj'];
                     if(userAccessPageDataObj.hasOwnProperty('page')===true){
                         userAccessPageDataObj['page'] = fromPageLoad;
@@ -1611,18 +1507,13 @@ function storePageDetailsUserAccessedFrom(fromPageLoad){
     }    
 }
 
-// CJ defined this function 2016-08-06
+
 function getPageDetailsUserAccessedFrom(){
     var fromPageLoad = false;
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // check userAccessLastPageFromObj key present or not 
             if(dkParamObj.hasOwnProperty('userAccessLastPageFromObj')===true){
-                // extract userAccessLastPageFromObj param obj
                 var userAccessPageDataObj = dkParamObj['userAccessLastPageFromObj'];
                 if(userAccessPageDataObj.hasOwnProperty('page')===true){
                     if(userAccessPageDataObj['page']!=='' && userAccessPageDataObj['page']!==false
@@ -1640,7 +1531,6 @@ function getPageDetailsUserAccessedFrom(){
 }
 
 
-// CJ defined this function 2016-08-01
 function getParamDataForUserSignInAuthentication(){
     var paramObj = {};
     try{
@@ -1712,15 +1602,11 @@ function getParamDataForUserSignUpAuthentication(fromSection){
 }
 
 
-// CJ defined this function 2016-08-15
 function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAccessInUserAccount){
     try{
         if(requestedSectionNameAccessInUserAccount!==false && requestedSectionNameAccessInUserAccount!=='' 
             && requestedSectionNameAccessInUserAccount!==undefined){
-            // checking session param
-            if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-                && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-                // extract dk param session data
+            if(checkDkSessionParamObjExists()==='TRUE'){
                 var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 if(dkParamObj.hasOwnProperty('requestedSectionUserAccountObj')===true){
                     var sectionName = requestedSectionNameAccessInUserAccount;
@@ -1757,14 +1643,10 @@ function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAcce
 }
 
 
-// CJ defined this function 2016-08-15
 function getStoredRequestedSectionNameToAccessInUserAccount(){
     var paramObj = {};
     try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('requestedSectionUserAccountObj')===true){
                 if(jQuery.isEmptyObject(dkParamObj['requestedSectionUserAccountObj'])===false){
@@ -1784,7 +1666,6 @@ function getStoredRequestedSectionNameToAccessInUserAccount(){
 }
 
 
-// CJ defined this function 2016-08-21
 function getParamDataToUpdateUserpersonalInfo(){
     var paramObj = {};
     try{
@@ -1820,7 +1701,7 @@ function getParamDataToUpdateUserpersonalInfo(){
     } 
 }
 
-// CJ defined this function 2016-08-21
+
 function getParamDataToUpdateUserpasswordInfo(){
     var paramObj = {};
     try{
@@ -1851,27 +1732,6 @@ function getParamDataToUpdateUserpasswordInfo(){
 }
 
 
-///////////////// order cart related code here ///////////////////////////
-
-
-// CJ defined this function 2016-09-05
-function resetOrdercartSummaryDataObjInSession(){
-    try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            var userOrdercartSummaryObj = {"totalItems":0};
-            dkParamObj['userOrdercartSummaryObj'] = userOrdercartSummaryObj;
-            sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
-        }
-    }catch(ex){
-        console.log("Problem in resetOrdercartSummaryDataObjInSession=>"+ex);
-    }
-}
-
-// CJ defined this function 2016-08-13
 function storeUserOrderItemInSession(fcontentClass){
     var userOrderItemObj = {};
     try{
@@ -1920,7 +1780,6 @@ function storeUserOrderItemInSession(fcontentClass){
     }
 }
 
-// CJ defined this function 2016-08-06
 function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
     try{
         var paramObj = {};
@@ -1984,7 +1843,6 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
 }
 
 
-// CJ defined this function 2016-08-26
 function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
     try{
         var paramObj = {};
@@ -2024,7 +1882,6 @@ function getParamDataToUpdateItemInOrdercart(productDetailsObj, fcontentClass){
 }
 
 
-// CJ defined this function 2016-08-26
 function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
     try{
         var paramObj = {};
@@ -2055,7 +1912,6 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
     }
 }
 
-// CJ defined this function 2016-08-06
 function getParamDataToUdateOrderDeliveryAddressInOrdercartStore(fcontentClass){
     try{
         var paramObj = {};
@@ -2104,22 +1960,11 @@ function getParamDataToUdateOrderDeliveryAddressInOrdercartStore(fcontentClass){
 }
 
 
-///////////////////////// Rating/Review related code ///////////////////
-
-
-// CJ defined this function 2016-06-06
 function getParamObjFromSessionForRatingReviewDetails(){
     try{
         var paramObj = {};
-
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            
-            // extract user userProduct session data
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
@@ -2147,17 +1992,12 @@ function getParamObjFromSessionForRatingReviewDetails(){
 }
 
 
-// CJ defined this function 2016-06-26
 function getParamObjFromSessionForStoreAllUserRatingReviewedDetails(){
     try{
         var paramObj = {};
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
+        if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userProduct')===true){
-                // extract user userProduct session data
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
                     if(parseInt(userProductObj['shopstore_value'])>0 
@@ -2178,7 +2018,6 @@ function getParamObjFromSessionForStoreAllUserRatingReviewedDetails(){
 }
 
 
-// CJ defined this function 2016-08-06
 function getParamDataForAddingUserRatingReviewProduct(fcClass){
     var paramDataObj = {};
     try{
