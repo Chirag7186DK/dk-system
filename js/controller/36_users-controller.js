@@ -130,7 +130,7 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.userSignUpOtpNoticeMsgStr = rtDataObj['msgStr'];
                                 }else if(rtDataObj['isOtpCodeSent']==='Y' && rtDataObj['isOtpCodeValidated']==='Y'){
                                     storeAuthenticatedUserDetailsInSession(rtDataObj['userDetails']);
-                                    window.location.href = globalBaseSitePath;
+                                    $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
