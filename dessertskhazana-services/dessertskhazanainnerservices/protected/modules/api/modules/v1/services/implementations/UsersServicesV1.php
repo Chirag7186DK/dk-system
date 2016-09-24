@@ -91,6 +91,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                 // checking user account is active or not
                 $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
                 if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
+                    
                     // preparing sending otp code data
                     $sendingOtpParamDataArr = array();
                     $sendingOtpParamDataArr['name'] = $rtDataArr1['userDetails']['name'];
@@ -98,11 +99,15 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $sendingOtpParamDataArr['mobile'] = $rtDataArr1['userDetails']['mobile'];
                     $sendingOtpParamDataArr['pwd'] = $paramDataArr['pwd'];
                     $rtDataArr2 = commonfunction :: handlingUserSigInAndOtpRequest($sendingOtpParamDataArr);
-                    $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                    
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
+                    $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
+                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
                     $rspDetails['userDetails']['name'] = $rtDataArr1['userDetails']['name'];
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
                     $rspDetails['userDetails']['mobile'] = $rtDataArr1['userDetails']['mobile'];
+                    $rspDetails['userDetails']['pwd'] = $paramDataArr['pwd'];
+                    
                 }else{
                     $rspDetails = array_merge($rspDetails, $rtDataArr1);
                     $rspDetails['userDetails']['isUserAccountActive'] = 'N';
