@@ -629,7 +629,7 @@ class customparam{
             }
         }
         if(array_key_exists('pwd', $paramJsonData)){
-            if(strlen($paramJsonData['pwd'])>0 && strlen($paramJsonData['pwd'])<=10){
+            if(strlen($paramJsonData['pwd'])>=5 && strlen($paramJsonData['pwd'])<=10){
                 $correctParamKeyValueDataCount++;
             }
         }
