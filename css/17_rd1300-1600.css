@@ -1625,7 +1625,17 @@
     .userSignUpPwdInputClass{
         height:40px!important;
     }
-
+    
+    .userSignUpNameInput_ErrorClass,
+    .userSignUpEmailInput_ErrorClass,
+    .userSignUpMobileInput_ErrorClass,
+    .userSignUpOtpCodeInput_ErrorClass,
+    .userSignUpPwdInput_ErrorClass{
+        margin:0px!important;
+        font-size:13px!important;
+        color:#bf4444!important;
+    }
+    
     .userSignUpBtnContainerDivClass{
         text-align:center;
     }
