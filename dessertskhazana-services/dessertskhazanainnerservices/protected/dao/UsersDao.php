@@ -79,7 +79,9 @@ class UsersDao{
             }
         }
         if(array_key_exists('pwd', $paramData)){
-            if($paramData['pwd']!='' && strlen($paramData['pwd'])>0){
+            if($paramData['pwd']!='' && 
+                (strlen($paramData['pwd'])>=5 && strlen($paramData['pwd'])<=10)){
+                $paramData['pwd'] = MD5($paramData['pwd']);
                 $sqlColumnNames.=" pwd,";
                 $sqlValues.="'".$paramData['pwd']."',";
             }
