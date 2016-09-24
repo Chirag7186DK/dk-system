@@ -117,8 +117,11 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
                     $rspDetails['userDetails']['mobile'] = $paramDataArr['mobile'];
                 }else if($rtDataArr3['isOtpCodeValidated']=='Y'){
-                    $rtDataArr1 = commonfunction :: makeUserAccountActiveAsSignedIn($paramDataArr);
-                    $rspDetails = array_merge($rspDetails, $rtDataArr3);
+                    $rtDataArr4 = commonfunction :: makeUserAccountActiveAsSignedIn($paramDataArr);
+                    $rspDetails = array_merge($rspDetails, $rtDataArr4);
+                    $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
+                    $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
+                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
                 }
             }
         } 
