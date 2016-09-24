@@ -433,6 +433,8 @@ class UsersDao{
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
+            $sqlColumnNames.=" created_datedtime,";
+            $sqlValues.="'".date('Y-m-d H:i:s')."',";
             $sqlQuery = " INSERT INTO USER_OTPCODE ".rtrim("(".$sqlColumnNames, ',').") ".rtrim(" VALUES(".$sqlValues, ',').")";
             $command = $connection->createCommand($sqlQuery);
             $result = $command->execute();
