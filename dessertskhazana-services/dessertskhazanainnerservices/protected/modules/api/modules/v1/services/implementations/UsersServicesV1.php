@@ -94,6 +94,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                     
                     // preparing sending otp code data
                     $sendingOtpParamDataArr = array();
+                    $sendingOtpParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
                     $sendingOtpParamDataArr['name'] = $rtDataArr1['userDetails']['name'];
                     $sendingOtpParamDataArr['email'] = $paramDataArr['email'];
                     $sendingOtpParamDataArr['mobile'] = $rtDataArr1['userDetails']['mobile'];
