@@ -112,6 +112,9 @@
                         <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userSignInOtpCodeInputId' class="form-control userSignInOtpCodeInputClass">
                         <p class="userSignInOtpCodeInput_ErrorClass"></p>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInResendOtpCodeContainerDivClass">
+                        Resend OTP
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
                         <button ng-click="collectDataUserSignInAuthentication('signInOtpSection')" class='btn userSignUpSubmitBtnClass'>
                             <i class='fa fa-lock'></i> CONTINUE
