@@ -673,8 +673,8 @@ class commonfunction{
     public static function handlingUserSignUpSentOtpcode($paramDataArr){
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Invalid One Time Password has been entered !!!';
-        $rspDetails['isOtpCodeValidated'] = 'N';
         $rspDetails['isOtpCodeSent'] = 'Y';
+        $rspDetails['isOtpCodeValidated'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             // checking otp code active or not
             $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignUpAuth(
