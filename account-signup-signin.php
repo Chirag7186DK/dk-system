@@ -126,8 +126,8 @@
             <!-- display sign-up info section -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpFormInfoWrapperDivClass">
                 <!-- sign-up form info -->
-                <div ng-if="showAccountFormSectionName=='signUpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
-                    <div ng-if="isShowUserSignUpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
+                <div ng-if="showAccountFormSectionName=='signUpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
+                    <div ng-if="isShowUserSignUpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNoticeMsgContainerDivClass">
                         {{userSignUpNoticeMsgStr}}
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNameContainerDivClass">
@@ -161,8 +161,8 @@
                     </div>
                 </div>
                 <!-- sign-up text code form info -->
-                <div ng-if="showAccountFormSectionName=='signUpOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpformContentWrappperContainerDivClass">
-                    <div ng-if="isShowUserSignUpOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInErrorMsgContainerDivClass">
+                <div ng-if="showAccountFormSectionName=='signUpOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
+                    <div ng-if="isShowUserSignUpOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNoticeOtpMsgContainerDivClass">
                         {{userSignUpOtpNoticeMsgStr}}
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpOtpCodeContainerDivClass">
@@ -177,7 +177,7 @@
                         <p class="userSignUpPwdInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
-                        <button ng-click="collectDataUserSignUpAuthentication('otpSection')" class='btn userSignUpSubmitBtnClass'>
+                        <button ng-click="collectDataUserSignUpAuthentication('signUpOtpSection')" class='btn userSignUpSubmitBtnClass'>
                             <i class='fa fa-lock'></i> CONTINUE
                         </button>
                     </div>
