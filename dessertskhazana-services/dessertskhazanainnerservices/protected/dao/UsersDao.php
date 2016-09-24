@@ -467,7 +467,7 @@ class UsersDao{
     }
     
     // CJ defined this function 2016-08-06
-    public static function checkOtpCodeActiveForUserSignInAuth($userSessionId, $name, $email, $mobile, $pwd, $otpcode){
+    public static function checkOtpCodeActiveForUserSignInAuth($userSessionId, $name, $email, $mobile, $otpcode){
         $retResult = false;
         try{
             $connection = Yii::App()->db;
@@ -477,7 +477,7 @@ class UsersDao{
                 WHERE 
                 uotpc.user_sessionid='$userSessionId' AND uotpc.name='$name'
                 AND uotpc.email='$email' AND uotpc.mobile='$mobile'
-                AND uotpc.pwd='$pwd' AND uotpc.otpcode='$otpcode' AND uotpc.status='S'";
+                AND uotpc.otpcode='$otpcode' AND uotpc.status='S'";
             $command = $connection->createCommand($sql);
             $userOtpcodeDataArr = $command->queryAll();
             if(count($userOtpcodeDataArr)==1 && $userOtpcodeDataArr!=false){
