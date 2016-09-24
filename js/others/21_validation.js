@@ -103,7 +103,7 @@ function validateDataUserSignInAuthentication(fromSection){
     
     if(fromSection==='signInOtpSection'){
         $('.userSignInOtpCodeInput_ErrorClass').empty();
-        if(isProperInputElementContent('userSignInOtpCodeInputClass')==='FALSE'){
+        if(isProperInputElementContent('userSignInOtpCodeInputId')==='FALSE'){
             $('.userSignInOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }else{
