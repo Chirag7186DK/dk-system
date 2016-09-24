@@ -266,14 +266,17 @@ function getTemporaryUserSignedInDataFromSesion(){
     var userSignedInDataObj = {};
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
-            // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSignedInData')){
-                userSignedInDataObj = dkParamObj['userSignedInData'];
-                if(userSignedInDataObj.hasOwnProperty('name') && userSignedInDataObj.hasOwnProperty('email')
-                    && userSignedInDataObj.hasOwnProperty('mobile')){
-                }else{
-                    userSignedInDataObj = {};
+                var dataObj = dkParamObj['userSignedInData'];
+                if(dataObj.hasOwnProperty('name') && dataObj.hasOwnProperty('email')
+                    && dataObj.hasOwnProperty('mobile')){
+                    if((dataObj['name']).length>0 
+                        && (dataObj['email']).length>0
+                        && (dataObj['mobile']).length===10
+                        && ((dataObj['pwd']).length>=5) && (dataObj['pwd']).length<=10){
+                        userSignedInDataObj = dataObj;
+                    }
                 }
             }
         }
