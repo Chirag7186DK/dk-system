@@ -208,16 +208,20 @@ function getTemporaryUserSignUpDataFromSesion(){
             // extract dk param session data
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj.hasOwnProperty('userSignUpData')){
-                userSignupDataObj = dkParamObj['userSignUpData'];
-                if(userSignupDataObj.hasOwnProperty('name') && userSignupDataObj.hasOwnProperty('email')
-                    && userSignupDataObj.hasOwnProperty('mobile')){
-                }else{
-                    userSignupDataObj = {};
+                var dataObj = dkParamObj['userSignUpData'];
+                if(dataObj.hasOwnProperty('name') && dataObj.hasOwnProperty('email')
+                    && dataObj.hasOwnProperty('mobile')){
+                    if((dataObj['name']).length>0 
+                        && (dataObj['email']).length>0
+                        && (dataObj['mobile']).length===10
+                        && ((dataObj['pwd']).length>=5) && (dataObj['pwd']).length<=10){
+                        userSignupDataObj = dataObj;
+                    }
                 }
             }
         }
     }catch(ex){
-        console.log("Problem in getUserSignUpDataFromTemporarySesion=>"+ex);
+        console.log("Problem in getTemporaryUserSignUpDataFromSesion=>"+ex);
     }
     return userSignupDataObj;
 }
