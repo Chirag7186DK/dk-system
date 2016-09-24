@@ -74,6 +74,130 @@ function isValidPwd(pwdContent){
 }
 
 
+// CJ defined this function 2016-08-01
+function validateDataUserSignInAuthentication(fromSection){
+    var inValidDataCount = 0;
+    
+    if(fromSection==='signInSection'){
+        $('.userSignInEmailInput_ErrorClass').empty();
+        $('.userSignInPwdInput_ErrorClass').empty();
+        if(isProperInputElementContent('userSignInEmailInputId')==='FALSE'){
+            $('.userSignInEmailInput_ErrorClass').append("Enter your email !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidEmailId($('#userSignInEmailInputId').val())==='FALSE'){
+                $('.userSignInEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
+                inValidDataCount++;
+            }
+        }
+        if(isProperInputElementContent('userSignInPwdInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidPwd($('#userSignInPwdInputId').val())==='FALSE'){
+                $('.userSignInPwdInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
+                inValidDataCount++;
+            }
+        }
+    }
+    
+    if(fromSection==='signInOtpSection'){
+        $('.userSignInOtpCodeInput_ErrorClass').empty();
+        if(isProperInputElementContent('userSignInOtpCodeInputClass')==='FALSE'){
+            $('.userSignInOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+            inValidDataCount++;
+        }else{
+            var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
+            if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
+            }else{
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+                inValidDataCount++;
+            }
+        }
+    }
+    
+    if(inValidDataCount>0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+// CJ defined this function 2016-09-22
+function validateDataUserSignUpAuthentication(fromSection){
+    var inValidDataCount = 0;
+    
+    if(fromSection==='signUpSection'){
+        
+        $('.userSignUpNameInput_ErrorClass').empty();
+        $('.userSignUpEmailInput_ErrorClass').empty();
+        $('.userSignUpMobileInput_ErrorClass').empty();
+        
+        if(isProperInputElementContent('userSignUpNameInputId')==='FALSE'){
+            $('.userSignUpNameInput_ErrorClass').append("Enter your name !!!");
+            inValidDataCount++;
+        }else{
+            var enteredNameText = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
+            if((enteredNameText).length>30){
+                $('.userSignUpNameInput_ErrorClass').append("Entered name length must be less than 30 characters !!!");
+                inValidDataCount++;
+            }
+        }
+        
+        if(isProperInputElementContent('userSignUpEmailInputId')==='FALSE'){
+            $('.userSignUpEmailInput_ErrorClass').append("Enter your email !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidEmailId($('#userSignUpEmailInputId').val())==='FALSE'){
+                $('.userSignUpEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
+                inValidDataCount++;
+            }
+        }
+        
+        if(isProperInputElementContent('userSignUpMobileInputId')==='FALSE'){
+            $('.userSignUpMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidMobileNos($('#userSignUpMobileInputId').val())==='FALSE'){
+                $('.userSignUpMobileInput_ErrorClass').append("Enter valid mobile no.s !!!");
+                inValidDataCount++;
+            }
+        }
+    }
+    
+    if(fromSection==='otpSection'){
+        
+        $('.userSignUpOtpCodeInput_ErrorClass').empty();
+        $('.userSignUpPwdInput_ErrorClass').empty();
+        
+        if(isProperInputElementContent('userSignUpOtpCodeInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+            inValidDataCount++;
+        }else{
+            var userSignUpDataObj = getUserSignUpDataFromSesion();
+            if(userSignUpDataObj!==false && jQuery.isEmptyObject(userSignUpDataObj)===false){
+            }else{
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+                inValidDataCount++;
+            }
+        }
+        
+        if(isProperInputElementContent('userSignUpPwdInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidPwd($('#userSignUpPwdInputId').val())==='FALSE'){
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
+                inValidDataCount++;
+            }
+        }
+    }
+    if(inValidDataCount>0){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 
 
@@ -479,131 +603,8 @@ function validateParamDataCorporateTieupRequest(){
 
 //////////////////// user related code /////////////////////////////////////////
 
-// CJ defined this fucntion 2016-08-01
-function attachedFieldValidationUserSignInFormContent(){
-    if($('#userSignInEmailInputId').length===1){
-        $('#userSignInEmailInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                    if(!currentTextVal.match(mail)){
-                        $(this).css({'border-color':'#f18178'});
-                    }else{
-                        $(this).css({'border-color':'#ccc'});
-                    }
-                }
-            }catch(ex){
-            }
-        });
-    }
-}
 
-// CJ defined this function 2016-08-01
-function validateDataUserSignInAuthentication(){
-    var inValidDataCount = 0;
-    $('.userSignInEmailInput_ErrorClass').empty();
-    $('.userSignInPwdInput_ErrorClass').empty();
-    if(isProperInputElementContent('userSignInEmailInputId')==='FALSE'){
-        $('.userSignInEmailInput_ErrorClass').append("Enter your email !!!");
-        inValidDataCount++;
-    }else{
-        if(isValidEmailId($('#userSignInEmailInputId').val())==='FALSE'){
-            $('.userSignInEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
-            inValidDataCount++;
-        }
-    }
-    if(isProperInputElementContent('userSignInPwdInputId')==='FALSE'){
-        $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
-        inValidDataCount++;
-    }else{
-        if(isValidPwd($('#userSignInPwdInputId').val())==='FALSE'){
-            $('.userSignInPwdInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
-            inValidDataCount++;
-        }
-    }
-    if(inValidDataCount>0){
-        return false;
-    }else{
-        return true;
-    }
-}
 
-// CJ defined this function 2016-09-22
-function validateDataUserSignUpAuthentication(fromSection){
-    var inValidDataCount = 0;
-    
-    if(fromSection==='signUpSection'){
-        
-        $('.userSignUpNameInput_ErrorClass').empty();
-        $('.userSignUpEmailInput_ErrorClass').empty();
-        $('.userSignUpMobileInput_ErrorClass').empty();
-        
-        if(isProperInputElementContent('userSignUpNameInputId')==='FALSE'){
-            $('.userSignUpNameInput_ErrorClass').append("Enter your name !!!");
-            inValidDataCount++;
-        }else{
-            var enteredNameText = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
-            if((enteredNameText).length>30){
-                $('.userSignUpNameInput_ErrorClass').append("Entered name length must be less than 30 characters !!!");
-                inValidDataCount++;
-            }
-        }
-        
-        if(isProperInputElementContent('userSignUpEmailInputId')==='FALSE'){
-            $('.userSignUpEmailInput_ErrorClass').append("Enter your email !!!");
-            inValidDataCount++;
-        }else{
-            if(isValidEmailId($('#userSignUpEmailInputId').val())==='FALSE'){
-                $('.userSignUpEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
-                inValidDataCount++;
-            }
-        }
-        
-        if(isProperInputElementContent('userSignUpMobileInputId')==='FALSE'){
-            $('.userSignUpMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
-            inValidDataCount++;
-        }else{
-            if(isValidMobileNos($('#userSignUpMobileInputId').val())==='FALSE'){
-                $('.userSignUpMobileInput_ErrorClass').append("Enter valid mobile no.s !!!");
-                inValidDataCount++;
-            }
-        }
-    }
-    
-    if(fromSection==='otpSection'){
-        
-        $('.userSignUpOtpCodeInput_ErrorClass').empty();
-        $('.userSignUpPwdInput_ErrorClass').empty();
-        
-        if(isProperInputElementContent('userSignUpOtpCodeInputId')==='FALSE'){
-            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
-            inValidDataCount++;
-        }else{
-            var userSignUpDataObj = getUserSignUpDataFromSesion();
-            if(userSignUpDataObj!==false && jQuery.isEmptyObject(userSignUpDataObj)===false){
-            }else{
-                $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
-                inValidDataCount++;
-            }
-        }
-        
-        if(isProperInputElementContent('userSignUpPwdInputId')==='FALSE'){
-            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
-            inValidDataCount++;
-        }else{
-            if(isValidPwd($('#userSignUpPwdInputId').val())==='FALSE'){
-                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
-                inValidDataCount++;
-            }
-        }
-    }
-    if(inValidDataCount>0){
-        return false;
-    }else{
-        return true;
-    }
-}
 
 
 ////////////////////////// Rating/Review related code /////////////////////
