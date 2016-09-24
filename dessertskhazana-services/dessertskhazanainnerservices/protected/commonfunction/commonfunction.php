@@ -530,10 +530,7 @@ class commonfunction{
         $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
         // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $userEmailParamData = array();
-            $userEmailParamData['email'] = $paramDataArr['email'];
-            $userEmailParamData['pwd'] = $paramDataArr['pwd'];
-            $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($userEmailParamData);
+            $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
             if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
                 // store user info as login status
                 $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
