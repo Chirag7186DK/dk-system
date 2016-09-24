@@ -526,7 +526,7 @@ class commonfunction{
             // checking otp code active or not
             $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignInAuth(
                 $paramDataArr['user_sessionid'], $paramDataArr['name'],
-                $paramDataArr['email'], $paramDataArr['mobile'], $paramDataArr['pwd'], $paramDataArr['otpcode']);
+                $paramDataArr['email'], $paramDataArr['mobile'], $paramDataArr['otpcode']);
             if(count($dataArr1)==1 && $dataArr1!=false){
                 $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1[0]['otpcodeId']);
                 if($rtOtpcodeStatusUpdated=='TRUE'){
