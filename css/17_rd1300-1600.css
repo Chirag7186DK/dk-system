@@ -1650,50 +1650,42 @@
     
     /*  myaccount sigin form css code */
 
-    .ma_userSignInformContentWrappperContainerDivClass{
+    .userSignInFormSectionContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
         border:1px solid #e7e7e7!important;
         background:#fff!important;
     }
-
-    .ma_userSignInformContentWrappperContainerDivClass div{
-        margin-bottom:15px;
+    
+    .userSignInFormSectionContainerDivClass div{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+    }
+    
+    .userSignInNoticeMsgContainerDivClass,
+    .userSignInNoticeOtpMsgContainerDivClass{
+        color:#4747d0!important;
+        font-size:12px!important;
     }
 
-    .ma_userSignInFormfieldLabelPClass{
+    .userSignInFormfieldHintPClass{
+        font-size:12px!important;
         font-weight:normal!important;
         color:#708090!important;
         margin:0px!important;
     }
 
-    .ma_userSignInFormfieldHintPClass{
-        font-size:11px!important;
-        font-weight:normal!important;
-        color:#708090!important;
-        margin:0px!important;
-    }
-
-    .ma_userSignInFormfieldiconclass{
-        color:#708090!important;
-        font-size:15px!important;
-    }
-
-    .ma_userSignInEmailInputClass,
-    .ma_userSignInPasswordInputClass{
+    .userSignInEmailInputClass,
+    .userSignInPwdInputClass{
         height:40px!important;
     }
 
-    .ma_userSignInErrorMsgContainerDivClass{
-        color:#4747d0!important;
-    }
-
-    .ma_userSignInBtnContainerDivClass{
+    .userSignInBtnContainerDivClass{
         text-align:center;
     }
 
-    .ma_userSigInSubmtBtnClass, 
-    .ma_userSigInSubmtBtnClass:hover{
+    .userSigInSubmitBtnClass, 
+    .userSigInSubmitBtnClass:hover{
         border-radius:0px!important;
         border:0px!important;
         font-weight:bold!important;
@@ -1701,25 +1693,16 @@
         color:#fff!important;
     }
 
-    .ma_userSignInBorderDivClass{
-        width:100%; 
-        text-align:center!important; 
-        border-bottom:1px solid #f10052!important;
-        line-height:0.1em; 
-        margin:10px 0 20px; 
+    .redirectUserSignUpBtnContainerDivClass{
+        text-align:center!important;
+        font-size:14px!important;
+        font-weight:bold!important;
+        cursor:pointer!important;
+        color:#CB202D!important;
+        padding:0px!important;
     }
 
-    .ma_userSignInBorderDivClass span{ 
-        background:#fff!important; 
-        padding:0 10px!important; 
-        color:#7b8590!important;
-    }
-
-    .ma_redirectUserSignUpBtnContainerDivClass{
-        text-align:center;
-        margin-top:10px!important;
-    }
-
+    
     /* user as customer account css code */
 
     
