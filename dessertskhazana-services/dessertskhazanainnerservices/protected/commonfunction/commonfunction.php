@@ -446,8 +446,8 @@ class commonfunction{
             $userEmailParamData = array();
             $userEmailParamData['email'] = $paramDataArr['email'];
             $userEmailParamData['pwd'] = $paramDataArr['pwd'];
-            $paramDataArr['status'] = "'A','Z'";
-            $userJsonData = UsersDao :: getUserDetails($paramDataArr);
+            $userEmailParamData['status'] = "'A','Z'";
+            $userJsonData = UsersDao :: getUserDetails($userEmailParamData);
             if(count($userJsonData)==1 && $userJsonData!=false){
                 $userStatus = $userJsonData[0]['userStatus'];
                 if($userStatus=='Z'){
