@@ -550,8 +550,6 @@ class customparam{
     }
     
     
-    //////////////////////////// user related code //////////////////////
-    
     // CJ defined this function 2016-09-21
     public static function checkParamDataForUserSignUpAuthentication($paramJsonData){
         $retStatus = 'FALSE';
@@ -584,18 +582,23 @@ class customparam{
                 $correctParamKeyValueDataCount++;
             }
         }
-        if(array_key_exists('EmailAuthAndOtpRequest', $paramJsonData)){
-            if($paramJsonData['EmailAuthAndOtpRequest']=='Y'){
+        if(array_key_exists('EmailAuthAndOtpRequest', $paramJsonData)
+            && array_key_exists('validateOtpAndCreateAccountRequest', $paramJsonData)){
+            if($paramJsonData['EmailAuthAndOtpRequest']=='Y'
+                && $paramJsonData['validateOtpAndCreateAccountRequest']=='N'){
                 $correctParamKeyValueDataCount++;
             }
             if($correctParamKeyValueDataCount==6){
                 $retStatus = 'TRUE';
             }
         }
-        if(array_key_exists('validateOtpAndCreateAccountRequest', $paramJsonData) 
-            && array_key_exists('otpcode', $paramJsonData) && array_key_exists('pwd', $paramJsonData)){
-            if($paramJsonData['validateOtpAndCreateAccountRequest']=='Y'
-                && strlen($paramJsonData['otpcode'])==6 
+        if(array_key_exists('EmailAuthAndOtpRequest', $paramJsonData)
+            && array_key_exists('validateOtpAndCreateAccountRequest', $paramJsonData)
+            && array_key_exists('otpcode', $paramJsonData) 
+            && array_key_exists('pwd', $paramJsonData)){
+            if($paramJsonData['EmailAuthAndOtpRequest']=='N'
+                && $paramJsonData['validateOtpAndCreateAccountRequest']=='Y'
+                && strlen($paramJsonData['otpcode'])==6
                 && (strlen($paramJsonData['pwd'])>=5 && strlen($paramJsonData['pwd'])<=10)){
                 $correctParamKeyValueDataCount++;
             }
