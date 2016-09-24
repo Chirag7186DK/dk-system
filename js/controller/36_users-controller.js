@@ -32,19 +32,18 @@ function UsersController($scope, $rootScope, UsersServices){
         
         // collectDataUserSignInAuthentication
         $rootScope.collectDataUserSignInAuthentication = function(){
-            // validate form content data for user signIn related wish list
             var retValidateDataStatus = validateDataUserSignInAuthentication();
             if(retValidateDataStatus===true){
                 // get param obj for signIn purpose
                 var preparedParamJsonObj = getParamDataForUserSignInAuthentication();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    $rootScope.checkUserSignInAuthentication(preparedParamJsonObj);
+                    $rootScope.userSignInAuthentication(preparedParamJsonObj);
                 }
             }
         };
         
-        // checkUserSignInAuthentication
-        $rootScope.checkUserSignInAuthentication = function(paramDataObj){
+        // userSignInAuthentication
+        $rootScope.userSignInAuthentication = function(paramDataObj){
             try{
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
