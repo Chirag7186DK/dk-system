@@ -32,9 +32,8 @@ function UsersController($scope, $rootScope, UsersServices){
         
         // collectDataUserSignInAuthentication
         $rootScope.collectDataUserSignInAuthentication = function(){
-            var retValidateDataStatus = validateDataUserSignInAuthentication();
-            if(retValidateDataStatus===true){
-                // get param obj for signIn purpose
+            var rtValidatedDataStatus = validateDataUserSignInAuthentication();
+            if(rtValidatedDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserSignInAuthentication();
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     $rootScope.userSignInAuthentication(preparedParamJsonObj);
@@ -49,34 +48,38 @@ function UsersController($scope, $rootScope, UsersServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling UsersServices 
-                    UsersServices.checkUserAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                    UsersServices.userSignInAuthentication(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
-                            var authenticatedUserDetailsObj = false;
-                            var notificationMsgStr = '';
+                            var userDataObj = false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                authenticatedUserDetailsObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                                userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
                             }
-                            if(authenticatedUserDetailsObj!=='' && authenticatedUserDetailsObj!==false 
-                                && authenticatedUserDetailsObj!==undefined){
-                                if(authenticatedUserDetailsObj['isUserAccountActive']==='N'){
-                                    $rootScope.isShowUserSignInFormContentErrorMsg = true;
-                                    $rootScope.userSignInFormContentErrorMsgStr = authenticatedUserDetailsObj['msgStr'];
-                                    notificationMsgStr = authenticatedUserDetailsObj['msgStr'];
-                                }else{
-                                    storeAuthenticatedUserDetailsInSession(authenticatedUserDetailsObj);
+                            if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
+                                if(userDataObj['isUserAccountActive']==='N'
+                                    && userDataObj['isOtpCodeSent']==='N' && userDataObj['isOtpCodeValidated']==='N'){
+                                    $rootScope.showAccountFormSectionName = 'signInSection';
+                                    $rootScope.isShowUserSignInNoticeMsg = 'TRUE';
+                                    $rootScope.userSignInNoticeMsgStr = userDataObj['msgStr'];
+                                }else if(userDataObj['isUserAccountActive']==='Y'
+                                    && userDataObj['isOtpCodeSent']==='Y' && userDataObj['isOtpCodeValidated']==='N'){
+                                    $rootScope.showAccountFormSectionName = 'signInOtpSection';
+                                    $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
+                                    $rootScope.userSignInOtpNoticeMsgStr = userDataObj['msgStr'];
+                                }else if(userDataObj['isUserAccountActive']==='Y'
+                                    && userDataObj['isOtpCodeSent']==='Y' && userDataObj['isOtpCodeValidated']==='Y'){
+                                    storeAuthenticatedUserDetailsInSession(userDataObj);
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
-                                notificationMsgStr = 'Please enter valid details to sign-in with desserts khazana account !';
-                                $rootScope.isShowUserSignInFormContentErrorMsg = true;
-                                $rootScope.userSignInFormContentErrorMsgStr = notificationMsgStr;
-                                showNotificationBoxMsg(notificationMsgStr);
+                                $rootScope.showAccountFormSectionName = 'signInSection';
+                                $rootScope.isShowUserSignInNoticeMsg = 'TRUE';
+                                $rootScope.userSignInNoticeMsgStr = "Invalid account details !!!";
                             }
                         });
                     });
                 }
             }catch(ex){
-                console.log("problem in checkUserSignInAuthentication=>"+ex);
+                console.log("problem in userSignInAuthentication=>"+ex);
             }
         };
         
