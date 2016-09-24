@@ -118,6 +118,8 @@ class UsersServicesV1 implements IUsersServicesV1{
                 }else{
                     $rspDetails = array_merge($rspDetails, $rtDataArr1);
                     $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+                    $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
                 }
             }else if($paramDataArr['isRequestValidateOtpAndUserSignedIn']=='Y'){
                 $rtDataArr3 = commonfunction :: handlingUserSignInSentOtpcode($paramDataArr);
