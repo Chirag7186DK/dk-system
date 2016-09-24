@@ -82,7 +82,7 @@ class UsersServicesV1 implements IUsersServicesV1{
         
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
-        $rspDetails['userDetails']['userDetails']['msgStr'] = 'Invalid account details !!!';
+        $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
         $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
         
