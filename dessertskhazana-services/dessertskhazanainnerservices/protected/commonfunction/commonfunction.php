@@ -535,6 +535,7 @@ class commonfunction{
                 // store user info as login status
                 $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
                 if($lastInsertedUserInfoLogId!=false && $lastInsertedUserInfoLogId!=''){
+                    $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
                     $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                     $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogId;
