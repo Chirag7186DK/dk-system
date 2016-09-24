@@ -110,7 +110,7 @@ function validateDataUserSignInAuthentication(fromSection){
             var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
             if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
             }else{
-                $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+                $('.userSignInOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
                 inValidDataCount++;
             }
         }
