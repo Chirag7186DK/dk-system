@@ -14,6 +14,15 @@ function UsersController($scope, $rootScope, UsersServices){
             }    
         };
         
+        // showLoaderAccountHasbeenVerfied
+        $rootScope.showLoaderAccountHasbeenVerfied = function(){
+            var msgStr = "Hey your authentication details has been verified & please wait 20 seconds will redirect home page !!!";
+            var blockUIObj = {};
+            blockUIObj['css'] = {"padding":10};
+            blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>"+msgStr+"</center>";
+            showHideLoaderBox('show', blockUIObj);
+        };
+        
         // isUserAlreadySignedInAccountSection
         $rootScope.isUserAlreadySignedInAccountSection = function(){
             var userLoggedInSessionStatus = checkUserLoggedInSession();
@@ -73,8 +82,7 @@ function UsersController($scope, $rootScope, UsersServices){
                                     storeAuthenticatedUserDetailsInSession(userDataObj);
                                     removeTemporaryUserSignUpDataFromSesion();
                                     removeTemporaryUserSignedInDataFromSesion();
-                                    $.blockUI({ message:userDataObj['msgStr']}); 
-                                    setTimeout($.unblockUI, 20000); 
+                                    $rootScope.showLoaderAccountHasbeenVerfied();
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
