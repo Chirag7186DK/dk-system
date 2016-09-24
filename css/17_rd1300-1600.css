@@ -1680,7 +1680,14 @@
     .userSignInOtpCodeInputClass{
         height:40px!important;
     }
-
+    
+    .userSignInEmailInput_ErrorClass,
+    .userSignInPwdInput_ErrorClass{
+        margin:0px!important;
+        font-size:13px!important;
+        color:#bf4444!important;
+    }
+    
     .userSignInBtnContainerDivClass{
         text-align:center;
     }
