@@ -633,8 +633,23 @@ class customparam{
                 $correctParamKeyValueDataCount++;
             }
         }
-        if($correctParamKeyValueDataCount==4){
-            $retStatus = 'TRUE';
+        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)){
+            if($paramJsonData['isRequestCheckingCreditional']=='Y'){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==5){
+                $retStatus = 'TRUE';
+            }
+        }
+        if(array_key_exists('requestValidateOtpAndUserSignedIn', $paramJsonData)
+            && array_key_exists('otpcode', $paramJsonData)){
+            if($paramJsonData['requestValidateOtpAndUserSignedIn']=='Y'
+                && strlen($paramJsonData['otpcode'])==6){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==5){
+                $retStatus = 'TRUE';
+            }
         }
         return $retStatus;
     }
