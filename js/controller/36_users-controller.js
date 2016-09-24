@@ -15,13 +15,7 @@ function UsersController($scope, $rootScope, UsersServices){
         };
         
         // showLoaderAccountHasbeenVerfied
-        $rootScope.showLoaderAccountHasbeenVerfied = function(){
-            var msgStr = "Hey your authentication details has been verified & please wait 20 seconds will redirect home page !!!";
-            var blockUIObj = {};
-            blockUIObj['css'] = {"padding":10};
-            blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>"+msgStr+"</center>";
-            showHideLoaderBox('show', blockUIObj);
-        };
+        $rootScope.showLoaderAccountHasbeenVerfied = function(){};
         
         // isUserAlreadySignedInAccountSection
         $rootScope.isUserAlreadySignedInAccountSection = function(){
@@ -82,7 +76,6 @@ function UsersController($scope, $rootScope, UsersServices){
                                     storeAuthenticatedUserDetailsInSession(userDataObj);
                                     removeTemporaryUserSignUpDataFromSesion();
                                     removeTemporaryUserSignedInDataFromSesion();
-                                    $rootScope.showLoaderAccountHasbeenVerfied();
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
