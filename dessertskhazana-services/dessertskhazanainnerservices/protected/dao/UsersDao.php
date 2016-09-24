@@ -466,6 +466,29 @@ class UsersDao{
         return $retResult;
     }
     
+    // CJ defined this function 2016-08-06
+    public static function checkOtpCodeActiveForUserSignInAuth($userSessionId, $name, $email, $mobile, $pwd, $otpcode){
+        $retResult = false;
+        try{
+            $connection = Yii::App()->db;
+            $sql= "SELECT 
+                uotpc.id otpcodeId
+                FROM USER_OTPCODE uotpc
+                WHERE 
+                uotpc.user_sessionid='$userSessionId' AND uotpc.name='$name'
+                AND uotpc.email='$email' AND uotpc.mobile='$mobile'
+                AND uotpc.pwd='$pwd' AND uotpc.otpcode='$otpcode' AND uotpc.status='S'";
+            $command = $connection->createCommand($sql);
+            $userOtpcodeDataArr = $command->queryAll();
+            if(count($userOtpcodeDataArr)==1 && $userOtpcodeDataArr!=false){
+                $retResult = $userOtpcodeDataArr;
+            }
+        }catch(Exception $ex){
+            $retResult = false;
+        }
+        return $retResult;
+    }
+    
     // CJ defined this function 2016-08-21
     public static function updateOtpCodeStatus($otpcodeId){
         $retStatus = 'FALSE';
