@@ -443,6 +443,9 @@ class commonfunction{
         $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
         // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $userEmailParamData = array();
+            $userEmailParamData['email'] = $paramDataArr['email'];
+            $userEmailParamData['pwd'] = $paramDataArr['pwd'];
             $paramDataArr['status'] = "'A','Z'";
             $userJsonData = UsersDao :: getUserDetails($paramDataArr);
             if(count($userJsonData)==1 && $userJsonData!=false){
@@ -527,7 +530,10 @@ class commonfunction{
         $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
         // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+            $userEmailParamData = array();
+            $userEmailParamData['email'] = $paramDataArr['email'];
+            $userEmailParamData['pwd'] = $paramDataArr['pwd'];
+            $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($userEmailParamData);
             if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
                 // store user info as login status
                 $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
