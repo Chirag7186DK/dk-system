@@ -2,28 +2,24 @@
 
 class commonfunction{
     
-    // CJ defined this function 2016-07-22
     public static function generateResponseDataForErrorOccured(){
         $rspDetails = array();
         $rspDetails["isExceptionOccured"] = 'TRUE';
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
     
-    // CJ defined this function 2016-07-22
     public static function generateResponseDataForInvalidRequestParamKey(){
         $rspDetails = array();
         $rspDetails["isRequestParamKeyValid"] = 'FALSE';
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
     
-    // CJ defined this function 2016-07-22
     public static function generateResponseDataForInvalidRequestParamKeyData(){
         $rspDetails = array();
         $rspDetails["isRequestParamKeyDataValid"] = 'FALSE';
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
     
-    // CJ defined this function 2016-07-24
     public static function preparedSmsDataToSendAdminMembersForErrorOccuredOnServer($errorNo, $errorMsg, $errorFilePath, $errorLineNo, $otherVars){
         $retSmsSentStatus = false;
         if($errorNo!='' && $errorMsg!='' && $errorFilePath!='' && $errorLineNo !=''){
@@ -38,7 +34,6 @@ class commonfunction{
         return $retSmsSentStatus;
     }
     
-    // CJ defined this function 2016-07-24
     public static function preparedEmailDataToSendAdminMembersForErrorOccuredOnServer($errorNo, $errorMsg, $errorFilePath, $errorLineNo, $otherVars){
         $retEmailSentStatus = false;
         if($errorNo!='' && $errorMsg!='' && $errorFilePath!='' && $errorLineNo !=''){
@@ -55,9 +50,7 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
-    
       
-    // CJ defined this function 2016-07-23
     public static function preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($paramJsonData){
         $retEmailSentStatus = false;
         try{
@@ -76,7 +69,6 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
-    // CJ defined this function 2016-07-24
     public static function preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($paramJsonData){
         $retEmailSentStatus = false;
         try{
@@ -95,7 +87,6 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
-    // CJ defined this function 2016-07-24
     public static function preparedDataSendingEmailAboutCorporateTieupRequestReceiveFromCustomer($paramJsonData){
         $retEmailSentStatus = false;
         try{
@@ -116,6 +107,7 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
+    
     // CJ defined this function 2016-07-24
     public static function prepareParamDataForTrackingUserInfoAccessingWebsites($paramJsonData){
         if(count($paramJsonData)>0 && $paramJsonData!=false){
@@ -128,10 +120,8 @@ class commonfunction{
     
     
     
-    ////////////////./////////////// delivery city related code ////////////////////////////////
+    ////////////////./////////////// location related related code ////////////////////////////////
     
-  
-    // CJ defined this function 2016-09-02
     public static function getDeliveryCityListDetails($paramJsonData){
         $rspDetails = array();
         if(count($paramJsonData)>0 && $paramJsonData!=false){
@@ -165,10 +155,7 @@ class commonfunction{
         return $rspDetails;
     }
     
-    
-    ////////////////./////////////// delivery area related code ////////////////////////////////
-    
-    // CJ defined this function 2016-09-02
+
     public static function getDeliveryAreaListDetails($paramJsonData){
         $rspDetails = array();
         if(count($paramJsonData)>0 && $paramJsonData!=false){
@@ -209,7 +196,6 @@ class commonfunction{
     
     ///////////////// product filter type list related code /////////////////////
     
-    // CJ defined this function 2016-07-12
     public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedStoreId=''){
         $allStoreWiseFilterDetailsArr = array();
         try{
@@ -244,7 +230,7 @@ class commonfunction{
         }
     }
     
-    // CJ defined this function 2016-07-12
+
     public static function preparedProductPriceFilterationData($minPriceValue, $maxPriceValue, 
         $requestedProductPriceFilterArr = array(), $requestedProductPriceSortOn=''){
         
@@ -316,7 +302,7 @@ class commonfunction{
         
     }    
     
-    // CJ defined this function 2016-07-12
+
     public static function preparedProductSizeFilterationData($productAllSizeArrJsonData, $requestedProductSizeFilterArr = array()){
         $retProductAllSizeRangeListArr = array();
         try{
@@ -348,7 +334,7 @@ class commonfunction{
         }
     }    
     
-    // CJ defined this function 2016-07-12
+
     public static function preparedProductDiscountFilterationData($minDiscountValue, $maxDiscountValue, 
         $requestedProductDiscountFilterArr = array(), $requestedProductDiscountSortOn=''){
         $productAllDiscountRangeArr = array();
@@ -422,8 +408,6 @@ class commonfunction{
     
     ////////////////.///////////////  user related code ////////////////////////////////
     
-    
-    // CJ defined this function 2016-08-06
     public static function getUserSessionId(){
         $userSessionId = false;
         $lastUserSessionNo = UsersDao :: generateMaxSessionNo();
@@ -439,11 +423,9 @@ class commonfunction{
         return $userSessionId;
     }
     
-    // CJ defined this function 2016-08-01
     public static function preparedDataToStoreInfoAbtTrackedUserAccessingWebsitesDetails($userJsonData){
         $retLastInsertedUserInfoTrackedId = false;
         if(count($userJsonData)>0 && $userJsonData!=false){
-            // track user info accessing web app details
             $utawParamDetails = array();
             $utawParamDetails['is_loggedInUser'] = 'Y';
             $utawParamDetails['profile_id'] = $userJsonData['unmd5ProfileTypeId'];
@@ -454,7 +436,7 @@ class commonfunction{
         return $retLastInsertedUserInfoTrackedId;
     }
     
-    // CJ defined this function 2016-09-21
+    
     public static function handlingUserSignInAuthentication($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
@@ -471,6 +453,7 @@ class commonfunction{
                 }else{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['msgStr'] = 'Authenticated user accessing web-app !!!';
+                    $rspDetails['userDetails']['unmd5UserId'] = $userJsonData[0]['unmd5UserId'];
                     $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
                     $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
                     $rspDetails['userDetails']['userProfileTypeId'] = $userJsonData[0]['unmd5ProfileTypeId'];
@@ -484,7 +467,7 @@ class commonfunction{
         return $rspDetails;
     }
     
-    // CJ defined this function 2016-09-22
+    
     public static function handlingUserSigInAndOtpRequest($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
@@ -506,7 +489,6 @@ class commonfunction{
     }
     
     
-    // CJ defined this function 2016-09-21
     public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
         if($mobile!='' && strlen($mobile)==10){
@@ -516,7 +498,7 @@ class commonfunction{
         return $smsSentStatus;
     }
     
-    // CJ defined this function 2016-09-22
+    
     public static function handlingUserSignInSentOtpcode($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['msgStr'] = 'Invalid One Time Password has been entered !!!';
@@ -539,6 +521,28 @@ class commonfunction{
     }
     
     
+    public static function makeUserAccountActiveAsSignedIn($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+        $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
+        // checking param data length
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
+            if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
+                // store user info as login status
+                $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
+                if($lastInsertedUserInfoLogId!=false && $lastInsertedUserInfoLogId!=''){
+                    $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
+                    $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                    $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogId;
+                    $rspDetails['userDetails']['userProfileTypeId'] = $rtDataArr1['userDetails']['unmd5ProfileTypeId'];
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+    
+    
     // CJ defined this function 2016-08-11
     public static function getUserSessionDetails($paramJsonData){
         $userSessionDetailsData = array();
@@ -552,7 +556,7 @@ class commonfunction{
     }
     
     // CJ defined this function 2016-08-01
-    public static function preparedDataToStoreInfoAbtUserAsLog($userJsonData, $paramDataArr){
+    public static function preparedDataToStoreInfoAbtUserAsLog($userJsonData){
         $userLogNo = false;
         if(count($userJsonData)>0 && $userJsonData!=false){
             // fetch user max log no
@@ -567,8 +571,8 @@ class commonfunction{
             $userInfoLogDetails = array();
             $userInfoLogDetails['user_id'] = $userJsonData['unmd5UserId'];
             $userInfoLogDetails['user_logno'] = $userLogNo;
-            $userInfoLogDetails['user_sessionid'] = $paramDataArr['user_sessionid'];
-            $userInfoLogDetails['user_sessionstarttime'] = $paramDataArr['usersession_starttimestamp'];
+            $userInfoLogDetails['user_sessionid'] = $userJsonData['user_sessionid'];
+            $userInfoLogDetails['user_sessionstarttime'] = $userJsonData['usersession_starttimestamp'];
             $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
             $userInfoLogDetails['status'] = 'A';
             $lastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
