@@ -99,10 +99,16 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $sendingOtpParamDataArr['mobile'] = $rtDataArr1['userDetails']['mobile'];
                     $sendingOtpParamDataArr['pwd'] = $paramDataArr['pwd'];
                     $rtDataArr2 = commonfunction :: handlingUserSigInAndOtpRequest($sendingOtpParamDataArr);
-                    
+                    if($rtDataArr2['userDetails']['isOtpCodeSent']=='Y'){
+                        $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
+                        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+                        $rspDetails['userDetails']['msgStr'] = $rtDataArr2['userDetails']['msgStr'];
+                    }else{
+                        $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+                        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+                        $rspDetails['userDetails']['msgStr'] = $rtDataArr2['userDetails']['msgStr'];
+                    }
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
-                    $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
-                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
                     $rspDetails['userDetails']['name'] = $rtDataArr1['userDetails']['name'];
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
                     $rspDetails['userDetails']['mobile'] = $rtDataArr1['userDetails']['mobile'];
