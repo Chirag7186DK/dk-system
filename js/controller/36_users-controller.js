@@ -119,7 +119,7 @@ function UsersController($scope, $rootScope, UsersServices){
                             }
                             if(rtDataObj!=='' && rtDataObj!==false && rtDataObj!==undefined){
                                 if(rtDataObj['isOtpCodeSent']==='N' && rtDataObj['isOtpCodeValidated']==='N'){
-                                    removeUserSignUpDataFromSesion();
+                                    removeTemporaryUserSignUpDataFromSesion();
                                     $rootScope.showAccountFormSectionName = 'signUpSection';
                                     $rootScope.isShowUserSignUpNoticeMsg = 'TRUE';
                                     $rootScope.userSignUpNoticeMsgStr = rtDataObj['msgStr'];
@@ -132,6 +132,11 @@ function UsersController($scope, $rootScope, UsersServices){
                                     storeAuthenticatedUserDetailsInSession(rtDataObj['userDetails']);
                                     window.location.href = globalBaseSitePath;
                                 }
+                            }else{
+                                removeTemporaryUserSignUpDataFromSesion();
+                                removeTemporaryUserSignedInDataFromSesion();
+                                $rootScope.showAccountFormSectionName = 'signUpSection';
+                                $rootScope.isShowUserSignUpNoticeMsg = 'FALSE';
                             }
                         });
                     });
