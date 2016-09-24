@@ -37,31 +37,30 @@ class UsersServicesV1 implements IUsersServicesV1{
     
     // CJ defined this action 2016-09-21
     public function userSignUpAuthentication($paramDataArr){
-        
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Email-Id is already associated with us !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
         $rspDetails['isOtpCodeValidated'] = 'N';
-        
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            
             if($paramDataArr['EmailAuthAndOtpRequest']=='Y'){
-                
                 $rtDataArr1 = commonfunction :: handlingUserSignUpEmailAndOtpRequest($paramDataArr);
                 $rspDetails = array_merge($rspDetails, $rtDataArr1);
-                
+                $rspDetails['name'] = $paramDataArr['name'];
+                $rspDetails['email'] = $paramDataArr['email'];
+                $rspDetails['mobile'] = $paramDataArr['mobile'];
             }else if($paramDataArr['validateOtpAndCreateAccountRequest']=='Y'){
-                
                 $rtDataArr1 = commonfunction :: handlingUserSignUpSentOtpcode($paramDataArr);
                 if($rtDataArr1['isOtpCodeValidated']=='N'){
                     $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                    $rspDetails['name'] = $paramDataArr['name'];
+                    $rspDetails['email'] = $paramDataArr['email'];
+                    $rspDetails['mobile'] = $paramDataArr['mobile'];
                 }else if($rtDataArr1['isOtpCodeValidated']=='Y'){
                     // creating new account 
                     $paramDataArr['pwd'] = MD5($paramDataArr['pwd']);
                     $paramDataArr['profile_typeid'] = '2';
                     $lastInsertedUserId = UsersDao :: addUserDetails($paramDataArr);
                     if($lastInsertedUserId>0 && $lastInsertedUserId!=false){
-                        $rspDetails['msgStr'] = 'Your account has been created !!!';
                         $rspDetails['isOtpCodeSent'] = 'Y';
                         $rspDetails['isOtpCodeValidated'] = 'Y';
                         $signInParamDataArr = array();
