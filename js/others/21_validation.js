@@ -161,7 +161,7 @@ function validateDataUserSignUpAuthentication(fromSection){
         }
     }
     
-    if(fromSection==='otpSection'){
+    if(fromSection==='signUpOtpSection'){
         $('.userSignUpOtpCodeInput_ErrorClass').empty();
         $('.userSignUpPwdInput_ErrorClass').empty();
         if(isProperInputElementContent('userSignUpOtpCodeInputId')==='FALSE'){
