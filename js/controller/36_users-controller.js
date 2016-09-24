@@ -55,7 +55,6 @@ function UsersController($scope, $rootScope, UsersServices){
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
                             }
-                            console.log("userDataObj=>"+JSON.stringify(userDataObj));
                             if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
                                 if(userDataObj['isUserAccountActive']==='N'
                                     && userDataObj['isOtpCodeSent']==='N' && userDataObj['isOtpCodeValidated']==='N'){
