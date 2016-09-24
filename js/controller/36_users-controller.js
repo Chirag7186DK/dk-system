@@ -26,15 +26,16 @@ function UsersController($scope, $rootScope, UsersServices){
         
         // toggleAccountFormSectionName
         $rootScope.toggleAccountFormSectionName = function(sectionName){
-            removeUserSignUpDataFromSesion();
+            removeTemporaryUserSignUpDataFromSesion();
+            removeTemporaryUserSignedInDataFromSesion();
             $rootScope.showAccountFormSectionName = sectionName;
         };
         
         // collectDataUserSignInAuthentication
-        $rootScope.collectDataUserSignInAuthentication = function(){
-            var rtValidatedDataStatus = validateDataUserSignInAuthentication();
+        $rootScope.collectDataUserSignInAuthentication = function(fromSection){
+            var rtValidatedDataStatus = validateDataUserSignInAuthentication(fromSection);
             if(rtValidatedDataStatus===true){
-                var preparedParamJsonObj = getParamDataForUserSignInAuthentication();
+                var preparedParamJsonObj = getParamDataForUserSignInAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     $rootScope.userSignInAuthentication(preparedParamJsonObj);
                 }
@@ -61,7 +62,9 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.isShowUserSignInNoticeMsg = 'TRUE';
                                     $rootScope.userSignInNoticeMsgStr = userDataObj['msgStr'];
                                 }else if(userDataObj['isUserAccountActive']==='Y'
-                                    && userDataObj['isOtpCodeSent']==='Y' && userDataObj['isOtpCodeValidated']==='N'){
+                                    && (userDataObj['isOtpCodeSent']==='Y' || userDataObj['isOtpCodeSent']==='N') 
+                                    && userDataObj['isOtpCodeValidated']==='N'){
+                                    storeAuthenticatedUserDetailsInSession(userDataObj);
                                     $rootScope.showAccountFormSectionName = 'signInOtpSection';
                                     $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
                                     $rootScope.userSignInOtpNoticeMsgStr = userDataObj['msgStr'];
@@ -71,6 +74,8 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
+                                removeTemporaryUserSignUpDataFromSesion();
+                                removeTemporaryUserSignedInDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signInSection';
                                 $rootScope.isShowUserSignInNoticeMsg = 'TRUE';
                                 $rootScope.userSignInNoticeMsgStr = "Invalid account details !!!";
