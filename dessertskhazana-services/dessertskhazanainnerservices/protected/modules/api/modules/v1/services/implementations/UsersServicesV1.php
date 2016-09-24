@@ -124,6 +124,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+                    $rspDetails['userDetails']['msgStr'] = $rtDataArr3['userDetails']['msgStr'];
                     $rspDetails['userDetails']['name'] = $paramDataArr['name'];
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
                     $rspDetails['userDetails']['mobile'] = $paramDataArr['mobile'];
