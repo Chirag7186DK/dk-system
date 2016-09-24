@@ -71,7 +71,9 @@ function UsersController($scope, $rootScope, UsersServices){
                                     $rootScope.userSignInOtpNoticeMsgStr = userDataObj['msgStr'];
                                 }else if(userDataObj['isUserAccountActive']==='Y'
                                     && userDataObj['isOtpCodeSent']==='Y' && userDataObj['isOtpCodeValidated']==='Y'){
-                                    storeTemporaryUserSignedInData(userDataObj);
+                                    storeAuthenticatedUserDetailsInSession(userDataObj);
+                                    removeTemporaryUserSignUpDataFromSesion();
+                                    removeTemporaryUserSignedInDataFromSesion();
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
