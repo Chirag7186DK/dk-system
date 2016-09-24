@@ -251,6 +251,7 @@ function storeTemporaryUserSignedInData(userDataObj){
                     userSignedInDataObj['name'] = userDataObj['name'];
                     userSignedInDataObj['email'] = userDataObj['email'];
                     userSignedInDataObj['mobile'] = userDataObj['mobile'];
+                    userSignedInDataObj['pwd'] = userDataObj['pwd'];
                     dkParamObj['userSignedInData'] = userSignedInDataObj;
                     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
                 }
