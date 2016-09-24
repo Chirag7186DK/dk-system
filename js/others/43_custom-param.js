@@ -1540,21 +1540,33 @@ function getPageDetailsUserAccessedFrom(){
 }
 
 
-function getParamDataForUserSignInAuthentication(){
+function getParamDataForUserSignInAuthentication(fromSection){
     var paramObj = {};
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
             if(checkUnAuthorizedUserSessionParamObjExists()==='TRUE'){
                 var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
                 var userSessionParamObj = dkParamObj['userSession'];
-                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
-                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>=20 
-                        && (userSessionParamObj['udblogId']).length===0){
-                        paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
-                        paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
-                        paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
-                        paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignInPwdInputId').val());
+                if(fromSection==='signInSection'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['email'] = removeHtmlStripTagsOfContent($('#userSignInEmailInputId').val());
+                    paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userSignInPwdInputId').val());
+                    paramObj['isRequestCheckingCreditional'] = 'Y';
+                    paramObj['isRequestValidateOtpAndUserSignedIn'] = 'N';
+                    if(Object.keys(paramObj).length!==6){
+                        paramObj = {};
+                    }
+                }
+                if(fromSection==='signInOtpSection'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignInOtpCodeInputId').val());
+                    paramObj['isRequestCheckingCreditional'] = 'N';
+                    paramObj['isRequestValidateOtpAndUserSignedIn'] = 'Y';
+                    paramObj = $.extend(paramObj, getTemporaryUserSignedInDataFromSesion());
+                    if(Object.keys(paramObj).length!==9){
+                        paramObj = {};
                     }
                 }
             }
@@ -1563,11 +1575,7 @@ function getParamDataForUserSignInAuthentication(){
         console.log("problem in getParamDataForUserSignInAuthentication=>"+ex);
         paramObj = {};
     }
-    if(Object.keys(paramObj).length===4){
-        return paramObj;
-    }else{
-        return false;
-    }
+    return paramObj;
 }
 
 
