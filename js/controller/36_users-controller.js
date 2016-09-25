@@ -152,7 +152,7 @@ function UsersController($scope, $rootScope, UsersServices){
         $rootScope.collectDataUserFrgtPwdAuthentication = function(fromSection){
             var rtValidatedDataStatus = validateDataUserFrgtPwdAuthentication(fromSection);
             if(rtValidatedDataStatus===true){
-                var preparedParamJsonObj = getParamDataForUserSignInAuthentication(fromSection);
+                var preparedParamJsonObj = getParamDataForUserFrgtPwdAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     $rootScope.userSignInAuthentication(preparedParamJsonObj);
                 }
