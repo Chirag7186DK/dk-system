@@ -532,7 +532,8 @@ class commonfunction{
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
             if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
-                $userLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
+                $rtDataArr1['userDetails']['usedOtpcodeId'] = $paramDataArr['usedOtpcodeId'];
+                $userLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails']);
                 if(strlen($userLogNo)>=20){
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
@@ -570,10 +571,11 @@ class commonfunction{
                 $userLogNo = "ULNO".time().$sha1String;
             }
             $userInfoLogDetails = array();
-            $userInfoLogDetails['user_id'] = $userJsonData['unmd5UserId'];
-            $userInfoLogDetails['user_logno'] = $userLogNo;
             $userInfoLogDetails['user_sessionid'] = $userJsonData['user_sessionid'];
             $userInfoLogDetails['user_sessionstarttime'] = $userJsonData['usersession_starttimestamp'];
+            $userInfoLogDetails['user_logno'] = $userLogNo;
+            $userInfoLogDetails['user_id'] = $userJsonData['unmd5UserId'];
+            $userInfoLogDetails['otpcodeId'] = $userJsonData['usedOtpcodeId'];
             $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
             $userInfoLogDetails['status'] = 'A';
             $lastInsertedId = UsersDao :: addUserLogDetails($userInfoLogDetails);
