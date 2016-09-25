@@ -1759,11 +1759,6 @@
         background:#fff!important;
     }
     
-    .frgtPwdHeaderSectionDivClass{
-        padding-top:0px!important;
-        padding-bottom:0px!important;
-    }
-    
     .userFrgtPwdHeaderLblClass{
         color:#333!important;
         font-size:18px!important;
@@ -1780,8 +1775,8 @@
     }
     
     .userFrgtPwdFormSectionContainerDivClass div{
-        padding-top:10px;
-        padding-bottom:10px;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
     }
     
     .userFrgtPwdFormfieldHintPClass{
@@ -1816,10 +1811,18 @@
         border:0px!important;
         font-weight:bold!important;
         background:none!important;
-        color:#e7e7e7!important;
+        color:#c1bebe!important;
     }
     
     .userFrgtPwdCancelSubmitBtnClass:hover{
+        border-radius:0px!important;
+        border:0px!important;
+        font-weight:bold!important;
+        background:none!important;
+        color:#fb366e!important;
+    }
+    
+    .userFrgtPwdResendOtpSubmitBtnClass:hover{
         border-radius:0px!important;
         border:0px!important;
         font-weight:bold!important;
