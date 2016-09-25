@@ -476,6 +476,9 @@ function attachValidationPwdinputDirective($timeout){
             $($el).bind("cut copy paste",function(e){
                 e.preventDefault();
             });
+            $($el).on("contextmenu",function(e){
+                return false;
+            });
         }
     };
 }
