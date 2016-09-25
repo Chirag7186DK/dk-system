@@ -23,7 +23,7 @@ function UsersController($scope, $rootScope, UsersServices){
             if(userLoggedInSessionStatus===true){
                 window.location.href = globalBaseSitePath;
             }else if(userLoggedInSessionStatus===false){
-                $rootScope.toggleAccountFormSectionName('frgtPwdStep1Section');
+                $rootScope.toggleAccountFormSectionName('signInSection');
             } 
         };
         
