@@ -129,16 +129,17 @@
             
             <!-- display forgot password info section -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userForgotFormInfoWrapperDivClass">
+                
                 <!-- forgot password step1 info -->
                 <div ng-if="showAccountFormSectionName=='frgtPwdStep1Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
-                        <h4 class='userFrgtPwdStep1HeaderLblClass'>Forgot Password?</h4>
-                        <p class='userFrgtPwdStep1PLblClass'>
+                        <h4 class='userFrgtPwdHeaderLblClass'>Forgot Password?</h4>
+                        <p class='userFrgtPwdPLblClass'>
                            We will send One Time Password (OTP) to your registered email & mobile with us to reset your password. 
                         </p>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNoticeMsgContainerDivClass">
-                        {{userSignUpNoticeMsgStr}}
+                    <div ng-if="isShowFrgtPwdNoticeMsgStepNo=='frgtPwdStep1'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdNoticeMsgContainerDivClass">
+                        {{userFrgtPwdNoticeMsgStr}}
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdEmailContainerDivClass">
                         <input placeholder='Registered Email' type="text" id='userFrgtPwdEmailInputId' class="form-control userFrgtPwdEmailInputClass">
@@ -159,6 +160,32 @@
                         Already have an account? SignIn here.
                     </div>
                 </div>
+                
+                <!-- forgot password step2 info -->
+                <div ng-if="showAccountFormSectionName=='frgtPwdStep2Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
+                        <h4 class='userFrgtPwdHeaderLblClass'>Enter One Time Password</h4>
+                    </div>
+                    <div ng-if="isShowFrgtPwdNoticeMsgStepNo=='frgtPwdStep2'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdNoticeMsgContainerDivClass">
+                        {{userFrgtPwdNoticeMsgStr}}
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdOtpCodeContainerDivClass">
+                        <input placeholder='OTP' attach-validation-otpcodeinput-directive type="text" id='userFrgtPwdOtpCodeInputId' class="form-control userFrgtPwdOtpCodeInputClass">
+                        <p class="userFrgtPwdOtpCodeInput_ErrorClass"></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdOperationBtnContainerDivClass">
+                        <button ng-click="toggleAccountFormSectionName('frgtPwdStep2Section')" class='btn userFrgtPwdResendOtpSubmitBtnClass'>
+                            <i class='fa fa-remove'></i> RESEND OTP
+                        </button>
+                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep2Section')" class='btn userFrgtPwdSubmitBtnClass'>
+                            <i class='fa fa-key'></i> VERIFY
+                        </button>
+                    </div>
+                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                        Already have an account? SignIn here.
+                    </div>
+                </div>
+                
             </div>
             
             
