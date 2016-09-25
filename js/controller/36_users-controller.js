@@ -146,6 +146,13 @@ function UsersController($scope, $rootScope, UsersServices){
             }
         };
         
+        // resendOtpcodeClick
+        $rootScope.resendOtpcodeClick = function(fromSection){
+            if(fromSection==='signInOtpSection'){
+                getParamDataForResendOtpcode(fromSection);
+            }
+        };
+        
         // redirectToUserAccessedLastPageFrom
         $rootScope.redirectToUserAccessedLastPageFrom = function(){
             var lastPageAccessedByUser = getPageDetailsUserAccessedFrom();
