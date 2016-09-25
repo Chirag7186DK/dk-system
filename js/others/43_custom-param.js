@@ -1615,8 +1615,7 @@ function getParamDataForUserSignInAuthentication(fromSection){
                     if(Object.keys(paramObj).length!==6){
                         paramObj = {};
                     }
-                }
-                if(fromSection==='signInOtpSection'){
+                }else if(fromSection==='signInOtpSection'){
                     paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
                     paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
                     paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignInOtpCodeInputId').val());
@@ -1631,6 +1630,56 @@ function getParamDataForUserSignInAuthentication(fromSection){
         }
     }catch(ex){
         console.log("problem in getParamDataForUserSignInAuthentication=>"+ex);
+        paramObj = {};
+    }
+    return paramObj;
+}
+
+function getParamDataForUserFrgtPwdAuthentication(fromSection){
+    var paramObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(checkUnAuthorizedUserSessionParamObjExists()==='TRUE'){
+                var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(fromSection==='frgtPwdStep1Section'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['email'] = removeHtmlStripTagsOfContent($('#userFrgtPwdEmailInputId').val());
+                    paramObj['isRequestCheckingCreditional'] = 'Y';
+                    paramObj['isRequestValidateOtp'] = 'N';
+                    paramObj['isRequestUpdatePwd'] = 'N';
+                    if(Object.keys(paramObj).length!==6){
+                        paramObj = {};
+                    }
+                }else if(fromSection==='frgtPwdStep2Section'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userFrgtPwdOtpCodeInputId').val());
+                    paramObj['isRequestCheckingCreditional'] = 'N';
+                    paramObj['isRequestValidateOtp'] = 'Y';
+                    paramObj['isRequestUpdatePwd'] = 'N';
+                    paramObj = $.extend(paramObj, getTemporaryUserFrgtPwdDataFromSesion());
+                    if(Object.keys(paramObj).length!==8){
+                        paramObj = {};
+                    }
+                }else if(fromSection==='frgtPwdStep3Section'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['pwd'] = removeHtmlStripTagsOfContent($('#userFrgtPwdInputId').val());
+                    paramObj['cpwd'] = removeHtmlStripTagsOfContent($('#userFrgtPwdConfirmInputId').val());
+                    paramObj['isRequestCheckingCreditional'] = 'N';
+                    paramObj['isRequestValidateOtp'] = 'N';
+                    paramObj['isRequestUpdatePwd'] = 'Y';
+                    paramObj = $.extend(paramObj, getTemporaryUserFrgtPwdDataFromSesion());
+                    if(Object.keys(paramObj).length!==9){
+                        paramObj = {};
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        console.log("problem in getParamDataForUserFrgtPwdAuthentication=>"+ex);
         paramObj = {};
     }
     return paramObj;
@@ -1655,8 +1704,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
                     if(Object.keys(paramObj).length!==7){
                         paramObj = {};
                     }
-                }
-                if(fromSection==='signUpOtpSection'){
+                }else if(fromSection==='signUpOtpSection'){
                     paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
                     paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
                     paramObj['otpcode'] = removeHtmlStripTagsOfContent($('#userSignUpOtpCodeInputId').val());
