@@ -226,6 +226,18 @@ class UsersDao{
         $sqlColumnNames = "";
         $sqlValues = "";
         $lastInsertedId = false;
+        if(array_key_exists('user_sessionid', $paramData)){
+            if($paramData['user_sessionid']!=''){
+                $sqlColumnNames.=" user_sessionid,";
+                $sqlValues.="'".$paramData['user_sessionid']."',";
+            }
+        }
+        if(array_key_exists('user_sessionstarttime', $paramData)){
+            if($paramData['user_sessionstarttime']!=''){
+                $sqlColumnNames.=" user_sessionstarttime,";
+                $sqlValues.="'".$paramData['user_sessionstarttime']."',";
+            }
+        }
         if(array_key_exists('user_logno', $paramData)){
             if($paramData['user_logno']!=''){
                 $sqlColumnNames.=" user_logno,";
@@ -238,16 +250,10 @@ class UsersDao{
                 $sqlValues.="'".$paramData['user_id']."',";
             }
         }
-        if(array_key_exists('user_sessionid', $paramData)){
-            if($paramData['user_sessionid']!=''){
-                $sqlColumnNames.=" user_sessionid,";
-                $sqlValues.="'".$paramData['user_sessionid']."',";
-            }
-        }
-        if(array_key_exists('user_sessionstarttime', $paramData)){
-            if($paramData['user_sessionstarttime']!=''){
-                $sqlColumnNames.=" user_sessionstarttime,";
-                $sqlValues.="'".$paramData['user_sessionstarttime']."',";
+        if(array_key_exists('otpcodeId', $paramData)){
+            if($paramData['otpcodeId']!=''){
+                $sqlColumnNames.=" otpcodeId,";
+                $sqlValues.="'".$paramData['otpcodeId']."',";
             }
         }
         if(array_key_exists('user_geolocationdetails', $paramData)){
