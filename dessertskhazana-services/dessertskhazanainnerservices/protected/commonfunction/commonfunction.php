@@ -529,17 +529,15 @@ class commonfunction{
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
         $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
-        // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
             if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
-                // store user info as login status
-                $lastInsertedUserInfoLogId = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
-                if($lastInsertedUserInfoLogId!=false && $lastInsertedUserInfoLogId!=''){
+                $userLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails'], $paramDataArr);
+                if(strlen($userLogNo)>=20){
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
                     $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
-                    $rspDetails['userDetails']['udblogId'] = $lastInsertedUserInfoLogId;
+                    $rspDetails['userDetails']['udblogId'] = $userLogNo;
                     $rspDetails['userDetails']['userProfileTypeId'] = $rtDataArr1['userDetails']['userProfileTypeId'];
                 }
             }
@@ -564,7 +562,6 @@ class commonfunction{
     public static function preparedDataToStoreInfoAbtUserAsLog($userJsonData){
         $userLogNo = false;
         if(count($userJsonData)>0 && $userJsonData!=false){
-            // fetch user max log no
             $userMaxLogNo = UsersDao::generateMaxUserLogNo();
             if($userMaxLogNo>=0){
                 $sha1String = sha1($userMaxLogNo.time());
@@ -572,7 +569,6 @@ class commonfunction{
             }else{
                 $userLogNo = "ULNO".time().$sha1String;
             }
-            // track user info accessing web app details
             $userInfoLogDetails = array();
             $userInfoLogDetails['user_id'] = $userJsonData['unmd5UserId'];
             $userInfoLogDetails['user_logno'] = $userLogNo;
@@ -580,8 +576,8 @@ class commonfunction{
             $userInfoLogDetails['user_sessionstarttime'] = $userJsonData['usersession_starttimestamp'];
             $userInfoLogDetails['user_geolocationdetails'] = $_SERVER['REMOTE_ADDR'];
             $userInfoLogDetails['status'] = 'A';
-            $lastInsertedUserInfoLogId = UsersDao :: addUserLogDetails($userInfoLogDetails);
-            if($lastInsertedUserInfoLogId>0){}
+            $lastInsertedId = UsersDao :: addUserLogDetails($userInfoLogDetails);
+            if($lastInsertedId>0 && $lastInsertedId!=''){}
         }
         return $userLogNo;
     }
@@ -685,6 +681,7 @@ class commonfunction{
                 if($rtOtpcodeStatusUpdated=='TRUE'){
                     $rspDetails['msgStr'] = 'Entered One Time Password has been matched !!!';
                     $rspDetails['isOtpCodeValidated'] = 'Y';
+                    $rspDetails['usedOtpcodeId'] = $dataArr1[0]['otpcodeId'];
                 }
             }
         } 
