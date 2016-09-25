@@ -77,6 +77,25 @@ class UsersController extends V1Controller{
         }
     }
     
+    public function actionUserForgotPwdAuthentication(){
+        if(ComponentsHttp::httpMethod()=="POST"){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForUserForgotPwdAuthentication($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
+                    $UsersServicesV1 = new UsersServicesV1();
+                    $rspDetails = $UsersServicesV1->userForgotPwdAuthentication($paramDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     public function actionSendOtpCode(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
