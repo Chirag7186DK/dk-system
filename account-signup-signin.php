@@ -186,7 +186,7 @@
                         <p class="userSignUpPwdInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpOperationContainerDivClass">
-                        <span ng-click="resendOtpcodeClick('signInOtpSection');">Resend OTP</span> / <span>Forgot Password?</span>
+                        <span ng-click="resendOtpcodeClick('signUpOtpSection');">Resend OTP</span> / <span>Forgot Password?</span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
                         <button ng-click="collectDataUserSignUpAuthentication('signUpOtpSection')" class='btn userSignUpSubmitBtnClass'>
