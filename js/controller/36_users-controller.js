@@ -31,6 +31,7 @@ function UsersController($scope, $rootScope, UsersServices){
         $rootScope.toggleAccountFormSectionName = function(sectionName){
             removeTemporaryUserSignUpDataFromSesion();
             removeTemporaryUserSignedInDataFromSesion();
+            // removeTemporaryUseFrgtPwdDataFromSesion();
             $rootScope.showAccountFormSectionName = sectionName;
         };
         
@@ -146,6 +147,19 @@ function UsersController($scope, $rootScope, UsersServices){
             }
         };
         
+        
+        // collectDataUserFrgtPwdAuthentication
+        $rootScope.collectDataUserFrgtPwdAuthentication = function(fromSection){
+            var rtValidatedDataStatus = validateDataUserFrgtPwdAuthentication(fromSection);
+            if(rtValidatedDataStatus===true){
+                var preparedParamJsonObj = getParamDataForUserSignInAuthentication(fromSection);
+                if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
+                    $rootScope.userSignInAuthentication(preparedParamJsonObj);
+                }
+            }
+        };
+        
+        
         // resendOtpcodeClick
         $rootScope.resendOtpcodeClick = function(fromSection){
             var paramDataObj = getParamDataForResendOtpcode(fromSection);
@@ -166,6 +180,8 @@ function UsersController($scope, $rootScope, UsersServices){
                 console.log("Problem in resendOtpcodeClick=>"+ex);
             }
         };
+        
+        
         
         // redirectToUserAccessedLastPageFrom
         $rootScope.redirectToUserAccessedLastPageFrom = function(){
