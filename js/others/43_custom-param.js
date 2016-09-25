@@ -1623,6 +1623,40 @@ function getParamDataForUserSignUpAuthentication(fromSection){
     return paramObj;
 }
 
+function getParamDataForResendOtpcode(fromSection){
+    var paramObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(checkUnAuthorizedUserSessionParamObjExists()==='TRUE'){
+                var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                var userSessionParamObj = dkParamObj['userSession'];
+                if(fromSection==='signInOtpSection'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['purposetype'] = 'resendForSignIn';
+                    paramObj = $.extend(paramObj, getTemporaryUserSignedInDataFromSesion());
+                    if(Object.keys(paramObj).length!==7){
+                        paramObj = {};
+                    }
+                }
+                if(fromSection==='signUpOtpSection'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['purposetype'] = 'resendForSignUp';
+                    paramObj = $.extend(paramObj, getTemporaryUserSignUpDataFromSesion());
+                    if(Object.keys(paramObj).length!==6){
+                        paramObj = {};
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        console.log("problem in getParamDataForUserSignUpAuthentication=>"+ex);
+        paramObj = {};
+    }
+    return paramObj;
+}
+
 
 function storeRequestedSectionNameToAccessInUserAccount(requestedSectionNameAccessInUserAccount){
     try{
