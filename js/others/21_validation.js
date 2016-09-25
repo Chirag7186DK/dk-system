@@ -803,69 +803,6 @@ function validateOrderDeliveryAddressData(fcClass){
 
 
 // CJ defined this fucntion 2016-08-21
-function attachedFieldValidationUserProfileInfo(){
-    if($('.editUsernameInputClass').length===1){
-        $('.editUsernameInputClass').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('.editUsermobileInputClass').length===1){
-        $('.editUsermobileInputClass').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"10", 
-                "allowDecSep":false
-            }
-        );
-        // CJ added code here 2016-08-21
-        $('.editUsermobileInputClass').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    if(currentTextVal.charAt(0)<=5){
-                        $(this).val('');
-                    }
-                }
-            }catch(ex){
-                $(this).val('');
-            }
-        });
-    }
-    if($('.editUseremailInputClass').length===1){
-        $('.editUseremailInputClass').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                    if(!currentTextVal.match(mail)){
-                        $(this).css({'border-color':'#f18178'});
-                    }else{
-                        $(this).css({'border-color':'#ccc'});
-                    }
-                }
-            }catch(ex){
-                $(this).val('');
-            }
-        });
-    }
-    if($('.editUserbirthdateInputClass').length===1){
-        var cdate = new Date();
-        $('.editUserbirthdateInputClass').datepicker({
-            maxDate:cdate,
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true
-        });
-    }
-}
-
-// CJ defined this fucntion 2016-08-21
 function validationUserProfileInfoData(){
     var incorrectFieldDataCounter = 0;
     if($('.editUsernameInputClass').length===1){
