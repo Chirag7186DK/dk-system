@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInOperationContainerDivClass">
                         <span ng-click="toggleAccountFormSectionName('frgtPwdStep1Section');">
-                            Forgot Password / Create Pasword
+                            Forgot Password / Create Password
                         </span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInBtnContainerDivClass">
