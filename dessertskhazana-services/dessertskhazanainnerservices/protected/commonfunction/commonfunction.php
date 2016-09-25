@@ -509,7 +509,6 @@ class commonfunction{
         $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            // checking otp code active or not
             $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignInAuth(
                 $paramDataArr['user_sessionid'], $paramDataArr['name'],
                 $paramDataArr['email'], $paramDataArr['mobile'], $paramDataArr['otpcode']);
@@ -518,6 +517,7 @@ class commonfunction{
                 if($rtOtpcodeStatusUpdated=='TRUE'){
                     $rspDetails['userDetails']['msgStr'] = 'Entered One Time Password has been matched !!!';
                     $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
+                    $rspDetails['usedOtpcodeId'] = $dataArr1[0]['otpcodeId'];
                 }
             }
         } 
