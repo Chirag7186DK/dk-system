@@ -481,6 +481,7 @@ class commonfunction{
             $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
             $paramDataArr['otpcode'] = $otpCode;
             $paramDataArr['sent_onmedium'] = 'mobile';
+            $paramDataArr['purposetype'] = 'signIn';
             // storing otp code
             $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             // sending otp code
