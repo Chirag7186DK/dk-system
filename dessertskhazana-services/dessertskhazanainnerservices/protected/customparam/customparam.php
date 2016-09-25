@@ -708,7 +708,20 @@ class customparam{
                 $retStatus = 'TRUE';
             }
         }
-        
+        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)
+            && array_key_exists('isRequestValidateOtp', $paramJsonData)
+            && array_key_exists('isRequestUpdatePwd', $paramJsonData)
+            && array_key_exists('tokenId', $paramJsonData)){
+            if($paramJsonData['isRequestCheckingCreditional']=='N'
+                && $paramJsonData['isRequestValidateOtp']=='N'
+                && $paramJsonData['isRequestUpdatePwd']=='Y'
+                && $paramJsonData['tokenId']>0 && $paramJsonData['tokenId']!=''){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==4){
+                $retStatus = 'TRUE';
+            }
+        }
         return $retStatus;
     }
     
