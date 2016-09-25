@@ -237,9 +237,16 @@ function validateDataUserFrgtPwdAuthentication(fromSection){
             }
         }
         if(inValidDataCount===0){
-            var userPwdText = removeHtmlStripTagsOfContent($('#userFrgtPwdInputId').val());
-            var userCPwdText = removeHtmlStripTagsOfContent($('#userFrgtPwdConfirmInputId').val());
-            if(userPwdText!=='' && userCPwdText!=='' && userPwdText!==userCPwdText){
+            var userFrgtPwdDataObj = getTemporaryUserFrgtPwdDataFromSesion();
+            if(userFrgtPwdDataObj!==false && jQuery.isEmptyObject(userFrgtPwdDataObj)===false){
+                var userPwdText = removeHtmlStripTagsOfContent($('#userFrgtPwdInputId').val());
+                var userCPwdText = removeHtmlStripTagsOfContent($('#userFrgtPwdConfirmInputId').val());
+                if(userPwdText!=='' && userCPwdText!=='' && userPwdText!==userCPwdText){
+                    $('.userFrgtPwdConfirmInput_ErrorClass').append("New & confirm password must be same between 5 to 10 any alphanumberic characters only !!!");
+                    inValidDataCount++;
+                }
+            }else{
+                $('.userFrgtPwdConfirmInput_ErrorClass').append("New & confirm password must be same between 5 to 10 any alphanumberic characters only !!!");
                 inValidDataCount++;
             }
         }
