@@ -148,8 +148,20 @@ function UsersController($scope, $rootScope, UsersServices){
         
         // resendOtpcodeClick
         $rootScope.resendOtpcodeClick = function(fromSection){
-            if(fromSection==='signInOtpSection'){
-                getParamDataForResendOtpcode(fromSection);
+            var paramDataObj = getParamDataForResendOtpcode(fromSection);
+            try{
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                    var rtDataObj = UsersServices.sendOtpcode(paramDataObj);
+                    if(fromSection==='signInOtpSection'){
+                        $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
+                        $rootScope.userSignInOtpNoticeMsgStr = 'OTP sent successfully on your registered mobile no.s with us and it will take 15 sec approx to reach at your message box !!!';
+                    }else if(fromSection==='signUpOtpSection'){
+                        $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
+                        $rootScope.userSignUpOtpNoticeMsgStr = 'OTP sent successfully on your mobile no.s and it will take 15 sec approx to reach at your message box !!!';
+                    }
+                }
+            }catch(ex){
+                console.log("Problem in resendOtpcodeClick=>"+ex);
             }
         };
         
