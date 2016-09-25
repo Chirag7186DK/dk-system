@@ -1759,9 +1759,9 @@
         background:#fff!important;
     }
     
-    .userFrgtPwdFormSectionContainerDivClass div{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
+    .frgtPwdHeaderSectionDivClass{
+        padding-top:0px!important;
+        padding-bottom:0px!important;
     }
     
     .userFrgtPwdHeaderLblClass{
@@ -1777,6 +1777,11 @@
     .userFrgtPwdNoticeMsgContainerDivClass{
         color:#308fbb!important;
         font-size:13px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass div{
+        padding-top:10px;
+        padding-bottom:10px;
     }
     
     .userFrgtPwdFormfieldHintPClass{
