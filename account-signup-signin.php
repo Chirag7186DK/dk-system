@@ -104,7 +104,7 @@
                 </div>
                 
                 <!-- sign-in text code form info -->
-                <div class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
+                <div ng-if="showAccountFormSectionName=='signInOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                     <div ng-if="isShowUserSignInOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeOtpMsgContainerDivClass">
                         {{userSignInOtpNoticeMsgStr}}
                     </div>
