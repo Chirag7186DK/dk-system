@@ -9,6 +9,7 @@ interface IUsersServicesV1{
     public function generateUserSessionId($InDtoArr);
     public function userSignUpAuthentication($InDtoArr);
     public function userSignInAuthentication($InDtoArr);
+    public function sendOtpcode($InDtoArr);
     public function getUserDashboardSummaryDataDetails($InDtoArr);
     public function getUserPersonalInfoData($InDtoArr);
     public function updateUserPersonalInfoData($InDtoArr);
