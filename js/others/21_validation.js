@@ -239,8 +239,7 @@ function validateDataUserFrgtPwdAuthentication(fromSection){
         if(inValidDataCount===0){
             var userPwdText = removeHtmlStripTagsOfContent($('#userFrgtPwdInputId').val());
             var userCPwdText = removeHtmlStripTagsOfContent($('#userFrgtPwdConfirmInputId').val());
-            if(userPwdText!=='' && userCPwdText!=='' 
-                && userPwdText!==userCPwdText){
+            if(userPwdText!=='' && userCPwdText!=='' && userPwdText!==userCPwdText){
                 inValidDataCount++;
             }
         }
