@@ -306,6 +306,60 @@ function removeTemporaryUserSignedInDataFromSesion(){
     }
 }
 
+function storeTemporaryUserFrgtPwdData(userDataObj){
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            if(userDataObj!==false && userDataObj!==undefined
+                && jQuery.isEmptyObject(userDataObj)===false){
+                if(userDataObj.hasOwnProperty('email') && userDataObj.hasOwnProperty('tokenId')){
+                    var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+                    var userFrgtPwdDataObj = {};
+                    userFrgtPwdDataObj['email'] = userDataObj['email'];
+                    userFrgtPwdDataObj['tokenId'] = userDataObj['tokenId'];
+                    dkParamObj['userFrgtPwdData'] = userFrgtPwdDataObj;
+                    sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+                }
+            }
+        }
+    }catch(ex){
+        console.log("Problem in storeTemporaryUserFrgtPwdData=>"+ex);
+    }
+}
+
+function getTemporaryUserFrgtPwdDataFromSesion(){
+    var userFrgtPwdDataObj = {};
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userFrgtPwdData')){
+                var dataObj = dkParamObj['userFrgtPwdData'];
+                if(dataObj.hasOwnProperty('email') && dataObj.hasOwnProperty('tokenId')){
+                    if((dataObj['email']).length>0 && parseInt(dataObj['tokenId'])>0){
+                        userFrgtPwdDataObj = dataObj;
+                    }
+                }
+            }
+        }
+    }catch(ex){
+        console.log("Problem in getTemporaryUserFrgtPwdDataFromSesion=>"+ex);
+    }
+    return userFrgtPwdDataObj;
+}
+
+function removeTemporaryUserFrgtPwdDataFromSesion(){
+    try{
+        if(checkDkSessionParamObjExists()==='TRUE'){
+            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
+            if(dkParamObj.hasOwnProperty('userFrgtPwdData')===true){
+                delete dkParamObj['userFrgtPwdData'];
+                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
+            }
+        }
+    }catch(ex){
+        console.log("Problem in removeTemporaryUserFrgtPwdDataFromSesion=>"+ex);
+    }
+}
+
 
 function getParamObjFromSessionForLoadingDeliveryCityList(){
     try{
