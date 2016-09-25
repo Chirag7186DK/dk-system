@@ -751,7 +751,7 @@ class commonfunction{
         $rspDetails['userDetails']['msgStr'] = 'Invalid One Time Password has been entered !!!';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $userId = $paramDataArr['tokenId'];
-            $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignInAuth(
+            $dataArr1 = UsersDao :: checkOtpCodeActiveForUserFrgtPwdAuth(
                 $paramDataArr['user_sessionid'], $userId,
                 $paramDataArr['email'], $paramDataArr['otpcode']);
             if(count($dataArr1)==1 && $dataArr1!=false){
