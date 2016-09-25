@@ -393,45 +393,51 @@ class UsersDao{
         $sqlValues = "";
         $lastInsertedId = false;
         if(array_key_exists('user_sessionid', $paramData)){
-            if($paramData['user_sessionid']!=''){
+            if(strlen($paramData['user_sessionid'])>=20){
                 $sqlColumnNames.=" user_sessionid,";
                 $sqlValues.="'".$paramData['user_sessionid']."',";
             }
         }
         if(array_key_exists('name', $paramData)){
-            if($paramData['name']!='' && strlen($paramData['name'])>0){
+            if(strlen($paramData['name'])>0){
                 $sqlColumnNames.=" name,";
                 $sqlValues.="'".$paramData['name']."',";
             }
         }
         if(array_key_exists('email', $paramData)){
-            if($paramData['email']!='' && strlen($paramData['email'])>0){
+            if(strlen($paramData['email'])>0){
                 $sqlColumnNames.=" email,";
                 $sqlValues.="'".$paramData['email']."',";
             }
         }
         if(array_key_exists('mobile', $paramData)){
-            if($paramData['mobile']!='' && strlen($paramData['mobile'])>0){
+            if(strlen($paramData['mobile'])==10){
                 $sqlColumnNames.=" mobile,";
                 $sqlValues.="'".$paramData['mobile']."',";
             }
         }
         if(array_key_exists('pwd', $paramData)){
-            if($paramData['pwd']!='' && strlen($paramData['pwd'])>0){
+            if(strlen($paramData['pwd'])>=5 && strlen($paramData['pwd'])<=10){
                 $sqlColumnNames.=" pwd,";
                 $sqlValues.="'".$paramData['pwd']."',";
             }
         }
         if(array_key_exists('otpcode', $paramData)){
-            if($paramData['otpcode']!='' && strlen($paramData['otpcode'])>0){
+            if(strlen($paramData['otpcode'])==6){
                 $sqlColumnNames.=" otpcode,";
                 $sqlValues.="'".$paramData['otpcode']."',";
             }
         }
         if(array_key_exists('sent_onmedium', $paramData)){
-            if($paramData['sent_onmedium']!='' && strlen($paramData['sent_onmedium'])>0){
+            if(strlen($paramData['sent_onmedium'])>=5){
                 $sqlColumnNames.=" sent_onmedium,";
                 $sqlValues.="'".$paramData['sent_onmedium']."',";
+            }
+        }
+        if(array_key_exists('purposetype', $paramData)){
+            if(strlen($paramData['purposetype'])>=5){
+                $sqlColumnNames.=" purposetype,";
+                $sqlValues.="'".$paramData['purposetype']."',";
             }
         }
         if($sqlValues!='' && $sqlColumnNames!=''){
