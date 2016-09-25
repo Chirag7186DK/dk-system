@@ -694,12 +694,10 @@ class customparam{
             && array_key_exists('isRequestValidateOtp', $paramJsonData)
             && array_key_exists('tokenId', $paramJsonData)    
             && array_key_exists('otpcode', $paramJsonData)   
-            && array_key_exists('otpcodeTokenId', $paramJsonData)       
             && array_key_exists('isRequestUpdatePwd', $paramJsonData)){
             if($paramJsonData['isRequestCheckingCreditional']=='N'
                 && $paramJsonData['isRequestValidateOtp']=='Y'
                 && strlen($paramJsonData['otpcode'])==6
-                && $paramJsonData['otpcodeTokenId']>0 && $paramJsonData['otpcodeTokenId']!=''
                 && $paramJsonData['tokenId']>0 && $paramJsonData['tokenId']!=''  
                 && $paramJsonData['isRequestUpdatePwd']=='N'){
                 $correctParamKeyValueDataCount++;
