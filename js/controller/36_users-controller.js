@@ -151,7 +151,9 @@ function UsersController($scope, $rootScope, UsersServices){
             var paramDataObj = getParamDataForResendOtpcode(fromSection);
             try{
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
-                    var rtDataObj = UsersServices.sendOtpcode(paramDataObj);
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    var rtDataObj = UsersServices.sendOtpcode(apiParamJsonObj);
                     if(fromSection==='signInOtpSection'){
                         $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
                         $rootScope.userSignInOtpNoticeMsgStr = 'OTP sent successfully on your registered mobile no.s with us and it will take 15 sec approx to reach at your message box !!!';
