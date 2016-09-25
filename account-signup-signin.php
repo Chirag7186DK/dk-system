@@ -157,7 +157,7 @@
                         <button ng-click="toggleAccountFormSectionName('signInSection')" class='btn userFrgtPwdCancelSubmitBtnClass'>
                             <i class='fa fa-remove'></i> CANCEL
                         </button>
-                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep1Section')" class='btn userFrgtPwdSubmitBtnClass'>
+                        <button ng-click="collectDataUserFrgtPwdAuthentication('frgtPwdStep1Section')" class='btn userFrgtPwdSubmitBtnClass'>
                             <i class='fa fa-key'></i> RESET PASSWORD
                         </button>
                     </div>
