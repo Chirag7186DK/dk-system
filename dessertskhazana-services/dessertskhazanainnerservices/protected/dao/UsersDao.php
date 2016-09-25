@@ -404,6 +404,12 @@ class UsersDao{
                 $sqlValues.="'".$paramData['user_sessionid']."',";
             }
         }
+        if(array_key_exists('user_id', $paramData)){
+            if($paramData['user_id']!='' && ($paramData['user_id'])>0){
+                $sqlColumnNames.=" user_id,";
+                $sqlValues.="'".$paramData['user_id']."',";
+            }
+        }
         if(array_key_exists('name', $paramData)){
             if(strlen($paramData['name'])>0){
                 $sqlColumnNames.=" name,";
