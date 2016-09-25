@@ -709,10 +709,14 @@ class customparam{
         if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)
             && array_key_exists('isRequestValidateOtp', $paramJsonData)
             && array_key_exists('isRequestUpdatePwd', $paramJsonData)
+            && array_key_exists('pwd', $paramJsonData)
+            && array_key_exists('cpwd', $paramJsonData)
             && array_key_exists('tokenId', $paramJsonData)){
             if($paramJsonData['isRequestCheckingCreditional']=='N'
                 && $paramJsonData['isRequestValidateOtp']=='N'
                 && $paramJsonData['isRequestUpdatePwd']=='Y'
+                && (strlen($paramJsonData['pwd'])>=5 && strlen($paramJsonData['pwd'])<=10)
+                && $paramJsonData['pwd']==$paramJsonData['cpwd']
                 && $paramJsonData['tokenId']>0 && $paramJsonData['tokenId']!=''){
                 $correctParamKeyValueDataCount++;
             }
