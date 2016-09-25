@@ -746,6 +746,7 @@ class commonfunction{
     
     public static function handlingUserForgotPwdSentOtpcode($paramDataArr){
         $rspDetails = array();
+        $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
         $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
         $rspDetails['userDetails']['msgStr'] = 'Invalid One Time Password has been entered !!!';
