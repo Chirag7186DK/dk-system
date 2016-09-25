@@ -645,6 +645,7 @@ class commonfunction{
                 $otpCode = '123456';
                 $paramDataArr['otpcode'] = $otpCode;
                 $paramDataArr['sent_onmedium'] = 'mobile';
+                $paramDataArr['purposetype'] = 'signUp';
                 // storing otp code
                 $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
