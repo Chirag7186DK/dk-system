@@ -7,7 +7,6 @@
 
 class UsersController extends V1Controller{
     
-    // CJ defined this action 2016-07-24
     public function actionManageTrackUserAccessingWebsites(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -26,7 +25,6 @@ class UsersController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-08-06
     public function actionGenerateUserSessionId(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -41,7 +39,6 @@ class UsersController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-09-21
     public function actionUserSignUpAuthentication(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -61,8 +58,6 @@ class UsersController extends V1Controller{
         }
     }
     
-    
-    // CJ defined this action 2016-08-01
     public function actionUserSignInAuthentication(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -82,7 +77,25 @@ class UsersController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-08-14
+    public function actionSendOtpCode(){
+        if(ComponentsHttp::httpMethod()=="POST"){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForSendingOtpcode($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
+                    $UsersServicesV1 = new UsersServicesV1();
+                    $rspDetails = $UsersServicesV1->sendOtpcode($paramDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     public function actionUserDashboardSummaryData(){
         if(ComponentsHttp::httpMethod()=="GET"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -102,7 +115,6 @@ class UsersController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-08-21
     public function actionManageUserPersonalInfoData(){
         if(ComponentsHttp::httpMethod()=="GET"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -138,7 +150,6 @@ class UsersController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-08-21
     public function actionUpdateUserPasswordInfoData(){
         if(ComponentsHttp::httpMethod()=="PUT"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -158,7 +169,6 @@ class UsersController extends V1Controller{
         }
     }
     
-    // CJ defined this action 2016-08-30
     public function actionUserLogout(){
         if(ComponentsHttp::httpMethod()=="PUT"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
