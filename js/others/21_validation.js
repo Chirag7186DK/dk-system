@@ -77,7 +77,6 @@ function isValidPwd(pwdContent){
 // CJ defined this function 2016-08-01
 function validateDataUserSignInAuthentication(fromSection){
     var inValidDataCount = 0;
-    
     if(fromSection==='signInSection'){
         $('.userSignInEmailInput_ErrorClass').empty();
         $('.userSignInPwdInput_ErrorClass').empty();
@@ -100,7 +99,6 @@ function validateDataUserSignInAuthentication(fromSection){
             }
         }
     }
-    
     if(fromSection==='signInOtpSection'){
         $('.userSignInOtpCodeInput_ErrorClass').empty();
         if(isProperInputElementContent('userSignInOtpCodeInputId')==='FALSE'){
@@ -115,7 +113,6 @@ function validateDataUserSignInAuthentication(fromSection){
             }
         }
     }
-    
     if(inValidDataCount>0){
         return false;
     }else{
@@ -126,7 +123,6 @@ function validateDataUserSignInAuthentication(fromSection){
 // CJ defined this function 2016-09-22
 function validateDataUserSignUpAuthentication(fromSection){
     var inValidDataCount = 0;
-    
     if(fromSection==='signUpSection'){
         $('.userSignUpNameInput_ErrorClass').empty();
         $('.userSignUpEmailInput_ErrorClass').empty();
@@ -160,7 +156,6 @@ function validateDataUserSignUpAuthentication(fromSection){
             }
         }
     }
-    
     if(fromSection==='signUpOtpSection'){
         $('.userSignUpOtpCodeInput_ErrorClass').empty();
         $('.userSignUpPwdInput_ErrorClass').empty();
@@ -193,6 +188,72 @@ function validateDataUserSignUpAuthentication(fromSection){
 }
 
 
+// CJ defined this function 2016-09-22
+function validateDataUserFrgtPwdAuthentication(fromSection){
+    var inValidDataCount = 0;
+    if(fromSection==='frgtPwdStep1Section'){
+        $('.userSignUpNameInput_ErrorClass').empty();
+        $('.userSignUpEmailInput_ErrorClass').empty();
+        $('.userSignUpMobileInput_ErrorClass').empty();
+        if(isProperInputElementContent('userSignUpNameInputId')==='FALSE'){
+            $('.userSignUpNameInput_ErrorClass').append("Enter your full name !!!");
+            inValidDataCount++;
+        }else{
+            var enteredNameText = removeHtmlStripTagsOfContent($('#userSignUpNameInputId').val());
+            if((enteredNameText).length>30){
+                $('.userSignUpNameInput_ErrorClass').append("Entered full name length must be less than 30 characters !!!");
+                inValidDataCount++;
+            }
+        }
+        if(isProperInputElementContent('userSignUpEmailInputId')==='FALSE'){
+            $('.userSignUpEmailInput_ErrorClass').append("Enter your email !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidEmailId($('#userSignUpEmailInputId').val())==='FALSE'){
+                $('.userSignUpEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
+                inValidDataCount++;
+            }
+        }
+        if(isProperInputElementContent('userSignUpMobileInputId')==='FALSE'){
+            $('.userSignUpMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidMobileNos($('#userSignUpMobileInputId').val())==='FALSE'){
+                $('.userSignUpMobileInput_ErrorClass').append("Entered valid mobile no.s !!!");
+                inValidDataCount++;
+            }
+        }
+    }
+    if(fromSection==='signUpOtpSection'){
+        $('.userSignUpOtpCodeInput_ErrorClass').empty();
+        $('.userSignUpPwdInput_ErrorClass').empty();
+        if(isProperInputElementContent('userSignUpOtpCodeInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
+            inValidDataCount++;
+        }else{
+            var userSignUpDataObj = getTemporaryUserSignUpDataFromSesion();
+            if(userSignUpDataObj!==false && jQuery.isEmptyObject(userSignUpDataObj)===false){
+            }else{
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Invalid entered one time password !!!");
+                inValidDataCount++;
+            }
+        }
+        if(isProperInputElementContent('userSignUpPwdInputId')==='FALSE'){
+            $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your password !!!");
+            inValidDataCount++;
+        }else{
+            if(isValidPwd($('#userSignUpPwdInputId').val())==='FALSE'){
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered password length must be between 5 to 10 any alphanumberic characters only !!!");
+                inValidDataCount++;
+            }
+        }
+    }
+    if(inValidDataCount>0){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 
 
