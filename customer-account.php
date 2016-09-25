@@ -62,27 +62,25 @@
         <div ng-show="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_bodyDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
-                <ul class="customerBreadcrumbULClass list-inline">
-                    <li class='customerBreadcrumbLIClass'>
-                        <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeTitle}}
-                        </a>
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{loggedUserName}}
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{displayedSectionName}}
-                    </li>
-                </ul>
-            </div>
+            <ul class="customerBreadcrumbULClass list-inline">
+                <li class='customerBreadcrumbLIClass'>
+                    <a href="<?php echo $BaseSitePath;?>">
+                        Home
+                    </a>
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{loggedUserName}}
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{displayedSectionName}}
+                </li>
+            </ul>
 
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
@@ -139,17 +137,17 @@
                 </div>
                 
                 <!-- user personal info as editable mode -->
-                <div ng-if="displayPersonalInfoSectionType==='edit_personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount(); attachedFieldValidationUserProfileInfo();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
+                <div ng-if="displayPersonalInfoSectionType==='edit_personalinfo'" ng-controller="UCustomerController" ng-init="populateUserPersonalInfoInUserCAccount();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_personalInfoEditSectionContainerDivClass">
                     <!-- close edit personal info label text -->
                     <p class='uca_closeProfileLblPClass pull-right' ng-click="closeEditableUserCustomerProfileInfo('text_personalinfo')">
                         <i class="fa fa-close"> Close Profile</i>
                     </p>
                     <p class="uca_personalInfoTextUserNamePClass">
                         <span class="uca_personalInfoTextUserNameLblSClass">
-                            Name
+                            Full Name
                         </span>
                         <span class="uca_personalInfoEditUserNameValSClass">
-                            <input class='form-control editUsernameInputClass' type='text' value='{{userPersonalDetails.name}}'>
+                            <input placeholder='Full Name' attach-validation-nameinput-directive class='form-control editUsernameInputClass' type='text' value='{{userPersonalDetails.name}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserEmailPClass">
@@ -157,7 +155,7 @@
                             Email
                         </span>
                         <span class="uca_personalInfoEditUserEmailValSClass">
-                            <input class='form-control editUseremailInputClass' type='text' value='{{userPersonalDetails.email}}'>
+                            {{userPersonalDetails.email}}
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserMobilePClass">
@@ -165,7 +163,7 @@
                             Mobile
                         </span>
                         <span class="uca_personalInfoEditUserMobileValSClass">
-                            <input class='form-control editUsermobileInputClass' type='text' value='{{userPersonalDetails.mobile}}'>
+                            <input placeholder='Mobile No.s' attach-validation-mobileinput-directive class='form-control editUsermobileInputClass' type='text' value='{{userPersonalDetails.mobile}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserGenderPClass">
@@ -184,7 +182,7 @@
                             DOB
                         </span>
                         <span class="uca_personalInfoEditUserBirthdateValSClass">
-                            <input class='form-control editUserbirthdateInputClass' type='text' value='{{userPersonalDetails.birthdate}}'>
+                            <input placeholder='Your Birthdate' attach-validation-birthdateinput-directive class='form-control editUserbirthdateInputClass' type='text' value='{{userPersonalDetails.birthdate}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoUpdateBtnPClass">
