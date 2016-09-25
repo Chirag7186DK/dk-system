@@ -213,7 +213,7 @@
                             <i class='fa fa-remove'></i> CANCEL
                         </button>
                         <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep3Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
-                            <i class='fa fa-key'></i> VERIFY
+                            <i class='fa fa-key'></i> UPDATE
                         </button>
                     </div>
                     <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
