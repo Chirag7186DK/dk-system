@@ -70,7 +70,6 @@
            
             <!-- display sign-in section info -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInFormInfoWrapperDivClass">
-                
                 <!-- display sign-in form info -->
                 <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                     <div ng-if="isShowUserSignInNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeMsgContainerDivClass">
@@ -102,7 +101,6 @@
                         By logging in, you agree to Desserts Khazana Terms of Service, Privacy Policy and Content Policies.
                     </div>
                 </div>
-                
                 <!-- sign-in text code form info -->
                 <div ng-if="showAccountFormSectionName=='signInOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                     <div ng-if="isShowUserSignInOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeOtpMsgContainerDivClass">
@@ -128,6 +126,41 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- display forgot password info section -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userForgotFormInfoWrapperDivClass">
+                <!-- forgot password step1 info -->
+                <div ng-if="showAccountFormSectionName=='frgtPwdStep1Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
+                        <h4 class='userFrgtPwdStep1HeaderLblClass'>Forgot Password?</h4>
+                        <p class='userFrgtPwdStep1PLblClass'>
+                           We will send One Time Password (OTP) to your registered email & mobile with us to reset your password. 
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNoticeMsgContainerDivClass">
+                        {{userSignUpNoticeMsgStr}}
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdEmailContainerDivClass">
+                        <input placeholder='Registered Email' type="text" id='userFrgtPwdEmailInputId' class="form-control userFrgtPwdEmailInputClass">
+                        <p class="userFrgtPwdFormfieldHintPClass">
+                            Eg: chirag.jain@gmail.com, chirag.jain@rediffmail.com
+                        </p>
+                        <p class="userFrgtPwdEmailInput_ErrorClass"></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdOperationBtnContainerDivClass">
+                        <button ng-click="toggleAccountFormSectionName('signInSection')" class='btn userFrgtPwdCancelSubmitBtnClass'>
+                            <i class='fa fa-remove'></i> CANCEL
+                        </button>
+                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep1Section')" class='btn userFrgtPwdSubmitBtnClass'>
+                            <i class='fa fa-key'></i> RESET PASSWORD
+                        </button>
+                    </div>
+                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                        Already have an account? SignIn here.
+                    </div>
+                </div>
+            </div>
+            
             
             <!-- display sign-up info section -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpFormInfoWrapperDivClass">
@@ -201,7 +234,6 @@
                     </div>
                 </div>
             </div>
-
             
             
         </div>    
