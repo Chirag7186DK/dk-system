@@ -46,11 +46,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
             $rootScope.displayPersonalInfoSectionType = displayPersonalInfoSectionType;
         };
         
-        // attachedFieldValidationUserCustomerProfileInfo
-        $rootScope.attachedFieldValidationUserProfileInfo = function(){
-            attachedFieldValidationUserProfileInfo();
-        };
-        
         // populateUserPersonalInfo
         $rootScope.populateUserPersonalInfoInUserCAccount = function(){
             try{
