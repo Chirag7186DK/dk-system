@@ -802,7 +802,6 @@ function validateOrderDeliveryAddressData(fcClass){
 ////////////////////////// user personal info /////////////////////
 
 
-// CJ defined this fucntion 2016-08-21
 function validationUserProfileInfoData(){
     var incorrectFieldDataCounter = 0;
     if($('.editUsernameInputClass').length===1){
