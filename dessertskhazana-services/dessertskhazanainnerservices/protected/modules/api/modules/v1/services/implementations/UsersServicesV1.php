@@ -83,19 +83,16 @@ class UsersServicesV1 implements IUsersServicesV1{
     
     // CJ defined this action 2016-08-01 & use for user signIn purpose 
     public function userSignInAuthentication($paramDataArr){
-        
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
         $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
         $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
-        
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             if($paramDataArr['isRequestCheckingCreditional']=='Y'){
                 // checking user account is active or not
                 $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
                 if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
-                    
                     // preparing sending otp code data
                     $sendingOtpParamDataArr = array();
                     $sendingOtpParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
@@ -118,7 +115,6 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['email'] = $paramDataArr['email'];
                     $rspDetails['userDetails']['mobile'] = $rtDataArr1['userDetails']['mobile'];
                     $rspDetails['userDetails']['pwd'] = $paramDataArr['pwd'];
-                    
                 }else{
                     $rspDetails = array_merge($rspDetails, $rtDataArr1);
                     $rspDetails['userDetails']['isUserAccountActive'] = 'N';
@@ -137,6 +133,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['mobile'] = $paramDataArr['mobile'];
                     $rspDetails['userDetails']['pwd'] = $paramDataArr['pwd'];
                 }else if($rtDataArr3['userDetails']['isOtpCodeValidated']=='Y'){
+                    $paramDataArr['usedOtpcodeId'] = $rtDataArr3['userDetails']['usedOtpcodeId'];
                     $rtDataArr4 = commonfunction :: makeUserAccountActiveAsSignedIn($paramDataArr);
                     $rspDetails = array_merge($rspDetails, $rtDataArr4);
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
