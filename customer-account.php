@@ -155,7 +155,7 @@
                             Email
                         </span>
                         <span class="uca_personalInfoEditUserEmailValSClass">
-                            {{userPersonalDetails.email}}
+                            <input class='form-control editUseremailInputClass' type='text' value='{{userPersonalDetails.email}}'>
                         </span>
                     </p>
                     <p class="uca_personalInfoTextUserMobilePClass">
