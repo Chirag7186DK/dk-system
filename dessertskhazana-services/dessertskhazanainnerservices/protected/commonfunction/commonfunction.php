@@ -690,6 +690,64 @@ class commonfunction{
         return $rspDetails;
     }
     
+    
+    // CJ defined this function 2016-09-25
+    public static function handlingUserForgotPwdEmailAndOtpRequest($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+        $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+        $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
+        $isSendOtpCode = 'N';
+        $userDataObj = false;
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $userEmailParamData = array();
+            $userEmailParamData['email'] = $paramDataArr['email'];
+            $userEmailParamData['status'] = "'A','Z'";
+            $dataArr1 = UsersDao :: getUserDetails($userEmailParamData);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorting on status based
+                $sortedOnStatusDataArr = utils::arraySort($dataArr1, array("userStatus"));
+                if(array_key_exists('A', $sortedOnStatusDataArr)==true){
+                    $rspDetails['userDetails']['msgStr'] = 'Email is verfied by us !!!';
+                    $isSendOtpCode = 'Y';
+                    $userDataObj = $sortedOnStatusDataArr['A'][0];
+                }else if(array_key_exists('Z', $sortedOnStatusDataArr)==true){
+                    if(count($sortedOnStatusDataArr['Z'])==1){
+                        $rspDetails['userDetails']['msgStr'] = 'Email is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
+                    }
+                }
+            }else{
+                $isSendOtpCode = 'Y';
+            }
+            // sending otp code and storing purpose
+            if($isSendOtpCode=='Y'){
+                $otpCode = '123456';
+                $mobileStr = "XXXXXX".substr($userDataObj['userMobile'], -4);
+                $paramDataArr['user_id'] = $userDataObj['unmd5UserId'];
+                $paramDataArr['name'] = $userDataObj['userName'];
+                $paramDataArr['email'] = $paramDataArr['email'];
+                $paramDataArr['mobile'] = $userDataObj['userMobile'];
+                $paramDataArr['otpcode'] = $otpCode;
+                $paramDataArr['sent_onmedium'] = 'mobile';
+                $paramDataArr['purposetype'] = 'frgtPwd';
+                // storing otp code
+                $lastInsertedStoredOtpcodeId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+                // sending otp code
+                // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
+                $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
+                $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
+                $rspDetails['userDetails']['tokenId'] = $userDataObj['unmd5UserId'];
+                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 sec approx to reach at your message box !!!";
+            }
+        } 
+        return $rspDetails;
+    }
+    
+    
+    
+    
+    
     /////////////////////// coupon discount related code ////////////////////////////////
     
     
