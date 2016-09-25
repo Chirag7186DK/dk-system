@@ -146,6 +146,22 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-08-01
+    public function sendOtpcode($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['isOtpcodeSent'] = 'FALSE';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $otpCode = '123456';
+            $paramDataArr['otpcode'] = $otpCode;
+            $paramDataArr['sent_onmedium'] = "mobile";
+            $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+            if($lastInsertedId>0 && $lastInsertedId!=false){
+                $rspDetails['isOtpcodeSent'] = 'TRUE';
+            }
+        } 
+        return $rspDetails;
+    }
+    
+    // CJ defined this action 2016-08-01
     public function getUserDashboardSummaryDataDetails($paramDataArr){
         $rspDetails = array();
         // checking param data length
