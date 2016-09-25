@@ -1651,7 +1651,7 @@ function getParamDataForResendOtpcode(fromSection){
             }
         }
     }catch(ex){
-        console.log("problem in getParamDataForUserSignUpAuthentication=>"+ex);
+        console.log("problem in getParamDataForResendOtpcode=>"+ex);
         paramObj = {};
     }
     return paramObj;
