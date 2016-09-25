@@ -81,7 +81,7 @@ class UsersServicesV1 implements IUsersServicesV1{
         return $rspDetails;
     }
     
-    // CJ defined this action 2016-08-01 & use for user signIn purpose 
+    // CJ defined this action 2016-09-24
     public function userSignInAuthentication($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
@@ -139,6 +139,61 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
                     $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+    
+    
+    // CJ defined this action 2016-09-25
+    public function userForgotPwdAuthentication($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['userDetails']['isUserAccountActive'] = 'N';
+        $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+        $rspDetails['userDetails']['isPasswordChanged'] = 'N';
+        $rspDetails['userDetails']['msgStr'] = 'Invalid account details !!!';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            if($paramDataArr['isRequestCheckingCreditional']=='Y'){
+                $rtDataArr1 = commonfunction :: handlingUserForgotPwdEmailAndOtpRequest($paramDataArr);
+                if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
+                    $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                    $rspDetails['userDetails']['email'] = $paramDataArr['email'];
+                    $rspDetails['userDetails']['isPasswordChanged'] = 'N';
+                }else if($rtDataArr1['userDetails']['isUserAccountActive']=='N'){
+                    $rspDetails = array_merge($rspDetails, $rtDataArr1);
+                    $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+                    $rspDetails['userDetails']['email'] = $paramDataArr['email'];
+                    $rspDetails['userDetails']['isPasswordChanged'] = 'N';
+                }
+            }else if($paramDataArr['isRequestValidateOtp']=='Y'){
+                $rtDataArr2 = commonfunction :: handlingUserForgotPwdSentOtpcode($paramDataArr);
+                if($rtDataArr2['userDetails']['isOtpCodeValidated']=='N'){
+                    $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                    $rspDetails['userDetails']['email'] = $paramDataArr['email'];
+                    $rspDetails['userDetails']['isPasswordChanged'] = 'N';
+                }else if($rtDataArr2['userDetails']['isOtpCodeValidated']=='Y'){
+                    $rspDetails = array_merge($rspDetails, $rtDataArr2);
+                    $rspDetails['userDetails']['email'] = $paramDataArr['email'];
+                    $rspDetails['userDetails']['isPasswordChanged'] = 'N';
+                }
+            }else if($paramDataArr['isRequestUpdatePwd']=='Y'){
+                $userId = $paramDataArr['tokenId'];
+                if($userId>0 && $userId!=false){
+                    $updateUserDataParam = array();
+                    $updateUserDataParam['user_id'] = $userId;
+                    $updateUserDataParam['updated_by'] = $userId;
+                    $updateUserDataParam['pwd'] = MD5($paramDataArr['pwd']);
+                    $uptdPwdDataStatus = UsersDao :: updateUserPersonalInfoData($updateUserDataParam);
+                    if($uptdPwdDataStatus==true){
+                        $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
+                        $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
+                        $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
+                        $rspDetails['userDetails']['isPasswordChanged'] = 'Y';
+                        $rspDetails['userDetails']['msgStr'] = 'Your password is updated !!!';
+                    }
                 }
             }
         } 
