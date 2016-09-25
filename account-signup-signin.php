@@ -234,6 +234,9 @@
                     <div ng-if="isShowFrgtPwdNoticeMsgStepNo=='frgtPwdStep4'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdNoticeMsgContainerDivClass">
                         Congratulations Your password is updated. You will be redirected back in 15 seconds.
                     </div>
+                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                        Already have an account? SignIn here.
+                    </div>
                 </div>
                 
             </div>
