@@ -744,7 +744,28 @@ class commonfunction{
         return $rspDetails;
     }
     
-    
+    public static function handlingUserForgotPwdSentOtpcode($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
+        $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
+        $rspDetails['userDetails']['msgStr'] = 'Invalid One Time Password has been entered !!!';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $userId = $paramDataArr['tokenId'];
+            $dataArr1 = UsersDao :: checkOtpCodeActiveForUserSignInAuth(
+                $paramDataArr['user_sessionid'], $userId,
+                $paramDataArr['email'], $paramDataArr['otpcode']);
+            if(count($dataArr1)==1 && $dataArr1!=false){
+                $rtOtpcodeStatusUpdated = UsersDao :: updateOtpCodeStatus($dataArr1[0]['otpcodeId']);
+                if($rtOtpcodeStatusUpdated=='TRUE'){
+                    $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
+                    $rspDetails['userDetails']['tokenId'] = $userId;
+                    $rspDetails['userDetails']['usedOtpcodeId'] = $dataArr1[0]['otpcodeId'];
+                    $rspDetails['userDetails']['msgStr'] = 'Entered One Time Password has been matched !!!';
+                }
+            }
+        } 
+        return $rspDetails;
+    }
     
     
     
