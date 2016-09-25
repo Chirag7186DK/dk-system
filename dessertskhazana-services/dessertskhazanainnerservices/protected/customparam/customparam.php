@@ -696,7 +696,12 @@ class customparam{
                 $correctParamKeyValueDataCount++;
             }
         }
-        if($correctParamKeyValueDataCount==6){
+        if(array_key_exists('purposetype', $paramJsonData)){
+            if(strlen($paramJsonData['purposetype'])>=5){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if($correctParamKeyValueDataCount>=6){
             $retStatus = 'TRUE';
         }
         return $retStatus;
