@@ -154,7 +154,7 @@ function UsersController($scope, $rootScope, UsersServices){
             if(rtValidatedDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserFrgtPwdAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
-                    $rootScope.userSignInAuthentication(preparedParamJsonObj);
+                    $rootScope.userForgotPwdAuthentication(preparedParamJsonObj);
                 }
             }
         };
@@ -166,7 +166,7 @@ function UsersController($scope, $rootScope, UsersServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling UsersServices 
-                    UsersServices.userSignUpAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                    UsersServices.userForgotPwdAuthentication(apiParamJsonObj).done(function(retResponseJson){
                         $scope.$apply(function(){
                             var userDataObj = false;
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
