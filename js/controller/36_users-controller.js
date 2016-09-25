@@ -159,6 +159,58 @@ function UsersController($scope, $rootScope, UsersServices){
             }
         };
         
+        // userForgotPwdAuthentication
+        $rootScope.userForgotPwdAuthentication = function(paramDataObj){
+            try{
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    // calling UsersServices 
+                    UsersServices.userSignUpAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                        $scope.$apply(function(){
+                            var userDataObj = false;
+                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                            }
+                            if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
+                                if(userDataObj['isUserAccountActive']==='N' && userDataObj['isOtpCodeSent']==='N' 
+                                    && userDataObj['isOtpCodeValidated']==='N' && userDataObj['isPasswordChanged']==='N'){
+                                    removeTemporaryUserFrgtPwdDataFromSesion();
+                                    $rootScope.showAccountFormSectionName = 'frgtPwdStep1Section';
+                                    $rootScope.isShowFrgtPwdNoticeMsgStepNo = 'frgtPwdStep1';
+                                    $rootScope.userFrgtPwdNoticeMsgStr = userDataObj['msgStr'];
+                                }else if(userDataObj['isUserAccountActive']==='Y' && userDataObj['isOtpCodeSent']==='Y' 
+                                    && userDataObj['isOtpCodeValidated']==='N' && userDataObj['isPasswordChanged']==='N'){
+                                    storeTemporaryUserFrgtPwdData(userDataObj);
+                                    $rootScope.showAccountFormSectionName = 'frgtPwdStep2Section';
+                                    $rootScope.isShowFrgtPwdNoticeMsgStepNo = 'frgtPwdStep2';
+                                    $rootScope.userFrgtPwdNoticeMsgStr = userDataObj['msgStr'];
+                                }else if(userDataObj['isUserAccountActive']==='Y' && userDataObj['isOtpCodeSent']==='Y' 
+                                    && userDataObj['isOtpCodeValidated']==='Y' && userDataObj['isPasswordChanged']==='N'){
+                                    storeTemporaryUserFrgtPwdData(userDataObj);
+                                    $rootScope.showAccountFormSectionName = 'frgtPwdStep3Section';
+                                    $rootScope.isShowFrgtPwdNoticeMsgStepNo = 'frgtPwdStep3';
+                                    $rootScope.userFrgtPwdNoticeMsgStr = userDataObj['msgStr'];
+                                }else if(userDataObj['isUserAccountActive']==='Y' && userDataObj['isOtpCodeSent']==='Y' 
+                                    && userDataObj['isOtpCodeValidated']==='Y' && userDataObj['isPasswordChanged']==='Y'){
+                                    removeTemporaryUserFrgtPwdDataFromSesion();
+                                    $rootScope.showAccountFormSectionName = 'frgtPwdStep4Section';
+                                    $rootScope.isShowFrgtPwdNoticeMsgStepNo = 'frgtPwdStep4';
+                                }
+                            }else{
+                                removeTemporaryUserSignUpDataFromSesion();
+                                removeTemporaryUserSignedInDataFromSesion();
+                                $rootScope.showAccountFormSectionName = 'signUpSection';
+                                $rootScope.isShowUserSignUpNoticeMsg = 'FALSE';
+                            }
+                        });
+                    });
+                }
+            }catch(ex){
+                console.log("problem in userSignUpAuthentication=>"+ex);
+            }
+        };
+        
         
         // resendOtpcodeClick
         $rootScope.resendOtpcodeClick = function(fromSection){
