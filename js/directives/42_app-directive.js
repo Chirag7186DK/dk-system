@@ -473,6 +473,9 @@ function attachValidationPwdinputDirective($timeout){
                 "allowOtherCharSets":false,
                 "maxLength":10
             });
+            $($el).bind("cut copy paste",function(e){
+                e.preventDefault();
+            });
         }
     };
 }
