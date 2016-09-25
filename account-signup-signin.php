@@ -89,6 +89,11 @@
                         </p>
                         <p class="userSignInPwdInput_ErrorClass"></p>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInOperationContainerDivClass">
+                        <span ng-click="toggleAccountFormSectionName('frgtPwdStep1Section');">
+                            Forgot Password / Create Pasword
+                        </span>
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInBtnContainerDivClass">
                         <button ng-click="collectDataUserSignInAuthentication('signInSection')" class='btn userSigInSubmitBtnClass'>
                             <i class='fa fa-lock'></i> SIGN IN
@@ -232,7 +237,6 @@
                 </div>
                 
             </div>
-            
             
             <!-- display sign-up info section -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpFormInfoWrapperDivClass">
