@@ -550,7 +550,6 @@ class customparam{
     }
     
     
-    // CJ defined this function 2016-09-21
     public static function checkParamDataForUserSignUpAuthentication($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -610,7 +609,6 @@ class customparam{
     }
     
     
-    // CJ defined this function 2016-07-27
     public static function checkParamDataForUserSignInAuthentication($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -660,6 +658,50 @@ class customparam{
         }
         return $retStatus;
     }
+    
+    
+    public static function checkParamDataForSendingOtpcode($paramJsonData){
+        $retStatus = 'FALSE';
+        $correctParamKeyValueDataCount = 0;
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('usersession_starttimestamp', $paramJsonData)){
+            if($paramJsonData['usersession_starttimestamp']!='' 
+                && $paramJsonData['usersession_starttimestamp']!=false){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('name', $paramJsonData)){
+            if(strlen($paramJsonData['name'])>0){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('email', $paramJsonData)){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
+            if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('mobile', $paramJsonData)){
+            $isMobileStringMatched = preg_match('/^\d{10}$/', $paramJsonData['mobile']);
+            if(strlen($paramJsonData['mobile'])==10 && $isMobileStringMatched==true){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('pwd', $paramJsonData)){
+            if(strlen($paramJsonData['pwd'])>=5 && strlen($paramJsonData['pwd'])<=10){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if($correctParamKeyValueDataCount==6){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+    
     
     // CJ defined this function 2016-08-01
     public static function checkParamDataForAuthenticatedUserDetails($paramJsonData){
