@@ -104,7 +104,7 @@
                 </div>
                 
                 <!-- sign-in text code form info -->
-                <div ng-if="showAccountFormSectionName=='signInOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
+                <div class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                     <div ng-if="isShowUserSignInOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeOtpMsgContainerDivClass">
                         {{userSignInOtpNoticeMsgStr}}
                     </div>
@@ -113,7 +113,7 @@
                         <p class="userSignInOtpCodeInput_ErrorClass"></p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInResendOtpCodeContainerDivClass">
-                        Resend OTP
+                        <span ng-click="resendOtpcodeClick('signInOtpSection');">Resend OTP</span> / <span>Forgot Password?</span>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpBtnContainerDivClass">
                         <button ng-click="collectDataUserSignInAuthentication('signInOtpSection')" class='btn userSignUpSubmitBtnClass'>
