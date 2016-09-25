@@ -182,7 +182,7 @@
                         <button ng-click="toggleAccountFormSectionName('frgtPwdStep2Section')" class='btn userFrgtPwdResendOtpSubmitBtnClass'>
                             <i class='fa fa-remove'></i> RESEND OTP
                         </button>
-                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep2Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
+                        <button ng-click="collectDataUserFrgtPwdAuthentication('frgtPwdStep2Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
                             <i class='fa fa-key'></i> VERIFY
                         </button>
                     </div>
@@ -217,7 +217,7 @@
                         <button ng-click="toggleAccountFormSectionName('signInSection')" class='btn userFrgtPwdCancelSubmitBtnClass'>
                             <i class='fa fa-remove'></i> CANCEL
                         </button>
-                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep3Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
+                        <button ng-click="collectDataUserFrgtPwdAuthentication('frgtPwdStep3Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
                             <i class='fa fa-key'></i> UPDATE
                         </button>
                     </div>
