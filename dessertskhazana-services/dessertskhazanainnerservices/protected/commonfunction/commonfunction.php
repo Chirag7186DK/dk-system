@@ -717,8 +717,6 @@ class commonfunction{
                         $rspDetails['userDetails']['msgStr'] = 'Email is already associated with us but your account is inactive, please call customer care no.s to make account active !!!';
                     }
                 }
-            }else{
-                $isSendOtpCode = 'Y';
             }
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
