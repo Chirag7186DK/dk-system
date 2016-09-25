@@ -517,7 +517,7 @@ class commonfunction{
                 if($rtOtpcodeStatusUpdated=='TRUE'){
                     $rspDetails['userDetails']['msgStr'] = 'Entered One Time Password has been matched !!!';
                     $rspDetails['userDetails']['isOtpCodeValidated'] = 'Y';
-                    $rspDetails['usedOtpcodeId'] = $dataArr1[0]['otpcodeId'];
+                    $rspDetails['userDetails']['usedOtpcodeId'] = $dataArr1[0]['otpcodeId'];
                 }
             }
         } 
