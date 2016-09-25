@@ -177,7 +177,42 @@
                         <button ng-click="toggleAccountFormSectionName('frgtPwdStep2Section')" class='btn userFrgtPwdResendOtpSubmitBtnClass'>
                             <i class='fa fa-remove'></i> RESEND OTP
                         </button>
-                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep2Section')" class='btn userFrgtPwdSubmitBtnClass'>
+                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep2Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
+                            <i class='fa fa-key'></i> VERIFY
+                        </button>
+                    </div>
+                    <div ng-click="toggleAccountFormSectionName('signInSection')" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 redirectUserSignInBtnContainerDivClass">
+                        Already have an account? SignIn here.
+                    </div>
+                </div>
+                
+                <!-- forgot password step3 info -->
+                <div ng-if="showAccountFormSectionName=='frgtPwdStep3Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
+                        <h4 class='userFrgtPwdHeaderLblClass'>Repeat Password</h4>
+                    </div>
+                    <div ng-if="isShowFrgtPwdNoticeMsgStepNo=='frgtPwdStep3'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdNoticeMsgContainerDivClass">
+                        {{userFrgtPwdNoticeMsgStr}}
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFgrtPwdInputContainerDivClass">
+                        <input placeholder='Create a new Password' attach-validation-pwdinput-directive type="password" id='userFrgtPwdInputId' class="form-control userFrgtPwdInputClass">
+                        <p class="userFrgtPwdFormfieldHintPClass">
+                            Note: Password length must be between 5 to 10 alphanumeric characters only
+                        </p>
+                        <p class="userFrgtPwdInput_ErrorClass"></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFgrtPwdConfirmInputContainerDivClass">
+                        <input placeholder='Confirm Password' attach-validation-pwdinput-directive type="password" id='userFrgtPwdConfirmInputId' class="form-control userFrgtPwdConfirmInputClass">
+                        <p class="userFrgtPwdFormfieldHintPClass">
+                            Note: Password length must be between 5 to 10 alphanumeric characters only
+                        </p>
+                        <p class="userFrgtPwdConfirmInput_ErrorClass"></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdOperationBtnContainerDivClass">
+                        <button ng-click="toggleAccountFormSectionName('signInSection')" class='btn userFrgtPwdCancelSubmitBtnClass'>
+                            <i class='fa fa-remove'></i> CANCEL
+                        </button>
+                        <button ng-click="collectDataUserSignUpAuthentication('frgtPwdStep3Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
                             <i class='fa fa-key'></i> VERIFY
                         </button>
                     </div>
