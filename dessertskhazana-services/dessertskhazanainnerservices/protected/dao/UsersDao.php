@@ -512,7 +512,7 @@ class UsersDao{
     }
     
     // CJ defined this function 2016-08-06
-    public static function checkOtpCodeActiveForUserFrgtPwdAuth($userSessionId, $email, $userId, $otpcode){
+    public static function checkOtpCodeActiveForUserFrgtPwdAuth($userSessionId, $userId, $email, $otpcode){
         $retResult = false;
         try{
             $connection = Yii::App()->db;
