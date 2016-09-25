@@ -608,7 +608,6 @@ class customparam{
         return $retStatus;
     }
     
-    
     public static function checkParamDataForUserSignInAuthentication($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -656,6 +655,58 @@ class customparam{
                 $retStatus = 'TRUE';
             }
         }
+        return $retStatus;
+    }
+    
+    public static function checkParamDataForUserForgotPwdAuthentication($paramJsonData){
+        $retStatus = 'FALSE';
+        $correctParamKeyValueDataCount = 0;
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('usersession_starttimestamp', $paramJsonData)){
+            if($paramJsonData['usersession_starttimestamp']!='' 
+                && $paramJsonData['usersession_starttimestamp']!=false){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('email', $paramJsonData)){
+            $isEmailStringMatched = preg_match('/^.+[@]+([\w])+([.])+[a-z]{2,3}$/', $paramJsonData['email']);
+            if(strlen($paramJsonData['email'])>0 && $isEmailStringMatched==true){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)
+            && array_key_exists('isRequestValidateOtp', $paramJsonData)
+            && array_key_exists('isRequestUpdatePwd', $paramJsonData)){
+            if($paramJsonData['isRequestCheckingCreditional']=='Y'
+                && $paramJsonData['isRequestValidateOtp']=='N'
+                && $paramJsonData['isRequestUpdatePwd']=='N'){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==4){
+                $retStatus = 'TRUE';
+            }
+        }
+        if(array_key_exists('isRequestCheckingCreditional', $paramJsonData)
+            && array_key_exists('isRequestValidateOtp', $paramJsonData)
+            && array_key_exists('otpcode', $paramJsonData)   
+            && array_key_exists('tokenId', $paramJsonData)       
+            && array_key_exists('isRequestUpdatePwd', $paramJsonData)){
+            if($paramJsonData['isRequestCheckingCreditional']=='N'
+                && $paramJsonData['isRequestValidateOtp']=='Y'
+                && strlen($paramJsonData['otpcode'])==6
+                && $paramJsonData['tokenId']>0 && $paramJsonData['tokenId']!=''  
+                && $paramJsonData['isRequestUpdatePwd']=='N'){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==4){
+                $retStatus = 'TRUE';
+            }
+        }
+        
         return $retStatus;
     }
     
