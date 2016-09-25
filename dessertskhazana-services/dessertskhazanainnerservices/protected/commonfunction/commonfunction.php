@@ -642,8 +642,8 @@ class commonfunction{
             }
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
-                $mobile = $paramDataArr['mobile'];
                 $otpCode = '123456';
+                $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
                 $paramDataArr['otpcode'] = $otpCode;
                 $paramDataArr['sent_onmedium'] = 'mobile';
                 $paramDataArr['purposetype'] = 'signUp';
@@ -651,7 +651,7 @@ class commonfunction{
                 $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
                 // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
-                $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobile";
+                $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr !!!";
                 $rspDetails['isOtpCodeSent'] = "Y";
             }
         } 
