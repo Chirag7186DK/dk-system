@@ -482,3 +482,19 @@ function attachValidationPwdinputDirective($timeout){
         }
     };
 }
+
+angular.module('DKAPP').directive('attachValidationBirthdateinputDirective', attachValidationBirthdateinputDirective);
+
+function attachValidationBirthdateinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            var cdate = new Date();
+            $($el).datepicker({
+                maxDate:cdate,
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true
+            });
+        }
+    };
+}
