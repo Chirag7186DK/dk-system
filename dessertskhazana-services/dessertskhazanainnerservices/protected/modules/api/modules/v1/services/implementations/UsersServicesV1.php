@@ -66,6 +66,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                         $signInParamDataArr['pwd'] = $paramDataArr['pwd'];
                         $signInParamDataArr['user_sessionid'] = $paramDataArr['user_sessionid'];
                         $signInParamDataArr['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                        $signInParamDataArr['usedOtpcodeId'] = $paramDataArr['usedOtpcodeId'];
                         // fetching user signin details about creating new account
                         $rtDataArr2 = commonfunction :: makeUserAccountActiveAsSignedIn($signInParamDataArr);
                         if($rtDataArr2['userDetails']['isUserAccountActive']=='Y'){
