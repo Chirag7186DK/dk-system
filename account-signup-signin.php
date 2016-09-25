@@ -221,6 +221,16 @@
                     </div>
                 </div>
                 
+                <!-- forgot password step4 info -->
+                <div ng-if="showAccountFormSectionName=='frgtPwdStep4Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
+                        <h4 class='userFrgtPwdHeaderLblClass'>Repeat Password</h4>
+                    </div>
+                    <div ng-if="isShowFrgtPwdNoticeMsgStepNo=='frgtPwdStep4'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdNoticeMsgContainerDivClass">
+                        Congratulations Your password is updated. You will be redirected back in 15 seconds.
+                    </div>
+                </div>
+                
             </div>
             
             
