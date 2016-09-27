@@ -1359,9 +1359,6 @@ function getParamDataObjForPartyOrderRequest(){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
             paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
-            paramDataObj['name'] = removeHtmlStripTagsOfContent($('#po_contactPersonNameInputId').val());
-            paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#po_contactMobileInputId').val());
-            paramDataObj['email'] = removeHtmlStripTagsOfContent($('#po_contactEmailInputId').val());
             paramDataObj['occassion_title'] = removeHtmlStripTagsOfContent($('#po_occasionTitleInputId').val());
             paramDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#po_nosPeopleInputId').val());
             paramDataObj['party_date'] = removeHtmlStripTagsOfContent($('#po_dateInputId').val());
