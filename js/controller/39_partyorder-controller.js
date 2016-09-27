@@ -33,24 +33,14 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
             }
         };
         
-        // attachedFieldValidationPartyOrdersRequest
-        $rootScope.attachedFieldValidationPartyOrdersRequest = function(){
-            try{
-                attachedFieldValidationPartyOrdersRequest();
-            }catch(ex){
-                console.log("problem in attachedFieldValidationPartyOrdersRequsest ex=>"+ex);
-            }
-        };
-        
         // addPartyOrderRequest 
         $rootScope.addPartyOrdersRequest = function(){
             try{
                 var retValidateParamDataStatus = validateParamDataPartyOrderRequest();
                 if(retValidateParamDataStatus===false){
                     $rootScope.isShowPartyOrderRequestErrorMsg = true;
-                    $rootScope.partyOrderErrorMsgStr = 'Please fill-up form details to send request party order !';
+                    $rootScope.partyOrderErrorMsgStr = 'Please fill-up form details to send request party order !!!';
                 }else{
-                    // get param obj to add party order request
                     var preparedParamJsonObj = getParamDataObjForPartyOrderRequest();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var apiParamJsonObj = {};
@@ -69,12 +59,12 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
                                             $rootScope.requestedPartyOrderNo = poRequestedStatusDetails['partyOrderNo'];
                                         }else{
                                             $rootScope.isShowPartyOrderRequestErrorMsg = false;
-                                            $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
+                                            $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !!!';
                                             $rootScope.requestedPartyOrderNo  = '';
                                         }
                                     }else{
                                         $rootScope.isShowPartyOrderRequestErrorMsg = true;
-                                        $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !';
+                                        $rootScope.partyOrderErrorMsgStr = 'Please try again to send request party order !!!';
                                         $rootScope.requestedPartyOrderNo  = '';
                                     }
                                 }
