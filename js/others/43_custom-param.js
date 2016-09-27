@@ -1869,16 +1869,15 @@ function getParamDataToUpdateUserpersonalInfo(){
 function getParamDataToUpdateUserpasswordInfo(){
     var paramObj = {};
     try{
-        if($('.editOldPasswordInputClass').length===1){
-            paramObj['old_password'] = removeHtmlStripTagsOfContent($('.editOldPasswordInputClass').val());
+        if($('#uca_oldPwdInputId').length===1){
+            paramObj['old_password'] = removeHtmlStripTagsOfContent($('#uca_oldPwdInputId').val());
         }
-        if($('.editNewPasswordInputClass').length===1){
-            paramObj['new_password'] = removeHtmlStripTagsOfContent($('.editNewPasswordInputClass').val());
+        if($('#uca_newPwdInputId').length===1){
+            paramObj['new_password'] = removeHtmlStripTagsOfContent($('#uca_newPwdInputId').val());
         }
-        if($('.editNewConfirmPasswordInputClass').length===1){
-            paramObj['newc_password'] = removeHtmlStripTagsOfContent($('.editNewConfirmPasswordInputClass').val());
+        if($('#uca_newcPwdInputId').length===1){
+            paramObj['newc_password'] = removeHtmlStripTagsOfContent($('#uca_newcPwdInputId').val());
         }
-        // fetch user session data
         var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userSessionDataObj!==false && userSessionDataObj!==undefined 
             && jQuery.isEmptyObject(userSessionDataObj)===false){
