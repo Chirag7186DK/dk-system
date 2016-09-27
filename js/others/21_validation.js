@@ -384,7 +384,7 @@ function validateParamDataPartyOrderRequest(){
         inValidDataCount++;
     }else{
         var enteredNos = removeHtmlStripTagsOfContent($('#po_nosPeopleInputId').val());
-        if(parseInt(enteredNos)>0){
+        if(parseInt(enteredNos)<=0){
             inValidDataCount++;
         }
     }
@@ -401,7 +401,7 @@ function validateParamDataPartyOrderRequest(){
         inValidDataCount++;
     }else{
         var enteredNos = removeHtmlStripTagsOfContent($('#po_budgetAmtInputId').val());
-        if(parseInt(enteredNos)>0){
+        if(parseInt(enteredNos)<=0){
             inValidDataCount++;
         }
     }
