@@ -1940,6 +1940,11 @@
         padding-bottom:10px!important;
     }
     
+    .uca_changePwdNotePClass{
+        color:#bf4444!important;
+        font-size:12px!important;
+    }
+    
     .uca_OldPasswordPClass,
     .uca_NewPasswordPClass,
     .uca_NewConfirmPasswordPClass,
