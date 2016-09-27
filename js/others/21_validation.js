@@ -71,14 +71,14 @@ function isValidPwd(pwdContent){
     return rtStatus;
 }
 
-function isValidDateFormat(dateformatContent){
+function isValidDateBDateFormat(bdateformatContent){
     var rtStatus = 'FALSE';
     try{
-        var enteredDateText = removeHtmlStripTagsOfContent(dateformatContent);
-        if(enteredDateText!==''){
+        var enteredBDateText = removeHtmlStripTagsOfContent(bdateformatContent);
+        if(enteredBDateText!==''){
             var dateRegex = /^\d{4}[/-][0-9]{2}[/-]\d{2}$/;
-            if(enteredDateText.match(dateRegex)===null 
-                || enteredDateText.match(dateRegex)===undefined){
+            if(enteredBDateText.match(dateRegex)===null 
+                || enteredBDateText.match(dateRegex)===undefined){
                 rtStatus = 'TRUE';
             };
         }
@@ -273,6 +273,10 @@ function validateDataUserFrgtPwdAuthentication(fromSection){
 
 function validateUserProfileInfoData(){
     var inValidDataCount = 0;
+    $('.userFullNameInput_ErrorClass').empty();
+    $('.userEmailInput_ErrorClass').empty();
+    $('.userMobileInput_ErrorClass').empty();
+    $('.userBirthdateInput_ErrorClass').empty();
     if(isProperInputElementContent('userFullNameInputId')==='FALSE'){
         $('.userFullNameInput_ErrorClass').append("Enter your email !!!");
         inValidDataCount++;
@@ -301,13 +305,13 @@ function validateUserProfileInfoData(){
             inValidDataCount++;
         }
     }
-    if($('.editUserbirthdateInputClass').length===1){
-        if($('.editUserbirthdateInputClass').val()===''
-            || $('.editUserbirthdateInputClass').val()===false){
-            $('.editUserbirthdateInputClass').css({'border-color':'#f18178'});
+    if(isProperInputElementContent('userBirthdateInputId')==='FALSE'){
+        $('.userBirthdateInput_ErrorClass').append("Enter your birthdate !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidDateBDateFormat($('#userBirthdateInputId').val())==='FALSE'){
+            $('.userBirthdateInput_ErrorClass').append("Entered valid birthdate !!!");
             inValidDataCount++;
-        }else if($('.editUserbirthdateInputClass').val()!==''){
-            $('.editUserbirthdateInputClass').css({'border-color':'#ccc'});
         }
     }
     if(inValidDataCount>0){
