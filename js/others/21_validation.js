@@ -63,7 +63,11 @@ function isValidPwd(pwdContent){
     try{
         var enteredPwdText = removeHtmlStripTagsOfContent(pwdContent);
         if((enteredPwdText).length>=5 && (enteredPwdText).length<=10){
-            rtStatus = 'TRUE';
+            var pwdPattern = /^[a-z0-9]+$/i;
+            if(enteredPwdText.match(pwdPattern)===null 
+                || enteredPwdText.match(pwdPattern)===undefined){
+                rtStatus = 'TRUE';
+            }
         }
     }catch(ex){
         rtStatus = 'FALSE';
