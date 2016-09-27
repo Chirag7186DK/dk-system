@@ -132,9 +132,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     && jQuery.isEmptyObject(userChangePasswordInfoParamData)===false){
                     $rootScope.updateUserPaswordInfoInUserCAccount(userChangePasswordInfoParamData);
                 }
-            }else{
-                var notificationMsgStr = "Please enter valid password data to change !";
-                showNotificationBoxMsg(notificationMsgStr);
             }
         };
         
@@ -150,7 +147,7 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     UsersServices.updateUserPasswordInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var userpwdChangedStatusDetails =  false;
-                            var notificationMsgStr = 'Your password is not change, please try again !';
+                            var notificationMsgStr = 'Your password is not change, please try again !!!';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 userpwdChangedStatusDetails = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'userpwdChangedStatusDetails', retResponseJson);
                             }
