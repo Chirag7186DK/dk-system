@@ -25,30 +25,6 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     }
 }
 
-function getUserSelectedPrevDeliveryAreaDetails(){
-    var userSelectedPrevDeliveryAreaDataObj = {};
-    userSelectedPrevDeliveryAreaDataObj['areavalue'] = '';
-    userSelectedPrevDeliveryAreaDataObj['areaname'] = '';
-    userSelectedPrevDeliveryAreaDataObj['ccaId'] = '';
-    try{
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('userSelectedDeliveryCityAreaDessertsType')===true){
-            // extract user suggested city area session data
-            var paramDataObj = dkParamObj['userSelectedDeliveryCityAreaDessertsType'];
-            if(paramDataObj.hasOwnProperty('areaname')===true){
-                if(paramDataObj['areaname']!==''){
-                    userSelectedPrevDeliveryAreaDataObj['areavalue'] = paramDataObj['areavalue'];
-                    userSelectedPrevDeliveryAreaDataObj['areaname'] = paramDataObj['areaname'];
-                    userSelectedPrevDeliveryAreaDataObj['ccaId'] = paramDataObj['ccaId'];
-                }
-            }
-        }
-    }catch(ex){
-        userSelectedPrevDeliveryAreaDataObj = false;
-    }
-    return userSelectedPrevDeliveryAreaDataObj;
-}
-
 function clearUserpasswordFormFieldInfo(){
     if($('#uca_oldPwdInputId').length===1){
         $('#uca_oldPwdInputId').val('');
@@ -101,9 +77,6 @@ function clearCustomizeOrderRequestFormField(){
 }
 
 
-////////////////// rating & review form content /////////////////
-
-// CJ define this funcion 2016-08-06
 function clearRatingReviewAbtProductFormContent(fcClass){
     if($('.'+fcClass).length===1){
         if($('.'+fcClass).find('textarea').length===1){
@@ -113,30 +86,6 @@ function clearRatingReviewAbtProductFormContent(fcClass){
 }
 
 
-////////////////// order cart form content /////////////////
-
-function getOrdercartRequestItemCountFromSession(){
-    var ordercartRequestedItemCount = 0;
-    try{
-        // checking session param
-        if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-            && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-            // extract dk param session data
-            var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userOrdercartSummaryObj')===true){
-                if(dkParamObj['userOrdercartSummaryObj']['totalRequestedItems']!=='' 
-                    && parseInt(dkParamObj['userOrdercartSummaryObj']['totalRequestedItems'])>0){
-                    ordercartRequestedItemCount = parseInt(dkParamObj['userOrdercartSummaryObj']['totalRequestedItems']);
-                }
-            }
-        }
-    }catch(ex){
-        ordercartRequestedItemCount = 0;
-    }
-    return ordercartRequestedItemCount;
-}
-
-// CJ define this funcion 2016-08-06
 function clearProductContentAfterAddedProductInOrdercart(fcClass){
     if($('.'+fcClass).length===1){
         if($('.'+fcClass).find('textarea').length===1){
