@@ -498,3 +498,67 @@ function attachValidationBirthdateinputDirective($timeout){
         }
     };
 }
+
+angular.module('DKAPP').directive('attachValidationTitleinputDirective', attachValidationTitleinputDirective);
+
+function attachValidationTitleinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $($el).alphanum({
+                "disallow":".", 
+                "allowNumeric":false, 
+                "allowOtherCharSets":false,
+                "allowSpace":true,
+                "maxLength":60
+            });
+        }
+    };
+}
+
+angular.module('DKAPP').directive('attachValidationNumberinputDirective', attachValidationNumberinputDirective);
+
+function attachValidationNumberinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $($el).alphanum({
+                "disallow":".", 
+                "allowSpace":false,
+                "allowNumeric":true, 
+                "allowOtherCharSets":false,
+                "maxLength":6
+            });
+        }
+    };
+}
+
+angular.module('DKAPP').directive('attachValidationDateinputDirective', attachValidationDateinputDirective);
+
+function attachValidationDateinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            var cdate = new Date();
+            $($el).datepicker({
+                minDate:cdate,
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true
+            });
+        }
+    };
+}
+
+angular.module('DKAPP').directive('attachValidationBudgetamtinputDirective', attachValidationBudgetamtinputDirective);
+
+function attachValidationBudgetamtinputDirective($timeout){
+    return {
+        link: function ($scope, $el, $attrs){
+            $($el).alphanum({
+                "disallow":".", 
+                "allowSpace":false,
+                "allowNumeric":true, 
+                "allowOtherCharSets":false,
+                "maxLength":6
+            });
+        }
+    };
+}
