@@ -15,12 +15,10 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
         // redirectToViewPartyOrderRequest 
         $rootScope.redirectToViewPartyOrderRequest = function(){
             try{
-                // check user logged in dk session
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
                     storeRequestedSectionNameToAccessInUserAccount('partyorder');
                     if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
-                        // detected user account as customer profile
                         if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
                             window.location.href = globalBaseSitePath+"customer-account.php";
                         }
