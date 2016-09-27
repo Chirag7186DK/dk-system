@@ -91,7 +91,6 @@ class utils{
     }
     
     
-    
     // CJ defined this functio 2016-07-23
     public static function sendEmail($toEmailIdArr, $msgSubject, $msgBody, $fileAttachmentArr=array(), $senderEmailId=''){
         $retEmailSentStatus = false;
@@ -430,6 +429,10 @@ class utils{
         }else{
             return false;
         }
+    }
+    
+    public static function getOtpCode(){
+        
     }
     
 }
