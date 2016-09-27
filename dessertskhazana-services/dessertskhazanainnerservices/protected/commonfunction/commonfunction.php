@@ -50,42 +50,6 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
-      
-    public static function preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($paramJsonData){
-        $retEmailSentStatus = false;
-        try{
-            if(count($paramJsonData)>0 && $paramJsonData!=false){
-                if(array_key_exists('name', $paramJsonData)
-                    && array_key_exists('email', $paramJsonData)){
-                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
-                    $msgSubject = 'Email Testing CJ';
-                    $msgBody = 'Email Testing CJ';
-                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
-                }
-            }
-        }catch(Exception $ex){
-            $retEmailSentStatus = false;
-        }
-        return $retEmailSentStatus;
-    }
-    
-    public static function preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($paramJsonData){
-        $retEmailSentStatus = false;
-        try{
-            if(count($paramJsonData)>0 && $paramJsonData!=false){
-                if(array_key_exists('name', $paramJsonData)
-                    && array_key_exists('email', $paramJsonData)){
-                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
-                    $msgSubject = 'Email Testing CJ';
-                    $msgBody = 'Email Testing CJ';
-                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
-                }
-            }
-        }catch(Exception $ex){
-            $retEmailSentStatus = false;
-        }
-        return $retEmailSentStatus;
-    }
     
     public static function preparedDataSendingEmailAboutCorporateTieupRequestReceiveFromCustomer($paramJsonData){
         $retEmailSentStatus = false;
@@ -107,8 +71,6 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
-    
-    // CJ defined this function 2016-07-24
     public static function prepareParamDataForTrackingUserInfoAccessingWebsites($paramJsonData){
         if(count($paramJsonData)>0 && $paramJsonData!=false){
             $paramJsonData['user_sessionstarttime'] = time();
@@ -118,9 +80,6 @@ class commonfunction{
         return $paramJsonData;
     }
     
-    
-    
-    ////////////////./////////////// location related related code ////////////////////////////////
     
     public static function getDeliveryCityListDetails($paramJsonData){
         $rspDetails = array();
@@ -193,8 +152,6 @@ class commonfunction{
         return $rspDetails;
     }
  
-    
-    ///////////////// product filter type list related code /////////////////////
     
     public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedStoreId=''){
         $allStoreWiseFilterDetailsArr = array();
@@ -406,8 +363,6 @@ class commonfunction{
   
     
     
-    ////////////////.///////////////  user related code ////////////////////////////////
-    
     public static function getUserSessionId(){
         $userSessionId = false;
         $lastUserSessionNo = UsersDao :: generateMaxSessionNo();
@@ -422,6 +377,7 @@ class commonfunction{
         }
         return $userSessionId;
     }
+    
     
     public static function preparedDataToStoreInfoAbtTrackedUserAccessingWebsitesDetails($userJsonData){
         $retLastInsertedUserInfoTrackedId = false;
@@ -547,7 +503,6 @@ class commonfunction{
     }
     
     
-    // CJ defined this function 2016-08-11
     public static function getUserSessionDetails($paramJsonData){
         $userSessionDetailsData = array();
         if($paramJsonData!=false && count($paramJsonData)>0){
@@ -559,7 +514,7 @@ class commonfunction{
         return $userSessionDetailsData;
     }
     
-    // CJ defined this function 2016-08-01
+    
     public static function preparedDataToStoreInfoAbtUserAsLog($userJsonData){
         $userLogNo = false;
         if(count($userJsonData)>0 && $userJsonData!=false){
@@ -585,7 +540,6 @@ class commonfunction{
     }
     
     
-    // CJ defined this function 2016-08-01
     public static function getUserAsCustomerDashboardSummaryDataDetails($userJsonData){
         $retJsonData = array();
         // checking data length
@@ -614,7 +568,7 @@ class commonfunction{
         return $retJsonData;
     }
     
-    // CJ defined this function 2016-09-22
+    
     public static function handlingUserSignUpEmailAndOtpRequest($paramDataArr){
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Email is already associated with us !!!';
@@ -656,7 +610,7 @@ class commonfunction{
         return $rspDetails;
     }
     
-    // CJ defined this function 2016-09-21
+    
     public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
         if($mobile!='' && strlen($mobile)==10){
@@ -667,7 +621,7 @@ class commonfunction{
         return $smsSentStatus;
     }
     
-    // CJ defined this function 2016-09-22
+
     public static function handlingUserSignUpSentOtpcode($paramDataArr){
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Invalid One Time Password has been entered !!!';
@@ -691,7 +645,6 @@ class commonfunction{
     }
     
     
-    // CJ defined this function 2016-09-25
     public static function handlingUserForgotPwdEmailAndOtpRequest($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'N';
@@ -742,6 +695,7 @@ class commonfunction{
         return $rspDetails;
     }
     
+    
     public static function handlingUserForgotPwdSentOtpcode($paramDataArr){
         $rspDetails = array();
         $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
@@ -764,6 +718,538 @@ class commonfunction{
             }
         } 
         return $rspDetails;
+    }
+    
+    
+    public static function addUserRatingReviewProduct($paramJsonData){
+        $retStatus = 'FALSE';
+        // checking param data length
+        if(count($paramJsonData)>0 && $paramJsonData!=false){
+            $counterSuccess = 0;
+            // fetch user session data 
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
+                // store one by one rating/review question answer details 
+                $ratingReviewedProductArr = $paramJsonData['ratingReviewedProductArr'];
+                if(count($ratingReviewedProductArr)==4){
+                    // fetch max groupno
+                    $userGrpNo = RatingReviewDao :: getMaxUserGrpNoFromRatingReviewedProduct();
+                    if($userGrpNo<=0){
+                        $userGrpNo = rand(0, 10000);
+                    }
+                    // iterate each data
+                    for($eachIndex = 0; $eachIndex<count($ratingReviewedProductArr); $eachIndex++){
+                        $ratingReviewedProductArr[$eachIndex]['user_id'] = $unmd5UserId;
+                        $ratingReviewedProductArr[$eachIndex]['created_by'] = $unmd5UserId;
+                        $ratingReviewedProductArr[$eachIndex]['group_no'] = $userGrpNo;
+                        $lastInsertedId = RatingReviewDao :: addUserRatingReviewProduct($ratingReviewedProductArr[$eachIndex]);
+                        if($lastInsertedId>0 && $lastInsertedId!=false){
+                            $counterSuccess++;
+                        }
+                    }
+                }
+            }
+            if($counterSuccess==4){
+                $retStatus = 'TRUE';
+            }
+        }
+        return $retStatus;
+    }
+    
+    
+    public static function generateHumanReadableOrdercartId(){
+        $humanReadableOrdercartId = 0;
+        $lastOrderCartId = OrderCartDao :: generateMaxOrderCartId();
+        if($lastOrderCartId>=0 && $lastOrderCartId!=''){
+            $lastOrderCartId++;
+        }else{
+            $lastOrderCartId = 1;
+        }
+        $humanReadableOrdercartId = "ODR$lastOrderCartId".time();
+        return $humanReadableOrdercartId;
+    }
+    
+    
+    public static function prepareProductDataAndAddInOrderCart($paramJsonData){
+        $isProductAddedInOrdercart = 'FALSE';
+        if(count($paramJsonData)>0 && $paramJsonData!=false){
+            
+            $lastRequestedOrdercartId = 0;
+            $lastRequestedOrdercartStoreId = 0;
+            $storeMinOrderAmt = $paramJsonData['minorderamt'];
+            $storeOrderDeliveryFee = $paramJsonData['deliveryfee'];
+            $userTotalOrderAmt = $paramJsonData['totalamount'];
+            
+            // fetch user session data details
+            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
+            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
+                
+                $requestedUserSessionId = $userSessionDetailsData['user_sessionid'];
+                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
+                
+                // checking for order cart related
+                $ordercartDataArr = OrderCartDao :: getRequestedOrdercartIdUsingUserId($unmd5UserId);
+                if($ordercartDataArr==false || count($ordercartDataArr)==0){
+                    // generate human readable order cart id
+                    $humanReadableNewOrdercartId = commonfunction :: generateHumanReadableOrdercartId();
+                    // add entry in ordercart
+                    $addOrdercartData = array();
+                    $addOrdercartData['order_cartid'] = $humanReadableNewOrdercartId;
+                    $addOrdercartData['user_id'] = $unmd5UserId;
+                    $addOrdercartData['user_sessionid'] = $requestedUserSessionId;
+                    $addOrdercartData['created_by'] = $unmd5UserId;
+                    $addOrdercartData['created_datedtime'] = date('Y-m-d H:i:s');
+                    $lastRequestedOrdercartId = OrderCartDao :: addEntryInOrdercart($addOrdercartData);
+                }else if(count($ordercartDataArr)>0 && $ordercartDataArr!=false){
+                    $lastRequestedOrdercartId = $ordercartDataArr['ordercartId'];
+                    // update order cart data
+                    if($ordercartDataArr['userSessionId']!=$requestedUserSessionId){
+                        $updateOrdercartDataObj = array(
+                            "id"=>$lastRequestedOrdercartId, 
+                            "user_sessionid"=>$requestedUserSessionId,
+                            "updated_by"=>$unmd5UserId
+                        );
+                        $updatedStatusOrdercart = OrderCartDao :: updateEntryInOrdercart($updateOrdercartDataObj);
+                    }
+                }
+                
+                // checking for order cart store related
+                if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false){
+                    $ccaId = $paramJsonData['ccaId'];
+                    $storeId = $paramJsonData['store_id'];
+                    // checking order cart store id is already requested or not
+                    $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $lastRequestedOrdercartId);
+                    if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
+                        $lastRequestedOrdercartStoreId = $ordercartStoreDataArr['ordercartStoreId'];
+                        $userTotalOrderAmt = $userTotalOrderAmt + $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
+                        $storeOdrTotalAmt = $userTotalOrderAmt;
+                        $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
+                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt>=$storeMinOrderAmt){
+                            $updateStoreOrderDeliveryFee = '0';
+                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt<$storeMinOrderAmt){
+                            $storeOdrTotalAmt = $userTotalOrderAmt + $updateStoreOrderDeliveryFee;
+                        }
+                        $updateOrdercartStoreDataObj = array(
+                            "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
+                            "subtotalamount"=>$userTotalOrderAmt,
+                            "totalamount"=>$storeOdrTotalAmt, 
+                            "updated_by"=>$unmd5UserId,
+                            "id"=>$lastRequestedOrdercartStoreId
+                        );
+                        $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
+                    }else{
+                        // add entry in order cart store
+                        $storeOdrTotalAmt = $userTotalOrderAmt;
+                        $addStoreOrderDeliveryFee = $storeOrderDeliveryFee;
+                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt>=$storeMinOrderAmt){
+                            $addStoreOrderDeliveryFee = '0';
+                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
+                            && $userTotalOrderAmt<$storeMinOrderAmt){
+                            $storeOdrTotalAmt = $storeOdrTotalAmt + $addStoreOrderDeliveryFee;
+                        }
+                        
+                        $addOrdercartStoreData = array();
+                        $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
+                        $addOrdercartStoreData['store_id'] = $storeId;
+                        $addOrdercartStoreData['ccaId'] = $ccaId;
+                        $addOrdercartStoreData['delivery_areaname'] = $paramJsonData['areaname'];
+                        $addOrdercartStoreData['min_orderamt'] = $storeMinOrderAmt;
+                        $addOrdercartStoreData['deliveryfee'] = $addStoreOrderDeliveryFee;
+                        $addOrdercartStoreData['apply_deliveryfee'] = $addStoreOrderDeliveryFee;
+                        $addOrdercartStoreData['subtotalamount'] = $userTotalOrderAmt;
+                        $addOrdercartStoreData['totalamount'] = $storeOdrTotalAmt;
+                        $addOrdercartStoreData['created_by'] = $unmd5UserId;
+                        $addOrdercartStoreData['created_datedtime'] = date('Y-m-d H:i:s');
+                        $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($addOrdercartStoreData);
+                    }
+                } 
+                
+                // finally storing item details
+                if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false 
+                    && $lastRequestedOrdercartStoreId>0 && $lastRequestedOrdercartStoreId!=false){
+                    $paramJsonData['ordercart_storeid'] = $lastRequestedOrdercartStoreId;
+                    $paramJsonData['created_by'] = $unmd5UserId;
+                    $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
+                    $lastInsertedProductInOrdercartStoreItemId = OrderCartDao :: addProductInOrdercartStoreItemDetails($paramJsonData);
+                    if($lastInsertedProductInOrdercartStoreItemId>0 
+                        && $lastInsertedProductInOrdercartStoreItemId!=false){
+                        $isProductAddedInOrdercart = 'TRUE';
+                    }
+                }
+                
+            }
+        }
+        return $isProductAddedInOrdercart;
+    }
+
+    
+    public static function getRequestedOrdercartItemDetails($userId){
+        $allStorewiseDataArr = array();
+        $ordercartSummaryDataArr = array();
+        $ordercartSummaryDataArr['totalStores'] = 0;
+        $ordercartSummaryDataArr['subtotalAmount'] = 0;
+        $ordercartSummaryDataArr['totalDeliveryFee'] = 0;
+        $ordercartSummaryDataArr['totalAmount'] = 0;
+        if($userId!=false && $userId>0){
+            // fetching requested order cart all items for given user
+            $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                
+                // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
+                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
+                    
+                    // iterating order store wise with delivery location data
+                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                        
+                        $eachOrdercartStoresDataArr = array();
+                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
+                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
+                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
+                        $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
+                        $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
+                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
+                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
+                        $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = '';
+                        $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
+                        $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
+                        $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['isShowItemList'] = false;
+                        $eachOrdercartStoresDataArr['allItemsData'] = array();
+                        
+                        // iterate each item details
+                        for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
+                            array_push($eachOrdercartStoresDataArr['allItemsData'], 
+                                array(
+                                    "ordercartId"=>$storeAllItemsDataArr[$eachIndx]['ordercartId'],
+                                    "ordercartStoreId"=>$storeAllItemsDataArr[$eachIndx]['ordercartStoreId'],
+                                    "store_id"=>$storeAllItemsDataArr[$eachIndx]['storeId'],
+                                    "ccaId"=>$storeAllItemsDataArr[$eachIndx]['deliveryCountryCityAreaId'],
+                                    "minorderamt"=>$storeMinOrderAmt,
+                                    "deliveryfee"=>$storeDeliveryFee,
+                                    "storeSubtotalAmt"=>$eachOrdercartStoresDataArr['subtotalamount'],
+                                    "orderStoreItemId"=>$storeAllItemsDataArr[$eachIndx]['orderStoreItemId'],
+                                    "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
+                                    "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
+                                    "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
+                                    "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
+                                    "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt'],
+                                    "description"=>$storeAllItemsDataArr[$eachIndx]['description'],
+                                    "productFeatureBasePrice"=>$storeAllItemsDataArr[$eachIndx]['productFeatureBasePrice'],
+                                    "productFeatureDiscount"=>$storeAllItemsDataArr[$eachIndx]['productFeatureDiscount']
+                                )
+                            );
+                        }
+                        
+                        // checking for delivery fee msg 
+                        if($storeAppliedDeliveryFeeOnOdrAmt<=0 && $storeAppliedDeliveryFeeOnOdrAmt!=''){
+                            $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
+                            $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalamount'].")  of this seller !!!";
+                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
+                        }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
+                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
+                        }
+                        
+                        $ordercartSummaryDataArr['totalStores'] = $ordercartSummaryDataArr['totalStores'] + 1;
+                        $ordercartSummaryDataArr['subtotalAmount'] = $ordercartSummaryDataArr['subtotalAmount'] + $eachOrdercartStoresDataArr['subtotalamount'];
+                        $ordercartSummaryDataArr['totalDeliveryFee'] = $ordercartSummaryDataArr['totalDeliveryFee'] + $storeAppliedDeliveryFeeOnOdrAmt;
+                        $ordercartSummaryDataArr['totalAmount'] = $ordercartSummaryDataArr['totalAmount'] + $eachOrdercartStoresDataArr['totalamount'];
+                        array_push($allStorewiseDataArr, $eachOrdercartStoresDataArr);
+                    }
+                }
+            }
+        }
+        if(count($allStorewiseDataArr)>0 && $allStorewiseDataArr!=false){
+            $orderCartDataArr = array();
+            $orderCartDataArr['ordercartAllStoreWiseData'] = $allStorewiseDataArr;
+            // $orderCartDataArr['ordercartSummaryData'] = $ordercartSummaryDataArr;
+            return $orderCartDataArr;
+        }else{
+            return false;
+        }
+    }
+    
+    public static function getCancelledOrdercartItemDetails($userId){
+        $allOrdercartWiseDataArr = array();
+        if($userId>0 && $userId!=false){
+            // fetching all cancelled order cart with all items by end user or admin members
+            $dataArr1 = OrderCartDao :: getCancelledOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorted on ordercartId
+                $sortedDataArr1 = utils::arraySort($dataArr1, array("ordercartId"));
+                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
+                    // iterating order cart wise data
+                    foreach($sortedDataArr1 as $ordercartIdKey=>$allItemsDataArr){
+                        array_push($allOrdercartWiseDataArr, 
+                            array(
+                                "humanReadableOrdercartId"=>$allItemsDataArr[0]['humanReadableOrdercartId'],
+                                "totalItems"=>count($allItemsDataArr),
+                                "isShowItemList"=>false,
+                                "allItemsData"=>$allItemsDataArr
+                            )
+                        );
+                    }
+                }
+            }
+        }
+        if(count($allOrdercartWiseDataArr)>0 && $allOrdercartWiseDataArr!=false){
+            return $allOrdercartWiseDataArr;
+        }else{
+            return false;
+        }
+    }
+    
+
+    public static function getAllOrderedOrdercartItemDetails($userId){
+        $allOrdercartWiseDataArr = array();
+        if($userId>0 && $userId!=false){
+            // fetching all order cart with all ordered items by end user
+            $dataArr1 = OrderCartDao :: getAllOrderedOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorted on ordercartId
+                $sortedOrdercartDataArr = utils::arraySort($dataArr1, array("humanReadableOrdercartId", "storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                if(count($sortedOrdercartDataArr)>0 && $sortedOrdercartDataArr!=false){
+                    // iterate order cart wise data
+                    foreach($sortedOrdercartDataArr as $humanReadableOrdercartId=>$allSortedStoreDataArr){
+                        $eachOrdercartWiseDataArr = array();
+                        $eachOrdercartWiseDataArr['humanReadableOrdercartId'] = $humanReadableOrdercartId;
+                        $eachOrdercartWiseDataArr['totalStores'] = count($allSortedStoreDataArr);
+                        $eachOrdercartWiseDataArr['allStoresData'] = array();
+                        // iterate each store wise data
+                        foreach($allSortedStoreDataArr as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                            $deliveryFromToAreaName = "from ". $storeAllItemsDataArr[0]['storeLocatedAreaName']." to ".$storeAllItemsDataArr[0]['delivery_areaname'];
+                            array_push($eachOrdercartWiseDataArr['allStoresData'], 
+                                array(
+                                    "shopStoreTitle"=>$storeAllItemsDataArr[0]['shopStoreTitle'],
+                                    "storeLocatedAreaName"=>$storeAllItemsDataArr[0]['storeLocatedAreaName'],
+                                    "deliveryAreaname>"=>$storeAllItemsDataArr[0]['delivery_areaname'],
+                                    "deliveryFromToAreaName"=>$deliveryFromToAreaName,
+                                    "subtotalamount"=>$storeAllItemsDataArr[0]['subtotalamount'],
+                                    "apply_deliveryFee"=>$storeAllItemsDataArr[0]['apply_deliveryFee'],
+                                    "discountamount"=>$storeAllItemsDataArr[0]['discountamount'],
+                                    "totalamount"=>$storeAllItemsDataArr[0]['totalamount'],
+                                    "allItemsData"=>$storeAllItemsDataArr,
+                                    "isShowItemList"=>false
+                                )
+                            );
+                        }
+                        array_push($allOrdercartWiseDataArr, $eachOrdercartWiseDataArr);
+                    }
+                }
+            }
+        }
+        if(count($allOrdercartWiseDataArr)>0 && $allOrdercartWiseDataArr!=false){
+            return $allOrdercartWiseDataArr;
+        }else{
+            return false;
+        }
+    }
+    
+    
+    public static function getStorewiseOrderSummaryDataForCheckoutProcess($userId){
+        $allStorewiseOrderSummaryDataArr = array();
+        if($userId!=false && $userId>0){
+            // fetching requested order cart all items for given user
+            $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
+                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
+                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
+                    // iterating order store wise with delivery location data
+                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
+                        $eachOrdercartStoresDataArr = array();
+                        $eachOrdercartStoresDataArr['ordercartStoreId'] = $storeAllItemsDataArr[0]['ordercartStoreId'];
+                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
+                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
+                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
+                        $eachOrdercartStoresDataArr['deliveryaddress'] = $storeAllItemsDataArr[0]['deliveryAddress'];
+                        $eachOrdercartStoresDataArr['deliverydate'] = $storeAllItemsDataArr[0]['deliverydate'];
+                        $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
+                        $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
+                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
+                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
+                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
+                        array_push($allStorewiseOrderSummaryDataArr, $eachOrdercartStoresDataArr);
+                    }
+                }
+            }
+        }
+        if(count($allStorewiseOrderSummaryDataArr)>0 
+            && $allStorewiseOrderSummaryDataArr!=false){
+            return $allStorewiseOrderSummaryDataArr;
+        }else{
+            return false;
+        }
+    }
+    
+    
+    public static function generatePartyOrderNo(){
+        $lastPartyOrderId = PartyOrdersDao :: generateMaxPartyOrderNo();
+        if($lastPartyOrderId>=0 && $lastPartyOrderId!=''){
+            $lastPartyOrderId++;
+        }else{
+            $lastPartyOrderId = 1;
+        }
+        $humanReadablePartyOrderNo = "POR$lastPartyOrderId".time();
+        return $humanReadablePartyOrderNo;
+    }
+    
+    public static function preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($paramJsonData){
+        $retEmailSentStatus = false;
+        try{
+            if(count($paramJsonData)>0 && $paramJsonData!=false){
+                if(array_key_exists('name', $paramJsonData)
+                    && array_key_exists('email', $paramJsonData)){
+                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
+                    $msgSubject = 'Email Testing CJ';
+                    $msgBody = 'Email Testing CJ';
+                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
+                }
+            }
+        }catch(Exception $ex){
+            $retEmailSentStatus = false;
+        }
+        return $retEmailSentStatus;
+    }
+    
+    public static function getPartyOrderList($userId){
+        $partyOrderDataArr = false;
+        if($userId!='' && $userId>0){
+            // fetching party order list data
+            $dataArr1 = PartyOrdersDao::getPartyOrderList($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // iterate each party order data details
+                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                    $poId = $dataArr1[$eachIndex]['partyOrderId'];
+                    $poStatus = $dataArr1[$eachIndex]['porShortStatus'];
+                    
+                    // fetch each partyOrderId further consveration/log details
+                    $dataArr1[$eachIndex]['poLogCount'] = '0';
+                    $dataArr1[$eachIndex]['poLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isPoShowLogList'] = false;
+                    $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $poId);
+                    if(count($dataArr2)>0 && $dataArr2!=false){
+                        $dataArr1[$eachIndex]['poLogCount'] = count($dataArr2);
+                        $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
+                    }
+                    
+                    // deciding payment btn to show or not
+                    $dataArr1[$eachIndex]['isShowPoPaymentBtn'] = ($poStatus=='PP'?true:false);
+                    
+                    // fetch each partyOrderId payment log details 
+                    $dataArr1[$eachIndex]['poPaymentInstallment'] = '0';
+                    $dataArr1[$eachIndex]['poPaymentLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isShowPoPaymentLogList'] = false;
+                    $dataArr3 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId);
+                    if(count($dataArr3)>0 && $dataArr3!=false){
+                        $dataArr1[$eachIndex]['poPaymentInstallment'] = count($dataArr3);
+                        $dataArr1[$eachIndex]['poPaymentLogDetails'] = $dataArr3;
+                    }
+
+                    // deciding how much need to pay or balance also
+                    $dataArr1[$eachIndex]['poGeneratedTotalAmt'] = '0';
+                    $dataArr1[$eachIndex]['payingamount'] = '0';
+                    $dataArr1[$eachIndex]['balanceamount'] = '0';
+                    $dataArr4 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId, 'Y');
+                    if(count($dataArr4)==1 && $dataArr4!=false){
+                        $dataArr1[$eachIndex]['poGeneratedTotalAmt'] = $dataArr4[0]['poGeneratedTotalAmt'];
+                        $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
+                        $dataArr1[$eachIndex]['balanceamount'] = $dataArr4[0]['balanceamount'];
+                    }
+                    
+                }
+                $partyOrderDataArr = $dataArr1;
+            }
+        }
+        return $partyOrderDataArr;
+    }
+    
+    
+    public static function generateCustomizeOrderNo(){
+        $lastCustomizeOrderId = CustomizeOrdersDao :: generateMaxCustomizeOrderNo();
+        if($lastCustomizeOrderId>=0 && $lastCustomizeOrderId!=''){
+            $lastCustomizeOrderId++;
+        }else{
+            $lastCustomizeOrderId = 1;
+        }
+        $humanReadableCustomizeOrderNo = "COR$lastCustomizeOrderId".time();
+        return $humanReadableCustomizeOrderNo;
+    }
+    
+    public static function preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($paramJsonData){
+        $retEmailSentStatus = false;
+        try{
+            if(count($paramJsonData)>0 && $paramJsonData!=false){
+                if(array_key_exists('name', $paramJsonData)
+                    && array_key_exists('email', $paramJsonData)){
+                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
+                    $msgSubject = 'Email Testing CJ';
+                    $msgBody = 'Email Testing CJ';
+                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
+                }
+            }
+        }catch(Exception $ex){
+            $retEmailSentStatus = false;
+        }
+        return $retEmailSentStatus;
+    }
+    
+    
+    public static function getCustomizeOrderList($userId){
+        $customizeOrderDataArr = false;
+        if($userId!='' && $userId>0){
+            // fetching customize order list data
+            $dataArr1 = CustomizeOrdersDao::getCustomizeOrderList($userId);
+            if(count($dataArr1)>0 && $dataArr1!=false){
+                // iterate each customize order data details
+                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
+                    $coId = $dataArr1[$eachIndex]['customizeOrderId'];
+                    $coStatus = $dataArr1[$eachIndex]['corShortStatus'];
+                    
+                    // fetch each customizeOrderId further consveration/log details
+                    $dataArr1[$eachIndex]['coLogCount'] = '0';
+                    $dataArr1[$eachIndex]['coLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isCoShowLogList'] = false;
+                    $dataArr2 = CustomizeOrdersDao :: getCustomizeOrderLogDetails($userId, $coId);
+                    if(count($dataArr2)>0 && $dataArr2!=false){
+                        $dataArr1[$eachIndex]['coLogCount'] = count($dataArr2);
+                        $dataArr1[$eachIndex]['coLogDetails'] = $dataArr2;
+                    }
+                    
+                    // deciding payment btn to show or not
+                    $dataArr1[$eachIndex]['isShowCoPaymentBtn'] = ($coStatus=='PP'?true:false);
+                    
+                    // fetch each customizeOrderId payment log details 
+                    $dataArr1[$eachIndex]['coPaymentInstallment'] = '0';
+                    $dataArr1[$eachIndex]['coPaymentLogDetails'] = false;
+                    $dataArr1[$eachIndex]['isShowCoPaymentLogList'] = false;
+                    $dataArr3 = CustomizeOrdersDao :: getPaymentDetailsForCustomizeOrder($userId, $coId);
+                    if(count($dataArr3)>0 && $dataArr3!=false){
+                        $dataArr1[$eachIndex]['coPaymentInstallment'] = count($dataArr3);
+                        $dataArr1[$eachIndex]['coPaymentLogDetails'] = $dataArr3;
+                    }
+
+                    // deciding how much need to pay or balance also
+                    $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = '0';
+                    $dataArr1[$eachIndex]['payingamount'] = '0';
+                    $dataArr1[$eachIndex]['balanceamount'] = '0';
+                    $dataArr4 = CustomizeOrdersDao :: getPaymentDetailsForCustomizeOrder($userId, $coId, 'Y');
+                    if(count($dataArr4)==1 && $dataArr4!=false){
+                        $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = $dataArr4[0]['coGeneratedTotalAmt'];
+                        $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
+                        $dataArr1[$eachIndex]['balanceamount'] = $dataArr4[0]['balanceamount'];
+                    }
+                    
+                }
+                $customizeOrderDataArr = $dataArr1;
+            }
+        }
+        return $customizeOrderDataArr;
     }
     
     
@@ -934,512 +1420,6 @@ class commonfunction{
     }
 
     
-    /////////////////// Rating/Review related code ////////////////////////////
     
-    public static function addUserRatingReviewProduct($paramJsonData){
-        $retStatus = 'FALSE';
-        // checking param data length
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            $counterSuccess = 0;
-            // fetch user session data 
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
-            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
-                // store one by one rating/review question answer details 
-                $ratingReviewedProductArr = $paramJsonData['ratingReviewedProductArr'];
-                if(count($ratingReviewedProductArr)==4){
-                    // fetch max groupno
-                    $userGrpNo = RatingReviewDao :: getMaxUserGrpNoFromRatingReviewedProduct();
-                    if($userGrpNo<=0){
-                        $userGrpNo = rand(0, 10000);
-                    }
-                    // iterate each data
-                    for($eachIndex = 0; $eachIndex<count($ratingReviewedProductArr); $eachIndex++){
-                        $ratingReviewedProductArr[$eachIndex]['user_id'] = $unmd5UserId;
-                        $ratingReviewedProductArr[$eachIndex]['created_by'] = $unmd5UserId;
-                        $ratingReviewedProductArr[$eachIndex]['group_no'] = $userGrpNo;
-                        $lastInsertedId = RatingReviewDao :: addUserRatingReviewProduct($ratingReviewedProductArr[$eachIndex]);
-                        if($lastInsertedId>0 && $lastInsertedId!=false){
-                            $counterSuccess++;
-                        }
-                    }
-                }
-            }
-            if($counterSuccess==4){
-                $retStatus = 'TRUE';
-            }
-        }
-        return $retStatus;
-    }
-    
-    
-    ///////////////////////// order cart related code //////////////////////////
-
-    // CJ defined this function 2016-08-09
-    public static function generateHumanReadableOrdercartId(){
-        $humanReadableOrdercartId = 0;
-        $lastOrderCartId = OrderCartDao :: generateMaxOrderCartId();
-        if($lastOrderCartId>=0 && $lastOrderCartId!=''){
-            $lastOrderCartId++;
-        }else{
-            $lastOrderCartId = 1;
-        }
-        $humanReadableOrdercartId = "ODR$lastOrderCartId".time();
-        return $humanReadableOrdercartId;
-    }
-    
-    // CJ defined this function 2016-08-13
-    public static function prepareProductDataAndAddInOrderCart($paramJsonData){
-        $isProductAddedInOrdercart = 'FALSE';
-        if(count($paramJsonData)>0 && $paramJsonData!=false){
-            
-            $lastRequestedOrdercartId = 0;
-            $lastRequestedOrdercartStoreId = 0;
-            $storeMinOrderAmt = $paramJsonData['minorderamt'];
-            $storeOrderDeliveryFee = $paramJsonData['deliveryfee'];
-            $userTotalOrderAmt = $paramJsonData['totalamount'];
-            
-            // fetch user session data details
-            $userSessionDetailsData = commonfunction :: getUserSessionDetails($paramJsonData);
-            if(count($userSessionDetailsData)>0 && $userSessionDetailsData!=false){
-                
-                $requestedUserSessionId = $userSessionDetailsData['user_sessionid'];
-                $unmd5UserId = $userSessionDetailsData['unmd5UserId'];
-                
-                // checking for order cart related
-                $ordercartDataArr = OrderCartDao :: getRequestedOrdercartIdUsingUserId($unmd5UserId);
-                if($ordercartDataArr==false || count($ordercartDataArr)==0){
-                    // generate human readable order cart id
-                    $humanReadableNewOrdercartId = commonfunction :: generateHumanReadableOrdercartId();
-                    // add entry in ordercart
-                    $addOrdercartData = array();
-                    $addOrdercartData['order_cartid'] = $humanReadableNewOrdercartId;
-                    $addOrdercartData['user_id'] = $unmd5UserId;
-                    $addOrdercartData['user_sessionid'] = $requestedUserSessionId;
-                    $addOrdercartData['created_by'] = $unmd5UserId;
-                    $addOrdercartData['created_datedtime'] = date('Y-m-d H:i:s');
-                    $lastRequestedOrdercartId = OrderCartDao :: addEntryInOrdercart($addOrdercartData);
-                }else if(count($ordercartDataArr)>0 && $ordercartDataArr!=false){
-                    $lastRequestedOrdercartId = $ordercartDataArr['ordercartId'];
-                    // update order cart data
-                    if($ordercartDataArr['userSessionId']!=$requestedUserSessionId){
-                        $updateOrdercartDataObj = array(
-                            "id"=>$lastRequestedOrdercartId, 
-                            "user_sessionid"=>$requestedUserSessionId,
-                            "updated_by"=>$unmd5UserId
-                        );
-                        $updatedStatusOrdercart = OrderCartDao :: updateEntryInOrdercart($updateOrdercartDataObj);
-                    }
-                }
-                
-                // checking for order cart store related
-                if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false){
-                    $ccaId = $paramJsonData['ccaId'];
-                    $storeId = $paramJsonData['store_id'];
-                    // checking order cart store id is already requested or not
-                    $ordercartStoreDataArr = OrderCartDao :: getRequestedOrdercartStoreSummary($unmd5UserId, $storeId, $ccaId, $lastRequestedOrdercartId);
-                    if($ordercartStoreDataArr>0 && $ordercartStoreDataArr!=false){
-                        $lastRequestedOrdercartStoreId = $ordercartStoreDataArr['ordercartStoreId'];
-                        $userTotalOrderAmt = $userTotalOrderAmt + $ordercartStoreDataArr['subtotalOrderAmtNotIncludingDeliveryFee'];
-                        $storeOdrTotalAmt = $userTotalOrderAmt;
-                        $updateStoreOrderDeliveryFee = $storeOrderDeliveryFee;
-                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
-                            && $userTotalOrderAmt>=$storeMinOrderAmt){
-                            $updateStoreOrderDeliveryFee = '0';
-                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
-                            && $userTotalOrderAmt<$storeMinOrderAmt){
-                            $storeOdrTotalAmt = $userTotalOrderAmt + $updateStoreOrderDeliveryFee;
-                        }
-                        $updateOrdercartStoreDataObj = array(
-                            "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
-                            "subtotalamount"=>$userTotalOrderAmt,
-                            "totalamount"=>$storeOdrTotalAmt, 
-                            "updated_by"=>$unmd5UserId,
-                            "id"=>$lastRequestedOrdercartStoreId
-                        );
-                        $updatedStatusOrdrcartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
-                    }else{
-                        // add entry in order cart store
-                        $storeOdrTotalAmt = $userTotalOrderAmt;
-                        $addStoreOrderDeliveryFee = $storeOrderDeliveryFee;
-                        if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
-                            && $userTotalOrderAmt>=$storeMinOrderAmt){
-                            $addStoreOrderDeliveryFee = '0';
-                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
-                            && $userTotalOrderAmt<$storeMinOrderAmt){
-                            $storeOdrTotalAmt = $storeOdrTotalAmt + $addStoreOrderDeliveryFee;
-                        }
-                        
-                        $addOrdercartStoreData = array();
-                        $addOrdercartStoreData['ordercart_id'] = $lastRequestedOrdercartId;
-                        $addOrdercartStoreData['store_id'] = $storeId;
-                        $addOrdercartStoreData['ccaId'] = $ccaId;
-                        $addOrdercartStoreData['delivery_areaname'] = $paramJsonData['areaname'];
-                        $addOrdercartStoreData['min_orderamt'] = $storeMinOrderAmt;
-                        $addOrdercartStoreData['deliveryfee'] = $addStoreOrderDeliveryFee;
-                        $addOrdercartStoreData['apply_deliveryfee'] = $addStoreOrderDeliveryFee;
-                        $addOrdercartStoreData['subtotalamount'] = $userTotalOrderAmt;
-                        $addOrdercartStoreData['totalamount'] = $storeOdrTotalAmt;
-                        $addOrdercartStoreData['created_by'] = $unmd5UserId;
-                        $addOrdercartStoreData['created_datedtime'] = date('Y-m-d H:i:s');
-                        $lastRequestedOrdercartStoreId = OrderCartDao :: addEntryInOrdercartStore($addOrdercartStoreData);
-                    }
-                } 
-                
-                // finally storing item details
-                if($lastRequestedOrdercartId>0 && $lastRequestedOrdercartId!=false 
-                    && $lastRequestedOrdercartStoreId>0 && $lastRequestedOrdercartStoreId!=false){
-                    $paramJsonData['ordercart_storeid'] = $lastRequestedOrdercartStoreId;
-                    $paramJsonData['created_by'] = $unmd5UserId;
-                    $paramJsonData['created_datedtime'] = date('Y-m-d H:i:s');
-                    $lastInsertedProductInOrdercartStoreItemId = OrderCartDao :: addProductInOrdercartStoreItemDetails($paramJsonData);
-                    if($lastInsertedProductInOrdercartStoreItemId>0 
-                        && $lastInsertedProductInOrdercartStoreItemId!=false){
-                        $isProductAddedInOrdercart = 'TRUE';
-                    }
-                }
-                
-            }
-        }
-        return $isProductAddedInOrdercart;
-    }
-    
-    // CJ defined this function 2016-08-14
-    public static function getRequestedOrdercartItemDetails($userId){
-        $allStorewiseDataArr = array();
-        $ordercartSummaryDataArr = array();
-        $ordercartSummaryDataArr['totalStores'] = 0;
-        $ordercartSummaryDataArr['subtotalAmount'] = 0;
-        $ordercartSummaryDataArr['totalDeliveryFee'] = 0;
-        $ordercartSummaryDataArr['totalAmount'] = 0;
-        if($userId!=false && $userId>0){
-            // fetching requested order cart all items for given user
-            $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                
-                // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
-                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
-                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
-                    
-                    // iterating order store wise with delivery location data
-                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
-                        
-                        $eachOrdercartStoresDataArr = array();
-                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
-                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
-                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
-                        $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
-                        $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
-                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
-                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
-                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
-                        $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = '';
-                        $storeMinOrderAmt = $storeAllItemsDataArr[0]['storeMinOrderAmt'];
-                        $storeDeliveryFee = $storeAllItemsDataArr[0]['deliveryfee'];
-                        $storeAppliedDeliveryFeeOnOdrAmt = $storeAllItemsDataArr[0]['apply_deliveryFee'];
-                        $eachOrdercartStoresDataArr['isShowItemList'] = false;
-                        $eachOrdercartStoresDataArr['allItemsData'] = array();
-                        
-                        // iterate each item details
-                        for($eachIndx = 0; $eachIndx<count($storeAllItemsDataArr); $eachIndx++){
-                            array_push($eachOrdercartStoresDataArr['allItemsData'], 
-                                array(
-                                    "ordercartId"=>$storeAllItemsDataArr[$eachIndx]['ordercartId'],
-                                    "ordercartStoreId"=>$storeAllItemsDataArr[$eachIndx]['ordercartStoreId'],
-                                    "store_id"=>$storeAllItemsDataArr[$eachIndx]['storeId'],
-                                    "ccaId"=>$storeAllItemsDataArr[$eachIndx]['deliveryCountryCityAreaId'],
-                                    "minorderamt"=>$storeMinOrderAmt,
-                                    "deliveryfee"=>$storeDeliveryFee,
-                                    "storeSubtotalAmt"=>$eachOrdercartStoresDataArr['subtotalamount'],
-                                    "orderStoreItemId"=>$storeAllItemsDataArr[$eachIndx]['orderStoreItemId'],
-                                    "productListTitle"=>$storeAllItemsDataArr[$eachIndx]['productListTitle'],
-                                    "size"=>$storeAllItemsDataArr[$eachIndx]['productSize'],
-                                    "price"=>$storeAllItemsDataArr[$eachIndx]['productPrice'],
-                                    "qty"=>$storeAllItemsDataArr[$eachIndx]['productQty'],
-                                    "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt'],
-                                    "description"=>$storeAllItemsDataArr[$eachIndx]['description'],
-                                    "productFeatureBasePrice"=>$storeAllItemsDataArr[$eachIndx]['productFeatureBasePrice'],
-                                    "productFeatureDiscount"=>$storeAllItemsDataArr[$eachIndx]['productFeatureDiscount']
-                                )
-                            );
-                        }
-                        
-                        // checking for delivery fee msg 
-                        if($storeAppliedDeliveryFeeOnOdrAmt<=0 && $storeAppliedDeliveryFeeOnOdrAmt!=''){
-                            $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
-                            $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalamount'].")  of this seller !!!";
-                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
-                        }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
-                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
-                        }
-                        
-                        $ordercartSummaryDataArr['totalStores'] = $ordercartSummaryDataArr['totalStores'] + 1;
-                        $ordercartSummaryDataArr['subtotalAmount'] = $ordercartSummaryDataArr['subtotalAmount'] + $eachOrdercartStoresDataArr['subtotalamount'];
-                        $ordercartSummaryDataArr['totalDeliveryFee'] = $ordercartSummaryDataArr['totalDeliveryFee'] + $storeAppliedDeliveryFeeOnOdrAmt;
-                        $ordercartSummaryDataArr['totalAmount'] = $ordercartSummaryDataArr['totalAmount'] + $eachOrdercartStoresDataArr['totalamount'];
-                        array_push($allStorewiseDataArr, $eachOrdercartStoresDataArr);
-                    }
-                }
-            }
-        }
-        if(count($allStorewiseDataArr)>0 && $allStorewiseDataArr!=false){
-            $orderCartDataArr = array();
-            $orderCartDataArr['ordercartAllStoreWiseData'] = $allStorewiseDataArr;
-            // $orderCartDataArr['ordercartSummaryData'] = $ordercartSummaryDataArr;
-            return $orderCartDataArr;
-        }else{
-            return false;
-        }
-    }
-    
-    // CJ defined this function 2016-08-15
-    public static function getCancelledOrdercartItemDetails($userId){
-        $allOrdercartWiseDataArr = array();
-        if($userId>0 && $userId!=false){
-            // fetching all cancelled order cart with all items by end user or admin members
-            $dataArr1 = OrderCartDao :: getCancelledOrdercartItemDetails($userId);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                // sorted on ordercartId
-                $sortedDataArr1 = utils::arraySort($dataArr1, array("ordercartId"));
-                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
-                    // iterating order cart wise data
-                    foreach($sortedDataArr1 as $ordercartIdKey=>$allItemsDataArr){
-                        array_push($allOrdercartWiseDataArr, 
-                            array(
-                                "humanReadableOrdercartId"=>$allItemsDataArr[0]['humanReadableOrdercartId'],
-                                "totalItems"=>count($allItemsDataArr),
-                                "isShowItemList"=>false,
-                                "allItemsData"=>$allItemsDataArr
-                            )
-                        );
-                    }
-                }
-            }
-        }
-        if(count($allOrdercartWiseDataArr)>0 && $allOrdercartWiseDataArr!=false){
-            return $allOrdercartWiseDataArr;
-        }else{
-            return false;
-        }
-    }
-    
-    // CJ defined this function 2016-08-21
-    public static function getAllOrderedOrdercartItemDetails($userId){
-        $allOrdercartWiseDataArr = array();
-        if($userId>0 && $userId!=false){
-            // fetching all order cart with all ordered items by end user
-            $dataArr1 = OrderCartDao :: getAllOrderedOrdercartItemDetails($userId);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                // sorted on ordercartId
-                $sortedOrdercartDataArr = utils::arraySort($dataArr1, array("humanReadableOrdercartId", "storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
-                if(count($sortedOrdercartDataArr)>0 && $sortedOrdercartDataArr!=false){
-                    // iterate order cart wise data
-                    foreach($sortedOrdercartDataArr as $humanReadableOrdercartId=>$allSortedStoreDataArr){
-                        $eachOrdercartWiseDataArr = array();
-                        $eachOrdercartWiseDataArr['humanReadableOrdercartId'] = $humanReadableOrdercartId;
-                        $eachOrdercartWiseDataArr['totalStores'] = count($allSortedStoreDataArr);
-                        $eachOrdercartWiseDataArr['allStoresData'] = array();
-                        // iterate each store wise data
-                        foreach($allSortedStoreDataArr as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
-                            $deliveryFromToAreaName = "from ". $storeAllItemsDataArr[0]['storeLocatedAreaName']." to ".$storeAllItemsDataArr[0]['delivery_areaname'];
-                            array_push($eachOrdercartWiseDataArr['allStoresData'], 
-                                array(
-                                    "shopStoreTitle"=>$storeAllItemsDataArr[0]['shopStoreTitle'],
-                                    "storeLocatedAreaName"=>$storeAllItemsDataArr[0]['storeLocatedAreaName'],
-                                    "deliveryAreaname>"=>$storeAllItemsDataArr[0]['delivery_areaname'],
-                                    "deliveryFromToAreaName"=>$deliveryFromToAreaName,
-                                    "subtotalamount"=>$storeAllItemsDataArr[0]['subtotalamount'],
-                                    "apply_deliveryFee"=>$storeAllItemsDataArr[0]['apply_deliveryFee'],
-                                    "discountamount"=>$storeAllItemsDataArr[0]['discountamount'],
-                                    "totalamount"=>$storeAllItemsDataArr[0]['totalamount'],
-                                    "allItemsData"=>$storeAllItemsDataArr,
-                                    "isShowItemList"=>false
-                                )
-                            );
-                        }
-                        array_push($allOrdercartWiseDataArr, $eachOrdercartWiseDataArr);
-                    }
-                }
-            }
-        }
-        if(count($allOrdercartWiseDataArr)>0 && $allOrdercartWiseDataArr!=false){
-            return $allOrdercartWiseDataArr;
-        }else{
-            return false;
-        }
-    }
-    
-    
-    // CJ defined this function 2016-09-18
-    public static function getStorewiseOrderSummaryDataForCheckoutProcess($userId){
-        $allStorewiseOrderSummaryDataArr = array();
-        if($userId!=false && $userId>0){
-            // fetching requested order cart all items for given user
-            $dataArr1 = OrderCartDao :: getRequestedOrdercartItemDetails($userId);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                // sorted on ordercartId, order cart storeid, deliverycountrycityareaId
-                $sortedDataArr1 = utils::arraySort($dataArr1, array("storeId"), array("storeId"=>"deliveryCountryCityAreaId"));
-                if(count($sortedDataArr1)>0 && $sortedDataArr1!=false){
-                    // iterating order store wise with delivery location data
-                    foreach($sortedDataArr1 as $odrStoreIdDeliveryAreaId=>$storeAllItemsDataArr){
-                        $eachOrdercartStoresDataArr = array();
-                        $eachOrdercartStoresDataArr['ordercartStoreId'] = $storeAllItemsDataArr[0]['ordercartStoreId'];
-                        $eachOrdercartStoresDataArr['shopStoreTitle'] = $storeAllItemsDataArr[0]['shopStoreTitle'];
-                        $eachOrdercartStoresDataArr['storeLocatedAreaName'] = $storeAllItemsDataArr[0]['storeLocatedAreaName'];
-                        $eachOrdercartStoresDataArr['deliveryAreaname'] = $storeAllItemsDataArr[0]['delivery_areaname'];
-                        $eachOrdercartStoresDataArr['deliveryaddress'] = $storeAllItemsDataArr[0]['deliveryAddress'];
-                        $eachOrdercartStoresDataArr['deliverydate'] = $storeAllItemsDataArr[0]['deliverydate'];
-                        $eachOrdercartStoresDataArr['subtotalamount'] = $storeAllItemsDataArr[0]['subtotalamount'];
-                        $eachOrdercartStoresDataArr['apply_deliveryFee'] = $storeAllItemsDataArr[0]['apply_deliveryFee'];
-                        $eachOrdercartStoresDataArr['discountamount'] = $storeAllItemsDataArr[0]['discountamount'];
-                        $eachOrdercartStoresDataArr['totalamount'] = $storeAllItemsDataArr[0]['totalamount'];
-                        $eachOrdercartStoresDataArr['totalItems'] = count($storeAllItemsDataArr);
-                        array_push($allStorewiseOrderSummaryDataArr, $eachOrdercartStoresDataArr);
-                    }
-                }
-            }
-        }
-        if(count($allStorewiseOrderSummaryDataArr)>0 
-            && $allStorewiseOrderSummaryDataArr!=false){
-            return $allStorewiseOrderSummaryDataArr;
-        }else{
-            return false;
-        }
-    }
-    
-    /////////////////////////////// party order related code ///////////////////
-    
-    // CJ defined this function 2016-08-21
-    public static function generatePartyOrderNo(){
-        $lastPartyOrderId = PartyOrdersDao :: generateMaxPartyOrderNo();
-        if($lastPartyOrderId>=0 && $lastPartyOrderId!=''){
-            $lastPartyOrderId++;
-        }else{
-            $lastPartyOrderId = 1;
-        }
-        $humanReadablePartyOrderNo = "POR$lastPartyOrderId".time();
-        return $humanReadablePartyOrderNo;
-    }
-    
-    // CJ defined this function 2016-08-22
-    public static function getPartyOrderList($userId){
-        $partyOrderDataArr = false;
-        if($userId!='' && $userId>0){
-            // fetching party order list data
-            $dataArr1 = PartyOrdersDao::getPartyOrderList($userId);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                // iterate each party order data details
-                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
-                    $poId = $dataArr1[$eachIndex]['partyOrderId'];
-                    $poStatus = $dataArr1[$eachIndex]['porShortStatus'];
-                    
-                    // fetch each partyOrderId further consveration/log details
-                    $dataArr1[$eachIndex]['poLogCount'] = '0';
-                    $dataArr1[$eachIndex]['poLogDetails'] = false;
-                    $dataArr1[$eachIndex]['isPoShowLogList'] = false;
-                    $dataArr2 = PartyOrdersDao :: getPartyOrderLogDetails($userId, $poId);
-                    if(count($dataArr2)>0 && $dataArr2!=false){
-                        $dataArr1[$eachIndex]['poLogCount'] = count($dataArr2);
-                        $dataArr1[$eachIndex]['poLogDetails'] = $dataArr2;
-                    }
-                    
-                    // deciding payment btn to show or not
-                    $dataArr1[$eachIndex]['isShowPoPaymentBtn'] = ($poStatus=='PP'?true:false);
-                    
-                    // fetch each partyOrderId payment log details 
-                    $dataArr1[$eachIndex]['poPaymentInstallment'] = '0';
-                    $dataArr1[$eachIndex]['poPaymentLogDetails'] = false;
-                    $dataArr1[$eachIndex]['isShowPoPaymentLogList'] = false;
-                    $dataArr3 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId);
-                    if(count($dataArr3)>0 && $dataArr3!=false){
-                        $dataArr1[$eachIndex]['poPaymentInstallment'] = count($dataArr3);
-                        $dataArr1[$eachIndex]['poPaymentLogDetails'] = $dataArr3;
-                    }
-
-                    // deciding how much need to pay or balance also
-                    $dataArr1[$eachIndex]['poGeneratedTotalAmt'] = '0';
-                    $dataArr1[$eachIndex]['payingamount'] = '0';
-                    $dataArr1[$eachIndex]['balanceamount'] = '0';
-                    $dataArr4 = PartyOrdersDao :: getPaymentDetailsForPartyOrder($userId, $poId, 'Y');
-                    if(count($dataArr4)==1 && $dataArr4!=false){
-                        $dataArr1[$eachIndex]['poGeneratedTotalAmt'] = $dataArr4[0]['poGeneratedTotalAmt'];
-                        $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
-                        $dataArr1[$eachIndex]['balanceamount'] = $dataArr4[0]['balanceamount'];
-                    }
-                    
-                }
-                $partyOrderDataArr = $dataArr1;
-            }
-        }
-        return $partyOrderDataArr;
-    }
-    
-    
-    //////////////////////// Customize order request ///////////////////////////
-    
-    // CJ defined this function 2016-08-21
-    public static function generateCustomizeOrderNo(){
-        $lastCustomizeOrderId = CustomizeOrdersDao :: generateMaxCustomizeOrderNo();
-        if($lastCustomizeOrderId>=0 && $lastCustomizeOrderId!=''){
-            $lastCustomizeOrderId++;
-        }else{
-            $lastCustomizeOrderId = 1;
-        }
-        $humanReadableCustomizeOrderNo = "COR$lastCustomizeOrderId".time();
-        return $humanReadableCustomizeOrderNo;
-    }
-    
-    // CJ defined this function 2016-08-22
-    public static function getCustomizeOrderList($userId){
-        $customizeOrderDataArr = false;
-        if($userId!='' && $userId>0){
-            // fetching customize order list data
-            $dataArr1 = CustomizeOrdersDao::getCustomizeOrderList($userId);
-            if(count($dataArr1)>0 && $dataArr1!=false){
-                // iterate each customize order data details
-                for($eachIndex = 0; $eachIndex<count($dataArr1); $eachIndex++){
-                    $coId = $dataArr1[$eachIndex]['customizeOrderId'];
-                    $coStatus = $dataArr1[$eachIndex]['corShortStatus'];
-                    
-                    // fetch each customizeOrderId further consveration/log details
-                    $dataArr1[$eachIndex]['coLogCount'] = '0';
-                    $dataArr1[$eachIndex]['coLogDetails'] = false;
-                    $dataArr1[$eachIndex]['isCoShowLogList'] = false;
-                    $dataArr2 = CustomizeOrdersDao :: getCustomizeOrderLogDetails($userId, $coId);
-                    if(count($dataArr2)>0 && $dataArr2!=false){
-                        $dataArr1[$eachIndex]['coLogCount'] = count($dataArr2);
-                        $dataArr1[$eachIndex]['coLogDetails'] = $dataArr2;
-                    }
-                    
-                    // deciding payment btn to show or not
-                    $dataArr1[$eachIndex]['isShowCoPaymentBtn'] = ($coStatus=='PP'?true:false);
-                    
-                    // fetch each customizeOrderId payment log details 
-                    $dataArr1[$eachIndex]['coPaymentInstallment'] = '0';
-                    $dataArr1[$eachIndex]['coPaymentLogDetails'] = false;
-                    $dataArr1[$eachIndex]['isShowCoPaymentLogList'] = false;
-                    $dataArr3 = CustomizeOrdersDao :: getPaymentDetailsForCustomizeOrder($userId, $coId);
-                    if(count($dataArr3)>0 && $dataArr3!=false){
-                        $dataArr1[$eachIndex]['coPaymentInstallment'] = count($dataArr3);
-                        $dataArr1[$eachIndex]['coPaymentLogDetails'] = $dataArr3;
-                    }
-
-                    // deciding how much need to pay or balance also
-                    $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = '0';
-                    $dataArr1[$eachIndex]['payingamount'] = '0';
-                    $dataArr1[$eachIndex]['balanceamount'] = '0';
-                    $dataArr4 = CustomizeOrdersDao :: getPaymentDetailsForCustomizeOrder($userId, $coId, 'Y');
-                    if(count($dataArr4)==1 && $dataArr4!=false){
-                        $dataArr1[$eachIndex]['coGeneratedTotalAmt'] = $dataArr4[0]['coGeneratedTotalAmt'];
-                        $dataArr1[$eachIndex]['payingamount'] = $dataArr4[0]['payingamount'];
-                        $dataArr1[$eachIndex]['balanceamount'] = $dataArr4[0]['balanceamount'];
-                    }
-                    
-                }
-                $customizeOrderDataArr = $dataArr1;
-            }
-        }
-        return $customizeOrderDataArr;
-    }
     
 }
