@@ -1386,9 +1386,6 @@ function getParamDataObjForCustomizeOrderRequest(){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
             paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
-            paramDataObj['name'] = removeHtmlStripTagsOfContent($('#co_contactPersonNameInputId').val());
-            paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#co_contactMobileInputId').val());
-            paramDataObj['email'] = removeHtmlStripTagsOfContent($('#co_contactEmailInputId').val());
             paramDataObj['event_title'] = removeHtmlStripTagsOfContent($('#co_occasionTitleInputId').val());
             paramDataObj['nos_person'] = removeHtmlStripTagsOfContent($('#co_nosPeopleInputId').val());
             paramDataObj['event_date'] = removeHtmlStripTagsOfContent($('#co_dateInputId').val());
@@ -1397,7 +1394,7 @@ function getParamDataObjForCustomizeOrderRequest(){
             paramDataObj['file'] = '';
             paramDataObj['estimated_budget'] = removeHtmlStripTagsOfContent($('#co_budgetAmtInputId').val());
         }
-        if(Object.keys(paramDataObj).length===12){
+        if(Object.keys(paramDataObj).length===9){
             return paramDataObj;
         }else{
             return false;
