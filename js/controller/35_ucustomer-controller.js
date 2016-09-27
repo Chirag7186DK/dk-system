@@ -162,7 +162,7 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     });
                 }
             }catch(ex){
-                console.log("problem in populateUserPersonalInfo ex=>"+ex);
+                console.log("problem in updateUserPaswordInfoInUserCAccount ex=>"+ex);
             }
         };
         
