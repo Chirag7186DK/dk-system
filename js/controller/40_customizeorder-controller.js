@@ -31,24 +31,14 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
             }
         };
         
-        // attachedFieldValidationCustomizeOrdersRequest
-        $rootScope.attachedFieldValidationCustomizeOrdersRequest = function(){
-            try{
-                attachedFieldValidationCustomizeOrdersRequest();
-            }catch(ex){
-                console.log("problem in attachedFieldValidationCustomizeOrdersRequest ex=>"+ex);
-            }
-        };
-        
         // addCustomizeOrdersRequest 
         $rootScope.addCustomizeOrdersRequest = function(){
             try{
                 var retValidateParamDataStatus = validateParamDataCustomizeOrderRequest();
                 if(retValidateParamDataStatus===false){
                     $rootScope.isShowCustomizeOrderRequestErrorMsg = true;
-                    $rootScope.customizeOrderErrorMsgStr = 'Please fill-up form details to send request customize order !';
+                    $rootScope.customizeOrderErrorMsgStr = 'Please fill-up form details to send request customize order !!!';
                 }else{
-                    // get param obj to add customize order request
                     var preparedParamJsonObj = getParamDataObjForCustomizeOrderRequest();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var apiParamJsonObj = {};
@@ -67,12 +57,12 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                                             $rootScope.requestedCustomizeOrderNo = coRequestedStatusDetails['customizeOrderNo'];
                                         }else{
                                             $rootScope.isShowCustomizeOrderRequestErrorMsg = false;
-                                            $rootScope.customizeOrderErrorMsgStr = 'Please try again to send request customize order !';
+                                            $rootScope.customizeOrderErrorMsgStr = 'Please try again to send request customize order !!!';
                                             $rootScope.requestedCustomizeOrderNo  = '';
                                         }
                                     }else{
                                         $rootScope.isShowCustomizeOrderRequestErrorMsg = true;
-                                        $rootScope.customizeOrderErrorMsgStr = 'Please try again to send request customize order !';
+                                        $rootScope.customizeOrderErrorMsgStr = 'Please try again to send request customize order !!!';
                                         $rootScope.requestedCustomizeOrderNo  = '';
                                     }
                                 }
