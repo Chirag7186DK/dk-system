@@ -1121,7 +1121,6 @@ function getParamObjForStoreWorkingStyleDetails(){
         var paramObj = {};
         if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            // extract data from user product
             if(dkParamObj.hasOwnProperty('userProduct')===true){
                 var userProductObj = dkParamObj['userProduct'];
                 if(userProductObj.hasOwnProperty('shopstore_value')===true){
@@ -1208,7 +1207,6 @@ function getInfoUserSelectedDeliveryCityAreaDessertsProductType(){
         if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             if(dkParamObj!==false && dkParamObj!=='' && jQuery.isEmptyObject(dkParamObj)===false){
-                // extract locationObj param obj
                 if(dkParamObj.hasOwnProperty('locationObj')===true){
                     var userLocationObj = dkParamObj['locationObj'];
                     if(userLocationObj.hasOwnProperty('cityname')===true 
@@ -1280,66 +1278,6 @@ function getCustomerBreadcrumb(){
 }
 
 
-function checkParamDataToRedirectForRequestPartyOrder(){
-    var retStatus = false;
-    if(checkDkSessionParamObjExists()==='TRUE'){
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('partyOrder')===true){
-            var userPartyorderParamObj = dkParamObj['partyOrder'];
-            if(userPartyorderParamObj!==false && userPartyorderParamObj!==undefined 
-                && jQuery.isEmptyObject(userPartyorderParamObj)===false){
-                userPartyorderParamObj['title'] = 'Party Order';
-                dkParamObj['partyOrder'] = userPartyorderParamObj;
-                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
-            }
-        } 
-        retStatus = true;
-    }
-    return retStatus;
-}
-
-
-function checkParamDataToRedirectForRequestCustomizeOrder(){
-    var retStatus = false;
-    if(checkDkSessionParamObjExists()==='TRUE'){
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('customizeOrder')===true){
-            var userCustomizeorderParamObj = dkParamObj['customizeOrder'];
-            if(userCustomizeorderParamObj!==false && userCustomizeorderParamObj!==undefined 
-                && jQuery.isEmptyObject(userCustomizeorderParamObj)===false){
-                userCustomizeorderParamObj['title'] = 'Customize Order';
-                dkParamObj['customizeOrder'] = userCustomizeorderParamObj;
-                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
-            }
-        } 
-        retStatus = true;
-    }
-    return retStatus;
-}
-
-// CJ defined this function 2016-07-16
-function checkParamDataToRedirectForRequestCorporateTieup(){
-    var retStatus = false;
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk partyOrder param obj
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('corporateTieup')===true){
-            var userCorporateTieupParamObj = dkParamObj['corporateTieup'];
-            if(userCorporateTieupParamObj!==false && userCorporateTieupParamObj!==undefined 
-                && jQuery.isEmptyObject(userCorporateTieupParamObj)===false){
-                userCorporateTieupParamObj['title'] = 'Corporate Tie-up';
-                dkParamObj['corporateTieup'] = userCorporateTieupParamObj;
-                sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(dkParamObj));
-            }
-        } 
-        retStatus = true;
-    }
-    return retStatus;
-}
-
-
 function getParamDataObjForPartyOrderRequest(){
     try{
         var paramDataObj = {};
@@ -1390,27 +1328,6 @@ function getParamDataObjForCustomizeOrderRequest(){
     }catch(ex){
         return false;
     }
-}
-
-
-// CJ defined this function 2016-07-24
-function getParamDataObjForCorporateTieupRequest(){
-    var paramObj = {};
-    // checking session param
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk param session data
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('corporateTieup')===true){
-            // extract corporateTieup param obj
-            var partyOrderParamObj = dkParamObj['corporateTieup'];
-            if(partyOrderParamObj.hasOwnProperty('corporateTieupTitle')!==''){
-                paramObj['is_LoggedInUser'] = 'N';
-                paramObj['profile_id'] = '2';
-            }
-        }
-    }
-    return paramObj;
 }
 
 
@@ -1880,7 +1797,6 @@ function getParamDataToUpdateUserpasswordInfo(){
 function storeUserOrderItemInSession(fcontentClass){
     var userOrderItemObj = {};
     try{
-        
         // through view cakes/chocolates etc product page
         if(fcontentClass!==undefined && fcontentClass!=='' && fcontentClass!==false){
             if($('.'+fcontentClass).length===1){
@@ -2056,6 +1972,7 @@ function getParamDataToRemoveItemFromOrdercart(productDetailsObj){
         return false;
     }
 }
+
 
 function getParamDataToUdateOrderDeliveryAddressInOrdercartStore(fcontentClass){
     try{
@@ -2233,8 +2150,6 @@ function getParamDataForAddingUserRatingReviewProduct(fcClass){
     }
 }
 
-
-/////////////////// sharing offers code ////////////////////////////
 
 
 // CJ defined this function 2016-08-28
