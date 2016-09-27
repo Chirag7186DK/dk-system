@@ -71,7 +71,7 @@ function isValidPwd(pwdContent){
     return rtStatus;
 }
 
-function isValidDateBDateFormat(bdateformatContent){
+function isValidBDateFormat(bdateformatContent){
     var rtStatus = 'FALSE';
     try{
         var enteredBDateText = removeHtmlStripTagsOfContent(bdateformatContent);
@@ -309,7 +309,7 @@ function validateUserProfileInfoData(){
         $('.userBirthdateInput_ErrorClass').append("Enter your birthdate !!!");
         inValidDataCount++;
     }else{
-        if(isValidDateBDateFormat($('#userBirthdateInputId').val())==='FALSE'){
+        if(isValidBDateFormat($('#userBirthdateInputId').val())==='FALSE'){
             $('.userBirthdateInput_ErrorClass').append("Entered valid birthdate !!!");
             inValidDataCount++;
         }
@@ -370,112 +370,39 @@ function validationUserChangePasswordInfoData(){
 }
 
 
-// CJ defined this fucntion 2016-07-20
-function attachedFieldValidationPartyOrdersRequest(){
-    if($('#po_occasionTitleInputId').length===1){
-        $('#po_occasionTitleInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('#po_nosPeopleInputId').length===1){
-        $('#po_nosPeopleInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"5", 
-                "allowDecSep":false
-            }
-        );
-    }
-    if($('#po_dateInputId').length===1){
-        var cdate = new Date();
-        $('#po_dateInputId').datepicker({
-            minDate:cdate,
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true
-        });
-    }
-    if($('#po_venueInputId').length===1){
-//        $("#po_venueInputId").geocomplete({
-//            details: ".po_venueContainerDivClass",
-//            country: 'IN',
-//            types: ["geocode"]
-//        });
-    }
-    if($('#po_budgetAmtInputId').length===1){
-        $('#po_budgetAmtInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"5", 
-                "allowDecSep":false
-            }
-        );
-    }
-}
-
-// CJ defined this function 2016-07-20
 function validateParamDataPartyOrderRequest(){
-    // checking session param
     var inValidDataCount = 0 ;
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        
-        // check form field is blank or not for party order request
-        if($('#po_occasionTitleInputId').length===1){
-            if($('#po_occasionTitleInputId').val()===''){
-                $('#po_occasionTitleInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#po_occasionTitleInputId').css({'border-color':'#ccc'});
-            }
+    if(isProperInputElementContent('po_occasionTitleInputId')==='FALSE'){
+        inValidDataCount++;
+    }else{
+        var enteredTitleText = removeHtmlStripTagsOfContent($('#po_occasionTitleInputId').val());
+        if((enteredTitleText).length>60){
+            inValidDataCount++;
         }
-        if($('#po_nosPeopleInputId').length===1){
-            if($('#po_nosPeopleInputId').val()===''){
-                $('#po_nosPeopleInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#po_nosPeopleInputId').css({'border-color':'#ccc'});
-            }
+    }
+    if(isProperInputElementContent('po_nosPeopleInputId')==='FALSE'){
+        inValidDataCount++;
+    }else{
+        var enteredNos = removeHtmlStripTagsOfContent($('#po_nosPeopleInputId').val());
+        if(parseInt(enteredNos)>0){
+            inValidDataCount++;
         }
-        if($('#po_dateInputId').length===1){
-            if($('#po_dateInputId').val()===''){
-                $('#po_dateInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#po_dateInputId').css({'border-color':'#ccc'});
-            }
-        }
-        if($('#po_venueInputId').length===1){
-            if($('#po_venueInputId').val()===''){
-                $('#po_venueInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#po_venueInputId').css({'border-color':'#ccc'});
-            }
-        }
-        if($('#po_messageInputId').length===1){
-            if($('#po_messageInputId').val()===''){
-                $('#po_messageInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#po_messageInputId').css({'border-color':'#ccc'});
-            }
-        }
-        if($('#po_budgetAmtInputId').length===1){
-            if($('#po_budgetAmtInputId').val()===''){
-                $('#po_budgetAmtInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#po_budgetAmtInputId').css({'border-color':'#ccc'});
-            }
+    }
+    if(isProperInputElementContent('po_dateInputId')==='FALSE'){
+        inValidDataCount++;
+    }
+    if(isProperInputElementContent('po_venueInputId')==='FALSE'){
+        inValidDataCount++;
+    }
+    if(isProperInputElementContent('po_messageInputId')==='FALSE'){
+        inValidDataCount++;
+    }
+    if(isProperInputElementContent('po_budgetAmtInputId')==='FALSE'){
+        inValidDataCount++;
+    }else{
+        var enteredNos = removeHtmlStripTagsOfContent($('#po_budgetAmtInputId').val());
+        if(parseInt(enteredNos)>0){
+            inValidDataCount++;
         }
     }
     if(inValidDataCount>0){
