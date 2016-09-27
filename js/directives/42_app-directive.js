@@ -527,7 +527,7 @@ function attachValidationNumberinputDirective($timeout){
                 "allowDecSep":false,
                 "allowLeadingSpaces":false, 
                 "maxDigits":"6",
-                "startMinDigitWith":"5"
+                "startMinDigitWith":"1"
             });
         }
     };
@@ -561,7 +561,7 @@ function attachValidationBudgetamtinputDirective($timeout){
                 "allowDecSep":false,
                 "allowLeadingSpaces":false, 
                 "maxDigits":"6",
-                "startMinDigitWith":"5"
+                "startMinDigitWith":"1"
             });
         }
     };
