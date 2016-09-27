@@ -44,7 +44,7 @@ class customparam{
                 }
             }
             if(array_key_exists('city_ids', $paramJsonData)){
-                if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+                if(validation::isNumberic($paramJsonData['city_ids'])=='TRUE'){
                     $correctParamKeyValueDataCount++;
                 }
             }
@@ -67,12 +67,12 @@ class customparam{
                 }
             }
             if(array_key_exists('city_ids', $paramJsonData)){
-                if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+                if(validation::isNumberic($paramJsonData['city_ids'])=='TRUE'){
                     $correctParamKeyValueDataCount++;
                 }
             }
             if(array_key_exists('area_ids', $paramJsonData)){
-                if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
+                if(validation::isNumberic($paramJsonData['area_ids'])=='TRUE'){
                     $correctParamKeyValueDataCount++;
                 }
             }
@@ -94,22 +94,22 @@ class customparam{
             }
         }
         if(array_key_exists('city_ids', $paramJsonData)){
-            if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
+            if(validation::isNumberic($paramJsonData['city_ids'])=='TRUE'){
                 $correctParamKeyValueDataCount++;
             }
         }
         if(array_key_exists('area_ids', $paramJsonData)){
-            if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
+            if(validation::isNumberic($paramJsonData['area_ids'])=='TRUE'){
                 $correctParamKeyValueDataCount++;
             }
         }
         if(array_key_exists('ccaId', $paramJsonData)){
-            if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
+            if(validation::isNumberic($paramJsonData['ccaId'])=='TRUE'){
                 $correctParamKeyValueDataCount++;
             }
         }
         if(array_key_exists('producttype_ids', $paramJsonData)){
-            if(($paramJsonData['producttype_ids'])>0 && $paramJsonData['producttype_ids']!=''){
+            if(validation::isNumberic($paramJsonData['producttype_ids'])=='TRUE'){
                 $correctParamKeyValueDataCount++;
             }
         }
