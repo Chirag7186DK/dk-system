@@ -203,24 +203,27 @@
                         OLD PASSWORD
                     </span>
                     <span class="uca_oldpasswordEditValSClass">
-                        <input placeholder='OLD PASSWORD' class='form-control editOldPasswordInputClass' type='password' value=''>
+                        <input attach-validation-pwdinput-directive placeholder='OLD PASSWORD' type='password' value='' class='form-control' id='uca_oldPwdInputId'>
                     </span>
+                    <p class="userOldPwdInput_ErrorClass"></p>
                 </p>
                 <p class="uca_NewPasswordPClass">
                     <span class="uca_newpasswordLblSClass">
                         NEW PASSWORD
                     </span>
                     <span class="uca_newpasswordEditValSClass">
-                        <input placeholder='NEW PASSWORD' class='form-control editNewPasswordInputClass' type='password' value=''>
+                        <input attach-validation-pwdinput-directive placeholder='NEW PASSWORD' type='password' value='' class='form-control' id='uca_newPwdInputId'>
                     </span>
+                    <p class="userNewPwdInput_ErrorClass"></p>
                 </p>
                 <p class="uca_NewConfirmPasswordPClass">
                     <span class="uca_newconfirmpasswordLblSClass">
                         CONFIRM PASSWORD
                     </span>
                     <span class="uca_newconfirmpasswordEditValSClass">
-                        <input placeholder='CONFIRM PASSWORD' class='form-control editNewConfirmPasswordInputClass' type='password' value=''>
+                        <input attach-validation-pwdinput-directive placeholder='CONFIRM PASSWORD' type='password' value='' class='form-control' id='uca_newcPwdInputId'>
                     </span>
+                    <p class="userNewCPwdInput_ErrorClass"></p>
                 </p>
                 <p class="uca_changePasswordBtnPClass">
                     <button ng-click="checkDataToUpdateUserpasswordInfo()" class='btn uca_changePasswordBtnClass'>
