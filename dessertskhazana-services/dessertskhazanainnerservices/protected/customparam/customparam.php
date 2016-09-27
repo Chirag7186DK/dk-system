@@ -2,7 +2,6 @@
 
 class customparam{
     
-    // CJ defined this function 2016-07-20
     public static function checkRequestedParamKeyNamePresentInDtoFile($paramJsonData, $InDtoClassName='DessertsKhazanaInDto'){
         $paramDataObj = 'FALSE';
         try{
@@ -16,9 +15,27 @@ class customparam{
         return $paramDataObj;
     }
     
-    ////////////////////////// delivery city list  //////////////////////////
-    
-    // CJ defined this function 2016-07-13
+    public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
+        $retStatus = 'FALSE';
+        $correctParamKeyValueDataCount = 0;
+        // check user_id key present or not
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        // check usersession_startimestamp key present or not
+        if(array_key_exists('usersession_startimestamp', $paramJsonData)){
+            if($paramJsonData['usersession_startimestamp']!='' && $paramJsonData['usersession_startimestamp']!=false){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if($correctParamKeyValueDataCount==2){
+            $retStatus = 'TRUE';
+        }
+        return $retStatus;
+    }
+
     public static function checkParamDataFetchingDeliveryCityListServingDessertsProductType($paramJsonData){
         $retStatus = 'FALSE';
         try{
@@ -44,9 +61,6 @@ class customparam{
         return $retStatus;
     }
     
-    ////////////////////////// delivery area list //////////////////////////
-    
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDeliveryAreaListServingDessertsProductType($paramJsonData){
         $retStatus = 'FALSE';
         try{
@@ -78,9 +92,6 @@ class customparam{
         return $retStatus;
     }
     
-    ////////////////////// delivery area served desserts type//////////////////////////
-    
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDessertsTypeListServingInCountryCityArea($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -120,9 +131,7 @@ class customparam{
         return $retStatus;
     }
     
-    ////////////////////// specific desserts type all products level //////////////////////////
     
-    // CJ defined this function 2016-09-04
     public static function checkParamDataFetchingProductTypeAllProductCategoryDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -169,7 +178,6 @@ class customparam{
     }
     
     
-    // CJ defined this function 2016-09-04
     public static function checkParamDataFetchingProductTypeProductCategoryFilterOperationDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -198,7 +206,6 @@ class customparam{
     }
     
     
-    // CJ defined this function 2016-07-18
     public static function checkParamDataFetchingAllProductDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -274,7 +281,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingDessertsProductTypeCategoryProductDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -338,7 +344,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingProductDescriptionDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -355,9 +360,6 @@ class customparam{
     }
     
     
-    ////////////////////// stores level related code //////////////////////////
-    
-    // CJ defined this function 2016-09-09
     public static function checkParamDataFetchingStoresListDeliveryAreaBasedDessertType($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -397,8 +399,6 @@ class customparam{
         return $retStatus;
     }
     
-    
-    // CJ defined this function 2016-09-04
     public static function checkParamDataFetchingDeliveryAreabasedStoresConductDessertType($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -444,8 +444,6 @@ class customparam{
         return $retStatus;
     }
     
-    
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingStoresummaryInfo($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -461,7 +459,6 @@ class customparam{
         return $retStatus;
     }
      
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingStoreWorkingstyle($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -477,7 +474,7 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-09-10
+    
     public static function checkParamDataStoreDeliveryFeeApplicableOnDeliveryArea($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -520,35 +517,6 @@ class customparam{
         }
         return $retStatus;
     }
-    
-    // CJ defined this function 2016-07-24
-    public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
-        $retStatus = 'FALSE';
-        $correctParamKeyValueDataCount = 0;
-        // check user_id key present or not
-        if(array_key_exists('user_sessionid', $paramJsonData)){
-            if(strlen($paramJsonData['user_sessionid'])>=20){
-                $correctParamKeyValueDataCount++;
-            }
-        }
-        // check usersession_startimestamp key present or not
-        if(array_key_exists('usersession_startimestamp', $paramJsonData)){
-            if($paramJsonData['usersession_startimestamp']!='' && $paramJsonData['usersession_startimestamp']!=false){
-                $correctParamKeyValueDataCount++;
-            }
-        }
-        if($correctParamKeyValueDataCount==2){
-            $retStatus = 'TRUE';
-        }
-        return $retStatus;
-    }
-    
-    // CJ defined this function 2016-07-24
-    public static function checkParamDataForAddingCorporateTieupRequest($paramJsonData){
-        $retStatus = 'TRUE';
-        return $retStatus;
-    }
-    
     
     public static function checkParamDataForUserSignUpAuthentication($paramJsonData){
         $retStatus = 'FALSE';
@@ -776,7 +744,6 @@ class customparam{
     }
     
     
-    // CJ defined this function 2016-08-01
     public static function checkParamDataForAuthenticatedUserDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -798,7 +765,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-21
     public static function checkParamDataForUpdatingUserPersonalDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -851,7 +817,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-21
     public static function checkParamDataForUpdatingUserPasswordDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -886,7 +851,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-30
     public static function checkParamDataForLogoutUser($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -909,10 +873,6 @@ class customparam{
     }
     
     
-    /////////////////////////// rating/review related code //////////////////////
-    
-    
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingRatingReviewProduct($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -934,7 +894,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-13
     public static function checkParamDataFetchingStoreAllUserRating($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -950,7 +909,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-07-22
     public static function checkParamDataFetchingStoreRatingReviewQuestion($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -966,7 +924,6 @@ class customparam{
         return $retStatus;
     }
  
-    // CJ defined this function 2016-08-06
     public static function checkParamDataToAddUserRatingReviewProduct($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -993,9 +950,6 @@ class customparam{
         return $retStatus;
     }
      
-    
-    ////////////////////////// order cart related code ////////////
-    
     
     public static function checkParamDataForAddingProductDataInOrdercart($paramJsonData){
         $retStatus = 'FALSE';
@@ -1066,7 +1020,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-14
     public static function checkParamDataForFetchingOrderItemList($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -1095,8 +1048,6 @@ class customparam{
         return $retStatus;
     }
     
-    
-    // CJ defined this function 2016-08-26
     public static function checkParamDataToUpdateItemInOrdercart($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -1168,7 +1119,6 @@ class customparam{
         return $retStatus;
     }
     
-      // CJ defined this function 2016-08-26
     public static function checkParamDataToRemoveItemFromOrdercart($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -1240,7 +1190,6 @@ class customparam{
         return $retStatus;
     }
     
-    // CJ defined this function 2016-08-26
     public static function checkParamDataToUpdateOrderDeliveryAddressStorewise($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -1270,10 +1219,6 @@ class customparam{
     }
     
     
-    //////////////////////////// party order related code //////////////////////////////////////
-    
-    
-    // CJ defined this function 2016-07-20
     public static function checkParamDataForAddingPartyOrderRequest($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
@@ -1336,11 +1281,7 @@ class customparam{
         }
         return $retStatus;
     }
-    
-    
-    //////////////////////// customize order related code ///////////////////////////
-    
-    // CJ defined this function 2016-07-20
+
     public static function checkParamDataForAddingCustomizeOrderRequest($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
