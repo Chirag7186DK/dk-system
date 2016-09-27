@@ -1,5 +1,4 @@
 
-// CJ defined this function 2016-07-01
 function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonParamObjKey, jsonParamObj, fetchJsonDataUsingKey){
     try{
         var passJsonDataToAjax = false;
@@ -41,12 +40,10 @@ function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonP
 }
 
 
-// extractDataFromReturnAjaxResponse code here
 function extractDataFromReturnAjaxResponse(requestType, readUrlFrom, fetchJsonDataUsingKey, json){
     var requestTypeAr = new Array("GET", "POST", "DELETE", "PUT");
     var retJsonDataGivenFileUrl = false;
     try{
-        // console.log("extractDataFromReturnAjaxResponse json=>"+JSON.stringify(json));
         if(requestType==="GET"){
             if(readUrlFrom==='jsonFile'){
                 if(fetchJsonDataUsingKey!==undefined && fetchJsonDataUsingKey!==''){
@@ -148,8 +145,6 @@ function extractDataFromReturnAjaxResponse(requestType, readUrlFrom, fetchJsonDa
     return retJsonDataGivenFileUrl;
 }
 
-
-// CJ defined this function 2016-06-5
 function showHideLoaderBox(showHideMethod, jsonParamBlockUI, divLoaderBoxId){
     try{
         if(showHideMethod==='show'){
@@ -183,6 +178,7 @@ function showHideLoaderBox(showHideMethod, jsonParamBlockUI, divLoaderBoxId){
     }
 }
 
+
 function removeHtmlStripTagsOfContent(givenContent){
     try{
         if(givenContent==='' || givenContent===undefined || givenContent===false){
@@ -200,7 +196,7 @@ function removeHtmlStripTagsOfContent(givenContent){
     }
 }
 
-// CJ defined this function 2016-07-30
+
 function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
     var configObj = {};
     if(notifyInfoConfigObj===false || notifyInfoConfigObj===undefined 
@@ -220,32 +216,4 @@ function showNotificationBoxMsg(msgStr, notifyInfoConfigObj){
         configObj['width'] = deviceWidth;
     }
     Lobibox.notify('info', configObj);
-}
-
-// CJ defined this function 2016-07-30
-function isStringOfCharacters(givenStr){
-    var retStatus = false;
-    try{
-        var regex = /^\w+$/;
-        if(givenStr.match(regex) && givenStr!==''){
-            retStatus = true;
-        }
-    }catch(ex){
-        // console.log("problem in isStringOfCharacters ex=>"+ex);
-    }
-    return retStatus;
-}
-
-// CJ defined this function 2016-07-30
-function isValidEmail(givenStr){
-    var retStatus = false;
-    try{
-        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(givenStr.match(regex) && givenStr!==''){
-            retStatus = true;
-        }
-    }catch(ex){
-        // console.log("problem in isValidEmail ex=>"+ex);
-    }
-    return retStatus;
 }
