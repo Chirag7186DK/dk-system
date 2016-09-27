@@ -1358,7 +1358,7 @@ function getParamDataObjForPartyOrderRequest(){
         if(checkDkSessionParamObjExists()==='TRUE'){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
             paramDataObj['user_sessionid'] = dkParamObj['userSession']['user_sessionid'];
-            paramDataObj['udblogId'] = removeHtmlStripTagsOfContent(dkParamObj['userSession']['udblogId']);
+            paramDataObj['udblogId'] = dkParamObj['userSession']['udblogId'];
             paramDataObj['name'] = removeHtmlStripTagsOfContent($('#po_contactPersonNameInputId').val());
             paramDataObj['mobile'] = removeHtmlStripTagsOfContent($('#po_contactMobileInputId').val());
             paramDataObj['email'] = removeHtmlStripTagsOfContent($('#po_contactEmailInputId').val());
