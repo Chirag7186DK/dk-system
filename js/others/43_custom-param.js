@@ -388,6 +388,7 @@ function getParamObjFromSessionForLoadingDeliveryCityList(){
     }
 }
 
+
 function storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSessionData){
     try{
         if(checkDkSessionParamObjExists()==='TRUE'){
@@ -418,7 +419,6 @@ function storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, isResetAllSe
 }
 
 
-// CJ defined this function 2016-06-05
 function getParamObjFromSessionForLoadingDeliveryAreaList(){
     try{
         var paramObj = {};
@@ -1310,6 +1310,7 @@ function checkParamDataToRedirectForRequestPartyOrder(){
     return retStatus;
 }
 
+
 function checkParamDataToRedirectForRequestCustomizeOrder(){
     var retStatus = false;
     if(checkDkSessionParamObjExists()==='TRUE'){
@@ -1380,6 +1381,7 @@ function getParamDataObjForPartyOrderRequest(){
     }
 }
 
+
 function getParamDataObjForCustomizeOrderRequest(){
     try{
         var paramDataObj = {};
@@ -1408,6 +1410,7 @@ function getParamDataObjForCustomizeOrderRequest(){
     }
 }
 
+
 // CJ defined this function 2016-07-24
 function getParamDataObjForCorporateTieupRequest(){
     var paramObj = {};
@@ -1427,6 +1430,7 @@ function getParamDataObjForCorporateTieupRequest(){
     }
     return paramObj;
 }
+
 
 function getUserSessionIdFromUserSession(){
     var userSessionId = false;
@@ -1476,6 +1480,7 @@ function storeUserSessionIdInSession(user_sessionid){
     }    
 }
 
+
 function checkUserLoggedInSession(){
     var retUserLoggedInStatus = false;
     try{
@@ -1498,6 +1503,7 @@ function checkUserLoggedInSession(){
     }
     return retUserLoggedInStatus;
 }
+
 
 function getParamDataAuthenticatedUserDetailsFromSession(){
     var paramObj = {};
@@ -1725,6 +1731,7 @@ function getParamDataForUserSignUpAuthentication(fromSection){
     return paramObj;
 }
 
+
 function getParamDataForResendOtpcode(fromSection){
     var paramObj = {};
     try{
@@ -1827,22 +1834,21 @@ function getStoredRequestedSectionNameToAccessInUserAccount(){
 function getParamDataToUpdateUserpersonalInfo(){
     var paramObj = {};
     try{
-        if($('.editUsernameInputClass').length===1){
-            paramObj['name'] = removeHtmlStripTagsOfContent($('.editUsernameInputClass').val());
+        if($('#userFullNameInputId').length===1){
+            paramObj['name'] = removeHtmlStripTagsOfContent($('#userFullNameInputId').val());
         }
-        if($('.editUseremailInputClass').length===1){
-            paramObj['email'] = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
+        if($('#userEmailInputId').length===1){
+            paramObj['email'] = removeHtmlStripTagsOfContent($('#userEmailInputId').val());
         }
-        if($('.editUsermobileInputClass').length===1){
-            paramObj['mobile'] = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
+        if($('#userMobileInputId').length===1){
+            paramObj['mobile'] = removeHtmlStripTagsOfContent($('#userMobileInputId').val());
         }
-        if($('.editUserbirthdateInputClass').length===1){
-            paramObj['birthdate'] = removeHtmlStripTagsOfContent($('.editUserbirthdateInputClass').val());
+        if($('#uca_genderSelectCtrlId').length===1){
+            paramObj['gender'] = removeHtmlStripTagsOfContent($('#uca_genderSelectCtrlId').find('option:selected').val());
         }
-        if($('.editUserGenderSelectClass').length===1){
-            paramObj['gender'] = removeHtmlStripTagsOfContent($('.editUserGenderSelectClass').find('option:selected').val());
+        if($('#userBirthdateInputId').length===1){
+            paramObj['birthdate'] = removeHtmlStripTagsOfContent($('#userBirthdateInputId').val());
         }
-        // fetch user session data
         var userSessionDataObj = getParamDataAuthenticatedUserDetailsFromSession();
         if(userSessionDataObj!==false && userSessionDataObj!==undefined 
             && jQuery.isEmptyObject(userSessionDataObj)===false){
