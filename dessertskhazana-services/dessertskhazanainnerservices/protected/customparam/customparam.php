@@ -18,13 +18,11 @@ class customparam{
     public static function checkParamDataForAddingTrackUserAccessingWebsites($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
-        // check user_id key present or not
         if(array_key_exists('user_sessionid', $paramJsonData)){
             if(strlen($paramJsonData['user_sessionid'])>=20){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check usersession_startimestamp key present or not
         if(array_key_exists('usersession_startimestamp', $paramJsonData)){
             if($paramJsonData['usersession_startimestamp']!='' && $paramJsonData['usersession_startimestamp']!=false){
                 $correctParamKeyValueDataCount++;
@@ -40,13 +38,11 @@ class customparam{
         $retStatus = 'FALSE';
         try{
             $correctParamKeyValueDataCount = 0;
-            // check country_ids key present or not
             if(array_key_exists('country_ids', $paramJsonData)){
                 if($paramJsonData['country_ids']=='1'){
                     $correctParamKeyValueDataCount++;
                 }
             }
-            // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
                 if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                     $correctParamKeyValueDataCount++;
@@ -65,19 +61,16 @@ class customparam{
         $retStatus = 'FALSE';
         try{
             $correctParamKeyValueDataCount = 0;
-            // check country_ids key present or not
             if(array_key_exists('country_ids', $paramJsonData)){
                 if($paramJsonData['country_ids']=='1'){
                     $correctParamKeyValueDataCount++;
                 }
             }
-            // check city_ids key present or not
             if(array_key_exists('city_ids', $paramJsonData)){
                 if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                     $correctParamKeyValueDataCount++;
                 }
             }
-            // check area_ids key present or not
             if(array_key_exists('area_ids', $paramJsonData)){
                 if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                     $correctParamKeyValueDataCount++;
@@ -95,31 +88,26 @@ class customparam{
     public static function checkParamDataFetchingDessertsTypeListServingInCountryCityArea($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
-        // check country_ids key present or not
         if(array_key_exists('country_ids', $paramJsonData)){
             if($paramJsonData['country_ids']=='1'){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
             if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
             if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check ccaId key present or not
         if(array_key_exists('ccaId', $paramJsonData)){
             if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check producttype_ids key present or not
         if(array_key_exists('producttype_ids', $paramJsonData)){
             if(($paramJsonData['producttype_ids'])>0 && $paramJsonData['producttype_ids']!=''){
                 $correctParamKeyValueDataCount++;
@@ -135,37 +123,31 @@ class customparam{
     public static function checkParamDataFetchingProductTypeAllProductCategoryDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
-        // check product delivery country
         if(array_key_exists('country_ids', $paramJsonData)){
             if($paramJsonData['country_ids']=='1'){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check city_ids key present or not
         if(array_key_exists('city_ids', $paramJsonData)){
             if(($paramJsonData['city_ids'])>0 && $paramJsonData['city_ids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check area_ids key present or not
         if(array_key_exists('area_ids', $paramJsonData)){
             if(($paramJsonData['area_ids'])>0 && $paramJsonData['area_ids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check ccaId key present or not
         if(array_key_exists('ccaId', $paramJsonData)){
             if(($paramJsonData['ccaId'])>0 && $paramJsonData['ccaId']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check producttype_ids key present or not
         if(array_key_exists('product_typesids', $paramJsonData)){
             if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check product type ka product category id is blank or not
         if(array_key_exists('product_categoryids', $paramJsonData)){
             if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
                 $correctParamKeyValueDataCount++;
@@ -181,19 +163,16 @@ class customparam{
     public static function checkParamDataFetchingProductTypeProductCategoryFilterOperationDetails($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
-        // check producttype_ids key present or not
         if(array_key_exists('product_typesids', $paramJsonData)){
             if(($paramJsonData['product_typesids'])>0 && $paramJsonData['product_typesids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check product type ka product category id is blank or not
         if(array_key_exists('product_categoryids', $paramJsonData)){
             if(($paramJsonData['product_categoryids'])>0 && $paramJsonData['product_categoryids']!=''){
                 $correctParamKeyValueDataCount++;
             }
         }
-        // check allShopstoreids is blank or not
         if(array_key_exists('allShopstoreids', $paramJsonData)){
             if($paramJsonData['allShopstoreids']!='' && strlen($paramJsonData['allShopstoreids'])>0){
                 $correctParamKeyValueDataCount++;
