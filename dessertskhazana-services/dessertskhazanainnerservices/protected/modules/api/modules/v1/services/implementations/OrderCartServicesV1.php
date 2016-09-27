@@ -215,10 +215,10 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                     // iterate each delivery address data
                     for($eachIndex = 0; $eachIndex<count($orderDeliveryDataArr); $eachIndex++){
                         $updateOrdercartStoreDataObj = array(
-                            "address"=>$deliveryAddressDataArr[$eachIndex]['address'], 
-                            "deliverydate"=>$deliveryAddressDataArr[$eachIndex]['deliverydate'], 
+                            "address"=>$orderDeliveryDataArr[$eachIndex]['address'], 
+                            "deliverydate"=>$orderDeliveryDataArr[$eachIndex]['deliverydate'], 
                             "updated_by"=>$unmd5UserId,
-                            "id"=>$deliveryAddressDataArr[$eachIndex]['ordercartStoreId']
+                            "id"=>$orderDeliveryDataArr[$eachIndex]['ordercartStoreId']
                         );
                         $updatedStatusOrdercartStore = OrderCartDao :: updateEntryInOrdercartStore($updateOrdercartStoreDataObj);
                     }
