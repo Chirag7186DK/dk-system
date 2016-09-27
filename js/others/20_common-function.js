@@ -77,6 +77,9 @@ function clearPartyOrderRequestFormField(){
     if($('#po_messageInputId').length===1){
         $('#po_messageInputId').val('');
     }
+    if($('#po_budgetAmtInputId').length===1){
+        $('#po_budgetAmtInputId').val('');
+    }
 }
 
 function clearCustomizeOrderRequestFormField(){
