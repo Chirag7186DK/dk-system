@@ -185,6 +185,9 @@ function showHideLoaderBox(showHideMethod, jsonParamBlockUI, divLoaderBoxId){
 
 function removeHtmlStripTagsOfContent(givenContent){
     try{
+        if(givenContent==='' || givenContent===undefined || givenContent===false){
+            givenContent = '';
+        }
         if(givenContent!=='' && givenContent!==undefined && givenContent!==false){
             var regex = /(<([^>]+)>)/ig;
             var htmlStripTagLessContent = givenContent.replace(regex, "");
