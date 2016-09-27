@@ -48,8 +48,6 @@ function isValidMobileNos(mobileContent){
             if(givenMobileStr.match(digitsRepeatingAtStartingPattern)===null 
                 || givenMobileStr.match(digitsRepeatingAtStartingPattern)===undefined){
                 rtStatus = 'TRUE';
-            }else{
-                rtStatus = 'FALSE';
             }
         }else{
             rtStatus = 'TRUE';
@@ -73,8 +71,24 @@ function isValidPwd(pwdContent){
     return rtStatus;
 }
 
+function isValidDateFormat(dateformatContent){
+    var rtStatus = 'FALSE';
+    try{
+        var enteredDateText = removeHtmlStripTagsOfContent(dateformatContent);
+        if(enteredDateText!==''){
+            var dateRegex = /^\d{4}[/-][0-9]{2}[/-]\d{2}$/;
+            if(enteredDateText.match(dateRegex)===null 
+                || enteredDateText.match(dateRegex)===undefined){
+                rtStatus = 'TRUE';
+            };
+        }
+    }catch(ex){
+        rtStatus = 'FALSE';
+    }
+    return rtStatus;
+}
 
-// CJ defined this function 2016-08-01
+
 function validateDataUserSignInAuthentication(fromSection){
     var inValidDataCount = 0;
     if(fromSection==='signInSection'){
@@ -120,7 +134,6 @@ function validateDataUserSignInAuthentication(fromSection){
     }
 }
 
-// CJ defined this function 2016-09-22
 function validateDataUserSignUpAuthentication(fromSection){
     var inValidDataCount = 0;
     if(fromSection==='signUpSection'){
@@ -188,7 +201,6 @@ function validateDataUserSignUpAuthentication(fromSection){
 }
 
 
-// CJ defined this function 2016-09-22
 function validateDataUserFrgtPwdAuthentication(fromSection){
     var inValidDataCount = 0;
     if(fromSection==='frgtPwdStep1Section'){
@@ -259,12 +271,51 @@ function validateDataUserFrgtPwdAuthentication(fromSection){
 }
 
 
-
-
-
-
-
-
+function validateUserProfileInfoData(){
+    var inValidDataCount = 0;
+    if(isProperInputElementContent('userFullNameInputId')==='FALSE'){
+        $('.userFullNameInput_ErrorClass').append("Enter your email !!!");
+        inValidDataCount++;
+    }else{
+        var enteredNameText = removeHtmlStripTagsOfContent($('#userFullNameInputId').val());
+        if((enteredNameText).length>30){
+            $('.userFullNameInput_ErrorClass').append("Entered full name length must be less than 30 characters !!!");
+            inValidDataCount++;
+        }
+    }
+    if(isProperInputElementContent('userEmailInputId')==='FALSE'){
+        $('.userEmailInput_ErrorClass').append("Enter your email !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidEmailId($('#userEmailInputId').val())==='FALSE'){
+            $('.userEmailInput_ErrorClass').append("Entered email is not in proper format !!!");
+            inValidDataCount++;
+        }
+    }
+    if(isProperInputElementContent('userMobileInputId')==='FALSE'){
+        $('.userMobileInput_ErrorClass').append("Enter your mobile no.s !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidMobileNos($('#userMobileInputId').val())==='FALSE'){
+            $('.userMobileInput_ErrorClass').append("Entered valid mobile no.s !!!");
+            inValidDataCount++;
+        }
+    }
+    if($('.editUserbirthdateInputClass').length===1){
+        if($('.editUserbirthdateInputClass').val()===''
+            || $('.editUserbirthdateInputClass').val()===false){
+            $('.editUserbirthdateInputClass').css({'border-color':'#f18178'});
+            inValidDataCount++;
+        }else if($('.editUserbirthdateInputClass').val()!==''){
+            $('.editUserbirthdateInputClass').css({'border-color':'#ccc'});
+        }
+    }
+    if(inValidDataCount>0){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 
 
@@ -802,73 +853,16 @@ function validateOrderDeliveryAddressData(fcClass){
 ////////////////////////// user personal info /////////////////////
 
 
-function validationUserProfileInfoData(){
-    var incorrectFieldDataCounter = 0;
-    if($('.editUsernameInputClass').length===1){
-        if($('.editUsernameInputClass').val()===''
-            || $('.editUsernameInputClass').val()===false){
-            $('.editUsernameInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
-        }else if($('.editUsernameInputClass').val()!==''){
-            $('.editUsernameInputClass').css({'border-color':'#ccc'});
-        }
-    }
-    if($('.editUseremailInputClass').length===1){
-        if($('.editUseremailInputClass').val()===''){
-            $('.editUseremailInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
-        }else if($('.editUseremailInputClass').val()!==''){
-            var enteredEmailId = removeHtmlStripTagsOfContent($('.editUseremailInputClass').val());
-            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if(!enteredEmailId.match(emailPattern)){
-                $('.editUseremailInputClass').css({'border-color':'#f18178'});
-                incorrectFieldDataCounter++;
-            }else{
-                $('.editUseremailInputClass').css({'border-color':'#ccc'});
-            }
-        }
-    }
-    if($('.editUsermobileInputClass').length===1){
-        if($('.editUsermobileInputClass').val()===''
-            || $('.editUsermobileInputClass').val()===false){
-            $('.editUsermobileInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
-        }else if($('.editUsermobileInputClass').val()!==''){
-            var enterMobileNo = removeHtmlStripTagsOfContent($('.editUsermobileInputClass').val());
-            var mobilePattern = /^[6-9]\d{9}$/g;
-            if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==10){
-                $('.editUsermobileInputClass').css({'border-color':'#f18178'});
-                incorrectFieldDataCounter++;
-            }else if(enterMobileNo.match(mobilePattern)===true && (enterMobileNo).length===10){
-                $('.editUsermobileInputClass').css({'border-color':'#ccc'});
-            }
-        }
-    }
-    if($('.editUserbirthdateInputClass').length===1){
-        if($('.editUserbirthdateInputClass').val()===''
-            || $('.editUserbirthdateInputClass').val()===false){
-            $('.editUserbirthdateInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
-        }else if($('.editUserbirthdateInputClass').val()!==''){
-            $('.editUserbirthdateInputClass').css({'border-color':'#ccc'});
-        }
-    }
-    if(incorrectFieldDataCounter>0){
-        return false;
-    }else{
-        return true;
-    }
-}
 
 
 // CJ defined this fucntion 2016-08-21
 function validationUserChangePasswordInfoData(){
-    var incorrectFieldDataCounter = 0;
+    var inValidDataCount = 0;
     if($('.editOldPasswordInputClass').length===1){
         if($('.editOldPasswordInputClass').val()===''
             || $('.editOldPasswordInputClass').val()===false){
             $('.editOldPasswordInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
+            inValidDataCount++;
         }else if($('.editOldPasswordInputClass').val()!==''){
             $('.editOldPasswordInputClass').css({'border-color':'#ccc'});
         }
@@ -876,7 +870,7 @@ function validationUserChangePasswordInfoData(){
     if($('.editNewPasswordInputClass').length===1){
         if($('.editNewPasswordInputClass').val()===''){
             $('.editNewPasswordInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
+            inValidDataCount++;
         }else if($('.editNewPasswordInputClass').val()!==''){
             $('.editNewPasswordInputClass').css({'border-color':'#ccc'});
         }
@@ -884,17 +878,17 @@ function validationUserChangePasswordInfoData(){
     if($('.editNewConfirmPasswordInputClass').length===1){
         if($('.editNewConfirmPasswordInputClass').val()===''){
             $('.editNewConfirmPasswordInputClass').css({'border-color':'#f18178'});
-            incorrectFieldDataCounter++;
+            inValidDataCount++;
         }else if($('.editNewConfirmPasswordInputClass').val()!==''){
             $('.editNewConfirmPasswordInputClass').css({'border-color':'#ccc'});
         }
     }
     if((($('.editNewPasswordInputClass').val())!==($('.editNewConfirmPasswordInputClass').val()))
         && $('.editNewPasswordInputClass').val()!=='' && $('.editNewPasswordInputClass').val()!==''){
-        incorrectFieldDataCounter++;
+        inValidDataCount++;
     }
     
-    if(incorrectFieldDataCounter>0){
+    if(inValidDataCount>0){
         return false;
     }else{
         return true;
@@ -908,7 +902,7 @@ function validationUserChangePasswordInfoData(){
 // CJ defined this function 2016-08-28
 function validateDataToShareOffers(fcClass){
     try{
-        var incorrectFieldDataCounter = 0 ;
+        var inValidDataCount = 0 ;
         if(fcClass!==false && fcClass!=='' && fcClass!==undefined){
             if($('.'+fcClass).length===1){
                 if($('.'+fcClass).find("input[type='text']").length===1){
@@ -916,12 +910,12 @@ function validateDataToShareOffers(fcClass){
                     var userMobileValue = removeHtmlStripTagsOfContent($('.'+fcClass).find("input[type='text']").val());
                     if(userMobileValue==='' || userMobileValue===false){
                         $(userMobileInputObj).css({'border-color':'#f18178'});
-                        incorrectFieldDataCounter++;
+                        inValidDataCount++;
                     }else if(userMobileValue!=='' && userMobileValue!==false){
                         var mobilePattern = /^[6-9]\d{9}$/g;
                         if(!userMobileValue.match(mobilePattern) && (userMobileValue).length!==10){
                             $(userMobileInputObj).css({'border-color':'#f18178'});
-                            incorrectFieldDataCounter++;
+                            inValidDataCount++;
                         }else if(userMobileValue.match(mobilePattern)===true && (userMobileValue).length===10){
                             $(userMobileInputObj).css({'border-color':'#ccc'});
                         }
@@ -929,7 +923,7 @@ function validateDataToShareOffers(fcClass){
                 }
             }
         }
-        if(incorrectFieldDataCounter>0){
+        if(inValidDataCount>0){
             return false;
         }else{
             return true;
