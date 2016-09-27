@@ -1883,8 +1883,16 @@
         font-size:13px!important;
     }
     
+    .userFullNameInput_ErrorClass,
+    .userEmailInput_ErrorClass,
+    .userMobileInput_ErrorClass,
+    .userBirthdateInput_ErrorClass{
+        margin:0px!important;
+        font-size:13px!important;
+        color:#bf4444!important;
+    }
     
-    /* personal info as edit mode display section css code */
+    /* personal info edit mode display section css code */
     
     .uca_closeProfileLblPClass{
         color:#ab0b38!important;
