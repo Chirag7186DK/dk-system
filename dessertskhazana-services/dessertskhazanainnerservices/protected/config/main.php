@@ -24,13 +24,11 @@ return array(
         'application.modules.api.*',
         'application.modules.api.modules.*',
         'application.modules.api.modules.v1.*',
-        //'application.services.*',
-        //'application.services.interfaces.*',
-        //'application.services.implementations.*',
         'application.dao.*',
         'application.utils.*',
         'application.customparam.*',
-        'application.commonfunction.*'
+        'application.commonfunction.*',
+        'application.validation.*'
     ),
 
     'modules'=>array(
