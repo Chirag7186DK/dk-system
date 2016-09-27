@@ -100,12 +100,12 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
                     UsersServices.updateUserPersonalInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var isUserprofileInfoUpdated =  false;
-                            var notificationMsgStr = 'User profile info not update, please try again !';
+                            var notificationMsgStr = 'User profile info not update, please try again !!!';
                             if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
                                 isUserprofileInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserprofileInfoUpdated', retResponseJson);
                             }
                             if(isUserprofileInfoUpdated==='TRUE'){
-                                notificationMsgStr = 'User profile info updated, successfully !';
+                                notificationMsgStr = 'User profile info updated, successfully !!!';
                                 $rootScope.showEditableUserCustomerProfileInfo('text_personalinfo');
                             }
                             showNotificationBoxMsg(notificationMsgStr);
