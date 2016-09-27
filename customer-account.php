@@ -174,7 +174,7 @@
                             Gender
                         </span>
                         <span class="uca_personalInfoEditUserGenderValSClass">
-                            <select class='form-control editUserGenderSelectClass' ng-model="userPersonalDetails.gender">
+                            <select class='form-control' id='uca_genderSelectCtrlId' ng-model="userPersonalDetails.gender">
                                 <option value='Male'>Male</option>
                                 <option value='Female'>Female</option>
                             </select>
