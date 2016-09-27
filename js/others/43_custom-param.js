@@ -1367,7 +1367,7 @@ function getParamDataObjForPartyOrderRequest(){
             paramDataObj['file'] = '';
             paramDataObj['estimated_budget'] = removeHtmlStripTagsOfContent($('#po_budgetAmtInputId').val());
         }
-        if(Object.keys(paramDataObj).length===12){
+        if(Object.keys(paramDataObj).length===9){
             return paramDataObj;
         }else{
             return false;
