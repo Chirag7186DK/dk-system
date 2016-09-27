@@ -499,8 +499,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
         $rootScope.loadStoresWorkingStyle = function(){
             try{
                 if($rootScope.isShowStoreWorkingStyleDetails===true){
-                    // get param obj to load store working style details
-                    var preparedParamJsonObj = getParamObjForCShopStoreWorkingStyleDetails();
+                    var preparedParamJsonObj = getParamObjForStoreWorkingStyleDetails();
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
