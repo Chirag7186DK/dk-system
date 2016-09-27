@@ -145,6 +145,7 @@ function extractDataFromReturnAjaxResponse(requestType, readUrlFrom, fetchJsonDa
     return retJsonDataGivenFileUrl;
 }
 
+
 function showHideLoaderBox(showHideMethod, jsonParamBlockUI, divLoaderBoxId){
     try{
         if(showHideMethod==='show'){
