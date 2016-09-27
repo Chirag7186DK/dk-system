@@ -412,112 +412,40 @@ function validateParamDataPartyOrderRequest(){
     }
 }
 
-// CJ defined this fucntion 2016-07-20
-function attachedFieldValidationCustomizeOrdersRequest(){
-    if($('#co_occasionTitleInputId').length===1){
-        $('#co_occasionTitleInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('#co_nosPeopleInputId').length===1){
-        $('#co_nosPeopleInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"5", 
-                "allowDecSep":false
-            }
-        );
-    }
-    if($('#co_dateInputId').length===1){
-        var cdate = new Date();
-        $('#co_dateInputId').datepicker({
-            minDate:cdate,
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true
-        });
-    }
-    if($('#co_venueInputId').length===1){
-//        $("#po_venueInputId").geocomplete({
-//            details: ".po_venueContainerDivClass",
-//            country: 'IN',
-//            types: ["geocode"]
-//        });
-    }
-    if($('#co_budgetAmtInputId').length===1){
-        $('#co_budgetAmtInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"5", 
-                "allowDecSep":false
-            }
-        );
-    }
-}
-
-
 // CJ defined this function 2016-07-20
 function validateParamDataCustomizeOrderRequest(){
-    // checking session param
     var inValidDataCount = 0 ;
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // check form field is blank or not for party order request
-        if($('#co_occasionTitleInputId').length===1){
-            if($('#co_occasionTitleInputId').val()===''){
-                $('#co_occasionTitleInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#co_occasionTitleInputId').css({'border-color':'#ccc'});
-            }
+    if(isProperInputElementContent('co_occasionTitleInputClass')==='FALSE'){
+        inValidDataCount++;
+    }else{
+        var enteredTitleText = removeHtmlStripTagsOfContent($('#co_occasionTitleInputClass').val());
+        if((enteredTitleText).length>60){
+            inValidDataCount++;
         }
-        if($('#co_nosPeopleInputId').length===1){
-            if($('#co_nosPeopleInputId').val()===''){
-                $('#co_nosPeopleInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#co_nosPeopleInputId').css({'border-color':'#ccc'});
-            }
+    }
+    if(isProperInputElementContent('co_nosPeopleInputId')==='FALSE'){
+        inValidDataCount++;
+    }else{
+        var enteredNos = removeHtmlStripTagsOfContent($('#co_nosPeopleInputId').val());
+        if(parseInt(enteredNos)<=0){
+            inValidDataCount++;
         }
-        if($('#co_dateInputId').length===1){
-            if($('#co_dateInputId').val()===''){
-                $('#co_dateInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#co_dateInputId').css({'border-color':'#ccc'});
-            }
-        }
-        if($('#co_venueInputId').length===1){
-            if($('#co_venueInputId').val()===''){
-                $('#co_venueInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#co_venueInputId').css({'border-color':'#ccc'});
-            }
-        }
-        if($('#co_messageInputId').length===1){
-            if($('#co_messageInputId').val()===''){
-                $('#co_messageInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#co_messageInputId').css({'border-color':'#ccc'});
-            }
-        }
-        if($('#co_budgetAmtInputId').length===1){
-            if($('#co_budgetAmtInputId').val()===''){
-                $('#co_budgetAmtInputId').css({'border-color':'#f18178'});
-                inValidDataCount++;
-            }else{
-                $('#co_budgetAmtInputId').css({'border-color':'#ccc'});
-            }
+    }
+    if(isProperInputElementContent('co_dateInputId')==='FALSE'){
+        inValidDataCount++;
+    }
+    if(isProperInputElementContent('co_venueInputId')==='FALSE'){
+        inValidDataCount++;
+    }
+    if(isProperInputElementContent('co_messageInputId')==='FALSE'){
+        inValidDataCount++;
+    }
+    if(isProperInputElementContent('co_budgetAmtInputId')==='FALSE'){
+        inValidDataCount++;
+    }else{
+        var enteredNos = removeHtmlStripTagsOfContent($('#co_budgetAmtInputId').val());
+        if(parseInt(enteredNos)<=0){
+            inValidDataCount++;
         }
     }
     if(inValidDataCount>0){
