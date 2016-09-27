@@ -607,7 +607,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
             
                 <!-- requesting new party order content form will be displayed -->
-                <div ng-if="displayPartyOrderInfoSectionType==='createpartyorder'" ng-controller="PartyOrdersController" ng-init="attachedFieldValidationPartyOrdersRequest()" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 po_createSectionDivClass'>
+                <div ng-if="displayPartyOrderInfoSectionType==='createpartyorder'" ng-controller="PartyOrdersController" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 po_createSectionDivClass'>
                     
                     <!-- party order form content -->
                     <div ng-show="isShowPartyOrderRequestFormContent" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 po_formContentWrappperContainerDivClass">
@@ -618,7 +618,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the occasion ?
                             </p>
-                            <input placeholder="What's the occasion"  type="text" id='po_occasionTitleInputId' class="form-control po_occasionTitleInputClass">
+                            <input attach-validation-titleinput-directive placeholder="What's the occasion"  type="text" id='po_occasionTitleInputId' class="form-control po_occasionTitleInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
                             </p>
@@ -627,7 +627,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people to treat ?
                             </p>
-                            <input placeholder="How many awesome people to treat"  type="text" id='po_nosPeopleInputId' class="form-control po_nosPeopleInputClass">
+                            <input attach-validation-numberinput-directive placeholder="How many awesome people to treat"  type="text" id='po_nosPeopleInputId' class="form-control po_nosPeopleInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: 20
                             </p>
@@ -636,7 +636,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-calendar faa-tada animated"></i> Party date (YYYY-MM-DD) ?
                             </p>
-                            <input placeholder="Party date"  type="text" id='po_dateInputId' class="form-control po_dateInputClass">
+                            <input attach-validation-dateinput-directive placeholder="Party date" type="text" id='po_dateInputId' class="form-control po_dateInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: <?php echo date('Y-m-d');?>
                             </p>
@@ -663,7 +663,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-rupee faa-tada animated"></i> Approx Budget ?
                             </p>
-                            <input placeholder="Approx Budget Amount"  type="text" id='po_budgetAmtInputId' class="form-control po_budgetAmtInputClass">
+                            <input attach-validation-dateinput-directive placeholder="Approx Budget Amount"  type="text" id='po_budgetAmtInputId' class="form-control po_budgetAmtInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: 500, 1000, 2000
                             </p>
