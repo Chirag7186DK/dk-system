@@ -520,12 +520,14 @@ angular.module('DKAPP').directive('attachValidationNumberinputDirective', attach
 function attachValidationNumberinputDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
-            $($el).alphanum({
-                "disallow":".", 
-                "allowSpace":false,
-                "allowNumeric":true, 
-                "allowOtherCharSets":false,
-                "maxLength":6
+            $($el).numeric({
+                "allowPlus":false,
+                "allowMinus":false, 
+                "allowThouSep":false,
+                "allowDecSep":false,
+                "allowLeadingSpaces":false, 
+                "maxDigits":"6",
+                "startMinDigitWith":"5"
             });
         }
     };
@@ -552,12 +554,14 @@ angular.module('DKAPP').directive('attachValidationBudgetamtinputDirective', att
 function attachValidationBudgetamtinputDirective($timeout){
     return {
         link: function ($scope, $el, $attrs){
-            $($el).alphanum({
-                "disallow":".", 
-                "allowSpace":false,
-                "allowNumeric":true, 
-                "allowOtherCharSets":false,
-                "maxLength":6
+            $($el).numeric({
+                "allowPlus":false,
+                "allowMinus":false, 
+                "allowThouSep":false,
+                "allowDecSep":false,
+                "allowLeadingSpaces":false, 
+                "maxDigits":"6",
+                "startMinDigitWith":"5"
             });
         }
     };
