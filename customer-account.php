@@ -147,24 +147,27 @@
                             Full Name
                         </span>
                         <span class="uca_personalInfoEditUserNameValSClass">
-                            <input placeholder='Full Name' attach-validation-nameinput-directive class='form-control editUsernameInputClass' type='text' value='{{userPersonalDetails.name}}'>
+                            <input placeholder='Full Name' attach-validation-nameinput-directive type='text' value='{{userPersonalDetails.name}}' class='form-control' id='userFullNameInputId'>
                         </span>
+                        <p class="userFullNameInput_ErrorClass"></p>
                     </p>
                     <p class="uca_personalInfoTextUserEmailPClass">
                         <span class="uca_personalInfoTextUserEmailLblSClass">
                             Email
                         </span>
                         <span class="uca_personalInfoEditUserEmailValSClass">
-                            <input class='form-control editUseremailInputClass' type='text' value='{{userPersonalDetails.email}}'>
+                            <input disabled='false' type='text' value='{{userPersonalDetails.email}}' class='form-control' id='userEmailInputId'>
                         </span>
+                        <p class="userEmailInput_ErrorClass"></p>
                     </p>
                     <p class="uca_personalInfoTextUserMobilePClass">
                         <span class="uca_personalInfoTextUserMobileLblSClass">
                             Mobile
                         </span>
                         <span class="uca_personalInfoEditUserMobileValSClass">
-                            <input placeholder='Mobile No.s' attach-validation-mobileinput-directive class='form-control editUsermobileInputClass' type='text' value='{{userPersonalDetails.mobile}}'>
+                            <input placeholder='Mobile' attach-validation-mobileinput-directive type='text' value='{{userPersonalDetails.mobile}}' class='form-control' id='userMobileInputId'>
                         </span>
+                        <p class="userMobileInput_ErrorClass"></p>
                     </p>
                     <p class="uca_personalInfoTextUserGenderPClass">
                         <span class="uca_personalInfoTextUserGenderLblSClass">
@@ -182,8 +185,9 @@
                             DOB
                         </span>
                         <span class="uca_personalInfoEditUserBirthdateValSClass">
-                            <input placeholder='Your Birthdate' attach-validation-birthdateinput-directive class='form-control editUserbirthdateInputClass' type='text' value='{{userPersonalDetails.birthdate}}'>
+                            <input placeholder='Your Birthdate' attach-validation-birthdateinput-directive type='text' value='{{userPersonalDetails.birthdate}}' class='form-control' id='userBirthdateInputId'>
                         </span>
+                        <p class="userBirthdateInput_ErrorClass"></p>
                     </p>
                     <p class="uca_personalInfoUpdateBtnPClass">
                         <button ng-click="checkDataToUpdateUserpersonalnfo()" class='btn uca_personalInfoUpdateBtnClass'>UPDATE</button>
