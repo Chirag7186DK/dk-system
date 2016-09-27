@@ -1932,9 +1932,6 @@
         padding:5px!important;
     }
     
-    
-    /*  change password css code  */
-    
     .uca_changepasswordInfoSectionContainerDivClass{
         padding-left:20px!important;
         padding-right:0px!important;
@@ -1961,6 +1958,14 @@
     .uca_changepasswordInfoSectionContainerDivClass input{
         width:20%!important;
         font-size:12px!important;
+    }
+    
+    .userOldPwdInput_ErrorClass,
+    .userNewPwdInput_ErrorClass,
+    .userNewCPwdInput_ErrorClass{
+        margin:0px!important;
+        font-size:13px!important;
+        color:#bf4444!important;
     }
 
     .uca_changePasswordBtnClass{
