@@ -793,7 +793,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-heart-o faa-tada animated"></i> What's the event ?
                             </p>
-                            <input placeholder="What's the event"  type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
+                            <input attach-validation-titleinput-directive placeholder="What's the event" type="text" id='co_occasionTitleInputId' class="form-control co_occasionTitleInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: Brother Birthday celebration, Mom & Dad Anniversary celebration
                             </p>
@@ -802,7 +802,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-user faa-tada animated"></i> How many awesome people in event ?
                             </p>
-                            <input placeholder="How many awesome people in event"  type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
+                            <input attach-validation-numberinput-directive placeholder="How many awesome people in event" type="text" id='co_nosPeopleInputId' class="form-control co_nosPeopleInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: 20
                             </p>
@@ -811,7 +811,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-calendar faa-tada animated"></i> Event date (YYYY-MM-DD) ?
                             </p>
-                            <input placeholder="Event date"  type="text" id='co_dateInputId' class="form-control co_dateInputClass">
+                            <input attach-validation-dateinput-directive placeholder="Event date"  type="text" id='co_dateInputId' class="form-control co_dateInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: <?php echo date('Y-m-d');?>
                             </p>
@@ -838,7 +838,7 @@
                             <p class="co_formfieldLabelPClass">
                                 <i class="co_formfieldiconclass fa fa-rupee faa-tada animated"></i> Approx Budget ?
                             </p>
-                            <input placeholder="Approx Budget Amount"  type="text" id='co_budgetAmtInputId' class="form-control co_budgetAmtInputClass">
+                            <input attach-validation-budgetamtinput-directive placeholder="Approx Budget Amount"  type="text" id='co_budgetAmtInputId' class="form-control co_budgetAmtInputClass">
                             <p class="co_formfieldHintPClass">
                                 Eg: 500, 1000, 2000
                             </p>
