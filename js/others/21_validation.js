@@ -321,6 +321,53 @@ function validateUserProfileInfoData(){
     }
 }
 
+function validationUserChangePasswordInfoData(){
+    var inValidDataCount = 0;
+    $('.userOldPwdInput_ErrorClass').empty();
+    $('.userNewPwdInput_ErrorClass').empty();
+    $('.userNewCPwdInput_ErrorClass').empty();
+    if(isProperInputElementContent('uca_oldPwdInputId')==='FALSE'){
+        $('.userOldPwdInput_ErrorClass').append("Enter your old password !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidPwd($('#uca_oldPwdInputId').val())==='FALSE'){
+            $('.userOldPwdInput_ErrorClass').append("Entered old password length must be between 5 to 10 any alphanumberic characters only !!!");
+            inValidDataCount++;
+        }
+    }
+    if(isProperInputElementContent('uca_newPwdInputId')==='FALSE'){
+        $('.userNewPwdInput_ErrorClass').append("Enter your new password !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidPwd($('#uca_newPwdInputId').val())==='FALSE'){
+            $('.userNewPwdInput_ErrorClass').append("Entered new password length must be between 5 to 10 any alphanumberic characters only !!!");
+            inValidDataCount++;
+        }
+    }
+    if(isProperInputElementContent('uca_newcPwdInputId')==='FALSE'){
+        $('.userNewCPwdInput_ErrorClass').append("Enter your new confirm password !!!");
+        inValidDataCount++;
+    }else{
+        if(isValidPwd($('#uca_newcPwdInputId').val())==='FALSE'){
+            $('.userNewCPwdInput_ErrorClass').append("Entered your new confirm password length must be between 5 to 10 any alphanumberic characters only !!!");
+            inValidDataCount++;
+        }
+    }
+    if(isValidPwd($('#uca_newPwdInputId').val())==='TRUE'
+        && isValidPwd($('#uca_newcPwdInputId').val())==='FALSE'){
+        var userPwdText = removeHtmlStripTagsOfContent($('#uca_newPwdInputId').val());
+        var userCPwdText = removeHtmlStripTagsOfContent($('#uca_newcPwdInputId').val());
+        if(userPwdText!=='' && userCPwdText!=='' && userPwdText!==userCPwdText){
+            $('.userNewCPwdInput_ErrorClass').append("Your new & confirm password must be same between 5 to 10 any alphanumberic characters only !!!");
+            inValidDataCount++;
+        }
+    }
+    if(inValidDataCount>0){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 
 // CJ defined this fucntion 2016-07-20
@@ -852,52 +899,6 @@ function validateOrderDeliveryAddressData(fcClass){
     }
 }
 
-
-
-////////////////////////// user personal info /////////////////////
-
-
-
-
-// CJ defined this fucntion 2016-08-21
-function validationUserChangePasswordInfoData(){
-    var inValidDataCount = 0;
-    if($('.editOldPasswordInputClass').length===1){
-        if($('.editOldPasswordInputClass').val()===''
-            || $('.editOldPasswordInputClass').val()===false){
-            $('.editOldPasswordInputClass').css({'border-color':'#f18178'});
-            inValidDataCount++;
-        }else if($('.editOldPasswordInputClass').val()!==''){
-            $('.editOldPasswordInputClass').css({'border-color':'#ccc'});
-        }
-    }
-    if($('.editNewPasswordInputClass').length===1){
-        if($('.editNewPasswordInputClass').val()===''){
-            $('.editNewPasswordInputClass').css({'border-color':'#f18178'});
-            inValidDataCount++;
-        }else if($('.editNewPasswordInputClass').val()!==''){
-            $('.editNewPasswordInputClass').css({'border-color':'#ccc'});
-        }
-    }
-    if($('.editNewConfirmPasswordInputClass').length===1){
-        if($('.editNewConfirmPasswordInputClass').val()===''){
-            $('.editNewConfirmPasswordInputClass').css({'border-color':'#f18178'});
-            inValidDataCount++;
-        }else if($('.editNewConfirmPasswordInputClass').val()!==''){
-            $('.editNewConfirmPasswordInputClass').css({'border-color':'#ccc'});
-        }
-    }
-    if((($('.editNewPasswordInputClass').val())!==($('.editNewConfirmPasswordInputClass').val()))
-        && $('.editNewPasswordInputClass').val()!=='' && $('.editNewPasswordInputClass').val()!==''){
-        inValidDataCount++;
-    }
-    
-    if(inValidDataCount>0){
-        return false;
-    }else{
-        return true;
-    }
-}
 
 
 //////////////// Sharing offers code ////////////////////////////////////
