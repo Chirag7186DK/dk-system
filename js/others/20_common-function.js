@@ -1,7 +1,4 @@
 
-/////////////////// DK session related code ////////////////////////////////
-
-// CJ define this funcion 2016-08-12
 function generateDkUserSessionId(){
     var existingUserSessionId = getUserSessionIdFromUserSession();
     if(existingUserSessionId==='' || existingUserSessionId===false || existingUserSessionId===undefined){
@@ -19,12 +16,7 @@ function generateDkUserSessionId(){
     }
 }
 
-
-/////////////////// Track user accessing websites  ////////////////////////////////
-
-// CJ define this funcion 2016-08-12
 function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
-    // get param obj 
     var paramDataObj = getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad);
     if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
         var fetchAreaParamJsonObj = {};
@@ -33,11 +25,6 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     }
 }
 
-
-///////////// delivery area related code ///////////////////////////////
-
-
-// CJ define this funcion 2016-09-05
 function getUserSelectedPrevDeliveryAreaDetails(){
     var userSelectedPrevDeliveryAreaDataObj = {};
     userSelectedPrevDeliveryAreaDataObj['areavalue'] = '';
@@ -62,9 +49,17 @@ function getUserSelectedPrevDeliveryAreaDetails(){
     return userSelectedPrevDeliveryAreaDataObj;
 }
 
-
-
-////////////// party order related code ///////////
+function clearUserpasswordFormFieldInfo(){
+    if($('#uca_oldPwdInputId').length===1){
+        $('#uca_oldPwdInputId').val('');
+    }
+    if($('#uca_newPwdInputId').length===1){
+        $('#uca_newPwdInputId').val('');
+    }
+    if($('#uca_newcPwdInputId').length===1){
+        $('#uca_newcPwdInputId').val('');
+    }
+}
 
 // CJ define this funcion 2016-07-31
 function clearPartyOrderRequestFormField(){
@@ -155,21 +150,4 @@ function clearProductContentAfterAddedProductInOrdercart(fcClass){
     var existingDkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
     existingDkParamObj['userOrderItemObj'] = {};
     sessionStorage.setItem('DKPARAMOBJ', JSON.stringify(existingDkParamObj));
-}
-
-
-////////////////// user info form content /////////////////
-
-
-// CJ define this funcion 2016-08-21
-function clearUserpasswordFormFieldInfo(){
-    if($('.editOldPasswordInputClass').length===1){
-        $('.editOldPasswordInputClass').val('');
-    }
-    if($('.editNewPasswordInputClass').length===1){
-        $('.editNewPasswordInputClass').val('');
-    }
-    if($('.editNewConfirmPasswordInputClass').length===1){
-        $('.editNewConfirmPasswordInputClass').val('');
-    }
 }
