@@ -79,16 +79,13 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices, Disco
         
         // checkDataToUpdateUserpersonalnfo
         $rootScope.checkDataToUpdateUserpersonalnfo = function(){
-            var retValidatedDataStatus = validationUserProfileInfoData();
+            var retValidatedDataStatus = validateUserProfileInfoData();
             if(retValidatedDataStatus===true){
                 var userPersonalInfoParamData = getParamDataToUpdateUserpersonalInfo();
                 if(userPersonalInfoParamData!==false && userPersonalInfoParamData!==undefined
                     && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
                     $rootScope.updateUserPersonalInfoInUserCAccount(userPersonalInfoParamData);
                 }
-            }else{
-                var notificationMsgStr = "Please enter valid data to update profile info !";
-                showNotificationBoxMsg(notificationMsgStr);
             }
         };
         
