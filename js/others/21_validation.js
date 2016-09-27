@@ -138,6 +138,7 @@ function validateDataUserSignInAuthentication(fromSection){
     }
 }
 
+
 function validateDataUserSignUpAuthentication(fromSection){
     var inValidDataCount = 0;
     if(fromSection==='signUpSection'){
@@ -416,7 +417,6 @@ function validateParamDataPartyOrderRequest(){
     }
 }
 
-// CJ defined this function 2016-07-20
 function validateParamDataCustomizeOrderRequest(){
     var inValidDataCount = 0 ;
     if(isProperInputElementContent('co_occasionTitleInputClass')==='FALSE'){
@@ -460,175 +460,6 @@ function validateParamDataCustomizeOrderRequest(){
 }
 
 
-// CJ defined this fucntion 2016-07-24
-function attachedFieldValidationCorporateTieupRequest(){
-    if($('#ct_corporateNameInputId').length===1){
-        $('#ct_corporateNameInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('#co_contactPersonNameInputId').length===1){
-        $('#co_contactPersonNameInputId').alphanum(
-            {
-                "disallow":".", 
-                "allowNumeric":false, 
-                "allowSpace":true
-            }
-        );
-    }
-    if($('#co_contactMobileInputId').length===1){
-        $('#co_contactMobileInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"10", 
-                "allowDecSep":false
-            }
-        );
-        //CJ added code here 2015-10-05
-        $('#co_contactMobileInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    if(currentTextVal.charAt(0)<=6){
-                        $(this).val('');
-                    }
-                }
-            }catch(ex){
-                $(this).val('');
-            }
-        });
-    }
-    if($('#co_contactEmailInputId').length===1){
-        $('#co_contactEmailInputId').bind("keypress keydown keyup change paste", function(e){
-            try{
-                var currentTextVal = removeHtmlStripTagsOfContent($(this).val());
-                if(currentTextVal!=='' && currentTextVal!==undefined && currentTextVal!==false){
-                    var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                    if(!currentTextVal.match(mail)){
-                        $(this).css({'border-color':'#f18178'});
-                    }else{
-                        $(this).css({'border-color':'#ccc'});
-                    }
-                }
-            }catch(ex){
-            }
-        });
-    }
-    if($('#co_nosPeopleInputId').length===1){
-        $('#co_nosPeopleInputId').numeric(
-            {
-                "allowMinus":false, 
-                "allowThouSep":false, 
-                "allowLeadingSpaces":false, 
-                "maxDigits":"5", 
-                "allowDecSep":false
-            }
-        );
-    }
-}
-
-// CJ defined this function 2016-07-20
-function validateParamDataCorporateTieupRequest(){
-    // checking session param
-    var inValidDataCount = 0 ;
-    if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-        && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false)){
-        // extract dk param session data
-        var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-        if(dkParamObj.hasOwnProperty('corporateTieup')===true){
-            // extract customize order param obj
-            var partyOrderParamObj = dkParamObj['corporateTieup'];
-            if(partyOrderParamObj.hasOwnProperty('corporateTieupTitle')!==''){
-                // check form field is blank or not for corporate tieup request
-                if($('#ct_corporateNameInputId').length===1){
-                    if($('#ct_corporateNameInputId').val()===''){
-                        inValidDataCount++;
-                    }
-                }
-                if($('#ct_contactPersonNameInputId').length===1){
-                    if($('#ct_contactPersonNameInputId').val()===''){
-                        inValidDataCount++;
-                    }
-                }
-                if($('#ct_contactMobileInputId').length===1){
-                    if($('#ct_contactMobileInputId').val()===''){
-                        $('#ct_contactMobileInputId').css({'border-color':'#f18178'});
-                        inValidDataCount++;
-                    }else if($('#ct_contactMobileInputId').val()!==''){
-                        var enterMobileNo = removeHtmlStripTagsOfContent($('#ct_contactMobileInputId').val());
-                        var mobilePattern = /^[6-9]\d{9}$/g;
-                        if(!enterMobileNo.match(mobilePattern) && (enterMobileNo).length!==9){
-                            $('#ct_contactMobileInputId').css({'border-color':'#f18178'});
-                        }else{
-                            $('#ct_contactMobileInputId').css({'border-color':'#ccc'});
-                        }
-                    }
-                }
-                if($('#ct_contactEmailInputId').length===1){
-                    if($('#ct_contactEmailInputId').val()===''){
-                        $('#ct_contactEmailInputId').css({'border-color':'#f18178'});
-                        inValidDataCount++;
-                    }else if($('#ct_contactEmailInputId').val()!==''){
-                        var enteredEmailId = removeHtmlStripTagsOfContent($('#ct_contactEmailInputId').val());
-                        var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                        if(!enteredEmailId.match(emailPattern)){
-                            $('#ct_contactEmailInputId').css({'border-color':'#f18178'});
-                            inValidDataCount++;
-                        }else{
-                            $('#ct_contactEmailInputId').css({'border-color':'#ccc'});
-                        }
-                    }
-                }
-                if($('#ct_nosPeopleInputId').length===1){
-                    if($('#ct_nosPeopleInputId').val()===''){
-                        $('#ct_nosPeopleInputId').css({'border-color':'#f18178'});
-                        inValidDataCount++;
-                    }else{
-                        $('#ct_nosPeopleInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#ct_venueInputId').length===1){
-                    if($('#ct_venueInputId').val()===''){
-                        $('#ct_venueInputId').css({'border-color':'#f18178'});
-                        inValidDataCount++;
-                    }else{
-                        $('#ct_venueInputId').css({'border-color':'#ccc'});
-                    }
-                }
-                if($('#ct_messageInputId').length===1){
-                    if($('#ct_messageInputId').val()===''){
-                        $('#ct_messageInputId').css({'border-color':'#f18178'});
-                        inValidDataCount++;
-                    }else{
-                        $('#ct_messageInputId').css({'border-color':'#ccc'});
-                    }
-                }
-            }
-        }
-    }
-    if(inValidDataCount>0){
-        return false;
-    }else{
-        return true;
-    }
-}
-
-//////////////////// user related code /////////////////////////////////////////
-
-
-
-
-
-////////////////////////// Rating/Review related code /////////////////////
-
-
-// CJ defined this function 2016-08-06
 function validateDataToAddUserRatingReviewProduct(fcClass){
     var inValidDataCount = 0 ;
     if($('.'+fcClass).length===1){
@@ -651,10 +482,6 @@ function validateDataToAddUserRatingReviewProduct(fcClass){
     }
 }
 
-////////////////////////// order cart related code /////////////////////
-
-
-// CJ defined this function 2016-08-06
 function validateProductDataToAddInOrdercart(fcClass){
     try{
         var inValidDataCount = 0 ;
@@ -691,7 +518,6 @@ function validateProductDataToAddInOrdercart(fcClass){
 }
 
 
-// CJ defined this function 2016-08-26
 function validateProductDataToUpdateInOrdercart(fcClass){
     try{
         var inValidDataCount = 0 ;
@@ -718,7 +544,6 @@ function validateProductDataToUpdateInOrdercart(fcClass){
     }
 }
 
-// CJ defined this function 2016-09-18
 function validateOrderDeliveryAddressData(fcClass){
     try{
         var inValidDataCount = 0 ;
@@ -760,10 +585,6 @@ function validateOrderDeliveryAddressData(fcClass){
 
 
 
-//////////////// Sharing offers code ////////////////////////////////////
-
-
-// CJ defined this function 2016-08-28
 function validateDataToShareOffers(fcClass){
     try{
         var inValidDataCount = 0 ;
