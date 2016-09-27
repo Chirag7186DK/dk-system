@@ -663,7 +663,7 @@
                             <p class="po_formfieldLabelPClass">
                                 <i class="po_formfieldiconclass fa fa-rupee faa-tada animated"></i> Approx Budget ?
                             </p>
-                            <input attach-validation-dateinput-directive placeholder="Approx Budget Amount"  type="text" id='po_budgetAmtInputId' class="form-control po_budgetAmtInputClass">
+                            <input attach-validation-budgetamtinput-directive placeholder="Approx Budget Amount"  type="text" id='po_budgetAmtInputId' class="form-control po_budgetAmtInputClass">
                             <p class="po_formfieldHintPClass">
                                 Eg: 500, 1000, 2000
                             </p>
