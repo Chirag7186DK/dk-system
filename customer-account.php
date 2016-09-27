@@ -198,6 +198,9 @@
             
             <!-- change password info section details -->
             <div ng-if="requestedSectionName==='changepassword'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_changepasswordInfoSectionContainerDivClass">
+                <p class='uca_changePwdNotePClass'>
+                    Note: Password length must be between 5 to 10 alphanumeric characters only !!!
+                </p>
                 <p class="uca_OldPasswordPClass">
                     <span class="uca_oldpasswordLblSClass">
                         OLD PASSWORD
