@@ -64,8 +64,8 @@ function isValidPwd(pwdContent){
         var enteredPwdText = removeHtmlStripTagsOfContent(pwdContent);
         if((enteredPwdText).length>=5 && (enteredPwdText).length<=10){
             var pwdPattern = /^[a-z0-9]+$/i;
-            if(enteredPwdText.match(pwdPattern)===null 
-                || enteredPwdText.match(pwdPattern)===undefined){
+            if(enteredPwdText.match(pwdPattern)!==null 
+                && enteredPwdText.match(pwdPattern)!==undefined){
                 rtStatus = 'TRUE';
             }
         }
@@ -81,8 +81,8 @@ function isValidBDateFormat(bdateformatContent){
         var enteredBDateText = removeHtmlStripTagsOfContent(bdateformatContent);
         if(enteredBDateText!==''){
             var dateRegex = /^\d{4}[/-]d{2}[/-]\d{2}$/;
-            if(enteredBDateText.match(dateRegex)===null 
-                || enteredBDateText.match(dateRegex)===undefined){
+            if(enteredBDateText.match(dateRegex)!==null 
+                && enteredBDateText.match(dateRegex)!==undefined){
                 rtStatus = 'TRUE';
             };
         }
