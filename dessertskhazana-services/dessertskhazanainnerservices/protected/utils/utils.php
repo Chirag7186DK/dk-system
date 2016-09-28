@@ -431,8 +431,4 @@ class utils{
         }
     }
     
-    public static function getOtpCode(){
-        
-    }
-    
 }
