@@ -1079,6 +1079,7 @@ class commonfunction{
         return $humanReadablePartyOrderNo;
     }
     
+    
     public static function preparedDataSendingEmailAboutPartyOrdersRequestReceiveFromCustomer($paramJsonData){
         $retEmailSentStatus = false;
         try{
@@ -1096,6 +1097,7 @@ class commonfunction{
         }
         return $retEmailSentStatus;
     }
+    
     
     public static function getPartyOrderList($userId){
         $partyOrderDataArr = false;
@@ -1160,6 +1162,7 @@ class commonfunction{
         $humanReadableCustomizeOrderNo = "COR$lastCustomizeOrderId".time();
         return $humanReadableCustomizeOrderNo;
     }
+    
     
     public static function preparedDataSendingEmailAboutCustomizeOrdersRequestReceiveFromCustomer($paramJsonData){
         $retEmailSentStatus = false;
