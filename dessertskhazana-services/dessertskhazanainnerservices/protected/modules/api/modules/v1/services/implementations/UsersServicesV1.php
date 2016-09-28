@@ -28,7 +28,7 @@ class UsersServicesV1 implements IUsersServicesV1{
         // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $userSessionId = commonfunction :: getUserSessionId();
-            if($userSessionId!=false && strlen($userSessionId)>7){
+            if($userSessionId!=false && strlen($userSessionId)>=20){
                 $rspDetails['userSessionId'] = $userSessionId;
             }
         } 
