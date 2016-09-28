@@ -7,6 +7,19 @@
 
 class UsersServicesV1 implements IUsersServicesV1{
     
+    // CJ defined this action 2016-08-06
+    public function generateUserSessionId($paramDataArr){
+        $rspDetails = array();
+        // checking param data length
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $userSessionId = commonfunction :: getUserSessionId();
+            if($userSessionId!=false && strlen($userSessionId)>=20){
+                $rspDetails['userSessionId'] = $userSessionId;
+            }
+        } 
+        return $rspDetails;
+    }
+    
     // CJ defined this action 2016-07-20
     public function addTrackUserInfoAccessingWebsitesDetails($paramDataArr){
         $rspDetails = array();
@@ -20,19 +33,6 @@ class UsersServicesV1 implements IUsersServicesV1{
             }  
         } 
         ComponentsJson::GenerateJsonAndSend($rspDetails);
-    }
-    
-    // CJ defined this action 2016-08-06
-    public function generateUserSessionId($paramDataArr){
-        $rspDetails = array();
-        // checking param data length
-        if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $userSessionId = commonfunction :: getUserSessionId();
-            if($userSessionId!=false && strlen($userSessionId)>=20){
-                $rspDetails['userSessionId'] = $userSessionId;
-            }
-        } 
-        return $rspDetails;
     }
     
     // CJ defined this action 2016-09-21
