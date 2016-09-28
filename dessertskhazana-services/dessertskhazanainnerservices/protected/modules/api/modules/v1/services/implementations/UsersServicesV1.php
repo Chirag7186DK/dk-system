@@ -10,7 +10,6 @@ class UsersServicesV1 implements IUsersServicesV1{
     // CJ defined this action 2016-08-06
     public function generateUserSessionId($paramDataArr){
         $rspDetails = array();
-        // checking param data length
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $userSessionId = commonfunction :: getUserSessionId();
             if($userSessionId!=false && strlen($userSessionId)>=20){
@@ -24,7 +23,6 @@ class UsersServicesV1 implements IUsersServicesV1{
     public function addTrackUserInfoAccessingWebsitesDetails($paramDataArr){
         $rspDetails = array();
         $rspDetails["isTrackedUserInfoAccessingWebsites"] = 'NO';
-        // check requested param data
         if(count($paramDataArr)>0 && $paramDataArr!='' && $paramDataArr!=false){
             $utawParamDetails = commonfunction :: prepareParamDataForTrackingUserInfoAccessingWebsites($paramDataArr);
             $lastUTAWId = UsersDao::addTrackUserInfoAccessingWebsitesDetails($utawParamDetails);
