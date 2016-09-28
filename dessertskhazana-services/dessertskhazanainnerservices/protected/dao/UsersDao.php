@@ -381,12 +381,12 @@ class UsersDao{
         try{
             $connection = Yii::App()->db;
             $sql= " SELECT 
-                COALESCE(MAX(session_idno),0) userSessionId
+                COALESCE(MAX(session_idno), 0) userSessionId
                 FROM USERSESSION";
             $command = $connection->createCommand($sql);
             $sessionNoDetailsArr = $command->queryAll();
             if(count($sessionNoDetailsArr)>0 && $sessionNoDetailsArr!=false){
-                $maxUserSessionNo =  (int) $sessionNoDetailsArr[0]['userSessionId'];    
+                $maxUserSessionNo = (int) $sessionNoDetailsArr[0]['userSessionId'];    
             }
         }catch(Exception $ex){}
         return $maxUserSessionNo;
