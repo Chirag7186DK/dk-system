@@ -7,6 +7,20 @@
 
 class UsersController extends V1Controller{
     
+    public function actionGenerateUserSessionId(){
+        if(ComponentsHttp::httpMethod()=="POST"){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $UsersServicesV1 = new UsersServicesV1();
+                $rspDetails = $UsersServicesV1->generateUserSessionId($paramDataArr);
+                ComponentsJson::GenerateJsonAndSend($rspDetails);
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     public function actionManageTrackUserAccessingWebsites(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
@@ -19,20 +33,6 @@ class UsersController extends V1Controller{
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
-            }else{
-                commonfunction :: generateResponseDataForInvalidRequestParamKey();
-            }
-        }
-    }
-    
-    public function actionGenerateUserSessionId(){
-        if(ComponentsHttp::httpMethod()=="POST"){
-            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
-            if($inDtoArray!='FALSE'){
-                $paramDataArr = $inDtoArray['dkParamDataArr'];
-                $UsersServicesV1 = new UsersServicesV1();
-                $rspDetails = $UsersServicesV1->generateUserSessionId($paramDataArr);
-                ComponentsJson::GenerateJsonAndSend($rspDetails);
             }else{
                 commonfunction :: generateResponseDataForInvalidRequestParamKey();
             }
