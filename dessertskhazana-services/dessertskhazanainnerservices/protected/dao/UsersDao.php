@@ -322,10 +322,12 @@ class UsersDao{
                 COALESCE(u.birthdate, '') userBirthdate,
                 COALESCE(u.status, 'Z') userStatus
                 FROM USERLOG ul
+                JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid AND us.status='A'
                 JOIN USERS u ON ul.user_id=u.id AND u.status='A' 
                 JOIN USERSPROFILE up ON up.id=u.profile_typeid AND up.status='A'
                 WHERE 1
-                AND ul.status='A' 
+                AND ul.status='A'
+                AND us.user_sessionid='".$paramJson['user_sessionid']."' 
                 AND ul.user_sessionid='".$paramJson['user_sessionid']."' 
                 AND ul.user_logno='".$paramJson['udblogId']."'";  
                 if(array_key_exists('old_password', $paramJson)){
