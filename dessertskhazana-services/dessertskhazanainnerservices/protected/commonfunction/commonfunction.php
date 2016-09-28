@@ -74,6 +74,9 @@ class commonfunction{
         return $paramJsonData;
     }
     
+    public static function getOtpCode(){
+        
+    }
     
     public static function getDeliveryCityListDetails($paramJsonData){
         $rspDetails = array();
