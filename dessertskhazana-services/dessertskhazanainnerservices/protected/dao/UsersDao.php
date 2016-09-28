@@ -350,8 +350,14 @@ class UsersDao{
         $retStatus = 'FALSE';
         try{
             $connection = Yii::App()->db;
-            $sql= " UPDATE USERLOG SET status='Z', logout_datedtime='".date('Y-m-d H:i:s')."'
-                WHERE user_logno='$udblogId' AND user_sessionid='$userSessionId' ";
+            $sql= "UPDATE USERLOG ul
+                JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid
+                SET ul.status='Z', us.status='Z', ul.logout_datedtime='".date('Y-m-d H:i:s')."'
+                WHERE 1
+                AND ul.status='A' AND us.status='A'
+                AND ul.user_logno='$udblogId' 
+                AND ul.user_sessionid='$userSessionId' 
+                AND us.user_sessionid='$userSessionId' ";
             $command = $connection->createCommand($sql);
             $result = $command->execute();
             if($result>0){
