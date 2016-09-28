@@ -50,25 +50,19 @@ class commonfunction{
         return $retEmailSentStatus;
     }
     
-    
-    public static function preparedDataSendingEmailAboutCorporateTieupRequestReceiveFromCustomer($paramJsonData){
-        $retEmailSentStatus = false;
-        try{
-            if(count($paramJsonData)>0 && $paramJsonData!=false){
-                $paramJsonData['name'] = '';
-                $paramJsonData['email'] = '';
-                if(array_key_exists('name', $paramJsonData)
-                    && array_key_exists('email', $paramJsonData)){
-                    $toEmailIdArr = array('chirag.jain@digitaledu.net');
-                    $msgSubject = 'Email Testing CJ';
-                    $msgBody = 'Email Testing CJ';
-                    $retEmailSentStatus = utils :: sendEmail($toEmailIdArr, $msgSubject, $msgBody);
-                }
+    public static function getUserSessionId(){
+        $userSessionId = false;
+        $lastUserSessionNo = UsersDao :: generateMaxSessionNo();
+        if($lastUserSessionNo>=0){
+            $lastUserSessionNo++;
+            $sha1String = sha1($lastUserSessionNo.time()); 
+            $userSessionId = "USID".$lastUserSessionNo.time().$sha1String;
+            $statusLastAddedUserSessionNo = UsersDao :: addMaxUserSessionNo($lastUserSessionNo, $userSessionId);
+            if($statusLastAddedUserSessionNo==false){
+                $userSessionId = false;
             }
-        }catch(Exception $ex){
-            $retEmailSentStatus = false;
         }
-        return $retEmailSentStatus;
+        return $userSessionId;
     }
     
     public static function prepareParamDataForTrackingUserInfoAccessingWebsites($paramJsonData){
@@ -361,23 +355,6 @@ class commonfunction{
         return $retArr;
     }    
   
-    
-    
-    public static function getUserSessionId(){
-        $userSessionId = false;
-        $lastUserSessionNo = UsersDao :: generateMaxSessionNo();
-        if($lastUserSessionNo>=0){
-            $lastUserSessionNo++;
-            $sha1String = sha1($lastUserSessionNo.time()); 
-            $userSessionId = "USID".$lastUserSessionNo.time().$sha1String;
-            $statusLastAddedUserSessionNo = UsersDao :: addMaxUserSessionNo($lastUserSessionNo, $userSessionId);
-            if($statusLastAddedUserSessionNo==false){
-                $userSessionId = false;
-            }
-        }
-        return $userSessionId;
-    }
-    
     
     public static function preparedDataToStoreInfoAbtTrackedUserAccessingWebsitesDetails($userJsonData){
         $retLastInsertedUserInfoTrackedId = false;
