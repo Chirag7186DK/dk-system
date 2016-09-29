@@ -56,9 +56,9 @@ class ProductDao{
                     COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
                     COALESCE(splld.baseprice, '') productFeatureBasePrice, COALESCE(splld.product_discount, '') productFeatureDiscount,
                     COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
-                    COALESCE(splImg.is_showcasefile, 'N') isProductImageFileShowCase,
-                    COALESCE(splImg.image_filename, 'r1_(270x239).png') productImageFileName,
-                    COALESCE(splImg.file_path, 'images/') productImageFilePath ";
+                    'Y' isProductImageFileShowCase,
+                    COALESCE(spl.image_name, 'productphotoback.png') productImageFileName,
+                    COALESCE(spl.file_path, 'images/productphotoback.png') productImageFilePath ";
             $sql.= $selectStatementForGroupBy;
             $sql.="
                     FROM PRODUCTTYPE pt
@@ -72,17 +72,7 @@ class ProductDao{
                     JOIN COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
                     JOIN COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
                     JOIN CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
-                    JOIN AREAREACHED area ON area.id=ccr.area_id AND area.status='A'
-                    LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING splImg 
-                        ON splImg.product_listid=spl.id  AND splImg.status = 'A' AND splImg.is_showcasefile = 'Y' ";
-                        
-                    // add product_listids in left join condition for image file mapping
-                    if(array_key_exists('product_listids', $paramJson)){
-                        if($paramJson['product_listids']!=false && $paramJson['product_listids']!='' 
-                            && $paramJson['product_listids']!=null){
-                            $sql.=" AND splImg.product_listid IN (".$paramJson['product_listids'].") ";
-                        } 
-                    } 
+                    JOIN AREAREACHED area ON area.id=ccr.area_id AND area.status='A'";
             
             $sql.="  WHERE 1 ";
             
