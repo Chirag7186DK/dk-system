@@ -1,28 +1,104 @@
 
-SELECT
-COALESCE(por.partyorder_no, '') partyOrderNo, 
-COALESCE(por.occassion_title, '') occassionTitle,
-COALESCE(por.nos_person, '') nosOfPerson, 
-COALESCE(por.party_date, '') partyDate, 
-COALESCE(por.party_venue, '') partyVenue, 
-COALESCE(por.party_requirements, '') partyRequirements,
-COALESCE(por.estimated_budget, '') estimatedBudget,
-(CASE 
-    WHEN por.status='R' THEN 'Requested'
-    WHEN por.status='CC' THEN 'Confirmed by you for further processing'
-    WHEN por.status='CV' THEN 'Consulting with vendor'
-    WHEN por.status='PP' THEN 'Payment Pending'
-    WHEN por.status='PF' THEN 'Payment Failed'
-    WHEN por.status='ZC' THEN 'Deleted/Removed by you'
-    WHEN por.status='ZA' THEN 'Deleted/Removed by us'
-END) porLongStatusMsg, COALESCE(por.status, '') porShortStatus,
-'1800' confirmedAmt
-FROM USERS u 
-JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
-WHERE 1
-AND u.id='1'
-AND por.user_id='1'
-AND u.status='A'
+
+UPDATE 
+USERLOG ul
+JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid
+SET 
+ul.status='Z', us.status='Z',
+ul.logout_datedtime='2016-08-02 12:01:01'
+WHERE 
+ul.user_logno='ULNO01474776701f84efcac22cce5bbdc57b6d7e79050c1bef08128' 
+AND ul.user_sessionid='USID11474773355c9c5ac74bf3802120d54ee970e3e61786129a211' 
+AND us.user_sessionid='USID11474773355c9c5ac74bf3802120d54ee970e3e61786129a211' 
+
+
+-- SELECT 
+-- CONCAT(u.name, '') userName,
+-- COALESCE(qrd.question_title, '') questionTitle,
+-- COALESCE(qrd.max_points, '') maxPoints,
+-- COALESCE(urd.given_answerpoints, '') givenAnswerPoints,
+-- COALESCE(qrd.question_answerpattern, '') answerPattern,
+-- COALESCE(urd.given_answertext, '') answerText,
+-- COALESCE(DATE_FORMAT(urd.updated_datedtime, '%M-%d-%Y (%H:%i:%s)'), '') updatedDate
+-- FROM USER_REVIEWANSWERDETAILS urd
+-- JOIN REVIEWQESTIONSDETAILS qrd ON qrd.id=urd.question_id
+-- JOIN USERS u ON u.id=urd.user_id
+-- WHERE 
+-- urd.status='A' AND qrd.status='A' AND urd.group_no IS NOT NULL 
+-- AND urd.store_id='1'
+-- AND urd.product_listid='2'
+-- AND urd.user_id='1'
+-- AND qrd.question_answerpattern='SELECT'    
+-- AND urd.group_no = '1001' 
+-- ORDER BY urd.updated_datedtime DESC
+
+
+-- SELECT 
+-- COALESCE(pogp.totalamount, 0) poGeneratedTotalAmt,
+-- COALESCE(pogp.payingamount, 0) payingamount,
+-- COALESCE(pogp.balanceamount, 0) balanceamount,
+-- COALESCE(pogp.description, 0) description,
+-- (CASE 
+--     WHEN pogp.status='G' THEN 'Generated'
+--     WHEN pogp.status='PD' THEN 'Payment Done'
+--     WHEN pogp.status='PF' THEN 'Payment Failed'
+--     WHEN pogp.status='ZC' THEN 'Deleted/Removed by you'
+--     WHEN pogp.status='ZA' THEN 'Deleted/Removed by us'
+-- END) pogpLongStatusMsg, COALESCE(pogp.status, '') pogpShortStatus
+-- FROM USERS u 
+-- JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
+-- JOIN PARTYORDERS_GENERATEPAYMENT pogp ON pogp.party_id=por.id
+-- WHERE 1
+-- AND u.status='A'
+-- AND u.id='1' AND por.user_id='1'
+-- AND por.id='1' AND pogp.party_id='1'
+-- AND pogp.status='G' || pogp.status='PF'
+-- ORDER BY pogp.udated_datedtime DESC
+
+
+
+-- SELECT
+-- COALESCE(por.partyorder_no, '') partyOrderNo, 
+-- COALESCE(por.occassion_title, '') occassionTitle,
+-- COALESCE(por.nos_person, '') nosOfPerson, 
+-- COALESCE(por.party_date, '') partyDate, 
+-- COALESCE(por.party_venue, '') partyVenue, 
+-- COALESCE(por.party_requirements, '') partyRequirements,
+-- COALESCE(por.estimated_budget, '') estimatedBudget,
+-- (CASE 
+--     WHEN por.status='R' THEN 'Requested'
+--     WHEN por.status='CC' THEN 'Confirmed by you for further processing'
+--     WHEN por.status='CV' THEN 'Consulting with vendor'
+--     WHEN por.status='PP' THEN 'Payment Pending'
+--     WHEN por.status='PF' THEN 'Payment Failed'
+--     WHEN por.status='ZC' THEN 'Deleted/Removed by you'
+--     WHEN por.status='ZA' THEN 'Deleted/Removed by us'
+-- END) porLongStatusMsg, COALESCE(por.status, '') porShortStatus,
+-- '1800' confirmedAmt
+-- FROM USERS u 
+-- JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
+-- WHERE 1
+-- AND u.id='1'
+-- AND por.user_id='1'
+-- AND u.status='A'
+
+-- SELECT 
+-- COALESCE(porl.description, '') poLogDescription,
+-- COALESCE(DATE_FORMAT(porl.updated_datedtime, '%b %D %a, %Y'), '') lastUpdatedTime,
+-- (CASE 
+--     WHEN porl.profile_typeid='1' THEN 'You' 
+--     ELSE 'Admin'
+-- END) poLogMemberLabel
+-- FROM USERS u 
+-- JOIN PARTYORDERS_REQUEST por ON por.user_id=u.id
+-- JOIN PARTYORDERS_REQUEST_LOG porl ON porl.party_id=por.id
+-- WHERE 1
+-- AND u.status='A'
+-- AND porl.status='A'
+-- AND u.id='1'
+-- AND por.user_id='1'
+-- AND por.id='1'
+-- AND porl.party_id='1'
 
 
 -- SELECT 
