@@ -221,7 +221,7 @@
                 
                 <!-- each product details iterate for displaying purpose -->
                 <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-6 col-sm-4 col-md-3 col-lg-3 storeProductBoxDivClass">
-                    <img style='width:100%!important;' class='preloadProductImagesClass' data-original="data/vendor_cb1/dessertsproducttype/cakes/regular/r1_(270x239).png" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
+                    <img style='width:100%!important;' class='preloadProductImagesClass' data-original="{{eachProductDetails.productImageFilePath}}" ng-src="<?php echo $BaseSitePath; ?>images/productphotoback.png">
                     <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 storeProductBoxDividerLineDivClass'></div>
                     <p class='storeProductNamePClass'>
                         {{eachProductDetails.productListTitle}}
