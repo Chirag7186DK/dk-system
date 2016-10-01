@@ -69,7 +69,7 @@ class StoreDao{
                     COALESCE(sdl.min_orderamount, '0') min_orderamount,
                     COALESCE(sdl.delivery_time, '60 MIN') delivery_time
                     FROM STORE ss
-                    JOIN STORE_DELIVERYLOCATIONDETAILS sdl ON sdl.shopstore_id=ss.id AND sdl.status='A'
+                    JOIN STORE_DELIVERYLOCATIONDETAILS sdl ON sdl.store_id=ss.id AND sdl.status='A'
                     JOIN COUNTRYREACHED country ON sdl.country_id=country.id AND country.status='A'
                     JOIN CITYREACHED city ON sdl.city_id=city.id AND city.status='A' 
                     JOIN AREAREACHED area ON sdl.area_id=area.id AND area.status='A'";
@@ -79,7 +79,7 @@ class StoreDao{
                 if(array_key_exists('shop_storesids', $paramJson)){
                     if($paramJson['shop_storesids']!=false && $paramJson['shop_storesids']!='' 
                         && $paramJson['shop_storesids']!=null){
-                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND sdl.shopstore_id IN (".$paramJson['shop_storesids'].") ";
+                        $sql.=" AND ss.id IN (".$paramJson['shop_storesids'].") AND sdl.store_id IN (".$paramJson['shop_storesids'].") ";
                     }
                 }
                 
