@@ -94,8 +94,7 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
         $('#productMeasurementSelectCtrlId').on('change', function(){
             var productMeasurementValue = $(this).find('option:selected').val();
             if(productMeasurementValue!=='' && productMeasurementValue!==false){
-                var productPrice = $(this).find('option:selected').attr("data-productprice");
-                $('.onlineProductSellingPriceTextClass').empty().append(productPrice);
+                var productJsonData = $(this).find('option:selected').attr("data-productdata");
             }
         });
         
