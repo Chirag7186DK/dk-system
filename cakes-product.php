@@ -195,12 +195,15 @@
                 <p class='viewProductPricePClass'> 
                     <span class='vpd_productPayBlgPriceTextSClass'>
                         <i class="fa fa-rupee faa-tada animated"></i> 
-                        <i class='onlineProductSellingPriceTextClass'>{{productDetails[0]['productFeatureOnlineSellingPrice']}}</i>
+                        <i class='onlineProductSellingPriceTextClass'>
+                            {{productDetails[0]['productFeatureOnlineSellingPrice']}}
+                        </i>
                     </span>
-                    <span class='vpd_productCutPriceTextSClass' ng-if="productDetails[0]['productFeatureDiscount']">
-                        <i class="fa fa-rupee"></i> {{productDetails[0]['productFeatureBasePrice']}}
+                    <span ng-if="productDetails[0]['productFeatureBasePrice']!==''" class='vpd_productCutPriceTextSClass'>
+                        <i class="fa fa-rupee"></i> 
+                        {{productDetails[0]['productFeatureBasePrice']}}
                     </span>
-                    <span class='vpd_productDiscountPercentTextSClass' ng-if="productDetails[0]['productFeatureDiscount']!==''">
+                    <span ng-if="productDetails[0]['productFeatureDiscount']!==''" class='vpd_productDiscountPercentTextSClass'>
                         ({{productDetails[0]['productFeatureDiscount']}}% Off)
                     </span>
                 </p>
