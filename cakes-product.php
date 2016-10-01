@@ -178,7 +178,7 @@
                     {{storeDeliveryFeeApplicableMsg}}
                 </p>
                 <p class="vpd_estimatedProductDeliveryTimePClass">
-                    Est. Delivery: 
+                    <i class='fa fa-bus'></i> Est. Delivery: 
                     <span class="estimatedProductShippingDeliveryTimeSClass">
                         {{productDetails[0]['individualProductDeliveryTime']}}
                     </span>
@@ -262,22 +262,6 @@
                         <ul class="vpd_productDescriptionULClass">
                             <li ng-repeat="eachPoints in eachDescriptionTitleAndPoints.descriptionPointsArr">{{eachPoints}}</li>
                         </ul>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-            
-            <!-- product shipping details -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_shippingProductContainerDivClass" ng-init="toggleShippingProductContent('vpd_shippingProductBodyContainerDivId');">
-                <p class="vpd_shippingProductLabelHeaderPClass" ng-click="toggleShippingProductContent('vpd_shippingProductBodyContainerDivId');">
-                    <i class='fa fa-bus'></i> SHIPPING
-                    <span class="{{toggleShippingProductIconClass}} moreLessShippingProductIconClass"></span>
-                </p>
-                <div id="vpd_shippingProductBodyContainerDivId" class="vpd_shippingProductBodyContainerDivClass">
-                    <ul class="vpd_shippingTitleULClass">
-                        <li class='vpd_shippingTitleLIClass'>Est Delivery: <span class="estimatedProductShippingDeliveryTimeSClass">80 MIN</span></li>
                     </ul>
                 </div>
             </div>
