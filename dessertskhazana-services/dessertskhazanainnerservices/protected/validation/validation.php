@@ -14,6 +14,17 @@ class validation{
         return $rtStatus;
     }
     
+    public static function isValidNumbericFloat($contentData){
+        $rtStatus = 'FALSE';
+        if($contentData!='' && $contentData!=false){
+            $regPattern = "/^[1-9]+$/";
+            if(preg_match($regPattern, $contentData)>0){
+                $rtStatus = 'TRUE';
+            }
+        }
+        return $rtStatus;
+    }
+    
     public static function isValidEmail($contentData){
         $rtStatus = 'FALSE';
         if($contentData!='' && $contentData!=false){
