@@ -370,21 +370,29 @@ class OrderCartDao{
             $sql= "SELECT
                 COALESCE(COUNT(DISTINCT odr.id), 0) ordercartCount,
                 COALESCE(COUNT(DISTINCT odrs.id), 0) totalStores,
-                COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount,
+                COALESCE(itemData.ordercartItemRequestedCount, 0) ordercartItemRequestedCount,
                 COALESCE(SUM(odrs.subtotalamount), 0) subtotalOrderAmt,
                 COALESCE(SUM(odrs.apply_deliveryfee), 0) totalDeliveryFee,
                 COALESCE(SUM(odrs.totalamount), 0) totalOrderAmt
                 FROM ORDERCART odr
                 JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-                JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+                JOIN (
+                    SELECT 
+                    odrsim.ordercart_storeid ordercartStoreId,
+                    COALESCE(COUNT(DISTINCT odrsim.id), 0) ordercartItemRequestedCount
+                    FROM ORDERCARTSTORE_ITEMDETAILS odrsim
+                    WHERE 
+                    odrsim.status='R'
+                    GROUP BY odrsim.ordercart_storeid
+                ) itemData ON itemData.ordercartStoreId=odrs.id
                 WHERE 
-                odr.status='R' AND odrs.status='R' AND odrsim.status='R'
+                odr.status='R' AND odrs.status='R'
                 AND odr.user_id='$userid'
                 HAVING ordercartCount>0";
             $command = $connection->createCommand($sql);
-            $ordercartSummaryCountDetailsArr = $command->queryAll();
-            if(count($ordercartSummaryCountDetailsArr)==1 && $ordercartSummaryCountDetailsArr!=false){
-                $result =  $ordercartSummaryCountDetailsArr[0];    
+            $ordercartSummaryDataArr = $command->queryAll();
+            if(count($ordercartSummaryDataArr)==1 && $ordercartSummaryDataArr!=false){
+                $result =  $ordercartSummaryDataArr[0];    
             }
         }catch(Exception $ex){}
         return $result;
