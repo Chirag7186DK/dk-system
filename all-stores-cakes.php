@@ -99,7 +99,7 @@
                 </p>
             
                 <!-- iterate each store info container -->
-                <div ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
+                <div ng-if="allStoresInfoList.length>0" ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
                     <div class="eachStoreInfoInnerContainerDivClass">    
                         <p class="eachStoreNamePClass">
                             {{eachStoreInfoDataObj.shopStoreTitle}}
@@ -135,14 +135,14 @@
                         </p>
                         <p class="eachStoreOnlineOrderBtnPClass">
                             <button ng-controller='StoreController' ng-click='storeDessertsTypeDataDetailsInSessionStorageToViewStoreAllProductList(eachStoreInfoDataObj)' class="btn eachStoreOnlineOrderBtnClass">
-                                ORDER ONLINE
+                                ORDER NOW
                             </button>
                         </p>
                     </div>
                 </div>
                 
                 <div ng-if="allStoresInfoList<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noStoresFoundInfoMsgContainerDivClass">
-                    <i class="fa fa-frown-o"></i> Sorry, we don't serve cakes at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
+                    <i class="fa fa-frown-o"></i> Sorry, we don't serve any cakes at your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
                 </div>
                 
             </div>
