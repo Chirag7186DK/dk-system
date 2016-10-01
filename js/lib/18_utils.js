@@ -184,6 +184,8 @@ function removeHtmlStripTagsOfContent(givenContent){
     try{
         if(givenContent==='' || givenContent===undefined || givenContent===false){
             givenContent = '';
+        }else{
+            givenContent = (givenContent).toString();
         }
         if(givenContent!=='' && givenContent!==undefined && givenContent!==false){
             var regex = /(<([^>]+)>)/ig;
