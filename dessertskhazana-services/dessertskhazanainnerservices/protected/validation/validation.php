@@ -6,7 +6,7 @@ class validation{
     public static function isValidNumberic($contentData){
         $rtStatus = 'FALSE';
         if($contentData!='' && $contentData!=false){
-            $regPattern = "/^[1-9]+$/";
+            $regPattern = "/^[0-9]+$/";
             if(preg_match($regPattern, $contentData)>0){
                 $rtStatus = 'TRUE';
             }
