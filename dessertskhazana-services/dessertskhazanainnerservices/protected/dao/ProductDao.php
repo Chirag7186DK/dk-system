@@ -263,7 +263,7 @@ class ProductDao{
             $connection = Yii::app()->db;
             $sqlFetchQuery = "SELECT
                     ss.id shopStoreId, ss.name shopStoreTitle, COALESCE(area.name, '') shopStoreOrgLocation,
-                    COUNT(*) totalProduct, COALESCE(MAX(splld.product_discount), '') maxProductDiscount,
+                    COUNT(*) totalProduct, COALESCE(MAX(splld.product_discount), '0') maxProductDiscount,
                     COALESCE(MAX(splld.online_sellprice), '') maxOnlineProductPrice,
                     COALESCE(MIN(splld.online_sellprice), '') minOnlineProductPrice
                     FROM PRODUCTTYPE pt
