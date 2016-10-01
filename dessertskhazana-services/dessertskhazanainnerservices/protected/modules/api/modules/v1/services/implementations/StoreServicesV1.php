@@ -221,7 +221,7 @@ class StoreServicesV1 implements IStoreServicesV1{
     // CJ defined this action 2016-09-11
     public function getStoreDeliveryFeeApplicableOnDeliveryArea($dkParamDataArr){
         $rspDetails = array();
-        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery to your door step !!!';
+        $rspDetails['applicableStoreDeliveryFeeMsg'] = 'Your eligible for free home delivery at your door step !!!';
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             
             // initial variable declare here
@@ -231,7 +231,6 @@ class StoreServicesV1 implements IStoreServicesV1{
             $garea_ids = $dkParamDataArr['area_ids'];
             $gccaId = $dkParamDataArr['ccaId'];
             $isHomeDeliveryAccept = 'Y';
-            $is_courierdeliveryaccept = 'Y';
             $deliveryFee = '0';
             $minOrderAmt = '0';
             $userId = 0;
@@ -254,7 +253,6 @@ class StoreServicesV1 implements IStoreServicesV1{
             $dataArr1 = StoreDao :: getStoreDeliveryLocationFacilityDetails($paramJson1);
             if($dataArr1!=false && count($dataArr1)==1){
                 $isHomeDeliveryAccept = $dataArr1[0]['isHomeDeliveryAccept'];
-                $is_courierdeliveryaccept = $dataArr1[0]['is_courierdeliveryaccept'];
                 $minOrderAmt = $dataArr1[0]['min_orderamount'];
                 $deliveryFee = $dataArr1[0]['deliveryfee'];
             }
@@ -267,7 +265,10 @@ class StoreServicesV1 implements IStoreServicesV1{
                 $isOrdercartStoreSummaryFound = 'Y';
             }
 
-            if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
+            if($deliveryFee>0 && $deliveryFee!='' && ($minOrderAmt=='' 
+                || $minOrderAmt==0 || $minOrderAmt=='0') && $isHomeDeliveryAccept=='Y'){
+                $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply on any order amount for this seller !!!";
+            }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                 && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                 if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
                     $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added $userAddedNosItemInStorecart items in cart";
