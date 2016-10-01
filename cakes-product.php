@@ -184,10 +184,10 @@
                     </span>
                 </p>
                 <hr>
-                <p ng-if="productDetails.length>0" class='vpd_productSelectMeasurementLabelPClass'> 
+                <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId">
-                        <option ng-repeat="eachMeasurementDetails in productDetails | orderBy : '-isRequestedProductDetailsMatched'" data-shopstore_id='{{eachMeasurementDetails.shopStoreId}}' data-ccaid='{{eachMeasurementDetails.ccaId}}' data-deliveryfee='{{eachMeasurementDetails.storeOrderDeliveryFee}}' data-minorderamt='{{eachMeasurementDetails.storeMinOrderAmt}}' data-productfeatureid='{{eachMeasurementDetails.productFeatureId}}' data-productprice='{{eachMeasurementDetails.productFeatureOnlineSellingPrice}}' value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
+                        <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails | orderBy : '-isRequestedProductDetailsMatched'" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
                             {{eachMeasurementDetails.productFeatureDisplayMeasurementType}}
                         </option>
                     </select>
