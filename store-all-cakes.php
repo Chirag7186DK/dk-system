@@ -237,7 +237,7 @@
                         </span>
                     </p>
                     <p class='storeProductDeliveryTimePClass'>
-                        <i class="fa fa-bus"></i> Delivers in {{eachProductDetails.individualProductDeliveryTime}}
+                        <i class="fa fa-bus"></i> Est. Delivers in {{eachProductDetails.individualProductDeliveryTime}}
                     </p>
                     <p class='storeProductPricePClass'> 
                         <span class='storeProductOnlineSellingPriceTextSClass'>
