@@ -931,8 +931,10 @@ class commonfunction{
                             $msgStr = "Your eligible for free home delivery to your door step, bcoz you have added ".count($storeAllItemsDataArr). " items in cart";
                             $msgStr.=" (Rs: ".$eachOrdercartStoresDataArr['subtotalamount'].")  of this seller !!!";
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = $msgStr;
-                        }else if($storeAppliedDeliveryFeeOnOdrAmt>0){
+                        }else if($storeAppliedDeliveryFeeOnOdrAmt>0 && $storeMinOrderAmt>0){
                             $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply, if order amount less than Rs $storeMinOrderAmt for this seller !!!";
+                        }else if($storeAppliedDeliveryFeeOnOdrAmt>0 && $storeMinOrderAmt<=0){
+                            $eachOrdercartStoresDataArr['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $storeDeliveryFee will be apply by this seller on any order amount !!!";
                         }
                         
                         $ordercartSummaryDataArr['totalStores'] = $ordercartSummaryDataArr['totalStores'] + 1;
