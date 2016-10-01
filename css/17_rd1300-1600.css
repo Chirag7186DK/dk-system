@@ -3073,7 +3073,7 @@
     }
     
     .chkout_eachStoreBasicInfoLblPClass{
-        color:rgb(70, 75, 80)!important;
+        color:#f17023!important;
         font-size:13px!important;
         padding-left:10px!important;
     }
@@ -3144,6 +3144,11 @@
         color:rgb(70, 75, 80)!important;
         font-size:13px!important;
         padding-left:10px!important;
+        margin:4px;
+    }
+    
+    .chkout_makePaymentBtnPClass{
+        margin-top:14px!important;
     }
     
     .chkout_makePaymentBtnClass{
