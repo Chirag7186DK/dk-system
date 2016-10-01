@@ -161,7 +161,7 @@ class StoreServicesV1 implements IStoreServicesV1{
         $rspDetails = array();
         $rspDetails['shopstoreInfo'] = array();
         $rspDetails['customersReviewedRatingMsgStr'] = 'No any customer(s) reviewed yet !!!';
-        $rspDetails['isRatingReviewBasedInfoFound'] = false;
+        $rspDetails['isRatingReviewBasedInfoFound'] = 'FALSE';
         $rspDetails['ratingReviewBasedInfo'] = '';
         if(count($dkParamDataArr)>0 && $dkParamDataArr!=false){
             
@@ -177,7 +177,7 @@ class StoreServicesV1 implements IStoreServicesV1{
             // prepare data to get total rating & reviewed  by user(s) about store
             $dataArr2 = RatingReviewDao::getTotalRatingStore($gshopstore_id);
             if(count($dataArr2)==1 && $dataArr2!=false){
-                $rspDetails['isRatingReviewBasedInfoFound'] = true;
+                $rspDetails['isRatingReviewBasedInfoFound'] = 'TRUE';
                 $rspDetails['customersReviewedRatingMsgStr'] = $dataArr2[0]['totalUserRatingAbtProduct'].' customer(s) reviewed & ratings';
             }
 
