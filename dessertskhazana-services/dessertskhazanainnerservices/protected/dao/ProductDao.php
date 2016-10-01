@@ -51,6 +51,7 @@ class ProductDao{
                     COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
                     COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(spac.name, '') productTypeProductCategoryTitle,
                     COALESCE(spl.id, '') productListId, COALESCE(spl.name, '') productListTitle,
+                    COALESCE(spl.deliverytime, '') individualProductDeliveryTime, COALESCE(spl.availablesize, '1') productAvailableSizeCount,
                     COALESCE(splld.id, '') productFeatureId, COALESCE(splld.food_type, '') productFeatureFoodType, 
                     COALESCE(splld.taste_type, '') productFeatureTasteType, COALESCE(splld.pattern_type, '') productFeaturePatternType, 
                     COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
