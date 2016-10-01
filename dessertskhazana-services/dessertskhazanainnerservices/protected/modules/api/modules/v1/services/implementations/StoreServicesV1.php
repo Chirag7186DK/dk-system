@@ -277,15 +277,6 @@ class StoreServicesV1 implements IStoreServicesV1{
                 }else if($subTotalOrderAmt>=0 && $subTotalOrderAmt<$minOrderAmt){
                     $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller !!!";
                 }
-            }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
-                if($subTotalOrderAmt>0 && $subTotalOrderAmt>=$minOrderAmt){
-                    $msgStr = "Your eligible for free home delivery by courier to your door step, bcoz you have added $userAddedNosItemInStorecart items in cart";
-                    $msgStr.=" (Rs: $subTotalOrderAmt)  of this seller !!!";
-                    $rspDetails['applicableStoreDeliveryFeeMsg'] = $msgStr;
-                }else if($subTotalOrderAmt>=0 && $subTotalOrderAmt<$minOrderAmt){
-                    $rspDetails['applicableStoreDeliveryFeeMsg'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt for this seller & product will be deliver by courier services !!!";
-                }
             }
             
         }
