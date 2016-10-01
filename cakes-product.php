@@ -71,39 +71,37 @@
         <div ng-controller="ProductController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
-                <ul class="customerBreadcrumbULClass list-inline">
-                    <li class='customerBreadcrumbLIClass'>
-                        <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeTitle}}
-                        </a>
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{customerBreadCrumbOnWebApp.shopStoreTitle}}
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{customerBreadCrumbOnWebApp.productTypeTitle}}
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{customerBreadCrumbOnWebApp.productCategoryTitle}}
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{customerBreadCrumbOnWebApp.productListTitle}}
-                    </li>
-                </ul>
-            </div>
+            <ul customer-breadcrumb-directive class="customerBreadcrumbULClass list-inline">
+                <li class='customerBreadcrumbLIClass'>
+                    <a href="<?php echo $BaseSitePath;?>">
+                        {{customerBreadCrumbOnWebApp.homeTitle}}
+                    </a>
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{customerBreadCrumbOnWebApp.shopStoreTitle}}
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{customerBreadCrumbOnWebApp.productTypeTitle}}
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{customerBreadCrumbOnWebApp.productCategoryTitle}}
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{customerBreadCrumbOnWebApp.productListTitle}}
+                </li>
+            </ul>
             
             <!-- store served all desserts type info -->
             <div ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeServeDessertsTypeContainerDivClass">
@@ -111,8 +109,8 @@
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length==1" class="storeServingDessertsTypeNoteInfoLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you are viewing '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' product  
-                    in your '{{selectedDeliveryAreaTextHeader}}' delivery area !!!
+                    Hey you are ordering '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' product  
+                    to deliver in '{{selectedDeliveryAreaTextHeader}}' area !!!
                 </li>
                 <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class="storeServingDessertsTypeNoteInfoLIClass">
                     <i class='fa fa-smile-o'></i> 
