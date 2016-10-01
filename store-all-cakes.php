@@ -71,27 +71,25 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeDetailsBodyWrapperDivClass">
 
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
-                <ul class="customerBreadcrumbULClass list-inline">
-                    <li class='customerBreadcrumbLIClass'>
-                        <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeTitle}}
-                        </a>
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        {{storeInfo.shopStoreName}}
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        Cakes
-                    </li>
-                </ul>
-            </div>
+            <ul class="customerBreadcrumbULClass list-inline">
+                <li class='customerBreadcrumbLIClass'>
+                    <a href="<?php echo $BaseSitePath;?>">
+                        Home
+                    </a>
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    {{storeInfo.shopStoreName}}
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    Cakes
+                </li>
+            </ul>
             
             <!-- store summary(self,rating/review/desserts menu) info -->
             <div horizontally-scrollable-storeinfo id='horizontallyScrollableStoreInfoDivId' ng-controller="StoreController" ng-init="loadStoreSummaryInfo()"  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeSummaryTypeInfoWrapperDivClass">
@@ -228,12 +226,18 @@
                     </p>
                     <p class='storeProductSizePClass'>
                         Size : {{eachProductDetails.productFeatureDisplayMeasurementType}}
+                        <span ng-if="eachProductDetails.productAvailableSizeCount>1">
+                            (more size available)
+                        </span>
                         <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
                             <i class="fa fa-square storeProductVegIconClass"></i>
                         </span>
                         <span ng-if="eachProductDetails.productFeatureFoodType=='Egg'" class="pull-right storeProductVegIconClass">
                             <i class="fa fa-square storeProductVegIconClass"></i>
                         </span>
+                    </p>
+                    <p class='storeProductDeliveryTimePClass'>
+                        <i class="fa fa-bus"></i> Delivers in {{eachProductDetails.individualProductDeliveryTime}}
                     </p>
                     <p class='storeProductPricePClass'> 
                         <span class='storeProductOnlineSellingPriceTextSClass'>
