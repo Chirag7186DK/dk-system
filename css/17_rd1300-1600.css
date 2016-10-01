@@ -851,6 +851,11 @@
         font-size:14px!important;
     }
     
+    .storeProductDeliveryTimePClass{
+        color:rgb(70, 75, 80)!important;
+        font-size:14px!important;
+    }
+    
     .storeProductVegIconClass{
         color:#4b8211!important;
         border-radius:0px!important;
@@ -883,7 +888,7 @@
         font-weight:normal!important;
         background-color:#ab0b38!important;
         color:#fff!important;
-        padding:5px!important;
+        padding:4px!important;
     }
 
     .storeProductNotFoundMsgDivClass{
