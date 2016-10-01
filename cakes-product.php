@@ -187,7 +187,7 @@
                 <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId">
-                        <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails | orderBy : '-isRequestedProductDetailsMatched'" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
+                        <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
                             {{eachMeasurementDetails.productFeatureDisplayMeasurementType}}
                         </option>
                     </select>
