@@ -71,25 +71,20 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
-            <div customer-breadcrumb-directive class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
-                <ul class="customerBreadcrumbULClass list-inline">
-                    <li class='customerBreadcrumbLIClass'>
-                        <a href="<?php echo $BaseSitePath;?>">
-                            {{customerBreadCrumbOnWebApp.homeTitle}}
-                        </a>
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        Cakes
-                    </li>
-                </ul>
-            </div>
+            <ul class="customerBreadcrumbULClass list-inline">
+                <li class='customerBreadcrumbLIClass'>
+                    <a href="<?php echo $BaseSitePath;?>">
+                        Home
+                    </a>
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    Cakes
+                </li>
+            </ul>
             
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-        
             <!-- all stores wise info container -->
             <div ng-controller="StoreController" ng-init="loadStoreListDeliveryAreaBasedDessertsType();" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoContainerDivClass">
                 
@@ -124,7 +119,7 @@
                             <span>Total Products: </span> 
                             <span>{{eachStoreInfoDataObj.totalProduct}}</span>
                         </p>
-                        <p class="eachStoreDiscountUptoPClass">
+                        <p ng-if="eachStoreInfoDataObj.discountUpto>0" class="eachStoreDiscountUptoPClass">
                             Upto {{eachStoreInfoDataObj.discountUpto}} <i class="fa fa-percent eachStoreDiscountUptoIconClass"></i>
                         </p>
                         <p class="eachStoreDeliveryTimePClass">
