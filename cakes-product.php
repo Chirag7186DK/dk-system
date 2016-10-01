@@ -180,7 +180,7 @@
                 <p class="vpd_estimatedProductDeliveryTimePClass">
                     Est. Delivery: 
                     <span class="estimatedProductShippingDeliveryTimeSClass">
-                        {{productDetails[0]['storeOrderDeliveryTime']}}
+                        {{productDetails[0]['individualProductDeliveryTime']}}
                     </span>
                 </p>
                 <hr>
