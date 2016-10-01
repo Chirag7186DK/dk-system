@@ -495,10 +495,10 @@ class OrderCartDao{
                 COALESCE(a.name, '') storeLocatedAreaName,
                 odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
                 COALESCE(odrs.address, '') deliveryAddress,
-                COALESCE(spl.name, '') productListTitle, 
-                COALESCE(odrsim.featureid, '') featureId, COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
-                COALESCE(odrsim.size, '') size, 
-                COALESCE(odrsim.price, '') price, COALESCE(odrsim.qty, '0') qty, 
+                COALESCE(spl.image_name, 'productphotoback.png') productImageFileName,
+                COALESCE(spl.file_path, 'images/productphotoback.png') productImageFilePath,
+                COALESCE(spl.name, '') productListTitle, COALESCE(odrsim.featureid, '') featureId, 
+                COALESCE(odrsim.size, '') size, COALESCE(odrsim.price, '') price, COALESCE(odrsim.qty, '0') qty, 
                 COALESCE(odrsim.totalamount, '') totalamount, COALESCE(odrsim.description, '') description,
                 COALESCE(odrsim.reason, '') ordercartStoreItemReason
                 FROM ORDERCART odr
@@ -509,14 +509,12 @@ class OrderCartDao{
                 JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid
                 JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
                     AND spa.id=spac.store_producttype_affiliationid
-                LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
                 JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id
                 JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
                 JOIN CITYREACHED c ON c.id=cca.city_id
                 JOIN AREAREACHED a ON a.id=cca.area_id
                 WHERE 1
                 AND odr.user_id='$userid'
-                AND (odrs.status='ZC' || odrs.status='ZA')
                 AND (odrsim.status='ZC' || odrsim.status='ZA')
                 ORDER BY odrsim.updated_by DESC, odrs.store_id ASC";
             $command = $connection->createCommand($sql);
