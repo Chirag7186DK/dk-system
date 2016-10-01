@@ -1,16 +1,16 @@
 
 // web-app module defined here 
-angular.module('DKAPP', []);
+angular.module('DKAPP', ['ngRoute']);
 
-//dkapp.config(['$stateProvider', '$urlRouterProvider',
-//    function ($stateProvider, $urlRouterProvider) {
-//        $stateProvider
-//            .state('', {
-//                templateUrl: ''
+//a.config(['$routeProvider', function($routeProvider, $locationProvider){
+//        $routeProvider
+//            .when('/demo1', {
+//                templateUrl: 'demo1.html'
 //            })
-//            .state('', {
-//                templateUrl: ''
-//            });
-//        $urlRouterProvider.otherwise('/index.php');
+//            .when('/demo', {
+//                templateUrl: 'demo1.html'
+//            }).otherwise('demo1.html');
+//        // use the HTML5 History API
+////        $locationProvider.html5Mode(true);
 //    }
 //]);
