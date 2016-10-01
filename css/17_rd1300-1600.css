@@ -2223,8 +2223,8 @@
     
     .uca_ordercartRequestedSummaryDivClass p{
         padding-left:12px!important;
-        color:rgb(30, 34, 37);
-        font-size:14px!important;
+        color:rgb(70, 75, 80);
+        font-size:13px!important;
         margin-bottom:5px!important;
     }
     
@@ -2235,6 +2235,10 @@
         color:#ab0b38!important;
         text-transform:uppercase!important;
         margin-bottom:4px!important;
+    }
+    
+    .uca_ordercartRequestedSummaryOperationPClass{
+        margin-top:14px!important;
     }
     
     .ordercartRequestedSummaryCheckoutBtnClass{
