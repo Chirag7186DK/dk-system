@@ -166,6 +166,8 @@ class OrderCartServicesV1 implements IOrderCartServicesV1{
                         }else if($storeOdrSubTotalAmt>0 && $storeMinOrderAmt>0 
                             && $storeOdrSubTotalAmt<$storeMinOrderAmt){
                             $storeOdrTotalAmt = $storeOdrSubTotalAmt + $updateStoreOrderDeliveryFee;
+                        }else if($storeOdrSubTotalAmt>0 && $storeMinOrderAmt<=0){
+                            $storeOdrTotalAmt = $storeOdrSubTotalAmt + $updateStoreOrderDeliveryFee;
                         }
                         $updateOrdercartStoreDataObj = array(
                             "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
