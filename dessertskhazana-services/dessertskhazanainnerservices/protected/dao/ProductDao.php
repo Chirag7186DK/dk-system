@@ -49,7 +49,7 @@ class ProductDao{
                     COALESCE(ss.mobile, '') shopstore_mobile,
                     COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
                     COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
-                    COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(ppc.name, '') productTypeProductCategoryTitle,
+                    COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(spac.name, '') productTypeProductCategoryTitle,
                     COALESCE(spl.id, '') productListId, COALESCE(spl.name, '') productListTitle,
                     COALESCE(splld.id, '') productFeatureId, COALESCE(splld.food_type, '') productFeatureFoodType, 
                     COALESCE(splld.taste_type, '') productFeatureTasteType, COALESCE(splld.pattern_type, '') productFeaturePatternType, 
