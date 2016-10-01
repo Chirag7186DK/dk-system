@@ -414,11 +414,12 @@
     
     .eachStoreOnlineOrderBtnClass,
     .eachStoreOnlineOrderBtnClass:hover{
-        border-radius:0px!important;
+        font-size:13px!important;
         font-weight:bold!important;
-        background-color:#ab0b38!important;
         color:#fff!important;
-        padding:5px!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
+        padding:3px!important;
     }
     
     .noStoresFoundInfoMsgContainerDivClass{
