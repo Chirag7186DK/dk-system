@@ -1860,12 +1860,13 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                     if($('.'+fcontentClass).find('select').length===1){
                         var productMeasurementSelectInputObj = $('.'+fcontentClass).find('option:selected');
                         if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
-                            productPrice = parseFloat($(productMeasurementSelectInputObj).attr("data-productprice"));
-                            paramObj['store_id'] = $(productMeasurementSelectInputObj).attr("data-shopstore_id");
-                            paramObj['ccaId'] = $(productMeasurementSelectInputObj).attr("data-ccaid");
-                            paramObj['deliveryfee'] = $(productMeasurementSelectInputObj).attr("data-deliveryfee");
-                            paramObj['minorderamt'] = $(productMeasurementSelectInputObj).attr("data-minorderamt");
-                            paramObj['featureid'] = $(productMeasurementSelectInputObj).attr("data-productfeatureid");
+                            var productJsonData = $(productMeasurementSelectInputObj).attr("data-productdata");
+                            productPrice = parseFloat(productJsonData['productFeatureOnlineSellingPrice']);
+                            paramObj['store_id'] = productJsonData['shopStoreId'];
+                            paramObj['ccaId'] = productJsonData['ccaId'];
+                            paramObj['deliveryfee'] = productJsonData['storeOrderDeliveryFee'];
+                            paramObj['minorderamt'] = productJsonData['storeMinOrderAmt'];
+                            paramObj['featureid'] = productJsonData['productFeatureId'];
                             paramObj['size'] = $(productMeasurementSelectInputObj).val();
                         }
                     }
