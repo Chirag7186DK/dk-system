@@ -94,7 +94,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeInfo = false;
                     $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !!!';
-                    $rootScope.isRatingReviewBasedInfoFound = false;
+                    $rootScope.isRatingReviewBasedInfoFound = 'FALSE';
                     // calling StoreServices
                     StoreServices.getStoreSummaryInfo(apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
@@ -112,7 +112,7 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             }catch(ex){
                 $rootScope.storeInfo = false;
                 $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !!!';
-                $rootScope.isRatingReviewBasedInfoFound = false;
+                $rootScope.isRatingReviewBasedInfoFound = 'FALSE';
                 console.log("problem in loadCStoreSummaryInfo ex=>"+ex);
             }
         };
