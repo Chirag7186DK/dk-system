@@ -65,7 +65,6 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDescriptionDetailsArr = false;
-                    $rootScope.isProductDescriptionDetailsFound = false;
                     $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
                     $rootScope.isToggleProductDescriptionContent = false;
                     // calling ProductServices 
@@ -75,7 +74,6 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                                 var productDescriptionDetailsArr = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'descriptionDetailsArr', retResponseJson);
                                 if(productDescriptionDetailsArr!==false 
                                     && productDescriptionDetailsArr!==undefined && productDescriptionDetailsArr!==''){
-                                    $rootScope.isProductDescriptionDetailsFound = true;
                                     $rootScope.productDescriptionDetailsArr = productDescriptionDetailsArr;
                                     $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
                                     $rootScope.isToggleProductDescriptionContent = false;
@@ -85,7 +83,6 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                     });
                 }
             }catch(ex){
-                $rootScope.isProductDescriptionDetailsFound = false;
                 $rootScope.productDescriptionDetailsArr = false;
                 $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
                 $rootScope.isToggleProductDescriptionContent = false;
