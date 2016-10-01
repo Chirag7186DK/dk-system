@@ -811,6 +811,8 @@ class commonfunction{
                         }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
                             && $userTotalOrderAmt<$storeMinOrderAmt){
                             $storeOdrTotalAmt = $userTotalOrderAmt + $updateStoreOrderDeliveryFee;
+                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt<=0){
+                            $storeOdrTotalAmt = $userTotalOrderAmt + $updateStoreOrderDeliveryFee;
                         }
                         $updateOrdercartStoreDataObj = array(
                             "apply_deliveryfee"=>$updateStoreOrderDeliveryFee, 
