@@ -1808,14 +1808,14 @@ function storeUserOrderItemInSession(fcontentClass){
                 if($('.'+fcontentClass).find('select').length===1){
                     var productMeasurementSelectInputObj = $('.'+fcontentClass).find('option:selected');
                     if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
-                        var productJsonData = $(productMeasurementSelectInputObj).attr("data-productdata");
+                        var productJsonData = $.parseJSON($(productMeasurementSelectInputObj).attr("data-productdata"));
                         productPrice = parseFloat(productJsonData['productFeatureOnlineSellingPrice']);
                         userOrderItemObj['store_id'] = productJsonData['shopStoreId'];
-                        userOrderItemObj['ccaId'] = productJsonData['ccaId'];
+                        userOrderItemObj['ccaId'] = removeHtmlStripTagsOfContent(productJsonData['ccaId']);
                         userOrderItemObj['deliveryfee'] = productJsonData['storeOrderDeliveryFee'];
                         userOrderItemObj['minorderamt'] = productJsonData['storeMinOrderAmt'];
-                        userOrderItemObj['featureid'] = productJsonData['productFeatureId'];
-                        userOrderItemObj['size'] = $(productMeasurementSelectInputObj).val();
+                        userOrderItemObj['featureid'] = removeHtmlStripTagsOfContent(productJsonData['productFeatureId']);
+                        userOrderItemObj['size'] = removeHtmlStripTagsOfContent($(productMeasurementSelectInputObj).val());
                     }
                 }
                 if($('.'+fcontentClass).find("input[type='text']").length===1 && productPrice>0){
@@ -1861,14 +1861,14 @@ function getParamDataToAddProductInOrdercart(fcontentClass, fromSession){
                     if($('.'+fcontentClass).find('select').length===1){
                         var productMeasurementSelectInputObj = $('.'+fcontentClass).find('option:selected');
                         if(productMeasurementSelectInputObj!==undefined && productMeasurementSelectInputObj!=='' && productMeasurementSelectInputObj!==false){
-                            var productJsonData = $(productMeasurementSelectInputObj).attr("data-productdata");
+                            var productJsonData = $.parseJSON($(productMeasurementSelectInputObj).attr("data-productdata"));
                             productPrice = parseFloat(productJsonData['productFeatureOnlineSellingPrice']);
                             paramObj['store_id'] = productJsonData['shopStoreId'];
-                            paramObj['ccaId'] = productJsonData['ccaId'];
+                            paramObj['ccaId'] = removeHtmlStripTagsOfContent(productJsonData['ccaId']);
                             paramObj['deliveryfee'] = productJsonData['storeOrderDeliveryFee'];
                             paramObj['minorderamt'] = productJsonData['storeMinOrderAmt'];
-                            paramObj['featureid'] = productJsonData['productFeatureId'];
-                            paramObj['size'] = $(productMeasurementSelectInputObj).val();
+                            paramObj['featureid'] = removeHtmlStripTagsOfContent(productJsonData['productFeatureId']);
+                            paramObj['size'] = removeHtmlStripTagsOfContent($(productMeasurementSelectInputObj).val());
                         }
                     }
                     if($('.'+fcontentClass).find("input[type='text']").length===1 && productPrice>0){
