@@ -109,7 +109,7 @@
                 <!-- display selected desserts type title ordering by customer -->
                 <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length==1" class="storeServingDessertsTypeNoteInfoLIClass">
                     <i class='fa fa-smile-o'></i> 
-                    Hey you are ordering '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' product  
+                    Hey you are ordering product from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}'  
                     to deliver in '{{selectedDeliveryAreaTextHeader}}' area !!!
                 </li>
                 <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class="storeServingDessertsTypeNoteInfoLIClass">
