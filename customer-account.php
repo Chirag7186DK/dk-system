@@ -357,7 +357,7 @@
                             Total Amt(Rs) : {{totalOrderAmt}}
                         </p>
                         <p class="uca_ordercartRequestedSummaryOperationPClass">
-                            <button class='btn ordercartRequestedSummaryCheckoutBtnClass'>
+                            <button ng-controller="OrderCartController"  ng-click="gotoCheckoutProcess();" class='btn ordercartRequestedSummaryCheckoutBtnClass'>
                                 CHECKOUT
                             </button>
                         </p>
