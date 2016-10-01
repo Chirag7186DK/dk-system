@@ -71,21 +71,19 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 checkoutInfoBodyWrapperDivClass">
             
             <!-- customer bread crumb -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerBreadcrumbDivClass">
-                <ul class="customerBreadcrumbULClass list-inline">
-                    <li class='customerBreadcrumbLIClass'>
-                        <a href="<?php echo $BaseSitePath;?>">
-                            Home
-                        </a>
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        |
-                    </li>
-                    <li class='customerBreadcrumbLIClass'>
-                        Checkout
-                    </li>
-                </ul>
-            </div>
+            <ul class="customerBreadcrumbULClass list-inline">
+                <li class='customerBreadcrumbLIClass'>
+                    <a href="<?php echo $BaseSitePath;?>">
+                        Home
+                    </a>
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    |
+                </li>
+                <li class='customerBreadcrumbLIClass'>
+                    Checkout
+                </li>
+            </ul>
             
             <!-- create horizontally space div between -->
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
@@ -98,7 +96,7 @@
                 <!-- each store order summary will be display -->
                 <div ng-repeat="eachStoreOrderSummaryDataObj in allStorewiseOrderSummaryDataArrObj" data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_eachStoreOrderSummaryDivClass">
                     <p class="chkout_eachStoreBasicInfoLblPClass">
-                        {{eachStoreOrderSummaryDataObj.shopStoreTitle}} store order 
+                        <i class="fa fa-smile-o"></i> Hey {{eachStoreOrderSummaryDataObj.shopStoreTitle}} store order 
                         will be deliver from '{{eachStoreOrderSummaryDataObj.storeLocatedAreaName}}' 
                         to '{{eachStoreOrderSummaryDataObj.deliveryAreaname}}' area
                     </p>
