@@ -311,7 +311,6 @@ class ProductServicesV1 implements IProductServicesV1{
             $gproductListId = $dkParamDataArr['productlist_ids'];
             $gproductFeatureId = $dkParamDataArr['product_featureids'];
             $ccaId = $dkParamDataArr['ccaId'];
-            $storeOrderDeliveryTime = '60 MIN';
             $storeOrderDeliveryFee = '0';
             $storeMinOrderAmt = '0';
             
@@ -325,10 +324,6 @@ class ProductServicesV1 implements IProductServicesV1{
             if($dataArr1!=false && count($dataArr1)==1){
                 $storeOrderDeliveryFee = $dataArr1[0]['deliveryfee'];
                 $storeMinOrderAmt = $dataArr1[0]['min_orderamount'];
-                $deliveryTime = $dataArr1[0]['delivery_time'];
-                if($deliveryTime!='' && $deliveryTime!=false){
-                    $storeOrderDeliveryTime = $deliveryTime;
-                }
             }
             
             // prepare param obj to get product details
@@ -353,7 +348,6 @@ class ProductServicesV1 implements IProductServicesV1{
                     $dataArr2[$eachIndex]['isShowProductCommentBox'] = $isShowProductCommentBox;
                     $dataArr2[$eachIndex]['isRequestedProductDetailsMatched'] = $isRequestedProductDetailsMatched;
                     $dataArr2[$eachIndex]['ccaId'] = $ccaId;
-                    $dataArr2[$eachIndex]['storeOrderDeliveryTime'] = $storeOrderDeliveryTime;
                     $dataArr2[$eachIndex]['storeOrderDeliveryFee'] = $storeOrderDeliveryFee;
                     $dataArr2[$eachIndex]['storeMinOrderAmt'] = $storeMinOrderAmt;
                 }
