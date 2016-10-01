@@ -1,152 +1,175 @@
 
--- City
 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_CITYREACHED` (`id`, `name`, `short_name`, `pincode`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) VALUES (NULL, 'Nashik', 'Nashik', '10003', '3', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 21:26:36', 'A');
+-- INSERT INTO `DESSERTSKHAZANA`.`AREAREACHED` 
+-- (`id`, `name`, `short_name`, `pincode`, `sort_order`, `created_by`, `created_datedtime`, 
+-- `updated_by`, `updated_datedtime`, `status`) 
+-- VALUES 
+-- (NULL, 'Banner', 'Banner', '10002', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chinchwad', 'Chinchwad', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Dhange Chowk', 'Dhange Chowk', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Hinjewadi', 'Hinjewadi', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Kalyani Nagar', 'Kalyani Nagar', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Pradhikaran Nigdi', 'Pradhikaran Nigdi', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Wakad', 'Wakad', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Pimple Saudagar', 'Pimple Saudagar', '10003', '1', '1', '2016-09-29 00:00:00', 
+-- NULL, CURRENT_TIMESTAMP, 'A'),
 
-
--- Area
-
--- INSERT INTO `DESSERTSKHAZANA`.`DK_AREAREACHED` (`id`, `name`, `short_name`, `pincode`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, 'Chandwad', 'Chandwad', '100014', '14', '1', '2016-03-05 00:00:00', NULL, '2016-09-08 21:35:38', 'A');
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_AREAREACHED` (`id`, `name`, `short_name`, `pincode`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, 'Jopul', 'Jopul', '100015', '15', '1', '2016-03-05 00:00:00', NULL, '2016-09-08 21:35:38', 'A');
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_AREAREACHED` (`id`, `name`, `short_name`, `pincode`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, 'Hati', 'Hati', '100014', '16', '16', '2016-03-05 00:00:00', NULL, '2016-09-08 21:35:38', 'A');
-
--- CCA
-
--- INSERT INTO `DESSERTSKHAZANA`.`DK_COUNTRYCITYAREAAFFILIATION` 
+-- INSERT INTO `DESSERTSKHAZANA`.`COUNTRYCITYAREAAFFILIATION` 
 -- (`id`, `country_id`, `city_id`, `area_id`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '1', '4', '14', '1', '2016-03-05 00:00:00', NULL, '2016-09-08 21:37:46', 'A');
+-- VALUES 
+-- (NULL, '1', '1', '2', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '3', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '4', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '5', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '6', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '7', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '8', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', '1', '9', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
+
 -- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_COUNTRYCITYAREAAFFILIATION` 
--- (`id`, `country_id`, `city_id`, `area_id`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '1', '4', '15', '1', '2016-03-05 00:00:00', NULL, '2016-09-08 21:37:46', 'A');
--- 
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_COUNTRYCITYAREAAFFILIATION` 
--- (`id`, `country_id`, `city_id`, `area_id`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '1', '4', '16', '1', '2016-03-05 00:00:00', NULL, '2016-09-08 21:37:46', 'A');
-
-
-
--- INSERT INTO `DESSERTSKHAZANA`.`DK_PRODUCTTYPE_PRODUCTCATEGORY` (`id`, `product_typeid`, `name`, `short_name`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '2', 'Delicious', 'Delicious', '3', '1', '2016-09-08 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_PRODUCTTYPE_PRODUCTCATEGORY` (`id`, `product_typeid`, `name`, `short_name`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '2', 'Special', 'Special', '4', '1', '2016-09-08 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
-
-
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_PRODUCTTYPE_AFFILIATIONCATEGORY` (`id`, `shopstores_producttype_affiliationid`, `producttype_categoryid`, `name`, `short_name`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '1', '2', 'Doll Cakes', 'Doll Cakes', '1', '1', '2016-09-08 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
-
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_PRODUCTLIST` 
--- (`id`, `shopstores_ptpc_affiliationid`, `name`, `short_name`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '2', 'Product1', 'Product1', '4', '1', '2016-09-08 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_PRODUCTLIST` 
--- (`id`, `shopstores_ptpc_affiliationid`, `name`, `short_name`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '2', 'Product2', 'Product2', '5', '1', '2016-09-08 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
-
-
-INSERT INTO DK_SHOPSTORE_PRODUCTLIST
-(shopstores_ptpc_affiliationid, name, short_name, sort_order, created_by, created_datedtime, status)
-SELECT 
-'6', name, short_name, sort_order,created_by, created_datedtime, status
-FROM DK_SHOPSTORE_PRODUCTLIST
-WHERE 
-shopstores_ptpc_affiliationid='2'
-
-
-INSERT INTO DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS
-(productlist_id, product_code, food_type, display_measurementtype, 
-price_code, storeprice, product_discount, baseprice, online_sellprice, created_by, created_datedtime, status)
-SELECT
-'18', product_code, food_type, display_measurementtype, 
-price_code, storeprice, product_discount, baseprice, online_sellprice, created_by, created_datedtime, status
-FROM DK_SHOPSTORE_PRODUCTLIST_LOGDETAILS
-WHERE productlist_id='6'
-
-
-UPDATE DK_SHOPSTORE_PRODUCTLIST
-SET name=CONCAT('Product', id), short_name=CONCAT('Product', id)
-
-
-
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_DELIVERYLOCATIONDETAILS` 
--- (`id`, `shopstore_id`, `country_id`, `city_id`, `area_id`, `is_preorderaccept`,
---  `is_takeawayorderaccept`, `is_cashondeliveryaccept`, `is_onlinepaymentaccept`, 
--- `is_homedeliveryaccept`, `min_orderamount`, `deliveryfee`, `orderdelivery_opentime`, 
--- `orderdelivery_opentime_inhours`, `orderdelivery_closetime`, `orderdelivery_closetime_inhours`, 
+-- INSERT INTO `DESSERTSKHAZANA`.`STORE` 
+-- (`id`, `name`, `storelabel`, `mobile`, `landline`, `email`, `logofile`, 
+-- `opentimedisplay`, `closetimedisplay`, `address`, `country_city_area_affiliationId`, 
 -- `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '3', '1', '4', '13', 'Y', 'N', 'N', 'Y', 'Y', NULL, '30.00', NULL, NULL, NULL, NULL, '1', '2016-09-08 00:00:00', NULL, '2016-09-08 22:13:49', 'A');
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_DELIVERYLOCATIONDETAILS` 
--- (`id`, `shopstore_id`, `country_id`, `city_id`, `area_id`, `is_preorderaccept`,
---  `is_takeawayorderaccept`, `is_cashondeliveryaccept`, `is_onlinepaymentaccept`, 
--- `is_homedeliveryaccept`, `min_orderamount`, `deliveryfee`, `orderdelivery_opentime`, 
--- `orderdelivery_opentime_inhours`, `orderdelivery_closetime`, `orderdelivery_closetime_inhours`, 
+-- VALUES 
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'Banner area, pune', '2', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'chinhwad area, pune', '3', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'Dhange chowk area, pune', '4', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'Hinjewadi area, pune', '5', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'Kalyani nagar area, pune', '6', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'nigdi area, pune', '7', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'wakad area, pune', '8', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, 'Chocolate Biclate', 'CB', '9975967186', '9975967186', 'chirag.jain@gmail.com', '', 
+-- '9 AM', '9 PM', 'pimple saudagar area, pune', '9', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
+
+
+-- INSERT INTO STORE_DELIVERYLOCATIONDETAILS
+-- (store_id, country_id, city_id, area_id, is_takeawayorderaccept, is_cashondeliveryaccept, is_onlinepaymentaccept,
+-- is_homedeliveryaccept, is_courierdeliveryaccept, min_orderamount, deliveryfee, delivery_time, created_by, created_datedtime, status)
+-- SELECT
+-- '9', country_id, city_id, area_id, is_takeawayorderaccept, is_cashondeliveryaccept, is_onlinepaymentaccept,
+-- is_homedeliveryaccept, is_courierdeliveryaccept, min_orderamount, deliveryfee, delivery_time, created_by, created_datedtime, status
+-- FROM STORE_DELIVERYLOCATIONDETAILS 
+-- WHERE store_id='1'
+
+-- INSERT INTO `DESSERTSKHAZANA`.`STORE_PRODUCTTYPE_AFFILIATION` 
+-- (`id`, `store_id`, `product_typeid`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
+-- VALUES 
+-- (NULL, '2', '1', '2', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '3', '1', '3', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '4', '1', '4', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '5', '1', '5', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '6', '1', '6', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '7', '1', '7', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '8', '1', '8', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '9', '1', '9', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A')
+
+
+
+
+-- INSERT INTO `DESSERTSKHAZANA`.`STORE_PRODUCTTYPE_AFFILIATIONCATEGORY` 
+-- (`id`, `store_producttype_affiliationid`, `producttype_categoryid`, `name`, `short_name`, `sort_order`, `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
+-- VALUES 
+-- (NULL, '2', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '3', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '4', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '5', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '6', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '7', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '8', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '9', '1', 'Regular Cakes', 'Regular Cakes', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- INSERT INTO `DESSERTSKHAZANA`.`STORE_PRODUCTLIST` 
+-- (`id`, `store_ptpc_affiliationid`, `name`, `short_name`, `file_path`, `image_name`, `sort_order`, 
 -- `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '3', '1', '4', '14', 'Y', 'N', 'N', 'Y', 'Y', NULL, '30.00', NULL, NULL, NULL, NULL, '1', '2016-09-08 00:00:00', NULL, '2016-09-08 22:13:49', 'A');
+-- VALUES 
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A');
 -- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_DELIVERYLOCATIONDETAILS` 
--- (`id`, `shopstore_id`, `country_id`, `city_id`, `area_id`, `is_preorderaccept`,
---  `is_takeawayorderaccept`, `is_cashondeliveryaccept`, `is_onlinepaymentaccept`, 
--- `is_homedeliveryaccept`, `min_orderamount`, `deliveryfee`, `orderdelivery_opentime`, 
--- `orderdelivery_opentime_inhours`, `orderdelivery_closetime`, `orderdelivery_closetime_inhours`, 
--- `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '3', '1', '4', '15', 'Y', 'N', 'N', 'Y', 'Y', NULL, '30.00', NULL, NULL, NULL, NULL, '1', '2016-09-08 00:00:00', NULL, '2016-09-08 22:13:49', 'A');
--- 
--- INSERT INTO `DESSERTSKHAZANA`.`DK_SHOPSTORE_DELIVERYLOCATIONDETAILS` 
--- (`id`, `shopstore_id`, `country_id`, `city_id`, `area_id`, `is_preorderaccept`,
---  `is_takeawayorderaccept`, `is_cashondeliveryaccept`, `is_onlinepaymentaccept`, 
--- `is_homedeliveryaccept`, `min_orderamount`, `deliveryfee`, `orderdelivery_opentime`, 
--- `orderdelivery_opentime_inhours`, `orderdelivery_closetime`, `orderdelivery_closetime_inhours`, 
--- `created_by`, `created_datedtime`, `updated_by`, `updated_datedtime`, `status`) 
--- VALUES (NULL, '3', '1', '4', '16', 'Y', 'N', 'N', 'Y', 'Y', NULL, '30.00', NULL, NULL, NULL, NULL, '1', '2016-09-08 00:00:00', NULL, '2016-09-08 22:13:49', 'A');
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
+-- (NULL, '1', 'Red Velvet', 'Red Velvet', '', '', '1', '1', '2016-09-29 00:00:00', NULL, CURRENT_TIMESTAMP, 'A'),
 -- 
 
-
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '6', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
-
-
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '7', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
+-- INSERT INTO STORE_PRODUCTLIST
+-- (store_ptpc_affiliationid, name, short_name, sort_order, created_by, created_datedtime, status)
+-- SELECT 
+-- '9', name, short_name, sort_order, created_by, created_datedtime, status
+-- FROM STORE_PRODUCTLIST
+-- WHERE store_ptpc_affiliationid='1'
 
 
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '8', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
+-- INSERT INTO STORE_PRODUCTLIST_LOGDETAILS
+-- (productlist_id, product_code, food_type, display_measurementtype, storeprice, online_sellprice, 
+-- created_by, created_datedtime, status)
+-- SELECT 
+-- '61', product_code, food_type, display_measurementtype, storeprice, online_sellprice, created_by, created_datedtime, status
+-- FROM STORE_PRODUCTLIST_LOGDETAILS
+-- WHERE productlist_id='31'
 
 
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '9', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
+-- UPDATE STORE_PRODUCTLIST spl
+-- JOIN 
+-- (
+--     SELECT productlist_id, COUNT( productlist_id ) c
+--     FROM STORE_PRODUCTLIST_LOGDETAILS
+--     WHERE 1 
+--     GROUP BY productlist_id
+--     HAVING c >1
+-- ) prd ON prd.productlist_id=spl.id
+-- SET spl.availablesize=prd.c
 
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '10', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
 
 
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '11', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
 
-INSERT INTO `DESSERTSKHAZANA`.`DK_CCA_CONDUCT_PRODUCTTYPE_SHOPSTORE` 
-(`id`, `cca_id`, `product_typeid`, `shopstore_ids`, `totalstores`, `created_by`, `created_datedtime`, 
-`updated_by`, `updated_datedtime`, `status`) 
-VALUES (NULL, '12', '2', '3', '1', '1', '2016-09-08 00:00:00', NULL, '2016-09-08 23:16:30', 'A');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
