@@ -123,7 +123,7 @@
                 </div>
                 
                 <!-- store desserts type menu summary info -->
-                <div class='storeDessertsMenuSummaryInfoDivClass'>
+                <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class='storeDessertsMenuSummaryInfoDivClass'>
                     <p class='storeMenuTextLblPClass'>
                         WE SERVED
                     </p>
@@ -142,7 +142,7 @@
             <div ng-show="isToggleStoreDessertsMenu" ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeServeDessertsTypeContainerDivClass">
                 
                 <!-- display selected desserts type title ordering by customer -->
-                <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" class="storeServingDessertsTypeNoteInfoLIClass">
+                <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class="storeServingDessertsTypeNoteInfoLIClass">
                     <i class='fa fa-smile-o'></i> 
                     Hey you are viewing '{{storeInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
                         <span class="badge storeCanServeDessertsTypeCountSClass">
@@ -152,7 +152,7 @@
                 </li>
                 
                 <!-- display all desserts type can served by store in your selected delivery area -->
-                <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
+                <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
                     <!-- iterate each desserts type info display as horizontally scrolling -->
                     <div horizontally-scrollable-dessertstypelist-storelevel ng-repeat="eachDessertsTypeDetails in storeDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" class='storeCanServeEachDessertsTypeScrollableWrapperDivClass'>
                         <p class="dessertsTypeIconPClass">
