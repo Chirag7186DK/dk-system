@@ -62,22 +62,18 @@ class StoreServicesV1 implements IStoreServicesV1{
                         $storeDeliveryFacilityDataArr = StoreDao :: getStoreDeliveryLocationFacilityDetails($paramJson1);
                         if($storeDeliveryFacilityDataArr!=false && count($storeDeliveryFacilityDataArr)==1){
                             $isHomeDeliveryAccept = $storeDeliveryFacilityDataArr[0]['isHomeDeliveryAccept'];
-                            $is_courierdeliveryaccept = $storeDeliveryFacilityDataArr[0]['is_courierdeliveryaccept'];
                             $deliveryTime = $storeDeliveryFacilityDataArr[0]['delivery_time'];
                             if($deliveryTime!='' && $deliveryTime!=false){
                                 $eachStoreInfoData['deliveryTime'] = $deliveryTime;
                             }
                             $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
                             $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
-                            if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                                && $minOrderAmt=='0' && $isHomeDeliveryAccept=='Y'){
+                            if($deliveryFee>0 && $deliveryFee!='' 
+                                && ($minOrderAmt=='' || $minOrderAmt=='0' || $minOrderAmt==0) && $isHomeDeliveryAccept=='Y'){
                                 $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, on any order amount !!!";
                             }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                                 && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                                 $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt !!!";
-                            }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
-                                && $minOrderAmt>0 && $is_courierdeliveryaccept=='Y'){
-                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt & product will be deliver by courier services !!!";
                             }
                         }
                         // fetching store product type summary data
