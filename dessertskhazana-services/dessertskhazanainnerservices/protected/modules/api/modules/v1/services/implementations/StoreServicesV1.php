@@ -39,10 +39,10 @@ class StoreServicesV1 implements IStoreServicesV1{
                         $eachStoreInfoData['isReviewedRatingFound'] = 'FALSE';
                         $eachStoreInfoData['dessertsTypeId'] = $gproducttype_ids;
                         $eachStoreInfoData['dessertsTypeTitle'] = $storesIdDetailsArr[0]['productTypeTitle'];
-                        $eachStoreInfoData['dessertsTypeServedStr'] = 'Cakes, Chocolates';
+                        $eachStoreInfoData['dessertsTypeServedStr'] = $storesIdDetailsArr[0]['productTypeTitle'];
                         $eachStoreInfoData['totalProduct'] = '';
                         $eachStoreInfoData['deliveryFeeMsgStr'] = 'Free home delivery at your doorstep !!!';
-                        $eachStoreInfoData['deliveryTime'] = '60 MIN';
+                        $eachStoreInfoData['deliveryTime'] = '70 MIN';
                         $eachStoreInfoData['discountUpto'] = '';
                         $storeLocatedAreaId = $storeBasicInfoDetailsArr[0]['areaId'];
                         // rating & review summary fetching of given storeid
@@ -70,6 +70,9 @@ class StoreServicesV1 implements IStoreServicesV1{
                             $minOrderAmt = $storeDeliveryFacilityDataArr[0]['min_orderamount'];
                             $deliveryFee = $storeDeliveryFacilityDataArr[0]['deliveryfee'];
                             if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
+                                && $minOrderAmt=='0' && $isHomeDeliveryAccept=='Y'){
+                                $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, on any order amount !!!";
+                            }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
                                 && $minOrderAmt>0 && $isHomeDeliveryAccept=='Y'){
                                 $eachStoreInfoData['deliveryFeeMsgStr'] = "Shipping charges Rs $deliveryFee will be apply, if order amount less than Rs $minOrderAmt !!!";
                             }else if($deliveryFee>0 && $deliveryFee!='' && $minOrderAmt!='' 
