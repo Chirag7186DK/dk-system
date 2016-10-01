@@ -830,8 +830,7 @@ class commonfunction{
                         }else if($userTotalOrderAmt>0 && $storeMinOrderAmt>0 
                             && $userTotalOrderAmt<$storeMinOrderAmt){
                             $storeOdrTotalAmt = $storeOdrTotalAmt + $addStoreOrderDeliveryFee;
-                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt<=0 
-                            && $userTotalOrderAmt<$storeMinOrderAmt){
+                        }else if($userTotalOrderAmt>0 && $storeMinOrderAmt<=0){
                             $storeOdrTotalAmt = $storeOdrTotalAmt + $addStoreOrderDeliveryFee;
                         }
                         
