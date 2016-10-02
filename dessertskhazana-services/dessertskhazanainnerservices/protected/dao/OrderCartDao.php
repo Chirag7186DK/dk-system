@@ -456,7 +456,9 @@ class OrderCartDao{
                     COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
                     COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
                     COALESCE(splld.baseprice, '') productFeatureBasePrice, 
-                    COALESCE(splld.product_discount, '') productFeatureDiscount
+                    COALESCE(splld.product_discount, '') productFeatureDiscount,
+                    COALESCE(spl.image_name, 'productphotoback.png') productImageFileName,
+                    COALESCE(spl.file_path, 'images/productphotoback.png') productImageFilePath
                     FROM ORDERCART odr
                     JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
                     JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
@@ -538,8 +540,9 @@ class OrderCartDao{
                     odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
                     COALESCE(odrs.address, '') deliveryAddress,
                     COALESCE(spl.name, '') productListTitle, 
-                    COALESCE(odrsim.featureid, '') featureId, COALESCE(ppimg.image_filename, 'r1_(270x239).png') productImageFileName,
-                    COALESCE(odrsim.size, '') size, 
+                    COALESCE(spl.image_name, 'productphotoback.png') productImageFileName,
+                    COALESCE(spl.file_path, 'images/productphotoback.png') productImageFilePath,
+                    COALESCE(odrsim.featureid, '') featureId, COALESCE(odrsim.size, '') size, 
                     COALESCE(odrsim.price, '') price, COALESCE(odrsim.qty, '0') qty, 
                     COALESCE(odrsim.totalamount, '') totalamount, COALESCE(odrsim.description, '') description,
                     COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee, COALESCE(odrs.subtotalamount, '') subtotalamount, 
@@ -569,7 +572,6 @@ class OrderCartDao{
                     JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid
                     JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
                         AND spa.id=spac.store_producttype_affiliationid
-                    LEFT JOIN STORE_PRODUCTLIST_IMAGEFILEMAPPING ppimg ON ppimg.product_listid=spl.id AND ppimg.is_showcasefile='Y'
                     JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id
                     JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId
                     JOIN CITYREACHED c ON c.id=cca.city_id
