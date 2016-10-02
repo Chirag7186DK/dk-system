@@ -2296,10 +2296,10 @@
     }
 
     .uca_eachOrdercartWiseCancelledSectionDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
         padding-left:0px!important;
         padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
         border:1px solid #dcdcdc!important;
     }
     
@@ -2318,28 +2318,50 @@
     
     .uca_ordercartToggleCancelledItemsLblPClass{
         padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:12px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
         margin-bottom:5px!important;
         cursor:pointer!important;
     }
     
-    .uca_ordercartCancelledEachItemDivClass{
+    .uca_ordercartCancelledEachItemContainerClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
         border-top:1px dashed rgb(70, 75, 80);
     }
     
-    .uca_ordercartCancelledEachItemDivClass p{
-        margin-bottom:2px!important;
-        color:#67717D!important;
-        font-size:14px!important;
+    .uca_ordercartCancelledEachItemImageDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartCancelledEachItemImageDivClass .preloadProductImagesClass{
+        background-repeat:no-repeat;
+        background-size:cover;
+        height:auto;
+        width:90px;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass p{
+        font-size:13px;
+        color:rgb(70, 75, 80)!important;
+        margin-bottom:3px!important;
+    }
+    
+    .uca_ordercartCancelledItemNamePClass{
+        font-size:16px!important;
     }
     
     .uca_ordercartCancelledItemNotFoundMsgDivClass{
         text-align:center!important;
     }
+    
     
     /* order cart all ordered item section css code */
     
