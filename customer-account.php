@@ -302,41 +302,46 @@
                         </div>
                         <!-- each store all items will be display -->
                         <div ng-show='eachStoreAllItemDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass uca_ordercartRequestedEachStoreItemDivClass{{eachItemDataObj.orderStoreItemId}}'>
-                            <p class="uca_ordercartRequestedEachStoreItemNamePClass">
-                                {{eachItemDataObj.productListTitle}}
-                            </p>
-                            <p class="uca_ordercartRequestedEachStoreItemSizePClass">
-                                Size: {{eachItemDataObj.size}}
-                            </p>
-                            <p class='uca_ordercartRequestedEachStoreItemPricePClass'> 
-                                <span class='uca_ordercartRequestedEachStoreItemPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
-                                </span>
-                                <span class='uca_ordercartRequestedEachStoreItemCutPriceTextSClass' ng-if="eachItemDataObj.productFeatureBasePrice!==''">
-                                    <i class="fa fa-rupee"></i> {{eachItemDataObj.productFeatureBasePrice}}
-                                </span>
-                                <span class='uca_ordercartRequestedEachStoreItemDiscountPercentTextSClass' ng-if="eachItemDataObj.productFeatureDiscount!==''">
-                                    {{eachItemDataObj.productFeatureDiscount}}%
-                                </span>
-                            </p>
-                            <p class="uca_ordercartRequestedEachStoreItemQtyPClass">
-                                Qty
-                                <input product-qty-input-directive type='text' ng-value="{{eachItemDataObj.qty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
-                            </p>
-                            <p class="uca_ordercartRequestedEachStoreItemTotalAmtPClass">
-                                Total Amt: {{eachItemDataObj.totalamount}}
-                            </p>
-                            <p class="uca_ordercartRequestedEachStoreItemOperationPClass">
-                                <button ng-click="checkProductDataToUdateInOrdercart(eachItemDataObj, 'uca_ordercartRequestedEachStoreItemDivClass'+eachItemDataObj.orderStoreItemId);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
-                                    UPDATE
-                                </button>
-                                <button ng-click="removeItemOrdercart(eachItemDataObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>
-                                    REMOVE
-                                </button>
-                                <button ng-controller="OrderCartController" ng-click="gotoCheckoutProcess();" class='btn ordercartRequestedEachItemCheckoutBtnClass'>
-                                    CHECKOUT
-                                </button>
-                            </p>
+                            <div class='col-xs-12 col-sm-12 col-md-1 col-lg-1 uca_ordercartRequestedEachStoreProductItemDivClass'> 
+                                <img class='preloadProductImagesClass' data-original="{{eachItemDataObj.productImageFilePath}}" ng-src="images/productphotoback.png">
+                            </div>   
+                            <div class='col-xs-12 col-sm-12 col-md-11 col-lg-11 uca_ordercartRequestedEachStoreItemDetailsDivClass'>    
+                                <p class="uca_ordercartRequestedEachStoreItemNamePClass">
+                                    {{eachItemDataObj.productListTitle}}
+                                </p>
+                                <p class="uca_ordercartRequestedEachStoreItemSizePClass">
+                                    Size: {{eachItemDataObj.size}}
+                                </p>
+                                <p class='uca_ordercartRequestedEachStoreItemPricePClass'> 
+                                    <span class='uca_ordercartRequestedEachStoreItemPriceTextSClass'>
+                                        <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
+                                    </span>
+                                    <span class='uca_ordercartRequestedEachStoreItemCutPriceTextSClass' ng-if="eachItemDataObj.productFeatureBasePrice!==''">
+                                        <i class="fa fa-rupee"></i> {{eachItemDataObj.productFeatureBasePrice}}
+                                    </span>
+                                    <span class='uca_ordercartRequestedEachStoreItemDiscountPercentTextSClass' ng-if="eachItemDataObj.productFeatureDiscount!==''">
+                                        {{eachItemDataObj.productFeatureDiscount}}%
+                                    </span>
+                                </p>
+                                <p class="uca_ordercartRequestedEachStoreItemQtyPClass">
+                                    Qty
+                                    <input product-qty-input-directive type='text' ng-value="{{eachItemDataObj.qty}}" class='form-control ordercartRequestedEachItemInputQtyClass'>
+                                </p>
+                                <p class="uca_ordercartRequestedEachStoreItemTotalAmtPClass">
+                                    Total Amt: {{eachItemDataObj.totalamount}}
+                                </p>
+                                <p class="uca_ordercartRequestedEachStoreItemOperationPClass">
+                                    <button ng-click="checkProductDataToUdateInOrdercart(eachItemDataObj, 'uca_ordercartRequestedEachStoreItemDivClass'+eachItemDataObj.orderStoreItemId);" class='btn ordercartRequestedEachItemUpdateBtnClass'>
+                                        UPDATE
+                                    </button>
+                                    <button ng-click="removeItemOrdercart(eachItemDataObj);" class='btn ordercartRequestedEachItemRemoveBtnClass'>
+                                        REMOVE
+                                    </button>
+                                    <button ng-controller="OrderCartController" ng-click="gotoCheckoutProcess();" class='btn ordercartRequestedEachItemCheckoutBtnClass'>
+                                        CHECKOUT
+                                    </button>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <!-- order cart requested summary display -->
