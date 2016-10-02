@@ -395,24 +395,29 @@
                             </p>
                         </div>
                         <!-- each items will be display -->
-                        <div ng-show='eachOrdercartDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachOrdercartDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemDivClass'>
-                            <p class="uca_ordercartCancelledItemNamePClass">
-                                {{eachItemDataObj.productListTitle}}
-                            </p>
-                            <p class="uca_ordercartCancelledItemSizePClass">
-                                Size: {{eachItemDataObj.size}}
-                            </p>
-                            <p class='uca_ordercartCancelledItemPricePClass'> 
-                                <span class='uca_ordercartCancelledItemPriceTextSClass'>
-                                    <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
-                                </span>
-                            </p>
-                            <p class="uca_ordercartCancelledItemQtyPClass">
-                                Bought Qty: {{eachItemDataObj.qty}}
-                            </p>
-                            <p class="uca_ordercartCancelledItemTotalAmtPClass">
-                                Total Amt: {{eachItemDataObj.totalamount}}
-                            </p>
+                        <div ng-show='eachOrdercartDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachOrdercartDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemContainerClass'>
+                            <div class='col-xs-12 col-sm-12 col-md-1 col-lg-1 uca_ordercartCancelledEachItemImageDivClass'> 
+                                <img class='preloadProductImagesClass' data-original="{{eachItemDataObj.productImageFilePath}}" ng-src="images/productphotoback.png">
+                            </div>
+                            <div class='col-xs-12 col-sm-12 col-md-11 col-lg-11 uca_ordercartCancelledEachItemDetailsDivClass'>    
+                                <p class="uca_ordercartCancelledItemNamePClass">
+                                    {{eachItemDataObj.productListTitle}}
+                                </p>
+                                <p class="uca_ordercartCancelledItemSizePClass">
+                                    Size: {{eachItemDataObj.size}}
+                                </p>
+                                <p class='uca_ordercartCancelledItemPricePClass'> 
+                                    <span class='uca_ordercartCancelledItemPriceTextSClass'>
+                                        <i class="fa fa-rupee"></i> {{eachItemDataObj.price}}
+                                    </span>
+                                </p>
+                                <p class="uca_ordercartCancelledItemQtyPClass">
+                                    Bought Qty: {{eachItemDataObj.qty}}
+                                </p>
+                                <p class="uca_ordercartCancelledItemTotalAmtPClass">
+                                    Total Amt: {{eachItemDataObj.totalamount}}
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <!-- no canceled ordered item found message div -->
