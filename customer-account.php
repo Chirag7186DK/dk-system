@@ -417,6 +417,9 @@
                                 <p class="uca_ordercartCancelledItemTotalAmtPClass">
                                     Total Amt: {{eachItemDataObj.totalamount}}
                                 </p>
+                                <p class="uca_ordercartCancelledItemDateTimePClass">
+                                    Cancelled On: {{eachItemDataObj.cancelledDateTime}}
+                                </p>
                             </div>
                         </div>
                     </div>
