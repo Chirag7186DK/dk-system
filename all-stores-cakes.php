@@ -123,7 +123,7 @@
                             Upto {{eachStoreInfoDataObj.discountUpto}} <i class="fa fa-percent"></i> Off
                         </p>
                         <p ng-if="eachStoreInfoDataObj.discountUpto<=0" class="eachStoreDiscountUptoPClass">
-                            No offers
+                            No offers available
                         </p>
                         <p class="eachStoreDeliveryTimePClass">
                             delivers in {{eachStoreInfoDataObj.deliveryTime}}
