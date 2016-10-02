@@ -502,7 +502,8 @@ class OrderCartDao{
                 COALESCE(spl.name, '') productListTitle, COALESCE(odrsim.featureid, '') featureId, 
                 COALESCE(odrsim.size, '') size, COALESCE(odrsim.price, '') price, COALESCE(odrsim.qty, '0') qty, 
                 COALESCE(odrsim.totalamount, '') totalamount, COALESCE(odrsim.description, '') description,
-                COALESCE(odrsim.reason, '') ordercartStoreItemReason
+                COALESCE(odrsim.reason, '') ordercartStoreItemReason,
+                DATE_FORMAT(odrsim.updated_datedtime, '%b %D %a, %Y') cancelledDateTime
                 FROM ORDERCART odr
                 JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
                 JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
