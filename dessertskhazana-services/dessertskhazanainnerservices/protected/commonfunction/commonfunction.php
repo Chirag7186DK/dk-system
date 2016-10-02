@@ -925,7 +925,8 @@ class commonfunction{
                                     "totalamount"=>$storeAllItemsDataArr[$eachIndx]['productTotalAmt'],
                                     "description"=>$storeAllItemsDataArr[$eachIndx]['description'],
                                     "productFeatureBasePrice"=>$storeAllItemsDataArr[$eachIndx]['productFeatureBasePrice'],
-                                    "productFeatureDiscount"=>$storeAllItemsDataArr[$eachIndx]['productFeatureDiscount']
+                                    "productFeatureDiscount"=>$storeAllItemsDataArr[$eachIndx]['productFeatureDiscount'],
+                                    "productImageFilePath"=>$storeAllItemsDataArr[$eachIndx]['productImageFilePath']
                                 )
                             );
                         }
