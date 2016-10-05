@@ -11,8 +11,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title><?php echo $SiteTitle;?></title>
-        <base href="/dk-system/" />
         <link rel="shortcut icon" href="images/dk/dklogo/fevicon.ico">
+        <base href="/dk-system/" />
         <style>
             [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak{
                 display:none!important;
