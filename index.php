@@ -21,7 +21,7 @@
     </head>
 
     <!-- body start here -->
-    <body ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('home');">
+    <body>
         
         <!-- view will be loaded here-->
         <div id="dkSystemUIViewContentDivId" ui-view></div>
