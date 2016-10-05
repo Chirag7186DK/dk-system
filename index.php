@@ -21,7 +21,7 @@
     </head>
 
     <!-- body start here -->
-    <body>
+    <body ng-cloak class="ng-cloak">
         
         <!-- view will be loaded here-->
         <div id="dkSystemUIViewContentDivId" ui-view></div>
