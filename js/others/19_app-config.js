@@ -1,8 +1,8 @@
 
 // web-app module defined here 
-angular.module('DKAPP', ['ngRoute']);
+var DKAPP = angular.module('DKAPP', ['ngRoute']);
 
-angular.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider) {
+DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider) {
             
     $stateProvider
     .state('/', {
