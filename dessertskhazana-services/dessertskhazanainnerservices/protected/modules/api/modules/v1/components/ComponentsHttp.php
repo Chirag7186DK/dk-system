@@ -95,12 +95,14 @@ class ComponentsHttp{
     public static function VerifySecurityHeader(){
         $headerExists = false;
         $headers = apache_request_headers();
-        foreach ($headers as $key => $value) {
-            if (strtolower($key)=='hash' && $value==SessionDto::$sessionKey){
-                $headerExists = true;
+        if($headers!=false && count($headers)>0){
+            if(array_key_exists('hash', $headers)){
+                if($headers['hash']==SessionDto::$sessionKey){
+                    $headerExists = true;
+                }
             }
         }
-        return $headerExists; //@FIXME Fourcefull true for security header
+        return $headerExists;
     }
 
     public static function GenerateInvalidAccess() {
