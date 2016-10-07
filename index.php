@@ -24,7 +24,7 @@
     <body ng-cloak class="ng-cloak">
         
         <!-- view will be loaded here-->
-        <div id="dkSystemUIViewContentDivId" ui-view></div>
+        <div ui-view></div>
           
         <!-- load all css & js file-->
         <?php 
