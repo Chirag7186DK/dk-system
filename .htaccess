@@ -1,6 +1,17 @@
-<IfModule mod_rewrite.c>
 
-    DirectoryIndex /dk-system/index.php
-    FallbackResource /dk-system/index.php
+<IfModule mod_rewrite.c>
+    
+#    RewriteEngine on
+#    DirectoryIndex /dk-system/index.php
+#    FallbackResource /dk-system/index.php
+    
+    RewriteEngine On
+    # Don't rewrite files or directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Rewrite everything else to index.html to allow html5 state links
+    RewriteRule ^ /dk-system/index.php [L]
 
 </IfModule>
