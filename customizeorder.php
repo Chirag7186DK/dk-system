@@ -4,9 +4,9 @@
     <!-- customize order  -->
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 co_bodyDivClass">
 
-        <!-- customer order bread crumb -->
-        <ul class="co_userBreadcrumbULClass list-inline">
-            <li class='co_userBreadcrumbHomeTitleLIClass'>
+        <!-- customer bread crumb -->
+        <ul class="customerBreadcrumbULClass list-inline">
+            <li class='customerBreadcrumbLIClass'>
                 <a ui-sref="/">
                     Home
                 </a>
@@ -14,7 +14,7 @@
             <li class='customerBreadcrumbLIClass'>
                 |
             </li>
-            <li class='co_userBreadcrumbCustomizeTitleLIClass'>
+            <li class='customerBreadcrumbLIClass'>
                 Customize Order
             </li>
         </ul>
