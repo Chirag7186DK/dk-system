@@ -4,7 +4,7 @@
     angular.module('DKAPP').factory('OrderCartServices', OrderCartServices);
 
     // CJ defined this function 2016-06-16
-    function OrderCartServices($rootScope, LoaderServices){
+    function OrderCartServices($rootScope){
         try{
 
             var orderDetails = {};
@@ -35,12 +35,9 @@
                     // fetch param data from session
                     var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                     if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
-                        LoaderServices.showLoader();
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-
                         communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/UserOrdercartDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                            LoaderServices.hideLoader();
                             $rootScope.$apply(function(){
                                 var userOrdercartDashboardDataObj = false;
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
@@ -58,7 +55,6 @@
                         orderDetails.resetUserOrdercartDashboardVariableData(false);
                     }
                 }catch(ex){
-                    showHideLoaderBox('hide');
                     console.log("Problem in refreshUserOrdercartDashboardSummaryDataDetails=>"+ex);
                 }
             };
@@ -69,17 +65,10 @@
                     // collect product data
                     var paramDataObj = getParamDataToAddProductInOrdercart(fcontentClass, productDataFromSession);
                     if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
-                        var blockUIObj = {};
-                        blockUIObj['css'] = {"padding":10};
-                        blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', blockUIObj);
-
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-
                         // calling OrderCartServices 
                         orderDetails.addItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
-                            showHideLoaderBox('hide');
                             $rootScope.$apply(function(){
                                 var isProductAddedInOrdercart = 'FALSE';
                                 var notificationMsgStr = "Please try again to add item in your order cart !";
@@ -97,78 +86,47 @@
                         });
                     }
                 }catch(ex){
-                    showHideLoaderBox('hide');
                     console.log("problem in addProductDataInOrdercart ex=>"+ex);
                 }
             };
 
             // ordercartItemList
             orderDetails.ordercartItemList = function(preparedParamJsonObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
             // addItemOrdercart
             orderDetails.addItemOrdercart = function(preparedParamJsonObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', preparedParamJsonObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
             // updateItemOrdercart
             orderDetails.updateItemOrdercart = function(preparedParamJsonObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
             // removeItemOrdercart
             orderDetails.removeItemOrdercart = function(preparedParamJsonObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'DELETE', '', preparedParamJsonObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
             
             // ordercartItemList
             orderDetails.getStorewiseOrderSummaryForCheckoutProcess = function(preparedParamJsonObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/StorewiseOrderSummaryCheckoutProcess", 'apiFile', 'GET', '', preparedParamJsonObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
             
             orderDetails.updateOrderDeliveryAddressInOrdercartStore = function(preparedParamJsonObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageDeliveryAddressOrdercartStorewise", 'apiFile', 'PUT', '', preparedParamJsonObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
