@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('StoreController', StoreController);
 
-function StoreController($rootScope, $rootScope, ProductServices, StoreServices, RatingReviewServices){
+function StoreController($rootScope, $rootScope, $state, ProductServices, StoreServices, RatingReviewServices){
     try{
         
         $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
@@ -77,9 +77,8 @@ function StoreController($rootScope, $rootScope, ProductServices, StoreServices,
             var storedDataStatus = storeDessertsTypeDataDetailsInSessionStorageToViewStoreAllProductList(paramObj, 'Y');
             if(storedDataStatus===true){  
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
-                    window.location.href =  globalBaseSitePath+"store-all-cakes.php";
-                }else if((paramObj['dessertsTypeTitle']).toLowerCase()==='chocolates'){
-                    window.location.href =  globalBaseSitePath+"store-all-chocolates.php";
+                    // window.location.href =  globalBaseSitePath+"store-all-cakes.php";
+                    $state.go('store-all-cakes'); 
                 }
             }
         };
