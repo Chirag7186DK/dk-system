@@ -307,7 +307,6 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                 }
             });
         };
-       
         
     }catch(ex){
         console.log("problem in location controller ex=>"+ex);
