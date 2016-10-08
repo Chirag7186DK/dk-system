@@ -42,7 +42,7 @@
                 Please Log In / Sign Up to request for party order
             </p>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 poSignInSignUpBtnDivClass">
-                <button ng-click="redirectToAccountSignUpSignIn('partyorder')" class='btn poSignInSignUpBtnClass' id='poSignInSignUpBtnId'>
+                <button ng-click="goToSignUpSignInAccountSection('partyorder')" class='btn poSignInSignUpBtnClass' id='poSignInSignUpBtnId'>
                     Log In / Sign Up
                 </button>
             </div>
@@ -50,7 +50,6 @@
 
         <!-- create horizontally space div between -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
 
     </div>
 
