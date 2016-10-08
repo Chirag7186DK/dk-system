@@ -7,7 +7,7 @@
         <!-- customer bread crumb -->
         <ul class="customerBreadcrumbULClass list-inline">
             <li class='customerBreadcrumbLIClass'>
-                <a href="<?php echo $BaseSitePath;?>">
+                <a ui-sref="/">
                     Home
                 </a>
             </li>
