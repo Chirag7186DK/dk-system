@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('OrderCartController', OrderCartController);
 
 // OrderCartController
-function OrderCartController($rootScope, OrderCartServices, StoreServices){
+function OrderCartController($rootScope, $state, OrderCartServices, StoreServices){
     
     try{
          
@@ -23,7 +23,8 @@ function OrderCartController($rootScope, OrderCartServices, StoreServices){
                 }else if(isUserLoggedInSession===false){
                     storePageDetailsUserAccessedFrom(fromPageLoad);
                     storeUserOrderItemInSession(fcontentClass);
-                    window.location.href = globalBaseSitePath+"account-signup-signin.php";
+                    // window.location.href = globalBaseSitePath+"account-signup-signin.php";
+                    $state.go('account-signup-signin');
                 }
             }catch(ex){
                 console.log("problem in checkingProductDataToAddInOrdercart=>"+ex);
@@ -72,9 +73,11 @@ function OrderCartController($rootScope, OrderCartServices, StoreServices){
                 var authenticatedUserParamDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                 if(authenticatedUserParamDataObj!==false 
                     && jQuery.isEmptyObject(authenticatedUserParamDataObj)===false){
-                    window.location.href = globalBaseSitePath+"checkout.php";
+                    // window.location.href = globalBaseSitePath+"checkout.php";
+                    $state.go('checkout');
                 }else{
-                    window.location.href = globalBaseSitePath;
+                    // window.location.href = globalBaseSitePath;
+                    $state.go('/');
                 }
             }catch(ex){
                 console.log("problem in gotoCheckoutProcess ex=>"+ex);
@@ -99,12 +102,14 @@ function OrderCartController($rootScope, OrderCartServices, StoreServices){
                                 && jQuery.isEmptyObject(allStorewiseOrderSummaryDataArrObj)===false){
                                 $rootScope.allStorewiseOrderSummaryDataArrObj =  allStorewiseOrderSummaryDataArrObj;
                             }else{
-                                window.location.href = globalBaseSitePath;
+                                // window.location.href = globalBaseSitePath;
+                                $state.go('/');
                             }
                         });
                     });
                 }else{
-                    window.location.href = globalBaseSitePath;
+                    // window.location.href = globalBaseSitePath;
+                    $state.go('/');
                 }
             }catch(ex){
                 console.log("problem in loadStorewiseOrderSummaryForCheckoutProcess ex=>"+ex);
