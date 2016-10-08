@@ -7,8 +7,8 @@
         <!-- customer bread crumb -->
         <ul customer-breadcrumb-directive class="customerBreadcrumbULClass list-inline">
             <li class='customerBreadcrumbLIClass'>
-                <a href="<?php echo $BaseSitePath;?>">
-                    {{customerBreadCrumbOnWebApp.homeTitle}}
+                <a ui-sref="/">
+                    Home
                 </a>
             </li>
             <li class='customerBreadcrumbLIClass'>
