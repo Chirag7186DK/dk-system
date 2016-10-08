@@ -1,5 +1,5 @@
 
-<div ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('home');">
+<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('home');">
     
     <!-- header -->
     <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12 fHeaderContainerDivClass {{stickNtStickWebAppHeaderClass}}">
