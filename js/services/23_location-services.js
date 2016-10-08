@@ -3,7 +3,7 @@
     
     angular.module('DKAPP').factory('LocationServices', LocationServices);
 
-    function LocationServices($rootScope, LoaderServices){
+    function LocationServices($rootScope){
         try{
 
             var locationDetails = {};
@@ -46,25 +46,19 @@
             };
 
             locationDetails.getDeliveryCityList = function(apiParamJsonObj){
-                LoaderServices.showLoader();
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                    LoaderServices.hideLoader();
                 });
                 return promiseObject;
             };
 
             locationDetails.getDKDeliveryAreaList = function(apiParamJsonObj){
-                LoaderServices.showLoader();
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                    LoaderServices.hideLoader();
                 });
                 return promiseObject;
             };
 
             locationDetails.getDKDeliveryAreaBasedDessertsTypeList = function(apiParamJsonObj){
-                LoaderServices.showLoader();
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedDessertsTypeList", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                    LoaderServices.hideLoader();
                 });
                 return promiseObject;
             };
