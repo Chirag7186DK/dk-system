@@ -16,6 +16,14 @@ DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
                 url:"/home",
                 templateUrl: 'home.php'
             })
+            .state('party-order', {
+                url:"/party-order",
+                templateUrl: 'partyorder.php'
+            })
+            .state('customize-order', {
+                url:"/customize-order",
+                templateUrl: 'customizeorder.php'
+            })
             .state('all-stores-cakes', {
                 url:"/all-stores-cakes",
                 templateUrl: 'all-stores-cakes.php'
@@ -34,6 +42,7 @@ DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
             })
             .state('customer-account', {
                 url:"/customer-account",
+                cache:false,
                 templateUrl: 'customer-account.php'
             });
             
