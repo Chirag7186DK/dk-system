@@ -9,9 +9,11 @@
             var loaderDetails = {};
             
             loaderDetails.showLoader = function(){
+                var msgStr = "<img src='"+globalBaseSitePath+"images/loading.gif'><br>";
+                msgStr+= "<center>Please wait desserts khazana is loading........</center>";
                 var blockUIObj = {};
                 blockUIObj['css'] = {"padding":10, "border":"0px!important;"};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana data is loading........</center>";
+                blockUIObj['message'] = msgStr;
                 showHideLoaderBox('show', blockUIObj);
             };
             
