@@ -4,32 +4,38 @@
 // web-app module defined here 
 var DKAPP = angular.module('DKAPP', ['ui.router']);
 
-DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', 
+DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
     function($locationProvider, $stateProvider, $urlRouterProvider){
             
         $stateProvider
             .state('/', {
                 url:"/",
+                notify:true,
                 templateUrl: 'home.php'
             })
             .state('home', {
                 url:"/home",
+                notify:true,
                 templateUrl: 'home.php'
             })
             .state('party-order', {
                 url:"/party-order",
+                notify:true,
                 templateUrl: 'partyorder.php'
             })
             .state('customize-order', {
                 url:"/customize-order",
+                notify:true,
                 templateUrl: 'customizeorder.php'
             })
             .state('all-stores-cakes', {
                 url:"/all-stores-cakes",
+                notify:true,
                 templateUrl: 'all-stores-cakes.php'
             })
             .state('store-all-cakes', {
                 url:"/store-all-cakes",
+                notify:true,
                 templateUrl: 'store-all-cakes.php'
             })
             .state('cakes-product', {
@@ -52,5 +58,11 @@ DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
             
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode({ enabled: true, requireBase: true});
-
-}]);
+        
+//        $rootScope.$on('routeChangeStart', function(event, nextState, currentState){
+//            console.log("event=>"+event);
+//            console.log("nextState=>"+nextState);
+//            console.log("currentState=>"+currentState);
+//        });
+        
+}]); 
