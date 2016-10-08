@@ -418,9 +418,8 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
             var storedDataStatus = storeProductTypeProductCategoryProductDataInSession(productParamDataObj, "N");
             if(storedDataStatus===true){  
                 if((productParamDataObj['productTypeTitle']).toLowerCase()==='cakes'){
-                    window.location.href =  globalBaseSitePath+"store-all-cakes.php";
-                }else if((productParamDataObj['productTypeTitle']).toLowerCase()==='chocolates'){
-                    window.location.href =  globalBaseSitePath+"store-all-chocolates.php";
+                    // window.location.href =  globalBaseSitePath+"store-all-cakes.php";
+                    $state.go('store-all-cakes');
                 }
             }
         };
