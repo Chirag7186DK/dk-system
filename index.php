@@ -66,7 +66,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
         
         <!-- dynamically view will be loaded here-->
-        <div ui-view></div>
+        <div id="loadingDynamicallyViewDivId" class="loadingDynamicallyViewDivClass" ui-view></div>
           
         <!-- first time will be load all css & js file -->
         <?php 
