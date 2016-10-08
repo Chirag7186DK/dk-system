@@ -40,29 +40,26 @@ DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
             })
             .state('cakes-product', {
                 url:"/cakes-product",
+                notify:true,
                 templateUrl: 'cakes-product.php'
             })
             .state('account-signup-signin', {
                 url:"/account-signup-signin",
+                notify:true,
                 templateUrl: 'account-signup-signin.php'
             })
             .state('customer-account', {
                 url:"/customer-account",
-                cache:false,
+                notify:true,
                 templateUrl: 'customer-account.php'
             })
             .state('checkout', {
                 url:"/checkout",
+                notify:true,
                 templateUrl: 'checkout.php'
             });
             
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode({ enabled: true, requireBase: true});
-        
-//        $rootScope.$on('routeChangeStart', function(event, nextState, currentState){
-//            console.log("event=>"+event);
-//            console.log("nextState=>"+nextState);
-//            console.log("currentState=>"+currentState);
-//        });
         
 }]); 
