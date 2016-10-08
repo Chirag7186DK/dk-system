@@ -261,7 +261,7 @@ function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
             UsersServices.signOutUser();
             resetDKSessionData();
             // window.location.href = globalBaseSitePath;
-            $state.go('/'); 
+            $state.reload(); 
         };
         
         // storeRequestedSectionNameToAccessInUserAccount
@@ -293,7 +293,6 @@ function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
                 $('.userAccountAllSectionListDropdownDivClass').css({"display":"none"});
             }
         };
-       
         
     }catch(ex){
         console.log("problem in users controller ex=>"+ex);
