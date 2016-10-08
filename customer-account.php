@@ -7,7 +7,7 @@
         <!-- customer bread crumb -->
         <ul class="customerBreadcrumbULClass list-inline">
             <li class='customerBreadcrumbLIClass'>
-                <a href="<?php echo $BaseSitePath;?>">
+                <a ui-sref="/">
                     Home
                 </a>
             </li>
@@ -430,116 +430,6 @@
 
         </div>
 
-
-        <!-- share offers section details with each tab level -->
-        <div ng-if="requestedSectionName==='shareoffers'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_shareoffersSectionContainerDivClass">
-
-            <!-- sharing offers note-->
-            <p class='sharingOffersNotePClass'>
-                Note: Offers can be share to your friends/colleague/family members by just typing 10 digits mobile no.s
-            </p>
-
-            <!-- share offers all section header title -->
-            <div scroll-horizontally-shareoffers-allsectionheader-directive id='uca_shareoffersAllSectionHeaderContainerDivId' class='uca_shareoffersAllSectionHeaderContainerDivClass'>
-                <li ng-click="uca_toggleShareoffersSectionList('availableshareoffers', 'uca_shareoffersEachTabLabelSectionContainerLIId1', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all available share offers ' id='uca_shareoffersEachTabLabelSectionContainerLIId1' class='uca_shareoffersEachTabLabelSectionContainerLIClass uca_shareoffersSelectedTabLabelSectionContainerLIClass'>
-                    Offers Sharing
-                </li>
-                <li ng-click="uca_toggleShareoffersSectionList('alloffersshared', 'uca_shareoffersEachTabLabelSectionContainerLIId2', 'uca_shareoffersAllSectionHeaderContainerDivClass');" title='Click to view all offers shared by you' id='uca_shareoffersEachTabLabelSectionContainerLIId2' class='uca_shareoffersEachTabLabelSectionContainerLIClass'>
-                    Offers Shared 
-                </li>
-            </div>
-
-            <!-- create horizontally space div between -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
-            <!-- all offers can be share info will be displayed -->
-            <div ng-if="displayShareOffersSectionType==='availableshareoffers'" ng-controller="UCustomerController" ng-init="populateUserSharingDiscountCouponList()" id='uca_userSharingAllDiscountCouponListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingAllDiscountCouponListDivClass'>
-
-                <!-- share offers can be filtering -->
-                <div ng-if="userSharingAllDiscountCouponDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextSharingOffersDivClass">
-                    <label class="searchTextSharingoffersILblClass">Use for filtering and access fast offers sharing to your colleagues/friends !</label>
-                    <input ng-model="searchTextSharingoffers" type="text" class="form-control" placeholder="Find offers to share with your friends/colleagues !">
-                </div>
-
-                <!-- each sharing offers will display -->
-                <div ng-repeat="userSharingEachDiscountCouponDetailsArrObj in userSharingAllDiscountCouponDetailsArrObj | filter:searchTextSharingoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_userSharingEachDiscountCouponListDivClass uca_userSharingEachDiscountCouponListDivClass{{$index}}">
-                    <p class="sharingOffersMsgPClass">
-                        {{userSharingEachDiscountCouponDetailsArrObj.displayDiscountCouponMsg}}
-                    </p>
-                    <p class="sharingOffersLimitPClass">
-                        Sharing Limit: {{userSharingEachDiscountCouponDetailsArrObj.shareLimit}}
-                    </p>
-                    <p class="sharingOffersRemainingLimitPClass">
-                        Limit Remain: {{userSharingEachDiscountCouponDetailsArrObj.remainingShareLimt}}
-                    </p>
-                    <p class="sharingOffersExpiryDateTimePClass">
-                        Limit Expire On: {{userSharingEachDiscountCouponDetailsArrObj.expiredDateTime}}
-                    </p>
-                    <p class="sharingOffersOperationPClass">
-                        <input type='text' class='form-control sharingOffersUsersMobileInputClass' placeholder='Type 10 digits mobile no.s for offers sharing !'>
-                        <button ng-click="checkDataToShareOffersToOtherUser(userSharingEachDiscountCouponDetailsArrObj, 'uca_userSharingEachDiscountCouponListDivClass'+$index);" class='btn sharingOffersBtnClass'>
-                            SHARE OFFERS
-                        </button>
-                    </p>
-                </div>
-
-                <!-- no offers available for sharing purpose -->
-                <div ng-if="userSharingAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharingOffersFoundDivClass">
-                    <p class="noSharingOffersFoundMsgPClass">
-                        No offers available for you or remain to share with your friends/colleagues !
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- all shared offers info will be displayed -->
-            <div ng-if="displayShareOffersSectionType==='alloffersshared'" ng-controller="UCustomerController" ng-init="populateUserSharedDiscountCouponList()" id='uca_sharedOffersListSectionDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_allSharedOffersListSectionDivClass'>
-
-                <!-- shared offers will be filtering -->
-                <div ng-if="userSharedAllDiscountCouponDetailsArrObj" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputSearchTextSharedoffersDivClass">
-                    <label class="searchTextSharedOffersLblClass">
-                        Use for filtering and access fast shared offers details !
-                    </label>
-                    <input ng-model="searchTextSharedoffers" type="text" class="form-control" placeholder="Find shared offers !">
-                </div>
-
-                <!-- display shared offers wise all other users details -->
-                <div ng-repeat="eachUserSharedDiscountCouponAllUserArrObj in userSharedAllDiscountCouponDetailsArrObj| filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_eachSharedOffersSectionContainerDivClass">
-
-                    <!-- create horizontally space div between -->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
-                    <p class="uca_sharedoffersWiseAllUserListSectionLabelPClass">
-                        Promo code '{{eachUserSharedDiscountCouponAllUserArrObj.dcgCode}}' has been shared by you to others   
-                        <span class="badge uca_sharedofferwiseAllUsersCountSClass">
-                            {{eachUserSharedDiscountCouponAllUserArrObj.countAllUserList}}
-                        </span>
-                        friends/colleague
-                    </p>
-
-                    <!-- each shared offers user info will display -->
-                    <div ng-repeat="userDetailsObj in eachUserSharedDiscountCouponAllUserArrObj.sharedOffersAllUserDetails | filter:searchTextSharedoffers:strict" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_sharedOffersWiseEachUserDivClass">
-                        <p class='sharedOffersMobilePClass'>
-                            On Mobile: {{userDetailsObj.sharedOnMobile}}
-                        </p>
-                        <p class='sharedOffersDatetimeClass'>
-                            Shared Datetime: {{userDetailsObj.sharedOnDateTime}}
-                        </p>
-                    </div>
-
-                </div>
-
-                <!-- not shared any offers by you -->
-                <div ng-if="userSharedAllDiscountCouponDetailsArrObj==false" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_noSharedOffersFoundDivClass">
-                    <p class="noSharedOffersFoundMsgPClass">
-                        No shared offers found !
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
         <!-- party order section details with each tab level -->
         <div ng-if="requestedSectionName==='partyorder'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 po_SectionContainerDivClass">
 
@@ -897,6 +787,5 @@
 
     <!-- checking which section is requested by end user for showing purpose  -->
     <div ng-controller="UCustomerController" ng-init="checkRequestedSectionAvailableToAccessInUserCAccount()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-
 
 </div>
