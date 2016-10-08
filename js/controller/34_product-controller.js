@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('ProductController', ProductController);
 
-function ProductController($scope, $rootScope, ProductServices, StoreServices){
+function ProductController($scope, $rootScope, $state, ProductServices, StoreServices){
     try{
                 
         // view-product-details
@@ -10,9 +10,8 @@ function ProductController($scope, $rootScope, ProductServices, StoreServices){
                 var storedDataStatus = storeProductTypeProductCategoryProductDataInSession(paramObj);
                 if(storedDataStatus===true){
                     if((paramObj['productTypeTitle']).toLowerCase()==='cakes'){
-                        window.location.href =  globalBaseSitePath+"cakes-product.php";
-                    }else if((paramObj['productTypeTitle']).toLowerCase()==='chocolates'){
-                        window.location.href =  globalBaseSitePath+"chocolates-product.php";
+                        // window.location.href =  globalBaseSitePath+"cakes-product.php";
+                        $state.go('cakes-product'); 
                     }
                 }
             }catch(ex){
