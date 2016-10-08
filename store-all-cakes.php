@@ -1,5 +1,5 @@
 
-<div ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('store-all-cakes');">
+<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('store-all-cakes');">
 
     <!-- view store details like menu, information, rating/review from customer side -->
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeDetailsBodyWrapperDivClass">
@@ -68,7 +68,6 @@
             </div>
 
         </div>
-
 
         <!-- store served all desserts type info -->
         <div ng-show="isToggleStoreDessertsMenu" ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeServeDessertsTypeContainerDivClass">
