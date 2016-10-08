@@ -183,7 +183,7 @@
                         ({{eachProductDetails.productFeatureDiscount}}% Off)
                     </span>
                 </p>
-                <p class='cshopstore_productBtnWrapperPClass'> 
+                <p class='storeProductBtnWrapperPClass'> 
                     <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' class="storeViewProductDetailsBtnClass btn">
                         <i class="fa fa-list"></i> VIEW
                     </button>
