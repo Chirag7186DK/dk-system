@@ -3,10 +3,6 @@
 
     /* first header css code */
 
-    .fHeaderRowBorderDivClass{
-        border-bottom:2px solid #e7486b!important;
-    }
-
     .webLogoHClass{
         text-align:center;
         padding-top:0px!important;
@@ -49,6 +45,10 @@
         text-align:left!important;
         cursor:pointer!important;
         font-size:12px!important;
+    }
+    
+    .fHeaderRowBorderDivClass{
+        border-bottom:2px solid #e7486b!important;
     }
 
     /* delivery city area desserts type container css code */
