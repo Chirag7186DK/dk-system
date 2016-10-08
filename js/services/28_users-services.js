@@ -11,36 +11,21 @@
 
             // checkUserAuthentication
             userDetails.userSignInAuthentication = function(paramDataObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignInAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
             
             // userSignUpAuthentication
             userDetails.userSignUpAuthentication = function(paramDataObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignUpAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
             
             // UserForgotPwdAuthentication
             userDetails.userForgotPwdAuthentication = function(paramDataObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserForgotPwdAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
@@ -69,36 +54,21 @@
 
             // getUserPersonalInfo
             userDetails.getUserPersonalInfo = function(paramDataObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'GET', '', paramDataObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
             // updateUserPersonalInfo
             userDetails.updateUserPersonalInfo = function(paramDataObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'PUT', '', paramDataObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
 
             // updateUserPasswordInfo
             userDetails.updateUserPasswordInfo = function(paramDataObj){
-                var blockUIObj = {};
-                blockUIObj['css'] = {"padding":10};
-                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                showHideLoaderBox('show', blockUIObj);
                 var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UpdateUserPasswordInfoData", 'apiFile', 'PUT', '', paramDataObj).done(function(retResponseJson){
-                    showHideLoaderBox('hide');
                 });
                 return promiseObject;
             };
