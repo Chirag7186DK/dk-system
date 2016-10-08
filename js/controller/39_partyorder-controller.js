@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('PartyOrdersController', PartyOrdersController);
 
 // PartyOrdersController
-function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
+function PartyOrdersController($scope, $rootScope, $state, PartyOrdersServices){
     
     try{
         
@@ -20,11 +20,13 @@ function PartyOrdersController($scope, $rootScope, PartyOrdersServices){
                     storeRequestedSectionNameToAccessInUserAccount('partyorder');
                     if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
                         if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
-                            window.location.href = globalBaseSitePath+"customer-account.php";
+                            //window.location.href = globalBaseSitePath+"customer-account.php";
+                            $state.go("customer-account");
                         }
                     }
                 }else{
-                    window.location.href = globalBaseSitePath + "partyorder.php";
+                    //window.location.href = globalBaseSitePath + "partyorder.php";
+                    $state.go("party-order");
                 }
             }catch(ex){
                 console.log("problem in redirectToViewPartyOrderRequest ex=>"+ex);
