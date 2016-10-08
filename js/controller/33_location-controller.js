@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('LocationController', LocationController);
 
-function LocationController($scope, $rootScope, $window, LocationServices){
+function LocationController($scope, $rootScope, $state, LocationServices){
     try{
         
         // loadDeliveryCityList 
@@ -303,8 +303,7 @@ function LocationController($scope, $rootScope, $window, LocationServices){
                 storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
                     //window.location.href =  globalBaseSitePath+"all-stores-cakes.php";
-                    //$window.location.href = globalBaseSitePath+"all-stores-cakes.php";
-                    $window.location.href = globalBaseSitePath;
+                    $state.go('all-stores-cakes');    
                 }
             });
         };
