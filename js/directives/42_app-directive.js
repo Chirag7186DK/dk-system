@@ -566,3 +566,30 @@ function attachValidationBudgetamtinputDirective($timeout){
         }
     };
 }
+
+angular.module('DKAPP').directive('viewLoader', viewLoader);
+
+function viewLoader($rootScope){
+    return {
+        restrict:"E",
+        replace:true,
+        template:"<div></div>",
+        link: function($scope, $el){
+            
+            $rootScope.$on('$viewContentLoading', function(event, viewConfigObj){
+                //console.log("$viewContentLoading event=>"+event);
+                //console.log("$viewContentLoading viewConfigObj=>"+viewConfigObj);
+                var blockUIObj = {};
+                blockUIObj['css'] = {"padding":10, "border":"0px!important;"};
+                blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana view is loading........</center>";
+                //showHideLoaderBox('show', blockUIObj);
+            });
+            
+            $rootScope.$on('$viewContentLoaded', function(event, viewConfigObj){
+                //console.log("$viewContentLoaded event=>"+event);
+                //console.log("$viewContentLoaded viewConfigObj=>"+viewConfigObj);
+                //showHideLoaderBox('hide');
+            });
+        }
+    };
+}
