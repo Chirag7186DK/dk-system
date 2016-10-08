@@ -1,9 +1,8 @@
 
-<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('accountSignUpSignIn'); checkInBackgroundDataAvailableForUpdationFromSession('accountSignUpSignIn');">
+<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('account-signup-signin');">
         
     <!-- my-account body content-->
     <div ng-controller="UsersController" ng-init="isUserAlreadySignedInAccountSection()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bodyDivClass">
-
         <!-- customer bread crumb -->
         <ul class="customerBreadcrumbULClass list-inline">
             <li class='customerBreadcrumbLIClass'>
@@ -265,11 +264,9 @@
             </div>
         </div>
 
-
     </div>    
 
     <!-- logged authenticated user web application data refresh -->
     <div id='refreshUserWebAppDataDivId' ng-controller="RefreshWebAppDataController" ng-init="refreshWebAppData()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-        
 
 </div>
