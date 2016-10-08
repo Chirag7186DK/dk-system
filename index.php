@@ -65,6 +65,9 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
         
+        <!-- view loader will be showing -->
+        <view-loader></view-loader>
+        
         <!-- dynamically view will be loaded here-->
         <div id="loadingDynamicallyViewDivId" class="loadingDynamicallyViewDivClass" ui-view></div>
           
