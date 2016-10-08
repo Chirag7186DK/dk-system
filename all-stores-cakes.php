@@ -1,5 +1,5 @@
 
-<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allstorecakes');">
+<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('allstorescakes');">
 
     <!-- all stores wise info body  -->
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 allStoresInfoBodyWrapperDivClass">
