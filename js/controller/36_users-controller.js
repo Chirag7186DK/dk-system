@@ -261,7 +261,7 @@ function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
             UsersServices.signOutUser();
             resetDKSessionData();
             // window.location.href = globalBaseSitePath;
-            $state.reload(); 
+            $state.go('/', {reload:true}); 
         };
         
         // storeRequestedSectionNameToAccessInUserAccount
