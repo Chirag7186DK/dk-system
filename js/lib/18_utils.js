@@ -44,6 +44,9 @@ function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonP
             },
             complete:function(json){
                 showHideLoaderBox('hide');
+            },
+            error:function (jqXHR, textStatus, errorThrown){
+                showHideLoaderBox('hide');
             }
         });
     }catch(ex){
