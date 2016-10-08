@@ -8,7 +8,7 @@
         padding-top:0px!important;
         margin:0px!important;
     }
-
+    
     .topMenuBarULClass{
         text-align:center!important;
     }
@@ -259,17 +259,15 @@
         color:#222!important;
         font-weight:bold!important;
     }
-    
-    .customerBreadcrumbDivClass{
-        margin-top:20px;
-        border:1px solid #DCE0EF!important;
-        background-color:whitesmoke!important;
-    }
 
     .customerBreadcrumbULClass{
         font-family:serif!important;
         font-size:14px!important;
         padding-top:6px!important;
+    }
+    
+    .customerBreadcrumbULClass.list-inline{
+        margin-left:1px!important;
     }
     
     .customerBreadcrumbLIClass a, 
@@ -437,7 +435,7 @@
     .storeSummaryTypeInfoWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-top:5px!important;
+        margin-top:0px!important;
     }
 
     .storeSummaryTypeInfoWrapperDivClass .owl-item{
@@ -834,6 +832,7 @@
 
     .storeProductBoxDivClass{
         padding-left:1px!important;
+        // padding-right:1px!important;
     }
 
     .storeProductBoxDividerLineDivClass{
@@ -844,16 +843,19 @@
     .storeProductNamePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        margin-bottom:3px!important;
     }
     
     .storeProductSizePClass{
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
+        margin-bottom:3px!important;
     }
     
     .storeProductDeliveryTimePClass{
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
+        margin-bottom:3px!important;
     }
     
     .storeProductVegIconClass{
@@ -863,7 +865,11 @@
         margin-right:30px!important;
         font-weight:bold!important;
     }
-
+    
+    .storeProductPricePClass{
+        margin-bottom:3px!important;
+    }
+    
     .storeProductOnlineSellingPriceTextSClass{
         font-size:20px!important;
         margin-right:6px;
@@ -880,6 +886,10 @@
     .storeProductDiscountPercentTextSClass{
         color:#60bf79!important;
         font-size:14px!important;
+    }
+    
+    .storeProductBtnWrapperPClass{
+        padding-bottom:10px!important;
     }
 
     .storeViewProductDetailsBtnClass,
