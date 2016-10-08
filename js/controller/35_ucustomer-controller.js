@@ -8,7 +8,7 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
         // checkRequestedSectionAvailableToAccessInUserCAccount
         $rootScope.checkRequestedSectionAvailableToAccessInUserCAccount = function(){
             var isUserLoggedInSession = checkUserLoggedInSession();
-            var requestedSectionConfigDataObj =  getStoredRequestedSectionNameToAccessInUserAccount();
+            var requestedSectionConfigDataObj = getStoredRequestedSectionNameToAccessInUserAccount();
             if(isUserLoggedInSession===true && requestedSectionConfigDataObj!==false 
                 && requestedSectionConfigDataObj!==undefined 
                 && jQuery.isEmptyObject(requestedSectionConfigDataObj)===false){
