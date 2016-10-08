@@ -4,7 +4,7 @@
     angular.module('DKAPP').factory('OrderCartServices', OrderCartServices);
 
     // CJ defined this function 2016-06-16
-    function OrderCartServices($rootScope){
+    function OrderCartServices($rootScope, LoaderServices){
         try{
 
             var orderDetails = {};
@@ -35,16 +35,12 @@
                     // fetch param data from session
                     var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
                     if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
-                        var blockUIObj = {};
-                        blockUIObj['css'] = {"padding":10};
-                        blockUIObj['message'] = "<img src='"+globalBaseSitePath+"images/loading.gif'><br><center>Please wait desserts khazana is loading........</center>";
-                        showHideLoaderBox('show', blockUIObj);
-
+                        LoaderServices.showLoader();
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = paramDataObj;
 
                         communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/UserOrdercartDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                            showHideLoaderBox('hide');
+                            LoaderServices.hideLoader();
                             $rootScope.$apply(function(){
                                 var userOrdercartDashboardDataObj = false;
                                 if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
