@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UsersController', UsersController);
 
-function UsersController($scope, $rootScope, $state, UsersServices){
+function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
     try{
         
         // goToSignUpSignInAccountSection
@@ -213,7 +213,6 @@ function UsersController($scope, $rootScope, $state, UsersServices){
             }
         };
         
-        
         // resendOtpcodeClick
         $rootScope.resendOtpcodeClick = function(fromSection){
             var paramDataObj = getParamDataForResendOtpcode(fromSection);
@@ -234,8 +233,6 @@ function UsersController($scope, $rootScope, $state, UsersServices){
                 console.log("Problem in resendOtpcodeClick=>"+ex);
             }
         };
-        
-        
         
         // redirectToUserAccessedLastPageFrom
         $rootScope.redirectToUserAccessedLastPageFrom = function(){
@@ -278,7 +275,11 @@ function UsersController($scope, $rootScope, $state, UsersServices){
                     // detected user account as customer profile
                     if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
                         // window.location.href = globalBaseSitePath+"customer-account.php";
-                        $state.go('customer-account'); 
+                        if($state.current.name!=='customer-account'){
+                            $state.go('customer-account');
+                        }else if($state.current.name==='customer-account'){
+                            $state.reload();
+                        }
                     }
                 }
             }
