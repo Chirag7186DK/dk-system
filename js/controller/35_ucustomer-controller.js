@@ -19,8 +19,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     $rootScope.displayChangePasswordInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='ordercart'){
                     $rootScope.displayOrdercartSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
-                }else if(requestedSectionName==='shareoffers'){
-                    $rootScope.displayShareoffersSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='partyorder'){
                     $rootScope.displayPartyOrderInfoSectionToAccessInUserCAccount(requestedSectionConfigDataObj);
                 }else if(requestedSectionName==='customizeorder'){
