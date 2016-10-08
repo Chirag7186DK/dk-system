@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('CustomizeOrdersController', CustomizeOrdersController);
 
-function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersServices){
+function CustomizeOrdersController($scope, $rootScope, $state, CustomizeOrdersServices){
     try{
         
         $rootScope.isShowCustomizeOrderRequestErrorMsg = false;
@@ -20,11 +20,13 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                     if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
                         // detected user account as customer profile
                         if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
-                            window.location.href = globalBaseSitePath+"customer-account.php";
+                            // window.location.href = globalBaseSitePath+"customer-account.php";
+                            $state.go("customer-account");
                         }
                     }
                 }else{
-                    window.location.href = globalBaseSitePath + "customizeorder.php";
+                    // window.location.href = globalBaseSitePath + "customizeorder.php";
+                    $state.go("customize-order");
                 }
             }catch(ex){
                 console.log("problem in redirectToViewPartyOrderRequest ex=>"+ex);
@@ -135,7 +137,6 @@ function CustomizeOrdersController($scope, $rootScope, $http, CustomizeOrdersSer
                 coDataObj.isShowCoPaymentLogList = true;
             }
         };
-        
         
     }catch(ex){
         console.log("problem in CustomizeOrdersController ex=>"+ex);
