@@ -44,6 +44,10 @@ DKAPP.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
                 url:"/customer-account",
                 cache:false,
                 templateUrl: 'customer-account.php'
+            })
+            .state('checkout', {
+                url:"/checkout",
+                templateUrl: 'checkout.php'
             });
             
         $urlRouterProvider.otherwise('/');
