@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UsersController', UsersController);
 
-function UsersController($scope, $rootScope, UsersServices){
+function UsersController($scope, $rootScope, $state, UsersServices){
     try{
         
         // goToSignUpSignInAccountSection
@@ -10,7 +10,8 @@ function UsersController($scope, $rootScope, UsersServices){
             // fetch param data from session
             var userLoggedInSessionStatus = checkUserLoggedInSession();
             if(userLoggedInSessionStatus===false){
-                window.location.href = globalBaseSitePath+"account-signup-signin.php";
+                // window.location.href = globalBaseSitePath+"account-signup-signin.php";
+                $state.go('account-signup-signin'); 
             }    
         };
         
@@ -21,7 +22,8 @@ function UsersController($scope, $rootScope, UsersServices){
         $rootScope.isUserAlreadySignedInAccountSection = function(){
             var userLoggedInSessionStatus = checkUserLoggedInSession();
             if(userLoggedInSessionStatus===true){
-                window.location.href = globalBaseSitePath;
+                // window.location.href = globalBaseSitePath;
+                $state.go('/'); 
             }else if(userLoggedInSessionStatus===false){
                 $rootScope.toggleAccountFormSectionName('signInSection');
             } 
@@ -239,19 +241,17 @@ function UsersController($scope, $rootScope, UsersServices){
         $rootScope.redirectToUserAccessedLastPageFrom = function(){
             var lastPageAccessedByUser = getPageDetailsUserAccessedFrom();
             if(lastPageAccessedByUser==='home'){
-                window.location.href = globalBaseSitePath;
+                // window.location.href = globalBaseSitePath;
+                $state.go('/'); 
             }else if(lastPageAccessedByUser==='all-stores-cakes'){
-                window.location.href = globalBaseSitePath+"all-stores-cakes.php";
-            }else if(lastPageAccessedByUser==='all-stores-chocolates'){
-                window.location.href = globalBaseSitePath+"all-stores-chocolates";
+                // window.location.href = globalBaseSitePath+"all-stores-cakes.php";
+                $state.go('all-stores-cakes'); 
             }else if(lastPageAccessedByUser==='store-all-cakes'){
-                window.location.href = globalBaseSitePath+"store-all-cakes.php";
-            }else if(lastPageAccessedByUser==='store-all-chocolates'){
-                window.location.href = globalBaseSitePath+"store-all-chocolates.php";
+                // window.location.href = globalBaseSitePath+"store-all-cakes.php";
+                $state.go('store-all-cakes'); 
             }else if(lastPageAccessedByUser==='cakes-product'){
-                window.location.href = globalBaseSitePath+"cakes-product.php";
-            }else if(lastPageAccessedByUser==='chocolates-product'){
-                window.location.href = globalBaseSitePath+"chocolates-product";
+                // window.location.href = globalBaseSitePath+"cakes-product.php";
+                $state.go('cakes-product'); 
             }else if(lastPageAccessedByUser==='partyorder'){
                 $rootScope.storeRequestedSectionNameToAccessInUserAccount('partyorder');
             }else if(lastPageAccessedByUser==='customizeorder'){
@@ -263,7 +263,8 @@ function UsersController($scope, $rootScope, UsersServices){
         $rootScope.signOutUser = function(){
             UsersServices.signOutUser();
             resetDKSessionData();
-            window.location.href = globalBaseSitePath;
+            // window.location.href = globalBaseSitePath;
+            $state.go('/'); 
         };
         
         // storeRequestedSectionNameToAccessInUserAccount
@@ -276,7 +277,8 @@ function UsersController($scope, $rootScope, UsersServices){
                 if(authenticatedUserParamDataObj.hasOwnProperty('userProfileTypeId')===true){
                     // detected user account as customer profile
                     if(authenticatedUserParamDataObj['userProfileTypeId']==='2'){
-                        window.location.href = globalBaseSitePath+"customer-account.php";
+                        // window.location.href = globalBaseSitePath+"customer-account.php";
+                        $state.go('customer-account'); 
                     }
                 }
             }
