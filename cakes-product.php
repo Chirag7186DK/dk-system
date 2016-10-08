@@ -1,5 +1,5 @@
 
-<div ng-cloak class="ng-cloak" ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('cakes-product');">
+<div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('cakes-product');">
 
     <!-- view specific requested product details -->
     <div ng-controller="ProductController" ng-init="loadProductTypeProductCategoryProductDetails()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_containerDivClass">
