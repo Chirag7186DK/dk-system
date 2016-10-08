@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('dkSessionController', dkSessionController);
 
 // dkSessionController using
-function dkSessionController($rootScope){
+function dkSessionController($rootScope, $state){
     
     // loadDefaultDataInDkSession
     $rootScope.loadDefaultDataInDkSession = function(pageLoad){
@@ -23,7 +23,8 @@ function dkSessionController($rootScope){
                 // clear browser cookies and other thing by javascript
                 resetDKSessionData();
                 // redirect to main page of desserts khazana
-                window.location = globalBaseSitePath;
+                // window.location = globalBaseSitePath;
+                $state.go("/");
             }
         }catch(ex){
             console.log("problem in loadDefaultDataInDkSession ex=>"+ex);
