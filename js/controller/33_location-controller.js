@@ -302,7 +302,7 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                 paramObj['dessertsTypeTitle'] = ($(elementObj).find('option:selected').text());
                 storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(paramObj, 'Y');
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
-                    //window.location.href =  globalBaseSitePath+"all-stores-cakes.php";
+                    // window.location.href =  globalBaseSitePath+"all-stores-cakes.php";
                     $state.go('all-stores-cakes');    
                 }
             });
