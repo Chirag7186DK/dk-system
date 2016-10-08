@@ -1,6 +1,15 @@
 
 function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonParamObjKey, jsonParamObj, fetchJsonDataUsingKey){
     try{
+        
+        // loader data will be prepare here
+        var msgStr = "<img src='"+globalBaseSitePath+"images/loading.gif'><br>";
+        msgStr+= "<center>Please wait desserts khazana is loading........</center>";
+        var blockUIObj = {};
+        blockUIObj['css'] = {"padding":10, "border":"0px!important;"};
+        blockUIObj['message'] = msgStr;
+        showHideLoaderBox('show', blockUIObj);
+                
         var passJsonDataToAjax = false;
         var requestTypeAr = new Array("GET", "POST", "DELETE", "PUT");
         if(jsonParamObj==='' || jsonParamObj===undefined){
@@ -31,11 +40,15 @@ function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonP
             beforeSend: function(xhr){xhr.setRequestHeader('hash', apiUrlAccessHashValue);
             },
             success:function(json){
+                showHideLoaderBox('hide');
             },
             complete:function(json){
+                showHideLoaderBox('hide');
             }
         });
     }catch(ex){
+        showHideLoaderBox('hide');
+        console.log("Problem in communicationWithAjax=>"+ex);
     }
 }
 
