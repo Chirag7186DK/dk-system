@@ -16,21 +16,6 @@ function generateDkUserSessionId(){
     }
 }
 
-(function updateActiviationTimeUserSession(){
-    var userSessionParamObj = getParamDataAuthenticatedUserDetailsFromSession();
-    if(userSessionParamObj!==false && userSessionParamObj!==undefined
-        && jQuery.isEmptyObject(userSessionParamObj)===false){
-        var apiParamJsonObj = {};
-        apiParamJsonObj['dkParamDataArr'] = userSessionParamObj;
-        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLog", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){
-            setTimeout(updateActiviationTimeUserSession, 2000);
-        });
-    }else{
-        setTimeout(updateActiviationTimeUserSession, 2000);
-    }
-}());
-
-
 function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     var paramDataObj = getParamDataObjForAddingTrackingUserInfoAccessingWebsitesDetails(fromPageLoad);
     if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
