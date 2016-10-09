@@ -153,6 +153,79 @@
                 }
             };
             
+            // sendOtpcode
+            commonDetails.sendOtpcode = function(paramDataObj){
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/SendOtpCode", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){});
+                return promiseObject;
+            };
+
+            // signOutUser
+            commonDetails.signOutUser = function(){
+                try{
+                    // fetch param data from session
+                    var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                        var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(retResponseJson){});
+                        return promiseObject;
+                    }
+                }catch(ex){
+                    console.log("Problem in signOutUser=>"+ex);
+                }
+            };
+
+            // resetUserDashboardVariableData
+            commonDetails.resetUserDashboardVariableData = function(userDashboardDataObj){
+                if(userDashboardDataObj!=='' && userDashboardDataObj!==false && userDashboardDataObj!==undefined){
+                    $rootScope.loggedUserName = userDashboardDataObj['loggedUserName'];
+                    $rootScope.userSinceFrom = userDashboardDataObj['userSinceFrom'];
+                    $rootScope.isEnableRatingReviewSubmitButton = true;
+                    $rootScope.userInfoAllSectionListArrObj = userDashboardDataObj['userInfoAllSectionListArr'];
+                    if(userDashboardDataObj['isUserLoggedInSession']==='Y'){
+                        $rootScope.isUserLoggedInSession = true;
+                    }else{
+                        $rootScope.isUserLoggedInSession = false;
+                    }
+                }else{
+                    $rootScope.loggedUserName = '';
+                    $rootScope.userSinceFrom = '';
+                    $rootScope.isEnableRatingReviewSubmitButton = false;
+                    $rootScope.isUserLoggedInSession = false;
+                    $rootScope.userInfoAllSectionListArrObj = false;
+                }
+            };
+
+            // refreshUserDashboardSummaryDataDetails
+            commonDetails.refreshUserDashboardSummaryDataDetails = function(){
+                try{
+                    // fetch param data from session
+                    var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                        // calling UsersServices 
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
+                            $rootScope.$apply(function(){
+                                var userDashboardDataObj = false;
+                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
+                                    userDashboardDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                                }
+                                if(userDashboardDataObj!=='' && userDashboardDataObj!==false && userDashboardDataObj!==undefined){
+                                    commonDetails.resetUserDashboardVariableData(userDashboardDataObj);
+                                }else{
+                                    commonDetails.resetUserDashboardVariableData(false);
+                                }
+                            });
+                        });
+                    }else{
+                        commonDetails.resetUserDashboardVariableData(false);
+                    }
+                }catch(ex){
+                    console.log("Problem in refreshUserDashboardSummaryDataDetails=>"+ex);
+                }
+            };
+            
             return commonDetails;
 
         }catch(ex){
