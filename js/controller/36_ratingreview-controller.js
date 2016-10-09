@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('RatingReviewController', RatingReviewController);
 
-function RatingReviewController($scope, $rootScope, RatingReviewServices){
+function RatingReviewController($scope, $rootScope){
     try{
         
         // loadAverageRatingReviewedProduct 
