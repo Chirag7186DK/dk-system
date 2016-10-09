@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UsersController', UsersController);
 
-function UsersController($scope, $rootScope, $state, UsersServices){
+function UsersController($scope, $rootScope, $state, CommonServices){
     try{
         
         // goToSignUpSignInAccountSection
@@ -220,7 +220,7 @@ function UsersController($scope, $rootScope, $state, UsersServices){
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    var rtDataObj = UsersServices.sendOtpcode(apiParamJsonObj);
+                    var rtDataObj = CommonServices.sendOtpcode(apiParamJsonObj);
                     if(fromSection==='signInOtpSection'){
                         $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
                         $rootScope.userSignInOtpNoticeMsgStr = 'OTP sent successfully on your registered mobile no.s with us and it will take 15 sec approx to reach at your message box !!!';
@@ -258,7 +258,7 @@ function UsersController($scope, $rootScope, $state, UsersServices){
         
         // signOutUser
         $rootScope.signOutUser = function(){
-            UsersServices.signOutUser();
+            CommonServices.signOutUser();
             resetDKSessionData();
             // window.location.href = globalBaseSitePath;
             $state.go('/', {reload:true}); 
