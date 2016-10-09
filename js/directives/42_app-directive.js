@@ -566,3 +566,48 @@ function attachValidationBudgetamtinputDirective($timeout){
         }
     };
 }
+
+angular.module('DKAPP').directive('uiviewStateTrigger', uiviewStateTrigger);
+
+function uiviewStateTrigger($rootScope, $timeout){
+    return {
+        restrict:"E",
+        replace:true,
+        template:"<div></div>",
+        link: function ($scope, $el){
+            
+            $rootScope.$on('$stateChangeStart', function(event, currentState, previousState){
+                /*
+                    console.log("$stateChangeStart event=>"+event);
+                    console.log("$stateChangeStart currentState=>"+currentState);
+                    console.log("$stateChangeStart previousState=>"+previousState);
+                */
+            });
+            
+            $rootScope.$on('$stateChangeSuccess:', function(event, currentState, previousState){
+                /*
+                    console.log("$stateChangeSuccess: event=>"+event);
+                    console.log("$stateChangeSuccess: currentState=>"+currentState);
+                    console.log("$stateChangeSuccess: previousState=>"+previousState);
+                */
+            });
+            
+            $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+            });
+            
+            $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){
+                console.log("unfoundState=>"+unfoundState);
+            });
+            
+            $rootScope.$on('$viewContentLoading', function(event, viewConfigObj){
+                //console.log("$viewContentLoading event=>"+event);
+                //console.log("$viewContentLoading viewConfigObj=>"+viewConfigObj);
+            });
+            
+            $rootScope.$on('$viewContentLoaded', function(event, viewConfigObj){
+                //console.log("$viewContentLoaded event=>"+event);
+                //console.log("$viewContentLoaded viewConfigObj=>"+viewConfigObj);
+            });
+        }
+    };
+}
