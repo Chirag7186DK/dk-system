@@ -188,6 +188,25 @@ class UsersController extends V1Controller{
         }
     }
     
+    public function actionUserLog(){
+        if(ComponentsHttp::httpMethod()=="PUT"){
+            $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
+            if($inDtoArray!='FALSE'){
+                $paramDataArr = $inDtoArray['dkParamDataArr'];
+                $paramKeyValueDataStatus = customparam :: checkParamDataForUserLog($paramDataArr);
+                if($paramKeyValueDataStatus=='TRUE'){
+                    $UsersServicesV1 = new UsersServicesV1();
+                    $rspDetails = $UsersServicesV1->updateUserLog($paramDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
+                }else{
+                    commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
+                }
+            }else{
+                commonfunction :: generateResponseDataForInvalidRequestParamKey();
+            }
+        }
+    }
+    
     public function actionUserLogout(){
         if(ComponentsHttp::httpMethod()=="PUT"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
