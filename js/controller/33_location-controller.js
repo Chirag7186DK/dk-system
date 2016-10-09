@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('LocationController', LocationController);
 
-function LocationController($scope, $rootScope, $state, LocationServices){
+function LocationController($scope, $rootScope, $state, CommonServices){
     try{
         
         // loadDeliveryCityList 
@@ -87,7 +87,7 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                 storeSelectedDeliveryCityDetailsInSessionStorage(paramObj, 'Y');
                 $rootScope.userSelectedDeliveryCityId = ($(elementObj).selectpicker('val'));
                 // refresh delivery area list, delivery desserts type list
-                LocationServices.resetSelectedDeliveryAreaTextHeader();
+                CommonServices.resetSelectedDeliveryAreaTextHeader();
                 $rootScope.refreshDependencyElementOfDeliveryCityList(cityListLoadedOnPage, 'Y');
             });
         };
@@ -185,7 +185,7 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                 }
                 // refresh dependency element on ui screen
                 $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-                LocationServices.showSelectedDeliveryAreaTextHeader();
+                CommonServices.showSelectedDeliveryAreaTextHeader();
             }     
         };
         
@@ -208,7 +208,7 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                 $rootScope.userSelectedDeliveryAreaId =  ($(deliveryAreaElementObj).selectpicker('val'));
                 // refresh desserts type list based on deilvery area
                 $rootScope.refreshDependencyElementOfDeliveryAreaList(loadAreaListOnPage);
-                LocationServices.showSelectedDeliveryAreaTextHeader();
+                CommonServices.showSelectedDeliveryAreaTextHeader();
             });
         };
         
