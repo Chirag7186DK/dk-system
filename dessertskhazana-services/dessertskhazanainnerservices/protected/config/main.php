@@ -49,8 +49,8 @@ return array(
     // application components
     'components'=>array(
         'user'=>array(
-                // enable cookie-based authentication
-                'allowAutoLogin'=>true,
+            // enable cookie-based authentication
+            'allowAutoLogin'=>true,
         ),
         'db'=>array(
             'class'=>'CDbConnection',
@@ -60,7 +60,6 @@ return array(
             'password' => $GLOBALS['YII_DB_PASS'],
             'charset' => 'utf8',
         ),
-
         'errorHandler'=>array(
             // use 'site/error' action to display errors
             'errorAction'=>'site/error',
