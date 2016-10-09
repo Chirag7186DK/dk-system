@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('ProductController', ProductController);
 
-function ProductController($scope, $rootScope, $state, StoreServices){
+function ProductController($scope, $rootScope, $state, CommonServices){
     try{
                 
         // view-product-details
@@ -49,7 +49,7 @@ function ProductController($scope, $rootScope, $state, StoreServices){
         // loadStoreDeliveryFeeApplicableMsgOnDeliveryArea 
         $rootScope.loadStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
             try{
-                StoreServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
+                CommonServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
             }catch(ex){
                 console.log("problem in loadStoreDeliveryFeeApplicableMsgOnDeliveryArea ex=>"+ex);
             }
