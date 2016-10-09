@@ -45,24 +45,6 @@
                 }  
             };
 
-            locationDetails.getDeliveryCityList = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-
-            locationDetails.getDKDeliveryAreaList = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-
-            locationDetails.getDKDeliveryAreaBasedDessertsTypeList = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedDessertsTypeList", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-            
             return locationDetails;
 
         }catch(ex){
