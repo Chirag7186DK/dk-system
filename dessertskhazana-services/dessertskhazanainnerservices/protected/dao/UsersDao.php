@@ -344,6 +344,28 @@ class UsersDao{
         return $retResult;
     }
    
+    // CJ defined this function 2016-10-09
+    public static function updateActivationTimeUserSession($udblogId, $userSessionId){
+        $retStatus = 'FALSE';
+        try{
+            $timeStamp = time();
+            $connection = Yii::App()->db;
+            $sql= "UPDATE USERLOG ul
+                JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid
+                SET ul.lastupdated_sessiontime='$timeStamp'
+                WHERE 1
+                AND ul.status='A' AND us.status='A'
+                AND ul.user_logno='$udblogId' 
+                AND ul.user_sessionid='$userSessionId' 
+                AND us.user_sessionid='$userSessionId' ";
+            $command = $connection->createCommand($sql);
+            $result = $command->execute();
+            if($result>0){
+                $retStatus = 'TRUE';
+            }
+        }catch(Exception $ex){}
+        return $retStatus;
+    }
     
     // CJ defined this function 2016-08-30
     public static function userLogoutFromWebsites($udblogId, $userSessionId){
