@@ -318,7 +318,7 @@
                     <p>
                         <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
                     </p>
-                    <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
+                    <a class='btn startShoppingBtnClass' ui-sref="/">Start Shopping</a>
                 </div>
             </div>
 
@@ -374,7 +374,7 @@
                     <p>
                         <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
                     </p>
-                    <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
+                    <a class='btn startShoppingBtnClass' ui-sref="/">Start Shopping</a>
                 </div>
             </div>
 
@@ -424,7 +424,7 @@
                     <p>
                         <i class="fa fa-shopping-basket shoppingBagsIconClass"></i>
                     </p>
-                    <a class='btn startShoppingBtnClass' href="<?php echo $BaseSitePath;?>">Start Shopping</a>
+                    <a class='btn startShoppingBtnClass' ui-sref="/">Start Shopping</a>
                 </div>
             </div>
 
