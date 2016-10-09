@@ -44,7 +44,33 @@
                     showNotificationBoxMsg('', notifyInfoConfigObj);
                 }  
             };
+            
+            // resetStoreDeliveryFeeApplicableMsgOnDeliveryArea
+            commonDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(storeDeliveryFeeApplicableMsg){
+                $rootScope.storeDeliveryFeeApplicableMsg = storeDeliveryFeeApplicableMsg;
+            };
 
+            // getStoreDeliveryFeeApplicableMsgOnDeliveryArea
+            commonDetails.getStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
+                // fetch param data from session
+                var paramDataObj = getParamObjStoreDeliveryFeeApplicableMsgOnDeliveryArea();
+                if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                    var apiParamJsonObj = {};
+                    apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreDeliveryFeeApplicableDeliveryArea", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
+                        $rootScope.$apply(function(){
+                            var storeDeliveryFeeApplicableMsg = '';
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                storeDeliveryFeeApplicableMsg = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'applicableStoreDeliveryFeeMsg', rtRspJson);
+                            }
+                            commonDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea(storeDeliveryFeeApplicableMsg);
+                        });
+                    });
+                }else{
+                    commonDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea('');
+                }
+            };
             
             return commonDetails;
 
