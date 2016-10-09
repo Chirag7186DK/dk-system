@@ -54,12 +54,12 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.userPersonalDetails =  false;
-                    // calling UsersServices 
-                    UsersServices.getUserPersonalInfo(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var userPersonalDetailsArrObj =  false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userPersonalDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userPersonalDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                userPersonalDetailsArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userPersonalDetails', rtRspJson);
                             }
                             if(userPersonalDetailsArrObj!==false && userPersonalDetailsArrObj!==undefined 
                                 && jQuery.isEmptyObject(userPersonalDetailsArrObj)===false){
@@ -94,13 +94,13 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     && jQuery.isEmptyObject(userPersonalInfoParamData)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = userPersonalInfoParamData;
-                    // calling UsersServices 
-                    UsersServices.updateUserPersonalInfo(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/ManageUserPersonalInfoData", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var isUserprofileInfoUpdated =  false;
                             var notificationMsgStr = 'User profile info not update, please try again !!!';
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isUserprofileInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserprofileInfoUpdated', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                isUserprofileInfoUpdated = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUserprofileInfoUpdated', rtRspJson);
                             }
                             if(isUserprofileInfoUpdated==='TRUE'){
                                 notificationMsgStr = 'User profile info updated, successfully !!!';
@@ -133,7 +133,6 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
             }
         };
         
-        
         // updateUserPaswordInfoInUserCAccount
         $rootScope.updateUserPaswordInfoInUserCAccount = function(userChangedPasswordInfoParamData){
             try{
@@ -141,13 +140,13 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     && jQuery.isEmptyObject(userChangedPasswordInfoParamData)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = userChangedPasswordInfoParamData;
-                    // calling UsersServices 
-                    UsersServices.updateUserPasswordInfo(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UpdateUserPasswordInfoData", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var userpwdChangedStatusDetails =  false;
                             var notificationMsgStr = 'Your password is not change, please try again !!!';
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userpwdChangedStatusDetails = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'userpwdChangedStatusDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                userpwdChangedStatusDetails = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'userpwdChangedStatusDetails', rtRspJson);
                             }
                             if(userpwdChangedStatusDetails['ispwdChanged']==='TRUE'){
                                 clearUserpasswordFormFieldInfo();
@@ -198,21 +197,18 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.ordercartRequestedAllStoreWiseData =  false;
-                    // $rootScope.ordercartRequestedSummaryData =  false;
-                    // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var ordercartRequestedData =  false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                ordercartRequestedData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartRequestedData', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                ordercartRequestedData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartRequestedData', rtRspJson);
                             }
                             if(ordercartRequestedData!==false && ordercartRequestedData!==undefined 
                                 && jQuery.isEmptyObject(ordercartRequestedData)===false){
                                 $rootScope.ordercartRequestedAllStoreWiseData =  ordercartRequestedData.ordercartAllStoreWiseData;
-                                // $rootScope.ordercartRequestedSummaryData =  ordercartRequestedData.ordercartSummaryData;
                             }else{
                                 $rootScope.ordercartAllStoreWiseData =  false;
-                                // $rootScope.ordercartRequestedSummaryData =  false;
                             }
                         });
                     });
@@ -242,12 +238,12 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.allOrdercartWiseCancelledData =  false;
-                    // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var ordercartCancelledData =  false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                ordercartCancelledData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartCancelledData', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                ordercartCancelledData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartCancelledData', rtRspJson);
                             }
                             if(ordercartCancelledData!==false && ordercartCancelledData!==undefined 
                                 && jQuery.isEmptyObject(ordercartCancelledData)===false){
@@ -283,12 +279,12 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = authenticatedUserParamDataObj;
                     $rootScope.allOrdercartWiseOrderedData =  false;
-                    // calling OrderCartServices 
-                    OrderCartServices.ordercartItemList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var allOrdercartWiseOrderedData =  false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                allOrdercartWiseOrderedData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartOrderedData', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                allOrdercartWiseOrderedData = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'ordercartOrderedData', rtRspJson);
                             }
                             if(allOrdercartWiseOrderedData!==false && allOrdercartWiseOrderedData!==undefined 
                                 && jQuery.isEmptyObject(allOrdercartWiseOrderedData)===false){
@@ -338,13 +334,13 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling OrderCartServices 
-                    OrderCartServices.updateItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var isItemUpdatedFromOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to update item in order cart !";
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isItemUpdatedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemUpdatedFromOrdercart', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                isItemUpdatedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemUpdatedFromOrdercart', rtRspJson);
                             }
                             if(isItemUpdatedFromOrdercart==='TRUE'){
                                 notificationMsgStr = "Item updated in order cart successfully !";
@@ -368,13 +364,13 @@ function UCustomerController($rootScope, UsersServices, OrderCartServices){
                 if(paramDataObj!==false && paramDataObj!==undefined && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling OrderCartServices 
-                    OrderCartServices.removeItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services 
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'DELETE', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var isItemRemovedFromOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to remove item from order cart !";
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isItemRemovedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemRemovedFromOrdercart', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                isItemRemovedFromOrdercart = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isItemRemovedFromOrdercart', rtRspJson);
                             }
                             if(isItemRemovedFromOrdercart==='TRUE'){
                                 notificationMsgStr = "Item remove from order cart successfully !";
