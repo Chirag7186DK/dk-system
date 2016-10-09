@@ -13,11 +13,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.avgRatingReviewedProductDetails = false;
-                    // calling RatingReviewServices 
-                    RatingReviewServices.getAverageRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AverageRatingReviewProduct", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                 if(dataObj!==false && dataObj!==undefined && dataObj!==''){
                                     $rootScope.avgRatingReviewedProductDetails = dataObj.avgRatingReviewedProductDetails;
                                 }
@@ -40,11 +40,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.maxRatingReviewedTypeDetailsArr = false;
-                    // calling RatingReviewServices 
-                    RatingReviewServices.getMaxRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/MaxRatingReviewProduct", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                 if(dataObj!==false && dataObj!==undefined && dataObj!==''){
                                     $rootScope.maxRatingReviewedTypeDetailsArr = dataObj.maxRatingAndReviewedTypeDetails;
                                 }
@@ -68,12 +68,12 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.storeRatingReviewQuestionDetails = false;
                     $rootScope.isStoreRatingReviewQuestionFound = false;
-                    // calling RatingReviewServices 
-                    RatingReviewServices.getStoreRatingReviewQuestions(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/StoreRatingReviewQuestions", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
                             showHideLoaderBox('hide');
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                 if(dataObj!==false && dataObj!==undefined && dataObj!==''){
                                     $rootScope.storeRatingReviewQuestionDetails = dataObj.storeRatingReviewQuestionDetails;
                                     $rootScope.isStoreRatingReviewQuestionFound = dataObj.isStoreRatingReviewQuestionFound;
@@ -98,11 +98,11 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     $rootScope.allUserRatingReviewProductDetailsArr = false;
-                    // calling RatingReviewServices 
-                    RatingReviewServices.getAllUserRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/AllUserRatingReviewProduct", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var dataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                 if(dataObj!==false && dataObj!==undefined && dataObj!==''){
                                     $rootScope.allUserRatingReviewAboutProductDetailsArr = dataObj.allUserRatingReviewProductDetails;
                                 }
@@ -140,12 +140,12 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                     // calling RatingReviewServices 
-                    RatingReviewServices.addUserRatingReviewProduct(apiParamJsonObj).done(function(retResponseJson){
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/UserRatingReviewProduct", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
                             var notifyMsgStr = 'Please try again to post review & rating about product !!!';
                             var isUserAddedRatingReviewProduct = 'FALSE';
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isUserAddedRatingReviewProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isUserAddedRatingReviewProduct', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                isUserAddedRatingReviewProduct = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isUserAddedRatingReviewProduct', rtRspJson);
                             }
                             if(isUserAddedRatingReviewProduct==='TRUE'){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !!!';
