@@ -59,7 +59,7 @@ function UsersController($scope, $rootScope, $state, UsersServices){
                         $scope.$apply(function(){
                             var userDataObj = false;
                             if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
-                                userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', rtRspJson);
+                                userDataObj = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'userDetails', rtRspJson);
                             }
                             if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
                                 if(userDataObj['isUserAccountActive']==='N'
