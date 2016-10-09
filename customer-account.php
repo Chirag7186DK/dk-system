@@ -2,7 +2,7 @@
 <div ng-controller='dkSessionController' ng-init="loadDefaultDataInDkSession('customer-account');">
 
     <!-- my-account body content-->
-    <div ng-show="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_bodyDivClass">
+    <div ng-if="isUserLoggedInSession" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_bodyDivClass">
 
         <!-- customer bread crumb -->
         <ul class="customerBreadcrumbULClass list-inline">
