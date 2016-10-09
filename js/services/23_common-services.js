@@ -72,6 +72,87 @@
                 }
             };
             
+            // resetUserOrdercartDashboardVariableData
+            commonDetails.resetUserOrdercartDashboardVariableData = function(userOrdercartDashboardDataObj){
+                if(userOrdercartDashboardDataObj!=='' && userOrdercartDashboardDataObj!==false 
+                    && userOrdercartDashboardDataObj!==undefined){
+                    $rootScope.ordercartCount = userOrdercartDashboardDataObj['ordercartCount'];
+                    $rootScope.totalStores = userOrdercartDashboardDataObj['totalStores'];
+                    $rootScope.ordercartItemRequestedCount = userOrdercartDashboardDataObj['ordercartItemRequestedCount'];
+                    $rootScope.subtotalOrderAmt = userOrdercartDashboardDataObj['subtotalOrderAmt'];
+                    $rootScope.totalDeliveryFee = userOrdercartDashboardDataObj['totalDeliveryFee'];
+                    $rootScope.totalOrderAmt = userOrdercartDashboardDataObj['totalOrderAmt'];
+                }else{
+                    $rootScope.ordercartCount = 0;
+                    $rootScope.totalStores = 0;
+                    $rootScope.ordercartItemRequestedCount = 0;
+                    $rootScope.subtotalOrderAmt = 0;
+                    $rootScope.totalDeliveryFee = 0;
+                    $rootScope.totalOrderAmt = 0;
+                }
+            };
+
+            // refreshUserOrdercartDashboardSummaryDataDetails
+            commonDetails.refreshUserOrdercartDashboardSummaryDataDetails = function(){
+                try{
+                    // fetch param data from session
+                    var paramDataObj = getParamDataAuthenticatedUserDetailsFromSession();
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/UserOrdercartDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
+                            $rootScope.$apply(function(){
+                                var userOrdercartDashboardDataObj = false;
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    userOrdercartDashboardDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'orderCartDashboardSummary', rtRspJson);
+                                }
+                                if(userOrdercartDashboardDataObj!=='' && userOrdercartDashboardDataObj!==false 
+                                    && userOrdercartDashboardDataObj!==undefined){
+                                    commonDetails.resetUserOrdercartDashboardVariableData(userOrdercartDashboardDataObj);
+                                }else{
+                                    commonDetails.resetUserOrdercartDashboardVariableData(false);
+                                }
+                            });
+                        });
+                    }else{
+                        commonDetails.resetUserOrdercartDashboardVariableData(false);
+                    }
+                }catch(ex){
+                    console.log("Problem in refreshUserOrdercartDashboardSummaryDataDetails=>"+ex);
+                }
+            };
+
+            // addProductDataInOrdercartFromSession & item directly added in DB
+            commonDetails.addProductDataInOrdercartFromSession = function(fcontentClass, productDataFromSession){
+                try{
+                    // collect product data
+                    var paramDataObj = getParamDataToAddProductInOrdercart(fcontentClass, productDataFromSession);
+                    if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
+                        var apiParamJsonObj = {};
+                        apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                        // calling ajax services
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
+                            $rootScope.$apply(function(){
+                                var isProductAddedInOrdercart = 'FALSE';
+                                var notificationMsgStr = "Please try again to add item in your order cart !";
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    isProductAddedInOrdercart = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isProductAddedInOrdercart', rtRspJson);
+                                }
+                                if(isProductAddedInOrdercart==='TRUE'){
+                                    notificationMsgStr = "Item added in your order cart successfully !";
+                                    clearProductContentAfterAddedProductInOrdercart(fcontentClass);
+                                    // refresh user order cart dashboard summary data using services
+                                    commonDetails.refreshUserOrdercartDashboardSummaryDataDetails();
+                                }
+                                showNotificationBoxMsg(notificationMsgStr);
+                            });
+                        });
+                    }
+                }catch(ex){
+                    console.log("problem in addProductDataInOrdercart ex=>"+ex);
+                }
+            };
+            
             return commonDetails;
 
         }catch(ex){
