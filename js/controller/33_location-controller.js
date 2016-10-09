@@ -17,11 +17,11 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                     $rootScope.userSelectedDeliveryCityId = false;
                     $rootScope.userSelectedDeliveryCityDataObj = false;
                     $rootScope.isResetDeliveryCityDependencySessionData = 'Y';
-                    // calling LocationServices to get delivery city list
-                    LocationServices.getDeliveryCityList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling generalize ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryCity", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryCityDetails', rtRspJson);
                                 if(arrObj!==false && arrObj!==undefined && arrObj!==''){
                                     if(arrObj.selectedDeliveryCityDetails!==false){
                                         $rootScope.userSelectedDeliveryCityId = arrObj.selectedDeliveryCityDetails['cityId'];
@@ -125,11 +125,11 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                         $rootScope.userSelectedDeliveryAreaId = false;
                         $rootScope.userSelectedDeliveryAreaDataObj = false;
                         $rootScope.isResetDeliveryAreaDependencySessionData = 'Y';
-                        // calling LocationServices to get delivery area list
-                        LocationServices.getDKDeliveryAreaList(apiParamJsonObj).done(function(retResponseJson){
+                        // calling generalize ajax services
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Location/DeliveryArea", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                             $scope.$apply(function(){
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    var arrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaDetails', rtRspJson);
                                     if(arrObj!==false && arrObj!==undefined && arrObj!==''){
                                         if(arrObj.selectedDeliveryAreaDetails!==false){
                                             $rootScope.userSelectedDeliveryAreaId = arrObj.selectedDeliveryAreaDetails['areaId']+"|"+arrObj.selectedDeliveryAreaDetails['ccaId'];
@@ -236,11 +236,11 @@ function LocationController($scope, $rootScope, $state, LocationServices){
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.deliveryAreaBasedDessertsTypeList = false;
-                        // calling LocationServices to get delivery area based desserts type list
-                        LocationServices.getDKDeliveryAreaBasedDessertsTypeList(apiParamJsonObj).done(function(retResponseJson){
+                        // calling generalize ajax services
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/DeliveryAreaBasedDessertsTypeList", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                             $scope.$apply(function(){
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', rtRspJson);
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         storeDefaultDeliveryDessertsTypeDetailsInSessionStorage(false, 'Y');
                                         $rootScope.deliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
