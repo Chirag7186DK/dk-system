@@ -2,7 +2,10 @@
 angular.module('DKAPP').controller('dkSessionController', dkSessionController);
 
 // dkSessionController using
-function dkSessionController($rootScope, $state){
+function dkSessionController($rootScope, $state, CommonServices){
+    
+    $rootScope.CommonServicesObj = CommonServices;
+    console.log($rootScope.CommonServicesObj);
     
     // loadDefaultDataInDkSession
     $rootScope.loadDefaultDataInDkSession = function(pageLoad){
