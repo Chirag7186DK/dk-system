@@ -469,11 +469,12 @@ class commonfunction{
             $rtDataArr1 = commonfunction :: handlingUserSignInAuthentication($paramDataArr);
             if($rtDataArr1['userDetails']['isUserAccountActive']=='Y'){
                 $rtDataArr1['userDetails']['usedOtpcodeId'] = $paramDataArr['usedOtpcodeId'];
+                $rtDataArr1['userDetails']['usersession_starttimestamp'] = time();
                 $userLogNo = commonfunction :: preparedDataToStoreInfoAbtUserAsLog($rtDataArr1['userDetails']);
                 if(strlen($userLogNo)>=20){
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['user_sessionid'] = $paramDataArr['user_sessionid'];
-                    $rspDetails['userDetails']['usersession_starttimestamp'] = $paramDataArr['usersession_starttimestamp'];
+                    $rspDetails['userDetails']['usersession_starttimestamp'] = $rtDataArr1['userDetails']['usersession_starttimestamp'];
                     $rspDetails['userDetails']['udblogId'] = $userLogNo;
                     $rspDetails['userDetails']['userProfileTypeId'] = $rtDataArr1['userDetails']['userProfileTypeId'];
                 }
