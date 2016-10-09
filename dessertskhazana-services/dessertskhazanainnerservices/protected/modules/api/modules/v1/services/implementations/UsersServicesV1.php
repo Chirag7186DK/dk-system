@@ -298,7 +298,27 @@ class UsersServicesV1 implements IUsersServicesV1{
         } 
         return $rspDetails;
     }
-
+    
+    // CJ defined this action 2016-08-30
+    public function updateUserLog($paramDataArr){
+        $rspDetails = array();
+        // checking param data length
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            if(array_key_exists('isRequestActivationTimeUpdation', $paramDataArr)){
+                if($paramDataArr['isRequestActivationTimeUpdation']=='Y'){
+                    $rspDetails['isActivationTimeUpdateUserSession'] = 'N';
+                    $rtUpdatedStatus = UsersDao :: updateActivationTimeUserSession(
+                        $paramDataArr['udblogId'], $paramDataArr['user_sessionid']
+                    );
+                    if($rtUpdatedStatus=='TRUE'){
+                        $rspDetails['isActivationTimeUpdateUserSession'] = 'Y';
+                    }
+                }
+            }
+        } 
+        return $rspDetails;
+    }
+    
     // CJ defined this action 2016-08-30
     public function userLogoutFromWebsites($paramDataArr){
         $rspDetails = array();
