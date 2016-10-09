@@ -1407,20 +1407,12 @@ function checkUserLoggedInSession(){
 function getParamDataAuthenticatedUserDetailsFromSession(){
     var paramObj = {};
     try{
-        if(checkDkSessionParamObjExists()==='TRUE'){
+        if(checkUserLoggedInSession()===true){
             var dkParamObj = $.parseJSON(sessionStorage.getItem('DKPARAMOBJ'));
-            if(dkParamObj.hasOwnProperty('userSession')===true){
-                var userSessionParamObj = dkParamObj['userSession'];
-                if(userSessionParamObj.hasOwnProperty('user_sessionid')===true
-                    && userSessionParamObj.hasOwnProperty('udblogId')===true){
-                    if((userSessionParamObj['user_sessionid']).length>=20
-                        && (userSessionParamObj['udblogId']).length>=20){
-                        paramObj['udblogId'] = userSessionParamObj['udblogId'];
-                        paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
-                        paramObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
-                    }
-                }
-            }
+            var userSessionParamObj = dkParamObj['userSession'];
+            paramObj['udblogId'] = userSessionParamObj['udblogId'];
+            paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+            paramObj['userProfileTypeId'] = userSessionParamObj['userProfileTypeId'];
         }
         if(Object.keys(paramObj).length===3){
             return paramObj;
