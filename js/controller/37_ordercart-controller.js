@@ -39,13 +39,13 @@ function OrderCartController($rootScope, $state, OrderCartServices, StoreService
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling OrderCartServices 
-                    OrderCartServices.addItemOrdercart(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageOrdercartItem", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var isProductAddedInOrdercart = 'FALSE';
                             var notificationMsgStr = "Please try again to add item in your order cart !";
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isProductAddedInOrdercart = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isProductAddedInOrdercart', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                isProductAddedInOrdercart = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'isProductAddedInOrdercart', rtRspJson);
                             }
                             if(isProductAddedInOrdercart==='TRUE'){
                                 notificationMsgStr = "Item added in your order cart successfully !";
@@ -91,12 +91,12 @@ function OrderCartController($rootScope, $state, OrderCartServices, StoreService
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling OrderCartServices 
-                    OrderCartServices.getStorewiseOrderSummaryForCheckoutProcess(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/StorewiseOrderSummaryCheckoutProcess", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var allStorewiseOrderSummaryDataArrObj =  false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                allStorewiseOrderSummaryDataArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'storewiseOrderSummaryData', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                allStorewiseOrderSummaryDataArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'storewiseOrderSummaryData', rtRspJson);
                             }
                             if(allStorewiseOrderSummaryDataArrObj!==false && allStorewiseOrderSummaryDataArrObj!==undefined 
                                 && jQuery.isEmptyObject(allStorewiseOrderSummaryDataArrObj)===false){
@@ -136,13 +136,13 @@ function OrderCartController($rootScope, $state, OrderCartServices, StoreService
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling OrderCartServices 
-                    OrderCartServices.updateOrderDeliveryAddressInOrdercartStore(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/OrderCart/ManageDeliveryAddressOrdercartStorewise", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
                             var isUpdatedOrderDeliveryAddress = 'FALSE';
                             var notificationMsgStr = "Please try again to updated order delivery address !!!";
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                isUpdatedOrderDeliveryAddress = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUpdatedOrderDeliveryAddress', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                isUpdatedOrderDeliveryAddress = extractDataFromReturnAjaxResponse('PUT', 'apiFile', 'isUpdatedOrderDeliveryAddress', rtRspJson);
                             }
                             if(isUpdatedOrderDeliveryAddress==='TRUE'){
                                 notificationMsgStr = "Order delivery address updated successfully !!!";
