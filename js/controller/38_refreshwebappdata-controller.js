@@ -1,11 +1,11 @@
 
 angular.module('DKAPP').controller('RefreshWebAppDataController', RefreshWebAppDataController);
 
-function RefreshWebAppDataController($rootScope, UsersServices, CommonServices){
+function RefreshWebAppDataController($rootScope, CommonServices){
     try{
         // refreshWebAppData
         $rootScope.refreshWebAppData = function(){
-            UsersServices.refreshUserDashboardSummaryDataDetails();
+            CommonServices.refreshUserDashboardSummaryDataDetails();
             CommonServices.refreshUserOrdercartDashboardSummaryDataDetails();
             CommonServices.addProductDataInOrdercartFromSession(false, 'session');
         };
