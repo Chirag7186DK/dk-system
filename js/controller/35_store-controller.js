@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('StoreController', StoreController);
 
-function StoreController($rootScope, $rootScope, $state, RatingReviewServices){
+function StoreController($rootScope, $rootScope, $state){
     try{
         
         $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
@@ -474,8 +474,8 @@ function StoreController($rootScope, $rootScope, $state, RatingReviewServices){
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.allUserRatingReviewDetails = false;
-                        // calling RatingReviewServices 
-                        RatingReviewServices.getStoreAllUserRatingReviewed(apiParamJsonObj).done(function(rtRspJson){
+                        // calling ajax services
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/StoreAllUserRating", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                             $rootScope.$apply(function(){
                                 if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
                                     var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
