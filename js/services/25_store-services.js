@@ -9,30 +9,6 @@
 
             var storeDetails = {};
 
-            storeDetails.getStoreListDeliveryAreaBasedDessertsType = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreListDeliveryAreaBasedDessertType", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-
-            storeDetails.getDeliveryAreaBasedDessertsTypeList = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/DeliveryAreaBasedStoresConductDessertType", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-
-            storeDetails.getStoreSummaryInfo = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreSummaryInfo", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-
-            storeDetails.getStoreWorkingStyleDetails = function(apiParamJsonObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreWorkingstyle", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-
             // resetStoreDeliveryFeeApplicableMsgOnDeliveryArea
             storeDetails.resetStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(storeDeliveryFeeApplicableMsg){
                 $rootScope.storeDeliveryFeeApplicableMsg = storeDeliveryFeeApplicableMsg;
@@ -45,6 +21,7 @@
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
+                    // calling ajax services
                     communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreDeliveryFeeApplicableDeliveryArea", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
                         $rootScope.$apply(function(){
                             var storeDeliveryFeeApplicableMsg = '';
