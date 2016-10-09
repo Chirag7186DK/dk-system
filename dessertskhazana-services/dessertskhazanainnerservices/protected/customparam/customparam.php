@@ -774,6 +774,30 @@ class customparam{
         return $retStatus;
     }
     
+    public static function checkParamDataForUserLog($paramJsonData){
+        $retStatus = 'FALSE';
+        $correctParamKeyValueDataCount = 0;
+        if(array_key_exists('user_sessionid', $paramJsonData)){
+            if(strlen($paramJsonData['user_sessionid'])>=20){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('udblogId', $paramJsonData)){
+            if(strlen($paramJsonData['udblogId'])>=20){
+                $correctParamKeyValueDataCount++;
+            }
+        }
+        if(array_key_exists('isRequestActivationTimeUpdation', $paramJsonData)){
+            if($paramJsonData['isRequestActivationTimeUpdation']=='Y'){
+                $correctParamKeyValueDataCount++;
+            }
+            if($correctParamKeyValueDataCount==3){
+                $retStatus = 'TRUE';
+            }
+        }
+        return $retStatus;
+    }
+    
     public static function checkParamDataForLogoutUser($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
