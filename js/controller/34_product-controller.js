@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('ProductController', ProductController);
 
-function ProductController($scope, $rootScope, $state, ProductServices, StoreServices){
+function ProductController($scope, $rootScope, $state, StoreServices){
     try{
                 
         // view-product-details
@@ -28,11 +28,11 @@ function ProductController($scope, $rootScope, $state, ProductServices, StoreSer
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productDetails = false;
-                    // calling ProductServices to get product details
-                    ProductServices.getProductTypeProductCategoryProductDetails(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryProductDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allProductDetails', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.productDetails = arrJsonObj;
                                 }
@@ -66,11 +66,11 @@ function ProductController($scope, $rootScope, $state, ProductServices, StoreSer
                     $rootScope.productDescriptionDetailsArr = false;
                     $rootScope.toggleProductDescriptionIconClass = "fa fa-chevron-circle-up";
                     $rootScope.isToggleProductDescriptionContent = false;
-                    // calling ProductServices 
-                    ProductServices.getProductDescriptionDetails(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductDescriptionDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var productDescriptionDetailsArr = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'descriptionDetailsArr', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var productDescriptionDetailsArr = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'descriptionDetailsArr', rtRspJson);
                                 if(productDescriptionDetailsArr!==false 
                                     && productDescriptionDetailsArr!==undefined && productDescriptionDetailsArr!==''){
                                     $rootScope.productDescriptionDetailsArr = productDescriptionDetailsArr;
