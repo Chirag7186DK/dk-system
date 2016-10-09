@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('OrderCartController', OrderCartController);
 
 // OrderCartController
-function OrderCartController($rootScope, $state, OrderCartServices, CommonServices){
+function OrderCartController($rootScope, $state, CommonServices){
     
     try{
          
@@ -51,7 +51,7 @@ function OrderCartController($rootScope, $state, OrderCartServices, CommonServic
                                 notificationMsgStr = "Item added in your order cart successfully !";
                                 clearProductContentAfterAddedProductInOrdercart(fcontentClass);
                                 // refresh user order cart dashboard summary data using services
-                                OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+                                CommonServices.refreshUserOrdercartDashboardSummaryDataDetails();
                                 if(productDataFromSession!=='session'){
                                     CommonServices.getStoreDeliveryFeeApplicableMsgOnDeliveryArea();
                                 }
