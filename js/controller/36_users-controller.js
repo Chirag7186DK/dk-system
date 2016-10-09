@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UsersController', UsersController);
 
-function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
+function UsersController($scope, $rootScope, $state, UsersServices){
     try{
         
         // goToSignUpSignInAccountSection
@@ -54,12 +54,12 @@ function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling UsersServices 
-                    UsersServices.userSignInAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignInAuthentication", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
                             var userDataObj = false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', rtRspJson);
                             }
                             if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
                                 if(userDataObj['isUserAccountActive']==='N'
@@ -113,12 +113,12 @@ function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling UsersServices 
-                    UsersServices.userSignUpAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignUpAuthentication", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
                             var rtDataObj = false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                rtDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                rtDataObj = extractDataFromReturnAjaxResponse('POST', 'apiFile', '', rtRspJson);
                             }
                             if(rtDataObj!=='' && rtDataObj!==false && rtDataObj!==undefined){
                                 if(rtDataObj['isOtpCodeSent']==='N' && rtDataObj['isOtpCodeValidated']==='N'){
@@ -167,12 +167,12 @@ function UsersController($scope, $rootScope, $state, $timeout, UsersServices){
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling UsersServices 
-                    UsersServices.userForgotPwdAuthentication(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserForgotPwdAuthentication", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
                             var userDataObj = false;
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                userDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                userDataObj = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'userDetails', rtRspJson);
                             }
                             if(userDataObj!=='' && userDataObj!==false && userDataObj!==undefined){
                                 if(userDataObj['isUserAccountActive']==='N' && userDataObj['isOtpCodeSent']==='N' 
