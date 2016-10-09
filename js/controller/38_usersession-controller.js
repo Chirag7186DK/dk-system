@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('dkSessionController', dkSessionController);
 
-// dkSessionController using
+// dkSessionController
 function dkSessionController($rootScope, $state, CommonServices){
     
     $rootScope.CommonServicesObj = CommonServices;
@@ -9,19 +9,14 @@ function dkSessionController($rootScope, $state, CommonServices){
     // loadDefaultDataInDkSession
     $rootScope.loadDefaultDataInDkSession = function(pageLoad){
         try{
-            // check DKPARAMOBJ is available or not in session storage
-            if((sessionStorage.getItem('DKPARAMOBJ')===null || sessionStorage.getItem('DKPARAMOBJ')===undefined 
-                || sessionStorage.getItem('DKPARAMOBJ')==='' || sessionStorage.getItem('DKPARAMOBJ')===false) && pageLoad==='home'){
-                var retStatusResetDkSessionDataCleared = initializeDkSessionData();  
-                if(retStatusResetDkSessionDataCleared===true){
-                }
-            }else if((sessionStorage.getItem('DKPARAMOBJ')!==null && sessionStorage.getItem('DKPARAMOBJ')!==undefined 
-                && sessionStorage.getItem('DKPARAMOBJ')!=='' && sessionStorage.getItem('DKPARAMOBJ')!==false) && pageLoad==='home'){
+            if(checkDkSessionParamObjExists()==='FALSE' && pageLoad==='home'){
+                var rtStatusDkSessionDataInitialized = initializeDkSessionData(); 
+                console.log("rtStatusDkSessionDataInitialized=>"+rtStatusDkSessionDataInitialized);
+            }else if(checkDkSessionParamObjExists()==='TRUE' && pageLoad==='home'){
                 // reset user product data in session
                 generateDkUserSessionId();
                 resetUserproductSessionData();
-            }else if((sessionStorage.getItem('DKPARAMOBJ')===null || sessionStorage.getItem('DKPARAMOBJ')===undefined 
-                || sessionStorage.getItem('DKPARAMOBJ')==='' || sessionStorage.getItem('DKPARAMOBJ')===false) && pageLoad!=='home'){
+            }else if(checkDkSessionParamObjExists()==='FALSE' && pageLoad!=='home'){
                 // clear browser cookies and other thing by javascript
                 resetDKSessionData();
                 // redirect to main page of desserts khazana
