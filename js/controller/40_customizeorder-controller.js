@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('CustomizeOrdersController', CustomizeOrdersController);
 
-function CustomizeOrdersController($scope, $rootScope, $state, CustomizeOrdersServices){
+function CustomizeOrdersController($scope, $rootScope, $state){
     try{
         
         $rootScope.isShowCustomizeOrderRequestErrorMsg = false;
@@ -45,11 +45,11 @@ function CustomizeOrdersController($scope, $rootScope, $state, CustomizeOrdersSe
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                        // calling CustomizeOrdersServices to add customize order request
-                        CustomizeOrdersServices.addCustomizeOrderRequest(apiParamJsonObj).done(function(retResponseJson){
+                        // calling ajax services
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CustomizeOrders/ManageCustomizeOrders", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                             $scope.$apply(function(){
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var coRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'coRequestedStatusDetails', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    var coRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'coRequestedStatusDetails', rtRspJson);
                                     if(coRequestedStatusDetails!==false && coRequestedStatusDetails!==undefined 
                                         && jQuery.isEmptyObject(coRequestedStatusDetails)===false){
                                         if(coRequestedStatusDetails['isCustomizeOrderRequestSend']==='YES'){
@@ -98,11 +98,11 @@ function CustomizeOrdersController($scope, $rootScope, $state, CustomizeOrdersSe
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.customizeOrderListArrObj = false;
-                    // calling CustomizeOrdersServices to add customize order request
-                    CustomizeOrdersServices.getCustomizeOrdersList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/CustomizeOrders/ManageCustomizeOrders", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var customizeOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'customizeOrderList', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var customizeOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'customizeOrderList', rtRspJson);
                                 if(customizeOrderListArrObj!==false && customizeOrderListArrObj!==undefined 
                                     && jQuery.isEmptyObject(customizeOrderListArrObj)===false){
                                     $rootScope.customizeOrderListArrObj = customizeOrderListArrObj;
