@@ -2,7 +2,7 @@
 angular.module('DKAPP').controller('PartyOrdersController', PartyOrdersController);
 
 // PartyOrdersController
-function PartyOrdersController($scope, $rootScope, $state, PartyOrdersServices){
+function PartyOrdersController($scope, $rootScope, $state){
     
     try{
         
@@ -45,11 +45,11 @@ function PartyOrdersController($scope, $rootScope, $state, PartyOrdersServices){
                     if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                        // calling PartyOrdersServices to add party order request
-                        PartyOrdersServices.addPartyOrderRequest(apiParamJsonObj).done(function(retResponseJson){
+                        // calling ajax services
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/PartyOrders/ManagePartyOrders", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                             $scope.$apply(function(){
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var poRequestedStatusDetails = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'poRequestedStatusDetails', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    var poRequestedStatusDetails = extractDataFromReturnAjaxResponse('POST', 'apiFile', 'poRequestedStatusDetails', rtRspJson);
                                     if(poRequestedStatusDetails!==false && poRequestedStatusDetails!==undefined 
                                         && jQuery.isEmptyObject(poRequestedStatusDetails)===false){
                                         if(poRequestedStatusDetails['isPartyOrderRequestSend']==='YES'){
@@ -98,11 +98,11 @@ function PartyOrdersController($scope, $rootScope, $state, PartyOrdersServices){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.partyOrderListArrObj = false;
-                    // calling PartyOrdersServices to get party order list
-                    PartyOrdersServices.getPartyOrdersList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/PartyOrders/ManagePartyOrders", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var partyOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'partyOrderList', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var partyOrderListArrObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'partyOrderList', rtRspJson);
                                 if(partyOrderListArrObj!==false && partyOrderListArrObj!==undefined 
                                     && jQuery.isEmptyObject(partyOrderListArrObj)===false){
                                     $rootScope.partyOrderListArrObj = partyOrderListArrObj;
