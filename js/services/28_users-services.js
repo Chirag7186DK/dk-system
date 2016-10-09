@@ -8,27 +8,6 @@
         try{
 
             var userDetails = {};
-
-            // checkUserAuthentication
-            userDetails.userSignInAuthentication = function(paramDataObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignInAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-            
-            // userSignUpAuthentication
-            userDetails.userSignUpAuthentication = function(paramDataObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserSignUpAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
-            
-            // UserForgotPwdAuthentication
-            userDetails.userForgotPwdAuthentication = function(paramDataObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserForgotPwdAuthentication", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){
-                });
-                return promiseObject;
-            };
             
             // sendOtpcode
             userDetails.sendOtpcode = function(paramDataObj){
