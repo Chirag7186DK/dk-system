@@ -65,6 +65,7 @@
         <!-- header row border div class -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeaderRowBorderDivClass"></div>
         
+        <!-- ui-view triggering -->
         <uiview-state-trigger></uiview-state-trigger>
         
         <!-- dynamically view will be loaded here-->
