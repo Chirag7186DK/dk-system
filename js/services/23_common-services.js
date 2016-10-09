@@ -1,14 +1,14 @@
 
 (function(){
     
-    angular.module('DKAPP').factory('LocationServices', LocationServices);
+    angular.module('DKAPP').factory('CommonServices', CommonServices);
 
-    function LocationServices($rootScope){
+    function CommonServices($rootScope){
         try{
 
-            var locationDetails = {};
-
-            locationDetails.showSelectedDeliveryAreaTextHeader = function(){
+            var commonDetails = {};
+            
+            commonDetails.showSelectedDeliveryAreaTextHeader = function(){
                 $rootScope.selectedDeliveryAreaTextHeader = '';
                 $rootScope.isShowSelectedDeliveryAreaTextHeader = false;
                 var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
@@ -19,12 +19,12 @@
                 }  
             };
 
-            locationDetails.resetSelectedDeliveryAreaTextHeader = function(){
+            commonDetails.resetSelectedDeliveryAreaTextHeader = function(){
                 $rootScope.selectedDeliveryAreaTextHeader = '';
                 $rootScope.isShowSelectedDeliveryAreaTextHeader = false;
             };
 
-            locationDetails.notifyToUserForSelectedDeliveryarea = function(){
+            commonDetails.notifyToUserForSelectedDeliveryarea = function(){
                 $rootScope.selectedDeliveryAreaTextHeader = '';
                 var infoObj = getInfoUserSelectedDeliveryCityAreaDessertsProductType();
                 if(infoObj!=='' && infoObj!==undefined 
@@ -45,10 +45,11 @@
                 }  
             };
 
-            return locationDetails;
+            
+            return commonDetails;
 
         }catch(ex){
-            console.log("problem in LocationServices ex=>"+ex);
+            console.log("problem in CommonServices ex=>"+ex);
             return false;
         }
     }
