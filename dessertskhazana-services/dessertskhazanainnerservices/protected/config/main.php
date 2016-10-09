@@ -52,23 +52,6 @@ return array(
                 // enable cookie-based authentication
                 'allowAutoLogin'=>true,
         ),
-		// uncomment the following to enable URLs in path-format
-		/*
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-		),
-		*/
-		/*'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),*/
-		// uncomment the following to use a MySQL database
-
-
         'db'=>array(
             'class'=>'CDbConnection',
             'connectionString' => 'mysql:host='.$dbhost.';dbname='.$GLOBALS['DATABASENAME'],
@@ -82,17 +65,6 @@ return array(
             // use 'site/error' action to display errors
             'errorAction'=>'site/error',
         ),
-			/*'log'=>array(
-					'class'=>'CLogRouter',
-					'routes'=>array(
-							array(
-									'class'=>'CWebLogRoute',  'levels'=>'trace, info, error, warning', 'categories'=>'system.db.*',
-							),
-							array(
-									'class'=>'CFileLogRoute',  'levels'=>'trace, info, error, warning', 'categories'=>'system.db.*',
-							),
-					)
-			)*/
     ),
 
     // application-level parameters that can be accessed
