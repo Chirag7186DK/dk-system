@@ -569,7 +569,7 @@ function attachValidationBudgetamtinputDirective($timeout){
 
 angular.module('DKAPP').directive('uiviewStateTrigger', uiviewStateTrigger);
 
-function uiviewStateTrigger($rootScope, $timeout){
+function uiviewStateTrigger($rootScope, $state){
     return {
         restrict:"E",
         replace:true,
@@ -593,10 +593,13 @@ function uiviewStateTrigger($rootScope, $timeout){
             });
             
             $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+                //console.log("$stateChangeError unfoundState=>"+toState);
+                $state.go("/", {"reload":true, "inherit":false});
             });
             
             $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){
-                console.log("unfoundState=>"+unfoundState);
+                //console.log("$stateNotFound unfoundState=>"+unfoundState+", fromState=>"+fromState);
+                $state.go("/", {"reload":true, "inherit":false});
             });
             
             $rootScope.$on('$viewContentLoading', function(event, viewConfigObj){
