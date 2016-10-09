@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UCustomerController', UCustomerController);
 
-function UCustomerController($rootScope, OrderCartServices){
+function UCustomerController($rootScope, CommonServices){
     
     try{
         
@@ -168,7 +168,7 @@ function UCustomerController($rootScope, OrderCartServices){
         $rootScope.displayOrdercartSectionToAccessInUserCAccount = function(requestedSectionConfigDataObj){
             $rootScope.displayedSectionName = requestedSectionConfigDataObj['displaySectionName'];
             $rootScope.requestedSectionName = requestedSectionConfigDataObj['requestedSectionName'];
-            OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+            CommonServices.refreshUserOrdercartDashboardSummaryDataDetails();
             $rootScope.uca_toggleOrdercartSectionList($rootScope.requestedSectionName);
         };
         
@@ -346,7 +346,7 @@ function UCustomerController($rootScope, OrderCartServices){
                                 notificationMsgStr = "Item updated in order cart successfully !";
                                 // refresh list
                                 $rootScope.populateOrdercartRequestedItemList('R');
-                                OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+                                CommonServices.refreshUserOrdercartDashboardSummaryDataDetails();
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
@@ -376,7 +376,7 @@ function UCustomerController($rootScope, OrderCartServices){
                                 notificationMsgStr = "Item remove from order cart successfully !";
                                 // refresh list
                                 $rootScope.populateOrdercartRequestedItemList('R');
-                                OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
+                                CommonServices.refreshUserOrdercartDashboardSummaryDataDetails();
                             }
                             showNotificationBoxMsg(notificationMsgStr);
                         });
