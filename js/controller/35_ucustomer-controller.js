@@ -1,7 +1,7 @@
 
 angular.module('DKAPP').controller('UCustomerController', UCustomerController);
 
-function UCustomerController($rootScope, UsersServices, OrderCartServices){
+function UCustomerController($rootScope, OrderCartServices){
     
     try{
         
