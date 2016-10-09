@@ -89,6 +89,7 @@
                 echo "<script src='$filename?reload=$curTimeStamp'></script>";
             }
         } 
+        // echo "<script src='".implode(",", $allJsFileList)."'></script>";
     }
     
         
