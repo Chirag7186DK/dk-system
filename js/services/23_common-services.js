@@ -226,6 +226,13 @@
                 }
             };
             
+            // refreshWebAppData
+            commonDetails.refreshWebAppData = function(){
+                commonDetails.refreshUserDashboardSummaryDataDetails();
+                commonDetails.refreshUserOrdercartDashboardSummaryDataDetails();
+                commonDetails.addProductDataInOrdercartFromSession(false, 'session');
+            };
+            
             return commonDetails;
 
         }catch(ex){
