@@ -1,13 +1,13 @@
 
 angular.module('DKAPP').controller('RefreshWebAppDataController', RefreshWebAppDataController);
 
-function RefreshWebAppDataController($rootScope, UsersServices, OrderCartServices){
+function RefreshWebAppDataController($rootScope, UsersServices, CommonServices){
     try{
         // refreshWebAppData
         $rootScope.refreshWebAppData = function(){
             UsersServices.refreshUserDashboardSummaryDataDetails();
-            OrderCartServices.refreshUserOrdercartDashboardSummaryDataDetails();
-            OrderCartServices.addProductDataInOrdercartFromSession(false, 'session');
+            CommonServices.refreshUserOrdercartDashboardSummaryDataDetails();
+            CommonServices.addProductDataInOrdercartFromSession(false, 'session');
         };
     }catch(ex){
         console.log("problem in RefreshWebAppDataController ex=>"+ex);
