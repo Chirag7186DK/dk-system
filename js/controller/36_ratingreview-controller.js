@@ -139,7 +139,7 @@ function RatingReviewController($scope, $rootScope, RatingReviewServices){
                 if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                    // calling RatingReviewServices 
+                    // calling ajax services
                     communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/RatingReview/UserRatingReviewProduct", 'apiFile', 'POST', '', apiParamJsonObj).done(function(rtRspJson){
                         $scope.$apply(function(){
                             var notifyMsgStr = 'Please try again to post review & rating about product !!!';
