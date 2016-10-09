@@ -2,7 +2,7 @@
 
 angular.module('DKAPP').controller('StoreController', StoreController);
 
-function StoreController($rootScope, $rootScope, $state, ProductServices, StoreServices, RatingReviewServices){
+function StoreController($rootScope, $rootScope, $state, StoreServices, RatingReviewServices){
     try{
         
         $rootScope.toggleStoreSelfSummaryInfoLblText = "Show Details";
@@ -27,11 +27,11 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.allStoresInfoList = false;
-                    // calling StoreServices
-                    StoreServices.getStoreListDeliveryAreaBasedDessertsType(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreListDeliveryAreaBasedDessertType", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'allStoreInfoList', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.allStoresInfoList = arrJsonObj;
                                 }
@@ -54,11 +54,11 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.storeDeliveryAreaBasedDessertsTypeList = false;
-                    // calling StoreServices
-                    StoreServices.getDeliveryAreaBasedDessertsTypeList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/DeliveryAreaBasedStoresConductDessertType", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'deliveryAreaBasedDessertsTypeDetails', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.storeDeliveryAreaBasedDessertsTypeList = arrJsonObj.allDessertsTypeList;
                                 }
@@ -94,11 +94,11 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                     $rootScope.storeInfo = false;
                     $rootScope.customersReviewedRatingMsgStr = 'No any customer(s) reviewed yet !!!';
                     $rootScope.isRatingReviewBasedInfoFound = 'FALSE';
-                    // calling StoreServices
-                    StoreServices.getStoreSummaryInfo(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Store/StoreSummaryInfo", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.storeInfo = arrJsonObj.shopstoreInfo;
                                     $rootScope.customersReviewedRatingMsgStr = arrJsonObj.customersReviewedRatingMsgStr;
@@ -125,11 +125,11 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                     $rootScope.productTypeAllProductCategoryList = false;
-                    // calling ProductServices
-                    ProductServices.getProductTypeAllProductCategoryList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeAllProductCategoryDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'productTypeProductCategoryDetails', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.productTypeAllProductCategoryList = arrJsonObj.productTypeAllProductCategoryList;
                                     $rootScope.storeProductTypeProductCategoryDataInSessionStore(arrJsonObj.defaultSelectedProductCategoryDetails);
@@ -175,11 +175,11 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
                     var apiParamJsonObj = {};
                     apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
-                    // calling ProductServices
-                    ProductServices.getProductTypeProductCategoryFilterTypeList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryFilterTypeList", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'filterOperationTypeList', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'filterOperationTypeList', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     if(arrJsonObj.allProductPriceDetailsArr!==false && arrJsonObj.allProductPriceDetailsArr!==undefined){
                                         $rootScope.buildPriceFilterListHtmlSelectCtrlStore(arrJsonObj.allProductPriceDetailsArr);
@@ -436,11 +436,11 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                     $rootScope.storeDefaultSelectProductCategoryTitle = '';
                     $rootScope.storeProductNotFoundMsgStr = '';
                     $rootScope.storeTotalProductCount = 0;
-                    // calling ProductServices 
-                    ProductServices.getProductTypeProductCategoryAllProductList(apiParamJsonObj).done(function(retResponseJson){
+                    // calling ajax services
+                    communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryAllProductDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
-                            if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                            if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                 if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                     $rootScope.storeDefaultSelectProductCategoryTitle = arrJsonObj.productTypeDetails.requestedProductCategoryTitle;
                                     if(arrJsonObj.productTypeDetails.allProductDetailsList!==false 
@@ -475,10 +475,10 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.allUserRatingReviewDetails = false;
                         // calling RatingReviewServices 
-                        RatingReviewServices.getStoreAllUserRatingReviewed(apiParamJsonObj).done(function(retResponseJson){
+                        RatingReviewServices.getStoreAllUserRatingReviewed(apiParamJsonObj).done(function(rtRspJson){
                             $rootScope.$apply(function(){
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    var retObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', '', rtRspJson);
                                     if(retObj!==false && retObj!==undefined && retObj!==''){
                                         $rootScope.allUserRatingReviewDetails = retObj.allUserRatingReviewDetails;
                                     }
@@ -503,10 +503,10 @@ function StoreController($rootScope, $rootScope, $state, ProductServices, StoreS
                         apiParamJsonObj['dkParamDataArr'] = preparedParamJsonObj;
                         $rootScope.storeWorkingStyleDetails = false;
                         // calling StoreServices 
-                        StoreServices.getStoreWorkingStyleDetails(apiParamJsonObj).done(function(retResponseJson){
+                        StoreServices.getStoreWorkingStyleDetails(apiParamJsonObj).done(function(rtRspJson){
                             $rootScope.$apply(function(){
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'shopstoreWorkingStyleDetails', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    var arrJsonObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'shopstoreWorkingStyleDetails', rtRspJson);
                                     if(arrJsonObj!==false && arrJsonObj!==undefined && arrJsonObj!==''){
                                         $rootScope.storeWorkingStyleDetails = arrJsonObj;
                                     }
