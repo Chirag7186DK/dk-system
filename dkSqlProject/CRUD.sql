@@ -1,4 +1,23 @@
 
+-- UPDATE STORE_PRODUCTLIST spl
+-- SET file_path = Replace(file_path, 'vendor_cb1', 'vendor_cb123456789') 
+-- WHERE file_path IS NOT NULL AND file_path!=''
+
+
+-- UPDATE STORE_PRODUCTLIST spl1
+-- JOIN (
+--     SELECT file_path, name
+--     FROM 
+--         (
+--             SELECT *
+--             FROM STORE_PRODUCTLIST spl2
+--             WHERE 1 AND spl2.store_ptpc_affiliationid='1'
+--         ) AS tempData
+--     WHERE tempData.store_ptpc_affiliationid='1'
+-- ) tempData1 ON tempData1.name=spl1.name
+-- SET spl1.file_path = tempData1.file_path
+-- WHERE spl1.store_ptpc_affiliationid='9'
+
 
 -- INSERT INTO `DESSERTSKHAZANA`.`AREAREACHED` 
 -- (`id`, `name`, `short_name`, `pincode`, `sort_order`, `created_by`, `created_datedtime`, 
@@ -177,40 +196,40 @@
 -- HAVING ordercartCount>0
 
 
-SELECT 
-odr.id ordercartId, odr.user_sessionid userSessionId, odr.user_id userId,
-odrs.id ordercartStoreId, odrs.store_id storeId, COALESCE(ss.name, '') shopStoreTitle,
-COALESCE(a.name, '') storeLocatedAreaName, 
-COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
-COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
-odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
-COALESCE(odrs.address, '') deliveryAddress, COALESCE(odrs.deliverydate, '') deliverydate,
-COALESCE(odrs.discountamount, '') discountamount,
-COALESCE(odrs.subtotalamount, '') subtotalamount, COALESCE(odrs.totalamount, '') totalamount,
-COALESCE(odrsim.id, '') orderStoreItemId, COALESCE(spl.name, '') productListTitle, 
-COALESCE(odrsim.featureid, '') featureId, COALESCE(odrsim.size, '') productSize, 
-COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
-COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
-COALESCE(splld.baseprice, '') productFeatureBasePrice, 
-COALESCE(splld.product_discount, '') productFeatureDiscount
-FROM ORDERCART odr
-JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
-JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
-JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
-JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
-JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid AND spac.status='A'
-JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
-    AND spa.id=spac.store_producttype_affiliationid AND spa.status='A'
-JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id AND ss.status='A'
-JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
-JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
-JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
-WHERE 1
-AND odr.user_id='1'
-AND odr.status='R'
-AND odrs.status='R'
-AND odrsim.status='R'
-ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
+-- SELECT 
+-- odr.id ordercartId, odr.user_sessionid userSessionId, odr.user_id userId,
+-- odrs.id ordercartStoreId, odrs.store_id storeId, COALESCE(ss.name, '') shopStoreTitle,
+-- COALESCE(a.name, '') storeLocatedAreaName, 
+-- COALESCE(odrs.min_orderamt, '0') storeMinOrderAmt, COALESCE(odrs.deliveryfee, '0') deliveryfee,
+-- COALESCE(odrs.apply_deliveryFee, '0') apply_deliveryFee,
+-- odrs.deliveryCountryCityAreaId, COALESCE(odrs.delivery_areaname, '') delivery_areaname,
+-- COALESCE(odrs.address, '') deliveryAddress, COALESCE(odrs.deliverydate, '') deliverydate,
+-- COALESCE(odrs.discountamount, '') discountamount,
+-- COALESCE(odrs.subtotalamount, '') subtotalamount, COALESCE(odrs.totalamount, '') totalamount,
+-- COALESCE(odrsim.id, '') orderStoreItemId, COALESCE(spl.name, '') productListTitle, 
+-- COALESCE(odrsim.featureid, '') featureId, COALESCE(odrsim.size, '') productSize, 
+-- COALESCE(odrsim.price, '') productPrice, COALESCE(odrsim.qty, '0') productQty, 
+-- COALESCE(odrsim.totalamount, '') productTotalAmt, COALESCE(odrsim.description, '') description,
+-- COALESCE(splld.baseprice, '') productFeatureBasePrice, 
+-- COALESCE(splld.product_discount, '') productFeatureDiscount
+-- FROM ORDERCART odr
+-- JOIN ORDERCARTSTORE odrs ON odrs.ordercart_id=odr.id
+-- JOIN ORDERCARTSTORE_ITEMDETAILS odrsim ON odrsim.ordercart_storeid=odrs.id
+-- JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.id=odrsim.featureid AND splld.status='A'
+-- JOIN STORE_PRODUCTLIST spl ON spl.id=splld.productlist_id AND spl.status='A'
+-- JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.id=spl.store_ptpc_affiliationid AND spac.status='A'
+-- JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.store_id=odrs.store_id
+--     AND spa.id=spac.store_producttype_affiliationid AND spa.status='A'
+-- JOIN STORE ss ON ss.id=odrs.store_id AND spa.store_id=ss.id AND ss.status='A'
+-- JOIN COUNTRYCITYAREAAFFILIATION cca ON cca.id=ss.country_city_area_affiliationId AND cca.status='A'
+-- JOIN CITYREACHED c ON c.id=cca.city_id AND c.status='A' 
+-- JOIN AREAREACHED a ON a.id=cca.area_id AND a.status='A'
+-- WHERE 1
+-- AND odr.user_id='1'
+-- AND odr.status='R'
+-- AND odrs.status='R'
+-- AND odrsim.status='R'
+-- ORDER BY odrsim.updated_by DESC, odrs.store_id ASC
 
 
 

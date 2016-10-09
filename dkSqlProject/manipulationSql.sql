@@ -1,15 +1,50 @@
 
+SELECT 
+COALESCE(ccr.country_id, '') countryId, 
+COALESCE(ccr.city_id, '') cityId, COALESCE(country.name, '') cityName, 
+COALESCE(ccr.area_id, '') areaId, COALESCE(area.name, '') areaTitle,
+COALESCE(ss.id, '') shopStoreId, COALESCE(ss.name, '') shopStoreTitle,
+COALESCE(ss.storelabel, '') shopStoreLabel, COALESCE(ss.logofile, '') shopstore_logofile,
+COALESCE(ss.mobile, '') shopstore_mobile,
+COALESCE(pt.id, '') productTypeId, COALESCE(pt.name, '') productTypeTitle, 
+COALESCE(UPPER(pt.name), '') productTypeTitleInCaps,
+COALESCE(ppc.id, '') productTypeProductCategoryId, COALESCE(spac.name, '') productTypeProductCategoryTitle,
+COALESCE(spl.id, '') productListId, COALESCE(spl.name, '') productListTitle,
+COALESCE(spl.deliverytime, '70 MIN') individualProductDeliveryTime, COALESCE(spl.availablesize, '1') productAvailableSizeCount,
+COALESCE(spl.isproduct_descriptionavailable, 'N') isProductDescriptionAvailable,
+COALESCE(splld.id, '') productFeatureId, COALESCE(splld.food_type, '') productFeatureFoodType, 
+COALESCE(splld.taste_type, '') productFeatureTasteType, COALESCE(splld.pattern_type, '') productFeaturePatternType, 
+COALESCE(splld.display_measurementtype, '') productFeatureDisplayMeasurementType,
+COALESCE(splld.baseprice, '') productFeatureBasePrice, COALESCE(splld.product_discount, '') productFeatureDiscount,
+COALESCE(splld.online_sellprice, '') productFeatureOnlineSellingPrice,
+'Y' isProductImageFileShowCase,
+COALESCE(spl.image_name, 'productphotoback.png') productImageFileName,
+COALESCE(spl.file_path, 'images/productphotoback.png') productImageFilePath 
+FROM PRODUCTTYPE pt
+JOIN PRODUCTTYPE_PRODUCTCATEGORY ppc ON pt.id=ppc.product_typeid AND ppc.status = 'A' AND pt.status = 'A'
+JOIN STORE_PRODUCTTYPE_AFFILIATION spa ON spa.product_typeid=pt.id AND spa.status = 'A' 
+JOIN STORE_PRODUCTTYPE_AFFILIATIONCATEGORY spac ON spac.store_producttype_affiliationid=spa.id 
+    AND spac.producttype_categoryid=ppc.id AND spac.status = 'A'
+JOIN STORE_PRODUCTLIST spl ON spl.store_ptpc_affiliationid = spac.id AND spl.status = 'A'
+JOIN STORE_PRODUCTLIST_LOGDETAILS splld ON splld.productlist_id=spl.id AND splld.status = 'A'
+JOIN STORE ss ON ss.id=spa.store_id AND ss.status = 'A'
+JOIN COUNTRYCITYAREAAFFILIATION ccr ON ccr.id=ss.country_city_area_affiliationId AND ccr.status='A'
+JOIN COUNTRYREACHED country ON country.id=ccr.country_id AND country.status='A'
+JOIN CITYREACHED city ON city.id=ccr.city_id AND city.status='A'
+JOIN AREAREACHED area ON area.id=ccr.area_id AND area.status='A'  WHERE 1  AND ss.id IN (4) AND spa.store_id IN (4)  AND pt.id IN (1) AND ppc.product_typeid IN (1)  AND spa.product_typeid IN (1)  AND ppc.id IN (1) AND spac.producttype_categoryid IN (1)  ORDER BY pt.id, ppc.id, spa.product_typeid, spac.producttype_categoryid, FIELD(area.id, 1) DESC ,splld.online_sellprice ASC, splld.product_discount ASC
 
-UPDATE 
-USERLOG ul
-JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid
-SET 
-ul.status='Z', us.status='Z',
-ul.logout_datedtime='2016-08-02 12:01:01'
-WHERE 
-ul.user_logno='ULNO01474776701f84efcac22cce5bbdc57b6d7e79050c1bef08128' 
-AND ul.user_sessionid='USID11474773355c9c5ac74bf3802120d54ee970e3e61786129a211' 
-AND us.user_sessionid='USID11474773355c9c5ac74bf3802120d54ee970e3e61786129a211' 
+
+
+-- UPDATE 
+-- USERLOG ul
+-- JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid
+-- SET 
+-- ul.status='Z', us.status='Z',
+-- ul.logout_datedtime='2016-08-02 12:01:01'
+-- WHERE 
+-- ul.user_logno='ULNO01474776701f84efcac22cce5bbdc57b6d7e79050c1bef08128' 
+-- AND ul.user_sessionid='USID11474773355c9c5ac74bf3802120d54ee970e3e61786129a211' 
+-- AND us.user_sessionid='USID11474773355c9c5ac74bf3802120d54ee970e3e61786129a211' 
 
 
 -- SELECT 
