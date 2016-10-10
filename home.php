@@ -38,10 +38,10 @@
     </div>
 
     <!-- create horizontally space div between -->
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+    <div style='display:none;' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
 
     <!-- offers/promotion -->
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
+    <div style='display:none;' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 whatIsDessertsKhazanaMainContainerDivClass">
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
             <div class='dkPartyOrderWrapperDivClass'>
                 <p class='partyOrderPClass' title='Click to request for party orders'>
