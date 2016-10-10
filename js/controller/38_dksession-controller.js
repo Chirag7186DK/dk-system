@@ -11,7 +11,7 @@ function dkSessionController($rootScope, $state, CommonServices){
         try{
             if(checkDkSessionParamObjExists()==='FALSE' && pageLoad==='home'){
                 var rtStatusDkSessionDataInitialized = initializeDkSessionData(); 
-                console.log("rtStatusDkSessionDataInitialized=>"+rtStatusDkSessionDataInitialized);
+                // console.log("rtStatusDkSessionDataInitialized=>"+rtStatusDkSessionDataInitialized);
             }else if(checkDkSessionParamObjExists()==='TRUE' && pageLoad==='home'){
                 // reset user product data in session
                 generateDkUserSessionId();
