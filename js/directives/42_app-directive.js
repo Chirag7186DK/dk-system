@@ -109,10 +109,10 @@ function loadCustomizeorderImagesDirective(){
 function loadDkLogoImages(){
     if($('.dkLogoImgClass').length===1){
         if(deviceWidth>=300 && deviceWidth<=399){
-            $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|129.png");
+            $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|135.png");
         }
         if(deviceWidth>=400){
-            $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|129.png");
+            $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|135.png");
         }
     }
 }
