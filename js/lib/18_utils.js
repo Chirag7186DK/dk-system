@@ -1,14 +1,16 @@
 
-function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonParamObjKey, jsonParamObj, fetchJsonDataUsingKey){
+function communicationWithAjax(readFileUrl, readUrlFrom, requestType, extraJsonParamObjKey, jsonParamObj, fetchJsonDataUsingKey, isShowLoader){
     try{
         
         // loader data will be prepare here
-        var msgStr = "<img src='"+globalBaseSitePath+"images/loading.gif'><br>";
-        msgStr+= "<center>Please wait desserts khazana is loading........</center>";
-        var blockUIObj = {};
-        blockUIObj['css'] = {"padding":10, "border":"0px!important;"};
-        blockUIObj['message'] = msgStr;
-        showHideLoaderBox('show', blockUIObj);
+        if(isShowLoader==='Y' || isShowLoader===undefined){
+            var msgStr = "<img src='"+globalBaseSitePath+"images/loading.gif'><br>";
+            msgStr+= "<center>Please wait desserts khazana is loading........</center>";
+            var blockUIObj = {};
+            blockUIObj['css'] = {"padding":10, "border":"0px!important;"};
+            blockUIObj['message'] = msgStr;
+            showHideLoaderBox('show', blockUIObj);
+        }
                 
         var passJsonDataToAjax = false;
         var requestTypeAr = new Array("GET", "POST", "DELETE", "PUT");
