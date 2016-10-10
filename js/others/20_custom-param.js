@@ -2178,18 +2178,3 @@ function getParamDataToSharingOffersFromOneUserToOtherUsers(sharingOffersDataObj
         return false;
     }
 }
-
-(function updateActiviationTimeUserSession(){
-    var userSessionParamObj = getParamDataAuthenticatedUserDetailsFromSession();
-    if(userSessionParamObj!==false && userSessionParamObj!==undefined
-        && jQuery.isEmptyObject(userSessionParamObj)===false){
-        userSessionParamObj['isRequestActivationTimeUpdation'] = 'Y';
-        var apiParamJsonObj = {};
-        apiParamJsonObj['dkParamDataArr'] = userSessionParamObj;
-        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLog", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){
-            setTimeout(updateActiviationTimeUserSession, 80000);
-        });
-    }else{
-        setTimeout(updateActiviationTimeUserSession, 80000);
-    }
-}());
