@@ -25,6 +25,21 @@ function addTrackingUserInfoAccessingWebsitesDetails(fromPageLoad){
     }
 }
 
+(function updateActiviationTimeUserSession(){
+    var userSessionParamObj = getParamDataAuthenticatedUserDetailsFromSession();
+    if(userSessionParamObj!==false && userSessionParamObj!==undefined
+        && jQuery.isEmptyObject(userSessionParamObj)===false){
+        userSessionParamObj['isRequestActivationTimeUpdation'] = 'Y';
+        var apiParamJsonObj = {};
+        apiParamJsonObj['dkParamDataArr'] = userSessionParamObj;
+        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLog", 'apiFile', 'PUT', '', apiParamJsonObj, '', 'N').done(function(rtRspJson){
+            setTimeout(updateActiviationTimeUserSession, 80000);
+        });
+    }else{
+        setTimeout(updateActiviationTimeUserSession, 80000);
+    }
+}());
+
 function clearUserpasswordFormFieldInfo(){
     if($('#uca_oldPwdInputId').length===1){
         $('#uca_oldPwdInputId').val('');
