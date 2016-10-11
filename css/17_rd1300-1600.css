@@ -1031,138 +1031,69 @@
     
 
     /*  view product css code  */
-    
-    .vpd_shopStoreServedAllDessertsProductContainerDivClass{
-        margin-top:20px!important;
-        margin-bottom:10px!important;
-        padding-left:0px!important;
-    }
-
-    .vpd_storeServedDessertsProductNoteLIClass{
-        text-align:center;
-        list-style:none!important;
-        font-weight:normal!important;
-        font-size:20px!important;
-        color:#f17023!important;
-        font-family:serif;
-    }
-
-    .vpd_dessertsProductTypeCountSClass{
-        background:#f17023!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        font-size:15px!important;
-    }
-
-    .vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        white-space:nowrap!important;
-        margin-top:10px!important;
-    }
-
-    .vpd_shopStoreServedAllDessertsProductScrollerWrapperDivClass .owl-item{
-        width:auto!important;
-        margin-right:2px!important;
-    }
-
-    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass{
-        color:rgb(249, 99, 99)!important;
-        background-color:whitesmoke!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        cursor:pointer;
-        border:2px solid #fff!important;
-        float:left!important;
-    }
-
-    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconPClass{
-        text-align:center!important;
-        margin:0px!important;
-    }
-
-    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductIconClass{
-        font-size:50px!important;
-    }
-
-    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .dessertsProductTitleHClass{
-        text-align:center;
-        font-size:18px!important;
-        font-family:serif;
-        text-transform:uppercase;
-        margin:0px!important;
-        padding-left:20px!important;
-        padding-right:20px!important;
-    }
-
-    .vpd_shopStoreServedEachDessertsProductScrollerWrapperDivClass .viewDessertsProductPClass{
-        text-align:center;
-        margin-top:12px!important;
-        font-size:14px!important;
-        font-family: serif;
-        color:#F560F5!important;
-        cursor:pointer!important;
-        padding-left:20px!important;
-        padding-right:20px!important;
-    }
 
     .vpd_productImagesContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-bottom:10px!important;
         background-color:#fff!important;
-        border:1px solid #CDCEE8!important;
-        margin-right:16px!important;
-        padding-bottom:10px;
     }
-
-    .vpd_horizontalLineClass{
-        border-top:1px solid rgba(39,171,92,0.9)!important;
-        margin-top:0px!important;
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
     }
 
     .vpd_productDetailsContainerDivClass{
+        padding-left:0px!important;
         background-color:#fff!important;
-        border:1px solid #CDCEE8!important;
-        margin-right:20px!important;
+        border:1px solid #e7e7e7!important;
     }
     
+    .vpd_productDetailsContainerDivClass p{
+        padding-left:11px!important;
+    }
+
     .vpd_productNamePClass{
-        margin-top:10px;
-        color:rgb(70, 75, 80)!important;
         font-size:18px!important;
+        color:#f17023!important;
+        margin-top:10px!important;
+    }
+    
+    .vpd_horizontalLineClass{
+        border-top:1px solid #e7e7e7!important;
+        margin-top:0px!important;
+        margin-bottom:10px!important;
     }
     
     .vpd_productStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
 
     .vpd_productReviewAndRatingPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
     
-    .vpd_storeDeliveryFromAreaToAreaPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-        margin-bottom:7px!important;
-    }
-    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
     .vpd_storeDeliveryFeeApplicableMsgPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:7px!important;
     }
     
     .vpd_estimatedProductDeliveryTimePClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
     }
     
     .estimatedProductShippingDeliveryTimeSClass{
-        background-color:rgba(39,171,92,0.9)!important;
-        color:#fff!important;
         padding:3px!important;
+        color:#fff!important;
+        background-color:rgba(39,171,92,0.9)!important;
     }
 
     .vpd_productSelectMeasurementLabelPClass{
@@ -1181,8 +1112,8 @@
     
     .vpd_productCutPriceTextSClass{
         text-decoration:line-through!important;
-        color:#999999!important;;
         font-size:14px!important;
+        color:#999999!important;;
         margin-right:6px;
     }
 
@@ -1192,8 +1123,8 @@
     }
 
     .vpd_productDiscountPercentTextSClass{
-        color:#60bf79!important;
         font-size:14px!important;
+        color:#60bf79!important;
     }
     
     .vpd_productQtyPClass{
@@ -1217,30 +1148,30 @@
     }
     
     .vpd_productAddToCartBtnPClass{
-        margin-bottom:12px!important;
+        margin-top:20px!important;
+        margin-bottom:20px!important;
     }
 
-    .vpd_specificProductAddBtnClass{
-        border-radius:0px!important;
-        font-weight:bold!important;
-        background-color:#ab0b38!important;
+    .vpd_productAddToCartBtnClass, 
+    .vpd_productAddToCartBtnClass:hover{
+        font-weight:normal!important;
         color:#fff!important;
-        padding:5px!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
     }
 
     .vpd_orderSummaryContainerDivClass{
-        background-color:#fff!important;
-        border:1px solid #CDCEE8!important;
-        width:22%!important;
         color:rgb(70, 75, 80)!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
 
     .vpd_orderSummaryHeaderLblPClass{
-        margin-top:10px;
-        color:rgba(39,171,92,0.9)!important;
         font-size:15px!important;
-        font-family:serif;
-        font-weight:700!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        color:#f17023!important;
+        margin-top:10px!important;
     }
     
     .vpd_totalOrderStorePClass,
@@ -1260,12 +1191,11 @@
 
     .vpd_orderSummaryCheckoutBtnClass,
     .vpd_orderSummaryCheckoutBtnClass:hover{
-        border-radius:0px!important;
-        background-color:#ab0b38!important;
-        color:#fff!important;
         font-size:12px!important;
-        font-weight:bold!important;
-        padding: 5px!important;
+        font-weight:normal!important;
+        border-radius:0px!important;
+        color:#fff!important;
+        background-color:#ab0b38!important;
     }
     
     .vpd_productFeaturesContainerDivClass{
