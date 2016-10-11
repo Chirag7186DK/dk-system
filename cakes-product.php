@@ -148,7 +148,7 @@
                 </p>
                 <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
                     Message On Cake
-                    <textarea product-msgbox-directive rows='3' class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
+                    <textarea product-msgbox-directive rows='3' class="form-control" placeholder="Type 40 characters only"></textarea>
                 </p>
                 <p class='vpd_productAddToCartBtnPClass'> 
                     <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_productAddToCartBtnClass btn">
