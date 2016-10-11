@@ -245,10 +245,10 @@
                     </div>
                     <!-- each store all items will be display -->
                     <div ng-show='eachStoreAllItemDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachStoreAllItemDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartRequestedEachStoreItemDivClass uca_ordercartRequestedEachStoreItemDivClass{{eachItemDataObj.orderStoreItemId}}'>
-                        <div class='col-xs-12 col-sm-12 col-md-1 col-lg-1 uca_ordercartRequestedEachStoreProductItemDivClass'> 
+                        <div class='col-xs-12 col-sm-12 col-md-1 col-lg-2 uca_ordercartRequestedEachStoreProductItemDivClass'> 
                             <img class='preloadProductImagesClass' data-original="{{eachItemDataObj.productImageFilePath}}" ng-src="images/productphotoback.png">
                         </div>   
-                        <div class='col-xs-12 col-sm-12 col-md-11 col-lg-11 uca_ordercartRequestedEachStoreItemDetailsDivClass'>    
+                        <div class='col-xs-12 col-sm-12 col-md-11 col-lg-10 uca_ordercartRequestedEachStoreItemDetailsDivClass'>    
                             <p class="uca_ordercartRequestedEachStoreItemNamePClass">
                                 {{eachItemDataObj.productListTitle}}
                             </p>
@@ -339,10 +339,10 @@
                     </div>
                     <!-- each items will be display -->
                     <div ng-show='eachOrdercartDataObj.isShowItemList' ng-repeat="eachItemDataObj in eachOrdercartDataObj['allItemsData']" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 uca_ordercartCancelledEachItemContainerClass'>
-                        <div class='col-xs-12 col-sm-12 col-md-1 col-lg-1 uca_ordercartCancelledEachItemImageDivClass'> 
+                        <div class='col-xs-12 col-sm-12 col-md-1 col-lg-2 uca_ordercartCancelledEachItemImageDivClass'> 
                             <img class='preloadProductImagesClass' data-original="{{eachItemDataObj.productImageFilePath}}" ng-src="images/productphotoback.png">
                         </div>
-                        <div class='col-xs-12 col-sm-12 col-md-11 col-lg-11 uca_ordercartCancelledEachItemDetailsDivClass'>    
+                        <div class='col-xs-12 col-sm-12 col-md-11 col-lg-10 uca_ordercartCancelledEachItemDetailsDivClass'>    
                             <p class="uca_ordercartCancelledItemNamePClass">
                                 {{eachItemDataObj.productListTitle}}
                             </p>
