@@ -196,6 +196,7 @@
     }
     
     .dkPartyOrderContainerDivClass{
+        width:33.3%!important;
         margin-bottom:20px!important;
         background-size:cover;
     }
@@ -220,6 +221,7 @@
     }
 
     .dkCoperateSpecialOffersContainerDivClass{
+        width:33.3%!important;
         margin-bottom:20px!important;
         background-size:cover;
     }
@@ -244,6 +246,7 @@
     }
 
     .dkCustomizeDessertsOrderContainerDivClass{
+        width:33.3%!important;
         margin-bottom:20px!important;
         background-size:cover;
     }
@@ -845,6 +848,7 @@
 
     .storeProductBoxDivClass{
         padding-left:1px!important;
+        width:20%!important;
     }
     
     .storeProductBoxDivClass .preloadProductImagesClass{
