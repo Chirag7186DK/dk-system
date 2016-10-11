@@ -205,9 +205,6 @@
             </div>
         </div>
 
-        <!-- create horizontally space div between -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
-
         <!-- product rating/review details -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_ratingReviewProductContainerDivClass" ng-init="toggleRatingReviewProductContent('vpd_ratingReviewProductBodyDivId');">
             <p class="vpd_ratingReviewProductHeaderPClass" ng-click="toggleRatingReviewProductContent('vpd_ratingReviewProductBodyDivId');">
@@ -240,7 +237,7 @@
                             {{eachReviewRatingTypeObj.questionTitle}}
                         </div>
                         <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_eachReviewRatingTypeAnswerBoxDivClass'>
-                            <TEXTAREA data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
+                            <TEXTAREA data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' rows='3' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
                         </div>
                     </div>
                     <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isStoreRatingReviewQuestionFound'>
