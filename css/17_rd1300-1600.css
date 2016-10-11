@@ -1570,8 +1570,8 @@
     .userSignUpFormSectionContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border:1px solid #e7e7e7!important;
         background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .userSignUpFormSectionContainerDivClass div{
@@ -1581,8 +1581,8 @@
     
     .userSignUpNoticeMsgContainerDivClass,
     .userSignUpNoticeOtpMsgContainerDivClass{
-        color:#308fbb!important;
         font-size:15px!important;
+        color:#308fbb!important;
     }
 
     .userSignUpFormfieldHintPClass{
@@ -1605,15 +1605,15 @@
     .userSignUpMobileInput_ErrorClass,
     .userSignUpOtpCodeInput_ErrorClass,
     .userSignUpPwdInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     .userSignUpOperationContainerDivClass{
         text-align:right!important;
-        color:#308fbb!important;
         font-size:12px!important;
+        color:#308fbb!important;
         cursor:pointer;
         margin:0px!important;
     }
@@ -1624,19 +1624,19 @@
 
     .userSignUpSubmitBtnClass, 
     .userSignUpSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#fb366e!important;
-        color:#fff!important;
     }
 
     .redirectUserSignInBtnContainerDivClass{
         text-align:center!important;
         font-size:14px!important;
-        font-weight:bold!important;
-        cursor:pointer!important;
+        font-weight:normal!important;
         color:#CB202D!important;
+        cursor:pointer!important;
         padding:0px!important;
     }
     
@@ -1653,8 +1653,8 @@
     .userSignInFormSectionContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border:1px solid #e7e7e7!important;
         background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .userSignInFormSectionContainerDivClass div{
@@ -1664,8 +1664,8 @@
     
     .userSignInNoticeMsgContainerDivClass,
     .userSignInNoticeOtpMsgContainerDivClass{
-        color:#308fbb!important;
         font-size:15px!important;
+        color:#308fbb!important;
     }
     
     .userSignInFormfieldHintPClass{
@@ -1684,17 +1684,17 @@
     .userSignInEmailInput_ErrorClass,
     .userSignInPwdInput_ErrorClass,
     .userSignInOtpCodeInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     .userSignInOperationContainerDivClass{
         text-align:right!important;
-        color:#308fbb!important;
         font-size:12px!important;
-        cursor:pointer;
+        color:#308fbb!important;
         margin:0px!important;
+        cursor:pointer;
     }
     
     .userSignInBtnContainerDivClass{
@@ -1703,19 +1703,19 @@
 
     .userSigInSubmitBtnClass, 
     .userSigInSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#fb366e!important;
-        color:#fff!important;
     }
 
     .redirectUserSignUpBtnContainerDivClass{
         text-align:center!important;
         font-size:14px!important;
-        font-weight:bold!important;
-        cursor:pointer!important;
+        font-weight:normal!important;
         color:#CB202D!important;
+        cursor:pointer!important;
         padding:0px!important;
     }
     
@@ -1729,23 +1729,23 @@
     /*  forgot password css code */
 
     .userFrgtPwdFormSectionContainerDivClass{
-        border:1px solid #e7e7e7!important;
         background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .userFrgtPwdHeaderLblClass{
-        color:#333!important;
         font-size:18px!important;
+        color:#333!important;
     }
     
     .userFrgtPwdPLblClass{
-        color:#828282!important;
         font-size:12px!important;
+        color:#828282!important;
     }
     
     .userFrgtPwdNoticeMsgContainerDivClass{
-        color:#308fbb!important;
         font-size:13px!important;
+        color:#308fbb!important;
     }
     
     .userFrgtPwdFormSectionContainerDivClass div{
@@ -1770,9 +1770,9 @@
     .userFrgtPwdOtpCodeInput_ErrorClass,
     .userFrgtPwdInput_ErrorClass,
     .userFrgtPwdConfirmInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     .userFrgtPwdOperationBtnContainerDivClass{
@@ -1781,57 +1781,61 @@
     
     .userFrgtPwdCancelSubmitBtnClass,
     .userFrgtPwdResendOtpSubmitBtnClass{
+        font-weight:normal!important;
+        color:#c1bebe!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:none!important;
-        color:#c1bebe!important;
     }
     
     .userFrgtPwdCancelSubmitBtnClass:hover{
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         background:none!important;
         color:#fb366e!important;
     }
     
     .userFrgtPwdResendOtpSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fb366e!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:none!important;
-        color:#fb366e!important;
     }
     
     .userFrgtPwdSubmitBtnClass, 
     .userFrgtPwdSubmitBtnClass:hover,
     .userFrgtPwdVerifyOtpSubmitBtnClass,
     .userFrgtPwdVerifyOtpSubmitBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
         color:#fff!important;
+        border-radius:0px!important;
+        border:0px!important;
         background:#fb366e!important;
         padding:5px!important;
     }
     
     
     /* user customer account css code */
-
+    
+    .uca_bodyDivClass .commonHorizontalSpaceDivClass{
+        margin-bottom:0px!important;
+    }
+    
     .uca_personalInfoSectionContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        border:1px solid #DCE0EF!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .uca_editProfileLblPClass{
         font-size:15px!important;
+        font-weight:normal!important;
         color:#ab0b38!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
     
@@ -1840,8 +1844,8 @@
     .uca_personalInfoTextUserMobileLblSClass,
     .uca_personalInfoTextUserGenderLblSClass,
     .uca_personalInfoTextUserBirthdateLblSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         padding-right:7px!important;
     }
     
@@ -1850,25 +1854,25 @@
     .uca_personalInfoTextUserMobileValSClass,
     .uca_personalInfoTextUserGenderValSClass,
     .uca_personalInfoTextUserBirthdateValSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
     }
     
     .userFullNameInput_ErrorClass,
     .userEmailInput_ErrorClass,
     .userMobileInput_ErrorClass,
     .userBirthdateInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     /* personal info edit mode display section css code */
     
     .uca_closeProfileLblPClass{
-        color:#ab0b38!important;
         font-size:15px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        color:#ab0b38!important;
         cursor:pointer!important;
     }
     
@@ -1877,8 +1881,8 @@
     .uca_personalInfoTextUserMobileLblSClass,
     .uca_personalInfoTextUserGenderLblSClass,
     .uca_personalInfoTextUserBirthdateLblSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         padding-right:7px!important;
     }
     
@@ -1887,8 +1891,8 @@
     .uca_personalInfoEditUserMobileValSClass,
     .uca_personalInfoEditUserGenderValSClass,
     .uca_personalInfoEditUserBirthdateValSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
     }
     
     .uca_personalInfoEditSectionContainerDivClass input,
@@ -1897,26 +1901,25 @@
     }
     
     .uca_personalInfoUpdateBtnClass{
-        color:#fff!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
+        color:#fff!important;
         border-radius:0px!important;
         background:#ab0b38!important;
         cursor:pointer!important;
-        padding:5px!important;
     }
     
     .uca_changepasswordInfoSectionContainerDivClass{
         padding-left:20px!important;
         padding-right:0px!important;
-        border:1px solid #DCE0EF!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .uca_changePwdNotePClass{
+        font-size:13px!important;
         color:#bf4444!important;
-        font-size:12px!important;
     }
     
     .uca_OldPasswordPClass,
@@ -1930,54 +1933,61 @@
     .uca_oldpasswordLblSClass,
     .uca_newpasswordLblSClass,
     .uca_newconfirmpasswordLblSClass{
-        color:#67717D!important;
         font-size:12px!important;
+        color:#67717D!important;
     }
     
     .uca_changepasswordInfoSectionContainerDivClass input{
-        width:20%!important;
         font-size:12px!important;
+        width:20%!important;
     }
     
     .userOldPwdInput_ErrorClass,
     .userNewPwdInput_ErrorClass,
     .userNewCPwdInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
 
     .uca_changePasswordBtnClass{
+        font-weight:normal!important;
+        font-size:13px!important;
         color:#fff!important;
         background:#ab0b38!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         border-radius:0px!important;
         cursor:pointer!important;
     }
     
 
     /* order cart section css code */
-
+    
+    .uca_ordercartSectionContainerDivClass .commonHorizontalSpaceDivClass{
+        margin-bottom:10px!important;
+    }
+    
+    .uca_ordercartSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .ordercartRequestedItemShoppingBagIconClass{
         color:#00B9F5!important;
     }
 
     .uca_ordercartSectionMsgPClass{
-        margin-top:10px!important;
-        cursor:pointer;
-        padding-left:0px!important;
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
+        padding-left:0px!important;
+        cursor:pointer;
     }
     
     .uca_ordercartSectionCheckoutBtnClass{
+        font-size:11px!important;
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         background:#ab0b38!important;
-        color:#fff!important;
-        font-size:9px!important;
-        font-weight:bold!important;
-        padding:2px!important;
     }
     
     .uca_ordercartAllSectionHeaderContainerDivClass .owl-item{
@@ -1986,21 +1996,21 @@
     }
 
     .uca_ordercartEachTabLabelSectionContainerLIClass{
-        text-align:center!important;
-        border-bottom:1px solid #00B9F5!important;
-        color:#67717D!important;
-        font-weight:bold!important;
-        font-family: serif!important;
         float:left!important;
-        padding:5px!important;
-        font-size:15px!important;
         list-style-type:none!important;
+        text-align:center!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        font-family: serif!important;
+        color:#67717D!important;
+        padding:5px!important;
+        border-bottom:1px solid #00B9F5!important;
         cursor:pointer!important;
     }
 
     .uca_ordercartSelectedTabLabelSectionContainerLIClass{
-        border-bottom: 1px solid #cb202d!important;
         color:#fff!important;
+        border-bottom: 1px solid #cb202d!important;
         background:#cb202d!important;
     }
     
@@ -2025,12 +2035,16 @@
     }
     
     .uca_ordercartRequestedEachStoreNamePClass{
-        font-weight:bold!important;
-        font-size:13px!important;
         text-align:center!important;
-        color:#ab0b38!important;
         text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
+    }
+    
+    .ordercartRequestedEachStoreAllItemCountSClass{
+        background:#ffa500!important;
     }
     
     .uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass{
@@ -2111,10 +2125,6 @@
         margin-bottom:3px!important;
     }
     
-    .ordercartRequestedEachStoreAllItemCountSClass{
-        background:#ffa500!important;
-    }
-
     .uca_ordercartRequestedEachStoreItemSizePClass{
         color:rgb(70, 75, 80)!important;
         font-size:15px!important;
