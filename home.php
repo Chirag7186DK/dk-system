@@ -63,26 +63,26 @@
         <p class='whatIsDessertskhazanaTitlePClass'>
             <span>The Many Ways For Your Celebration </span>
         </p>
-        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkPartyOrderContainerDivClass">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 dkPartyOrderContainerDivClass">
             <div class='dkPartyOrderWrapperDivClass'>
                 <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
-                <p ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='partyOrderPClass' title='Click to request for party orders'>
+                <p ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='partyOrderPClass'>
                     <span>PARTY ORDERS</span>
                 </p>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCustomizeDessertsOrderContainerDivClass">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 dkCustomizeDessertsOrderContainerDivClass">
             <div class='dkCustomizeDessertsOrderWrapperDivClass'>
                 <img src='#' class='customizeOrderImgClass' load-customizeorder-images-directive>
-                <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass' title='Click to request for customize orders'>
+                <p ng-controller="CustomizeOrdersController" ng-click="redirectToViewCustomizeOrderRequest()" class='customizeOrderPClass'>
                     <span>CUSTOMIZE ORDER</span>
                 </p>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 dkCoperateSpecialOffersContainerDivClass">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 dkCoperateSpecialOffersContainerDivClass">
             <div class='dkCoperateSpecialOffersWrapperDivClass'>
                 <img src='#' class='coperateOrderImgClass' load-coperatetieup-images-directive>
-                <p ng-controller="CorporateTieupController" ng-click="redirectToViewCorporateTieupRequest()" class='corporateOrderPClass' title='Click to request for corporate tie-up'>
+                <p ng-controller="CorporateTieupController" ng-click="redirectToViewCorporateTieupRequest()" class='corporateOrderPClass'>
                     <span>CORPORATE TIE-UP</span>
                 </p>
             </div>
