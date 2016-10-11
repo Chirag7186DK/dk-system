@@ -21,7 +21,7 @@
         <!-- display sign-in section info -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInFormInfoWrapperDivClass">
             <!-- display sign-in form info -->
-            <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='signInSection'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                 <div ng-if="isShowUserSignInNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeMsgContainerDivClass">
                     {{userSignInNoticeMsgStr}}
                 </div>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <!-- sign-in text code form info -->
-            <div ng-if="showAccountFormSectionName=='signInOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='signInOtpSection'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignInFormSectionContainerDivClass">
                 <div ng-if="isShowUserSignInOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignInNoticeOtpMsgContainerDivClass">
                     {{userSignInOtpNoticeMsgStr}}
                 </div>
@@ -86,7 +86,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userForgotFormInfoWrapperDivClass">
 
             <!-- forgot password step1 info -->
-            <div ng-if="showAccountFormSectionName=='frgtPwdStep1Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='frgtPwdStep1Section'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
                     <h4 class='userFrgtPwdHeaderLblClass'>Forgot Password?</h4>
                     <p class='userFrgtPwdPLblClass'>
@@ -117,7 +117,7 @@
             </div>
 
             <!-- forgot password step2 info -->
-            <div ng-if="showAccountFormSectionName=='frgtPwdStep2Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='frgtPwdStep2Section'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
                     <h4 class='userFrgtPwdHeaderLblClass'>Enter One Time Password</h4>
                 </div>
@@ -142,7 +142,7 @@
             </div>
 
             <!-- forgot password step3 info -->
-            <div ng-if="showAccountFormSectionName=='frgtPwdStep3Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='frgtPwdStep3Section'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
                     <h4 class='userFrgtPwdHeaderLblClass'>Repeat Password</h4>
                 </div>
@@ -177,7 +177,7 @@
             </div>
 
             <!-- forgot password step4 info -->
-            <div ng-if="showAccountFormSectionName=='frgtPwdStep4Section'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='frgtPwdStep4Section'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userFrgtPwdFormSectionContainerDivClass">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frgtPwdHeaderSectionDivClass">
                     <h4 class='userFrgtPwdHeaderLblClass'>Repeat Password</h4>
                 </div>
@@ -194,7 +194,7 @@
         <!-- display sign-up info section -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpFormInfoWrapperDivClass">
             <!-- sign-up form info -->
-            <div ng-if="showAccountFormSectionName=='signUpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='signUpSection'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
                 <div ng-if="isShowUserSignUpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNoticeMsgContainerDivClass">
                     {{userSignUpNoticeMsgStr}}
                 </div>
@@ -232,7 +232,7 @@
                 </div>
             </div>
             <!-- sign-up text code form info -->
-            <div ng-if="showAccountFormSectionName=='signUpOtpSection'" class="col-xs-12 col-sm-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
+            <div ng-if="showAccountFormSectionName=='signUpOtpSection'" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 userSignUpFormSectionContainerDivClass">
                 <div ng-if="isShowUserSignUpOtpNoticeMsg=='TRUE'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpNoticeOtpMsgContainerDivClass">
                     {{userSignUpOtpNoticeMsgStr}}
                 </div>
