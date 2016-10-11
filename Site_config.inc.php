@@ -3,6 +3,13 @@
 
 // Developers shall use their own names here
 
+//$DATABASENAME = 'desserts_khazana';
+//$DATABASEHOST = "localhost";
+//$DATABASEUNAME = "desserts_dkdbadm";
+//$YII_DB_UNAME = "desserts_dkdbadm";
+//$DATABASEPASS = "dkdbadmin123";
+//$YII_DB_PASS = "dkdbadmin123";
+
 $DATABASENAME = 'DESSERTSKHAZANA';
 $DATABASEHOST = "localhost";
 $DATABASEUNAME = "dgdb";
