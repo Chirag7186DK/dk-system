@@ -319,7 +319,7 @@
     .eachStoreInfoContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-bottom:3%!important;
+        margin-bottom:5%!important;
     }
     
     .eachStoreInfoInnerContainerDivClass{
@@ -477,7 +477,7 @@
     .storeSelfNameTextLblPClass{
         text-align:center!important;
         text-transform:uppercase!important;
-        font-size:16px!important;
+        font-size:15px!important;
         font-family:serif!important;
         font-weight:normal!important;
         color: #ab0b38!important;
@@ -511,7 +511,7 @@
     .storeReviewRatingTextLblPClass{
         font-weight:normal!important;
         font-family:serif!important;
-        font-size:16px!important;
+        font-size:15px!important;
         color: #ab0b38!important;
         margin:0px!important;
     }
@@ -543,14 +543,14 @@
     .storeMenuTextLblPClass{
         font-family:serif!important;
         font-weight:normal!important;
-        font-size:16px!important;
+        font-size:15px!important;
         color: #ab0b38!important;
         margin:0px!important;
     }
 
     .storeDessertsMenuInfoLblPClass{
         font-family:serif!important;
-        font-size:16px!important;
+        font-size:14px!important;
         font-weight:normal!important;
         color:#808A94!important;
         margin:0px!important;
@@ -575,7 +575,7 @@
         text-align:center!important;
         list-style:none!important;
         font-weight:normal!important;
-        font-size:20px!important;
+        font-size:16px!important;
         font-family:serif!important;
         color:#f17023!important;
     }
@@ -699,7 +699,7 @@
         text-align:center!important;
         font-weight:normal!important;
         font-family:serif!important;
-        font-size:18px!important;
+        font-size:16px!important;
         padding:2px!important;
     }
 
@@ -734,7 +734,6 @@
     .storePriceFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-left:25%!important;
         margin-bottom:20px!important;
     }
 
@@ -767,7 +766,6 @@
     .storeProductSizeFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-left:25%!important;
         margin-bottom:20px!important;
     }
 
@@ -800,7 +798,6 @@
     .storeDiscountFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-left:25%!important;
         margin-bottom:20px!important;
     }
 
@@ -838,14 +835,15 @@
     .storeProductFounCountInfoMsgDivClass{
         font-family:serif!important;
         color:rgba(218, 13, 47, 0.85)!important;
-        font-size:20px!important;
+        font-size:16px!important;
         font-weight:normal!important;
         text-align:center!important;
         padding:10px!important;
     }
 
     .storeProductBoxDivClass{
-        padding-left:1px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
     }
     
     .storeProductBoxDivClass .preloadProductImagesClass{
@@ -932,7 +930,7 @@
     }
 
     .storeAllUserReviewedRatingLblSClass{
-        font-size:24px!important;
+        font-size:18px!important;
         font-family:serif!important;
         font-weight:normal!important;
         color:#800080!important;
@@ -954,14 +952,14 @@
     }
 
     .storeEachUserNameRatedReviewPClass{
-        font-size:22px!important;
+        font-size:16px!important;
         font-family:serif!important;
         font-weight:normal!important;
         color:rgb(70, 75, 80)!important;
     }
 
     .storeEachUserRatedReviewPClass{
-        font-size:16px!important;
+        font-size:15px!important;
         font-family:serif!important;
         font-weight:normal!important;
         color:rgb(70, 75, 80)!important;
@@ -976,7 +974,7 @@
     
     .storeEachUserAvgRatedReviewPClass{
         color:rgb(70, 75, 80)!important;
-        font-size:16px!important;
+        font-size:15px!important;
         font-family:serif!important;
         font-weight:normal!important;
     }
@@ -1037,7 +1035,7 @@
     .vpd_productImagesContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        padding-bottom:10px!important;
+        margin-bottom:10px!important;
         background-color:#fff!important;
     }
     
@@ -1045,11 +1043,16 @@
         width:100%!important;
         height:auto!important;
     }
-
-    .vpd_productDetailsContainerDivClass{
+    
+    .vpd_productDetailsWrapperDivClass{
         padding-left:0px!important;
+        padding-right:0px!important
+        margin-bottom:10px!important;
         background-color:#fff!important;
-        border:1px solid #e7e7e7!important;
+        border:1px solid #e7e7e7!important;     
+    }
+    
+    .vpd_productDetailsContainerDivClass{
     }
     
     .vpd_productDetailsContainerDivClass p{
@@ -1069,26 +1072,26 @@
     }
     
     .vpd_productStoreNameContainerPClass{
-        font-size:15px!important;
+        font-size:14px!important;
         color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
 
     .vpd_productReviewAndRatingPClass{
-        font-size:15px!important;
+        font-size:14px!important;
         color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
     
     .vpd_storeDeliveryFromAreaToAreaPClass,
     .vpd_storeDeliveryFeeApplicableMsgPClass{
-        font-size:15px!important;
+        font-size:14px!important;
         color:rgb(70, 75, 80)!important;
         margin-bottom:7px!important;
     }
     
     .vpd_estimatedProductDeliveryTimePClass{
-        font-size:15px!important;
+        font-size:14px!important;
         color:rgb(70, 75, 80)!important;
     }
     
@@ -1099,13 +1102,13 @@
     }
 
     .vpd_productSelectMeasurementLabelPClass{
-        font-size:14px!important;
+        font-size:16px!important;
         color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
 
     #productMeasurementSelectCtrlId{
-        width:30%;
+        width:50%;
     }
     
     .viewProductPricePClass{
@@ -1136,7 +1139,7 @@
     }
     
     .vpd_productQtyInputClass{
-        width:30%;
+        width:50%;
     }
 
     .vpd_productAvgRatedIconClass{
