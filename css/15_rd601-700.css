@@ -1036,7 +1036,8 @@
 
     .vpd_productImagesContainerDivClass{
         padding-left:0px!important;
-        padding-right:0px!important;
+        //padding-right:0px!important;
+        width:25%!important;
         margin-bottom:10px!important;
         background-color:#fff!important;
     }
@@ -1048,6 +1049,7 @@
     
     .vpd_productDetailsWrapperDivClass{
         padding-left:0px!important;
+        width:75%!important;
         margin-bottom:10px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7!important;     
