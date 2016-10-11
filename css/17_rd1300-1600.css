@@ -924,51 +924,52 @@
     }
 
     .storeAllUserReviewedRatingContainerDivClass{
-        margin-top:15px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
         border:1px solid #DCE0EF!important;
     }
 
     .storeAllUserReviewedRatingLblSClass{
-        color:#800080!important;
         font-size:24px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:#800080!important;
     }
 
     .storeDisplayEachUserReviewedRatingContainerDivClass{
-        padding-top:12px!important;
-        padding-bottom:12px!important;
-        border-bottom:1px solid #eee!important;
-        color:rgb(70, 75, 80)!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:12px!important;
+        padding-bottom:12px!important;
+        border-bottom:1px solid #e7e7e7!important;
     }
 
     .storeDisplayEachUserReviewedRatingContainerDivClass:last-child{
-        border-bottom:none!important;
+        border-bottom:0px!important;
     }
 
     .storeEachUserNameRatedReviewPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:22px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
     }
 
     .storeEachUserRatedReviewPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:16px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
     }
 
     .storeEachUserRatingReviewQuestionAnswerSClass{
-        padding:2px!important;
-        color:rgba(205, 46, 216, 0.44)!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgba(205, 46, 216, 0.44)!important;
+        padding:2px!important;
     }
     
     .storeEachUserAvgRatedReviewPClass{
@@ -980,9 +981,9 @@
     
     .storeReviewRatingNotFoundMsgDivClass{
         text-align:left!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-family:serif!important;
-        font-size:17px!important;
+        font-size:16px!important;
         color:#fb366e!important;
     }
 
@@ -1009,7 +1010,7 @@
 
     .storeWorkingEachDaySchedulePClass{
         text-align:left!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-family:serif!important;
         font-size:15px!important;
         color:#7c838a!important;
@@ -1022,9 +1023,9 @@
 
     .storeWorkingStyleNotFoundMsgDivClass{
         text-align:left!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-family:serif!important;
-        font-size:17px!important;
+        font-size:16px!important;
         color:#fb366e!important;
     }
     
