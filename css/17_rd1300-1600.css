@@ -7,6 +7,7 @@
         text-align:center!important;
         padding:0px!important;
         margin:0px!important;
+        background-size:cover!important;
     }
     
     .topMenuBarULClass{
@@ -14,9 +15,9 @@
     }
 
     .topMenuBarULClass li {
-        color:#999;
         font-size:12px;
         text-decoration:none!important;
+        color:#999;
         cursor:pointer!important;
     }
 
@@ -25,9 +26,9 @@
     }
     
     .selectedDeliveryAreaTextHeaderLIClass{
-        color:#6c6cb9!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
+        color:#6c6cb9!important;
     }
     
     .userAccountAllSectionListDropdownDivClass{
@@ -40,11 +41,11 @@
     }
     
     .userAccountAllSectionListDropdownDivClass .userAccountEachSectionListDropdownDivClass{
-        padding:6px!important;
-        color:#999!important;
         text-align:left!important;
-        cursor:pointer!important;
         font-size:12px!important;
+        color:#999!important;
+        padding:6px!important;
+        cursor:pointer!important;
     }
     
     .fHeaderRowBorderDivClass{
@@ -66,9 +67,9 @@
 
     .deliveryCityAreaDessertsTagLinesPClass{
         text-align:center!important;
-        color: #f32956!important;
         font-size:25px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        color:#f32956!important;
         margin:0px!important;
     }
 
@@ -81,17 +82,17 @@
     }
 
     .deliveryCityLblSClass{
-        color:rgb(1, 122, 241)!important;
         font-size:17px!important;
-        font-weight:500!important;
+        font-weight:normal!important;
         font-family:serif!important;
+        color:rgb(1, 122, 241)!important;
     }
 
     .deliveryCityListWrapperDivClass .dropdown-menu>.active>a{
-        background:#fb366e!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:#fb366e!important;
     }
 
     .deliveryCityListWrapperDivClass .btn, 
@@ -117,17 +118,17 @@
     }
 
     .deliveryAreaLblSClass{
-        color:rgb(1, 122, 241)!important;
         font-size:17px!important;
-        font-weight:500!important;
+        font-weight:normal!important;
         font-family:serif!important;
+        color:rgb(1, 122, 241)!important;
     }
 
     .deliveryAreaListWrapperDivClass .dropdown-menu>.active>a{
-        background:#fb366e!important;
         font-weight: normal!important;
         font-family: serif!important;
         font-size:16px!important;
+        background:#fb366e!important;
     }
 
     .deliveryAreaListWrapperDivClass .btn, 
@@ -152,17 +153,17 @@
     }
 
     .deliveryAreaDessertsTypeListLblSClass{
-        color:rgb(1, 122, 241)!important;
         font-size:17px!important;
-        font-weight:500!important;
+        font-weight:normal!important;
         font-family:serif!important;
+        color:rgb(1, 122, 241)!important;
     }
 
     .deliveryAreaDessertsTypeListWrapperDivClass .dropdown-menu>.active>a{
-        background:#fb366e!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:#fb366e!important;
     }
 
     .deliveryAreaDessertsTypeListWrapperDivClass .btn, 
@@ -181,83 +182,89 @@
 
     /*  what is desserts khazana css code */
     
+    .whatIsDessertsKhazanaMainContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .whatIsDessertskhazanaTitlePClass{
         text-align:center!important;
         font-size:18px!important;
-        padding:15px!important;
+        font-weight:normal!important;
         color:#222!important;
-        font-weight:bold!important;
+        padding:15px!important;
     }
     
     .dkPartyOrderContainerDivClass{
         margin-bottom:20px!important;
-        width:49.4%!important;
         background-size:cover;
     }
 
     .dkPartyOrderWrapperDivClass{
         border:1px solid #d6caca!important;
     }
-
+    
+    .partyOrderImgClass{
+        width:100%!important;
+    }
+    
     .partyOrderPClass{
         text-align:center!important;
         font-size:15px!important;
+        font-weight:normal!important;
         margin:0px!important;
+        color:#fb366e!important;
         background:#fff!important;
         padding:10px!important;
-        color:#fb366e!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
 
     .dkCoperateSpecialOffersContainerDivClass{
         margin-bottom:20px!important;
-        width:49.4%!important;
         background-size:cover;
     }
 
     .dkCoperateSpecialOffersWrapperDivClass{
         border:1px solid #d6caca!important;
     }
-
+    
+    .coperateOrderImgClass{
+        width:100%!important;
+    }
+    
     .corporateOrderPClass{
         text-align:center!important;
         font-size:15px!important;
+        font-weight:normal!important;
         margin:0px!important;
+        color:#fb366e!important;
         background:#fff!important;
         padding:10px!important;
-        color:#fb366e!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
 
     .dkCustomizeDessertsOrderContainerDivClass{
         margin-bottom:20px!important;
         background-size:cover;
-        width:49.4%!important;
     }
 
     .dkCustomizeDessertsOrderWrapperDivClass{
         border:1px solid #d6caca!important;
     }
-
+    
+    .customizeOrderImgClass{
+        width:100%!important;
+    }
+    
     .customizeOrderPClass{
         text-align:center!important;
         font-size:15px!important;
+        font-weight:normal!important;
         margin:0px!important;
+        color:#fb366e!important;
         background:#fff!important;
         padding:10px!important;
-        color:#fb366e!important;
-        font-weight:bold!important;
         cursor:pointer!important;
-    }
-
-    .howItsWorkTitlePClass{
-        text-align:center!important;
-        font-size:18px!important;
-        padding:15px!important;
-        color:#222!important;
-        font-weight:bold!important;
     }
 
     .customerBreadcrumbULClass{
@@ -272,17 +279,17 @@
     
     .customerBreadcrumbLIClass a, 
     .customerBreadcrumbLIClass a:hover{
-        color:#828282!important;
         text-decoration:none!important;
         font-weight:100!important;
         font-size:12px!important;
+        color:#828282!important;
     }
     
     .customerBreadcrumbLIClass{
-        color:#828282!important;
         text-decoration:none!important;
         font-weight:100!important;
         font-size:12px!important;
+        color:#828282!important;
         padding-left:0px!important;
     }
 
@@ -292,32 +299,33 @@
     .allStoresInfoContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        padding-top:0px!important;
     }
     
     .allStoresInfoNoteHeaderPClass{
-        text-align:center;
-        list-style:none!important;
+        text-align:center!important;
         font-weight:normal!important;
         font-size:25px!important;
+        font-family:serif!important;
         color:#f17023!important;
-        font-family:serif;
     }
     
     .countAllStoresSClass{
-        background-color:#f17023!important;
+        font-size:20px!important;
         color:#fff!important;
+        background-color:#f17023!important;
     }
     
     .eachStoreInfoContainerDivClass{
-        margin-bottom:30px!important;
         padding-left:0px!important;
+        margin-bottom:2%!important;
     }
     
     .eachStoreInfoInnerContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
         background-color:#fff!important;
-        border:1px solid #e7e7e7!important;
+        border:1px solid rgba(199, 181, 181, 0.6)!important;
     }
     
     .eachStoreNamePClass,
@@ -328,6 +336,7 @@
     .eachStoreServedDessertsTypeTotalProductPClass,
     .eachStoreDiscountUptoPClass,
     .eachStoreDeliveryTimePClass,
+    .eachStorePaymentAcceptMethodPClass,
     .eachStoreDeliveryFeeMsgPClass,
     .eachStoreOnlineOrderBtnPClass{
         margin-bottom:4px!important;
@@ -335,18 +344,18 @@
     }
     
     .eachStoreNamePClass{
-        color:#ab0b38!important;
-        font-weight:bold!important;
-        text-transform:uppercase!important;
-        font-size:16px!important;
         text-align:center!important;
+        text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:16px!important;
+        color:#ab0b38!important;
     }
     
     .eachStoreLocationPClass{
-        color:#7d7a7a!important;
+        text-align:center!important;
         font-weight:normal!important;
         font-size:12px!important;
-        text-align:center!important;
+        color:#7d7a7a!important;
     }
     
     .storeLocationMapIconClass{
@@ -359,65 +368,72 @@
     }
     
     .eachStoreReviewedRatingBoxSClass{
+        font-size:12px!important;
+        color:#fff!important;
         background-color:rgba(39,171,92,0.9)!important;
         border:1px solid rgba(39,171,92,0.9)!important;
         padding:2px!important;
-        color:#fff!important;
-        font-size:11px!important;
     }
     
     .eachStoreNoReviewedRatingPClass{
-        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#8e969d!important;
+        padding-top:2px!important;
+        padding-bottom:2px!important;
     }
     
     .eachStoreServedDessertsTypePClass{
-        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#8e969d!important;
     }
     
     .eachStoreServedDessertsTypeTotalProductPClass{
-        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
+         color:#8e969d!important;
     }
     
     .eachStoreDiscountUptoPClass{
-        color:#ea5b31!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
+        color:#ea5b31!important;
     }
     
     .eachStoreDiscountUptoIconClass{
+        color: #fff!important;
         border-radius:50%!important;
         background:#ea5b31!important;
-        color: #fff!important;
         padding:4px!important;
     }
     
     .eachStoreDeliveryTimePClass{
-        color:#ab0b38!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
+        color:#ab0b38!important;
+    }
+    
+    .eachStorePaymentAcceptMethodPClass{
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#ab0b38!important;
     }
     
     .eachStoreDeliveryFeeMsgPClass{
-        color:#808080!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#808080!important;
         height:52px!important;
     }
     
     .eachStoreOnlineOrderBtnClass,
     .eachStoreOnlineOrderBtnClass:hover{
         font-size:13px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         color:#fff!important;
         border-radius:0px!important;
         background-color:#ab0b38!important;
-        padding:3px!important;
     }
     
     .noStoresFoundInfoMsgContainerDivClass{
@@ -435,14 +451,14 @@
     .storeSummaryTypeInfoWrapperDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-top:0px!important;
+        margin:0px!important;
     }
 
     .storeSummaryTypeInfoWrapperDivClass .owl-item{
-        width:auto!important;
+        margin-top:10px!important;
         margin-right:20px!important;
-        margin-top:20px!important;
-        height:100px!important;
+        width:auto!important;
+        height:100%!important;
     }
     
     .storeSummaryTypeInfoWrapperDivClass .owl-item:first-child{
@@ -457,27 +473,27 @@
     }
 
     .storeSelfNameTextLblPClass{
-        margin:0px!important;
-        color: #ab0b38!important;
-        font-family:serif!important;
-        font-weight:bold!important;
+        text-align:center!important;
         text-transform:uppercase!important;
         font-size:16px!important;
-        text-align:center!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        color: #ab0b38!important;
+        margin:0px!important;
     }
 
     .storeSelfLocatedInfoLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-size:14px!important;
         font-weight:normal!important;
         color:#808A94!important;
+        margin:0px!important;
     }
 
     .showMoreStoreSelfInfoPClass{
         font-family:serif!important;
         font-size:14px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         color:darkorange!important;
         cursor:pointer!important;
         margin-top:10px!important;
@@ -491,25 +507,25 @@
     }
 
     .storeReviewRatingTextLblPClass{
-        margin:0px!important;
-        font-weight:bold!important;
-        color: #ab0b38!important;
+        font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        color: #ab0b38!important;
+        margin:0px!important;
     }
 
     .storeReviewRatingAllUserCountInfoLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
         font-weight:normal!important;
         color:#808A94!important;
+        margin:0px!important;
     }
 
     .showMoreStoreReviewRatingSummaryInfoPClass{
-        font-family: serif!important;
+        font-family:serif!important;
         font-size:14px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         color:darkorange!important;
         cursor:pointer!important;
         margin-top:10px!important;
@@ -523,34 +539,34 @@
     }
 
     .storeMenuTextLblPClass{
-        margin:0px!important;
         font-family:serif!important;
-        font-weight:bold!important;
-        color: #ab0b38!important;
+        font-weight:normal!important;
         font-size:16px!important;
+        color: #ab0b38!important;
+        margin:0px!important;
     }
 
     .storeDessertsMenuInfoLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
         font-weight:normal!important;
         color:#808A94!important;
+        margin:0px!important;
     }
 
     .showMoreStoreMenuSummaryInfoPClass{
-        font-family: serif!important;
+        font-family:serif!important;
         font-size:14px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         color:darkorange!important;
         cursor:pointer!important;
         margin-top:10px!important;
     }
 
     .storeServeDessertsTypeContainerDivClass{
+        padding-left:0px!important;
         margin-top:10px!important;
         margin-bottom:10px!important;
-        padding-left:0px!important;
     }
 
     .storeServingDessertsTypeNoteInfoLIClass{
@@ -558,20 +574,20 @@
         list-style:none!important;
         font-weight:normal!important;
         font-size:20px!important;
+        font-family:serif!important;
         color:#f17023!important;
-        font-family:serif;
     }
     
     .storeCanServeDessertsTypeCountSClass{
-        background:#f17023!important;
-        color:#fff!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:15px!important;
+        color:#fff!important;
+        background:#f17023!important;
     }
 
     .storeCanServeDessertsTypeListScrollableWrapperDivClass{
         padding-right:0px!important;
-        height:147px!important;
+        height:147%!important;
         white-space:nowrap!important;
         margin-top:15px!important;
         padding-left:0px!important;
@@ -601,30 +617,29 @@
     }
 
     .storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeTitleHClass{
-        text-align:center;
-        margin:3px!important;
-        font-size:18px!important;
-        font-family:serif;
+        text-align:center!important;
         text-transform:uppercase;
-        margin:0px!important;
+        font-size:18px!important;
+        font-family:serif!important;
+        margin:3px!important;
     }
 
     .storeCanServeEachDessertsTypeScrollableWrapperDivClass .viewDessertsTypePClass{
         text-align:center;
+        font-size:14px!important;
+        font-family:serif!important;
+        color:#F560F5!important;
         margin:0px!important;
         margin-top:12px!important;
-        font-size:14px!important;
-        font-family: serif;
-        color:#F560F5!important;
-        cursor:pointer!important;
         padding-left:20px!important;
         padding-right:20px!important;
+        cursor:pointer!important;
     }
 
     .storeProductTypeAllCategoryWrapperDivClass{
-        margin-top:14px!important;
         padding-left:0px!important;
         padding-right:0px!important;
+        margin-top:14px!important;
     }
 
     .storeProductTypeAllCategoryContainerDivClass{
@@ -639,67 +654,64 @@
     }
 
     .storeEachProductCategoryContainerLIClass{
-        text-align:center!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        padding-left:5px!important;
-        padding-right:5px!important;
-        background:whitesmoke!important;
-        color:rgba(0,0,0,.95)!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
         list-style:none!important;
+        text-align:center!important;
+        font-weight:normal!important;
+        font-family:serif!important;
         font-size:14px!important;
+        color:rgba(0,0,0,.95)!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:whitesmoke!important;
     }
 
     .storeEachRequestedProductCategoryContainerLIClass{
-        text-align:center!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        padding-left:5px!important;
-        padding-right:5px!important;
-        border-bottom:1px solid #cb202d!important;
-        background-color:#cb202d!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
         list-style:none!important;
+        text-align:center!important;
+        font-weight:normal!important;
+        font-family:serif!important;
         font-size:14px!important;
+        color:#fff!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background-color:#cb202d!important;
     }
 
     .storeProductFilterOperationWrapperDivClass{
         padding-left:0px!important;
-        padding-top:10px;
-        padding-bottom:20px;
-        margin-top:12px;
-        margin-bottom:12px;
+        padding-top:10px!important;
+        padding-bottom:20px!important;
+        margin-top:12px!important;
+        margin-bottom:12px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7;
     }
 
     .storeTipAbtProductFilterPClass{
-        padding:2px!important;
-        text-align:center;
-        font-weight:bold;
+        text-align:center!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:18px!important;
+        padding:2px!important;
     }
 
     .storeToggleProductFilterBtnClass, 
     .storeToggleProductFilterBtnClass:hover{
-        border-radius:0px!important;
-        font-weight:bold!important;
-        padding:0px!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        color:#fff!important;
         padding-left:10px!important;
         padding-right:10px!important;
         margin-left:1%!important;
+        border-radius:0px!important;
         background:#3eb1e7!important;
-        color:#fff!important;
         cursor:pointer;
-        font-family:serif!important;
     }
 
     .storeProductFilterOperationContainerDivClass{
@@ -713,22 +725,22 @@
 
     .storeProductCountInfMsgPopupDivClass{
         text-align:center!important;
-        font-size:13px!important;
+        font-size:15px!important;
         color:rgba(218, 13, 47, 0.85)!important;
     }
 
     .storePriceFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-bottom:20px!important;
         margin-left:25%!important;
+        margin-bottom:20px!important;
     }
 
     .storePriceFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:rgba(240, 99, 122, 0.85)!important;
     }
 
     .storePriceFilterOperationDivClass .btn, 
@@ -753,15 +765,15 @@
     .storeProductSizeFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-bottom:20px!important;
         margin-left:25%!important;
+        margin-bottom:20px!important;
     }
 
     .storeProductSizeFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:rgba(240, 99, 122, 0.85)!important;
     }
 
     .storeProductSizeFilterOperationDivClass .btn, 
@@ -786,15 +798,15 @@
     .storeDiscountFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        margin-bottom:20px!important;
         margin-left:25%!important;
+        margin-bottom:20px!important;
     }
 
     .storeDiscountFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
         font-weight: normal!important;
         font-family: serif!important;
         font-size:16px!important;
+        background:rgba(240, 99, 122, 0.85)!important;
     }
 
     .storeDiscountFilterOperationDivClass .btn, 
@@ -832,7 +844,6 @@
 
     .storeProductBoxDivClass{
         padding-left:1px!important;
-        //padding-right:1px!important;
     }
 
     .storeProductBoxDividerLineDivClass{
