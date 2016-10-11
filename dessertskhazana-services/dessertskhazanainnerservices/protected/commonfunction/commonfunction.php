@@ -670,7 +670,7 @@ class commonfunction{
                 $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                 $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
                 $rspDetails['userDetails']['tokenId'] = $userDataObj['unmd5UserId'];
-                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 sec approx to reach at your message box !!!";
+                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
             }
         } 
         return $rspDetails;
