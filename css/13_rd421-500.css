@@ -2127,6 +2127,7 @@
     .uca_ordercartRequestedEachStoreProductItemDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        width:25%!important;
     }
     
     .uca_ordercartRequestedEachStoreProductItemDivClass .preloadProductImagesClass{
@@ -2138,6 +2139,7 @@
     
     .uca_ordercartRequestedEachStoreItemDetailsDivClass{
         padding-right:0px!important;
+        width:75%!important;
     }
     
     .uca_ordercartRequestedEachStoreItemNamePClass{
@@ -2333,6 +2335,7 @@
     .uca_ordercartCancelledEachItemImageDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        width:25%!important;
     }
     
     .uca_ordercartCancelledEachItemImageDivClass .preloadProductImagesClass{
@@ -2344,6 +2347,7 @@
     
     .uca_ordercartCancelledEachItemDetailsDivClass{
         padding-right:0px!important;
+        width:75%!important;
     }
     
     .uca_ordercartCancelledEachItemDetailsDivClass p{
