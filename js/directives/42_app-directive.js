@@ -1,13 +1,4 @@
 
-
-angular.module('DKAPP').directive('notifyuserSelectedDeliveryareaTextheaderDirective', notifyuserSelectedDeliveryareaTextheaderDirective);
-
-function notifyuserSelectedDeliveryareaTextheaderDirective(CommonServices){
-    return function(scope, element, attrs){
-        CommonServices.notifyToUserForSelectedDeliveryarea();
-    };
-}
-
 angular.module('DKAPP').directive('preloadProductImagesClass', preloadProductImagesClass);
 
 function preloadProductImagesClass($timeout){
