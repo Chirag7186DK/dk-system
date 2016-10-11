@@ -1046,7 +1046,6 @@
     
     .vpd_productDetailsWrapperDivClass{
         padding-left:0px!important;
-        padding-right:0px!important;
         margin-bottom:10px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7!important;     
@@ -1105,7 +1104,7 @@
     }
 
     #productMeasurementSelectCtrlId{
-        width:50%;
+        width:70%;
     }
     
     .viewProductPricePClass{
@@ -1136,7 +1135,7 @@
     }
     
     .vpd_productQtyInputClass{
-        width:50%;
+        width:70%;
     }
 
     .vpd_productAvgRatedIconClass{
