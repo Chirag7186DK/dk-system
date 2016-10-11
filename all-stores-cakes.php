@@ -24,11 +24,11 @@
 
             <p ng-if="allStoresInfoList.length>0" class="allStoresInfoNoteHeaderPClass">
                 <i class="fa fa-smile-o"></i> 
-                Order cakes from <span class="badge countAllStoresSClass">{{allStoresInfoList.length}}</span> stores delivering to your door step !!!
+                Order cakes from <span class="badge countAllStoresSClass">{{allStoresInfoList.length}}</span> stores deliver at your door step !!!
             </p>
 
             <!-- iterate each store info container -->
-            <div ng-if="allStoresInfoList.length>0" ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 eachStoreInfoContainerDivClass">
+            <div ng-if="allStoresInfoList.length>0" ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-3 eachStoreInfoContainerDivClass">
                 <div class="eachStoreInfoInnerContainerDivClass">    
                     <p class="eachStoreNamePClass">
                         {{eachStoreInfoDataObj.shopStoreTitle}}
@@ -54,13 +54,16 @@
                         <span>{{eachStoreInfoDataObj.totalProduct}}</span>
                     </p>
                     <p ng-if="eachStoreInfoDataObj.discountUpto>0" class="eachStoreDiscountUptoPClass">
-                        Upto {{eachStoreInfoDataObj.discountUpto}} <i class="fa fa-percent"></i> Off
+                        Upto {{eachStoreInfoDataObj.discountUpto}} <i class="fa fa-percent"></i> Off available
                     </p>
                     <p ng-if="eachStoreInfoDataObj.discountUpto<=0" class="eachStoreDiscountUptoPClass">
                         No offers available
                     </p>
                     <p class="eachStoreDeliveryTimePClass">
-                        delivers in {{eachStoreInfoDataObj.deliveryTime}}
+                        <i class="fa fa-bus"></i> Estd. delivers in {{eachStoreInfoDataObj.deliveryTime}}
+                    </p>
+                    <p class="eachStorePaymentAcceptMethodPClass">
+                        <i class="fa fa-money"></i> Payment accept only online
                     </p>
                     <p class="eachStoreDeliveryFeeMsgPClass">
                         {{eachStoreInfoDataObj.deliveryFeeMsgStr}}
