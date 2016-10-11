@@ -196,11 +196,11 @@
         <div ng-hide='storeAllProductDetailsList.length' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductNotFoundMsgDivClass">
             {{storeProductNotFoundMsgStr}}
         </div>
-
+        
         <!-- displaying all user reviewed rating details -->
         <div ng-show="isShowStoreRatingReviewDetails" ng-controller='StoreController' ng-init="loadStoreAllUserRatingReviewed()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeAllUserReviewedRatingContainerDivClass">
             <span ng-if="allUserRatingReviewDetails.length>0" class="storeAllUserReviewedRatingLblSClass">
-                Displaying {{(allUserRatingReviewDetails).length}} customer(s) reviewed and ratings about product
+                Displaying {{(allUserRatingReviewDetails).length}} customers reviewed and ratings about us
             </span>
             <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeDisplayEachUserReviewedRatingContainerDivClass">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -220,7 +220,7 @@
                 </div>
             </div>
             <div ng-hide='allUserRatingReviewDetails' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeReviewRatingNotFoundMsgDivClass">
-                No any customer(s) reviewed & ratings yet about product !!!
+                No any customers reviewed & ratings yet about us !!!
             </div>
         </div>
 
