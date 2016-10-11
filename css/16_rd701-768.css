@@ -1,5 +1,5 @@
 
-@media screen and (min-width:320px) and (max-width:480px){
+@media screen and (min-width:701px) and (max-width:768px){
 
     /* first header css code */
 
@@ -66,7 +66,7 @@
     }
 
     .deliveryCityAreaDessertsTagLinesPClass{
-        text-align:left!important;
+        text-align:center!important;
         font-size:16px!important;
         font-weight:normal!important;
         color:#f32956!important;
@@ -318,8 +318,9 @@
     
     .eachStoreInfoContainerDivClass{
         padding-left:0px!important;
-        padding-right:0px!important;
+        //padding-right:0px!important;
         margin-bottom:5%!important;
+        width:50%!important;
     }
     
     .eachStoreInfoInnerContainerDivClass{
@@ -842,8 +843,9 @@
     }
 
     .storeProductBoxDivClass{
+        width:50%!important;
         padding-left:0px!important;
-        padding-right:0px!important;
+        //padding-right:0px!important;
     }
     
     .storeProductBoxDivClass .preloadProductImagesClass{
@@ -1034,7 +1036,8 @@
 
     .vpd_productImagesContainerDivClass{
         padding-left:0px!important;
-        padding-right:0px!important;
+        //padding-right:0px!important;
+        width:25%!important;
         margin-bottom:10px!important;
         background-color:#fff!important;
     }
@@ -1046,13 +1049,10 @@
     
     .vpd_productDetailsWrapperDivClass{
         padding-left:0px!important;
-        padding-right:0px!important
+        width:75%!important;
         margin-bottom:10px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7!important;     
-    }
-    
-    .vpd_productDetailsContainerDivClass{
     }
     
     .vpd_productDetailsContainerDivClass p{
@@ -1108,7 +1108,7 @@
     }
 
     #productMeasurementSelectCtrlId{
-        width:50%;
+        width:100%;
     }
     
     .viewProductPricePClass{
@@ -1139,7 +1139,7 @@
     }
     
     .vpd_productQtyInputClass{
-        width:50%;
+        width:100%;
     }
 
     .vpd_productAvgRatedIconClass{
@@ -1937,7 +1937,7 @@
     
     .uca_changepasswordInfoSectionContainerDivClass{
         padding-left:20px!important;
-        padding-right:0px!important;
+        //padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         border:1px solid #e7e7e7!important;
@@ -2131,6 +2131,7 @@
     .uca_ordercartRequestedEachStoreProductItemDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        width:25%!important;
     }
     
     .uca_ordercartRequestedEachStoreProductItemDivClass .preloadProductImagesClass{
@@ -2141,7 +2142,9 @@
     }
     
     .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        //padding-left:0px!important;
         padding-right:0px!important;
+        width:75%!important;
     }
     
     .uca_ordercartRequestedEachStoreItemNamePClass{
@@ -2337,6 +2340,7 @@
     .uca_ordercartCancelledEachItemImageDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        width:25%!important;
     }
     
     .uca_ordercartCancelledEachItemImageDivClass .preloadProductImagesClass{
@@ -2348,6 +2352,7 @@
     
     .uca_ordercartCancelledEachItemDetailsDivClass{
         padding-right:0px!important;
+        width:75%!important;
     }
     
     .uca_ordercartCancelledEachItemDetailsDivClass p{
