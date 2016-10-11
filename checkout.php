@@ -30,13 +30,14 @@
             <!-- each store order summary will be display -->
             <div ng-repeat="eachStoreOrderSummaryDataObj in allStorewiseOrderSummaryDataArrObj" data-ordercartstoreid="{{eachStoreOrderSummaryDataObj.ordercartStoreId}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_eachStoreOrderSummaryDivClass">
                 <p class="chkout_eachStoreBasicInfoLblPClass">
-                    <i class="fa fa-smile-o"></i> Hey {{eachStoreOrderSummaryDataObj.shopStoreTitle}} store order 
-                    will be deliver from '{{eachStoreOrderSummaryDataObj.storeLocatedAreaName}}' 
+                    <i class="fa fa-smile-o"></i> Hey {{eachStoreOrderSummaryDataObj.shopStoreTitle}} store 
+                    need address to deliver items
+                    from '{{eachStoreOrderSummaryDataObj.storeLocatedAreaName}}' 
                     to '{{eachStoreOrderSummaryDataObj.deliveryAreaname}}' area
                 </p>
                 <p class='chkout_eachStoreOrderDeliveryAddressPClass'> 
-                    Your delivery address
-                    <textarea class="form-control chkout_deliveryAddressInputBoxClass" placeholder="Type delivery address">{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
+                    Your residential / office address 
+                    <textarea class="form-control chkout_deliveryAddressInputBoxClass" rows='3'>{{eachStoreOrderSummaryDataObj.deliveryaddress}}</textarea>                            
                 </p>
                 <p class='chkout_eachStoreOrderDeliveryDatePClass'> 
                     Your delivery date
@@ -56,7 +57,7 @@
         <!-- checkout payment summary section -->
         <div ng-if="ordercartItemRequestedCount>0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_paymentSummarySectionDivClass">
             <p class='chkout_paymentSummaryHeaderPClass'>
-                <i class="fa fa-money"></i> PAYMENT SUMMARY
+                <i class="fa fa-rupee"></i> PAYMENT SUMMARY
             </p>
             <div ng-if="ordercartItemRequestedCount>0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chkout_paymentSummaryDivClass">
                 <p>
@@ -73,7 +74,7 @@
                 </p>
                 <p class="chkout_makePaymentBtnPClass">
                     <button class='btn chkout_makePaymentBtnClass'>
-                        Make Payment
+                        <i class="fa fa-rupee"></i> Make Payment
                     </button>
                 </p>
             </div>
