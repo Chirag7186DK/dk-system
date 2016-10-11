@@ -1104,7 +1104,7 @@
     }
 
     #productMeasurementSelectCtrlId{
-        width:70%;
+        width:100%;
     }
     
     .viewProductPricePClass{
@@ -1135,7 +1135,7 @@
     }
     
     .vpd_productQtyInputClass{
-        width:70%;
+        width:100%;
     }
 
     .vpd_productAvgRatedIconClass{
