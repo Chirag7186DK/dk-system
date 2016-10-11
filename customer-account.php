@@ -224,7 +224,7 @@
                             from '{{eachStoreAllItemDataObj.shopStoreTitle}}' store
                         </p>
                         <p class="uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass">
-                            Order will be deliver from '{{eachStoreAllItemDataObj.storeLocatedAreaName}}' to '{{eachStoreAllItemDataObj.deliveryAreaname}}'
+                            Order will be deliver from '{{eachStoreAllItemDataObj.storeLocatedAreaName}}' to '{{eachStoreAllItemDataObj.deliveryAreaname}}' area !!!
                         </p>
                         <p class="uca_ordercartRequestedEachStoreDeliveryFeePClass">
                             {{eachStoreAllItemDataObj.applicableStoreDeliveryFeeMsg}}
