@@ -74,11 +74,12 @@
     }
 
     .deliveryCityListContainerDivClass{
+        width:55%!important;
         margin-top:4px!important;
     }
 
     .deliveryCityListWrapperDivClass{
-        //margin-left:30%!important;
+        margin-left:50%!important;
     }
 
     .deliveryCityLblSClass{
@@ -110,11 +111,12 @@
     }
 
     .deliveryAreaListContainerDivClass{
+        width:55%!important;
         margin-top:20px!important;
     }
 
     .deliveryAreaListWrapperDivClass{
-        //margin-left:30%!important;
+        margin-left:50%!important;
     }
 
     .deliveryAreaLblSClass{
@@ -145,11 +147,12 @@
     }
 
     .deliveryAreaDessertsTypeListContainerDivClass{
+        width:55%!important;
         margin-top:20px!important;
     }
 
     .deliveryAreaDessertsTypeListWrapperDivClass{
-        //margin-left:30%!important;
+        margin-left:50%!important;
     }
 
     .deliveryAreaDessertsTypeListLblSClass{
@@ -197,6 +200,7 @@
     
     .dkPartyOrderContainerDivClass{
         margin-bottom:20px!important;
+        width:50%!important;
         background-size:cover;
     }
 
@@ -220,6 +224,7 @@
     }
 
     .dkCoperateSpecialOffersContainerDivClass{
+        width:50%!important;
         margin-bottom:20px!important;
         background-size:cover;
     }
@@ -244,6 +249,7 @@
     }
 
     .dkCustomizeDessertsOrderContainerDivClass{
+        width:50%!important;
         margin-bottom:20px!important;
         background-size:cover;
     }
@@ -843,7 +849,7 @@
     }
 
     .storeProductBoxDivClass{
-        width:50%!important;
+        width:33.33%!important;
         padding-left:0px!important;
         //padding-right:0px!important;
     }
