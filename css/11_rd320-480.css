@@ -2676,11 +2676,17 @@
         color:#fb366e!important;
         font-size:16px!important;
     }
-
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .po_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        margin-left:25%!important;
         margin-top:10px!important;
         background:#fff!important;
         border:1px solid #e7e7e7!important;
@@ -2728,9 +2734,10 @@
     }
 
     .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        margin-left:25%!important;
         background:#fff!important;
         border:1px dotted #e7e7e7!important;
     }
@@ -2778,7 +2785,7 @@
         text-align:center!important;
         text-transform:uppercase!important;
         font-weight:normal!important;
-        font-size:13px!important;
+        font-size:12px!important;
         color:#f17023!important;
         margin-bottom:3px!important;
     }
@@ -2929,12 +2936,18 @@
         font-size:20px!important;
         color:#fb366e!important;
     }
-
+    
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-top:10px!important;
-        margin-left:25%!important;
         background:#fff!important;
         border:1px solid #e7e7e7!important;
     }
@@ -2980,9 +2993,10 @@
     }
 
     .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        margin-left:25%!important;
         border:1px dotted #e7e7e7!important;
         background:#fff!important;
     }
@@ -3029,7 +3043,7 @@
     .coNoPClass{
         text-align:center!important;
         text-transform:uppercase!important;
-        font-size:13px!important;
+        font-size:11px!important;
         font-weight:normal!important;
         color:#f17023!important;
         margin-bottom:3px!important;
