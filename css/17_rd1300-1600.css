@@ -1986,6 +1986,7 @@
         font-size:11px!important;
         font-weight:normal!important;
         color:#fff!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
     }
@@ -2214,18 +2215,18 @@
     }
     
     .uca_ordercartRequestedSummaryDivClass p{
-        padding-left:12px!important;
-        color:rgb(70, 75, 80);
         font-size:13px!important;
+        color:rgb(70, 75, 80);
+        padding-left:12px!important;
         margin-bottom:5px!important;
     }
     
     .uca_ordercartRequestedSummaryHeaderPClass{
-        font-weight:bold!important;
-        font-size:15px!important;
         text-align:center!important;
-        color:#ab0b38!important;
         text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:15px!important;
+        color:#f17023!important;
         margin-bottom:4px!important;
     }
     
@@ -2234,12 +2235,11 @@
     }
     
     .ordercartRequestedSummaryCheckoutBtnClass{
+        font-size:12px!important;
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         background-color:#ab0b38!important;
-        color:#fff!important;
-        font-size:12px!important;
-        font-weight:bold!important;
-        padding:5px!important;
     }
     
     .uca_ordercartRequestedAllStoreNotFoundMsgDivClass{
@@ -2257,10 +2257,10 @@
     }
 
     .startShoppingBtnClass{
-        font-weight:bold;
+        font-weight:normal!important;
         font-size:15px!important;
-        border-radius:0px!important;
         color:#fff!important;
+        border-radius:0px!important;
         background:#00B9F5!important;
     }
 
@@ -2281,11 +2281,11 @@
     }
     
     .uca_eachOrdercartWiseCancelledHeaderInfoPClass{
-        font-weight:bold!important;
-        font-size:13px!important;
         text-align:center!important;
-        color:#ab0b38!important;
         text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2294,10 +2294,10 @@
     }
     
     .uca_ordercartToggleCancelledItemsLblPClass{
-        padding-left:12px!important;
         font-size:12px!important;
         font-weight:normal!important;
         color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:5px!important;
         cursor:pointer!important;
     }
@@ -2314,25 +2314,25 @@
     }
     
     .uca_ordercartCancelledEachItemImageDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
         background-repeat:no-repeat;
         background-size:cover;
-        height:auto;
-        width:90px;
     }
     
     .uca_ordercartCancelledEachItemDetailsDivClass{
-        padding-left:0px!important;
         padding-right:0px!important;
     }
     
     .uca_ordercartCancelledEachItemDetailsDivClass p{
         font-size:13px;
-        color:rgb(70, 75, 80)!important;
+        color:rgb(70, 75, 80);
         margin-bottom:3px!important;
     }
     
     .uca_ordercartCancelledItemNamePClass{
         font-size:16px!important;
+        color:#f17023!important;
     }
     
     .uca_ordercartCancelledItemNotFoundMsgDivClass{
@@ -2357,11 +2357,11 @@
     }
     
     .uca_eachOrdercartWiseOrderedHeaderInfoPClass{
-        font-weight:bold!important;
-        font-size:13px!important;
         text-align:center!important;
-        color:#ab0b38!important;
+        font-weight:normal!important;
+        font-size:13px!important;
         text-transform:uppercase!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2370,10 +2370,10 @@
     }
     
     .uca_ordercartToggleOrderedItemsLblPClass{
-        padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:12px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:5px!important;
         cursor:pointer!important;
     }
