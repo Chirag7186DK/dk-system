@@ -219,7 +219,7 @@
                     <!-- each store basic info display -->
                     <div class="uca_ordercartRequestedEachStoreBasicInfoDivClass">
                         <p class="uca_ordercartRequestedEachStoreNamePClass">
-                            Bags Contains 
+                            <i class='fa fa-smile-o'></i> Hey Your Bags Contains 
                             <span class="badge ordercartRequestedEachStoreAllItemCountSClass">{{eachStoreAllItemDataObj.totalItems}}</span> Items
                             from '{{eachStoreAllItemDataObj.shopStoreTitle}}' store
                         </p>
