@@ -435,16 +435,16 @@
 
             <!-- party order all section header title -->
             <div horizontally-scrollable-partyorder-allsectionheader-directive id='po_AllSectionHeaderContainerDivId' class='po_AllSectionHeaderContainerDivClass'>
-                <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'po_EachTabLabelSectionContainerLIId1', 'po_AllSectionHeaderContainerDivClass');" title='Click to request new party order' id='po_EachTabLabelSectionContainerLIId1' class='po_EachTabLabelSectionContainerLIClass po_SelectedTabLabelSectionContainerLIClass'>
+                <li ng-click="uca_togglePartyOrderSectionList('createpartyorder', 'po_EachTabLabelSectionContainerLIId1', 'po_AllSectionHeaderContainerDivClass');" id='po_EachTabLabelSectionContainerLIId1' class='po_EachTabLabelSectionContainerLIClass po_SelectedTabLabelSectionContainerLIClass'>
                     Request
                 </li>
-                <li ng-click="uca_togglePartyOrderSectionList('allpartyorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
+                <li ng-click="uca_togglePartyOrderSectionList('allpartyorders', 'po_EachTabLabelSectionContainerLIId2', 'po_AllSectionHeaderContainerDivClass');" id='po_EachTabLabelSectionContainerLIId2' class='po_EachTabLabelSectionContainerLIClass'>
                     All Orders
                 </li>
-                <li ng-click="uca_togglePartyOrderSectionList('partyordermsg', 'po_EachTabLabelSectionContainerLIId3', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId3' class='po_EachTabLabelSectionContainerLIClass'>
+                <li ng-click="uca_togglePartyOrderSectionList('partyordermsg', 'po_EachTabLabelSectionContainerLIId3', 'po_AllSectionHeaderContainerDivClass');" id='po_EachTabLabelSectionContainerLIId3' class='po_EachTabLabelSectionContainerLIClass'>
                     Message
                 </li>
-                <li ng-click="uca_togglePartyOrderSectionList('partyordervideo', 'po_EachTabLabelSectionContainerLIId4', 'po_AllSectionHeaderContainerDivClass');" title='Click to view all orders' id='po_EachTabLabelSectionContainerLIId4' class='po_EachTabLabelSectionContainerLIClass'>
+                <li ng-click="uca_togglePartyOrderSectionList('partyordervideo', 'po_EachTabLabelSectionContainerLIId4', 'po_AllSectionHeaderContainerDivClass');" id='po_EachTabLabelSectionContainerLIId4' class='po_EachTabLabelSectionContainerLIClass'>
                     Video
                 </li>
             </div>
@@ -769,10 +769,10 @@
 
                 </div>
 
-                <!-- no party order list found message div -->
-                <div ng-if="partyOrderListArrObj<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 poListNotFoundMsgDivClass">
+                <!-- no customize order list found message div -->
+                <div ng-if="customizeOrderListArrObj<=0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 coListNotFoundMsgDivClass">
                     <p class="shoppingBagsEmptyPClass">
-                        <i class='fa fa-gift'></i> To request party order click on 'Request' tab !!!
+                        <i class='fa fa-gift'></i> To request customize order click on 'Request' tab !!!
                     </p>
                 </div>
 
