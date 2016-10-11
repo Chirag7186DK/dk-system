@@ -80,7 +80,7 @@ function isValidBDateFormat(bdateformatContent){
     try{
         var enteredBDateText = removeHtmlStripTagsOfContent(bdateformatContent);
         if(enteredBDateText!==''){
-            var dateRegex = /^\d{4}[/-]d{2}[/-]\d{2}$/;
+            var dateRegex = /^\d{4}[/-]\d{2}[/-]\d{2}$/;
             if(enteredBDateText.match(dateRegex)!==null 
                 && enteredBDateText.match(dateRegex)!==undefined){
                 rtStatus = 'TRUE';
