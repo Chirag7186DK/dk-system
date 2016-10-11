@@ -584,7 +584,7 @@ class commonfunction{
                 $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
                 // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
-                $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 sec approx to reach at your message box !!!";
+                $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 sec approx to reach at your message box & use temporary this $otpCode otp code now !!!";
                 $rspDetails['isOtpCodeSent'] = "Y";
             }
         } 
