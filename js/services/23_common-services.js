@@ -228,6 +228,8 @@
             
             // refreshWebAppData
             commonDetails.refreshWebAppData = function(){
+                commonDetails.showSelectedDeliveryAreaTextHeader();
+                commonDetails.notifyToUserForSelectedDeliveryarea();
                 commonDetails.refreshUserDashboardSummaryDataDetails();
                 commonDetails.refreshUserOrdercartDashboardSummaryDataDetails();
                 commonDetails.addProductDataInOrdercartFromSession(false, 'session');
