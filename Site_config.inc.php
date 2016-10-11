@@ -19,7 +19,7 @@ $YII_DB_PASS = "chirag";
 
 // give path for webroot of libdessertkhazana of this installation
 //define("LIB_PATH",'/var/www/html/libdessertskhazana/');
-define("LIB_PATH",'/var/www/html/lib/');
+define("LIB_PATH",'/var/www/html/dklib/');
 
 $BaseSitePath = 'http://localhost/dk-system/';
 //$BaseSitePath = 'http://192.168.1.101/dk-system/';
