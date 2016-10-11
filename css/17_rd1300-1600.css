@@ -2107,28 +2107,27 @@
     }
     
     .uca_ordercartRequestedEachStoreProductItemDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
         background-repeat:no-repeat;
         background-size:cover;
-        height:auto;
-        width:90px;
     }
     
     .uca_ordercartRequestedEachStoreItemDetailsDivClass{
-        padding-left:0px!important;
         padding-right:0px!important;
     }
     
     .uca_ordercartRequestedEachStoreItemNamePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:20px!important;
+        font-size:18px!important;
         font-weight:normal!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
     .uca_ordercartRequestedEachStoreItemSizePClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:3px!important;
     }
     
@@ -2138,14 +2137,14 @@
     }
     
     .uca_ordercartRequestedEachStoreItemPriceTextSClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
     }
     
     .uca_ordercartRequestedEachStoreItemCutPriceTextSClass{
-        color:#67717D!important;
         font-size:12px!important;
         text-decoration:line-through;
+        color:#67717D!important;
         margin-left:1%!important;
     }
 
@@ -2159,9 +2158,9 @@
     }
 
     .uca_ordercartRequestedEachStoreItemQtyPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:5px!important;
     }
 
@@ -2170,39 +2169,39 @@
     }
 
     .uca_ordercartRequestedEachStoreItemTotalAmtPClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
     }
 
     .ordercartRequestedEachItemUpdateBtnClass,
     .ordercartRequestedEachItemUpdateBtnClass:hover{
-        padding:2px!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#fff!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
-        font-weight:bold!important;
-        font-size:9px!important;
-        color:#fff!important;
         margin-right:1%!important;
     }
 
     .ordercartRequestedEachItemRemoveBtnClass,
     .ordercartRequestedEachItemRemoveBtnClass:hover{
-        padding:2px!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#fff!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
-        font-weight:bold!important;
-        font-size:9px!important;
-        color:#fff!important;
     }
 
     .ordercartRequestedEachItemCheckoutBtnClass,
     .ordercartRequestedEachItemCheckoutBtnClass:hover{
-        padding:2px!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#ab0b38!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:none!important;
-        font-weight:bold!important;
-        font-size:9px!important;
-        color:#ab0b38!important;
     }
 
     .uca_ordercartRequestedSummaryDivClass{
