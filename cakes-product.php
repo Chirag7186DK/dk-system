@@ -180,7 +180,7 @@
                 Total (Rs) : {{totalOrderAmt}}
             </p>
             <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
-                <button class="btn vpd_orderSummaryCheckoutBtnClass">
+                <button ng-controller="OrderCartController" ng-click="gotoCheckoutProcess();" class="btn vpd_orderSummaryCheckoutBtnClass">
                     <i class='fa fa-rupee'></i> CHECKOUT
                 </button>
             </p>
