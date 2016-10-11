@@ -55,7 +55,7 @@
             </div>
 
             <!-- store desserts type menu summary info -->
-            <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class='storeDessertsMenuSummaryInfoDivClass'>
+            <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" class='storeDessertsMenuSummaryInfoDivClass'>
                 <p class='storeMenuTextLblPClass'>
                     WE SERVED
                 </p>
@@ -73,7 +73,7 @@
         <div ng-show="isToggleStoreDessertsMenu" ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeServeDessertsTypeContainerDivClass">
 
             <!-- display selected desserts type title ordering by customer -->
-            <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class="storeServingDessertsTypeNoteInfoLIClass">
+            <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" class="storeServingDessertsTypeNoteInfoLIClass">
                 <i class='fa fa-smile-o'></i> 
                 Hey you are viewing '{{storeInfo.shopStoreNameInCaps}}' store desserts and also can serve other 
                     <span class="badge storeCanServeDessertsTypeCountSClass">
@@ -83,7 +83,7 @@
             </li>
 
             <!-- display all desserts type can served by store in your selected delivery area -->
-            <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
+            <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" id='storeCanServeDessertsTypeListScrollableWrapperDivId' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeCanServeDessertsTypeListScrollableWrapperDivClass'>
                 <!-- iterate each desserts type info display as horizontally scrolling -->
                 <div horizontally-scrollable-dessertstypelist-storelevel ng-repeat="eachDessertsTypeDetails in storeDeliveryAreaBasedDessertsTypeList | orderBy : '-isRequestedProductTypeIdMatched'" class='storeCanServeEachDessertsTypeScrollableWrapperDivClass'>
                     <p class="dessertsTypeIconPClass">
@@ -101,8 +101,8 @@
         </div>
 
         <!-- all product category list will be loaded here -->
-        <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryWrapperDivClass">
-            <div ng-if="productTypeAllProductCategoryList.length>1" id='storeProductTypeAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryContainerDivClass">
+        <div ng-show="productTypeAllProductCategoryList.length>=1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryWrapperDivClass">
+            <div ng-if="productTypeAllProductCategoryList.length>=1" id='storeProductTypeAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryContainerDivClass">
                 <li horizontally-scrollable-producttype-productcategorylist-storelevel id="storeEachProductCategoryContainerLIId_{{$index}}" ng-click="toggleStoreProductTypeProductCategoryElementClass('storeEachProductCategoryContainerLIId_'+$index, 'storeProductTypeAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSessionStore(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" class='storeEachProductCategoryContainerLIClass'>
                     {{eachProductCategoryDetails.productTypeProductCategoryTitle + '\n(' + eachProductCategoryDetails.totalProductCount + ')'}}
                 </li>
@@ -113,7 +113,7 @@
         <div ng-show="productTypeAllProductCategoryList.length>=1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductFilterOperationWrapperDivClass">
             <!-- info / tips about product filtering operation -->
             <p class='storeTipAbtProductFilterPClass'>
-                Tip *: Use filter given below to find products more easy & quickly !
+                Tip *: Use filter to find products more easy & quickly !
                 <button ng-click="toggleStoreAllProductFilterContainer()" class="btn storeToggleProductFilterBtnClass">
                     <i class="fa fa-filter"></i> {{toggleStoreProductFilterBtnLabel}}
                 </button>
