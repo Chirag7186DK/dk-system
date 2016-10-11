@@ -3,10 +3,11 @@
 
     /* first header css code */
 
-    .webLogoHClass{
-        text-align:center;
-        padding-top:0px!important;
+    .webAppLogoAndMenuIconContainerDivClass{
+        text-align:center!important;
+        padding:0px!important;
         margin:0px!important;
+        background-size:cover!important;
     }
     
     .topMenuBarULClass{
@@ -14,9 +15,9 @@
     }
 
     .topMenuBarULClass li {
-        color:#999;
-        font-size:12px!important;
+        font-size:12px;
         text-decoration:none!important;
+        color:#999;
         cursor:pointer!important;
     }
 
@@ -25,9 +26,9 @@
     }
     
     .selectedDeliveryAreaTextHeaderLIClass{
-        color:#6c6cb9!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
+        color:#6c6cb9!important;
     }
     
     .userAccountAllSectionListDropdownDivClass{
@@ -40,11 +41,11 @@
     }
     
     .userAccountAllSectionListDropdownDivClass .userAccountEachSectionListDropdownDivClass{
-        padding:6px!important;
-        color:#999!important;
         text-align:left!important;
-        cursor:pointer!important;
         font-size:12px!important;
+        color:#999!important;
+        padding:6px!important;
+        cursor:pointer!important;
     }
     
     .fHeaderRowBorderDivClass{
@@ -65,10 +66,10 @@
     }
 
     .deliveryCityAreaDessertsTagLinesPClass{
-        text-align:center!important;
-        color:#f32956!important;
-        font-size:13px!important;
+        text-align:left!important;
+        font-size:16px!important;
         font-weight:normal!important;
+        color:#f32956!important;
         margin:0px!important;
     }
 
@@ -76,18 +77,22 @@
         margin-top:4px!important;
     }
 
+    .deliveryCityListWrapperDivClass{
+        //margin-left:30%!important;
+    }
+
     .deliveryCityLblSClass{
-        color:rgb(1, 122, 241)!important;
-        font-size:15px!important;
-        font-weight:500!important;
+        font-size:17px!important;
+        font-weight:normal!important;
         font-family:serif!important;
+        color:rgb(1, 122, 241)!important;
     }
 
     .deliveryCityListWrapperDivClass .dropdown-menu>.active>a{
-        background:#fb366e!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:#fb366e!important;
     }
 
     .deliveryCityListWrapperDivClass .btn, 
@@ -108,18 +113,22 @@
         margin-top:20px!important;
     }
 
+    .deliveryAreaListWrapperDivClass{
+        //margin-left:30%!important;
+    }
+
     .deliveryAreaLblSClass{
-        color:rgb(1, 122, 241)!important;
-        font-size:15px!important;
-        font-weight:500!important;
+        font-size:17px!important;
+        font-weight:normal!important;
         font-family:serif!important;
+        color:rgb(1, 122, 241)!important;
     }
 
     .deliveryAreaListWrapperDivClass .dropdown-menu>.active>a{
-        background:#fb366e!important;
-        font-weight:normal!important;
-        font-family:serif!important;
+        font-weight: normal!important;
+        font-family: serif!important;
         font-size:16px!important;
+        background:#fb366e!important;
     }
 
     .deliveryAreaListWrapperDivClass .btn, 
@@ -139,18 +148,22 @@
         margin-top:20px!important;
     }
 
+    .deliveryAreaDessertsTypeListWrapperDivClass{
+        //margin-left:30%!important;
+    }
+
     .deliveryAreaDessertsTypeListLblSClass{
-        color:rgb(1, 122, 241)!important;
-        font-size:15px!important;
-        font-weight:500!important;
+        font-size:17px!important;
+        font-weight:normal!important;
         font-family:serif!important;
+        color:rgb(1, 122, 241)!important;
     }
 
     .deliveryAreaDessertsTypeListWrapperDivClass .dropdown-menu>.active>a{
-        background:#fb366e!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:#fb366e!important;
     }
 
     .deliveryAreaDessertsTypeListWrapperDivClass .btn, 
@@ -169,18 +182,22 @@
 
     /*  what is desserts khazana css code */
     
+    .whatIsDessertsKhazanaMainContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .whatIsDessertskhazanaTitlePClass{
         text-align:center!important;
         font-size:16px!important;
-        padding:15px!important;
+        font-weight:normal!important;
         color:#222!important;
-        font-weight:bold!important;
+        padding:15px!important;
     }
     
     .dkPartyOrderContainerDivClass{
         margin-bottom:20px!important;
         background-size:cover;
-        padding:0px!important;
     }
 
     .dkPartyOrderWrapperDivClass{
@@ -190,22 +207,21 @@
     .partyOrderImgClass{
         width:100%!important;
     }
-
+    
     .partyOrderPClass{
         text-align:center!important;
         font-size:15px!important;
+        font-weight:normal!important;
         margin:0px!important;
+        color:#fb366e!important;
         background:#fff!important;
         padding:10px!important;
-        color:#fb366e!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
 
     .dkCoperateSpecialOffersContainerDivClass{
         margin-bottom:20px!important;
         background-size:cover;
-        padding:0px!important;
     }
 
     .dkCoperateSpecialOffersWrapperDivClass{
@@ -215,22 +231,21 @@
     .coperateOrderImgClass{
         width:100%!important;
     }
-
+    
     .corporateOrderPClass{
         text-align:center!important;
         font-size:15px!important;
+        font-weight:normal!important;
         margin:0px!important;
+        color:#fb366e!important;
         background:#fff!important;
         padding:10px!important;
-        color:#fb366e!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
 
     .dkCustomizeDessertsOrderContainerDivClass{
         margin-bottom:20px!important;
         background-size:cover;
-        padding:0px!important;
     }
 
     .dkCustomizeDessertsOrderWrapperDivClass{
@@ -244,11 +259,11 @@
     .customizeOrderPClass{
         text-align:center!important;
         font-size:15px!important;
+        font-weight:normal!important;
         margin:0px!important;
+        color:#fb366e!important;
         background:#fff!important;
         padding:10px!important;
-        color:#fb366e!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
 
@@ -264,17 +279,17 @@
     
     .customerBreadcrumbLIClass a, 
     .customerBreadcrumbLIClass a:hover{
-        color:#828282!important;
         text-decoration:none!important;
         font-weight:100!important;
         font-size:12px!important;
+        color:#828282!important;
     }
     
     .customerBreadcrumbLIClass{
-        color:#828282!important;
         text-decoration:none!important;
         font-weight:100!important;
         font-size:12px!important;
+        color:#828282!important;
         padding-left:0px!important;
     }
 
@@ -284,34 +299,34 @@
     .allStoresInfoContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        padding-top:0px!important;
     }
     
     .allStoresInfoNoteHeaderPClass{
         text-align:center!important;
         font-weight:normal!important;
-        font-size:15px!important;
-        color:#f17023!important;
+        font-size:16px!important;
         font-family:serif!important;
+        color:#f17023!important;
     }
     
     .countAllStoresSClass{
-        background-color:#f17023!important;
+        font-size:16px!important;
         color:#fff!important;
+        background-color:#f17023!important;
     }
     
     .eachStoreInfoContainerDivClass{
-        margin-bottom:30px!important;
         padding-left:0px!important;
         padding-right:0px!important;
+        margin-bottom:3%!important;
     }
     
     .eachStoreInfoInnerContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         background-color:#fff!important;
-        border:1px solid #e7e7e7!important;
+        border:1px solid rgba(199, 181, 181, 0.6)!important;
     }
     
     .eachStoreNamePClass,
@@ -322,6 +337,7 @@
     .eachStoreServedDessertsTypeTotalProductPClass,
     .eachStoreDiscountUptoPClass,
     .eachStoreDeliveryTimePClass,
+    .eachStorePaymentAcceptMethodPClass,
     .eachStoreDeliveryFeeMsgPClass,
     .eachStoreOnlineOrderBtnPClass{
         margin-bottom:4px!important;
@@ -329,18 +345,18 @@
     }
     
     .eachStoreNamePClass{
-        color:#ab0b38!important;
-        font-weight:normal!important;
-        text-transform:uppercase!important;
-        font-size:16px!important;
         text-align:center!important;
+        text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:16px!important;
+        color:#ab0b38!important;
     }
     
     .eachStoreLocationPClass{
-        color:#7d7a7a!important;
+        text-align:center!important;
         font-weight:normal!important;
         font-size:12px!important;
-        text-align:center!important;
+        color:#7d7a7a!important;
     }
     
     .storeLocationMapIconClass{
@@ -350,57 +366,66 @@
     .eachStoreHrClass{
         margin-top:0px!important;
         margin-bottom:10px!important;
+        border-top:1px solid rgba(199, 181, 181, 0.6)!important;
     }
     
     .eachStoreReviewedRatingBoxSClass{
+        font-size:12px!important;
+        color:#fff!important;
         background-color:rgba(39,171,92,0.9)!important;
         border:1px solid rgba(39,171,92,0.9)!important;
         padding:2px!important;
-        color:#fff!important;
-        font-size:11px!important;
     }
     
     .eachStoreNoReviewedRatingPClass{
-        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#8e969d!important;
+        padding-top:2px!important;
+        padding-bottom:2px!important;
     }
     
     .eachStoreServedDessertsTypePClass{
-        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#8e969d!important;
     }
     
     .eachStoreServedDessertsTypeTotalProductPClass{
-        color:#8e969d!important;
         font-weight:normal!important;
         font-size:13px!important;
+         color:#8e969d!important;
     }
     
     .eachStoreDiscountUptoPClass{
-        color:#ea5b31!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#ea5b31!important;
     }
     
     .eachStoreDiscountUptoIconClass{
+        color: #fff!important;
         border-radius:50%!important;
         background:#ea5b31!important;
-        color: #fff!important;
         padding:4px!important;
     }
     
     .eachStoreDeliveryTimePClass{
-        color:#ab0b38!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#ab0b38!important;
+    }
+    
+    .eachStorePaymentAcceptMethodPClass{
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#ab0b38!important;
     }
     
     .eachStoreDeliveryFeeMsgPClass{
-        color:#808080!important;
         font-weight:normal!important;
         font-size:13px!important;
+        color:#808080!important;
         height:52px!important;
     }
     
@@ -411,7 +436,6 @@
         color:#fff!important;
         border-radius:0px!important;
         background-color:#ab0b38!important;
-        padding:5px!important;
     }
     
     .noStoresFoundInfoMsgContainerDivClass{
@@ -433,10 +457,10 @@
     }
 
     .storeSummaryTypeInfoWrapperDivClass .owl-item{
-        width:auto!important;
+        margin-top:10px!important;
         margin-right:20px!important;
-        margin-top:20px!important;
-        height:100px!important;
+        width:auto!important;
+        height:100%!important;
     }
     
     .storeSummaryTypeInfoWrapperDivClass .owl-item:first-child{
@@ -451,21 +475,21 @@
     }
 
     .storeSelfNameTextLblPClass{
-        margin:0px!important;
-        color: #ab0b38!important;
-        font-family:serif!important;
-        font-weight:normal!important;
+        text-align:center!important;
         text-transform:uppercase!important;
         font-size:16px!important;
-        text-align:center!important;
+        font-family:serif!important;
+        font-weight:normal!important;
+        color: #ab0b38!important;
+        margin:0px!important;
     }
 
     .storeSelfLocatedInfoLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-size:14px!important;
         font-weight:normal!important;
         color:#808A94!important;
+        margin:0px!important;
     }
 
     .showMoreStoreSelfInfoPClass{
@@ -485,23 +509,23 @@
     }
 
     .storeReviewRatingTextLblPClass{
-        margin:0px!important;
         font-weight:normal!important;
-        color: #ab0b38!important;
         font-family:serif!important;
         font-size:16px!important;
+        color: #ab0b38!important;
+        margin:0px!important;
     }
 
     .storeReviewRatingAllUserCountInfoLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
         font-weight:normal!important;
         color:#808A94!important;
+        margin:0px!important;
     }
 
     .showMoreStoreReviewRatingSummaryInfoPClass{
-        font-family: serif!important;
+        font-family:serif!important;
         font-size:14px!important;
         font-weight:normal!important;
         color:darkorange!important;
@@ -517,23 +541,23 @@
     }
 
     .storeMenuTextLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-weight:normal!important;
-        color: #ab0b38!important;
         font-size:16px!important;
+        color: #ab0b38!important;
+        margin:0px!important;
     }
 
     .storeDessertsMenuInfoLblPClass{
-        margin:0px!important;
         font-family:serif!important;
         font-size:16px!important;
         font-weight:normal!important;
         color:#808A94!important;
+        margin:0px!important;
     }
 
     .showMoreStoreMenuSummaryInfoPClass{
-        font-family: serif!important;
+        font-family:serif!important;
         font-size:14px!important;
         font-weight:normal!important;
         color:darkorange!important;
@@ -542,30 +566,30 @@
     }
 
     .storeServeDessertsTypeContainerDivClass{
+        padding-left:0px!important;
         margin-top:10px!important;
         margin-bottom:10px!important;
-        padding-left:0px!important;
     }
 
     .storeServingDessertsTypeNoteInfoLIClass{
         text-align:center!important;
         list-style:none!important;
         font-weight:normal!important;
-        font-size:15px!important;
+        font-size:20px!important;
+        font-family:serif!important;
         color:#f17023!important;
-        font-family:serif;
     }
     
     .storeCanServeDessertsTypeCountSClass{
-        background:#f17023!important;
-        color:#fff!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:15px!important;
+        color:#fff!important;
+        background:#f17023!important;
     }
 
     .storeCanServeDessertsTypeListScrollableWrapperDivClass{
         padding-right:0px!important;
-        height:147px!important;
+        height:147%!important;
         white-space:nowrap!important;
         margin-top:15px!important;
         padding-left:0px!important;
@@ -586,7 +610,7 @@
     }
 
     .storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeIconPClass{
-        text-align:center;
+        text-align: center;
         margin: 0px!important;
     }
 
@@ -595,30 +619,29 @@
     }
 
     .storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeTitleHClass{
-        text-align:center;
-        margin:3px!important;
-        font-size:18px!important;
-        font-family:serif;
+        text-align:center!important;
         text-transform:uppercase;
-        margin:0px!important;
+        font-size:18px!important;
+        font-family:serif!important;
+        margin:3px!important;
     }
 
     .storeCanServeEachDessertsTypeScrollableWrapperDivClass .viewDessertsTypePClass{
         text-align:center;
+        font-size:14px!important;
+        font-family:serif!important;
+        color:#F560F5!important;
         margin:0px!important;
         margin-top:12px!important;
-        font-size:14px!important;
-        font-family: serif;
-        color:#F560F5!important;
-        cursor:pointer!important;
         padding-left:20px!important;
         padding-right:20px!important;
+        cursor:pointer!important;
     }
 
     .storeProductTypeAllCategoryWrapperDivClass{
-        margin-top:14px!important;
         padding-left:0px!important;
         padding-right:0px!important;
+        margin-top:14px!important;
     }
 
     .storeProductTypeAllCategoryContainerDivClass{
@@ -633,66 +656,64 @@
     }
 
     .storeEachProductCategoryContainerLIClass{
-        text-align:center!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        padding-left:5px!important;
-        padding-right:5px!important;
-        background:whitesmoke!important;
-        color:rgba(0,0,0,.95)!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
         list-style:none!important;
+        text-align:center!important;
+        font-weight:normal!important;
+        font-family:serif!important;
         font-size:14px!important;
+        color:rgba(0,0,0,.95)!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:whitesmoke!important;
     }
 
     .storeEachRequestedProductCategoryContainerLIClass{
-        text-align:center!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        padding-left:5px!important;
-        padding-right:5px!important;
-        border-bottom:1px solid #cb202d!important;
-        background-color:#cb202d!important;
-        color:#fff!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
         list-style:none!important;
+        text-align:center!important;
+        font-weight:normal!important;
+        font-family:serif!important;
         font-size:14px!important;
+        color:#fff!important;
+        padding-left:5px!important;
+        padding-right:5px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background-color:#cb202d!important;
     }
 
     .storeProductFilterOperationWrapperDivClass{
         padding-left:0px!important;
-        padding-top:10px;
-        padding-bottom:20px;
-        margin-top:12px;
-        margin-bottom:12px;
+        padding-top:10px!important;
+        padding-bottom:20px!important;
+        margin-top:12px!important;
+        margin-bottom:12px!important;
         background-color:#fff!important;
         border:1px solid #e7e7e7;
     }
 
     .storeTipAbtProductFilterPClass{
-        padding:2px!important;
         text-align:center!important;
         font-weight:normal!important;
         font-family:serif!important;
-        font-size:16px!important;
+        font-size:18px!important;
+        padding:2px!important;
     }
 
     .storeToggleProductFilterBtnClass, 
     .storeToggleProductFilterBtnClass:hover{
-        border-radius:0px!important;
-        font-weight:bold!important;
-        padding:0px!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        color:#fff!important;
         padding-left:10px!important;
         padding-right:10px!important;
         margin-left:1%!important;
+        border-radius:0px!important;
         background:#3eb1e7!important;
-        color:#fff!important;
         cursor:pointer;
-        font-family:serif!important;
     }
 
     .storeProductFilterOperationContainerDivClass{
@@ -706,21 +727,22 @@
 
     .storeProductCountInfMsgPopupDivClass{
         text-align:center!important;
-        font-size:13px!important;
+        font-size:15px!important;
         color:rgba(218, 13, 47, 0.85)!important;
     }
 
     .storePriceFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        margin-left:25%!important;
         margin-bottom:20px!important;
     }
 
     .storePriceFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:rgba(240, 99, 122, 0.85)!important;
     }
 
     .storePriceFilterOperationDivClass .btn, 
@@ -745,14 +767,15 @@
     .storeProductSizeFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        margin-left:25%!important;
         margin-bottom:20px!important;
     }
 
     .storeProductSizeFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
         font-weight:normal!important;
         font-family:serif!important;
         font-size:16px!important;
+        background:rgba(240, 99, 122, 0.85)!important;
     }
 
     .storeProductSizeFilterOperationDivClass .btn, 
@@ -777,14 +800,15 @@
     .storeDiscountFilterOperationDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        margin-left:25%!important;
         margin-bottom:20px!important;
     }
 
     .storeDiscountFilterOperationDivClass .dropdown-menu>.active>a{
-        background:rgba(240, 99, 122, 0.85)!important;
         font-weight: normal!important;
         font-family: serif!important;
         font-size:16px!important;
+        background:rgba(240, 99, 122, 0.85)!important;
     }
 
     .storeDiscountFilterOperationDivClass .btn, 
@@ -814,7 +838,7 @@
     .storeProductFounCountInfoMsgDivClass{
         font-family:serif!important;
         color:rgba(218, 13, 47, 0.85)!important;
-        font-size:16px!important;
+        font-size:20px!important;
         font-weight:normal!important;
         text-align:center!important;
         padding:10px!important;
@@ -823,24 +847,26 @@
     .storeProductBoxDivClass{
         padding-left:1px!important;
     }
-
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    
     .storeProductBoxDividerLineDivClass{
         margin-bottom:10px!important;
         border:1px solid rgba(240, 99, 122, 0.85)!important;
     }
 
     .storeProductNamePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
+        color:#ab0b38!important;
+        font-size:16px!important;
         margin-bottom:4px!important;
     }
     
-    .storeProductSizePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:14px!important;
-        margin-bottom:4px!important;
-    }
-    
+    .storeProductSizePClass,
     .storeProductDeliveryTimePClass{
         color:rgb(70, 75, 80)!important;
         font-size:14px!important;
@@ -878,71 +904,74 @@
     }
     
     .storeProductBtnWrapperPClass{
+        padding-top:10px!important;
         padding-bottom:10px!important;
     }
 
     .storeViewProductDetailsBtnClass,
     .storeViewProductDetailsBtnClass:hover{
-        border-radius:0px!important;
         font-weight:normal!important;
-        background-color:#ab0b38!important;
         color:#fff!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
+        padding:4px!important;
     }
 
     .storeProductNotFoundMsgDivClass{
         text-align:center!important;
         font-size:20px!important;
+        color:#f54264!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        color:#f54264!important;
     }
 
     .storeAllUserReviewedRatingContainerDivClass{
-        margin-top:15px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
         border:1px solid #DCE0EF!important;
     }
 
     .storeAllUserReviewedRatingLblSClass{
-        color:#800080!important;
         font-size:24px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:#800080!important;
     }
 
     .storeDisplayEachUserReviewedRatingContainerDivClass{
-        padding-top:12px!important;
-        padding-bottom:12px!important;
-        border-bottom:1px solid #eee!important;
-        color:rgb(70, 75, 80)!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:12px!important;
+        padding-bottom:12px!important;
+        border-bottom:1px solid #e7e7e7!important;
     }
 
     .storeDisplayEachUserReviewedRatingContainerDivClass:last-child{
-        border-bottom:none!important;
+        border-bottom:0px!important;
     }
 
     .storeEachUserNameRatedReviewPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:22px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
     }
 
     .storeEachUserRatedReviewPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:16px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
     }
 
     .storeEachUserRatingReviewQuestionAnswerSClass{
-        padding:2px!important;
-        color:rgba(205, 46, 216, 0.44)!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:rgba(205, 46, 216, 0.44)!important;
+        padding:2px!important;
     }
     
     .storeEachUserAvgRatedReviewPClass{
@@ -954,9 +983,9 @@
     
     .storeReviewRatingNotFoundMsgDivClass{
         text-align:left!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-family:serif!important;
-        font-size:17px!important;
+        font-size:16px!important;
         color:#fb366e!important;
     }
 
@@ -983,7 +1012,7 @@
 
     .storeWorkingEachDaySchedulePClass{
         text-align:left!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-family:serif!important;
         font-size:15px!important;
         color:#7c838a!important;
@@ -998,70 +1027,75 @@
         text-align:left!important;
         font-weight:normal!important;
         font-family:serif!important;
-        font-size:17px!important;
+        font-size:16px!important;
         color:#fb366e!important;
     }
     
 
     /*  view product css code  */
-    
+
     .vpd_productImagesContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
+        padding-bottom:10px!important;
         background-color:#fff!important;
-        padding-bottom:20px!important;
     }
-
-    .vpd_horizontalLineClass{
-        border-top:1px solid rgba(39,171,92,0.9)!important;
-        margin-top:0px!important;
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
     }
 
     .vpd_productDetailsContainerDivClass{
+        padding-left:0px!important;
         background-color:#fff!important;
-        border:1px solid #CDCEE8!important;
-        padding-bottom:20px!important;
+        border:1px solid #e7e7e7!important;
     }
     
+    .vpd_productDetailsContainerDivClass p{
+        padding-left:11px!important;
+    }
+
     .vpd_productNamePClass{
-        margin-top:10px!important;
-        color:rgb(70, 75, 80)!important;
         font-size:18px!important;
+        color:#f17023!important;
+        margin-top:10px!important;
+    }
+    
+    .vpd_horizontalLineClass{
+        border-top:1px solid #e7e7e7!important;
+        margin-top:0px!important;
+        margin-bottom:10px!important;
     }
     
     .vpd_productStoreNameContainerPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
 
     .vpd_productReviewAndRatingPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:12px!important;
     }
     
-    .vpd_storeDeliveryFromAreaToAreaPClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:15px!important;
-        margin-bottom:7px!important;
-    }
-    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
     .vpd_storeDeliveryFeeApplicableMsgPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:7px!important;
     }
     
     .vpd_estimatedProductDeliveryTimePClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
     }
     
     .estimatedProductShippingDeliveryTimeSClass{
-        background-color:rgba(39,171,92,0.9)!important;
-        color:#fff!important;
         padding:3px!important;
+        color:#fff!important;
+        background-color:rgba(39,171,92,0.9)!important;
     }
 
     .vpd_productSelectMeasurementLabelPClass{
@@ -1070,14 +1104,18 @@
         margin-bottom:12px!important;
     }
 
+    #productMeasurementSelectCtrlId{
+        width:30%;
+    }
+    
     .viewProductPricePClass{
         margin-bottom:12px!important;
     }
     
     .vpd_productCutPriceTextSClass{
         text-decoration:line-through!important;
-        color:#999999!important;;
         font-size:14px!important;
+        color:#999999!important;;
         margin-right:6px;
     }
 
@@ -1087,8 +1125,8 @@
     }
 
     .vpd_productDiscountPercentTextSClass{
-        color:#60bf79!important;
         font-size:14px!important;
+        color:#60bf79!important;
     }
     
     .vpd_productQtyPClass{
@@ -1097,6 +1135,10 @@
         margin-bottom:12px!important;
     }
     
+    .vpd_productQtyInputClass{
+        width:30%;
+    }
+
     .vpd_productAvgRatedIconClass{
         color:rgba(205, 46, 216, 0.73)!important;
     }
@@ -1108,28 +1150,30 @@
     }
     
     .vpd_productAddToCartBtnPClass{
-        margin-bottom:12px!important;
+        margin-top:20px!important;
+        margin-bottom:20px!important;
     }
 
-    .vpd_specificProductAddBtnClass{
-        border-radius:0px!important;
-        font-weight:bold!important;
-        background-color:#ab0b38!important;
+    .vpd_productAddToCartBtnClass, 
+    .vpd_productAddToCartBtnClass:hover{
+        font-weight:normal!important;
         color:#fff!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
     }
 
     .vpd_orderSummaryContainerDivClass{
-        background-color:#fff!important;
-        border:1px solid #CDCEE8!important;
         color:rgb(70, 75, 80)!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
 
     .vpd_orderSummaryHeaderLblPClass{
-        margin-top:10px!important;
-        color:rgba(39,171,92,0.9)!important;
         font-size:15px!important;
         font-family:serif!important;
         font-weight:normal!important;
+        color:#f17023!important;
+        margin-top:10px!important;
     }
     
     .vpd_totalOrderStorePClass,
@@ -1137,7 +1181,7 @@
     .vpd_orderSubtotalAmtPClass,
     .vpd_totalOrderDeliveryFeePClass,
     .vpd_totalOrderAmtPClass{
-        font-size:12px!important;
+        font-size:13px!important;
         margin-bottom:3px!important;
     }
     
@@ -1149,12 +1193,11 @@
 
     .vpd_orderSummaryCheckoutBtnClass,
     .vpd_orderSummaryCheckoutBtnClass:hover{
-        border-radius:0px!important;
-        background-color:#ab0b38!important;
-        color:#fff!important;
         font-size:12px!important;
-        font-weight:bold!important;
-        padding: 5px!important;
+        font-weight:normal!important;
+        border-radius:0px!important;
+        color:#fff!important;
+        background-color:#ab0b38!important;
     }
     
     .vpd_productFeaturesContainerDivClass{
@@ -1229,23 +1272,23 @@
         padding-left:0px!important;
         padding-right:0px!important;
         border-radius:0px!important;
-        border:1px solid #eee!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .vpd_ratingReviewProductHeaderPClass{
-        padding-left:10px!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        color:rgba(39,171,92,0.9)!important;
         font-size:15px!important;
         font-family:serif!important;
         font-weight:normal!important;
-        border-bottom:1px solid rgba(196, 249, 217, 0.9)!important;
+        color:#f17023!important;
+        padding-left:10px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-bottom:1px solid #e7e7e7!important;
     }
     
     .moreLessRatingReviewProductIconClass{
-        margin-left:10px!important;
         font-size:20px!important;
+        margin-left:10px!important;
         cursor:pointer!important;
     }
     
@@ -1254,30 +1297,36 @@
     }
 
     .vpd_takeUserReviewRatingProductLblPClass{
-        color:#800080!important;
         font-size:16px!important;
+        color:#800080!important;
     }
 
     .vpd_eachTakeUserReviewRatingTypeProductContainerDivClass{
-        padding-top:8px!important;
-        padding-bottom:8px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-bottom:20px!important;
     }
-
+    
+    .vpd_eachReviewRatingTypeAnswerBoxDivClass,
+    .vpd_submitRatingReviewAboutProductBtnDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .vpd_ratingProductSelectCtrlClass{
         width:30%!important;
     }
-
+    
     .vpd_submitReviewBtnWrapperDivClass{
         padding-top:8px!important;
         padding-bottom:8px!important;
     }
 
     .vpd_submitRatingReviewAboutProductBtnClass{
+        font-weight:normal!important;
+        color:#000!important;
         border-radius:0px!important;
         background-color:#fdee00!important;
-        color:#000!important;
-        font-weight:bold!important;
-        margin-right:2%!important;
     }
 
     .vp_disableSubmitRatingReviewBtnClass{
@@ -1285,44 +1334,51 @@
     }
 
     .vpd_infoAbtToEnableSubmitRatingReviewBtnSClass{
-        color:rgba(240, 99, 122, 0.85)!important;
         font-size:12px!important;
         font-family:serif!important;
+        color:rgba(240, 99, 122, 0.85)!important;
     }
     
     .vpd_summaryReviewRatingLblSClass{
-        color:#800080!important;
         font-size:16px!important;
+        color:#800080!important;
+    }
+    
+    .vpd_allMaxReviewRatingDetailsDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
     }
     
     .vpd_eachQuestionMaxRatingReviewDetailsDivClass{
-        background:rgba(62, 177, 231, 0.14)!important;
-        margin-right:2%!important;
         padding-top:5px!important;
         padding-bottom:10px!important;
+        background:rgba(62, 177, 231, 0.14)!important;
+        margin-right:2%!important;
     }
 
     .vpd_maxRatingAboutQuestionTitleHClass{
-        font-weight: bold;
-        color:#5C63D6!important;
+        font-weight:normal!important;
         font-size:15px!important;
+        color:#5C63D6!important;
     }
 
     .vpd_maxRatingAboutQuestionAnswerDetailsHClass{
-        color:#5C63D6!important;
         font-size:13px!important;
+        color:#5C63D6!important;
     }
     
     .vpd_allUserReviewRatingDetailsLabelSpanClass{
-        color:#800080!important;
         font-size:16px!important;
+        color:#800080!important;
     }
 
     .vpd_displayEachUserReviewAboutProductContainerDivClass{
+        color:rgb(70, 75, 80)!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
         padding-top:12px!important;
         padding-bottom:10px!important;
-        border-bottom:1px solid #eee!important;
-        color:rgb(70, 75, 80)!important;
+        border-bottom:1px solid #e7e7e7!important;
     }
 
     .vpd_displayEachUserReviewAboutProductContainerDivClass:last-child{
@@ -1330,16 +1386,16 @@
     }
 
     .vpd_eachUserNameRatedReviewAbtProductPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
     }
 
     .vpd_userAvgRatedAboutProductSClass{
-        padding:2px!important;
-        color:rgba(205, 46, 216, 0.73)!important;
         font-size:10px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        color:rgba(205, 46, 216, 0.73)!important;
+        padding:2px!important;
     }
 
     .vpd_eachUserRatedAbtProductPClass{
@@ -1516,8 +1572,8 @@
     .userSignUpFormSectionContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border:1px solid #e7e7e7!important;
         background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .userSignUpFormSectionContainerDivClass div{
@@ -1527,8 +1583,8 @@
     
     .userSignUpNoticeMsgContainerDivClass,
     .userSignUpNoticeOtpMsgContainerDivClass{
-        color:#308fbb!important;
         font-size:15px!important;
+        color:#308fbb!important;
     }
 
     .userSignUpFormfieldHintPClass{
@@ -1551,15 +1607,15 @@
     .userSignUpMobileInput_ErrorClass,
     .userSignUpOtpCodeInput_ErrorClass,
     .userSignUpPwdInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     .userSignUpOperationContainerDivClass{
         text-align:right!important;
-        color:#308fbb!important;
         font-size:12px!important;
+        color:#308fbb!important;
         cursor:pointer;
         margin:0px!important;
     }
@@ -1570,19 +1626,19 @@
 
     .userSignUpSubmitBtnClass, 
     .userSignUpSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#fb366e!important;
-        color:#fff!important;
     }
 
     .redirectUserSignInBtnContainerDivClass{
         text-align:center!important;
         font-size:14px!important;
-        font-weight:bold!important;
-        cursor:pointer!important;
+        font-weight:normal!important;
         color:#CB202D!important;
+        cursor:pointer!important;
         padding:0px!important;
     }
     
@@ -1599,8 +1655,8 @@
     .userSignInFormSectionContainerDivClass{
         padding-top:10px!important;
         padding-bottom:10px!important;
-        border:1px solid #e7e7e7!important;
         background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .userSignInFormSectionContainerDivClass div{
@@ -1610,8 +1666,8 @@
     
     .userSignInNoticeMsgContainerDivClass,
     .userSignInNoticeOtpMsgContainerDivClass{
-        color:#308fbb!important;
         font-size:15px!important;
+        color:#308fbb!important;
     }
     
     .userSignInFormfieldHintPClass{
@@ -1630,17 +1686,17 @@
     .userSignInEmailInput_ErrorClass,
     .userSignInPwdInput_ErrorClass,
     .userSignInOtpCodeInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     .userSignInOperationContainerDivClass{
         text-align:right!important;
-        color:#308fbb!important;
         font-size:12px!important;
-        cursor:pointer;
+        color:#308fbb!important;
         margin:0px!important;
+        cursor:pointer;
     }
     
     .userSignInBtnContainerDivClass{
@@ -1649,19 +1705,19 @@
 
     .userSigInSubmitBtnClass, 
     .userSigInSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#fb366e!important;
-        color:#fff!important;
     }
 
     .redirectUserSignUpBtnContainerDivClass{
         text-align:center!important;
         font-size:14px!important;
-        font-weight:bold!important;
-        cursor:pointer!important;
+        font-weight:normal!important;
         color:#CB202D!important;
+        cursor:pointer!important;
         padding:0px!important;
     }
     
@@ -1675,23 +1731,23 @@
     /*  forgot password css code */
 
     .userFrgtPwdFormSectionContainerDivClass{
-        border:1px solid #e7e7e7!important;
         background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .userFrgtPwdHeaderLblClass{
-        color:#333!important;
         font-size:18px!important;
+        color:#333!important;
     }
     
     .userFrgtPwdPLblClass{
-        color:#828282!important;
         font-size:12px!important;
+        color:#828282!important;
     }
     
     .userFrgtPwdNoticeMsgContainerDivClass{
-        color:#308fbb!important;
         font-size:13px!important;
+        color:#308fbb!important;
     }
     
     .userFrgtPwdFormSectionContainerDivClass div{
@@ -1716,9 +1772,9 @@
     .userFrgtPwdOtpCodeInput_ErrorClass,
     .userFrgtPwdInput_ErrorClass,
     .userFrgtPwdConfirmInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     .userFrgtPwdOperationBtnContainerDivClass{
@@ -1727,57 +1783,61 @@
     
     .userFrgtPwdCancelSubmitBtnClass,
     .userFrgtPwdResendOtpSubmitBtnClass{
+        font-weight:normal!important;
+        color:#c1bebe!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:none!important;
-        color:#c1bebe!important;
     }
     
     .userFrgtPwdCancelSubmitBtnClass:hover{
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         background:none!important;
         color:#fb366e!important;
     }
     
     .userFrgtPwdResendOtpSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fb366e!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:none!important;
-        color:#fb366e!important;
     }
     
     .userFrgtPwdSubmitBtnClass, 
     .userFrgtPwdSubmitBtnClass:hover,
     .userFrgtPwdVerifyOtpSubmitBtnClass,
     .userFrgtPwdVerifyOtpSubmitBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
         color:#fff!important;
+        border-radius:0px!important;
+        border:0px!important;
         background:#fb366e!important;
         padding:5px!important;
     }
     
     
     /* user customer account css code */
-
+    
+    .uca_bodyDivClass .commonHorizontalSpaceDivClass{
+        margin-bottom:0px!important;
+    }
+    
     .uca_personalInfoSectionContainerDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        border:1px solid #DCE0EF!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .uca_editProfileLblPClass{
         font-size:15px!important;
+        font-weight:normal!important;
         color:#ab0b38!important;
-        font-weight:bold!important;
         cursor:pointer!important;
     }
     
@@ -1786,8 +1846,8 @@
     .uca_personalInfoTextUserMobileLblSClass,
     .uca_personalInfoTextUserGenderLblSClass,
     .uca_personalInfoTextUserBirthdateLblSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         padding-right:7px!important;
     }
     
@@ -1796,25 +1856,25 @@
     .uca_personalInfoTextUserMobileValSClass,
     .uca_personalInfoTextUserGenderValSClass,
     .uca_personalInfoTextUserBirthdateValSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
     }
     
     .userFullNameInput_ErrorClass,
     .userEmailInput_ErrorClass,
     .userMobileInput_ErrorClass,
     .userBirthdateInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
     
     /* personal info edit mode display section css code */
     
     .uca_closeProfileLblPClass{
-        color:#ab0b38!important;
         font-size:15px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
+        color:#ab0b38!important;
         cursor:pointer!important;
     }
     
@@ -1823,8 +1883,8 @@
     .uca_personalInfoTextUserMobileLblSClass,
     .uca_personalInfoTextUserGenderLblSClass,
     .uca_personalInfoTextUserBirthdateLblSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         padding-right:7px!important;
     }
     
@@ -1833,8 +1893,8 @@
     .uca_personalInfoEditUserMobileValSClass,
     .uca_personalInfoEditUserGenderValSClass,
     .uca_personalInfoEditUserBirthdateValSClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
     }
     
     .uca_personalInfoEditSectionContainerDivClass input,
@@ -1843,26 +1903,25 @@
     }
     
     .uca_personalInfoUpdateBtnClass{
-        color:#fff!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:13px!important;
+        color:#fff!important;
         border-radius:0px!important;
         background:#ab0b38!important;
         cursor:pointer!important;
-        padding:5px!important;
     }
     
     .uca_changepasswordInfoSectionContainerDivClass{
         padding-left:20px!important;
         padding-right:0px!important;
-        border:1px solid #DCE0EF!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .uca_changePwdNotePClass{
+        font-size:13px!important;
         color:#bf4444!important;
-        font-size:12px!important;
     }
     
     .uca_OldPasswordPClass,
@@ -1876,54 +1935,62 @@
     .uca_oldpasswordLblSClass,
     .uca_newpasswordLblSClass,
     .uca_newconfirmpasswordLblSClass{
-        color:#67717D!important;
         font-size:12px!important;
+        color:#67717D!important;
     }
     
     .uca_changepasswordInfoSectionContainerDivClass input{
-        width:20%!important;
         font-size:12px!important;
+        width:20%!important;
     }
     
     .userOldPwdInput_ErrorClass,
     .userNewPwdInput_ErrorClass,
     .userNewCPwdInput_ErrorClass{
-        margin:0px!important;
         font-size:13px!important;
         color:#bf4444!important;
+        margin:0px!important;
     }
 
     .uca_changePasswordBtnClass{
+        font-weight:normal!important;
+        font-size:13px!important;
         color:#fff!important;
         background:#ab0b38!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         border-radius:0px!important;
         cursor:pointer!important;
     }
     
 
     /* order cart section css code */
-
+    
+    .uca_ordercartSectionContainerDivClass .commonHorizontalSpaceDivClass{
+        margin-bottom:10px!important;
+    }
+    
+    .uca_ordercartSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
     .ordercartRequestedItemShoppingBagIconClass{
         color:#00B9F5!important;
     }
 
     .uca_ordercartSectionMsgPClass{
-        margin-top:10px!important;
-        cursor:pointer;
-        padding-left:0px!important;
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
+        padding-left:0px!important;
+        cursor:pointer;
     }
     
     .uca_ordercartSectionCheckoutBtnClass{
+        font-size:11px!important;
+        font-weight:normal!important;
+        color:#fff!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
-        color:#fff!important;
-        font-size:9px!important;
-        font-weight:bold!important;
-        padding:2px!important;
     }
     
     .uca_ordercartAllSectionHeaderContainerDivClass .owl-item{
@@ -1932,21 +1999,21 @@
     }
 
     .uca_ordercartEachTabLabelSectionContainerLIClass{
-        text-align:center!important;
-        border-bottom:1px solid #00B9F5!important;
-        color:#67717D!important;
-        font-weight:bold!important;
-        font-family: serif!important;
         float:left!important;
-        padding:5px!important;
-        font-size:15px!important;
         list-style-type:none!important;
+        text-align:center!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        font-family: serif!important;
+        color:#67717D!important;
+        padding:5px!important;
+        border-bottom:1px solid #00B9F5!important;
         cursor:pointer!important;
     }
 
     .uca_ordercartSelectedTabLabelSectionContainerLIClass{
-        border-bottom: 1px solid #cb202d!important;
         color:#fff!important;
+        border-bottom: 1px solid #cb202d!important;
         background:#cb202d!important;
     }
     
@@ -1971,12 +2038,16 @@
     }
     
     .uca_ordercartRequestedEachStoreNamePClass{
-        font-weight:bold!important;
-        font-size:13px!important;
         text-align:center!important;
-        color:#ab0b38!important;
         text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
+    }
+    
+    .ordercartRequestedEachStoreAllItemCountSClass{
+        background:#ffa500!important;
     }
     
     .uca_ordercartRequestedEachStoreDeliveryLocationFromToPClass{
@@ -2039,32 +2110,27 @@
     }
     
     .uca_ordercartRequestedEachStoreProductItemDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
         background-repeat:no-repeat;
         background-size:cover;
-        height:auto;
-        width:90px;
     }
     
     .uca_ordercartRequestedEachStoreItemDetailsDivClass{
-        padding-left:0px!important;
         padding-right:0px!important;
     }
     
     .uca_ordercartRequestedEachStoreItemNamePClass{
-        color:rgb(70, 75, 80)!important;
-        font-size:20px!important;
+        font-size:18px!important;
         font-weight:normal!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
-    .ordercartRequestedEachStoreAllItemCountSClass{
-        background:#ffa500!important;
-    }
-
     .uca_ordercartRequestedEachStoreItemSizePClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:3px!important;
     }
     
@@ -2074,14 +2140,14 @@
     }
     
     .uca_ordercartRequestedEachStoreItemPriceTextSClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
+        color:rgb(70, 75, 80)!important;
     }
     
     .uca_ordercartRequestedEachStoreItemCutPriceTextSClass{
-        color:#67717D!important;
         font-size:12px!important;
         text-decoration:line-through;
+        color:#67717D!important;
         margin-left:1%!important;
     }
 
@@ -2095,9 +2161,9 @@
     }
 
     .uca_ordercartRequestedEachStoreItemQtyPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:15px!important;
         font-weight:normal!important;
+        color:rgb(70, 75, 80)!important;
         margin-bottom:5px!important;
     }
 
@@ -2106,39 +2172,39 @@
     }
 
     .uca_ordercartRequestedEachStoreItemTotalAmtPClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
     }
 
     .ordercartRequestedEachItemUpdateBtnClass,
     .ordercartRequestedEachItemUpdateBtnClass:hover{
-        padding:2px!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#fff!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
-        font-weight:bold!important;
-        font-size:9px!important;
-        color:#fff!important;
         margin-right:1%!important;
     }
 
     .ordercartRequestedEachItemRemoveBtnClass,
     .ordercartRequestedEachItemRemoveBtnClass:hover{
-        padding:2px!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#fff!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
-        font-weight:bold!important;
-        font-size:9px!important;
-        color:#fff!important;
     }
 
     .ordercartRequestedEachItemCheckoutBtnClass,
     .ordercartRequestedEachItemCheckoutBtnClass:hover{
-        padding:2px!important;
+        font-weight:normal!important;
+        font-size:11px!important;
+        color:#ab0b38!important;
+        padding:3px!important;
         border-radius:0px!important;
         background:none!important;
-        font-weight:bold!important;
-        font-size:9px!important;
-        color:#ab0b38!important;
     }
 
     .uca_ordercartRequestedSummaryDivClass{
@@ -2151,18 +2217,18 @@
     }
     
     .uca_ordercartRequestedSummaryDivClass p{
-        padding-left:12px!important;
-        color:rgb(70, 75, 80);
         font-size:13px!important;
+        color:rgb(70, 75, 80);
+        padding-left:12px!important;
         margin-bottom:5px!important;
     }
     
     .uca_ordercartRequestedSummaryHeaderPClass{
-        font-weight:bold!important;
-        font-size:15px!important;
         text-align:center!important;
-        color:#ab0b38!important;
         text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:15px!important;
+        color:#f17023!important;
         margin-bottom:4px!important;
     }
     
@@ -2171,12 +2237,11 @@
     }
     
     .ordercartRequestedSummaryCheckoutBtnClass{
+        font-size:12px!important;
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         background-color:#ab0b38!important;
-        color:#fff!important;
-        font-size:12px!important;
-        font-weight:bold!important;
-        padding:5px!important;
     }
     
     .uca_ordercartRequestedAllStoreNotFoundMsgDivClass{
@@ -2194,10 +2259,10 @@
     }
 
     .startShoppingBtnClass{
-        font-weight:bold;
+        font-weight:normal!important;
         font-size:15px!important;
-        border-radius:0px!important;
         color:#fff!important;
+        border-radius:0px!important;
         background:#00B9F5!important;
     }
 
@@ -2218,11 +2283,11 @@
     }
     
     .uca_eachOrdercartWiseCancelledHeaderInfoPClass{
-        font-weight:bold!important;
-        font-size:13px!important;
         text-align:center!important;
-        color:#ab0b38!important;
         text-transform:uppercase!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2231,10 +2296,10 @@
     }
     
     .uca_ordercartToggleCancelledItemsLblPClass{
-        padding-left:12px!important;
         font-size:12px!important;
         font-weight:normal!important;
         color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:5px!important;
         cursor:pointer!important;
     }
@@ -2251,25 +2316,25 @@
     }
     
     .uca_ordercartCancelledEachItemImageDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
         background-repeat:no-repeat;
         background-size:cover;
-        height:auto;
-        width:90px;
     }
     
     .uca_ordercartCancelledEachItemDetailsDivClass{
-        padding-left:0px!important;
         padding-right:0px!important;
     }
     
     .uca_ordercartCancelledEachItemDetailsDivClass p{
         font-size:13px;
-        color:rgb(70, 75, 80)!important;
+        color:rgb(70, 75, 80);
         margin-bottom:3px!important;
     }
     
     .uca_ordercartCancelledItemNamePClass{
         font-size:16px!important;
+        color:#f17023!important;
     }
     
     .uca_ordercartCancelledItemNotFoundMsgDivClass{
@@ -2294,11 +2359,11 @@
     }
     
     .uca_eachOrdercartWiseOrderedHeaderInfoPClass{
-        font-weight:bold!important;
-        font-size:13px!important;
         text-align:center!important;
-        color:#ab0b38!important;
+        font-weight:normal!important;
+        font-size:13px!important;
         text-transform:uppercase!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2307,10 +2372,10 @@
     }
     
     .uca_ordercartToggleOrderedItemsLblPClass{
-        padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:12px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:5px!important;
         cursor:pointer!important;
     }
@@ -2544,6 +2609,14 @@
         color:#fff!important;
     }
     
+    .po_SectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_SectionContainerDivClass .commonHorizontalSpaceDivClass{
+        margin-bottom:10px!important;
+    }
     
     .po_AllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
@@ -2551,42 +2624,42 @@
     }
 
     .po_EachTabLabelSectionContainerLIClass{
-        text-align:center!important;
-        border-bottom:1px solid #00B9F5!important;
-        color:#67717D!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
-        padding:4px!important;
-        font-size:15px!important;
         list-style-type:none!important;
+        text-align:center!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:15px!important;
+        color:#67717D!important;
+        padding:4px!important;
+        border-bottom:1px solid #00B9F5!important;
         cursor:pointer!important;
     }
 
     .po_SelectedTabLabelSectionContainerLIClass{
-        border-bottom: 1px solid #cb202d!important;
         color:#fff!important;
         background:#cb202d!important;
+        border-bottom: 1px solid #cb202d!important;
     }
     
     .po_formHeaderPClass{
-        color:#fb366e!important;
-        font-size:13px!important;
         text-align:center;
+        font-size:13px!important;
+        color:#fb366e!important;
     }
 
     .po_smileIconClass{
-        font-size:20px!important;
         color:#fb366e!important;
+        font-size:16px!important;
     }
 
     .po_formContentWrappperContainerDivClass{
-        margin-top:10px!important;
-        border:1px solid #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-left:25%!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
 
     .po_formContentWrappperContainerDivClass div{
@@ -2594,19 +2667,19 @@
     }
 
     .po_formfieldLabelPClass{
-        color:#828282!important;
         font-size:13px!important;
+        color:#828282!important;
     }
 
     .po_formfieldHintPClass{
         font-size:10px!important;
+        font-weight:normal!important;
         color:#708090!important;
-        font-weight:bold!important;
     }
 
     .po_formfieldiconclass{
-        color:#778ca0!important;
         font-size:15px!important;
+        color:#778ca0!important;
     }
 
     .po_nosPeopleInputClass,
@@ -2622,26 +2695,26 @@
 
     .partyOrderRequestSubmitBtnClass, 
     .partyOrderRequestSubmitBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#fb366e!important;
+        font-weight:normal!important;
         color:#fff!important;
         padding:4px!important;
+        border-radius:0px!important;
+        border:0px!important;
+        background:#fb366e!important;
     }
 
     .po_thankyouContentWrapperContainerDivClass{
-        border:1px dotted #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-left:25%!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
     }
 
     .po_thankyoubodyPClass{
-        color:#828282!important;
-        font-weight:bold!important;
         text-align:center!important;
+        font-weight:normal!important;
+        color:#828282!important;
         white-space:pre-line!important;
     }
 
@@ -2652,11 +2725,11 @@
 
     .redirectToViewPartyOrderRequestBtnClass, 
     .redirectToViewPartyOrderRequestBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#242424!important;
-        color:#fff!important;
     }
     
     .allPoListSectionDivClass{
@@ -2669,8 +2742,8 @@
         padding-right:0px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
-        border:1px solid #e7e7e7!important;
         margin-bottom:20px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .eachPOListContainerDivClass p{
@@ -2679,10 +2752,10 @@
     
     .poNoPClass{
         text-align:center!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         text-transform:uppercase!important;
-        color:#ab0b38!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2695,54 +2768,54 @@
     .poEstimatedAmtPClass,
     .poPaymentSummaryDetailsPClass,
     .poPaymentBtnPClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         margin-bottom:4px!important;
     }
     
     .poPaymentBtnClass, 
     .poPaymentBtnClass:hover{
         font-size:10px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         border-radius:0px!important;
-        background-color:#ab0b38!important;
         color:#fff!important;
         padding:3px!important;
+        background-color:#ab0b38!important;
     }
     
     .poLogLblPClass,
     .poPaymentLogLblPClass{
-        padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:13px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:7px!important;
         cursor:pointer!important;
     }
     
     .eachPOListHrClass{
-        border-top:1px dashed rgb(70, 75, 80)!important;
         margin:0px!important;
+        border-top:1px dashed rgb(70, 75, 80)!important;
     }
     
     .eachPOListLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .eachPOPaymentLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .poListNotFoundMsgDivClass{
+        text-align:center!important;
         font-size:17px!important;
         color: #67717D!important;
-        text-align:center!important;
     }
     
     
@@ -2792,6 +2865,11 @@
         background:#5663ab!important;
         color:#fff!important;
     }
+    
+    .co_SectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
 
     .co_AllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
@@ -2799,28 +2877,28 @@
     }
 
     .co_EachTabLabelSectionContainerLIClass{
-        text-align:center!important;
-        border-bottom:1px solid #00B9F5!important;
-        color:#67717D!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
-        padding:4px!important;
-        font-size:15px!important;
+        text-align:center!important;
         list-style-type:none!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        color:#67717D!important;
+        padding:4px!important;
+        border-bottom:1px solid #00B9F5!important;
         cursor:pointer!important;
     }
 
     .co_SelectedTabLabelSectionContainerLIClass{
-        border-bottom: 1px solid #cb202d!important;
         color:#fff!important;
         background:#cb202d!important;
+        border-bottom: 1px solid #cb202d!important;
     }
     
     .co_formHeaderPClass{
-        color:#fb366e!important;
+        text-align:center!important;
         font-size:13px!important;
-        text-align:center;
+        color:#fb366e!important;
     }
 
     .co_smileIconClass{
@@ -2829,12 +2907,12 @@
     }
 
     .co_formContentWrappperContainerDivClass{
-        margin-top:10px!important;
-        border:1px solid #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
+        margin-top:10px!important;
         margin-left:25%!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
 
     .co_formContentWrappperContainerDivClass div{
@@ -2842,19 +2920,19 @@
     }
 
     .co_formfieldLabelPClass{
-        color:#828282!important;
         font-size:13px!important;
+        color:#828282!important;
     }
 
     .co_formfieldHintPClass{
         font-size:10px!important;
+        font-weight:normal!important;
         color:#708090!important;
-        font-weight:bold!important;
     }
 
     .co_formfieldiconclass{
-        color:#778ca0!important;
         font-size:15px!important;
+        color:#778ca0!important;
     }
 
     .co_nosPeopleInputClass,
@@ -2870,27 +2948,26 @@
 
     .customizeOrderRequestSubmitBtnClass, 
     .customizeOrderRequestSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#fb366e!important;
-        color:#fff!important;
-        padding:4px!important;
     }
 
     .co_thankyouContentWrapperContainerDivClass{
-        border:1px dotted #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-left:25%!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
     }
 
     .co_thankyoubodyPClass{
-        color:#828282!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         text-align:center!important;
         white-space:pre-line!important;
+        color:#828282!important;
     }
 
     .co_thankyousmileIconClass{
@@ -2900,11 +2977,11 @@
 
     .redirectToViewCustomizeOrderRequestBtnClass, 
     .redirectToViewCustomizeOrderRequestBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#242424!important;
-        color:#fff!important;
     }
     
     .allCoListSectionDivClass{
@@ -2917,8 +2994,8 @@
         padding-right:0px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
-        border:1px solid #e7e7e7!important;
         margin-bottom:20px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .eachCOListContainerDivClass p{
@@ -2927,10 +3004,10 @@
     
     .coNoPClass{
         text-align:center!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         text-transform:uppercase!important;
-        color:#ab0b38!important;
+        font-size:13px!important;
+        font-weight:normal!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2943,27 +3020,27 @@
     .coEstimatedAmtPClass,
     .coPaymentSummaryDetailsPClass,
     .coPaymentBtnPClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         margin-bottom:4px!important;
     }
     
     .coPaymentBtnClass, 
     .coPaymentBtnClass:hover{
         font-size:10px!important;
-        font-weight:bold!important;
-        border-radius:0px!important;
-        background-color:#ab0b38!important;
+        font-weight:normal!important;
         color:#fff!important;
         padding:3px!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
     }
     
     .coLogLblPClass,
     .coPaymentLogLblPClass{
-        padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:13px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:7px!important;
         cursor:pointer!important;
     }
@@ -2974,23 +3051,23 @@
     }
     
     .eachCOListLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .eachCOPaymentLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .coListNotFoundMsgDivClass{
+        text-align:center!important;
         font-size:17px!important;
         color: #67717D!important;
-        text-align:center!important;
     }
 
     
@@ -2999,39 +3076,39 @@
     .chkout_deliveryAddressSectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        border:1px solid #e7e7e7;
+        border:1px solid #e7e7e7!important;
     }
     
     .chkout_deliveryAddressHeaderPClass{
         text-align:left!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         text-transform:uppercase!important;
-        background-color:#ab0b38!important;
+        font-size:13px!important;
+        font-weight:normal!important;
         color:#fff!important;
+        padding-left:10px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        padding-left:10px!important;
+        background-color:#50509a!important;
         margin:0px!important;
     }
     
     .chkout_eachStoreOrderSummaryDivClass{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
         padding-left:0px!important;
         padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
         border-top:1px dashed rgb(70, 75, 80);
     }
     
     .chkout_eachStoreBasicInfoLblPClass{
-        color:#f17023!important;
         font-size:14px!important;
+        color:#f17023!important;
         padding-left:10px!important;
     }
     
     .chkout_eachStoreOrderDeliveryAddressPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:12px!important;
+        color:rgb(70, 75, 80)!important;
         padding-left:10px!important;
     }
     
@@ -3040,8 +3117,8 @@
     }
     
     .chkout_eachStoreOrderDeliveryDatePClass{
-        color:rgb(70, 75, 80)!important;
         font-size:12px!important;
+        color:rgb(70, 75, 80)!important;
         padding-left:10px!important;
     }
     
@@ -3050,14 +3127,13 @@
     }
     
     .chkout_orderDeliveryDetailsSaveBtnPClass{
-        color:rgb(70, 75, 80)!important;
         font-size:12px!important;
+        color:rgb(70, 75, 80)!important;
         padding-left:10px!important;
     }
     
     .chkout_orderDeliveryDateSaveBtnClass{
-        padding:5px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:11px!important;
         color:#fff!important;
         border-radius:0px!important;
@@ -3067,19 +3143,19 @@
     .chkout_paymentSummarySectionDivClass{
         padding-left:0px!important;
         padding-right:0px!important;
-        border:1px solid #e7e7e7;
+        border:1px solid #e7e7e7!important;
     }
     
     .chkout_paymentSummaryHeaderPClass{
         text-align:left!important;
-        font-weight:bold!important;
+        text-transform:uppercase!important;
         font-size:13px!important;
-        text-transform: uppercase!important;
-        background-color:#ab0b38!important;
+        font-weight:normal!important;
         color:#fff!important;
+        padding-left:10px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
-        padding-left:10px!important;
+        background-color:#50509a!important;
         margin:0px!important;
     }
     
@@ -3092,8 +3168,8 @@
     }
     
     .chkout_paymentSummaryDivClass p{
-        color:rgb(70, 75, 80)!important;
         font-size:13px!important;
+        color:rgb(70, 75, 80)!important;
         padding-left:10px!important;
         margin:4px;
     }
@@ -3103,10 +3179,10 @@
     }
     
     .chkout_makePaymentBtnClass{
-        padding:5px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         font-size:11px!important;
         color:#fff!important;
+        padding:5px!important;
         border-radius:0px!important;
         background:#ab0b38!important;
     }
