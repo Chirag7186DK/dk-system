@@ -185,7 +185,7 @@
                 </p>
                 <p class='storeProductBtnWrapperPClass'> 
                     <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' class="storeViewProductDetailsBtnClass btn">
-                        BUY NOW
+                        ORDER NOW
                     </button>
                 </p>
             </div>
