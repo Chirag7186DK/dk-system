@@ -182,7 +182,7 @@ class StoreDao{
                 (CASE WHEN COALESCE(sw.is_shopholiday,'N')='N' THEN 'OPEN' ELSE 'CLOSE' END) isShopholiday,
                 (CASE WHEN DAYNAME(CURDATE())=COALESCE(sw.dayname, '') THEN 'Y' ELSE 'N' END) isTodayDayMatched
                 FROM STORE_WORKINGHOURS sw 
-                WHERE sw.status='A' AND sw.shopstore_id IN ($shop_storeids) ";
+                WHERE sw.status='A' AND sw.store_id IN ($shop_storeids) ";
             $command = $connection->createCommand($sqlFetchQuery);
             $storeWorkingDetailsArr = $command->queryAll();
             if(count($storeWorkingDetailsArr)>0 && $storeWorkingDetailsArr!=false){
