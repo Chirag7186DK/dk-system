@@ -151,8 +151,8 @@
             </div>
 
             <!-- each product details iterate for displaying purpose -->
-            <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-12 col-sm-4 col-md-3 col-lg-3 storeProductBoxDivClass">
-                <img style='background-repeat:no-repeat;background-size:cover;height:auto;width:100%;' class='preloadProductImagesClass' data-original="{{eachProductDetails.productImageFilePath}}" ng-src="images/productphotoback.png">
+            <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 storeProductBoxDivClass">
+                <img class='preloadProductImagesClass' data-original="{{eachProductDetails.productImageFilePath}}" ng-src="images/productphotoback.png">
                 <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 storeProductBoxDividerLineDivClass'></div>
                 <p class='storeProductNamePClass'>
                     {{eachProductDetails.productListTitle}}
@@ -170,7 +170,7 @@
                     </span>
                 </p>
                 <p class='storeProductDeliveryTimePClass'>
-                    <i class="fa fa-bus"></i> Est. Delivers in {{eachProductDetails.individualProductDeliveryTime}}
+                    <i class="fa fa-bus"></i> Est. delivery in {{eachProductDetails.individualProductDeliveryTime}}
                 </p>
                 <p class='storeProductPricePClass'> 
                     <span class='storeProductOnlineSellingPriceTextSClass'>
@@ -185,7 +185,7 @@
                 </p>
                 <p class='storeProductBtnWrapperPClass'> 
                     <button ng-controller='ProductController' ng-click='viewProductDetails(eachProductDetails)' class="storeViewProductDetailsBtnClass btn">
-                        <i class="fa fa-list"></i> VIEW
+                        BUY NOW
                     </button>
                 </p>
             </div>
