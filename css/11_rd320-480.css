@@ -3120,7 +3120,7 @@
     .chkout_deliveryAddressHeaderPClass{
         text-align:left!important;
         text-transform:uppercase!important;
-        font-size:13px!important;
+        font-size:11px!important;
         font-weight:normal!important;
         color:#fff!important;
         padding-left:10px!important;
@@ -3132,14 +3132,14 @@
     
     .chkout_eachStoreOrderSummaryDivClass{
         padding-left:0px!important;
-        padding-right:0px!important;
+        //pdding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         border-top:1px dashed rgb(70, 75, 80);
     }
     
     .chkout_eachStoreBasicInfoLblPClass{
-        font-size:14px!important;
+        font-size:11px!important;
         color:#f17023!important;
         padding-left:10px!important;
     }
@@ -3151,7 +3151,7 @@
     }
     
     .chkout_deliveryAddressInputBoxClass{
-        width:30%!important;
+        width:100%!important;
     }
     
     .chkout_eachStoreOrderDeliveryDatePClass{
@@ -3161,7 +3161,7 @@
     }
     
     .chkout_deliveryDateInputBoxClass{
-        width:30%!important;
+        width:100%!important;
     }
     
     .chkout_orderDeliveryDetailsSaveBtnPClass{
