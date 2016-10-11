@@ -10,6 +10,13 @@
 //$DATABASEPASS = "dkdbadmin123";
 //$YII_DB_PASS = "dkdbadmin123";
 
+//$DATABASENAME = 'cakekhaz_desserts_khazana';
+//$DATABASEHOST = "localhost";
+//$DATABASEUNAME = "cakekhaz_dkdbadm";
+//$YII_DB_UNAME = "cakekhaz_dkdbadm";
+//$DATABASEPASS = "dkdbadmin123";
+//$YII_DB_PASS = "dkdbadmin123";
+
 $DATABASENAME = 'DESSERTSKHAZANA';
 $DATABASEHOST = "localhost";
 $DATABASEUNAME = "dgdb";
