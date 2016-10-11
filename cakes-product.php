@@ -41,12 +41,12 @@
         <div ng-controller="StoreController" ng-init="loadStoreDeliveryAreaBasedDessertsTypeList()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeServeDessertsTypeContainerDivClass">
 
             <!-- display selected desserts type title ordering by customer -->
-            <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length==1" class="storeServingDessertsTypeNoteInfoLIClass">
+            <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length==0" class="storeServingDessertsTypeNoteInfoLIClass">
                 <i class='fa fa-smile-o'></i> 
                 Hey you are ordering product from '{{customerBreadCrumbOnWebApp.shopStoreTitle}}'  
                 to deliver in '{{selectedDeliveryAreaTextHeader}}' area !!!
             </li>
-            <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" class="storeServingDessertsTypeNoteInfoLIClass">
+            <li ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" class="storeServingDessertsTypeNoteInfoLIClass">
                 <i class='fa fa-smile-o'></i> 
                 Hey you are viewing '{{customerBreadCrumbOnWebApp.shopStoreTitle}}' product and also can serve other 
                     <span class="badge storeCanServeDessertsTypeCountSClass">
@@ -82,100 +82,102 @@
         </div>
 
         <!-- showing product details -->
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_productDetailsContainerDivClass">
-            <p class='vpd_productNamePClass'>
-                <i class='fa fa-birthday-cake'></i> {{productDetails[0]['productListTitle']}}
-            </p>
-            <hr class="vpd_horizontalLineClass">
-            <p class='vpd_productStoreNameContainerPClass'>
-                <span class="vpd_productStoreLabelNameSpanClass">
-                    Seller: 
-                </span> 
-                <span class="vpd_productStoreNameSpanClass">
-                    {{productDetails[0]['shopStoreTitle']}}
-                </span>
-            </p>
-            <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
-                {{avgRatingReviewedProductDetails.totalUserRatingProduct}} reviewed,
-                {{avgRatingReviewedProductDetails.totalUserRatingProduct}} ratings,   
-                {{avgRatingReviewedProductDetails.totalAvgRatingProduct}} 
-                <i class="fa fa-star faa-tada animated vpd_productAvgRatedIconClass"></i> average rated based on (Quality/Taste, Delivery Services, Price)
-            </p>
-            <p ng-hide="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
-                No rating & review from customer yet !!!
-            </p>
-            <hr>
-            <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_storeDeliveryFromAreaToAreaPClass">
-                Order will be deliver from {{productDetails[0]['areaTitle']}} to {{selectedDeliveryAreaTextHeader}}
-            </p>
-            <p class="vpd_storeDeliveryFeeApplicableMsgPClass">
-                {{storeDeliveryFeeApplicableMsg}}
-            </p>
-            <p class="vpd_estimatedProductDeliveryTimePClass">
-                <i class='fa fa-bus'></i> Est. Delivery: 
-                <span class="estimatedProductShippingDeliveryTimeSClass">
-                    {{productDetails[0]['individualProductDeliveryTime']}}
-                </span>
-            </p>
-            <hr>
-            <p class='vpd_productSelectMeasurementLabelPClass'> 
-                Select Size
-                <select class='form-control' id="productMeasurementSelectCtrlId">
-                    <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
-                        {{eachMeasurementDetails.productFeatureDisplayMeasurementType}}
-                    </option>
-                </select>
-            </p>
-            <p class='viewProductPricePClass'> 
-                <span class='vpd_productPayBlgPriceTextSClass'>
-                    <i class="fa fa-rupee faa-tada animated"></i> 
-                    <i class='onlineProductSellingPriceTextClass'>
-                        {{productDetails[0]['productFeatureOnlineSellingPrice']}}
-                    </i>
-                </span>
-                <span ng-if="productDetails[0]['productFeatureBasePrice']!==''" class='vpd_productCutPriceTextSClass'>
-                    <i class="fa fa-rupee"></i> 
-                    {{productDetails[0]['productFeatureBasePrice']}}
-                </span>
-                <span ng-if="productDetails[0]['productFeatureDiscount']!==''" class='vpd_productDiscountPercentTextSClass'>
-                    ({{productDetails[0]['productFeatureDiscount']}}% Off)
-                </span>
-            </p>
-            <p class='vpd_productQtyPClass'>
-                Qty
-                <input product-qty-input-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" value='1'>
-            </p>
-            <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
-                Message On Cake
-                <textarea product-msgbox-directive rows='3' class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
-            </p>
-            <p class='vpd_productAddToCartBtnPClass'> 
-                <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_specificProductAddBtnClass btn">
-                    <i class="fa fa-shopping-cart"></i> ADD
-                </button>
-            </p>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_productDetailsWrapperDivClass">
+            <div class="vpd_productDetailsContainerDivClass">
+                <p class='vpd_productNamePClass'>
+                    <i class='fa fa-birthday-cake'></i> {{productDetails[0]['productListTitle']}}
+                </p>
+                <hr class="vpd_horizontalLineClass">
+                <p class='vpd_productStoreNameContainerPClass'>
+                    <span class="vpd_productStoreLabelNameSpanClass">
+                        Seller: 
+                    </span> 
+                    <span class="vpd_productStoreNameSpanClass">
+                        {{productDetails[0]['shopStoreTitle']}}
+                    </span>
+                </p>
+                <p ng-controller='RatingReviewController' ng-init="loadAverageRatingReviewedProduct()" class='vpd_productReviewAndRatingPClass' ng-show="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
+                    {{avgRatingReviewedProductDetails.totalUserRatingProduct}} reviewed,
+                    {{avgRatingReviewedProductDetails.totalUserRatingProduct}} ratings,   
+                    {{avgRatingReviewedProductDetails.totalAvgRatingProduct}} 
+                    <i class="fa fa-star faa-tada animated vpd_productAvgRatedIconClass"></i> average rated based on (Quality/Taste, Delivery Services, Price)
+                </p>
+                <p ng-hide="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
+                    No rating & review from customer yet !!!
+                </p>
+                <hr>
+                <p ng-init="loadStoreDeliveryFeeApplicableMsgOnDeliveryArea();" class="vpd_storeDeliveryFromAreaToAreaPClass">
+                    Order will be deliver from {{productDetails[0]['areaTitle']}} to {{selectedDeliveryAreaTextHeader}} area !!!
+                </p>
+                <p class="vpd_storeDeliveryFeeApplicableMsgPClass">
+                    {{storeDeliveryFeeApplicableMsg}}
+                </p>
+                <p class="vpd_estimatedProductDeliveryTimePClass">
+                    <i class='fa fa-bus'></i> Est. delivery : 
+                    <span class="estimatedProductShippingDeliveryTimeSClass">
+                        {{productDetails[0]['individualProductDeliveryTime']}}
+                    </span>
+                </p>
+                <hr>
+                <p class='vpd_productSelectMeasurementLabelPClass'> 
+                    Select Size
+                    <select class='form-control' id="productMeasurementSelectCtrlId">
+                        <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
+                            {{eachMeasurementDetails.productFeatureDisplayMeasurementType}}
+                        </option>
+                    </select>
+                </p>
+                <p class='viewProductPricePClass'> 
+                    <span class='vpd_productPayBlgPriceTextSClass'>
+                        <i class="fa fa-rupee faa-tada animated"></i> 
+                        <i class='onlineProductSellingPriceTextClass'>
+                            {{productDetails[0]['productFeatureOnlineSellingPrice']}}
+                        </i>
+                    </span>
+                    <span ng-if="productDetails[0]['productFeatureBasePrice']!==''" class='vpd_productCutPriceTextSClass'>
+                        <i class="fa fa-rupee"></i> 
+                        {{productDetails[0]['productFeatureBasePrice']}}
+                    </span>
+                    <span ng-if="productDetails[0]['productFeatureDiscount']!==''" class='vpd_productDiscountPercentTextSClass'>
+                        ({{productDetails[0]['productFeatureDiscount']}}% Off)
+                    </span>
+                </p>
+                <p class='vpd_productQtyPClass'>
+                    Qty
+                    <input product-qty-input-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" value='1'>
+                </p>
+                <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
+                    Message On Cake
+                    <textarea product-msgbox-directive rows='3' class="form-control" placeholder="Type 40 characters only & not allowed any special characters"></textarea>
+                </p>
+                <p class='vpd_productAddToCartBtnPClass'> 
+                    <button ng-controller='OrderCartController' ng-click="checkProductDataToAddInOrdercart('vpd_productDetailsContainerDivClass', 'cakes-product')" class="vpd_productAddToCartBtnClass btn">
+                        <i class="fa fa-shopping-cart"></i> ADD TO CART
+                    </button>
+                </p>
+            </div>
         </div>
 
         <!-- order summary details details -->
-        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_orderSummaryContainerDivClass">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 vpd_orderSummaryContainerDivClass">
             <p class='vpd_orderSummaryHeaderLblPClass'> 
                 <i class='fa fa-shopping-basket'></i> CART SUMMARY
             </p>
             <hr class="vpd_horizontalLineClass">
             <p class="vpd_totalOrderStorePClass">
-                Total Stores: {{totalStores}}
+                Total Stores : {{totalStores}}
             </p>
             <p class="vpd_totalOrderItemPClass">
-                Total Item: {{ordercartItemRequestedCount}}
+                Total Item : {{ordercartItemRequestedCount}}
             </p>
             <p class="vpd_orderSubtotalAmtPClass">
-                Subtotal (Rs): {{subtotalOrderAmt}}
+                Subtotal (Rs) : {{subtotalOrderAmt}}
             </p>
             <p class="vpd_totalOrderDeliveryFeePClass">
-                Total Delivery (Rs): {{totalDeliveryFee}}
+                Total Delivery (Rs) : {{totalDeliveryFee}}
             </p>
             <p class="vpd_totalOrderAmtPClass">
-                Total (Rs): {{totalOrderAmt}}
+                Total (Rs) : {{totalOrderAmt}}
             </p>
             <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
                 <button class="btn vpd_orderSummaryCheckoutBtnClass">
