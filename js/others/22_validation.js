@@ -419,10 +419,10 @@ function validateParamDataPartyOrderRequest(){
 
 function validateParamDataCustomizeOrderRequest(){
     var inValidDataCount = 0 ;
-    if(isProperInputElementContent('co_occasionTitleInputClass')==='FALSE'){
+    if(isProperInputElementContent('co_occasionTitleInputId')==='FALSE'){
         inValidDataCount++;
     }else{
-        var enteredTitleText = removeHtmlStripTagsOfContent($('#co_occasionTitleInputClass').val());
+        var enteredTitleText = removeHtmlStripTagsOfContent($('#co_occasionTitleInputId').val());
         if((enteredTitleText).length>60){
             inValidDataCount++;
         }
