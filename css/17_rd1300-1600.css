@@ -365,6 +365,7 @@
     .eachStoreHrClass{
         margin-top:0px!important;
         margin-bottom:10px!important;
+        border-top:1px solid rgba(199, 181, 181, 0.6)!important;
     }
     
     .eachStoreReviewedRatingBoxSClass{
