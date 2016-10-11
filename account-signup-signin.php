@@ -28,7 +28,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 userSignInEmailContainerDivClass">
                     <input placeholder="Registered Email" type="text" id='userSignInEmailInputId' class="form-control userSignInEmailInputClass">
                     <p class="userSignInFormfieldHintPClass">
-                        Eg: chirag.jain@gmail.com, chirag.jain@rediffmail.com
+                        Eg: chirag.jain@gmail.com
                     </p>
                     <p class="userSignInEmailInput_ErrorClass"></p>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdEmailContainerDivClass">
                     <input placeholder='Registered Email' type="text" id='userFrgtPwdEmailInputId' class="form-control userFrgtPwdEmailInputClass">
                     <p class="userFrgtPwdFormfieldHintPClass">
-                        Eg: chirag.jain@gmail.com, chirag.jain@rediffmail.com
+                        Eg: chirag.jain@gmail.com
                     </p>
                     <p class="userFrgtPwdEmailInput_ErrorClass"></p>
                 </div>
@@ -208,7 +208,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userSignUpEmailContainerDivClass">
                     <input placeholder='Email' type="text" id='userSignUpEmailInputId' class="form-control userSignUpEmailInputClass">
                     <p class="userSignUpFormfieldHintPClass">
-                        Eg: chirag.jain@gmail.com, chirag.jain@rediffmail.com
+                        Eg: chirag.jain@gmail.com
                     </p>
                     <p class="userSignUpEmailInput_ErrorClass"></p>
                 </div>
