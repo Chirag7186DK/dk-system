@@ -28,7 +28,7 @@
             </p>
 
             <!-- iterate each store info container -->
-            <div ng-if="allStoresInfoList.length>0" ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-12 col-md-4 col-lg-3 eachStoreInfoContainerDivClass">
+            <div ng-if="allStoresInfoList.length>0" ng-repeat="eachStoreInfoDataObj in allStoresInfoList" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 eachStoreInfoContainerDivClass">
                 <div class="eachStoreInfoInnerContainerDivClass">    
                     <p class="eachStoreNamePClass">
                         {{eachStoreInfoDataObj.shopStoreTitle}}
