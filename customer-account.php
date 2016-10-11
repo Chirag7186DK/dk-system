@@ -306,7 +306,7 @@
                     </p>
                     <p class="uca_ordercartRequestedSummaryOperationPClass">
                         <button ng-controller="OrderCartController"  ng-click="gotoCheckoutProcess();" class='btn ordercartRequestedSummaryCheckoutBtnClass'>
-                            CHECKOUT
+                            <i class='fa fa-rupee'></i> CHECKOUT
                         </button>
                     </p>
                 </div>
