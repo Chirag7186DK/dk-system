@@ -78,6 +78,7 @@ function StoreController($rootScope, $rootScope, $state){
             if(storedDataStatus===true){  
                 if((paramObj['dessertsTypeTitle']).toLowerCase()==='cakes'){
                     // window.location.href =  globalBaseSitePath+"store-all-cakes.php";
+                    // problem arise here
                     $state.go('store-all-cakes'); 
                 }
             }
