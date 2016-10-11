@@ -181,7 +181,7 @@
             </p>
             <p ng-if='ordercartItemRequestedCount>0' class='vpd_orderSummaryCheckoutBtnWrapperPClass'> 
                 <button class="btn vpd_orderSummaryCheckoutBtnClass">
-                    CHECKOUT
+                    <i class='fa fa-rupee'></i> CHECKOUT
                 </button>
             </p>
         </div>
@@ -225,7 +225,7 @@
                         <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
                             {{eachReviewRatingTypeObj.questionTitle}}
                         </div>
-                        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_eachReviewRatingTypeAnswerBoxDivClass'>
                             <select class='form-control vpd_ratingProductSelectCtrlClass'>
                                 <option data-productlistid="{{productDetails[0]['productListId']}}"  data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='1'>1 Star</option>
                                 <option data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' value='2'>2 Star</option>
@@ -239,13 +239,13 @@
                         <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2 vpd_eachReviewRatingTypeTitleDivClass'>
                             {{eachReviewRatingTypeObj.questionTitle}}
                         </div>
-                        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_eachReviewRatingTypeAnswerBoxDivClass'>
                             <TEXTAREA data-productlistid="{{productDetails[0]['productListId']}}" data-maxpoints='{{eachReviewRatingTypeObj.maxPoints}}' data-questionpattern='{{eachReviewRatingTypeObj.questionPattern}}' data-storeid='{{eachReviewRatingTypeObj.shopStoreId}}' data-questionid='{{eachReviewRatingTypeObj.reviewQuestionId}}' class='form-control watchProductReviewCommentInputElementLoadedInDom' placeholder="Write in your own words, max 500 characters"></TEXTAREA>
                         </div>
                     </div>
                     <div class='vpd_submitReviewBtnWrapperDivClass col-xs-12 col-sm-12 col-md-12 col-lg-12' ng-show='isStoreRatingReviewQuestionFound'>
                         <div class='col-xs-12 col-sm-12 col-md-2 col-lg-2'></div>
-                        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
+                        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 vpd_submitRatingReviewAboutProductBtnDivClass'>
                             <button ng-show='isEnableRatingReviewSubmitButton' ng-click="collectDataToAddUserRatingReviewProduct('vpd_takeUserReviewRatingProductContainerDivClass')" class='vpd_submitRatingReviewAboutProductBtnClass btn'>
                                 SUBMIT A REVIEW
                             </button> 
@@ -262,7 +262,7 @@
                 <!-- rating and review summary about product -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_summaryReviewRatingContainerDivClass" ng-if="avgRatingReviewedProductDetails.isUserRatedAndReviewProduct">
                     <span class='vpd_summaryReviewRatingLblSClass'>
-                        {{avgRatingReviewedProductDetails.totalUserRatingProduct}} customer(s) reviewed,  
+                        {{avgRatingReviewedProductDetails.totalUserRatingProduct}} customers reviewed,  
                         {{avgRatingReviewedProductDetails.totalAvgRatingProduct}} 
                         <i class="fa fa-star vpd_productAvgRatedIconClass"></i> average rated about product based on 
                     </span>
@@ -291,7 +291,7 @@
                     <div ng-repeat="eachUserReviewedRatingDetails in allUserRatingReviewAboutProductDetailsArr" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vpd_displayEachUserReviewAboutProductContainerDivClass">
                         <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 vpd_eachUserReviewedRatingRightSideDivClass">
                             <p class="vpd_eachUserNameRatedReviewAbtProductPClass">
-                                reviewed & rated by {{eachUserReviewedRatingDetails.userName}} - {{eachUserReviewedRatingDetails.dated}}
+                                reviewed & rated by {{eachUserReviewedRatingDetails.userName}} on {{eachUserReviewedRatingDetails.dated}}
                             </p>
                             <p ng-repeat="eachReviewedRatingTypeDetails in eachUserReviewedRatingDetails.allRatingReviewTypeDetails" ng-if="'SELECT'===eachReviewedRatingTypeDetails.answerPattern" class='vpd_eachUserRatedAbtProductPClass'>
                                 {{eachReviewedRatingTypeDetails.questionTitle}} : 
