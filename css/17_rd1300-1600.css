@@ -2607,6 +2607,14 @@
         color:#fff!important;
     }
     
+    .po_SectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_SectionContainerDivClass .commonHorizontalSpaceDivClass{
+        margin-bottom:10px!important;
+    }
     
     .po_AllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
@@ -2614,42 +2622,42 @@
     }
 
     .po_EachTabLabelSectionContainerLIClass{
-        text-align:center!important;
-        border-bottom:1px solid #00B9F5!important;
-        color:#67717D!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
-        padding:4px!important;
-        font-size:15px!important;
         list-style-type:none!important;
+        text-align:center!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        font-size:15px!important;
+        color:#67717D!important;
+        padding:4px!important;
+        border-bottom:1px solid #00B9F5!important;
         cursor:pointer!important;
     }
 
     .po_SelectedTabLabelSectionContainerLIClass{
-        border-bottom: 1px solid #cb202d!important;
         color:#fff!important;
         background:#cb202d!important;
+        border-bottom: 1px solid #cb202d!important;
     }
     
     .po_formHeaderPClass{
-        color:#fb366e!important;
-        font-size:13px!important;
         text-align:center;
+        font-size:13px!important;
+        color:#fb366e!important;
     }
 
     .po_smileIconClass{
-        font-size:20px!important;
         color:#fb366e!important;
+        font-size:16px!important;
     }
 
     .po_formContentWrappperContainerDivClass{
-        margin-top:10px!important;
-        border:1px solid #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-left:25%!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
 
     .po_formContentWrappperContainerDivClass div{
@@ -2657,19 +2665,19 @@
     }
 
     .po_formfieldLabelPClass{
-        color:#828282!important;
         font-size:13px!important;
+        color:#828282!important;
     }
 
     .po_formfieldHintPClass{
         font-size:10px!important;
+        font-weight:normal!important;
         color:#708090!important;
-        font-weight:bold!important;
     }
 
     .po_formfieldiconclass{
-        color:#778ca0!important;
         font-size:15px!important;
+        color:#778ca0!important;
     }
 
     .po_nosPeopleInputClass,
@@ -2685,26 +2693,26 @@
 
     .partyOrderRequestSubmitBtnClass, 
     .partyOrderRequestSubmitBtnClass:hover{
-        border-radius:0px!important;
-        border:0px!important;
-        font-weight:bold!important;
-        background:#fb366e!important;
+        font-weight:normal!important;
         color:#fff!important;
         padding:4px!important;
+        border-radius:0px!important;
+        border:0px!important;
+        background:#fb366e!important;
     }
 
     .po_thankyouContentWrapperContainerDivClass{
-        border:1px dotted #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-left:25%!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
     }
 
     .po_thankyoubodyPClass{
-        color:#828282!important;
-        font-weight:bold!important;
         text-align:center!important;
+        font-weight:normal!important;
+        color:#828282!important;
         white-space:pre-line!important;
     }
 
@@ -2715,11 +2723,11 @@
 
     .redirectToViewPartyOrderRequestBtnClass, 
     .redirectToViewPartyOrderRequestBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#242424!important;
-        color:#fff!important;
     }
     
     .allPoListSectionDivClass{
@@ -2732,8 +2740,8 @@
         padding-right:0px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
-        border:1px solid #e7e7e7!important;
         margin-bottom:20px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .eachPOListContainerDivClass p{
@@ -2742,10 +2750,10 @@
     
     .poNoPClass{
         text-align:center!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         text-transform:uppercase!important;
-        color:#ab0b38!important;
+        font-weight:normal!important;
+        font-size:13px!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -2758,54 +2766,54 @@
     .poEstimatedAmtPClass,
     .poPaymentSummaryDetailsPClass,
     .poPaymentBtnPClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         margin-bottom:4px!important;
     }
     
     .poPaymentBtnClass, 
     .poPaymentBtnClass:hover{
         font-size:10px!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         border-radius:0px!important;
-        background-color:#ab0b38!important;
         color:#fff!important;
         padding:3px!important;
+        background-color:#ab0b38!important;
     }
     
     .poLogLblPClass,
     .poPaymentLogLblPClass{
-        padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:13px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:7px!important;
         cursor:pointer!important;
     }
     
     .eachPOListHrClass{
-        border-top:1px dashed rgb(70, 75, 80)!important;
         margin:0px!important;
+        border-top:1px dashed rgb(70, 75, 80)!important;
     }
     
     .eachPOListLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .eachPOPaymentLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .poListNotFoundMsgDivClass{
+        text-align:center!important;
         font-size:17px!important;
         color: #67717D!important;
-        text-align:center!important;
     }
     
     
@@ -2855,6 +2863,11 @@
         background:#5663ab!important;
         color:#fff!important;
     }
+    
+    .co_SectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
 
     .co_AllSectionHeaderContainerDivClass .owl-item{
         width:auto!important;
@@ -2862,28 +2875,28 @@
     }
 
     .co_EachTabLabelSectionContainerLIClass{
-        text-align:center!important;
-        border-bottom:1px solid #00B9F5!important;
-        color:#67717D!important;
-        font-weight:bold!important;
-        font-family:serif!important;
         float:left!important;
-        padding:4px!important;
-        font-size:15px!important;
+        text-align:center!important;
         list-style-type:none!important;
+        font-size:15px!important;
+        font-weight:normal!important;
+        font-family:serif!important;
+        color:#67717D!important;
+        padding:4px!important;
+        border-bottom:1px solid #00B9F5!important;
         cursor:pointer!important;
     }
 
     .co_SelectedTabLabelSectionContainerLIClass{
-        border-bottom: 1px solid #cb202d!important;
         color:#fff!important;
         background:#cb202d!important;
+        border-bottom: 1px solid #cb202d!important;
     }
     
     .co_formHeaderPClass{
-        color:#fb366e!important;
+        text-align:center!important;
         font-size:13px!important;
-        text-align:center;
+        color:#fb366e!important;
     }
 
     .co_smileIconClass{
@@ -2892,12 +2905,12 @@
     }
 
     .co_formContentWrappperContainerDivClass{
-        margin-top:10px!important;
-        border:1px solid #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
+        margin-top:10px!important;
         margin-left:25%!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
     }
 
     .co_formContentWrappperContainerDivClass div{
@@ -2905,19 +2918,19 @@
     }
 
     .co_formfieldLabelPClass{
-        color:#828282!important;
         font-size:13px!important;
+        color:#828282!important;
     }
 
     .co_formfieldHintPClass{
         font-size:10px!important;
+        font-weight:normal!important;
         color:#708090!important;
-        font-weight:bold!important;
     }
 
     .co_formfieldiconclass{
-        color:#778ca0!important;
         font-size:15px!important;
+        color:#778ca0!important;
     }
 
     .co_nosPeopleInputClass,
@@ -2933,27 +2946,26 @@
 
     .customizeOrderRequestSubmitBtnClass, 
     .customizeOrderRequestSubmitBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#fb366e!important;
-        color:#fff!important;
-        padding:4px!important;
     }
 
     .co_thankyouContentWrapperContainerDivClass{
-        border:1px dotted #e7e7e7!important;
-        background:#fff!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-left:25%!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
     }
 
     .co_thankyoubodyPClass{
-        color:#828282!important;
-        font-weight:bold!important;
+        font-weight:normal!important;
         text-align:center!important;
         white-space:pre-line!important;
+        color:#828282!important;
     }
 
     .co_thankyousmileIconClass{
@@ -2963,11 +2975,11 @@
 
     .redirectToViewCustomizeOrderRequestBtnClass, 
     .redirectToViewCustomizeOrderRequestBtnClass:hover{
+        font-weight:normal!important;
+        color:#fff!important;
         border-radius:0px!important;
         border:0px!important;
-        font-weight:bold!important;
         background:#242424!important;
-        color:#fff!important;
     }
     
     .allCoListSectionDivClass{
@@ -2980,8 +2992,8 @@
         padding-right:0px!important;
         padding-top:15px!important;
         padding-bottom:15px!important;
-        border:1px solid #e7e7e7!important;
         margin-bottom:20px!important;
+        border:1px solid #e7e7e7!important;
     }
     
     .eachCOListContainerDivClass p{
@@ -2990,10 +3002,10 @@
     
     .coNoPClass{
         text-align:center!important;
-        font-weight:bold!important;
-        font-size:13px!important;
         text-transform:uppercase!important;
-        color:#ab0b38!important;
+        font-size:13px!important;
+        font-weight:normal!important;
+        color:#f17023!important;
         margin-bottom:3px!important;
     }
     
@@ -3006,27 +3018,27 @@
     .coEstimatedAmtPClass,
     .coPaymentSummaryDetailsPClass,
     .coPaymentBtnPClass{
-        color:#67717D!important;
         font-size:13px!important;
+        color:#67717D!important;
         margin-bottom:4px!important;
     }
     
     .coPaymentBtnClass, 
     .coPaymentBtnClass:hover{
         font-size:10px!important;
-        font-weight:bold!important;
-        border-radius:0px!important;
-        background-color:#ab0b38!important;
+        font-weight:normal!important;
         color:#fff!important;
         padding:3px!important;
+        border-radius:0px!important;
+        background-color:#ab0b38!important;
     }
     
     .coLogLblPClass,
     .coPaymentLogLblPClass{
-        padding-left:12px!important;
-        color:#ab0b38!important;
         font-size:13px!important;
         font-weight:normal!important;
+        color:#ab0b38!important;
+        padding-left:12px!important;
         margin-bottom:7px!important;
         cursor:pointer!important;
     }
@@ -3037,23 +3049,23 @@
     }
     
     .eachCOListLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .eachCOPaymentLogContainerDivClass{
+        font-size:13px!important;
+        color:#67717D!important;
         padding-top:10px!important;
         margin-bottom:5px!important;
-        color:#67717D!important;
-        font-size:13px!important;
     }
     
     .coListNotFoundMsgDivClass{
+        text-align:center!important;
         font-size:17px!important;
         color: #67717D!important;
-        text-align:center!important;
     }
 
     
