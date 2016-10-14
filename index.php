@@ -34,7 +34,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fHeader_topMenuBarContainerDivClass">
             <ul class="topMenuBarULClass list-inline">
                 <li>
-                    <i class="fa fa-comment-o fa-flip-horizontal"></i> Care
+                    <i class="fa fa-comment-o fa-flip-horizontal"></i> Care (02046781219)
                 </li>
                 <li ng-if="isShowSelectedDeliveryAreaTextHeader==true" class="selectedDeliveryAreaTextHeaderLIClass">
                     <i class="fa fa-map-marker"></i> At: {{selectedDeliveryAreaTextHeader}}
