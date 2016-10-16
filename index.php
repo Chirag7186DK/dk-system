@@ -27,7 +27,9 @@
         
         <!-- web logo header --->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 webAppLogoAndMenuIconContainerDivClass">
-            <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
+            <a ui-sref="/">
+                <img class='dkLogoImgClass' src="#" load-dklogo-images-directive>
+            </a>
         </div>
         
         <!-- top menu bar -->
@@ -68,7 +70,50 @@
         
         <!-- dynamically view will be loaded here-->
         <div id="loadingDynamicallyViewDivId" class="loadingDynamicallyViewDivClass" ui-view></div>
-          
+        
+        <!-- create horizontally space div between -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 commonHorizontalSpaceDivClass"></div>
+        
+        <!-- footer row border div class -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footerRowBorderDivClass"></div>
+        
+        <!-- footer bar -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footerBarContainerDivClass">
+            <ul class="footerTopMenuBarULClass list-inline">
+                <li ui-sref="/">
+                    About
+                </li>
+                <li ui-sref="/">
+                    Services Area
+                </li>
+                <li ui-sref="/">
+                    How Its Works
+                </li>
+                <li ui-sref="/">
+                    Delivery Policy
+                </li>
+                <li ui-sref="/">
+                    Terms & Condition
+                </li>
+                <li ui-sref="/">
+                    Privacy Policy
+                </li>
+            </ul>
+            <ul class="footerDownMenuBarULClass list-inline">
+                <li>
+                    Keep In Touch
+                </li>
+                <li>
+                    <i class="fa fa-facebook fbIconClass"></i> 
+                    <i class="fa fa-google googleIconClass"></i> 
+                    <i class="fa fa-twitter twitterIconClass"></i> 
+                </li>
+                <li ui-sref="/">
+                    &copy; <?php echo date('Y'); ?> www.dessertskhazana.com
+                </li>
+            </ul>
+        </div>
+        
         <!-- first time will be load all css & js file -->
         <?php 
             include "loadAllJsCssFile.php"; 
