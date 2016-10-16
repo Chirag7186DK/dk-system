@@ -191,7 +191,7 @@
             </div>
             
             <!-- load more store products button-->
-            <div ng-if='storeAllProductDetailsList.length>20' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductPaginationDivClass'>
+            <div ng-show="false" class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductPaginationDivClass'>
                 <button ng-if="isShowPrevStoreProductListBtn" ng-click='loadPrevStoreProductList(eachProductDetails)' class="storeProductPrevPageBtnClass btn">
                     << PREV
                 </button>
