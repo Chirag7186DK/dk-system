@@ -450,8 +450,9 @@ function StoreController($rootScope, $rootScope, $state){
                                     if(arrJsonObj.productTypeDetails.allProductDetailsList!==false 
                                         && arrJsonObj.productTypeDetails.allProductDetailsList!==undefined){
                                         $rootScope.storeAllProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
+                                        $rootScope.storeItemsDisplayedInListLimit = arrJsonObj.productTypeDetails.allProductDetailsList.length;
                                         $rootScope.storeTotalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
-                                        $rootScope.isShowNextStoreProductListBtn = true;
+                                        // $rootScope.isShowNextStoreProductListBtn = true;
                                     }else{
                                         $rootScope.storeProductNotFoundMsgStr = 'No products found or used proper filter !!!';
                                     }
