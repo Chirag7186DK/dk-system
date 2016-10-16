@@ -958,7 +958,39 @@
         padding-top:10px!important;
         padding-bottom:10px!important;
     }
-
+    
+    .storeProductPaginationDivClass{
+        text-align:center!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .storeProductPrevPageBtnClass, 
+    .storeProductPrevPageBtnClass:hover{
+        font-weight: normal!important;
+        font-family: serif!important;
+        color: #fff!important;
+        padding-left: 10px!important;
+        padding-right: 10px!important;
+        margin-left: 1%!important;
+        border-radius: 0px!important;
+        background: #3eb1e7!important;
+        cursor: pointer;
+    }
+    
+    .storeProductNextPageBtnClass, 
+    .storeProductNextPageBtnClass:hover{
+        font-weight: normal!important;
+        font-family: serif!important;
+        color: #fff!important;
+        padding-left: 10px!important;
+        padding-right: 10px!important;
+        margin-left: 1%!important;
+        border-radius: 0px!important;
+        background: #3eb1e7!important;
+        cursor: pointer;
+    }
+    
     .storeAllUserReviewedRatingContainerDivClass{
         padding-top:15px!important;
         padding-bottom:15px!important;
