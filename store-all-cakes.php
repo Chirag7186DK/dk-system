@@ -151,7 +151,7 @@
             </div>
 
             <!-- each product details iterate for displaying purpose -->
-            <div ng-repeat="eachProductDetails in storeAllProductDetailsList" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 storeProductBoxDivClass">
+            <div ng-repeat="eachProductDetails in storeAllProductDetailsList | limitTo:storeItemsDisplayedInListLimit" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 storeProductBoxDivClass">
                 <img class='preloadProductImagesClass' data-original="{{eachProductDetails.productImageFilePath}}" ng-src="images/productphotoback.png">
                 <div class='col-xm-12 col-sm-12 col-md-12 col-lg-12 storeProductBoxDividerLineDivClass'></div>
                 <p class='storeProductNamePClass'>
@@ -188,6 +188,16 @@
                         ORDER NOW
                     </button>
                 </p>
+            </div>
+            
+            <!-- load more store products button-->
+            <div ng-if='storeAllProductDetailsList.length>20' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductPaginationDivClass'>
+                <button ng-if="isShowPrevStoreProductListBtn" ng-click='loadPrevStoreProductList(eachProductDetails)' class="storeProductPrevPageBtnClass btn">
+                    << PREV
+                </button>
+                <button ng-if="isShowNextStoreProductListBtn" ng-click='loadNextStoreProductList(eachProductDetails)' class="storeProductNextPageBtnClass btn">
+                    NEXT >>
+                </button>
             </div>
 
         </div>
