@@ -294,8 +294,6 @@
     }
 
     .footerBarContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
         padding-top:10px!important;
     }
     
@@ -330,6 +328,7 @@
     .twitterIconClass{
         padding:3px!important;
     }
+    
     
     /* all store list specific dessert type css code*/
     
