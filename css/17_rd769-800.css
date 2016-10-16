@@ -48,7 +48,7 @@
         cursor:pointer!important;
     }
     
-    .fHeaderRowBorderDivClass{
+    .fHeaderRowBorderDivClass, .footerRowBorderDivClass{
         border-bottom:2px solid #e7486b!important;
     }
 
@@ -292,7 +292,44 @@
         color:#828282!important;
         padding-left:0px!important;
     }
-
+    
+    .footerBarContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+    }
+    
+    .footerTopMenuBarULClass{
+        text-align:center!important;
+        margin-bottom:5px!important;
+    }
+    
+    .footerTopMenuBarULClass li{
+        text-decoration:none!important;
+        font-weight:normal!important;
+        font-size:12px!important;
+        color:#828282!important;
+        cursor:pointer!important;
+    }
+    
+    .footerDownMenuBarULClass{
+        text-align:center!important;
+        margin-bottom:5px!important;
+    }
+    
+    .footerDownMenuBarULClass li{
+        text-decoration:none!important;
+        font-weight:normal!important;
+        font-size:12px!important;
+        color:#828282!important;
+        cursor:pointer!important;
+    }
+    
+    .fbIconClass, 
+    .googleIconClass,
+    .twitterIconClass{
+        padding:3px!important;
+    }
     
     /* all store list specific dessert type css code*/
     
