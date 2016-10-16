@@ -437,6 +437,9 @@ function StoreController($rootScope, $rootScope, $state){
                     $rootScope.storeDefaultSelectProductCategoryTitle = '';
                     $rootScope.storeProductNotFoundMsgStr = '';
                     $rootScope.storeTotalProductCount = 0;
+                    $rootScope.storeItemsDisplayedInListLimit = 20;
+                    $rootScope.isShowPrevStoreProductListBtn = false;
+                    $rootScope.isShowNextStoreProductListBtn = false;
                     // calling ajax services
                     communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Product/ProductTypeProductCategoryAllProductDetails", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                         $rootScope.$apply(function(){
@@ -448,6 +451,7 @@ function StoreController($rootScope, $rootScope, $state){
                                         && arrJsonObj.productTypeDetails.allProductDetailsList!==undefined){
                                         $rootScope.storeAllProductDetailsList = arrJsonObj.productTypeDetails.allProductDetailsList;
                                         $rootScope.storeTotalProductCount = arrJsonObj.productTypeDetails.allProductDetailsList.length;
+                                        $rootScope.isShowNextStoreProductListBtn = true;
                                     }else{
                                         $rootScope.storeProductNotFoundMsgStr = 'No products found or used proper filter !!!';
                                     }
@@ -464,6 +468,30 @@ function StoreController($rootScope, $rootScope, $state){
                 console.log("problem in loadProductTypeProductCategoryAllProductListStore ex=>"+ex);
             }
         };   
+        
+        $rootScope.loadPrevStoreProductList = function(){
+            var decreaseLimitStep = parseInt($rootScope.storeItemsDisplayedInListLimit - 20); 
+            $rootScope.isShowNextStoreProductListBtn = true;
+            if(decreaseLimitStep<=20){
+                $rootScope.storeItemsDisplayedInListLimit = 20;
+                $rootScope.isShowPrevStoreProductListBtn = false;
+            }else{
+                $rootScope.storeItemsDisplayedInListLimit = decreaseLimitStep;
+            }
+            // console.log("storeItemsDisplayedInListLimit=>"+$rootScope.storeItemsDisplayedInListLimit);
+        };
+        
+        $rootScope.loadNextStoreProductList = function(){
+            var increaseLimitStep = parseInt($rootScope.storeItemsDisplayedInListLimit + 20); 
+            $rootScope.isShowPrevStoreProductListBtn = true;
+            if(increaseLimitStep>=$rootScope.storeTotalProductCount){
+                $rootScope.storeItemsDisplayedInListLimit = $rootScope.storeItemsDisplayedInListLimit + parseInt($rootScope.storeTotalProductCount - $rootScope.storeItemsDisplayedInListLimit);
+                $rootScope.isShowNextStoreProductListBtn = false;
+            }else if(increaseLimitStep<=$rootScope.storeTotalProductCount){
+                $rootScope.storeItemsDisplayedInListLimit = increaseLimitStep;
+            }
+            // console.log("storeItemsDisplayedInListLimit=>"+$rootScope.storeItemsDisplayedInListLimit);
+        };
           
         // loadStoreAllUserRatingReviewed 
         $rootScope.loadStoreAllUserRatingReviewed = function(){
