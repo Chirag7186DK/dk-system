@@ -163,7 +163,7 @@ class utils{
                     $smsSender = $GLOBALS['SMSSENDER'];
                 }
                 // initialize curl
-                $curl = &new Curl_HTTP_Client();
+                $curl = new Curl_HTTP_Client();
                 // sms configuration code here
                 $smsUserName = urlencode($GLOBALS['SMSUSERNAME']);
                 $smsPassword = urlencode($GLOBALS['SMSPASSWORD']);
