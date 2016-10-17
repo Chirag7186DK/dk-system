@@ -30,7 +30,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                 $rspDetails["isTrackedUserInfoAccessingWebsites"] = 'YES';
             }  
         } 
-        ComponentsJson::GenerateJsonAndSend($rspDetails);
+        return $rspDetails;
     }
     
     // CJ defined this action 2016-09-21
