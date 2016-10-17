@@ -30,6 +30,7 @@ class UsersController extends V1Controller{
                 if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
                     $UsersServicesV1->addTrackUserInfoAccessingWebsitesDetails($paramDataArr);
+                    ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
                 }
