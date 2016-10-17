@@ -60,8 +60,5 @@ $SMSPASSWORD = 'q27d!g!taledu';
 $SMSSENDER = 'SCHOOL';
 $SMSDOMAIN = 'http://www.businesssms.co.in';
 
-// custom powered by defined title
-$poweredby = 'Chirag D Jain';
-
 
 ?>
