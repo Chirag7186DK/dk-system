@@ -62,8 +62,11 @@
                 <p class='storeDessertsMenuInfoLblPClass'>
                     {{storeDeliveryAreaBasedDessertsTypeList.length}} Desserts
                 </p>
-                <p ng-click="toggleStoreDessertsMenu()" class='showMoreStoreMenuSummaryInfoPClass'>
+                <p ng-if="storeDeliveryAreaBasedDessertsTypeList.length>1" ng-click="toggleStoreDessertsMenu()" class='showMoreStoreMenuSummaryInfoPClass'>
                     {{toggleStoreDessertsMenuSummaryInfoLblText}}
+                </p>
+                <p ng-if="storeDeliveryAreaBasedDessertsTypeList.length<=1" class='showMoreStoreMenuSummaryInfoPClass'>
+                    Showing Cakes
                 </p>
             </div>
 
