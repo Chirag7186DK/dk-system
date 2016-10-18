@@ -55,7 +55,7 @@
             </div>
 
             <!-- store desserts type menu summary info -->
-            <div ng-if="storeDeliveryAreaBasedDessertsTypeList.length>=1" class='storeDessertsMenuSummaryInfoDivClass'>
+            <div class='storeDessertsMenuSummaryInfoDivClass'>
                 <p class='storeMenuTextLblPClass'>
                     WE SERVED
                 </p>
@@ -104,8 +104,8 @@
         </div>
 
         <!-- all product category list will be loaded here -->
-        <div ng-show="productTypeAllProductCategoryList.length>=1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryWrapperDivClass">
-            <div ng-if="productTypeAllProductCategoryList.length>=1" id='storeProductTypeAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryContainerDivClass">
+        <div ng-show="productTypeAllProductCategoryList.length>1" ng-controller="StoreController" ng-init="loadProductTypeAllProductCategoryListStore()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryWrapperDivClass">
+            <div ng-if="productTypeAllProductCategoryList.length>1" id='storeProductTypeAllCategoryContainerDivId' class="col-xs-12 col-sm-12 col-md-12 col-lg-12 storeProductTypeAllCategoryContainerDivClass">
                 <li horizontally-scrollable-producttype-productcategorylist-storelevel id="storeEachProductCategoryContainerLIId_{{$index}}" ng-click="toggleStoreProductTypeProductCategoryElementClass('storeEachProductCategoryContainerLIId_'+$index, 'storeProductTypeAllCategoryContainerDivClass'); storeProductTypeProductCategoryDataInSessionStore(eachProductCategoryDetails)" ng-repeat="eachProductCategoryDetails in productTypeAllProductCategoryList | orderBy : '-isRequestedProductCategoryMatched'" class='storeEachProductCategoryContainerLIClass'>
                     {{eachProductCategoryDetails.productTypeProductCategoryTitle + '\n(' + eachProductCategoryDetails.totalProductCount + ')'}}
                 </li>
