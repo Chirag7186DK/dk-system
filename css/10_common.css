@@ -1,11 +1,6 @@
 
-html, body{
-    font-family:sans-serif;
-    font-size:100%!important;
-    background-color:#fff!important;
-}
-
-input, textarea, select, .form-control{
+input, textarea, 
+select, .form-control{
     border-radius:0px!important;
     border:1px solid #ccc!important;
     box-shadow:none!important;
@@ -68,3 +63,1440 @@ input, select{
     border:none!important;
     border-radius:0px!important;
 }
+
+/* first header related css code */
+
+.webAppLogoAndMenuIconContainerDivClass{
+    text-align:center!important;
+    padding:0px!important;
+    margin:0px!important;
+    background-size:cover!important;
+}
+
+.topMenuBarULClass{
+    text-align:center!important;
+}
+
+.topMenuBarULClass li{
+    text-decoration:none!important;
+    font-size:12px;
+    font-weight:normal!important;
+    color:#999;
+    cursor:pointer!important;
+}
+
+.topMenuBarULClass li i {
+    color:#FAB005!important;
+}
+
+.selectedDeliveryAreaTextHeaderLIClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#6c6cb9!important;
+}
+
+.userAccountAllSectionListDropdownDivClass{
+    display:none;
+    background:#fff!important;
+    border:1px solid #e7e7e7!important;
+    position:absolute!important;
+    z-index:3;
+    margin-top:5px!important;
+}
+
+.userAccountEachSectionListDropdownDivClass{
+    text-align:left!important;
+    font-size:12px!important;
+    color:#999!important;
+    padding:6px!important;
+    cursor:pointer!important;
+}
+
+.fHeaderRowBorderDivClass,
+.footerRowBorderDivClass{
+    border-bottom:2px solid #e7486b!important;
+}
+
+/* delivery city area desserts type container css code */
+
+.deliveryCityAreaDessertsContainerDivClass{
+    background-image:url(../images/dk/homebanner/landing_pagebg-1500|500.png);
+    background-size:cover!important;
+    height:310px!important;
+    border-bottom:1px solid #e6e0e0!important;
+}
+
+.deliveryCityAreaDessertsTagLinesContainerDivClass{
+    margin-top:5px!important;
+}
+
+.deliveryCityAreaDessertsTagLinesPClass{
+    text-align:center!important;
+    font-size:25px;
+    font-weight:normal!important;
+    color:#f32956!important;
+    margin:0px!important;
+}
+
+.deliveryCityListContainerDivClass{
+    margin-top:4px!important;
+}
+
+.deliveryCityLblSClass{
+    font-size:17px!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    color:rgb(1, 122, 241)!important;
+}
+
+.deliveryCityListWrapperDivClass .dropdown-menu>.active>a{
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    background:#fb366e!important;
+}
+
+.deliveryCityListWrapperDivClass .btn, 
+.deliveryCityListWrapperDivClass .btn:hover,
+.deliveryCityListWrapperDivClass .btn-group:focus{
+    border-radius:0px!important;
+    height:40px!important;
+    background-color:#fff!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    font-size:16px!important;
+    box-shadow:none!important;
+    color:rgba(0, 0, 0, 0.73)!important;
+    border-color:#CDCEE8!important;
+}
+
+.deliveryAreaListContainerDivClass{
+    margin-top:20px!important;
+}
+
+.deliveryAreaLblSClass{
+    font-size:17px!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    color:rgb(1, 122, 241)!important;
+}
+
+.deliveryAreaListWrapperDivClass .dropdown-menu>.active>a{
+    font-weight: normal!important;
+    font-family: serif!important;
+    font-size:16px!important;
+    background:#fb366e!important;
+}
+
+.deliveryAreaListWrapperDivClass .btn, 
+.deliveryAreaListWrapperDivClass .btn:hover{
+    border-radius:0px!important;
+    height:40px!important;
+    background-color:#fff!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    font-size:16px!important;
+    box-shadow:none!important;
+    color:rgba(0, 0, 0, 0.73)!important;
+    border-color:#CDCEE8!important;
+}
+
+.deliveryAreaDessertsTypeListContainerDivClass{
+    margin-top:20px!important;
+}
+
+.deliveryAreaDessertsTypeListLblSClass{
+    font-size:17px!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    color:rgb(1, 122, 241)!important;
+}
+
+.deliveryAreaDessertsTypeListWrapperDivClass .dropdown-menu>.active>a{
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    background:#fb366e!important;
+}
+
+.deliveryAreaDessertsTypeListWrapperDivClass .btn, 
+.deliveryAreaDessertsTypeListWrapperDivClass .btn:hover{
+    border-radius:0px!important;
+    height:40px!important;
+    background-color:#fff!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    font-size:16px!important;
+    box-shadow:none!important;
+    color:rgba(0, 0, 0, 0.73)!important;
+    border-color:#CDCEE8!important;
+}
+
+/*  what is desserts khazana css code */
+
+.whatIsDessertsKhazanaMainContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.whatIsDessertskhazanaTitlePClass{
+    text-align:center!important;
+    font-size:18px;
+    font-weight:normal!important;
+    color:#222!important;
+    padding:15px!important;
+}
+
+.dkPartyOrderContainerDivClass{
+    margin-bottom:20px!important;
+    background-size:cover;
+}
+
+.dkPartyOrderWrapperDivClass{
+    border:1px solid #d6caca!important;
+}
+
+.partyOrderImgClass{
+    width:100%!important;
+}
+
+.partyOrderPClass{
+    text-align:center!important;
+    font-size:15px!important;
+    font-weight:normal!important;
+    margin:0px!important;
+    color:#fb366e!important;
+    background:#fff!important;
+    padding:10px!important;
+    cursor:pointer!important;
+}
+
+.dkCoperateSpecialOffersContainerDivClass{
+    margin-bottom:20px!important;
+    background-size:cover;
+}
+
+.dkCoperateSpecialOffersWrapperDivClass{
+    border:1px solid #d6caca!important;
+}
+
+.coperateOrderImgClass{
+    width:100%!important;
+}
+
+.corporateOrderPClass{
+    text-align:center!important;
+    font-size:15px!important;
+    font-weight:normal!important;
+    margin:0px!important;
+    color:#fb366e!important;
+    background:#fff!important;
+    padding:10px!important;
+    cursor:pointer!important;
+}
+
+.dkCustomizeDessertsOrderContainerDivClass{
+    margin-bottom:20px!important;
+    background-size:cover;
+}
+
+.dkCustomizeDessertsOrderWrapperDivClass{
+    border:1px solid #d6caca!important;
+}
+
+.customizeOrderImgClass{
+    width:100%!important;
+}
+
+.customizeOrderPClass{
+    text-align:center!important;
+    font-size:15px!important;
+    font-weight:normal!important;
+    margin:0px!important;
+    color:#fb366e!important;
+    background:#fff!important;
+    padding:10px!important;
+    cursor:pointer!important;
+}
+
+.customerBreadcrumbULClass{
+    font-family:serif!important;
+    font-size:14px!important;
+    padding-top:6px!important;
+}
+
+.customerBreadcrumbULClass.list-inline{
+    margin-left:1px!important;
+}
+
+.customerBreadcrumbLIClass{
+    text-decoration:none!important;
+    font-weight:normal!important;
+    font-size:12px!important;
+    color:#828282!important;
+    padding-left:0px!important;
+}
+
+.customerBreadcrumbLIClass a, 
+.customerBreadcrumbLIClass a:hover{
+    text-decoration:none!important;
+    font-weight:normal!important;
+    font-size:12px!important;
+    color:#828282!important;
+}
+
+.footerBarContainerDivClass{
+    padding-top:10px!important;
+}
+
+.footerTopMenuBarULClass{
+    text-align:center!important;
+    margin-bottom:5px!important;
+}
+
+.footerTopMenuBarULClass li{
+    text-decoration:none!important;
+    font-weight:normal!important;
+    font-size:12px!important;
+    color:#828282!important;
+    cursor:pointer!important;
+}
+
+.footerDownMenuBarULClass{
+    text-align:center!important;
+    margin-bottom:5px!important;
+}
+
+.footerDownMenuBarULClass li{
+    text-decoration:none!important;
+    font-weight:normal!important;
+    font-size:12px!important;
+    color:#828282!important;
+    cursor:pointer!important;
+}
+
+.fbIconClass, 
+.googleIconClass,
+.twitterIconClass{
+    padding:3px!important;
+}
+
+/* all store list specific dessert type css code */
+
+.allStoresInfoContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:0px!important;
+}
+
+.allStoresInfoNoteHeaderPClass{
+    text-align:center!important;
+    font-weight:normal!important;
+    font-size:25px;
+    font-family:serif!important;
+    color:#f17023!important;
+}
+
+.countAllStoresSClass{
+    font-size:20px;
+    color:#fff!important;
+    background-color:#f17023!important;
+}
+
+.eachStoreInfoContainerDivClass{
+    padding-left:0px!important;
+    margin-bottom:2%;
+}
+
+.eachStoreInfoInnerContainerDivClass{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background-color:#fff!important;
+    border:1px solid rgba(199, 181, 181, 0.6)!important;
+}
+
+.eachStoreNamePClass,
+.eachStoreLocationPClass,
+.eachStoreNoReviewedRatingPClass,
+.eachStoreReviewedRatingPClass,
+.eachStoreServedDessertsTypePClass,
+.eachStoreServedDessertsTypeTotalProductPClass,
+.eachStoreDiscountUptoPClass,
+.eachStoreDeliveryTimePClass,
+.eachStorePaymentAcceptMethodPClass,
+.eachStoreDeliveryFeeMsgPClass,
+.eachStoreOnlineOrderBtnPClass{
+    margin-bottom:4px!important;
+    padding-left:10px!important;
+}
+
+.eachStoreNamePClass{
+    text-align:center!important;
+    text-transform:uppercase!important;
+    font-weight:normal!important;
+    font-size:16px!important;
+    color:#ab0b38!important;
+}
+
+.eachStoreLocationPClass{
+    text-align:center!important;
+    font-weight:normal!important;
+    font-size:12px!important;
+    color:#7d7a7a!important;
+}
+
+.storeLocationMapIconClass{
+    color:rgba(39,171,92,0.9)!important;
+}
+
+.eachStoreHrClass{
+    margin-top:0px!important;
+    margin-bottom:10px!important;
+    border-top:1px solid rgba(199, 181, 181, 0.6)!important;
+}
+
+.eachStoreReviewedRatingBoxSClass{
+    font-size:12px!important;
+    color:#fff!important;
+    background-color:rgba(39,171,92,0.9)!important;
+    border:1px solid rgba(39,171,92,0.9)!important;
+    padding:2px!important;
+}
+
+.eachStoreNoReviewedRatingPClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#8e969d!important;
+    padding-top:2px!important;
+    padding-bottom:2px!important;
+}
+
+.eachStoreServedDessertsTypePClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#8e969d!important;
+}
+
+.eachStoreServedDessertsTypeTotalProductPClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#8e969d!important;
+}
+
+.eachStoreDiscountUptoPClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#ea5b31!important;
+}
+
+.eachStoreDiscountUptoIconClass{
+    color:#fff!important;
+    border-radius:50%!important;
+    background:#ea5b31!important;
+    padding:4px!important;
+}
+
+.eachStoreDeliveryTimePClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#ab0b38!important;
+}
+
+.eachStorePaymentAcceptMethodPClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#ab0b38!important;
+}
+
+.eachStoreDeliveryFeeMsgPClass{
+    font-weight:normal!important;
+    font-size:13px!important;
+    color:#808080!important;
+    height:52px!important;
+}
+
+.eachStoreOnlineOrderBtnClass,
+.eachStoreOnlineOrderBtnClass:hover{
+    font-size:13px!important;
+    font-weight:normal!important;
+    color:#fff!important;
+    border-radius:0px!important;
+    background-color:#ab0b38!important;
+}
+
+.noStoresFoundInfoMsgContainerDivClass{
+    text-align:center;
+    list-style:none!important;
+    font-weight:normal!important;
+    font-size:20px!important;
+    color:#f17023!important;
+    font-family:serif;
+}
+
+/*  store all products css code */
+ 
+.storeSummaryTypeInfoWrapperDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    margin:0px!important;
+}
+
+.storeSummaryTypeInfoWrapperDivClass .owl-item{
+    margin-top:10px!important;
+    margin-right:20px!important;
+    width:auto!important;
+    height:100%!important;
+}
+
+.storeSummaryTypeInfoWrapperDivClass .owl-item:first-child{
+    margin-left:2px!important;
+}
+
+.storeSelfInfoDivClass{
+    text-align:center!important;
+    padding:5px!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.storeSelfNameTextLblPClass{
+    text-align:center!important;
+    text-transform:uppercase!important;
+    font-size:16px;
+    font-family:serif!important;
+    font-weight:normal!important;
+    color: #ab0b38!important;
+    margin:0px!important;
+}
+
+.storeSelfLocatedInfoLblPClass{
+    font-family:serif!important;
+    font-size:14px!important;
+    font-weight:normal!important;
+    color:#808A94!important;
+    margin:0px!important;
+}
+
+.showMoreStoreSelfInfoPClass{
+    font-family:serif!important;
+    font-size:14px!important;
+    font-weight:normal!important;
+    color:darkorange!important;
+    cursor:pointer!important;
+    margin-top:10px!important;
+}
+
+.storeReviewRatingSummaryDivClass{
+    text-align:center!important;
+    padding:5px!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.storeReviewRatingTextLblPClass{
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px;
+    color: #ab0b38!important;
+    margin:0px!important;
+}
+
+.storeReviewRatingAllUserCountInfoLblPClass{
+    font-family:serif!important;
+    font-size:16px!important;
+    font-weight:normal!important;
+    color:#808A94!important;
+    margin:0px!important;
+}
+
+.showMoreStoreReviewRatingSummaryInfoPClass{
+    font-family:serif!important;
+    font-size:14px!important;
+    font-weight:normal!important;
+    color:darkorange!important;
+    cursor:pointer!important;
+    margin-top:10px!important;
+}
+
+.storeDessertsMenuSummaryInfoDivClass{
+    text-align:center!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;
+    padding:5px!important;
+}
+
+.storeMenuTextLblPClass{
+    font-family:serif!important;
+    font-weight:normal!important;
+    font-size:16px;
+    color: #ab0b38!important;
+    margin:0px!important;
+}
+
+.storeDessertsMenuInfoLblPClass{
+    font-family:serif!important;
+    font-size:16px;
+    font-weight:normal!important;
+    color:#808A94!important;
+    margin:0px!important;
+}
+
+.showMoreStoreMenuSummaryInfoPClass{
+    font-family:serif!important;
+    font-size:14px!important;
+    font-weight:normal!important;
+    color:darkorange!important;
+    cursor:pointer!important;
+    margin-top:10px!important;
+}
+
+.storeServeDessertsTypeContainerDivClass{
+    padding-left:0px!important;
+    margin-top:10px!important;
+    margin-bottom:10px!important;
+}
+
+.storeServingDessertsTypeNoteInfoLIClass{
+    font-size:20px;
+}
+
+
+.storeCanServeDessertsTypeCountSClass{
+    font-weight:normal!important;
+    font-size:15px!important;
+    color:#fff!important;
+    background:#f17023!important;
+}
+
+.storeCanServeDessertsTypeListScrollableWrapperDivClass{
+    padding-right:0px!important;
+    height:147%!important;
+    white-space:nowrap!important;
+    margin-top:15px!important;
+    padding-left:0px!important;
+}
+
+.storeCanServeDessertsTypeListScrollableWrapperDivClass .owl-item{
+    width:auto!important;
+}
+
+.storeCanServeEachDessertsTypeScrollableWrapperDivClass{
+    color:rgb(249, 99, 99)!important;
+    background-color:whitesmoke!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    cursor:pointer;
+    border:2px solid #fff!important;
+    float:left!important;
+}
+
+.storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeIconPClass{
+    text-align: center;
+    margin: 0px!important;
+}
+
+.storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeIconClass{
+    font-size:50px!important;
+}
+
+.storeCanServeEachDessertsTypeScrollableWrapperDivClass .dessertsTypeTitleHClass{
+    text-align:center!important;
+    text-transform:uppercase;
+    font-size:18px!important;
+    font-family:serif!important;
+    margin:3px!important;
+}
+
+.storeCanServeEachDessertsTypeScrollableWrapperDivClass .viewDessertsTypePClass{
+    text-align:center;
+    font-size:14px!important;
+    font-family:serif!important;
+    color:#F560F5!important;
+    margin:0px!important;
+    margin-top:12px!important;
+    padding-left:20px!important;
+    padding-right:20px!important;
+    cursor:pointer!important;
+}
+
+.storeProductTypeAllCategoryWrapperDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    margin-top:14px!important;
+}
+
+.storeProductTypeAllCategoryContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    cursor:pointer!important;
+}
+
+.storeProductTypeAllCategoryContainerDivClass .owl-item{
+    width:auto!important;
+    margin-right:20px!important;
+}
+
+.storeEachProductCategoryContainerLIClass{
+    float:left!important;
+    list-style:none!important;
+    text-align:center!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:14px!important;
+    color:rgba(0,0,0,.95)!important;
+    padding-left:5px!important;
+    padding-right:5px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background:whitesmoke!important;
+}
+
+.storeEachRequestedProductCategoryContainerLIClass{
+    float:left!important;
+    list-style:none!important;
+    text-align:center!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:14px!important;
+    color:#fff!important;
+    padding-left:5px!important;
+    padding-right:5px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background-color:#cb202d!important;
+}
+
+.storeProductFilterOperationWrapperDivClass{
+    padding-left:0px!important;
+    padding-top:10px!important;
+    padding-bottom:20px!important;
+    margin-top:12px!important;
+    margin-bottom:12px!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7;
+}
+
+.storeTipAbtProductFilterPClass{
+    text-align:center!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:18px;
+    padding:2px!important;
+}
+
+
+.storeToggleProductFilterBtnClass, 
+.storeToggleProductFilterBtnClass:hover{
+    font-weight:normal!important;
+    font-family:serif!important;
+    color:#fff!important;
+    padding-left:10px!important;
+    padding-right:10px!important;
+    margin-left:1%!important;
+    border-radius:0px!important;
+    background:#3eb1e7!important;
+    cursor:pointer;
+}
+
+.storeProductFilterOperationContainerDivClass{
+    padding-top:10px!important;
+}
+
+.storeProductFilterPopupBodyDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.storeProductCountInfMsgPopupDivClass{
+    text-align:center!important;
+    font-size:15px!important;
+    color:rgba(218, 13, 47, 0.85)!important;
+}
+
+.storePriceFilterOperationDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    margin-bottom:20px!important;
+}
+
+.storePriceFilterOperationDivClass .dropdown-menu>.active>a{
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    background:rgba(240, 99, 122, 0.85)!important;
+}
+
+.storePriceFilterOperationDivClass .btn, 
+.storePriceFilterOperationDivClass .btn-group.open .dropdown-toggle,
+.storePriceFilterOperationDivClass .btn:hover{
+    border-radius:0px!important;
+    height:40px!important;
+    background-color:#fff!important;
+    box-shadow:none!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    color:rgba(0, 0, 0, 0.73)!important;
+ }
+
+.storePriceFilterLblPClass{
+    text-align:left!important;
+    font-size:14px!important;
+    color:#f17023!important;
+}
+
+.storeProductSizeFilterOperationDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    margin-bottom:20px!important;
+}
+
+.storeProductSizeFilterOperationDivClass .dropdown-menu>.active>a{
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    background:rgba(240, 99, 122, 0.85)!important;
+}
+
+.storeProductSizeFilterOperationDivClass .btn, 
+.storeProductSizeFilterOperationDivClass .btn-group.open .dropdown-toggle,
+.storeProductSizeFilterOperationDivClass .btn:hover{
+    border-radius:0px!important;
+    height:40px!important;
+    background-color:#fff!important;
+    box-shadow:none!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    color:rgba(0, 0, 0, 0.73)!important;
+}
+
+.storeProductSizeFilterLblPClass{
+    text-align:left!important;
+    font-size:14px!important;
+    color:#f17023!important;
+}
+
+.storeDiscountFilterOperationDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    margin-bottom:20px!important;
+}
+
+.storeDiscountFilterOperationDivClass .dropdown-menu>.active>a{
+    font-weight: normal!important;
+    font-family: serif!important;
+    font-size:16px!important;
+    background:rgba(240, 99, 122, 0.85)!important;
+}
+
+.storeDiscountFilterOperationDivClass .btn, 
+.storeDiscountFilterOperationDivClass .btn-group.open .dropdown-toggle,
+.storeDiscountFilterOperationDivClass .btn:hover{
+    border-radius:0px!important;
+    height:40px!important;
+    background-color:#fff!important;
+    box-shadow:none!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    color:rgba(0, 0, 0, 0.73)!important;
+}
+
+.storeDiscountFilterLblPClass{
+    text-align:left!important;
+    font-size:14px!important;
+    color:#f17023!important;
+}
+
+.storeAllProductDetailsBodyWrapperDivClass{
+    padding-left:1px!important;
+    padding-right:1px!important;
+}
+
+.storeProductFounCountInfoMsgDivClass{
+    font-family:serif!important;
+    color:rgba(218, 13, 47, 0.85)!important;
+    font-size:20px;
+    font-weight:normal!important;
+    text-align:center!important;
+    padding:10px!important;
+}
+
+.storeProductBoxDividerLineDivClass{
+    margin-bottom:10px!important;
+    border:1px solid rgba(240, 99, 122, 0.85)!important;
+}
+
+.storeProductNamePClass{
+    color:#ab0b38!important;
+    font-size:16px!important;
+    margin-bottom:4px!important;
+}
+
+.storeProductSizePClass,
+.storeProductDeliveryTimePClass{
+    color:rgb(70, 75, 80)!important;
+    font-size:14px!important;
+    margin-bottom:4px!important;
+}
+
+.storeProductVegIconClass{
+    color:#4b8211!important;
+    border-radius:0px!important;
+    font-size:12px!important;
+    margin-right:30px!important;
+    font-weight:bold!important;
+}
+
+.storeProductPricePClass{
+    margin-bottom:4px!important;
+}
+
+.storeProductOnlineSellingPriceTextSClass{
+    font-size:20px!important;
+    margin-right:6px;
+    color:rgb(70, 75, 80)!important;
+}
+
+.storeProductPriceCutTextSClass{
+    text-decoration:line-through!important;
+    color:#999999!important;;
+    font-size:13px!important;
+    margin-right:6px;
+}
+
+.storeProductDiscountPercentTextSClass{
+    color:#60bf79!important;
+    font-size:14px!important;
+}
+
+.storeProductBtnWrapperPClass{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+}
+
+.storeViewProductDetailsBtnClass,
+.storeViewProductDetailsBtnClass:hover{
+    font-weight:normal!important;
+    color:#fff!important;
+    border-radius:0px!important;
+    background-color:#ab0b38!important;
+    padding:4px!important;
+}
+
+.storeProductNotFoundMsgDivClass{
+    text-align:center!important;
+    font-size:20px!important;
+    color:#f54264!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+}
+
+.storeProductPaginationDivClass{
+    text-align:center!important;
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.storeProductPrevPageBtnClass, 
+.storeProductPrevPageBtnClass:hover{
+    font-weight: normal!important;
+    font-family: serif!important;
+    color: #fff!important;
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    margin-left: 1%!important;
+    border-radius: 0px!important;
+    background: #3eb1e7!important;
+    cursor: pointer;
+}
+
+.storeProductNextPageBtnClass, 
+.storeProductNextPageBtnClass:hover{
+    font-weight:normal!important;
+    font-family:serif!important;
+    color: #fff!important;
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    margin-left: 1%!important;
+    border-radius: 0px!important;
+    background: #3eb1e7!important;
+    cursor: pointer;
+}
+
+.storeAllUserReviewedRatingContainerDivClass{
+    padding-top:15px!important;
+    padding-bottom:15px!important;
+    border:1px solid #DCE0EF!important;
+}
+
+.storeAllUserReviewedRatingLblSClass{
+    font-size:24px!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:#800080!important;
+}
+
+.storeDisplayEachUserReviewedRatingContainerDivClass{
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:rgb(70, 75, 80)!important;
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:12px!important;
+    padding-bottom:12px!important;
+    border-bottom:1px solid #e7e7e7!important;
+}
+
+.storeDisplayEachUserReviewedRatingContainerDivClass:last-child{
+    border-bottom:0px!important;
+}
+
+.storeEachUserNameRatedReviewPClass{
+    font-size:22px;
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:rgb(70, 75, 80)!important;
+}
+
+.storeEachUserRatedReviewPClass{
+    font-size:16px;
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:rgb(70, 75, 80)!important;
+}
+
+.storeEachUserRatingReviewQuestionAnswerSClass{
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:rgba(205, 46, 216, 0.44)!important;
+    padding:2px!important;
+}
+
+.storeEachUserAvgRatedReviewPClass{
+    color:rgb(70, 75, 80)!important;
+    font-size:16px;
+    font-family:serif!important;
+    font-weight:normal!important;
+}
+
+
+.storeReviewRatingNotFoundMsgDivClass{
+    text-align:left!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    color:#fb366e!important;
+}
+
+.storeWorkingStyleWrapperDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.storeWorkingStyleHeaderPClass{
+    text-align:center!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:20px!important;
+    color:#ab0b38!important;
+}
+
+.storeWorkingStyleTimeIconClass{
+    color:rgba(154, 205, 50, 0.88)!important;
+}
+
+.storeWorkingEachDaySchedulePClass{
+    text-align:left!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:15px!important;
+    color:#7c838a!important;
+    font-style:italic!important;
+}
+
+.storeWorkingTodayDaySchedulePClass{
+    color:#fb366e!important;
+}
+
+.storeWorkingStyleNotFoundMsgDivClass{
+    text-align:left!important;
+    font-weight:normal!important;
+    font-family:serif!important;
+    font-size:16px!important;
+    color:#fb366e!important;
+}
+
+/*  view product css code  */
+
+.vpd_productImagesContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    background-color:#fff!important;
+}
+
+.vpd_productImagesContainerDivClass .preloadProductImagesClass{
+    width:100%!important;
+    height:auto!important;
+}
+
+.vpd_productDetailsContainerDivClass{
+    padding-left:0px!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.vpd_productDetailsContainerDivClass p{
+    padding-left:11px!important;
+}
+
+.vpd_productNamePClass{
+    font-size:18px!important;
+    color:#f17023!important;
+    margin-top:10px!important;
+}
+
+.vpd_horizontalLineClass{
+    border-top:1px solid #e7e7e7!important;
+    margin-top:0px!important;
+    margin-bottom:10px!important;
+}
+
+.vpd_productStoreNameContainerPClass{
+    font-size:15px;
+    color:rgb(70, 75, 80)!important;
+    margin-bottom:12px!important;
+}
+
+.vpd_productReviewAndRatingPClass{
+    font-size:15px;
+    color:rgb(70, 75, 80)!important;
+    margin-bottom:12px!important;
+}
+
+.vpd_storeDeliveryFromAreaToAreaPClass,
+.vpd_storeDeliveryFeeApplicableMsgPClass{
+    font-size:15px;
+    color:rgb(70, 75, 80)!important;
+    margin-bottom:7px!important;
+}
+
+.vpd_estimatedProductDeliveryTimePClass{
+    font-size:15px;
+    color:rgb(70, 75, 80)!important;
+}
+
+.estimatedProductShippingDeliveryTimeSClass{
+    padding:3px!important;
+    color:#fff!important;
+    background-color:rgba(39,171,92,0.9)!important;
+}
+
+.vpd_productSelectMeasurementLabelPClass{
+    font-size:14px!important;
+    color:rgb(70, 75, 80)!important;
+    margin-bottom:12px!important;
+}
+
+.viewProductPricePClass{
+    margin-bottom:12px!important;
+}
+
+.vpd_productCutPriceTextSClass{
+    text-decoration:line-through!important;
+    font-size:14px!important;
+    color:#999999!important;;
+    margin-right:6px;
+}
+
+.vpd_productPayBlgPriceTextSClass{
+    font-size:20px!important;
+    margin-right:6px;
+}
+
+.vpd_productDiscountPercentTextSClass{
+    font-size:14px!important;
+    color:#60bf79!important;
+}
+
+.vpd_productQtyPClass{
+    font-size:14px!important;
+    color:rgb(70, 75, 80)!important;
+    margin-bottom:12px!important;
+}
+
+.vpd_productAvgRatedIconClass{
+    color:rgba(205, 46, 216, 0.73)!important;
+}
+
+.vpd_productCommentBoxPClass{
+    font-size:14px!important;
+    color:rgb(70, 75, 80)!important;
+    margin-bottom:12px!important;
+}
+
+.vpd_productAddToCartBtnPClass{
+    margin-top:20px!important;
+    margin-bottom:20px!important;
+}
+
+.vpd_productAddToCartBtnClass, 
+.vpd_productAddToCartBtnClass:hover{
+    font-weight:normal!important;
+    color:#fff!important;
+    border-radius:0px!important;
+    background-color:#ab0b38!important;
+}
+
+.vpd_orderSummaryContainerDivClass{
+    color:rgb(70, 75, 80)!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.vpd_orderSummaryHeaderLblPClass{
+    font-size:15px!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:#f17023!important;
+    margin-top:10px!important;
+}
+
+.vpd_totalOrderStorePClass,
+.vpd_totalOrderItemPClass,
+.vpd_orderSubtotalAmtPClass,
+.vpd_totalOrderDeliveryFeePClass,
+.vpd_totalOrderAmtPClass{
+    font-size:13px!important;
+    margin-bottom:3px!important;
+}
+
+.vpd_orderSummaryCheckoutBtnWrapperPClass{
+    font-size:13px!important;
+    margin-top:10px!important;
+    margin-bottom:10px!important;
+}
+
+.vpd_orderSummaryCheckoutBtnClass,
+.vpd_orderSummaryCheckoutBtnClass:hover{
+    font-size:12px!important;
+    font-weight:normal!important;
+    border-radius:0px!important;
+    color:#fff!important;
+    background-color:#ab0b38!important;
+}
+
+.vpd_productFeaturesContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    border-radius:0px!important;
+    border:1px solid #eee!important;
+}
+
+.vpd_productDescriptionLabelHeaderPClass{
+    padding-left:10px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    color:rgba(39,171,92,0.9)!important;
+    font-size:15px!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    border-bottom:1px solid rgba(196, 249, 217, 0.9)!important;
+}
+
+.moreLessProductDescriptionIconClass{
+    margin-left:10px!important;
+    font-size:20px!important;
+    cursor:pointer!important;
+}
+
+.vpd_productFeaturesBodyContainerDivClass{
+    color:rgb(70, 75, 80)!important;
+}
+
+.vpd_productDescriptionTitleULClass{
+    color:rgba(0, 0, 0, 0.73)!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+}
+
+.vpd_shippingProductContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    border-radius:0px!important;
+    border:1px solid #eee!important;
+}
+
+.vpd_shippingProductLabelHeaderPClass{
+    padding-left:10px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    color:rgba(39,171,92,0.9)!important;
+    font-size:15px!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    border-bottom:1px solid rgba(196, 249, 217, 0.9)!important;
+}
+
+.moreLessShippingProductIconClass{
+    margin-left:10px!important;
+    font-size:20px!important;
+    cursor:pointer!important;
+}
+
+.vpd_shippingProductBodyContainerDivClass{
+    color:rgb(70, 75, 80)!important;
+}
+
+.vpd_shippingTitleULClass{
+    color:rgba(0, 0, 0, 0.73)!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+}
+
+.vpd_ratingReviewProductContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    border-radius:0px!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.vpd_ratingReviewProductHeaderPClass{
+    font-size:15px!important;
+    font-family:serif!important;
+    font-weight:normal!important;
+    color:#f17023!important;
+    padding-left:10px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    border-bottom:1px solid #e7e7e7!important;
+}
+
+.moreLessRatingReviewProductIconClass{
+    font-size:20px!important;
+    margin-left:10px!important;
+    cursor:pointer!important;
+}
+
+.vpd_takeUserReviewRatingProductContainerDivClass{
+    color:rgb(70, 75, 80)!important;
+}
+
+.vpd_takeUserReviewRatingProductLblPClass{
+    font-size:16px!important;
+    color:#800080!important;
+}
+
+.vpd_eachTakeUserReviewRatingTypeProductContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-bottom:20px!important;
+}
+
+.vpd_eachReviewRatingTypeAnswerBoxDivClass,
+.vpd_submitRatingReviewAboutProductBtnDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.vpd_submitReviewBtnWrapperDivClass{
+    padding-top:8px!important;
+    padding-bottom:8px!important;
+}
+
+.vpd_submitRatingReviewAboutProductBtnClass{
+    font-weight:normal!important;
+    color:#000!important;
+    border-radius:0px!important;
+    background-color:#fdee00!important;
+}
+
+.vp_disableSubmitRatingReviewBtnClass{
+    opacity:0.2!important;
+}
+
+.vpd_infoAbtToEnableSubmitRatingReviewBtnSClass{
+    font-size:12px!important;
+    font-family:serif!important;
+    color:rgba(240, 99, 122, 0.85)!important;
+}
+
+.vpd_summaryReviewRatingLblSClass{
+    font-size:16px!important;
+    color:#800080!important;
+}
+
+.vpd_allMaxReviewRatingDetailsDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.vpd_eachQuestionMaxRatingReviewDetailsDivClass{
+    padding-top:5px!important;
+    padding-bottom:10px!important;
+    background:rgba(62, 177, 231, 0.14)!important;
+    margin-right:2%!important;
+}
+
+.vpd_maxRatingAboutQuestionTitleHClass{
+    font-weight:normal!important;
+    font-size:15px!important;
+    color:#5C63D6!important;
+}
+
+.vpd_maxRatingAboutQuestionAnswerDetailsHClass{
+    font-size:13px!important;
+    color:#5C63D6!important;
+}
+
+.vpd_allUserReviewRatingDetailsLabelSpanClass{
+    font-size:16px!important;
+    color:#800080!important;
+}
+
+.vpd_displayEachUserReviewAboutProductContainerDivClass{
+    color:rgb(70, 75, 80)!important;
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:12px!important;
+    padding-bottom:10px!important;
+    border-bottom:1px solid #e7e7e7!important;
+}
+
+.vpd_displayEachUserReviewAboutProductContainerDivClass:last-child{
+    border-bottom:none!important;
+}
+
+.vpd_eachUserNameRatedReviewAbtProductPClass{
+    font-size:15px!important;
+    font-weight:normal!important;
+    color:rgb(70, 75, 80)!important;
+}
+
+.vpd_userAvgRatedAboutProductSClass{
+    font-size:10px!important;
+    font-weight:normal!important;
+    color:rgba(205, 46, 216, 0.73)!important;
+    padding:2px!important;
+}
+
+.vpd_eachUserRatedAbtProductPClass{
+    color:rgb(70, 75, 80)!important;
+    font-size:13px!important;
+}
+
+.vpd_ratedQuestionAboutProductSClass{
+    padding:2px!important;
+    color:rgba(205, 46, 216, 0.44)!important;
+}
+
+.vpd_eachUserAvgRatedReviewAbtProductPClass{
+    color:rgb(70, 75, 80)!important;
+    font-size:13px!important;
+}
+
