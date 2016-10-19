@@ -14,7 +14,7 @@
             <?php echo $SiteTitle; ?>
         </title>
         <link rel="shortcut icon" href="images/dk/dklogo/fevicon.ico">
-        <base href="<?php echo $SiteTitle; ?>"/>
+        <base href="<?php echo $baseRef; ?>"/>
         <style>
             [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak{
                 display:none!important;
