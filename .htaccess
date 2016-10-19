@@ -1,10 +1,6 @@
 
 <IfModule mod_rewrite.c>
     
-#    RewriteEngine on
-#    DirectoryIndex /dk-system/index.php
-#    FallbackResource /dk-system/index.php
-    
     RewriteEngine On
     # Don't rewrite files or directories
     RewriteCond %{REQUEST_FILENAME} -f [OR]
