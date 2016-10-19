@@ -652,14 +652,19 @@ input, select{
 
 .storeServeDessertsTypeContainerDivClass{
     padding-left:0px!important;
+    padding-right:0px!important;
     margin-top:10px!important;
     margin-bottom:10px!important;
 }
 
 .storeServingDessertsTypeNoteInfoLIClass{
+    text-align:center!important;
+    list-style:none!important;
+    font-weight:normal!important;
     font-size:20px;
+    font-family:serif!important;
+    color:#f17023!important;
 }
-
 
 .storeCanServeDessertsTypeCountSClass{
     font-weight:normal!important;
@@ -1143,12 +1148,6 @@ input, select{
 .vpd_productImagesContainerDivClass .preloadProductImagesClass{
     width:100%!important;
     height:auto!important;
-}
-
-.vpd_productDetailsContainerDivClass{
-    padding-left:0px!important;
-    background-color:#fff!important;
-    border:1px solid #e7e7e7!important;
 }
 
 .vpd_productDetailsContainerDivClass p{
