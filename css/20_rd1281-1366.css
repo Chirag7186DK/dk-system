@@ -38,6 +38,12 @@
         width:100%!important;
         height:auto!important;
     }
+    
+    .vpd_productDetailsContainerDivClass{
+        padding-left:0px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
 
     #productMeasurementSelectCtrlId{
         width:30%;
