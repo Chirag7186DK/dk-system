@@ -178,8 +178,26 @@
     
     /* order cart section css code */
     
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+    
     .ordercartRequestedEachItemInputQtyClass{
         width:100%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
     }
     
     /* user party order css code */
