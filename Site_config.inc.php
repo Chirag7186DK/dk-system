@@ -3,20 +3,6 @@
 
 // Developers shall use their own names here
 
-//$DATABASENAME = 'desserts_khazana';
-//$DATABASEHOST = "localhost";
-//$DATABASEUNAME = "desserts_dkdbadm";
-//$YII_DB_UNAME = "desserts_dkdbadm";
-//$DATABASEPASS = "dkdbadmin123";
-//$YII_DB_PASS = "dkdbadmin123";
-
-//$DATABASENAME = 'cakekhaz_desserts_khazana';
-//$DATABASEHOST = "localhost";
-//$DATABASEUNAME = "cakekhaz_dkdbadm";
-//$YII_DB_UNAME = "cakekhaz_dkdbadm";
-//$DATABASEPASS = "dkdbadmin123";
-//$YII_DB_PASS = "dkdbadmin123";
-
 $DATABASENAME = 'DESSERTSKHAZANA';
 $DATABASEHOST = "localhost";
 $DATABASEUNAME = "dgdb";
@@ -25,7 +11,7 @@ $DATABASEPASS = "chirag";
 $YII_DB_PASS = "chirag";
 
 // give path for webroot of libdessertkhazana of this installation
-//define("LIB_PATH",'/var/www/html/libdessertskhazana/');
+// define("LIB_PATH",'/var/www/html/libdessertskhazana/');
 define("LIB_PATH",'/var/www/html/dklib/');
 
 $BaseSitePath = 'http://localhost/dk-system/';
@@ -36,9 +22,6 @@ $openSISPath = dirname(__FILE__).'/';
 
 // defined custom sitetitle
 $SiteTitle= 'DESSERTS KHAZANA';
-
-// access api security key
-$apiAccessHashkey = 'trr36pdthb9xbhcppyqkgbpkq';
 
 // product started year
 $product_versionyear = '2016';
@@ -60,5 +43,9 @@ $SMSPASSWORD = 'q27d!g!taledu';
 $SMSSENDER = 'SCHOOL';
 $SMSDOMAIN = 'http://www.businesssms.co.in';
 
+$baseRef = "/dk-system/";
+
+// access api security key
+$apiAccessHashkey = 'trr36pdthb9xbhcppyqkgbpkq';
 
 ?>
