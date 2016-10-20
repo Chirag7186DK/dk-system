@@ -1,18 +1,4 @@
-/* 
-    Created on : Mar 19, 2014, 9:48:25 AM
-    Author     : @arboshiki
-*/
-/* 
-    Created on : Sep 19, 2014, 1:47:13 PM
-    Author     : @arboshiki
-*/
-/*
-    Author      : @arboshiki
-*/
-/* 
-    Created on : Aug 11, 2014, 5:14:12 PM
-    Author     : @arboshiki
-*/
+
 .animated-super-fast {
   -webkit-animation-duration: 0.3s;
   animation-duration: 0.3s;
@@ -272,8 +258,6 @@ body.lobibox-open {
   position: fixed;
   z-index: 4001;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  // -webkit-box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
-  //box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
 }
 .lobibox * {
   box-sizing: border-box;
