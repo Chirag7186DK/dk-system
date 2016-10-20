@@ -919,6 +919,13 @@ input, select{
     padding-right:1px!important;
 }
 
+.storeProductBoxDivClass .preloadProductImagesClass{
+    height:auto!important;
+    width:100%!important;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+    
 .storeProductFounCountInfoMsgDivClass{
     font-family:serif!important;
     color:rgba(218, 13, 47, 0.85)!important;
