@@ -15,7 +15,7 @@ $YII_DB_PASS = "chirag";
 define("LIB_PATH",'/var/www/html/dklib/');
 
 $BaseSitePath = 'http://localhost/dk-system/';
-//$BaseSitePath = 'http://192.168.1.107/dk-system/';
+//$BaseSitePath = 'http://192.168.1.108/dk-system/';
 
 // $openSISPath
 $openSISPath = dirname(__FILE__).'/';
