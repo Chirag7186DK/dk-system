@@ -113,7 +113,8 @@
         width:50%!important;
     }
     
-    /*  myaccount sigup form css code */
+    
+    /*  myaccount signup form css code */
     
     .userSignUpFormInfoWrapperDivClass{
         padding-left:0px!important;
@@ -127,11 +128,6 @@
         padding-bottom:10px!important;
         background:#fff!important;
         border:1px solid #e7e7e7!important;
-    }
-    
-    .userSignUpFormSectionContainerDivClass div{
-        padding-top:10px!important;
-        padding-bottom:10px!important;
     }
     
     /*  myaccount sigin form css code */
@@ -172,66 +168,11 @@
     }
     
     .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
         width:100%!important;
     }
     
     /* order cart section css code */
-    
-    .uca_ordercartSectionContainerDivClass .commonHorizontalSpaceDivClass{
-        margin-bottom:10px!important;
-    }
-    
-    .uca_ordercartSectionContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-    }
-    
-    .ordercartRequestedItemShoppingBagIconClass{
-        color:#00B9F5!important;
-    }
-
-    .uca_ordercartSectionMsgPClass{
-        font-size:13px!important;
-        color:#67717D!important;
-        padding-left:0px!important;
-        cursor:pointer;
-    }
-    
-    .uca_ordercartSectionCheckoutBtnClass{
-        font-size:11px!important;
-        font-weight:normal!important;
-        color:#fff!important;
-        padding:3px!important;
-        border-radius:0px!important;
-        background:#ab0b38!important;
-    }
-    
-    .uca_ordercartAllSectionHeaderContainerDivClass .owl-item{
-        width:auto!important;
-        margin-right:15px!important;
-    }
-
-    .uca_ordercartEachTabLabelSectionContainerLIClass{
-        float:left!important;
-        list-style-type:none!important;
-        text-align:center!important;
-        font-size:15px!important;
-        font-weight:normal!important;
-        font-family: serif!important;
-        color:#67717D!important;
-        padding:5px!important;
-        border-bottom:1px solid #00B9F5!important;
-        cursor:pointer!important;
-    }
-
-    .uca_ordercartSelectedTabLabelSectionContainerLIClass{
-        color:#fff!important;
-        border-bottom: 1px solid #cb202d!important;
-        background:#cb202d!important;
-    }
-    
-
-    /* order cart requested all item section css code */
     
     .uca_ordercartRequestedEachStoreProductItemDivClass{
         width:25%!important;
@@ -246,104 +187,6 @@
         width:100%!important;
     }
 
-    .uca_ordercartRequestedEachStoreItemTotalAmtPClass{
-        font-size:13px!important;
-        color:#67717D!important;
-    }
-
-    .ordercartRequestedEachItemUpdateBtnClass,
-    .ordercartRequestedEachItemUpdateBtnClass:hover{
-        font-weight:normal!important;
-        font-size:11px!important;
-        color:#fff!important;
-        padding:3px!important;
-        border-radius:0px!important;
-        background:#ab0b38!important;
-        margin-right:1%!important;
-    }
-
-    .ordercartRequestedEachItemRemoveBtnClass,
-    .ordercartRequestedEachItemRemoveBtnClass:hover{
-        font-weight:normal!important;
-        font-size:11px!important;
-        color:#fff!important;
-        padding:3px!important;
-        border-radius:0px!important;
-        background:#ab0b38!important;
-    }
-
-    .ordercartRequestedEachItemCheckoutBtnClass,
-    .ordercartRequestedEachItemCheckoutBtnClass:hover{
-        font-weight:normal!important;
-        font-size:11px!important;
-        color:#ab0b38!important;
-        padding:3px!important;
-        border-radius:0px!important;
-        background:none!important;
-    }
-
-    .uca_ordercartRequestedSummaryDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
-        padding-top:10px!important;
-        padding-bottom:10px!important;
-        margin-bottom:30px!important;
-        border:1px solid #e7e7e7!important;
-    }
-    
-    .uca_ordercartRequestedSummaryDivClass p{
-        font-size:13px!important;
-        color:rgb(70, 75, 80);
-        padding-left:12px!important;
-        margin-bottom:5px!important;
-    }
-    
-    .uca_ordercartRequestedSummaryHeaderPClass{
-        text-align:center!important;
-        text-transform:uppercase!important;
-        font-weight:normal!important;
-        font-size:15px!important;
-        color:#f17023!important;
-        margin-bottom:4px!important;
-    }
-    
-    .uca_ordercartRequestedSummaryOperationPClass{
-        margin-top:14px!important;
-    }
-    
-    .ordercartRequestedSummaryCheckoutBtnClass{
-        font-size:12px!important;
-        font-weight:normal!important;
-        color:#fff!important;
-        border-radius:0px!important;
-        background-color:#ab0b38!important;
-    }
-    
-    .uca_ordercartRequestedAllStoreNotFoundMsgDivClass{
-        text-align:center!important;
-    }
-    
-    .ordercartEmptyPClass{
-        font-size:17px!important;
-        color:#67717D!important;
-    }
-
-    .shoppingBagsIconClass{
-        font-size:50px!important;
-        color:#67717D!important;
-    }
-
-    .startShoppingBtnClass{
-        font-weight:normal!important;
-        font-size:15px!important;
-        color:#fff!important;
-        border-radius:0px!important;
-        background:#00B9F5!important;
-    }
-
-
-    /* cancel order cart all item section css code */
-    
     .uca_ordercartCancelledEachItemImageDivClass{
         width:25%!important;
     }
@@ -361,8 +204,6 @@
     }
     
     .po_formContentWrappperContainerDivClass{
-        padding-left:0px!important;
-        padding-right:0px!important;
         padding-top:10px!important;
         padding-bottom:10px!important;
         margin-top:10px!important;
@@ -396,6 +237,15 @@
         border:1px solid #e7e7e7!important;
     }
 
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
     /* checkout css code */
     
     .chkout_deliveryAddressHeaderPClass{
@@ -420,5 +270,6 @@
     .chkout_deliveryDateInputBoxClass{
         width:100%!important;
     }
+    
 }
 
