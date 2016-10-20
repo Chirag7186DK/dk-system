@@ -55,10 +55,7 @@ angular.module('DKAPP').directive('loadDklogoImagesDirective', loadDklogoImagesD
 
 function loadDklogoImagesDirective(){
     return function(scope, element, attrs){
-        loadDkLogoImages(element);
-        scope.$on('resize::resize', function() {
-            loadDkLogoImages();
-        });
+        $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|135.png");
     };
 }
 
@@ -85,19 +82,6 @@ function loadCustomizeorderImagesDirective(){
         $('.customizeOrderImgClass').attr('src', "images/dk/homebanner/customizeorder.png");
     };
 }
-
-// CJ defined this function 2016-07-10
-function loadDkLogoImages(){
-    if($('.dkLogoImgClass').length===1){
-        if(deviceWidth>=300 && deviceWidth<=399){
-            $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|135.png");
-        }
-        if(deviceWidth>=400){
-            $('.dkLogoImgClass').attr('src', "images/dk/dklogo/dessertskhazanalogo-290|135.png");
-        }
-    }
-}
-
 
 angular.module('DKAPP').directive('customerBreadcrumbDirective', customerBreadcrumbDirective);
 
