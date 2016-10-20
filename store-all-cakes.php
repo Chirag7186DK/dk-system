@@ -165,6 +165,9 @@
                     <span ng-if="eachProductDetails.productAvailableSizeCount>1">
                         (more size available)
                     </span>
+                    <span ng-if="eachProductDetails.productAvailableSizeCount<=1">
+                        (only one size available)
+                    </span>
                     <span ng-if="eachProductDetails.productFeatureFoodType=='Eggless'"  class="pull-right">
                         <i class="fa fa-square storeProductVegIconClass"></i>
                     </span>
