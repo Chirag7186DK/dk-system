@@ -66,10 +66,7 @@ angular.module('DKAPP').directive('loadPartyorderImagesDirective', loadPartyorde
 
 function loadPartyorderImagesDirective(){
     return function(scope, element, attrs){
-        loadPartyOrderImages(element);
-        scope.$on('resize::resize', function() {
-            loadPartyOrderImages();
-        });
+        $('.partyOrderImgClass').attr('src', "images/dk/homebanner/partyorder.png");
     };
 }
 
@@ -77,10 +74,7 @@ angular.module('DKAPP').directive('loadCoperatetieupImagesDirective', loadCopera
 
 function loadCoperatetieupImagesDirective(){
     return function(scope, element, attrs){
-        loadCoperateTieupImages(element);
-        scope.$on('resize::resize', function() {
-            loadCoperateTieupImages();
-        });
+        $('.coperateOrderImgClass').attr('src', "images/dk/homebanner/corporateparty.png");
     };
 }
 
@@ -88,13 +82,9 @@ angular.module('DKAPP').directive('loadCustomizeorderImagesDirective', loadCusto
 
 function loadCustomizeorderImagesDirective(){
     return function(scope, element, attrs){
-        loadCustomizeOrderImages(element);
-        scope.$on('resize::resize', function() {
-            loadCustomizeOrderImages();
-        });
+        $('.customizeOrderImgClass').attr('src', "images/dk/homebanner/customizeorder.png");
     };
 }
-
 
 // CJ defined this function 2016-07-10
 function loadDkLogoImages(){
@@ -108,41 +98,6 @@ function loadDkLogoImages(){
     }
 }
 
-// CJ defined this function 2016-07-10
-function loadPartyOrderImages(){
-    if($('.partyOrderImgClass').length===1){
-        if(deviceWidth>=300 && deviceWidth<=399){
-            $('.partyOrderImgClass').attr('src', "images/dk/homebanner/hb_partyorderbg-288|124.png");
-        }
-        if(deviceWidth>=400){
-            $('.partyOrderImgClass').attr('src', "images/dk/homebanner/hb_partyorderbg-588|253.png");
-        }
-    }
-}
-
-// CJ defined this function 2016-07-10
-function loadCoperateTieupImages(){
-    if($('.coperateOrderImgClass').length===1){
-        if(deviceWidth>=300 && deviceWidth<=399){
-            $('.coperateOrderImgClass').attr('src', "images/dk/homebanner/hb_corporatepartybg-288|124.png");
-        }
-        if(deviceWidth>=400){
-            $('.coperateOrderImgClass').attr('src', "images/dk/homebanner/hb_corporatepartybg-588|253.png");
-        }
-    }
-}
-
-// CJ defined this function 2016-07-10
-function loadCustomizeOrderImages(){
-    if($('.customizeOrderImgClass').length===1){
-        if(deviceWidth>=300 && deviceWidth<=399){
-            $('.customizeOrderImgClass').attr('src', "images/dk/homebanner/hb_customizeOrder-588|253.png");
-        }
-        if(deviceWidth>=400){
-            $('.customizeOrderImgClass').attr('src', "images/dk/homebanner/hb_customizeOrder-588|253.png");
-        }
-    }
-}
 
 angular.module('DKAPP').directive('customerBreadcrumbDirective', customerBreadcrumbDirective);
 
