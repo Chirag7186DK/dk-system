@@ -81,7 +81,7 @@ input, select{
     text-decoration:none!important;
     font-size:12px;
     font-weight:normal!important;
-    color:#999;
+    color:#846869; 
     cursor:pointer!important;
 }
 
@@ -92,7 +92,7 @@ input, select{
 .selectedDeliveryAreaTextHeaderLIClass{
     font-weight:normal!important;
     font-size:13px!important;
-    color:#6c6cb9!important;
+    color:#0505f5!important;
 }
 
 .userAccountAllSectionListDropdownDivClass{
@@ -120,7 +120,7 @@ input, select{
 /* delivery city area desserts type container css code */
 
 .deliveryCityAreaDessertsContainerDivClass{
-    background-image:url(../images/dk/homebanner/landing_pagebg-1500|500.png);
+    background-image:url(../images/dk/homebanner/landing_pagebg.png);
     background-size:cover!important;
     height:310px!important;
     border-bottom:1px solid #e6e0e0!important;
@@ -253,7 +253,7 @@ input, select{
 }
 
 .dkPartyOrderWrapperDivClass{
-    border:1px solid #d6caca!important;
+    border:1px solid #ccb8b8!important;
 }
 
 .partyOrderImgClass{
@@ -265,7 +265,7 @@ input, select{
     font-size:15px!important;
     font-weight:normal!important;
     margin:0px!important;
-    color:#fb366e!important;
+    color:#654343!important;
     background:#fff!important;
     padding:10px!important;
     cursor:pointer!important;
@@ -277,7 +277,7 @@ input, select{
 }
 
 .dkCoperateSpecialOffersWrapperDivClass{
-    border:1px solid #d6caca!important;
+    border:1px solid #ccb8b8!important;
 }
 
 .coperateOrderImgClass{
@@ -289,7 +289,7 @@ input, select{
     font-size:15px!important;
     font-weight:normal!important;
     margin:0px!important;
-    color:#fb366e!important;
+    color:#654343!important;
     background:#fff!important;
     padding:10px!important;
     cursor:pointer!important;
@@ -301,7 +301,7 @@ input, select{
 }
 
 .dkCustomizeDessertsOrderWrapperDivClass{
-    border:1px solid #d6caca!important;
+    border:1px solid #ccb8b8!important;
 }
 
 .customizeOrderImgClass{
@@ -313,7 +313,7 @@ input, select{
     font-size:15px!important;
     font-weight:normal!important;
     margin:0px!important;
-    color:#fb366e!important;
+    color:#654343!important;
     background:#fff!important;
     padding:10px!important;
     cursor:pointer!important;
@@ -359,7 +359,7 @@ input, select{
     text-decoration:none!important;
     font-weight:normal!important;
     font-size:12px!important;
-    color:#828282!important;
+    color:#635354!important;
     cursor:pointer!important;
 }
 
@@ -372,7 +372,7 @@ input, select{
     text-decoration:none!important;
     font-weight:normal!important;
     font-size:12px!important;
-    color:#828282!important;
+    color:#635354!important;
     cursor:pointer!important;
 }
 
