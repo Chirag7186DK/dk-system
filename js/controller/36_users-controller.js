@@ -262,6 +262,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
             resetDKSessionData();
             // window.location.href = globalBaseSitePath;
             $state.go('/', {reload:true}); 
+            CommonServices.refreshWebAppVariableData();
         };
         
         // storeRequestedSectionNameToAccessInUserAccount
