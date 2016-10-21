@@ -47,16 +47,28 @@ function ProductController($scope, $rootScope, $state, CommonServices){
         };
         
         $rootScope.displayProductPrice = function(productJsonData){
-            $rootScope.productFeatureOnlineSellingPrice = productJsonData['productFeatureOnlineSellingPrice'];
-            $rootScope.productFeatureBasePrice = productJsonData['productFeatureBasePrice'];
-            $rootScope.productFeatureDiscount = productJsonData['productFeatureDiscount'];
+            if(productJsonData!=='' && productJsonData!==undefined 
+                && jQuery.isEmptyObject(productJsonData)===false){
+                $rootScope.productFeatureOnlineSellingPrice = productJsonData['productFeatureOnlineSellingPrice'];
+                $rootScope.productFeatureBasePrice = productJsonData['productFeatureBasePrice'];
+                $rootScope.productFeatureDiscount = productJsonData['productFeatureDiscount'];
+                $('.onlineProductSellingPriceTextClass').empty().append($rootScope.productFeatureOnlineSellingPrice);
+                $('.vpd_productCutPriceTextSClass').hide();
+                $('.vpd_productDiscountPercentTextSClass').hide();
+                if($rootScope.productFeatureBasePrice!=='' && $rootScope.productFeatureDiscount!==''){
+                    $('.vpd_productCutPriceTextSClass').show();
+                    $('.vpd_productDiscountPercentTextSClass').show();
+                    $('.productFeatureBasePriceTextClass').empty().append($rootScope.productFeatureBasePrice);
+                    $('.productFeatureDiscount').empty().append(" ("+$rootScope.productFeatureDiscount+" % Off)");
+                }
+            }
         };
         
         // changing product measurement/size  change code here
         $('#productMeasurementSelectCtrlId').on('change', function(){
             var productMeasurementValue = $(this).find('option:selected').val();
             if(productMeasurementValue!=='' && productMeasurementValue!==false){
-                var productJsonData = $(this).find('option:selected').attr("data-productdata");
+                var productJsonData = $.parseJSON($(this).find('option:selected').attr("data-productdata"));
                 $rootScope.displayProductPrice(productJsonData);
             }
         });
