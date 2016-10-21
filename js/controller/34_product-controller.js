@@ -46,6 +46,21 @@ function ProductController($scope, $rootScope, $state, CommonServices){
             }
         };
         
+        $rootScope.displayProductPrice = function(productJsonData){
+            $rootScope.productFeatureOnlineSellingPrice = productJsonData['productFeatureOnlineSellingPrice'];
+            $rootScope.productFeatureBasePrice = productJsonData['productFeatureBasePrice'];
+            $rootScope.productFeatureDiscount = productJsonData['productFeatureDiscount'];
+        };
+        
+        // changing product measurement/size  change code here
+        $('#productMeasurementSelectCtrlId').on('change', function(){
+            var productMeasurementValue = $(this).find('option:selected').val();
+            if(productMeasurementValue!=='' && productMeasurementValue!==false){
+                var productJsonData = $(this).find('option:selected').attr("data-productdata");
+                $rootScope.displayProductPrice(productJsonData);
+            }
+        });
+        
         // loadStoreDeliveryFeeApplicableMsgOnDeliveryArea 
         $rootScope.loadStoreDeliveryFeeApplicableMsgOnDeliveryArea = function(){
             try{
@@ -88,14 +103,6 @@ function ProductController($scope, $rootScope, $state, CommonServices){
                 console.log("problem in loadProductDescriptionDetails ex=>"+ex);
             }
         };
-        
-        // changing product measurement/size  change code here
-        $('#productMeasurementSelectCtrlId').on('change', function(){
-            var productMeasurementValue = $(this).find('option:selected').val();
-            if(productMeasurementValue!=='' && productMeasurementValue!==false){
-                var productJsonData = $(this).find('option:selected').attr("data-productdata");
-            }
-        });
         
         // toggleViewAllProductFilterContainer
         $rootScope.toggleViewAllProductFilterContainer = function(){
