@@ -235,6 +235,12 @@
                 commonDetails.addProductDataInOrdercartFromSession(false, 'session');
             };
             
+            // refreshWebAppVariableData
+            commonDetails.refreshWebAppVariableData = function(){
+                commonDetails.resetUserDashboardVariableData(false);
+                commonDetails.resetUserOrdercartDashboardVariableData(false);
+            };
+            
             return commonDetails;
 
         }catch(ex){
