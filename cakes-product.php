@@ -146,7 +146,7 @@
                     Qty
                     <input product-qty-input-directive type='text' class='form-control vpd_productQtyInputClass' placeholder="Type Qty" value='1'>
                 </p>
-                <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']=='Y'"> 
+                <p class='vpd_productCommentBoxPClass' ng-if="productDetails[0]['isShowProductCommentBox']==='Y'"> 
                     Message On Cake
                     <textarea product-msgbox-directive rows='3' class="form-control" placeholder="Type 40 characters only"></textarea>
                 </p>
