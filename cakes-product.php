@@ -119,7 +119,7 @@
                     </span>
                 </p>
                 <hr>
-                <p class='vpd_productSelectMeasurementLabelPClass'> 
+                <p class='vpd_productSelectMeasurementLabelPClass' ng-init="displayProductPrice(productDetails[0]);"> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId">
                         <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
@@ -131,15 +131,15 @@
                     <span class='vpd_productPayBlgPriceTextSClass'>
                         <i class="fa fa-rupee faa-tada animated"></i> 
                         <i class='onlineProductSellingPriceTextClass'>
-                            {{productDetails[0]['productFeatureOnlineSellingPrice']}}
+                            {{productFeatureOnlineSellingPrice}}
                         </i>
                     </span>
-                    <span ng-if="productDetails[0]['productFeatureBasePrice']!==''" class='vpd_productCutPriceTextSClass'>
+                    <span ng-if="productFeatureBasePrice!==''" class='vpd_productCutPriceTextSClass'>
                         <i class="fa fa-rupee"></i> 
-                        {{productDetails[0]['productFeatureBasePrice']}}
+                        {{productFeatureBasePrice}}
                     </span>
-                    <span ng-if="productDetails[0]['productFeatureDiscount']!==''" class='vpd_productDiscountPercentTextSClass'>
-                        ({{productDetails[0]['productFeatureDiscount']}}% Off)
+                    <span ng-if="productFeatureDiscount!==''" class='vpd_productDiscountPercentTextSClass'>
+                        ({{productFeatureDiscount}}% Off)
                     </span>
                 </p>
                 <p class='vpd_productQtyPClass'>
