@@ -5,10 +5,10 @@
 
 $DATABASENAME = 'DESSERTSKHAZANA';
 $DATABASEHOST = "localhost";
-$DATABASEUNAME = "dgdb";
-$YII_DB_UNAME = "dgdb";
-$DATABASEPASS = "chirag";
-$YII_DB_PASS = "chirag";
+$DATABASEUNAME = "dessertskhazanadbuser";
+$YII_DB_UNAME = "dessertskhazanadbuser";
+$DATABASEPASS = "Satkar123";
+$YII_DB_PASS = "Satkar123";
 
 // give path for webroot of libdessertkhazana of this installation
 // define("LIB_PATH",'/var/www/html/libdessertskhazana/');
