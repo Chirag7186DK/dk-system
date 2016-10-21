@@ -105,9 +105,9 @@ input, select{
 }
 
 .userAccountEachSectionListDropdownDivClass{
-    text-align:left!important;
-    font-size:12px!important;
-    color:#999!important;
+    text-align: left!important;
+    font-size: 13px!important;
+    color:#60656b!important;
     padding:6px!important;
     cursor:pointer!important;
 }
@@ -2374,7 +2374,7 @@ input, select{
 
 .po_formfieldLabelPClass{
     font-size:13px!important;
-    color:#828282!important;
+    color:#60656b!important;
 }
 
 .po_formfieldHintPClass{
@@ -2603,7 +2603,7 @@ input, select{
 
 .co_formfieldLabelPClass{
     font-size:13px!important;
-    color:#828282!important;
+    color:#60656b!important;
 }
 
 .co_formfieldHintPClass{
