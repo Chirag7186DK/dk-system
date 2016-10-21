@@ -67,7 +67,7 @@
             <div ng-controller="PartyOrdersController" ng-click="redirectToViewPartyOrderRequest()" class='dkPartyOrderWrapperDivClass'>
                 <img src='#' class='partyOrderImgClass' load-partyorder-images-directive>
                 <p class='partyOrderPClass'>
-                    <span>PARTY ORDERS</span>
+                    <span>PARTY ORDER</span>
                 </p>
             </div>
         </div>
