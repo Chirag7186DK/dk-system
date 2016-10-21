@@ -119,7 +119,7 @@
                     </span>
                 </p>
                 <hr>
-                <p class='vpd_productSelectMeasurementLabelPClass' ng-init="displayProductPrice(productDetails[0]);"> 
+                <p class='vpd_productSelectMeasurementLabelPClass'> 
                     Select Size
                     <select class='form-control' id="productMeasurementSelectCtrlId">
                         <option data-productdata="{{eachMeasurementDetails}}" ng-repeat="eachMeasurementDetails in productDetails" value="{{eachMeasurementDetails.productFeatureDisplayMeasurementType}}">
@@ -127,19 +127,17 @@
                         </option>
                     </select>
                 </p>
-                <p class='viewProductPricePClass'> 
-                    <span class='vpd_productPayBlgPriceTextSClass'>
+                <p class='viewProductPricePClass' ng-if="productDetails!==false"> 
+                    <span class='vpd_productPayBlgPriceTextSClass' ng-init="displayProductPrice(productDetails[0]);">
                         <i class="fa fa-rupee faa-tada animated"></i> 
-                        <i class='onlineProductSellingPriceTextClass'>
-                            {{productFeatureOnlineSellingPrice}}
-                        </i>
+                        <i class='onlineProductSellingPriceTextClass'></i>
                     </span>
-                    <span ng-if="productFeatureBasePrice!==''" class='vpd_productCutPriceTextSClass'>
+                    <span class='vpd_productCutPriceTextSClass'>
                         <i class="fa fa-rupee"></i> 
-                        {{productFeatureBasePrice}}
+                        <i class='productFeatureBasePriceTextClass'></i>
                     </span>
-                    <span ng-if="productFeatureDiscount!==''" class='vpd_productDiscountPercentTextSClass'>
-                        ({{productFeatureDiscount}}% Off)
+                    <span class='vpd_productDiscountPercentTextSClass'>
+                        <i class='productDiscountPercentTextClass'></i>
                     </span>
                 </p>
                 <p class='vpd_productQtyPClass'>
