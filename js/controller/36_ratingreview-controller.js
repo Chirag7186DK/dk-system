@@ -151,8 +151,8 @@ function RatingReviewController($scope, $rootScope){
                                 notifyMsgStr = 'Your reviewed & rating about product posted successfully !!!';
                                 clearRatingReviewAbtProductFormContent(fcontentCass);
                                 $rootScope.loadAverageRatingReviewedProduct();
-                                //$rootScope.loadMaxAverageRatingReviewedProduct();
-                                //$rootScope.loadAllUserRatingReviewProduct();
+                                $rootScope.loadMaxAverageRatingReviewedProduct();
+                                $rootScope.loadAllUserRatingReviewProduct();
                             }
                             showNotificationBoxMsg(notifyMsgStr);
                         });
