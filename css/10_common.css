@@ -10,7 +10,7 @@ input, select{
     border-radius:0px!important;
     border:1px solid #ccc!important;
     box-shadow:none!important;
-    height:40px!important;
+    height:45px!important;
 }
 
 .bootstrap-select .btn:focus, 
@@ -1527,14 +1527,6 @@ input, select{
     margin:0px!important;
 }
 
-.userSignUpNameInputClass,
-.userSignUpEmailInputClass,
-.userSignUpMobileInputClass,
-.userSignUpOtpCodeInputClass,
-.userSignUpPwdInputClass{
-    height:40px!important;
-}
-
 .userSignUpNameInput_ErrorClass,
 .userSignUpEmailInput_ErrorClass,
 .userSignUpMobileInput_ErrorClass,
@@ -1600,12 +1592,6 @@ input, select{
     font-weight:normal!important;
     color:#708090!important;
     margin:0px!important;
-}
-
-.userSignInEmailInputClass,
-.userSignInPwdInputClass,
-.userSignInOtpCodeInputClass{
-    height:40px!important;
 }
 
 .userSignInEmailInput_ErrorClass,
@@ -1680,12 +1666,6 @@ input, select{
     font-weight:normal!important;
     color:#708090!important;
     margin:0px!important;
-}
-
-.userFrgtPwdEmailInputClass,
-.userFrgtPwdOtpCodeInputClass,
-.userFrgtPwdInputClass{
-    height:40px!important;
 }
 
 .userFrgtPwdEmailInput_ErrorClass,
@@ -2408,13 +2388,6 @@ input, select{
     color:#778ca0!important;
 }
 
-.po_nosPeopleInputClass,
-.po_dateInputClass,
-.po_occasionTitleInputClass,
-.po_budgetAmtInputClass{
-    height:40px!important;
-}
-
 .po_errorMsgContainerDivClass{
     color:#4747d0!important;
 }
@@ -2642,13 +2615,6 @@ input, select{
 .co_formfieldiconclass{
     font-size:15px!important;
     color:#778ca0!important;
-}
-
-.co_nosPeopleInputClass,
-.co_dateInputClass,
-.co_occasionTitleInputClass,
-.co_budgetAmtInputClass{
-    height:40px!important;
 }
 
 .co_errorMsgContainerDivClass{
