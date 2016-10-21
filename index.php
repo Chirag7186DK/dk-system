@@ -38,25 +38,25 @@
                 <li>
                     <i class="fa fa-comment-o fa-flip-horizontal"></i> Care (02046781219)
                 </li>
-                <li ng-if="isShowSelectedDeliveryAreaTextHeader==true" class="selectedDeliveryAreaTextHeaderLIClass">
+                <li ng-if="isShowSelectedDeliveryAreaTextHeader===true" class="selectedDeliveryAreaTextHeaderLIClass">
                     <i class="fa fa-map-marker"></i> At: {{selectedDeliveryAreaTextHeader}}
                 </li>
                 <li ng-controller="UsersController" ng-click="ordercartItemRequestedCount>0 && storeRequestedSectionNameToAccessInUserAccount('ordercart');">
                     <i class="fa fa-shopping-basket"></i> (Item: {{ordercartItemRequestedCount}}, Rs: {{subtotalOrderAmt}})
                 </li>
-                <li ng-if='isUserLoggedInSession==false' ng-click="goToSignUpSignInAccountSection('home')" ng-controller="UsersController">
+                <li ng-if='isUserLoggedInSession===false' ng-click="goToSignUpSignInAccountSection('home')" ng-controller="UsersController">
                     <i class="fa fa-user accountSignUpSignInIconClass"></i> Log In / Sign Up
                 </li>
-                <li ng-if='isUserLoggedInSession==true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
+                <li ng-if='isUserLoggedInSession===true' ng-controller="UsersController" ng-click="toggleUserAccountSectionDropdown('home')">
                     <i class="fa fa-user accountSignUpSignInIconClass"></i> {{loggedUserName}}
                     <!-- user account showing different section label to access -->
-                    <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession==true'>
+                    <div class="userAccountAllSectionListDropdownDivClass" ng-if='isUserLoggedInSession===true'>
                         <div ng-repeat="userInfoEachSectionListArrObj in userInfoAllSectionListArrObj" title="{{userInfoEachSectionListArrObj.hoverTitle}}" class='userAccountEachSectionListDropdownDivClass' ng-click="storeRequestedSectionNameToAccessInUserAccount(userInfoEachSectionListArrObj.sectionName);">
                             {{userInfoEachSectionListArrObj.displayTitle}}
                         </div>
                     </div>
                 </li>
-                <li ng-if='isUserLoggedInSession==true' ng-click="signOutUser()" ng-controller="UsersController">
+                <li ng-if='isUserLoggedInSession===true' ng-click="signOutUser()" ng-controller="UsersController">
                     <i class="fa fa-sign-out"></i> Log Out
                 </li>
             </ul>
