@@ -23,7 +23,7 @@ $openSISPath = dirname(__FILE__).'/';
 // defined custom sitetitle
 $SiteTitle= 'DESSERTS KHAZANA';
 
-// product started year
+// product version year
 $product_versionyear = '2016';
 
 // decide is product in maintainenace mode
@@ -37,15 +37,15 @@ $isSendSmsEmailToAdminOnErrorOccured = 'N';
 $SentEmailOnErrorOccured = array("cjain9975@gmail.com");
 $SentSmsOnErrorOccured = array("9975967186");
 
-// Business sms details
-$SMSUSERNAME = "yogesh.mahajan@digitaledu.net";
-$SMSPASSWORD = 'q27d!g!taledu';
-$SMSSENDER = 'SCHOOL';
-$SMSDOMAIN = 'http://www.businesssms.co.in';
+// sms details
+$SMSUSERNAME = "chirag@satkarinfotech.com";
+$SMSSENDER = 'DSRTKZ';
+$SMSDOMAIN = 'http://api.textlocal.in/';
+$SMSAPIHASH = 'f092397c7db948c1035571c210345b3e23e20831';
 
 $baseRef = "/dk-system/";
 
-// access api security key
+// access api security key for dessertskhazana
 $apiAccessHashkey = 'trr36pdthb9xbhcppyqkgbpkq';
 
 ?>
