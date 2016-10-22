@@ -432,7 +432,7 @@ class commonfunction{
         $smsSentStatus = true;
         if($mobile!='' && strlen($mobile)==10){
             $smsMsgBodyStr = "$otpcode is your login OTP for signIn with Desserts Khazana account.";
-            $smsSentStatus = utils :: sendSMSSameContentOnAllMobile(array($mobile), $smsMsgBodyStr);
+            $smsSentStatus = utils :: sendSMSSameContentOnBulkMobile(array($mobile), $smsMsgBodyStr);
         }
         return $smsSentStatus;
     }
