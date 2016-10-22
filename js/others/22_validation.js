@@ -124,7 +124,7 @@ function validateDataUserSignInAuthentication(fromSection){
             inValidDataCount++;
         }else{
             var enteredOtpcodeStr = ($('#userSignInOtpCodeInputId').val());
-            if((enteredOtpcodeStr).length!==6){
+            if((enteredOtpcodeStr).length===6){
                 var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
                 if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
                 }else{
