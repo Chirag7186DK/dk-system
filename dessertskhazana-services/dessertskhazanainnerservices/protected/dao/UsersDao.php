@@ -374,7 +374,7 @@ class UsersDao{
             $connection = Yii::App()->db;
             $sql= "UPDATE USERLOG ul
                 JOIN USERSESSION us ON us.user_sessionid=ul.user_sessionid
-                SET ul.status='Z', us.status='Z', ul.logout_datedtime='".date('Y-m-d H:i:s')."'
+                SET ul.status='Z', ul.logout_datedtime='".date('Y-m-d H:i:s')."'
                 WHERE 1
                 AND ul.status='A' AND us.status='A'
                 AND ul.user_logno='$udblogId' 
