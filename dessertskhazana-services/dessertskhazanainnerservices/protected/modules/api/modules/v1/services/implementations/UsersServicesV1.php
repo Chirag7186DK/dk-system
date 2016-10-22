@@ -210,7 +210,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                 $rspDetails = commonfunction :: handlingOtpForUserSignUpAccount($paramDataArr);
             }
             if($paramDataArr['purposetype']=='resendForFrgtPwd'){
-                $rspDetails = commonfunction :: handlingResendOtpToToUserAccountForForgotPwd($paramDataArr);
+                $rspDetails = commonfunction :: handlingOtpForUserAccountForgotPwd($paramDataArr);
             }
         } 
         return $rspDetails;
