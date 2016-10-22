@@ -119,7 +119,7 @@ class Textlocal{
 	}
 
 	/**
-	 * Get last request's parameters
+	 * Get last requests parameters
 	 * @return array
 	 */
 	public function getLastRequest()
