@@ -37,7 +37,6 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         // collectDataUserSignInAuthentication
         $rootScope.collectDataUserSignInAuthentication = function(fromSection){
             var rtValidatedDataStatus = validateDataUserSignInAuthentication(fromSection);
-            console.log("collectDataUserSignInAuthentication rtValidatedDataStatus=>"+rtValidatedDataStatus);
             if(rtValidatedDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserSignInAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -99,7 +98,6 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         // collectDataUserSignUpAuthentication
         $rootScope.collectDataUserSignUpAuthentication = function(fromSection){
             var retValidateDataStatus = validateDataUserSignUpAuthentication(fromSection);
-            console.log("collectDataUserSignUpAuthentication rtValidatedDataStatus=>"+rtValidatedDataStatus);
             if(retValidateDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserSignUpAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -155,7 +153,6 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         // collectDataUserFrgtPwdAuthentication
         $rootScope.collectDataUserFrgtPwdAuthentication = function(fromSection){
             var rtValidatedDataStatus = validateDataUserFrgtPwdAuthentication(fromSection);
-            console.log("collectDataUserFrgtPwdAuthentication rtValidatedDataStatus=>"+rtValidatedDataStatus);
             if(rtValidatedDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserFrgtPwdAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
