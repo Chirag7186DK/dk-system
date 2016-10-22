@@ -699,7 +699,7 @@ class commonfunction{
         $smsSentStatus = true;
         $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
         if($mobile!='' && strlen($mobile)==10 && $isSmsServicesActivated=='Y'){
-            $smsMsgBodyStr = trim("Use $otpcode as OTP to change your password");
+            $smsMsgBodyStr = trim("Use $otpcode as OTP to change your Desserts Khazana account password. Please don't share this with anyone.");
             $smsSentStatus = utils :: sendSMSSameContentOnBulkMobile(array($mobile), $smsMsgBodyStr);
         }
         return $smsSentStatus;
