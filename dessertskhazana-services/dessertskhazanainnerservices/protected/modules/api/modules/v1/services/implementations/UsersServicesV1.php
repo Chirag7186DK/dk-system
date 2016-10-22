@@ -199,7 +199,7 @@ class UsersServicesV1 implements IUsersServicesV1{
     }
     
     // CJ defined this action 2016-08-01
-    public function sendOtpcode($paramDataArr){
+    public function sendUserAccountOtpcode($paramDataArr){
         $rspDetails = array();
         $rspDetails['isOtpcodeSent'] = 'FALSE';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
