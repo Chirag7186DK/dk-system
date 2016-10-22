@@ -14,10 +14,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                 $state.go('account-signup-signin'); 
             }    
         };
-        
-        // showLoaderAccountHasbeenVerfied
-        $rootScope.showLoaderAccountHasbeenVerfied = function(){};
-        
+       
         // isUserAlreadySignedInAccountSection
         $rootScope.isUserAlreadySignedInAccountSection = function(){
             var userLoggedInSessionStatus = checkUserLoggedInSession();
@@ -33,13 +30,14 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         $rootScope.toggleAccountFormSectionName = function(sectionName){
             removeTemporaryUserSignUpDataFromSesion();
             removeTemporaryUserSignedInDataFromSesion();
-            // removeTemporaryUseFrgtPwdDataFromSesion();
+            removeTemporaryUserFrgtPwdDataFromSesion();
             $rootScope.showAccountFormSectionName = sectionName;
         };
         
         // collectDataUserSignInAuthentication
         $rootScope.collectDataUserSignInAuthentication = function(fromSection){
             var rtValidatedDataStatus = validateDataUserSignInAuthentication(fromSection);
+            console.log("collectDataUserSignInAuthentication rtValidatedDataStatus=>"+rtValidatedDataStatus);
             if(rtValidatedDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserSignInAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -79,11 +77,13 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                                     storeAuthenticatedUserDetailsInSession(userDataObj);
                                     removeTemporaryUserSignUpDataFromSesion();
                                     removeTemporaryUserSignedInDataFromSesion();
+                                    removeTemporaryUserFrgtPwdDataFromSesion();
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
                                 removeTemporaryUserSignedInDataFromSesion();
+                                removeTemporaryUserFrgtPwdDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signInSection';
                                 $rootScope.isShowUserSignInNoticeMsg = 'TRUE';
                                 $rootScope.userSignInNoticeMsgStr = "Invalid account details !!!";
@@ -99,6 +99,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         // collectDataUserSignUpAuthentication
         $rootScope.collectDataUserSignUpAuthentication = function(fromSection){
             var retValidateDataStatus = validateDataUserSignUpAuthentication(fromSection);
+            console.log("collectDataUserSignUpAuthentication rtValidatedDataStatus=>"+rtValidatedDataStatus);
             if(retValidateDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserSignUpAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -138,6 +139,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
                                 removeTemporaryUserSignedInDataFromSesion();
+                                removeTemporaryUserFrgtPwdDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signUpSection';
                                 $rootScope.isShowUserSignUpNoticeMsg = 'FALSE';
                             }
@@ -153,6 +155,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         // collectDataUserFrgtPwdAuthentication
         $rootScope.collectDataUserFrgtPwdAuthentication = function(fromSection){
             var rtValidatedDataStatus = validateDataUserFrgtPwdAuthentication(fromSection);
+            console.log("collectDataUserFrgtPwdAuthentication rtValidatedDataStatus=>"+rtValidatedDataStatus);
             if(rtValidatedDataStatus===true){
                 var preparedParamJsonObj = getParamDataForUserFrgtPwdAuthentication(fromSection);
                 if(preparedParamJsonObj!==false && jQuery.isEmptyObject(preparedParamJsonObj)===false){
@@ -202,6 +205,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
                                 removeTemporaryUserSignedInDataFromSesion();
+                                removeTemporaryUserFrgtPwdDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signUpSection';
                                 $rootScope.isShowUserSignUpNoticeMsg = 'FALSE';
                             }
