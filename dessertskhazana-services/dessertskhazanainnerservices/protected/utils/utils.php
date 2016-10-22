@@ -54,7 +54,8 @@ class utils{
 
     // CJ defined this function 2016-06-15
     public static function resolvedGeneratedErrorReportingLog($resolvedErrorLogArr){
-        if(count($errorObj)>0 && $errorObj!=false){
+        
+        if(count($resolvedErrorLogArr)>0 && $resolvedErrorLogArr!=false){
             // CJ think about sms/email services to send error reporting 
             global $isSendSmsEmailToAdminOnErrorOccured, $SentEmailOnErrorOccured, $SentSmsOnErrorOccured, $SiteTitle;
             $allEmailIds = $SentEmailOnErrorOccured;
