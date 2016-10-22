@@ -419,7 +419,7 @@ class commonfunction{
             $paramDataArr['sent_onmedium'] = 'mobile';
             $paramDataArr['purposetype'] = 'signIn';
             // storing otp code
-            $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+            $storedOTPCODEStatus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             // sending otp code
             $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile($paramDataArr['mobile'], $otpCode);
             $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
