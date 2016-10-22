@@ -167,7 +167,7 @@ class utils{
                     $smsSender = $GLOBALS['SMSSENDER'];
                 }
                 
-                // append each mobile no.s prefix
+                // append each mobile no.s prefix with 91 digits
                 $countMobileLength = count($mobileDataArr);
                 for($eachMobIndex = 0; $eachMobIndex<$countMobileLength; $eachMobIndex++){
                     $mobileDataArr[$eachMobIndex] = trim("91".$mobileDataArr[$eachMobIndex]);
