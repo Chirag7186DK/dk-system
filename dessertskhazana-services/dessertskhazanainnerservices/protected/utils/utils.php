@@ -153,7 +153,7 @@ class utils{
     }
     
     // CJ defined this functio 2016-07-23
-    public static function sendSMSSameContentOnAllMobile($mobileDataArr, $msgBody, $smsSender=''){
+    public static function sendSMSSameContentOnBulkMobile($mobileDataArr, $msgBody, $smsSender=''){
         $rtSmsSentStatus = false;
         try{
             if(count($mobileDataArr)>0 && $mobileDataArr!=false
