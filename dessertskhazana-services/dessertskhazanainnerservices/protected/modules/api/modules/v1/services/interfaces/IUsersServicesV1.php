@@ -10,7 +10,7 @@ interface IUsersServicesV1{
     public function userSignUpAuthentication($InDtoArr);
     public function userSignInAuthentication($InDtoArr);
     public function userForgotPwdAuthentication($InDtoArr);
-    public function sendOtpcode($InDtoArr);
+    public function sendUserAccountOtpcode($InDtoArr);
     public function getUserDashboardSummaryDataDetails($InDtoArr);
     public function getUserPersonalInfoData($InDtoArr);
     public function updateUserPersonalInfoData($InDtoArr);
