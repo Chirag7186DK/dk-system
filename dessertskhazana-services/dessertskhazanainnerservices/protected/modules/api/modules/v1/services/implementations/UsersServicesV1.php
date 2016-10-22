@@ -98,15 +98,16 @@ class UsersServicesV1 implements IUsersServicesV1{
                     $sendingOtpParamDataArr['email'] = $paramDataArr['email'];
                     $sendingOtpParamDataArr['mobile'] = $rtDataArr1['userDetails']['mobile'];
                     $sendingOtpParamDataArr['pwd'] = $paramDataArr['pwd'];
-                    $rtDataArr2 = commonfunction :: handlingUserSigInAndOtpRequest($sendingOtpParamDataArr);
-                    if($rtDataArr2['userDetails']['isOtpCodeSent']=='Y'){
+                    $sendingOtpParamDataArr['purposetype'] = 'signIn';
+                    $rtDataArr2 = commonfunction :: handlingOtpForUserSignInAccount($sendingOtpParamDataArr);
+                    if($rtDataArr2['isOtpCodeSent']=='Y'){
                         $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
                         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
-                        $rspDetails['userDetails']['msgStr'] = $rtDataArr2['userDetails']['msgStr'];
+                        $rspDetails['userDetails']['msgStr'] = $rtDataArr2['msgStr'];
                     }else{
                         $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
                         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
-                        $rspDetails['userDetails']['msgStr'] = $rtDataArr2['userDetails']['msgStr'];
+                        $rspDetails['userDetails']['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
                     }
                     $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                     $rspDetails['userDetails']['name'] = $rtDataArr1['userDetails']['name'];
