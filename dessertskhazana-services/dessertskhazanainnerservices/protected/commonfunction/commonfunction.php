@@ -422,7 +422,7 @@ class commonfunction{
             $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             // sending otp code
             $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile($paramDataArr['mobile'], $otpCode);
-            $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 15 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
+            $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
             $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
             $rspDetails['userDetails']['smsData'] = $smsSentStatus;
         } 
@@ -432,7 +432,7 @@ class commonfunction{
     public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
         if($mobile!='' && strlen($mobile)==10){
-            $smsMsgBodyStr = "$otpcode is your login OTP for signIn with Desserts Khazana account.";
+            $smsMsgBodyStr = trim("$otpcode is your login OTP for Desserts Khazana account.");
             $smsSentStatus = utils :: sendSMSSameContentOnBulkMobile(array($mobile), $smsMsgBodyStr);
         }
         return $smsSentStatus;
