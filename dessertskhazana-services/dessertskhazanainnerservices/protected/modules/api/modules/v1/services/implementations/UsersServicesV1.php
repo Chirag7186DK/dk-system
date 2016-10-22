@@ -235,6 +235,7 @@ class UsersServicesV1 implements IUsersServicesV1{
                             $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
                             $paramDataArr['user_id'] = "mobile";
                             $paramDataArr['mobile'] = $authenticatedUserData['userMobile'];
+                            $paramDataArr['name'] = $authenticatedUserData['userName'];
                             $paramDataArr['sent_onmedium'] = "mobile";
                             $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                             $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToUserAccountForForgotPwd(
