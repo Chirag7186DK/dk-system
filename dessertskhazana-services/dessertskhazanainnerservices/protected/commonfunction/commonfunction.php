@@ -570,7 +570,7 @@ class commonfunction{
             }
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
-                $otpCode = '123456';
+                $otpCode = utils ::getRandomOtpcode('6');
                 $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
                 $paramDataArr['otpcode'] = $otpCode;
                 $paramDataArr['sent_onmedium'] = 'mobile';
