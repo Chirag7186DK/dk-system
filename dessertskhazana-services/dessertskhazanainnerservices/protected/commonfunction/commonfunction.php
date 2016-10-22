@@ -421,6 +421,21 @@ class commonfunction{
         return $rspDetails;
     }
     
+    public static function handlingResendOtpToSignInUserAccount($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['isOtpcodeSent'] = 'FALSE';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
+            $paramDataArr['sent_onmedium'] = "mobile";
+            $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+            $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount(
+                $paramDataArr['mobile'], $paramDataArr['otpcode']    
+            );
+            $rspDetails['isOtpcodeSent'] = 'TRUE';
+        }
+        return $rspDetails;
+    }
+    
     public static function prepareAndSendOtpcodeMsgToSignInUserAccount($mobile, $otpcode){
         $smsSentStatus = true;
         $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
@@ -430,7 +445,6 @@ class commonfunction{
         }
         return $smsSentStatus;
     }
-    
     
     public static function handlingUserSignInSentOtpcode($paramDataArr){
         $rspDetails = array();
@@ -584,6 +598,21 @@ class commonfunction{
         return $rspDetails;
     }
     
+    public static function handlingResendOtpToSignUpUserAccount($paramDataArr){
+        $rspDetails = array();
+        $rspDetails['isOtpcodeSent'] = 'FALSE';
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
+            $paramDataArr['sent_onmedium'] = "mobile";
+            $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+            $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount(
+                $paramDataArr['mobile'], $paramDataArr['otpcode']    
+            );
+            $rspDetails['isOtpcodeSent'] = 'TRUE';
+        }
+        return $rspDetails;
+    }
+    
     public static function prepareAndSendOtpcodeMsgToSignUpUserAccount($mobile, $otpcode){
         $smsSentStatus = true;
         $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
@@ -667,6 +696,35 @@ class commonfunction{
         return $rspDetails;
     }
     
+    public static function handlingResendOtpToToUserAccountForForgotPwd($paramDataArr){
+        $rspDetails = array();
+        if(count($paramDataArr)>0 && $paramDataArr!=false){
+            if($paramDataArr['purposetype']=='resendForFrgtPwd'){
+                if(array_key_exists('tokenId', $paramDataArr)){
+                    if(validation::isValidNumberic($paramDataArr['tokenId'])=='TRUE'){
+                        $authParamData = array();
+                        $authParamData['email'] = $paramDataArr['email'];
+                        $authParamData['user_id'] = $paramDataArr['tokenId'];
+                        $authenticatedUserData = UsersDao :: getUserDetails($authParamData);
+                        if(count($authenticatedUserData)>0 && $authenticatedUserData!=false){
+                            $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
+                            $paramDataArr['user_id'] = "mobile";
+                            $paramDataArr['mobile'] = $authenticatedUserData[0]['userMobile'];
+                            $paramDataArr['name'] = $authenticatedUserData[0]['userName'];
+                            $paramDataArr['user_id'] = $paramDataArr['tokenId'];
+                            $paramDataArr['sent_onmedium'] = "mobile";
+                            $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
+                            $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToUserAccountForForgotPwd(
+                                $paramDataArr['mobile'], $paramDataArr['otpcode']    
+                            );
+                            $rspDetails['isOtpcodeSent'] = 'TRUE';
+                        }
+                    }
+                }
+            }
+        }
+        return $rspDetails;
+    }
     
     public static function handlingUserForgotPwdSentOtpcode($paramDataArr){
         $rspDetails = array();
