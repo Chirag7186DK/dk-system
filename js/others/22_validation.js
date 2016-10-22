@@ -123,10 +123,16 @@ function validateDataUserSignInAuthentication(fromSection){
             $('.userSignInOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }else{
-            var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
-            if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
+            var enteredOtpcodeStr = ($('#userSignInOtpCodeInputId').val());
+            if((enteredOtpcodeStr).length===6){
+                var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
+                if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
+                }else{
+                    $('.userSignInOtpCodeInput_ErrorClass').append("Incorrect One Time Password has been entered !!!");
+                    inValidDataCount++;
+                }
             }else{
-                $('.userSignInOtpCodeInput_ErrorClass').append("Incorrect One Time Password has been enteredd !!!");
+                $('.userSignInOtpCodeInput_ErrorClass').append("Entered one time password length must be six digits no.s only !!!");
                 inValidDataCount++;
             }
         }
