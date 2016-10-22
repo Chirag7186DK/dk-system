@@ -227,6 +227,9 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                     }else if(fromSection==='signUpOtpSection'){
                         $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
                         $rootScope.userSignUpOtpNoticeMsgStr = 'OTP sent successfully on your mobile no.s and it will take 15 to 45 sec approx to reach at your message box !!!';
+                    }else if(fromSection==='frgtPwdOtpSection'){
+                        $rootScope.isShowFrgtPwdNoticeMsgStepNo = 'frgtPwdStep2';
+                        $rootScope.userFrgtPwdNoticeMsgStr = "OTP sent successfully on your registered mobile no.s and it will take 15 to 45 sec approx to reach at your message box !!!";
                     }
                 }
             }catch(ex){
