@@ -428,12 +428,11 @@ class commonfunction{
         return $rspDetails;
     }
     
-    
     public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
         if($mobile!='' && strlen($mobile)==10){
             $smsMsgBodyStr = "$otpcode is your login OTP for signIn with Desserts Khazana.";
-            // $smsSentStatus = utils :: sendSMS(array($mobile), $smsMsgBodyStr);
+            $smsSentStatus = utils :: sendSMSOnAllMobileSameContent(array($mobile), $smsMsgBodyStr);
         }
         return $smsSentStatus;
     }
