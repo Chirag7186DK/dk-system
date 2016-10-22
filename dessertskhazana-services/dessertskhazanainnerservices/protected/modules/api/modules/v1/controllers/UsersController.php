@@ -97,15 +97,15 @@ class UsersController extends V1Controller{
         }
     }
     
-    public function actionSendOtpCode(){
+    public function actionSendOtpCodeUserAccount(){
         if(ComponentsHttp::httpMethod()=="POST"){
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
             if($inDtoArray!='FALSE'){
                 $paramDataArr = $inDtoArray['dkParamDataArr'];
-                $paramKeyValueDataStatus = customparam :: checkParamDataForSendingUserAccountOtpcode($paramDataArr);
+                $paramKeyValueDataStatus = customparam :: checkParamDataForSendingOtpcodeUserAccount($paramDataArr);
                 if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->sendUserAccountOtpcode($paramDataArr);
+                    $rspDetails = $UsersServicesV1->sendOtpcodeOnUserAccount($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
