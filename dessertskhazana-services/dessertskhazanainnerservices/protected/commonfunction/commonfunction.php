@@ -400,7 +400,7 @@ class commonfunction{
         return $rspDetails;
     }
     
-    public static function handlingUserSigInAndOtpRequest($paramDataArr){
+    public static function handlingOtpForUserSignInAccount($paramDataArr){
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
         $rspDetails['isOtpCodeSent'] = 'N';
@@ -417,21 +417,6 @@ class commonfunction{
             $rspDetails['isOtpCodeSent'] = "Y";
             
         } 
-        return $rspDetails;
-    }
-    
-    public static function handlingResendOtpToSignInUserAccount($paramDataArr){
-        $rspDetails = array();
-        $rspDetails['isOtpcodeSent'] = 'N';
-        if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
-            $paramDataArr['sent_onmedium'] = "mobile";
-            $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
-            $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount(
-                $paramDataArr['mobile'], $paramDataArr['otpcode']    
-            );
-            $rspDetails['isOtpcodeSent'] = 'Y';
-        }
         return $rspDetails;
     }
     
