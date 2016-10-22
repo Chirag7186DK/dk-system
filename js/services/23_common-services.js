@@ -155,7 +155,7 @@
             
             // sendOtpcode
             commonDetails.sendOtpcode = function(paramDataObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/SendOtpCode", 'apiFile', 'POST', '', paramDataObj).done(function(retResponseJson){});
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/SendOtpCode", 'apiFile', 'POST', '', paramDataObj).done(function(rtRspJson){});
                 return promiseObject;
             };
 
@@ -167,7 +167,7 @@
                     if(paramDataObj!==false && jQuery.isEmptyObject(paramDataObj)===false){
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = paramDataObj;
-                        var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(retResponseJson){});
+                        var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserLogout", 'apiFile', 'PUT', '', apiParamJsonObj).done(function(rtRspJson){});
                         return promiseObject;
                     }
                 }catch(ex){
@@ -205,11 +205,11 @@
                         var apiParamJsonObj = {};
                         apiParamJsonObj['dkParamDataArr'] = paramDataObj;
                         // calling UsersServices 
-                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(retResponseJson){
+                        communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/UserDashboardSummaryData", 'apiFile', 'GET', '', apiParamJsonObj).done(function(rtRspJson){
                             $rootScope.$apply(function(){
                                 var userDashboardDataObj = false;
-                                if(retResponseJson!==false && retResponseJson!==undefined && retResponseJson!==''){
-                                    userDashboardDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', retResponseJson);
+                                if(rtRspJson!==false && rtRspJson!==undefined && rtRspJson!==''){
+                                    userDashboardDataObj = extractDataFromReturnAjaxResponse('GET', 'apiFile', 'userDetails', rtRspJson);
                                 }
                                 if(userDashboardDataObj!=='' && userDashboardDataObj!==false && userDashboardDataObj!==undefined){
                                     commonDetails.resetUserDashboardVariableData(userDashboardDataObj);
