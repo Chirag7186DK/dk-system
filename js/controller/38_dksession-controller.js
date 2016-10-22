@@ -24,7 +24,6 @@ function dkSessionController($rootScope, $state, CommonServices){
                 $state.go("/");
             }else if(checkUnAuthorizedUserSessionParamObjExists()==='FALSE' && pageLoad==='home'){
                 // clear browser cookies and other thing by javascript
-                resetDKSessionData();
                 generateDkUserSessionId();
                 CommonServices.refreshWebAppVariableData();
             }
