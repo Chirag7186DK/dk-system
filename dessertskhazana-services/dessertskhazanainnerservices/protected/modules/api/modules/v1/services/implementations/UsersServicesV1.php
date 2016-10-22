@@ -203,12 +203,24 @@ class UsersServicesV1 implements IUsersServicesV1{
         $rspDetails = array();
         $rspDetails['isOtpcodeSent'] = 'FALSE';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            $otpCode = '123456';
+            $otpCode = utils :: getRandomOtpcode('6');
             $paramDataArr['otpcode'] = $otpCode;
             $paramDataArr['sent_onmedium'] = "mobile";
             $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             if($lastInsertedId>0 && $lastInsertedId!=false){
                 $rspDetails['isOtpcodeSent'] = 'TRUE';
+                // for resending otp code for signIn purpose
+                if($paramDataArr['purposetype']=='resendForSignIn'){
+                    $rtSmsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile(
+                        $paramDataArr['mobile'], $otpCode    
+                    );
+                }
+                // for resending otp code for signUp purpose
+                if($paramDataArr['purposetype']=='resendForSignUp'){
+                    $rtSmsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile(
+                        $paramDataArr['mobile'], $otpCode    
+                    );
+                }
             }
         } 
         return $rspDetails;
