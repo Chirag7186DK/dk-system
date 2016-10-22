@@ -107,7 +107,6 @@ class commonfunction{
         return $rspDetails;
     }
     
-
     public static function getDeliveryAreaListDetails($paramJsonData){
         $rspDetails = array();
         if(count($paramJsonData)>0 && $paramJsonData!=false){
@@ -145,7 +144,6 @@ class commonfunction{
         return $rspDetails;
     }
  
-    
     public static function preparedShopstoreFilterationData($shopstoreJsonData, $requestedStoreId=''){
         $allStoreWiseFilterDetailsArr = array();
         try{
@@ -401,7 +399,6 @@ class commonfunction{
         } 
         return $rspDetails;
     }
-    
     
     public static function handlingUserSigInAndOtpRequest($paramDataArr){
         $rspDetails = array();
