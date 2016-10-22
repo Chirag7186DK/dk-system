@@ -114,7 +114,7 @@ class LocationDao{
         $retResult = false;
         try{
             $connection = Yii::App()->db;
-            $sql= " SELECT 
+            $sql = " SELECT 
                     COALESCE(cpts.cca_id, '') countryCityAreaAffiliationId,
                     COALESCE(cca.country_id, '') countryId, 
                     COALESCE(cca.city_id, '') cityId, COALESCE(c.name, '') cityName,
