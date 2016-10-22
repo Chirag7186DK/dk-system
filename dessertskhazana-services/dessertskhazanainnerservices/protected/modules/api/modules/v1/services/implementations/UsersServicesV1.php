@@ -211,13 +211,13 @@ class UsersServicesV1 implements IUsersServicesV1{
                 $rspDetails['isOtpcodeSent'] = 'TRUE';
                 // for resending otp code for signIn purpose
                 if($paramDataArr['purposetype']=='resendForSignIn'){
-                    $rtSmsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile(
+                    $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount(
                         $paramDataArr['mobile'], $otpCode    
                     );
                 }
                 // for resending otp code for signUp purpose
                 if($paramDataArr['purposetype']=='resendForSignUp'){
-                    $rtSmsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile(
+                    $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignUpUserAccount(
                         $paramDataArr['mobile'], $otpCode    
                     );
                 }
