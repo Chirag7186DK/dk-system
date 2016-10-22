@@ -103,7 +103,6 @@ class UsersServicesV1 implements IUsersServicesV1{
                         $rspDetails['userDetails']['isOtpCodeSent'] = 'Y';
                         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
                         $rspDetails['userDetails']['msgStr'] = $rtDataArr2['userDetails']['msgStr'];
-                        $rspDetails['userDetails']['smsData'] = $rtDataArr2['userDetails']['smsData'];
                     }else{
                         $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
                         $rspDetails['userDetails']['isOtpCodeValidated'] = 'N';
