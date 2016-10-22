@@ -173,7 +173,7 @@ class utils{
                 
                 // initialize constructor
                 $txtLocalClassObj = new textlocal($smsUserName, $smsApiHash, false);
-                $rspSendsmsObj = $txtLocalClassObj->sendSms($mobileDataArr, $msgBody, $smsSender);
+                $rspSmsSentObj = $txtLocalClassObj->sendSms($mobileDataArr, $msgBody, $smsSender);
                 
             }
         }catch(Exception $ex){
