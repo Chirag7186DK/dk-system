@@ -4,6 +4,7 @@ require_once('SimpleEmailService.php');
 require_once('SimpleEmailServiceMessage.php');
 require_once('SimpleEmailServiceRequest.php');
 require_once('curlHttpClient.php');
+require_once('textlocal.class.php');
 
 class utils{
     
@@ -152,48 +153,27 @@ class utils{
     }
     
     // CJ defined this functio 2016-07-23
-    public static function sendSMS($mobileArr, $msgBody, $smsSender=''){
-        $retSmsSentStatus = false;
-        $counterSmsSent = 0;
+    public static function sendSMSOnAllMobileSameContent($mobileDataArr, $msgBody, $smsSender=''){
+        $rtSmsSentStatus = false;
         try{
-            if(count($mobileArr)>0 && $mobileArr!=false
+            if(count($mobileDataArr)>0 && $mobileDataArr!=false
                 && $msgBody!='' && $msgBody!=false){
                 
                 if($smsSender==''){
-                    // need to change here sms sender
                     $smsSender = $GLOBALS['SMSSENDER'];
                 }
-                // initialize curl
-                $curl = new Curl_HTTP_Client();
-                // sms configuration code here
-                $smsUserName = urlencode($GLOBALS['SMSUSERNAME']);
-                $smsPassword = urlencode($GLOBALS['SMSPASSWORD']);
-                $sender = urlencode($GLOBALS['SMSSENDER']);
-                $domain = $GLOBALS['SMSDOMAIN'];
-                // message body content
-                $message = urlencode($msgBody);
-                // maximum SMS allowed to send in one batch
-                $max_sms_count = 100;
-                // iterate each mobile no
-                for($j=0; $j<count($mobileArr);){
-                    $sentTo = array();
-                    for($i = 0; $i<$max_sms_count && $j<count($mobileArr); $i++, $j++){
-                        $countryCode = 91;
-                        $sentTo[] = $countryCode.$mobileArr[$j];
-                    }
-                    $UpdatedSentTo = implode(',', $sentTo);
-                    $url = "$domain/sms.aspx?Id=$smsUserName&Pwd=$smsPassword&SenderID=$sender&PhNo=$UpdatedSentTo&text=$message"; 
-                    $response = $curl->send_post_data($url);
-                    if($response!='' && $response!=false && $response!='error'){
-                        $counterSmsSent++;
-                    }
-                }
+                $smsUserName = $GLOBALS['SMSUSERNAME'];
+                $smsApiHash = $GLOBALS['SMSAPIHASH'];
+                
+                // initialize constructor
+                $txtLocalClassObj = new textlocal($smsUserName, $smsApiHash, false);
+                $rspSendsmsObj = $txtLocalClassObj->sendSms($mobileDataArr, $msgBody, $smsSender);
                 
             }
         }catch(Exception $ex){
-            $retSmsSentStatus = false;
+            $rtSmsSentStatus = false;
         }
-        return $retSmsSentStatus;
+        return $rtSmsSentStatus;
     }
     
     // CJ defined this function 2016-07-24
