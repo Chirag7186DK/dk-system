@@ -201,51 +201,15 @@ class UsersServicesV1 implements IUsersServicesV1{
     // CJ defined this action 2016-08-01
     public function sendOtpcodeOnUserAccount($paramDataArr){
         $rspDetails = array();
-        $rspDetails['isOtpcodeSent'] = 'FALSE';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            
             if($paramDataArr['purposetype']=='resendForSignIn'){
-                $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
-                $paramDataArr['sent_onmedium'] = "mobile";
-                $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
-                $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount(
-                    $paramDataArr['mobile'], $paramDataArr['otpcode']    
-                );
-                $rspDetails['isOtpcodeSent'] = 'TRUE';
+                $rspDetails = commonfunction :: handlingResendOtpToSignInUserAccount($paramDataArr);
             }
-            
             if($paramDataArr['purposetype']=='resendForSignUp'){
-                $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
-                $paramDataArr['sent_onmedium'] = "mobile";
-                $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
-                $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignUpUserAccount(
-                    $paramDataArr['mobile'], $paramDataArr['otpcode']    
-                );
-                $rspDetails['isOtpcodeSent'] = 'TRUE';
+                $rspDetails = commonfunction :: handlingResendOtpToSignUpUserAccount($paramDataArr);
             }
-            
             if($paramDataArr['purposetype']=='resendForFrgtPwd'){
-                if(array_key_exists('tokenId', $paramDataArr)){
-                    if(validation::isValidNumberic($paramDataArr['tokenId'])=='TRUE'){
-                        $authParamData = array();
-                        $authParamData['email'] = $paramDataArr['email'];
-                        $authParamData['user_id'] = $paramDataArr['tokenId'];
-                        $authenticatedUserData = UsersDao :: getUserDetails($authParamData);
-                        if(count($authenticatedUserData)>0 && $authenticatedUserData!=false){
-                            $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
-                            $paramDataArr['user_id'] = "mobile";
-                            $paramDataArr['mobile'] = $authenticatedUserData[0]['userMobile'];
-                            $paramDataArr['name'] = $authenticatedUserData[0]['userName'];
-                            $paramDataArr['user_id'] = $paramDataArr['tokenId'];
-                            $paramDataArr['sent_onmedium'] = "mobile";
-                            $lastInsertedId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
-                            $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToUserAccountForForgotPwd(
-                                $paramDataArr['mobile'], $paramDataArr['otpcode']    
-                            );
-                            $rspDetails['isOtpcodeSent'] = 'TRUE';
-                        }
-                    }
-                }
+                $rspDetails = commonfunction :: handlingResendOtpToToUserAccountForForgotPwd($paramDataArr);
             }
         } 
         return $rspDetails;
