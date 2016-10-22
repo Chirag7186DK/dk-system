@@ -143,7 +143,7 @@ class LocationDao{
                     if($sqlGroupByStatement!=''){
                         $sql.= " GROUP BY ". trim($sqlGroupByStatement, ",");
                     }
-            $sql.= "  ORDER BY pt.sort_order ASC ";        
+            $sql.= "  ORDER BY pt.sort_order ASC ";      
             $command = $connection->createCommand($sql);
             $ccaBasedConductDessertsTypeDetails = $command->queryAll();
             if(count($ccaBasedConductDessertsTypeDetails)>0 
