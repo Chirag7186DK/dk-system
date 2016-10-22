@@ -3,7 +3,7 @@
 require_once('SimpleEmailService.php');
 require_once('SimpleEmailServiceMessage.php');
 require_once('SimpleEmailServiceRequest.php');
-require_once('curlHttpClient.php');
+// require_once('curlHttpClient.php');
 // require_once('textlocal.class.php');
 
 class utils{
