@@ -43,6 +43,7 @@ $SMSSENDER = 'DSRTKZ';
 $SMSDOMAIN = 'http://api.textlocal.in/';
 $SMSAPIHASH = 'f092397c7db948c1035571c210345b3e23e20831';
 
+// base href
 $baseRef = "/dk-system/";
 
 // access api security key for dessertskhazana
