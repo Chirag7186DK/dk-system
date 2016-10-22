@@ -563,6 +563,7 @@ class commonfunction{
             }
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
+                $paramDataArr['purposetype'] = 'signUp';
                 $rspDetails = commonfunction :: handlingOtpForUserSignUpAccount($paramDataArr);
             }
         } 
@@ -664,7 +665,7 @@ class commonfunction{
                 $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                 $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
                 $rspDetails['userDetails']['tokenId'] = $userDataObj['unmd5UserId'];
-                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 to 45 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
+                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 to 45 sec approx to reach at your message box !!!";
             }
         } 
         return $rspDetails;
