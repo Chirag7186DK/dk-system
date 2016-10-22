@@ -80,7 +80,7 @@ function resetDKSessionData(){
             var userSessionObj = {};
             userSessionObj['usersession_starttimestamp'] = (new Date()).getTime();
             userSessionObj['lastupdated_sessiontime'] = '';
-            userSessionObj['user_sessionid'] = '';
+            userSessionObj['user_sessionid'] = generateDkUserSessionId();
             userSessionObj['udblogId'] = '';
             userSessionObj['userProfileTypeId'] = '';
             
