@@ -26,6 +26,7 @@ function dkSessionController($rootScope, $state, CommonServices){
                 // clear browser cookies and other thing by javascript
                 resetDKSessionData();
                 generateDkUserSessionId();
+                CommonServices.refreshWebAppVariableData();
             }
         }catch(ex){
             console.log("problem in loadDefaultDataInDkSession ex=>"+ex);
