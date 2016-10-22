@@ -671,7 +671,7 @@ class commonfunction{
         return $rspDetails;
     }
     
-    public static function handlingResendOtpToToUserAccountForForgotPwd($paramDataArr){
+    public static function handlingOtpForUserAccountForgotPwd($paramDataArr){
         $rspDetails = array();
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             if($paramDataArr['purposetype']=='resendForFrgtPwd'){
