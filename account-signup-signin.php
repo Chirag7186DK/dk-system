@@ -132,7 +132,7 @@
                     <p class="userFrgtPwdOtpCodeInput_ErrorClass"></p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 userFrgtPwdOperationBtnContainerDivClass">
-                    <button ng-click="toggleAccountFormSectionName('frgtPwdStep2Section')" class='btn userFrgtPwdResendOtpSubmitBtnClass'>
+                    <button ng-click="resendOtpcodeClick('frgtPwdOtpSection');" class='btn userFrgtPwdResendOtpSubmitBtnClass'>
                         <i class='fa fa-remove'></i> RESEND OTP
                     </button>
                     <button ng-click="collectDataUserFrgtPwdAuthentication('frgtPwdStep2Section')" class='btn userFrgtPwdVerifyOtpSubmitBtnClass'>
