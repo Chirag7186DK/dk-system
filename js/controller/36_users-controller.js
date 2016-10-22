@@ -267,9 +267,9 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         $rootScope.signOutUser = function(){
             CommonServices.signOutUser();
             resetDKSessionData();
+            CommonServices.refreshWebAppVariableData();
             // window.location.href = globalBaseSitePath;
             $state.go('/', {reload:true}); 
-            CommonServices.refreshWebAppVariableData();
         };
         
         // storeRequestedSectionNameToAccessInUserAccount
