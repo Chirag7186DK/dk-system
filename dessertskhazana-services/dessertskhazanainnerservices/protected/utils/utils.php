@@ -165,6 +165,12 @@ class utils{
                 $smsUserName = $GLOBALS['SMSUSERNAME'];
                 $smsApiHash = $GLOBALS['SMSAPIHASH'];
                 
+                // append each mobile no.s prefix
+                $countMobileLength = count($mobileDataArr);
+                for($eachMobileIndex = 0; $eachMobileIndex<$countMobileLength; $eachMobileIndex++){
+                    $mobileDataArr[$eachMobileIndex] = "91".$mobileDataArr[$eachMobileIndex];
+                }
+                
                 // initialize constructor
                 $txtLocalClassObj = new textlocal($smsUserName, $smsApiHash, false);
                 $rspSendsmsObj = $txtLocalClassObj->sendSms($mobileDataArr, $msgBody, $smsSender);
