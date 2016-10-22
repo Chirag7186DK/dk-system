@@ -597,7 +597,6 @@ class commonfunction{
         return $smsSentStatus;
     }
     
-
     public static function handlingUserSignUpSentOtpcode($paramDataArr){
         $rspDetails = array();
         $rspDetails['msgStr'] = 'Invalid One Time Password has been entered !!!';
@@ -661,7 +660,7 @@ class commonfunction{
                 // storing otp code
                 $lastInsertedStoredOtpcodeId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
-                $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($userDataObj['userMobile'], $otpCode);
+                $smsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToUserAccountForForgotPwd($userDataObj['userMobile'], $otpCode);
                 $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                 $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
                 $rspDetails['userDetails']['tokenId'] = $userDataObj['unmd5UserId'];
@@ -696,6 +695,15 @@ class commonfunction{
         return $rspDetails;
     }
     
+    public static function prepareAndSendOtpcodeMsgToUserAccountForForgotPwd($mobile, $otpcode){
+        $smsSentStatus = true;
+        $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
+        if($mobile!='' && strlen($mobile)==10 && $isSmsServicesActivated=='Y'){
+            $smsMsgBodyStr = trim("Use $otpcode as OTP to change your password");
+            $smsSentStatus = utils :: sendSMSSameContentOnBulkMobile(array($mobile), $smsMsgBodyStr);
+        }
+        return $smsSentStatus;
+    }
     
     public static function addUserRatingReviewProduct($paramJsonData){
         $retStatus = 'FALSE';
