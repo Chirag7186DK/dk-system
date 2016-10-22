@@ -417,14 +417,14 @@ class commonfunction{
             // storing otp code
             $storedOTPCODEStatus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             // sending otp code
-            $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile($paramDataArr['mobile'], $otpCode);
+            $smsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount($paramDataArr['mobile'], $otpCode);
             $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
             $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
         } 
         return $rspDetails;
     }
     
-    public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
+    public static function prepareAndSendOtpcodeMsgToSignInUserAccount($mobile, $otpcode){
         $smsSentStatus = true;
         $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
         if($mobile!='' && strlen($mobile)==10 && $isSmsServicesActivated=='Y'){
@@ -579,7 +579,7 @@ class commonfunction{
                 // storing otp code
                 $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
-                $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($paramDataArr['mobile'], $otpCode);
+                $smsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignUpUserAccount($paramDataArr['mobile'], $otpCode);
                 $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary this $otpCode otp code now !!!";
                 $rspDetails['isOtpCodeSent'] = "Y";
             }
@@ -587,7 +587,7 @@ class commonfunction{
         return $rspDetails;
     }
     
-    public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
+    public static function prepareAndSendOtpcodeMsgToSignUpUserAccount($mobile, $otpcode){
         $smsSentStatus = true;
         $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
         if($mobile!='' && strlen($mobile)==10 && $isSmsServicesActivated=='Y'){
@@ -649,7 +649,7 @@ class commonfunction{
             }
             // sending otp code and storing purpose
             if($isSendOtpCode=='Y'){
-                $otpCode = '123456';
+                $otpCode = utils :: getRandomOtpcode('6');
                 $mobileStr = "XXXXXX".substr($userDataObj['userMobile'], -4);
                 $paramDataArr['user_id'] = $userDataObj['unmd5UserId'];
                 $paramDataArr['name'] = $userDataObj['userName'];
@@ -661,11 +661,11 @@ class commonfunction{
                 // storing otp code
                 $lastInsertedStoredOtpcodeId = UsersDao :: addUserOtpcodeDetails($paramDataArr);
                 // sending otp code
-                // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpCode);
+                $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignUpUserMobile($userDataObj['userMobile'], $otpCode);
                 $rspDetails['userDetails']['isUserAccountActive'] = 'Y';
                 $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
                 $rspDetails['userDetails']['tokenId'] = $userDataObj['unmd5UserId'];
-                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
+                $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile number $mobileStr and it will take 15 to 45 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
             }
         } 
         return $rspDetails;
