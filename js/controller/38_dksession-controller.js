@@ -22,6 +22,10 @@ function dkSessionController($rootScope, $state, CommonServices){
                 // redirect to main page of desserts khazana
                 // window.location = globalBaseSitePath;
                 $state.go("/");
+            }else if(checkUnAuthorizedUserSessionParamObjExists()==='FALSE' && pageLoad==='home'){
+                // clear browser cookies and other thing by javascript
+                resetDKSessionData();
+                generateDkUserSessionId();
             }
         }catch(ex){
             console.log("problem in loadDefaultDataInDkSession ex=>"+ex);
