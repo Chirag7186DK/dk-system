@@ -10,7 +10,7 @@ class utils{
     // CJ defined this function 2016-06-15
     public static function generatingErrorReportingLog($errorNo, $errorMsg, $errorFilePath, $errorLineNo, $otherVars){
         $retLastInseredErrorLogId = false;
-        if($errorNo!='' && $errorMsg!='' && $errorFilePath!='' && $errorLineNo !=''){
+        if($errorNo!='' && $errorMsg!='' && $errorFilePath!='' && $errorLineNo!=''){
             // CJ think about sms/email services to send error reporting 
             global $isSendSmsEmailToAdminOnErrorOccured, $SentEmailOnErrorOccured, $SentSmsOnErrorOccured, $SiteTitle;
             $allEmailIds = $SentEmailOnErrorOccured;
@@ -21,7 +21,7 @@ class utils{
             $preparingErrorMsgStr.=", Filepath=>".$errorFilePath;
             $preparingErrorMsgStr.=", Fileno=>".$errorLineNo;
             $preparingErrorMsgStr.=", Mesage=>".$errorMsg;
-            $sqlQuery = "INSERT INTO DK_ERRORREPORTINGLOG";
+            $sqlQuery = "INSERT INTO ERRORREPORTINGLOG";
             $sqlColumnNames = "";
             $sqlValues = "";
             if($preparingErrorMsgStr!=''){
