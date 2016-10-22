@@ -431,7 +431,7 @@ class commonfunction{
     public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
         if($mobile!='' && strlen($mobile)==10){
-            $smsMsgBodyStr = "$otpcode is your login OTP for signIn with Desserts Khazana.";
+            $smsMsgBodyStr = "$otpcode is your login OTP for signIn with Desserts Khazana account.";
             $smsSentStatus = utils :: sendSMSSameContentOnAllMobile(array($mobile), $smsMsgBodyStr);
         }
         return $smsSentStatus;
