@@ -413,7 +413,7 @@ class commonfunction{
         $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             // sending otp code and storing purpose
-            $otpCode = '123456';
+            $otpCode = trim(getRandomOtpcode());
             $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
             $paramDataArr['otpcode'] = $otpCode;
             $paramDataArr['sent_onmedium'] = 'mobile';
@@ -421,7 +421,7 @@ class commonfunction{
             // storing otp code
             $storedOTPCODEStataus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
             // sending otp code
-            // $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile($paramDataArr['mobile'], $otpCode);
+            $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile($paramDataArr['mobile'], $otpCode);
             $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
             $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
         } 
