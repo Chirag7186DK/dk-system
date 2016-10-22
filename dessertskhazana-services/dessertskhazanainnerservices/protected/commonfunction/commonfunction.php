@@ -402,28 +402,27 @@ class commonfunction{
     
     public static function handlingUserSigInAndOtpRequest($paramDataArr){
         $rspDetails = array();
-        $rspDetails['userDetails']['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
-        $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
+        $rspDetails['msgStr'] = 'Please try again to generate OTP, clicking on resend button !!!';
+        $rspDetails['isOtpCodeSent'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
-            // sending otp code and storing purpose
+            
             $otpCode = utils :: getRandomOtpcode('6');
             $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
             $paramDataArr['otpcode'] = $otpCode;
             $paramDataArr['sent_onmedium'] = 'mobile';
-            $paramDataArr['purposetype'] = 'signIn';
-            // storing otp code
+            
             $storedOTPCODEStatus = UsersDao :: addUserOtpcodeDetails($paramDataArr);
-            // sending otp code
             $smsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount($paramDataArr['mobile'], $otpCode);
-            $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
-            $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
+            $rspDetails['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 15 to 45 sec approx to reach at your message box !!!";
+            $rspDetails['isOtpCodeSent'] = "Y";
+            
         } 
         return $rspDetails;
     }
     
     public static function handlingResendOtpToSignInUserAccount($paramDataArr){
         $rspDetails = array();
-        $rspDetails['isOtpcodeSent'] = 'FALSE';
+        $rspDetails['isOtpcodeSent'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             $paramDataArr['otpcode'] = trim(utils :: getRandomOtpcode('6'));
             $paramDataArr['sent_onmedium'] = "mobile";
@@ -431,7 +430,7 @@ class commonfunction{
             $rtSmsSentStatus = commonfunction :: prepareAndSendOtpcodeMsgToSignInUserAccount(
                 $paramDataArr['mobile'], $paramDataArr['otpcode']    
             );
-            $rspDetails['isOtpcodeSent'] = 'TRUE';
+            $rspDetails['isOtpcodeSent'] = 'Y';
         }
         return $rspDetails;
     }
