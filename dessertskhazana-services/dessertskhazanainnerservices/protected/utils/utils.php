@@ -159,23 +159,44 @@ class utils{
             if(count($mobileDataArr)>0 && $mobileDataArr!=false
                 && $msgBody!='' && $msgBody!=false){
                 
+                $smsUserName = $GLOBALS['SMSUSERNAME'];
+                $smsApiHash = $GLOBALS['SMSAPIHASH'];
+                $smsDomain = $GLOBALS['SMSDOMAIN'];
+                
                 if($smsSender==''){
                     $smsSender = $GLOBALS['SMSSENDER'];
                 }
-                $smsUserName = $GLOBALS['SMSUSERNAME'];
-                $smsApiHash = $GLOBALS['SMSAPIHASH'];
                 
                 // append each mobile no.s prefix
                 $countMobileLength = count($mobileDataArr);
-                for($eachMobileIndex = 0; $eachMobileIndex<$countMobileLength; $eachMobileIndex++){
-                    $mobileDataArr[$eachMobileIndex] = "91".$mobileDataArr[$eachMobileIndex];
+                for($eachMobIndex = 0; $eachMobIndex<$countMobileLength; $eachMobIndex++){
+                    $mobileDataArr[$eachMobIndex] = trim("91".$mobileDataArr[$eachMobIndex]);
                 }
                 
-                // initialize constructor
-                $txtLocalClassObj = new textlocal($smsUserName, $smsApiHash, false);
-                $rspSmsSentObj = $txtLocalClassObj->sendSms($mobileDataArr, $msgBody, $smsSender);
+                $sender = urlencode(trim($smsSender));
+                $msgBody = rawurlencode(trim($msgBody));
+                $numbers = implode(',', $mobileDataArr);
+
+                // preparing data for post request
+                $data = array(
+                    'username' => $smsUserName, 
+                    'hash' => $smsApiHash, 
+                    'numbers' => $numbers, 
+                    "sender" => $sender, 
+                    "message" => $msgBody
+                );
+
+                // Send the POST request with cURL
+                $curlUrl = $smsDomain."send/";
+                $chInit = curl_init($curlUrl);
+                curl_setopt($chInit, CURLOPT_POST, true);
+                curl_setopt($chInit, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($chInit, CURLOPT_RETURNTRANSFER, true);
+                $curlResponseObj = curl_exec($chInit);
+                curl_close($chInit);
                 
             }
+            
         }catch(Exception $ex){
             $rtSmsSentStatus = false;
         }
