@@ -177,7 +177,7 @@ class utils{
                 
             }
         }catch(Exception $ex){
-            $rtSmsSentStatus = $ex;
+            $rtSmsSentStatus = false;
         }
         return $rtSmsSentStatus;
     }
