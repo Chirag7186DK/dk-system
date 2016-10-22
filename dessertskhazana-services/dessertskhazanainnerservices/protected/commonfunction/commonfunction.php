@@ -4,7 +4,7 @@ class commonfunction{
     
     public static function generateResponseDataForErrorOccured(){
         $rspDetails = array();
-        $rspDetails["isExceptionOccured"] = 'TRUE';
+        $rspDetails["isExceptionOccured"] = 'FALSE';
         ComponentsJson::GenerateJsonAndSend($rspDetails);
     }
     
@@ -409,7 +409,7 @@ class commonfunction{
         $rspDetails['userDetails']['isOtpCodeSent'] = 'N';
         if(count($paramDataArr)>0 && $paramDataArr!=false){
             // sending otp code and storing purpose
-            $otpCode = trim(utils :: getRandomOtpcode());
+            $otpCode = utils :: getRandomOtpcode();
             $mobileStr = "XXXXXX".substr($paramDataArr['mobile'], -4);
             $paramDataArr['otpcode'] = $otpCode;
             $paramDataArr['sent_onmedium'] = 'mobile';
