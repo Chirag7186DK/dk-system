@@ -1,21 +1,6 @@
 <?php
 
-/**
- * Textlocal API2 Wrapper Class
- *
- * This class is used to interface with the Textlocal API2 to send messages, manage contacts, retrieve messages from
- * inboxes, track message delivery statuses, access history reports
- *
- * @package    Textlocal
- * @subpackage API
- * @author     Andy Dixon <andy.dixon@tetxlocal.com>
- * @version    1.3-IN
- * @const      REQUEST_URL       URL to make the request to
- * @const      REQUEST_TIMEOUT   Timeout in seconds for the HTTP request
- * @const      REQUEST_HANDLER   Handler to use when making the HTTP request (for future use)
- */
-class Textlocal
-{
+class Textlocal{
 	const REQUEST_URL = 'http://api.textlocal.in/';
 	const REQUEST_TIMEOUT = 8;
 	const REQUEST_HANDLER = 'curl';
