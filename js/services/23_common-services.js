@@ -37,7 +37,7 @@
                         sound:false, 
                         size:'normal', 
                         msg:"<p style='text-align:center;'>"+msgStr+"</p>",
-                        delay:1000,
+                        delay:700,
                         position:"top left" ,
                         showClass:"zoomIn notifyToUserOnlyForSelectedDeliveryArea"
                     }; 
