@@ -223,10 +223,10 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                     var rtDataObj = CommonServices.sendOtpcode(apiParamJsonObj);
                     if(fromSection==='signInOtpSection'){
                         $rootScope.isShowUserSignInOtpNoticeMsg = 'TRUE';
-                        $rootScope.userSignInOtpNoticeMsgStr = 'OTP sent successfully on your registered mobile no.s with us and it will take 15 sec approx to reach at your message box !!!';
+                        $rootScope.userSignInOtpNoticeMsgStr = 'OTP sent successfully on your registered mobile no.s with us and it will take 15 to 45 sec approx to reach at your message box !!!';
                     }else if(fromSection==='signUpOtpSection'){
                         $rootScope.isShowUserSignUpOtpNoticeMsg = 'TRUE';
-                        $rootScope.userSignUpOtpNoticeMsgStr = 'OTP sent successfully on your mobile no.s and it will take 15 sec approx to reach at your message box !!!';
+                        $rootScope.userSignUpOtpNoticeMsgStr = 'OTP sent successfully on your mobile no.s and it will take 15 to 45 sec approx to reach at your message box !!!';
                     }
                 }
             }catch(ex){
