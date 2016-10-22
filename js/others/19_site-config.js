@@ -2,7 +2,7 @@
 isHeaderExecutingOnServerLevel = 'Y';
 apiUrlAccessHashValue = 'trr36pdthb9xbhcppyqkgbpkq';
 globalBaseSitePath = 'http://localhost/dk-system/';
-//globalBaseSitePath = 'http://192.168.1.108/dk-system/';
+//globalBaseSitePath = 'http://192.168.1.7/dk-system/';
 product_versionyear = '2016';
 isProductInMaintainanceMode = 'N';
 isDisableDocumentRightClick = 'Y';
