@@ -648,33 +648,44 @@ class customparam{
                 $correctParamKeyValueDataCount++;
             }
         }
-        if(array_key_exists('name', $paramJsonData)){
-            if(strlen($paramJsonData['name'])>0){
-                $correctParamKeyValueDataCount++;
-            }
-        }
         if(array_key_exists('email', $paramJsonData)){
             if(validation::isValidEmail($paramJsonData['email'])=='TRUE'){
                 $correctParamKeyValueDataCount++;
             }
         }
-        if(array_key_exists('mobile', $paramJsonData)){
-            if(validation::isValidMobile($paramJsonData['mobile'])=='TRUE'){
-                $correctParamKeyValueDataCount++;
-            }
-        }
-        if(array_key_exists('pwd', $paramJsonData)){
-            if(validation::isValidPwd($paramJsonData['pwd'])=='TRUE'){
-                $correctParamKeyValueDataCount++;
-            }
-        }
         if(array_key_exists('purposetype', $paramJsonData)){
-            if(strlen($paramJsonData['purposetype'])>=5){
+            if($paramJsonData['purposetype']=='resendForSignIn'
+                || $paramJsonData['purposetype']=='resendForSignUp'){
                 $correctParamKeyValueDataCount++;
+                if(array_key_exists('name', $paramJsonData)){
+                    if(strlen($paramJsonData['name'])>0){
+                        $correctParamKeyValueDataCount++;
+                    }
+                }
+                if(array_key_exists('mobile', $paramJsonData)){
+                    if(validation::isValidMobile($paramJsonData['mobile'])=='TRUE'){
+                        $correctParamKeyValueDataCount++;
+                    }
+                }
+                if(array_key_exists('pwd', $paramJsonData)){
+                    if(validation::isValidPwd($paramJsonData['pwd'])=='TRUE'){
+                        $correctParamKeyValueDataCount++;
+                    }
+                }
+                if($correctParamKeyValueDataCount>=6){
+                    $retStatus = 'TRUE';
+                }
             }
-        }
-        if($correctParamKeyValueDataCount>=6){
-            $retStatus = 'TRUE';
+            if($paramJsonData['purposetype']=='resendForFrgtPwd'){
+                if(array_key_exists('tokenId', $paramJsonData)){
+                    if(validation::isValidNumberic($paramJsonData['tokenId'])=='TRUE'){
+                        $correctParamKeyValueDataCount++;
+                    }
+                }
+                if($correctParamKeyValueDataCount==4){
+                    $retStatus = 'TRUE';
+                }
+            }
         }
         return $retStatus;
     }
