@@ -102,10 +102,10 @@ class UsersController extends V1Controller{
             $inDtoArray = customparam :: checkRequestedParamKeyNamePresentInDtoFile($this->_inDtoArray);
             if($inDtoArray!='FALSE'){
                 $paramDataArr = $inDtoArray['dkParamDataArr'];
-                $paramKeyValueDataStatus = customparam :: checkParamDataForSendingOtpcode($paramDataArr);
+                $paramKeyValueDataStatus = customparam :: checkParamDataForSendingUserAccountOtpcode($paramDataArr);
                 if($paramKeyValueDataStatus=='TRUE'){
                     $UsersServicesV1 = new UsersServicesV1();
-                    $rspDetails = $UsersServicesV1->sendOtpcode($paramDataArr);
+                    $rspDetails = $UsersServicesV1->sendUserAccountOtpcode($paramDataArr);
                     ComponentsJson::GenerateJsonAndSend($rspDetails);
                 }else{
                     commonfunction :: generateResponseDataForInvalidRequestParamKeyData();
