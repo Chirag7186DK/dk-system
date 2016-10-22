@@ -155,7 +155,7 @@
             
             // sendOtpcode
             commonDetails.sendOtpcode = function(paramDataObj){
-                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/SendOtpCode", 'apiFile', 'POST', '', paramDataObj).done(function(rtRspJson){});
+                var promiseObject  = communicationWithAjax("dessertskhazana-services/dessertskhazanainnerservices/?r=api/v1/Users/SendOtpCodeUserAccount", 'apiFile', 'POST', '', paramDataObj).done(function(rtRspJson){});
                 return promiseObject;
             };
 
