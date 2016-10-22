@@ -426,7 +426,8 @@ class commonfunction{
     
     public static function preparedOtpcodeDataSendingToSignInUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
-        if($mobile!='' && strlen($mobile)==10){
+        $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
+        if($mobile!='' && strlen($mobile)==10 && $isSmsServicesActivated=='Y'){
             $smsMsgBodyStr = trim("$otpcode is your login OTP for Desserts Khazana account.");
             $smsSentStatus = utils :: sendSMSSameContentOnBulkMobile(array($mobile), $smsMsgBodyStr);
         }
@@ -588,7 +589,8 @@ class commonfunction{
     
     public static function preparedOtpcodeDataSendingToSignUpUserMobile($mobile, $otpcode){
         $smsSentStatus = true;
-        if($mobile!='' && strlen($mobile)==10){
+        $isSmsServicesActivated = $GLOBALS['ISSMSSERVICEACTIVATED'];
+        if($mobile!='' && strlen($mobile)==10 && $isSmsServicesActivated=='Y'){
             $smsMsgBodyStr = "Your one time password for activating your Desserts Khazana account is $otpcode";
             $smsSentStatus = utils :: sendSMSSameContentOnBulkMobile(array($mobile), $smsMsgBodyStr);
         }
