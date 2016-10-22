@@ -634,7 +634,7 @@ class customparam{
     }
     
     
-    public static function checkParamDataForSendingOtpcode($paramJsonData){
+    public static function checkParamDataForSendingUserAccountOtpcode($paramJsonData){
         $retStatus = 'FALSE';
         $correctParamKeyValueDataCount = 0;
         if(array_key_exists('user_sessionid', $paramJsonData)){
