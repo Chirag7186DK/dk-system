@@ -424,7 +424,6 @@ class commonfunction{
             $smsSentStatus = commonfunction :: preparedOtpcodeDataSendingToSignInUserMobile($paramDataArr['mobile'], $otpCode);
             $rspDetails['userDetails']['msgStr'] = "Enter One Time Password (OTP) sent to your mobile no.s $mobileStr and it will take 45 to 55 sec approx to reach at your message box & use temporary $otpCode otp code now !!!";
             $rspDetails['userDetails']['isOtpCodeSent'] = "Y";
-            $rspDetails['userDetails']['smsData'] = $smsSentStatus;
         } 
         return $rspDetails;
     }
