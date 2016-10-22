@@ -203,6 +203,20 @@ class utils{
         return $rtSmsSentStatus;
     }
     
+    public static function getRandomOtpcode($otpcodeLength='6'){
+        if($otpcodeLength==''){
+            $otpcodeLength = '6';
+        }
+        $count = 0;
+        $randomString = ''; 
+        while($count < $otpcodeLength){
+            $randomDigit = mt_rand(0, 9);
+            $randomString.= $randomDigit;
+            $count++;
+        }
+        return trim($randomString);
+    }
+    
     // CJ defined this function 2016-07-24
     public static function getUserAccessingWebsiteGeoLocationDetails(){
         $retUserGeolocationDetailsArr = array();
