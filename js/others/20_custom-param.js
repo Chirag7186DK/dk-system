@@ -1648,6 +1648,15 @@ function getParamDataForResendOtpcode(fromSection){
                         paramObj = {};
                     }
                 }
+                if(fromSection==='frgtPwdOtpSection'){
+                    paramObj['user_sessionid'] = userSessionParamObj['user_sessionid'];
+                    paramObj['usersession_starttimestamp'] = userSessionParamObj['usersession_starttimestamp'];
+                    paramObj['purposetype'] = 'resendForFrgtPwd';
+                    paramObj = $.extend(paramObj, getTemporaryUserFrgtPwdDataFromSesion());
+                    if(Object.keys(paramObj).length!==5){
+                        paramObj = {};
+                    }
+                }
             }
         }
     }catch(ex){
