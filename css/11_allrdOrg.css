@@ -1,0 +1,2864 @@
+
+@media screen and (min-width:320px) and (max-width:360px){
+
+    /* delivery city area desserts type container css code */
+    
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+    
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+   
+    .eachStoreInfoContainerDivClass{
+        padding-right:0px!important;
+        margin-bottom:5%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserNameRatedReviewPClass{
+        font-size:16px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;     
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:70%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:70%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+    
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+    
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+}
+
+@media screen and (min-width:361px) and (max-width:420px){
+    
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        padding-right:0px!important;
+        margin-bottom:5%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;       
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+}
+
+@media screen and (min-width:421px) and (max-width:500px){
+    
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        padding-right:0px!important;
+        margin-bottom:5%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        width:50%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;       
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+    
+}
+
+@media screen and (min-width:501px) and (max-width:600px){
+
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        margin-bottom:5%!important;
+        width:50%;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        width:50%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;       
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+}
+
+@media screen and (min-width:601px) and (max-width:700px){
+    
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        margin-bottom:5%!important;
+        width:50%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        width:50%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;     
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+}
+
+@media screen and (min-width:701px) and (max-width:768px){
+
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        padding-left:0px!important;
+        margin-bottom:5%!important;
+        width:33.3%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        width:50%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;     
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+}
+
+@media screen and (min-width:769px) and (max-width:800px){
+
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        padding-left:0px!important;
+        margin-bottom:5%!important;
+        width:33.3%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        width:50%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;     
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+    
+}
+
+@media screen and (min-width:801px) and (max-width:1023px){
+
+/* delivery city area desserts type container css code */
+
+.deliveryCityAreaDessertsTagLinesPClass{
+    font-size:16px!important;
+}
+
+.deliveryCityListContainerDivClass{
+    width:55%!important;
+    margin-top:4px!important;
+}
+
+.deliveryCityListWrapperDivClass{
+    margin-left:50%!important;
+}
+
+.deliveryAreaListContainerDivClass{
+    width:55%!important;
+    margin-top:20px!important;
+}
+
+.deliveryAreaListWrapperDivClass{
+    margin-left:50%!important;
+}
+
+.deliveryAreaDessertsTypeListContainerDivClass{
+    width:55%!important;
+    margin-top:20px!important;
+}
+
+.deliveryAreaDessertsTypeListWrapperDivClass{
+    margin-left:50%!important;
+}
+
+/*  what is desserts khazana css code */
+
+.whatIsDessertskhazanaTitlePClass{
+    font-size:16px!important;
+}
+
+/* all store list specific dessert type css code*/
+
+.allStoresInfoNoteHeaderPClass{
+    font-size:16px!important;
+}
+
+.countAllStoresSClass{
+    font-size:16px!important;
+}
+
+.eachStoreInfoContainerDivClass{
+    padding-left:0px!important;
+    margin-bottom:5%!important;
+    width:33.3%!important;
+}
+
+/*  store all products css code */
+
+.storeProductFounCountInfoMsgDivClass{
+    font-size:16px!important;
+}
+
+.storeProductBoxDivClass{
+    padding-left:0px!important;
+    width:33.33%!important;
+}
+
+.storeProductBoxDivClass .preloadProductImagesClass{
+    height:auto!important;
+    width:100%!important;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.storeAllUserReviewedRatingLblSClass{
+    font-size:18px!important;
+}
+
+.storeEachUserRatedReviewPClass{
+    font-size:15px!important;
+}
+
+.storeEachUserAvgRatedReviewPClass{
+    font-size:15px!important;
+}
+
+/*  view product css code  */
+
+.storeServingDessertsTypeNoteInfoLIClass{
+    font-size:16px!important;
+}
+
+.vpd_productImagesContainerDivClass{
+    padding-left:0px!important;
+    width:25%!important;
+    margin-bottom:10px!important;
+    background-color:#fff!important;
+}
+
+.vpd_productImagesContainerDivClass .preloadProductImagesClass{
+    width:100%!important;
+    height:auto!important;
+}
+
+.vpd_productDetailsWrapperDivClass{
+    padding-left:0px!important;
+    width:75%!important;
+    margin-bottom:10px!important;
+    background-color:#fff!important;
+    border:1px solid #e7e7e7!important;        
+}
+
+.vpd_productStoreNameContainerPClass{
+    font-size:14px!important;
+}
+
+.vpd_productReviewAndRatingPClass{
+    font-size:14px!important;
+}
+
+.vpd_storeDeliveryFromAreaToAreaPClass,
+.vpd_storeDeliveryFeeApplicableMsgPClass{
+    font-size:14px!important;
+}
+
+.vpd_estimatedProductDeliveryTimePClass{
+    font-size:14px!important;
+}
+
+.vpd_productSelectMeasurementLabelPClass{
+    font-size:16px!important;
+}
+
+#productMeasurementSelectCtrlId{
+    width:100%;
+}
+
+.vpd_productQtyInputClass{
+    width:100%;
+}
+
+.vpd_ratingProductSelectCtrlClass{
+    width:50%!important;
+}
+
+
+/*  myaccount signup form css code */
+
+.userSignUpFormInfoWrapperDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.userSignUpFormSectionContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+/*  myaccount sigin form css code */
+
+.userSignInFormInfoWrapperDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.userSignInFormSectionContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+/*  forgot password css code */
+
+.userForgotFormInfoWrapperDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.userFrgtPwdFormSectionContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    background:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+/* personal info edit mode display section css code */
+
+.uca_personalInfoEditSectionContainerDivClass input,
+.uca_personalInfoEditSectionContainerDivClass select{
+    width:100%!important;
+}
+
+.uca_changepasswordInfoSectionContainerDivClass input{
+    font-size:12px!important;
+    width:100%!important;
+}
+
+/* order cart section css code */
+
+.uca_ordercartRequestedEachStoreProductItemDivClass{
+    width:25%!important;
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.uca_ordercartRequestedEachStoreItemDetailsDivClass{
+    padding-right:0px!important;
+    width:75%!important;
+}
+
+.ordercartRequestedEachItemInputQtyClass{
+    width:100%!important;
+}
+
+.uca_ordercartCancelledEachItemImageDivClass{
+    width:25%!important;
+}
+
+.uca_ordercartCancelledEachItemDetailsDivClass{
+    width:75%!important;
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+/* user party order css code */
+
+.po_createSectionDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.po_formContentWrappperContainerDivClass{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    margin-top:10px!important;
+    background:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.po_thankyouContentWrapperContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    background:#fff!important;
+    border:1px dotted #e7e7e7!important;
+}
+
+/* user customize order css code */
+
+.co_createSectionDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+}
+
+.co_formContentWrappperContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    margin-top:10px!important;
+    background:#fff!important;
+    border:1px solid #e7e7e7!important;
+}
+
+.co_thankyouContentWrapperContainerDivClass{
+    padding-left:0px!important;
+    padding-right:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    border:1px dotted #e7e7e7!important;
+    background:#fff!important;
+}
+
+/* checkout css code */
+
+.chkout_deliveryAddressHeaderPClass{
+    font-size:11px!important;
+}
+
+.chkout_eachStoreOrderSummaryDivClass{
+    padding-left:0px!important;
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+    border-top:1px dashed rgb(70, 75, 80);
+}
+
+.chkout_eachStoreBasicInfoLblPClass{
+    font-size:11px!important;
+}
+
+.chkout_deliveryAddressInputBoxClass{
+    width:100%!important;
+}
+
+.chkout_deliveryDateInputBoxClass{
+    width:100%!important;
+}
+
+}
+
+@media screen and (min-width:1024px) and (max-width:1280px){
+    
+    /* delivery city area desserts type container css code */
+    
+    .deliveryCityAreaDessertsTagLinesPClass{
+        font-size:16px!important;
+    }
+    
+    .deliveryCityListWrapperDivClass,
+    .deliveryAreaListWrapperDivClass,
+    .deliveryAreaDessertsTypeListWrapperDivClass{
+        margin-left:30%!important;
+    }
+
+    /*  what is desserts khazana css code */
+     
+    .whatIsDessertskhazanaTitlePClass{
+        font-size:16px!important;
+    }
+    
+    /* all store list specific dessert type css code*/
+    
+    .allStoresInfoNoteHeaderPClass{
+        font-size:16px!important;
+    }
+    
+    .countAllStoresSClass{
+        font-size:16px!important;
+    }
+    
+    .eachStoreInfoContainerDivClass{
+        padding-left:0px!important;
+        margin-bottom:5%!important;
+        width:33.3%!important;
+    }
+    
+    /*  store all products css code */
+    
+    .storeProductFounCountInfoMsgDivClass{
+        font-size:16px!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:0px!important;
+        width:33.33%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .storeAllUserReviewedRatingLblSClass{
+        font-size:18px!important;
+    }
+
+    .storeEachUserRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    .storeEachUserAvgRatedReviewPClass{
+        font-size:15px!important;
+    }
+    
+    /*  view product css code  */
+    
+    .storeServingDessertsTypeNoteInfoLIClass{
+        font-size:16px!important;
+    }
+
+    .vpd_productImagesContainerDivClass{
+        padding-left:0px!important;
+        width:25%!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsWrapperDivClass{
+        padding-left:0px!important;
+        width:75%!important;
+        margin-bottom:10px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;        
+    }
+    
+    .vpd_productStoreNameContainerPClass{
+        font-size:14px!important;
+    }
+
+    .vpd_productReviewAndRatingPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_storeDeliveryFromAreaToAreaPClass,
+    .vpd_storeDeliveryFeeApplicableMsgPClass{
+        font-size:14px!important;
+    }
+    
+    .vpd_estimatedProductDeliveryTimePClass{
+        font-size:14px!important;
+    }
+   
+    .vpd_productSelectMeasurementLabelPClass{
+        font-size:16px!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:100%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:100%;
+    }
+
+    .vpd_ratingProductSelectCtrlClass{
+        width:50%!important;
+    }
+    
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+    
+    .userSignInFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userSignInFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+    
+    .userForgotFormInfoWrapperDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .userFrgtPwdFormSectionContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:100%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:100%!important;
+    }
+    
+    /* order cart section css code */
+    
+    .uca_ordercartRequestedEachStoreProductItemDivClass{
+        width:25%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .uca_ordercartRequestedEachStoreItemDetailsDivClass{
+        padding-right:0px!important;
+        width:75%!important;
+    }
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:100%!important;
+    }
+
+    .uca_ordercartCancelledEachItemImageDivClass{
+        width:25%!important;
+    }
+    
+    .uca_ordercartCancelledEachItemDetailsDivClass{
+        width:75%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_createSectionDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    
+    .co_formContentWrappperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_deliveryAddressHeaderPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_eachStoreBasicInfoLblPClass{
+        font-size:11px!important;
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:100%!important;
+    }
+    
+    .chkout_deliveryDateInputBoxClass{
+        width:100%!important;
+    }
+    
+}
+
+@media screen and (min-width:1281px) and (max-width:1366px){
+    
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityListWrapperDivClass,
+    .deliveryAreaListWrapperDivClass,
+    .deliveryAreaDessertsTypeListWrapperDivClass{
+        margin-left:30%!important;
+    }
+    
+    /*  store all products css code */
+
+    .storePriceFilterOperationDivClass,
+    .storeProductSizeFilterOperationDivClass,
+    .storeDiscountFilterOperationDivClass{
+        margin-left:25%!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:1px!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    
+    /*  view product css code  */
+
+    .vpd_productImagesContainerDivClass{
+        padding-bottom:10px!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsContainerDivClass{
+        padding-left:0px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:30%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:30%;
+    }
+    
+    .vpd_ratingProductSelectCtrlClass{
+        width:30%!important;
+    }
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+
+    .userSignInFormSectionContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+
+    .userFrgtPwdFormSectionContainerDivClass{
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:20%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:20%!important;
+    }
+
+    /* order cart section css code */
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:10%!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        margin-left:25%!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:30%!important;
+    }
+   
+    .chkout_deliveryDateInputBoxClass{
+        width:30%!important;
+    }
+    
+}
+
+@media screen and (min-width:1367px){
+    
+    /* delivery city area desserts type container css code */
+
+    .deliveryCityListWrapperDivClass,
+    .deliveryAreaListWrapperDivClass,
+    .deliveryAreaDessertsTypeListWrapperDivClass{
+        margin-left:30%!important;
+    }
+    
+    /*  store all products css code */
+
+    .storePriceFilterOperationDivClass,
+    .storeProductSizeFilterOperationDivClass,
+    .storeDiscountFilterOperationDivClass{
+        margin-left:25%!important;
+    }
+
+    .storeProductBoxDivClass{
+        padding-left:1px!important;
+        width:20%!important;
+    }
+    
+    .storeProductBoxDivClass .preloadProductImagesClass{
+        height:auto!important;
+        width:100%!important;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    
+    /*  view product css code  */
+
+    .vpd_productImagesContainerDivClass{
+        padding-bottom:10px!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-bottom:10px!important;
+        background-color:#fff!important;
+    }
+    
+    .vpd_productImagesContainerDivClass .preloadProductImagesClass{
+        width:100%!important;
+        height:auto!important;
+    }
+    
+    .vpd_productDetailsContainerDivClass{
+        padding-left:0px!important;
+        background-color:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    #productMeasurementSelectCtrlId{
+        width:30%;
+    }
+    
+    .vpd_productQtyInputClass{
+        width:30%;
+    }
+    
+    .vpd_ratingProductSelectCtrlClass{
+        width:30%!important;
+    }
+    
+    /*  myaccount signup form css code */
+    
+    .userSignUpFormSectionContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  myaccount sigin form css code */
+
+    .userSignInFormSectionContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /*  forgot password css code */
+
+    .userFrgtPwdFormSectionContainerDivClass{
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+    
+    /* personal info edit mode display section css code */
+    
+    .uca_personalInfoEditSectionContainerDivClass input,
+    .uca_personalInfoEditSectionContainerDivClass select{
+        width:20%!important;
+    }
+    
+    .uca_changepasswordInfoSectionContainerDivClass input{
+        font-size:12px!important;
+        width:20%!important;
+    }
+
+    /* order cart section css code */
+
+    .ordercartRequestedEachItemInputQtyClass{
+        width:10%!important;
+    }
+    
+    /* user party order css code */
+    
+    .po_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+        margin-top:10px!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .po_thankyouContentWrapperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+        background:#fff!important;
+        border:1px dotted #e7e7e7!important;
+    }
+
+    /* user customize order css code */
+
+    .co_formContentWrappperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-top:10px!important;
+        margin-left:25%!important;
+        background:#fff!important;
+        border:1px solid #e7e7e7!important;
+    }
+
+    .co_thankyouContentWrapperContainerDivClass{
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        margin-left:25%!important;
+        border:1px dotted #e7e7e7!important;
+        background:#fff!important;
+    }
+    
+    /* checkout css code */
+    
+    .chkout_eachStoreOrderSummaryDivClass{
+        padding-left:0px!important;
+        padding-right:0px!important;
+        padding-top:10px!important;
+        padding-bottom:10px!important;
+        border-top:1px dashed rgb(70, 75, 80);
+    }
+    
+    .chkout_deliveryAddressInputBoxClass{
+        width:30%!important;
+    }
+   
+    .chkout_deliveryDateInputBoxClass{
+        width:30%!important;
+    }
+    
+}
