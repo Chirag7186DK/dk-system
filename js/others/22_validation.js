@@ -123,10 +123,16 @@ function validateDataUserSignInAuthentication(fromSection){
             $('.userSignInOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }else{
-            var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
-            if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
+            var enteredOtpcodeStr = ($('#userSignInOtpCodeInputId').val());
+            if((enteredOtpcodeStr).length===6){
+                var userSignedInDataObj = getTemporaryUserSignedInDataFromSesion();
+                if(userSignedInDataObj!==false && jQuery.isEmptyObject(userSignedInDataObj)===false){
+                }else{
+                    $('.userSignInOtpCodeInput_ErrorClass').append("Incorrect One Time Password has been entered !!!");
+                    inValidDataCount++;
+                }
             }else{
-                $('.userSignInOtpCodeInput_ErrorClass').append("Incorrect One Time Password has been enteredd !!!");
+                $('.userSignInOtpCodeInput_ErrorClass').append("Entered one time password length must be six digits no.s only !!!");
                 inValidDataCount++;
             }
         }
@@ -181,11 +187,17 @@ function validateDataUserSignUpAuthentication(fromSection){
             $('.userSignUpOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }else{
-            var userSignUpDataObj = getTemporaryUserSignUpDataFromSesion();
-            if(userSignUpDataObj!==false && jQuery.isEmptyObject(userSignUpDataObj)===false){
-            }else{
-                $('.userSignUpOtpCodeInput_ErrorClass').append("Invalid entered one time password !!!");
+            var enteredOtpcodeStr = ($('#userSignUpOtpCodeInputId').val());
+            if((enteredOtpcodeStr).length!==6){
+                $('.userSignUpOtpCodeInput_ErrorClass').append("Entered one time password length must be six digits no.s only !!!");
                 inValidDataCount++;
+            }else{
+                var userSignUpDataObj = getTemporaryUserSignUpDataFromSesion();
+                if(userSignUpDataObj!==false && jQuery.isEmptyObject(userSignUpDataObj)===false){
+                }else{
+                    $('.userSignUpOtpCodeInput_ErrorClass').append("Invalid entered one time password !!!");
+                    inValidDataCount++;
+                }
             }
         }
         if(isProperInputElementContent('userSignUpPwdInputId')==='FALSE'){
@@ -204,7 +216,6 @@ function validateDataUserSignUpAuthentication(fromSection){
         return true;
     }
 }
-
 
 function validateDataUserFrgtPwdAuthentication(fromSection){
     var inValidDataCount = 0;
@@ -225,11 +236,17 @@ function validateDataUserFrgtPwdAuthentication(fromSection){
             $('.userFrgtPwdOtpCodeInput_ErrorClass').append("Enter your one time password !!!");
             inValidDataCount++;
         }else{
-            var userFrgtPwdDataObj = getTemporaryUserFrgtPwdDataFromSesion();
-            if(userFrgtPwdDataObj!==false && jQuery.isEmptyObject(userFrgtPwdDataObj)===false){
-            }else{
-                $('.userFrgtPwdOtpCodeInput_ErrorClass').append("Invalid entered one time password !!!");
+            var enteredOtpcodeStr = ($('#userFrgtPwdOtpCodeInputId').val());
+            if((enteredOtpcodeStr).length!==6){
+                $('.userFrgtPwdOtpCodeInput_ErrorClass').append("Entered one time password length must be six digits no.s only !!!");
                 inValidDataCount++;
+            }else{
+                var userFrgtPwdDataObj = getTemporaryUserFrgtPwdDataFromSesion();
+                if(userFrgtPwdDataObj!==false && jQuery.isEmptyObject(userFrgtPwdDataObj)===false){
+                }else{
+                    $('.userFrgtPwdOtpCodeInput_ErrorClass').append("Invalid entered one time password !!!");
+                    inValidDataCount++;
+                }
             }
         }
     }else if(fromSection==='frgtPwdStep3Section'){

@@ -209,7 +209,7 @@ class utils{
         }
         $count = 0;
         $randomString = ''; 
-        while($count < $otpcodeLength){
+        while($count < $otpcodeLength && strlen($randomString)<=6){
             $randomDigit = mt_rand(0, 9);
             $randomString.= $randomDigit;
             $count++;

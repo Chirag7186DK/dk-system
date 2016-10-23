@@ -14,10 +14,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                 $state.go('account-signup-signin'); 
             }    
         };
-        
-        // showLoaderAccountHasbeenVerfied
-        $rootScope.showLoaderAccountHasbeenVerfied = function(){};
-        
+       
         // isUserAlreadySignedInAccountSection
         $rootScope.isUserAlreadySignedInAccountSection = function(){
             var userLoggedInSessionStatus = checkUserLoggedInSession();
@@ -33,7 +30,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         $rootScope.toggleAccountFormSectionName = function(sectionName){
             removeTemporaryUserSignUpDataFromSesion();
             removeTemporaryUserSignedInDataFromSesion();
-            // removeTemporaryUseFrgtPwdDataFromSesion();
+            removeTemporaryUserFrgtPwdDataFromSesion();
             $rootScope.showAccountFormSectionName = sectionName;
         };
         
@@ -79,11 +76,13 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                                     storeAuthenticatedUserDetailsInSession(userDataObj);
                                     removeTemporaryUserSignUpDataFromSesion();
                                     removeTemporaryUserSignedInDataFromSesion();
+                                    removeTemporaryUserFrgtPwdDataFromSesion();
                                     $rootScope.redirectToUserAccessedLastPageFrom();
                                 }
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
                                 removeTemporaryUserSignedInDataFromSesion();
+                                removeTemporaryUserFrgtPwdDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signInSection';
                                 $rootScope.isShowUserSignInNoticeMsg = 'TRUE';
                                 $rootScope.userSignInNoticeMsgStr = "Invalid account details !!!";
@@ -138,6 +137,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
                                 removeTemporaryUserSignedInDataFromSesion();
+                                removeTemporaryUserFrgtPwdDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signUpSection';
                                 $rootScope.isShowUserSignUpNoticeMsg = 'FALSE';
                             }
@@ -202,6 +202,7 @@ function UsersController($scope, $rootScope, $state, CommonServices){
                             }else{
                                 removeTemporaryUserSignUpDataFromSesion();
                                 removeTemporaryUserSignedInDataFromSesion();
+                                removeTemporaryUserFrgtPwdDataFromSesion();
                                 $rootScope.showAccountFormSectionName = 'signUpSection';
                                 $rootScope.isShowUserSignUpNoticeMsg = 'FALSE';
                             }
@@ -263,9 +264,9 @@ function UsersController($scope, $rootScope, $state, CommonServices){
         $rootScope.signOutUser = function(){
             CommonServices.signOutUser();
             resetDKSessionData();
+            CommonServices.refreshWebAppVariableData();
             // window.location.href = globalBaseSitePath;
             $state.go('/', {reload:true}); 
-            CommonServices.refreshWebAppVariableData();
         };
         
         // storeRequestedSectionNameToAccessInUserAccount

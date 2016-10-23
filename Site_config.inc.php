@@ -45,7 +45,7 @@ $SentEmailOnErrorOccured = array("cjain9975@gmail.com");
 $SentSmsOnErrorOccured = array("9975967186");
 
 // sms details
-$ISSMSSERVICEACTIVATED = 'Y';
+$ISSMSSERVICEACTIVATED = 'N';
 $SMSUSERNAME = "chirag@satkarinfotech.com";
 $SMSSENDER = 'DSRTKZ';
 $SMSDOMAIN = 'http://api.textlocal.in/';
