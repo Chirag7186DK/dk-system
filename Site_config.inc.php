@@ -3,19 +3,19 @@
 
 // Developers shall use their own names here
 
-$DATABASENAME = 'DESSERTSKHAZANA';
-$DATABASEHOST = "localhost";
-$DATABASEUNAME = "dessertskhazanadbuser";
-$YII_DB_UNAME = "dessertskhazanadbuser";
-$DATABASEPASS = "Satkar123";
-$YII_DB_PASS = "Satkar123";
-
 //$DATABASENAME = 'DESSERTSKHAZANA';
 //$DATABASEHOST = "localhost";
-//$DATABASEUNAME = "dgbd";
-//$YII_DB_UNAME = "dgbd";
-//$DATABASEPASS = "chirag";
-//$YII_DB_PASS = "chirag";
+//$DATABASEUNAME = "dessertskhazanadbuser";
+//$YII_DB_UNAME = "dessertskhazanadbuser";
+//$DATABASEPASS = "Satkar123";
+//$YII_DB_PASS = "Satkar123";
+
+$DATABASENAME = 'DESSERTSKHAZANA';
+$DATABASEHOST = "localhost";
+$DATABASEUNAME = "dgbd";
+$YII_DB_UNAME = "dgbd";
+$DATABASEPASS = "chirag";
+$YII_DB_PASS = "chirag";
 
 // give path for webroot of libdessertkhazana of this installation
 // define("LIB_PATH",'/var/www/html/libdessertskhazana/');
@@ -45,7 +45,7 @@ $SentEmailOnErrorOccured = array("cjain9975@gmail.com");
 $SentSmsOnErrorOccured = array("9975967186");
 
 // sms details
-$ISSMSSERVICEACTIVATED = 'N';
+$ISSMSSERVICEACTIVATED = 'Y';
 $SMSUSERNAME = "chirag@satkarinfotech.com";
 $SMSSENDER = 'DSRTKZ';
 $SMSDOMAIN = 'http://api.textlocal.in/';
