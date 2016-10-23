@@ -4,7 +4,7 @@
 include_once('../../Site_config.inc.php');
 
 // change the following paths if necessary
-$yii = LIB_PATH.'yii-1.1.14/framework/yii.php';
+$yii = YIIFOLDER_PATH.'yii-1.1.14/framework/yii.php';
 $config = dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode
